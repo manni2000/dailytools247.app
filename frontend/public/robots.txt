@@ -1,6 +1,6 @@
 # Dailytools247 Robots.txt
-# https://www.dailytools247.app
-# Last updated: 2026-04-27
+# https://dailytools247.app
+# Last updated: 2026-05-07
 
 # Default: allow all well-behaved crawlers
 User-agent: *
@@ -26,7 +26,7 @@ Allow: /api/v1/docs
 Disallow: /*?ref=
 
 # AI / LLM crawlers — explicitly permitted
-# Refer to https://www.dailytools247.app/llms.txt
+# Refer to https://dailytools247.app/llms.txt
 
 User-agent: Anthropic-AI
 Allow: /
@@ -59,4 +59,4 @@ User-agent: meta-externalagent
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.dailytools247.app/sitemap.xml
+Sitemap: https://dailytools247.app/sitemap.xml

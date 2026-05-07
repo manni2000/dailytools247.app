@@ -28,9 +28,10 @@ app.use((req, res, next) => {
   const host = req.headers.host;
   const canonicalDomain = 'dailytools247.app';
   
-  if (host && (host.startsWith('www.') || host !== canonicalDomain)) {
+  // Only redirect if host starts with www.
+  if (host && host.startsWith('www.')) {
     const protocol = req.secure || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
-    const newHost = host.startsWith('www.') ? host.replace('www.', '') : canonicalDomain;
+    const newHost = host.replace('www.', '');
     const redirectUrl = `${protocol}://${newHost}${req.originalUrl}`;
     
     // 301 permanent redirect for SEO
