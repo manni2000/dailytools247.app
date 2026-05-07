@@ -247,7 +247,7 @@ app.get('/', (_req, res) => {
         </div>
 
         <div class="footer">
-            <p>© 2024 DailyTools247 | Built with ❤️ and Node.js</p>
+            <p>© 2026 DailyTools247 | Built with ❤️ and Node.js</p>
             <p>Server Time: ${new Date().toLocaleString()}</p>
         </div>
     </div>
