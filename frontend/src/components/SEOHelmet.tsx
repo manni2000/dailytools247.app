@@ -52,11 +52,15 @@ const SEOHelmet = ({
   
   // For pages with query parameters, use clean canonical URL without parameters
   const hasTrackingParams = location.search && (location.search.includes('ref=') || location.search.includes('q=') || location.search.includes('utm_'));
+  const isSearchPage = location.search.includes('q=');
   const canonicalUrl = hasTrackingParams 
     ? `https://dailytools247.app${location.pathname}`
     : `https://dailytools247.app${location.pathname}${location.search}`;
   
   const currentUrl = url || canonical || canonicalUrl;
+  
+  // Add noindex for search result pages
+  const shouldNoindex = noindex || isSearchPage;
   
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
   
@@ -615,9 +619,9 @@ const SEOHelmet = ({
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={Array.isArray(finalKeywords) ? finalKeywords.join(', ') : ''} />
       <meta name="author" content="Dailytools247" />
-      <meta name="robots" content={noindex ? "noindex,nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-      <meta name="googlebot" content={noindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />
-      <meta name="bingbot" content={noindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />
+      <meta name="robots" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      <meta name="googlebot" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />
+      <meta name="bingbot" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />
       <meta name="language" content="en" />
       <meta name="geo.region" content="IN" />
       <meta name="revisit-after" content="7 days" />

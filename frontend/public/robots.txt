@@ -24,6 +24,8 @@ Allow: /api/v1/docs
 
 # Block tracking parameters to prevent duplicate indexing
 Disallow: /*?ref=
+Disallow: /*?q=
+Disallow: /*?utm_
 
 # AI / LLM crawlers — explicitly permitted
 # Refer to https://dailytools247.app/llms.txt
