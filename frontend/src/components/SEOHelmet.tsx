@@ -49,7 +49,14 @@ const SEOHelmet = ({
   noindex = false
 }: SEOHelmetProps) => {
   const location = useLocation();
-  const currentUrl = url || canonical || `https://www.dailytools247.app${location.pathname}`;
+  
+  // For pages with query parameters, use clean canonical URL without parameters
+  const hasTrackingParams = location.search && (location.search.includes('ref=') || location.search.includes('q=') || location.search.includes('utm_'));
+  const canonicalUrl = hasTrackingParams 
+    ? `https://dailytools247.app${location.pathname}`
+    : `https://dailytools247.app${location.pathname}${location.search}`;
+  
+  const currentUrl = url || canonical || canonicalUrl;
   
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
   
@@ -75,7 +82,7 @@ const SEOHelmet = ({
   const finalHowTo = howTo || toolMetadata?.howTo;
   const finalSchema = schema || toolMetadata?.schema;
 
-  const siteUrl = 'https://www.dailytools247.app';
+  const siteUrl = 'https://dailytools247.app';
   const fullTitleWithSuffix = finalTitle;
   const finalImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
@@ -97,12 +104,12 @@ const SEOHelmet = ({
         author: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         },
         publisher: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         },
         offers: {
           '@type': 'Offer',
@@ -180,12 +187,12 @@ const SEOHelmet = ({
         author: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         },
         publisher: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         },
         offers: {
           '@type': 'Offer',
@@ -260,7 +267,7 @@ const SEOHelmet = ({
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.dailytools247.app'
+          item: 'https://dailytools247.app'
         }
       ];
 
@@ -270,7 +277,7 @@ const SEOHelmet = ({
           '@type': 'ListItem',
           position: 2,
           name: categoryName,
-          item: `https://www.dailytools247.app/category/${pathSegments[1]}`
+          item: `https://dailytools247.app/category/${pathSegments[1]}`
         });
       }
       else if (toolSlug && finalCategory && finalCategory !== 'Online Tools') {
@@ -280,7 +287,7 @@ const SEOHelmet = ({
             '@type': 'ListItem',
             position: 2,
             name: finalCategory,
-            item: `https://www.dailytools247.app/category/${categorySlug}`
+            item: `https://dailytools247.app/category/${categorySlug}`
           });
         }
         breadcrumbs.push({
@@ -458,7 +465,7 @@ const SEOHelmet = ({
         brand: {
           '@type': 'Brand',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         }
       });
     } else if (category && category !== 'Online Tools') {
@@ -559,7 +566,7 @@ const SEOHelmet = ({
         brand: {
           '@type': 'Brand',
           name: 'Dailytools247',
-          url: 'https://www.dailytools247.app'
+          url: 'https://dailytools247.app'
         }
       });
     }
@@ -568,8 +575,8 @@ const SEOHelmet = ({
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Dailytools247',
-      url: 'https://www.dailytools247.app',
-      logo: 'https://www.dailytools247.app/dailytools247.png',
+      url: 'https://dailytools247.app',
+      logo: 'https://dailytools247.app/dailytools247.png',
       description: '130+ Free Online Tools for PDF conversion, image editing, video processing, text formatting, QR codes, password generation, JSON formatting and more.',
       contactPoint: {
         '@type': 'ContactPoint',
@@ -577,7 +584,7 @@ const SEOHelmet = ({
         email: 'info@dailytools247.com'
       },
       sameAs: [
-        'https://www.dailytools247.app'
+        'https://dailytools247.app'
       ]
     });
 
@@ -585,12 +592,12 @@ const SEOHelmet = ({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'Dailytools247',
-      url: 'https://www.dailytools247.app',
+      url: 'https://dailytools247.app',
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://www.dailytools247.app/?q={search_term_string}'
+          urlTemplate: 'https://dailytools247.app/?q={search_term_string}'
         },
         'query-input': 'required name=search_term_string'
       }
@@ -631,7 +638,7 @@ const SEOHelmet = ({
       <meta property="og:site_name" content="Dailytools247" />
       <meta property="og:locale" content="en_IN" />
       <meta property="article:author" content="Dailytools247" />
-      <meta property="article:publisher" content="https://www.dailytools247.app/" />
+      <meta property="article:publisher" content="https://dailytools247.app/" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={currentUrl} />
@@ -687,7 +694,7 @@ const SEOHelmet = ({
               '@type': 'ListItem',
               position: index + 1,
               name: link.anchorText,
-              url: `https://www.dailytools247.app${link.url}`,
+              url: `https://dailytools247.app${link.url}`,
               description: link.context
             }))
           })}
