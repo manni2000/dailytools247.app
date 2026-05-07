@@ -36,7 +36,7 @@ export interface EEATProfile {
 }
 
 export const eeatProfile: EEATProfile = {
-  domain: 'dailytools247.app',
+  domain: 'www.dailytools247.app',
   expertise: [
     {
       type: 'technical',

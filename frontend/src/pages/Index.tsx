@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import PopularTools from "@/components/home/PopularTools";
 import CategoryGrid from "@/components/home/CategoryGrid";
+import UserTestimonials from "@/components/UserTestimonials";
 
 // Lazy load below-the-fold components
 const BlogHighlights = lazy(() => import("@/components/home/BlogHighlights"));
@@ -26,6 +27,7 @@ const Index = () => {
         <HeroSection />
         {/* <PopularTools /> */}
         <CategoryGrid />
+        <UserTestimonials />
         <Suspense fallback={<PageLoader />}>
           <BlogHighlights />
         </Suspense>

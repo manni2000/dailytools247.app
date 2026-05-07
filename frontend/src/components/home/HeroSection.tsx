@@ -346,9 +346,9 @@ const HeroSection = () => {
                 letterSpacing: "-0.025em",
               }}
             >
-              All-in-One Tools.
+              All-in-One Online Tools.
               <br />
-              <span className="gradient-text">Infinite Possibilities.</span>
+              <span className="gradient-text">100+ Free Tools for PDF, Image & More.</span>
             </motion.h1>
 
             {/* Subtext */}

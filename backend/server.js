@@ -23,16 +23,15 @@ const PORT = 8000;
 
 app.set('trust proxy', 1);
 
-// WWW to non-www redirect middleware
+// Non-WWW to WWW redirect middleware
 app.use((req, res, next) => {
   const host = req.headers.host;
-  const canonicalDomain = 'dailytools247.app';
+  const canonicalDomain = 'www.dailytools247.app';
   
-  // Only redirect if host starts with www.
-  if (host && host.startsWith('www.')) {
+  // Only redirect if host doesn't start with www.
+  if (host && !host.startsWith('www.')) {
     const protocol = req.secure || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
-    const newHost = host.replace('www.', '');
-    const redirectUrl = `${protocol}://${newHost}${req.originalUrl}`;
+    const redirectUrl = `${protocol}://www.${host}${req.originalUrl}`;
     
     // 301 permanent redirect for SEO
     return res.redirect(301, redirectUrl);

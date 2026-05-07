@@ -61,4 +61,4 @@ User-agent: meta-externalagent
 Allow: /
 
 # Sitemap location
-Sitemap: https://dailytools247.app/sitemap.xml
+Sitemap: https://www.dailytools247.app/sitemap.xml
