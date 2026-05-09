@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/update-sitemap-dates.js && vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "fix-buttons": "node fix-buttons-node.js"
+    "fix-buttons": "node fix-buttons-node.js",
+    "update-sitemap": "node scripts/update-sitemap-dates.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

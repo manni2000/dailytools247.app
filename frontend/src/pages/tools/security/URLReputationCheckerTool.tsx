@@ -342,15 +342,6 @@ export default function URLReputationCheckerTool() {
               <p>• <strong>Spam:</strong> Unwanted promotional content</p>
             </div>
           </div>
-
-          <div className="mt-4 flex items-start gap-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
-            <AlertTriangle className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
-            <div className="text-sm">
-              <strong>Important:</strong> This tool provides basic reputation analysis. 
-              Always exercise caution when visiting unknown websites, especially those requesting 
-              personal information or downloads.
-            </div>
-          </div>
         </div>
 
         {/* Tool Definition Section */}

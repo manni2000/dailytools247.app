@@ -155,6 +155,7 @@ export const existingTools = [
   'duplicate-remover',
   'text-summarizer',
   'text-diff',
+  'transcript-extractor',
   
   // Video Tools
   'video-to-audio',

@@ -198,6 +198,7 @@ const Footer = () => {
     { name: "Markdown to HTML", path: "/markdown-html" },
     { name: "Text Summarizer", path: "/text-summarizer" },
     { name: "Text Diff Checker", path: "/text-diff" },
+    { name: "Transcript Text Extractor", path: "/transcript-extractor" },
   ];
 
   const socialMediaTools = [
