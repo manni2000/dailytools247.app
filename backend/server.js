@@ -23,23 +23,6 @@ const PORT = 8000;
 
 app.set('trust proxy', 1);
 
-// Non-WWW to WWW redirect middleware
-app.use((req, res, next) => {
-  const host = req.headers.host;
-  const canonicalDomain = 'www.dailytools247.app';
-  
-  // Only redirect if host doesn't start with www.
-  if (host && !host.startsWith('www.')) {
-    const protocol = req.secure || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
-    const redirectUrl = `${protocol}://www.${host}${req.originalUrl}`;
-    
-    // 301 permanent redirect for SEO
-    return res.redirect(301, redirectUrl);
-  }
-  
-  next();
-});
-
 app.use(helmet(helmetOptions));
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
