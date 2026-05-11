@@ -86,7 +86,6 @@ import LineSorterTool from "./pages/tools/text/LineSorterTool";
 import DuplicateRemoverTool from "./pages/tools/text/DuplicateRemoverTool";
 import TextSummarizerTool from "./pages/tools/text/TextSummarizerTool";
 import TextDiffTool from "./pages/tools/text/TextDiffTool";
-import TranscriptExtractorTool from "./pages/tools/text/TranscriptExtractorTool";
 
 import PasswordGeneratorTool from "./pages/tools/security/PasswordGeneratorTool";
 import PasswordStrengthTool from "./pages/tools/security/PasswordStrengthTool";
@@ -289,7 +288,6 @@ const AnimatedRoutes = () => {
           <Route path="/duplicate-remover" element={<DuplicateRemoverTool />} />
           <Route path="/text-summarizer" element={<TextSummarizerTool />} />
           <Route path="/text-diff" element={<TextDiffTool />} />
-          <Route path="/transcript-extractor" element={<TranscriptExtractorTool />} />
           
           {/* Security Tools */}
           <Route path="/password-generator" element={<PasswordGeneratorTool />} />

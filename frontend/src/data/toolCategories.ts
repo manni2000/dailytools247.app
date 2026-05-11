@@ -150,7 +150,6 @@ export const toolCategories: ToolCategory[] = [
       { id: "markdown-html", name: "Markdown → HTML", description: "Convert Markdown to HTML", path: "/markdown-to-html", isAvailable: true },
       { id: "text-summarizer", name: "Text Summarizer", description: "Extract key sentences from text", path: "/text-summarizer", isAvailable: true },
       { id: "text-diff", name: "Text Diff Checker", description: "Compare two texts and find differences", path: "/text-diff", isAvailable: true },
-      { id: "transcript-extractor", name: "Transcript Text Extractor", description: "Extract text from files and documents", path: "/transcript-extractor", isAvailable: true },
     ],
   },
   {
