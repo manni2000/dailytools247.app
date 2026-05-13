@@ -852,9 +852,9 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
       { tool: "Programming Libraries", bestFor: "Application integration", free: "Yes", speed: "Variable" },
     ],
     ctaLabel: "Encode Base64 Now",
-    ctaPath: "/base64-tool",
+    ctaPath: "/image-base64",
     secondaryCtaLabel: "Convert Image to Base64",
-    secondaryCtaPath: "/base64-image",
+    secondaryCtaPath: "/image-base64",
     additionalFaqs: [
       {
         question: "Is Base64 secure for passwords?",

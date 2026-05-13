@@ -23,9 +23,9 @@ Disallow: /api/
 Allow: /api/v1/docs
 
 # Block tracking parameters to prevent duplicate indexing
-Disallow: /*?ref=
-Disallow: /*?q=
-Disallow: /*?utm_
+Disallow: /*ref=
+Disallow: /*q=
+Disallow: /*utm_
 
 # AI / LLM crawlers — explicitly permitted
 # Refer to https://dailytools247.app/llms.txt
@@ -53,10 +53,10 @@ Allow: /
 
 User-agent: GoogleExtendedBot
 Allow: /
- 
+
 User-agent: cohere-ai
 Allow: /
- 
+
 User-agent: meta-externalagent
 Allow: /
 
