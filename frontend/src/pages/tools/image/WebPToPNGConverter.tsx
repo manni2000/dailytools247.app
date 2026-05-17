@@ -193,6 +193,8 @@ const WebPToPNGConverter = () => {
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <button
                   onClick={reset}
+                  title="Remove selected image"
+                  aria-label="Remove selected image"
                   className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"                >
                   <X className="h-5 w-5" />
                 </button>
