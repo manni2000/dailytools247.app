@@ -6,7 +6,7 @@ import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { PreviewDownload } from "@/components/ui/preview-download";
 import { useToast } from "@/hooks/use-toast";
 import { CategorySEO } from "@/components/ToolSEO";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -374,6 +374,7 @@ const ImageCompressorTool = () => {
             multiple={false}
             title="Drop image here or click to browse"
             subtitle="Supports JPG, PNG, WebP, GIF up to 10MB"
+            buttonLabel="Choose Image"
           />
         )}
 
@@ -594,13 +595,28 @@ const ImageCompressorTool = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex justify-center mt-6"
               >
-                <EnhancedDownload
-                  data={compressedUrl}
-                  fileName={image.name.replace(/\.[^/.]+$/, quality > 70 && image.type === "image/png" ? ".webp" : ".jpg")}
+                <PreviewDownload
+                  fileData={compressedUrl}
                   fileType="image"
+                  fileName={image.name.replace(/\.[^/.]+$/, quality > 70 && image.type === "image/png" ? ".webp" : ".jpg")}
+                  fileSize={compressedSize}
                   title="Image Compressed Successfully"
                   description={`Original: ${(originalSize / 1024).toFixed(1)}KB → Compressed: ${(compressedSize / 1024).toFixed(1)}KB (${Math.round((1 - compressedSize / originalSize) * 100)}% reduction)`}
-                  fileSize={`${(compressedSize / 1024).toFixed(1)} KB`}
+                  onDownload={() => {
+                    const link = document.createElement('a');
+                    link.href = compressedUrl;
+                    link.download = image.name.replace(/\.[^/.]+$/, quality > 70 && image.type === "image/png" ? ".webp" : ".jpg");
+                    link.click();
+                  }}
+                  metadata={{
+                    'Original Size': `${(originalSize / 1024).toFixed(1)} KB`,
+                    'Compressed Size': `${(compressedSize / 1024).toFixed(1)} KB`,
+                    'Reduction': `${Math.round((1 - compressedSize / originalSize) * 100)}%`,
+                    'Quality': `${quality}%`,
+                  }}
+                  showPreviewToggle={true}
+                  previewHeight="max-h-80"
+                  downloadVariant="default"
                 />
               </motion.div>
             )}

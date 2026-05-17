@@ -507,6 +507,8 @@ const ImageToPDFTool = () => {
 
           subtitle="Supports JPG, PNG, WebP • Multiple files allowed"
 
+          buttonLabel="Choose Images"
+
         />
 
 

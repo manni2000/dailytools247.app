@@ -5,7 +5,7 @@ import { fadeInUp, scaleIn } from "@/lib/animations";
 import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { PDFUploadZone } from "@/components/ui/pdf-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -397,18 +397,30 @@ const PDFSplitTool = () => {
 
         {/* Download */}
         {resultUrl && (
-          <div className="rounded-xl border border-border bg-card p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <Download className="h-5 w-5 text-primary" />
-              <h3 className="font-semibold">Split PDF Ready</h3>
-            </div>
-            <EnhancedDownload
-              data={resultUrl}
+          <div>
+            <DownloadCard
               fileName={file ? file.name.replace(/\.[^/.]+$/, "-split.pdf") : "split_document.pdf"}
               fileType="pdf"
-              title="Download Split PDF"
-              description="Your split PDF document is ready for download"
-              fileSize="Variable"
+              fileSize={file?.size}
+              title="PDF Split Complete"
+              description={`Your PDF has been split successfully. Extract ${
+                splitMode === 'range'
+                  ? `pages ${startPage} to ${endPage}`
+                  : `specific pages`
+              }`}
+              onDownload={() => {
+                const link = document.createElement('a');
+                link.href = resultUrl;
+                link.download = file ? file.name.replace(/\.[^/.]+$/, "-split.pdf") : "split_document.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              metadata={{
+                'Original': file?.name || 'PDF file',
+                'Split Mode': splitMode === 'range' ? `Pages ${startPage}-${endPage}` : 'Specific pages',
+              }}
+              variant="default"
             />
           </div>
         )}

@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import { Upload, Merge, X, FileText, GripVertical, Sparkles, Layers } from "lucide-react";
+import { Upload, Merge, X, FileText, GripVertical, Sparkles, Layers, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { PDFUploadZone } from "@/components/ui/pdf-upload-zone";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -212,13 +212,26 @@ const PDFMergeTool = () => {
 
         {mergedUrl && (
           <div className="flex justify-center mt-6">
-            <EnhancedDownload
-              data={mergedUrl}
+            <DownloadCard
               fileName={files.length > 0 ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf` : "merged.pdf"}
               fileType="pdf"
+              fileSize={files.reduce((acc, f) => acc + f.file.size, 0)}
               title="PDFs Merged Successfully"
               description={`${files.length} PDF files have been merged into one document`}
-              fileSize={`${(files.reduce((acc, f) => acc + f.file.size, 0) / 1024 / 1024).toFixed(2)} MB`}
+              onDownload={() => {
+                const link = document.createElement('a');
+                link.href = mergedUrl;
+                link.download = files.length > 0 ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf` : "merged.pdf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              metadata={{
+                'Files': `${files.length} combined`,
+                'Format': 'PDF',
+              }}
+              showPreview={false}
+              variant="default"
             />
           </div>
         )}

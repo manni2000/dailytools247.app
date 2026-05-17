@@ -169,6 +169,7 @@ const WebPToJPGConverter = () => {
             multiple={false}
             title="Drop WebP image here or click to browse"
             subtitle="Supports WebP, JPG, PNG, GIF, BMP and other image formats up to 10MB"
+            buttonLabel="Choose WebP"
           />
         )}
 

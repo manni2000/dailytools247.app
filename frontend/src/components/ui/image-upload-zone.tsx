@@ -15,6 +15,7 @@ interface ImageUploadZoneProps {
   title?: string;
   subtitle?: string;
   showImageIcon?: boolean;
+  buttonLabel?: string;
 }
 
 export const ImageUploadZone = ({
@@ -30,7 +31,8 @@ export const ImageUploadZone = ({
   multiple = false,
   title = "Drop image here or click to browse",
   subtitle = `Supports JPG, PNG, WebP, GIF up to ${maxSize}`,
-  showImageIcon = true
+  showImageIcon = true,
+  buttonLabel = "Choose Image"
 }: ImageUploadZoneProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -88,7 +90,7 @@ export const ImageUploadZone = ({
         </div>
 
         <button className="mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-          Choose Image{multiple ? 's' : ''}
+          {buttonLabel}{multiple ? 's' : ''}
         </button>
       </div>
 

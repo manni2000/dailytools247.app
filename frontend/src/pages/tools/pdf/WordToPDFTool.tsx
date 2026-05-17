@@ -156,6 +156,7 @@ const WordToPDFTool = () => {
             accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,.doc,.docx"
             title="Drop Word file here"
             subtitle="Convert Word documents to PDF"
+            buttonLabel="Choose Word"
           />
         )}
 

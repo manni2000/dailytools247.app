@@ -191,6 +191,7 @@ const QRScannerTool = () => {
             multiple={false}
             title="Upload QR Code Image"
             subtitle="Drop an image or click to browse"
+            buttonLabel="Choose Image"
           />
         )}
 

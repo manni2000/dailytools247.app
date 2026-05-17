@@ -178,6 +178,7 @@ const PNGToWebPConverter = () => {
             title="Drop PNG image here or click to browse"
             subtitle="Supports PNG files with transparency up to 10MB"
             accept="image/png"
+            buttonLabel="Choose PNG"
           />
         )}
 

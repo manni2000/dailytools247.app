@@ -169,6 +169,7 @@ const PNGToJPGConverter = () => {
             multiple={false}
             title="Drop PNG image here or click to browse"
             subtitle="Supports PNG, WebP, GIF, BMP and other image formats up to 10MB"
+            buttonLabel="Choose PNG"
           />
         )}
 

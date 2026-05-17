@@ -278,6 +278,7 @@ const HTMLToPDFTool = () => {
             accept="text/html"
             title="Drop HTML file here"
             subtitle="Convert HTML content to PDF"
+            buttonLabel="Choose HTML"
           />
         )}
 

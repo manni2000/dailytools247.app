@@ -181,6 +181,7 @@ const JPGToWebPConverter = () => {
             multiple={false}
             title="Drop JPG image here or click to browse"
             subtitle="Supports JPG, JPEG, PNG, GIF, BMP and other image formats up to 10MB"
+            buttonLabel="Choose JPG"
           />
         )}
 

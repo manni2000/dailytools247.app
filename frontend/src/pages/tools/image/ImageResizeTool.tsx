@@ -320,6 +320,7 @@ const ImageResizeTool = () => {
             multiple={false}
             title="Drop image here or click to browse"
             subtitle="Supports JPG, PNG, WebP, GIF up to 10MB"
+            buttonLabel="Choose Image"
           />
         )}
 

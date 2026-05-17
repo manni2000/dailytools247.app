@@ -6,7 +6,7 @@ import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { API_URLS } from "@/lib/api-complete";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { PreviewDownload } from "@/components/ui/preview-download";
 import { AudioUploadZone } from "@/components/ui/audio-upload-zone";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -389,13 +389,26 @@ const AudioConverterTool = () => {
             {/* Download Section */}
             {audioData && (
               <div ref={downloadSectionRef}>
-                <EnhancedDownload
-                  data={audioData}
-                  fileName={fileName.replace(/\.[^/.]+$/, `.${outputFormat}`)}
+                <PreviewDownload
+                  fileData={audioData}
                   fileType="audio"
+                  fileName={fileName.replace(/\.[^/.]+$/, `.${outputFormat}`)}
+                  fileSize={file ? file.size : undefined}
                   title={`Audio Converted to ${outputFormat.toUpperCase()}`}
                   description={`Your audio file has been successfully converted to ${outputFormat.toUpperCase()} format`}
-                  fileSize={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
+                  onDownload={() => {
+                    const link = document.createElement('a');
+                    link.href = audioData;
+                    link.download = fileName.replace(/\.[^/.]+$/, `.${outputFormat}`);
+                    link.click();
+                  }}
+                  metadata={{
+                    'Format': outputFormat.toUpperCase(),
+                    'Original File': fileName,
+                    'Quality': 'High (320 kbps)',
+                    'Status': 'Ready to download',
+                  }}
+                  showPreviewToggle={true}
                 />
               </div>
             )}

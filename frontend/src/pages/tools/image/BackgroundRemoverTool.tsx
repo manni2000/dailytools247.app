@@ -170,6 +170,7 @@ const BackgroundRemoverTool = () => {
             multiple={false}
             title="Drop your image here"
             subtitle="PNG, JPG, WebP supported"
+            buttonLabel="Choose Image"
           />
         )}
 

@@ -153,6 +153,7 @@ const ImageDPITool = () => {
             multiple={false}
             title="Drop your image here"
             subtitle="Check DPI and print size calculations"
+            buttonLabel="Choose Image"
           />
         )}
 

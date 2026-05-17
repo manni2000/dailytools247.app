@@ -89,7 +89,7 @@ const WatermarkAdderTool = () => {
       ctx.drawImage(img, 0, 0);
 
       ctx.font = `bold ${fontSize}px Arial, sans-serif`;
-      ctx.fillStyle = `rgba(255, 255, 255, ${opacity / 100})`;
+      ctx.fillStyle = `rgba(0, 0, 0, ${opacity / 100})`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 

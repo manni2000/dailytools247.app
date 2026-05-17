@@ -200,6 +200,7 @@ const FaviconGeneratorTool = () => {
             multiple={false}
             title="Drop your logo or icon"
             subtitle="PNG or square image (512×512 or larger) • Generate various favicon sizes"
+            buttonLabel="Choose Image"
           />
         )}
 

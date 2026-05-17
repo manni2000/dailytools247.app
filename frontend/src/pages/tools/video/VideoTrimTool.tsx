@@ -5,7 +5,7 @@ import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { API_URLS } from "@/lib/api-complete";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { PreviewDownload } from "@/components/ui/preview-download";
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -242,25 +242,28 @@ const VideoTrimTool = () => {
             {/* Download Section */}
             {videoData && (
               <div ref={downloadSectionRef} className="space-y-4">
-                <h3 className="text-lg font-medium text-center">Trimmed Video</h3>
-                <div className="rounded-xl border border-border bg-card overflow-hidden">
-                  <div className="p-6">
-                    <div className="mb-4 flex justify-center">
-                      <div className="w-32 h-32 bg-muted/30 rounded-lg flex items-center justify-center">
-                        <Video className="h-16 w-16 text-muted-foreground" />
-                      </div>
-                    </div>
-                    
-                    <EnhancedDownload
-                      data={videoData}
-                      fileName={fileName.replace(/\.[^/.]+$/, "_trimmed.mp4")}
-                      fileType="zip"
-                      title="Video Trimmed Successfully"
-                      description={`Video trimmed from ${startTime}s to ${endTime}s`}
-                      fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                    />
-                  </div>
-                </div>
+                <PreviewDownload
+                  fileData={videoData}
+                  fileType="video"
+                  fileName={fileName.replace(/\.[^/.]+$/, "_trimmed.mp4")}
+                  fileSize={file ? file.size : undefined}
+                  title="Video Trimmed Successfully"
+                  description={`Video trimmed from ${startTime}s to ${endTime}s (Duration: ${endTime - startTime}s)`}
+                  onDownload={() => {
+                    const link = document.createElement('a');
+                    link.href = videoData;
+                    link.download = fileName.replace(/\.[^/.]+$/, "_trimmed.mp4");
+                    link.click();
+                  }}
+                  metadata={{
+                    'Start Time': `${startTime}s`,
+                    'End Time': `${endTime}s`,
+                    'Duration': `${endTime - startTime}s`,
+                    'Original File': fileName,
+                  }}
+                  showPreviewToggle={true}
+                  previewHeight="max-h-80"
+                />
               </div>
             )}
           </div>

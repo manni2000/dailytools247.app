@@ -203,6 +203,7 @@ const ImageBase64Tool = () => {
               multiple={false}
               title="Drop your image here"
               subtitle="Supports PNG, JPG, WebP, GIF up to 10MB"
+              buttonLabel="Choose Image"
             />
             {image && (
               <div className="rounded-lg border border-border bg-card p-6 text-center">

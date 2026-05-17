@@ -14,6 +14,7 @@ interface PDFUploadZoneProps {
   multiple?: boolean;
   title?: string;
   subtitle?: string;
+  buttonLabel?: string;
 }
 
 export const PDFUploadZone = ({
@@ -28,7 +29,8 @@ export const PDFUploadZone = ({
   maxSize = "50MB",
   multiple = false,
   title = "Drop PDF here or click to browse",
-  subtitle = `Supports PDF files up to ${maxSize}`
+  subtitle = `Supports PDF files up to ${maxSize}`,
+  buttonLabel = "Choose PDF"
 }: PDFUploadZoneProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -80,7 +82,7 @@ export const PDFUploadZone = ({
         </div>
 
         <button className="mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-          Choose PDF{multiple ? 's' : ''}
+          {buttonLabel}{multiple ? 's' : ''}
         </button>
       </div>
 

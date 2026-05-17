@@ -207,6 +207,7 @@ const EXIFViewerTool = () => {
             multiple={false}
             title="Drop your photo here"
             subtitle="JPG photos typically contain EXIF data"
+            buttonLabel="Choose Image"
           />
         )}
 

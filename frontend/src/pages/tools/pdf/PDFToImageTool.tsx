@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { PreviewDownload } from "@/components/ui/preview-download";
 import { PDFUploadZone } from "@/components/ui/pdf-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -296,18 +296,29 @@ const PDFToImageTool = () => {
               <div className="space-y-4">
                 {/* Download Section */}
                 <div ref={downloadSectionRef} className="flex justify-center">
-                  <EnhancedDownload
-                    data={resultImages[0].image}
-                    fileName={resultImages[0].name}
+                  <PreviewDownload
+                    fileData={resultImages[0].image}
                     fileType="image"
+                    fileName={resultImages[0].name}
+                    fileSize={resultImages[0].size || file.size}
                     title="PDF Converted to Images"
-                    description={`Successfully converted ${resultImages.length} pages to PNG images`}
-                    fileSize={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
-                    multipleFiles={resultImages.map(img => ({
-                      url: img.image,
-                      name: img.name,
-                      page: img.page
-                    }))}
+                    description={`Successfully converted ${resultImages.length} page${resultImages.length !== 1 ? 's' : ''} to ${conversionStats.format.toUpperCase()} images`}
+                    onDownload={() => {
+                      const link = document.createElement('a');
+                      link.href = resultImages[0].image;
+                      link.download = resultImages[0].name;
+                      link.click();
+                    }}
+                    metadata={{
+                      'Pages Converted': `${resultImages.length}`,
+                      'Format': conversionStats.format.toUpperCase(),
+                      'Original File': fileName,
+                      'Resolution': resultImages[0].width && resultImages[0].height 
+                        ? `${resultImages[0].width}x${resultImages[0].height}px`
+                        : 'High',
+                    }}
+                    showPreviewToggle={true}
+                    previewHeight="max-h-80"
                   />
                 </div>
               </div>

@@ -156,6 +156,7 @@ const PowerPointToPDFTool = () => {
             accept="application/vnd.openxmlformats-officedocument.presentationml.presentation,.ppt,.pptx"
             title="Drop PowerPoint file here"
             subtitle="Convert PowerPoint presentations to PDF"
+            buttonLabel="Choose PowerPoint"
           />
         )}
 
