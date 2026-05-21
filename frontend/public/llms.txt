@@ -149,7 +149,6 @@ DailyTools247 provides 100+ free online tools including PDF, image, developer, a
 /mutual-fund-calculator - Calculate mutual fund returns
 /lumpsum-calculator - Calculate lump sum investments
 /recurring-deposit-calculator - Calculate recurring deposits
-/inflation-calculator - Calculate inflation impact
 /roi-calculator - Calculate return on investment
 /sip-calculator - Calculate SIP investments
 
