@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { Upload, Image } from "lucide-react";
+import { validateUploadedFile, getFileFormats } from "@/lib/utils";
+import { toast } from "@/hooks/use-toast";
 
 interface ImageUploadZoneProps {
   isDragging: boolean;
@@ -44,6 +46,24 @@ export const ImageUploadZone = ({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
+      const validFiles: File[] = [];
+      for (let i = 0; i < files.length; i++) {
+        if (validateUploadedFile(files[i], accept)) {
+          validFiles.push(files[i]);
+        }
+      }
+
+      if (validFiles.length < files.length) {
+        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        toast({
+          title: "Unsupported File",
+          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
+          variant: "warning",
+        });
+        e.target.value = "";
+        return;
+      }
+
       if (multiple) {
         Array.from(files).forEach(onFileSelect);
       } else if (files[0]) {
@@ -52,12 +72,37 @@ export const ImageUploadZone = ({
     }
   };
 
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      const validFiles: File[] = [];
+      for (let i = 0; i < files.length; i++) {
+        if (validateUploadedFile(files[i], accept)) {
+          validFiles.push(files[i]);
+        }
+      }
+
+      if (validFiles.length < files.length) {
+        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        toast({
+          title: "Unsupported File",
+          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
+          variant: "warning",
+        });
+        onDragLeave(e);
+        return;
+      }
+    }
+    onDrop(e);
+  };
+
   return (
     <div
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
-      onDrop={onDrop}
+      onDrop={handleDrop}
       onClick={handleClick}
       className={`relative border-2 border-dashed rounded-xl p-8 md:p-12 text-center transition-all duration-300 cursor-pointer ${
         isDragging

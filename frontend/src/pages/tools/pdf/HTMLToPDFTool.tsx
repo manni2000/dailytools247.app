@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FileText, X, Loader2, Link, Code2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
@@ -26,6 +26,14 @@ const HTMLToPDFTool = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const downloadSectionRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    return () => {
+      if (resultData && resultData.startsWith("blob:")) {
+        URL.revokeObjectURL(resultData);
+      }
+    };
+  }, [resultData]);
 
   const handleFile = (f: File) => {
     setFile(f);
@@ -71,14 +79,8 @@ const HTMLToPDFTool = () => {
       let requestBody: Record<string, unknown>;
       
       if (inputMode === "url" && urlInput.trim()) {
-        // For URL mode, we need to fetch the HTML content first
-        const htmlResponse = await fetch(urlInput.trim());
-        if (!htmlResponse.ok) {
-          throw new Error('Failed to fetch URL content');
-        }
-        const content = await htmlResponse.text();
         requestBody = {
-          html: content,
+          url: urlInput.trim(),
           title: new URL(urlInput.trim()).hostname,
         };
       } else if (inputMode === "paste" && htmlContent.trim()) {
@@ -105,16 +107,20 @@ const HTMLToPDFTool = () => {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Failed to process');
+        let errorMsg = 'Failed to process';
+        try {
+          const json = await response.json();
+          errorMsg = json.error || errorMsg;
+        } catch {
+          errorMsg = await response.text() || errorMsg;
+        }
+        throw new Error(errorMsg);
       }
 
       // Handle binary PDF response
-      const pdfBuffer = await response.arrayBuffer();
-      const pdfBase64 = btoa(
-        new Uint8Array(pdfBuffer).reduce((data, byte) => data + String.fromCharCode(byte), '')
-      );
-      setResultData(`data:application/pdf;base64,${pdfBase64}`);
+      const pdfBlob = await response.blob();
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      setResultData(pdfUrl);
       
       toast({
         title: "Success!",

@@ -633,47 +633,135 @@ router.post('/info', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'pdf'
 
 
 router.post('/html-to-pdf', async (req, res, next) => {
-
+  let browser;
   try {
+    const { html, url, title = 'Document' } = req.body;
+    if (!html && !url) return res.status(400).json({ success: false, error: 'HTML content or URL is required' });
 
-    const { html, title = 'Document' } = req.body;
+    const { chromium } = require('playwright-core');
 
-    if (!html) return res.status(400).json({ success: false, error: 'HTML content is required' });
+    browser = await chromium.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
+    });
 
-    
+    const context = await browser.newContext();
+    const page = await context.newPage();
 
-    const html_to_pdf = require('html-pdf-node');
+    if (url) {
+      await page.goto(url, {
+        waitUntil: 'networkidle',
+        timeout: 30000
+      });
+    } else {
+      await page.setContent(html, {
+        waitUntil: 'load',
+        timeout: 30000
+      });
+    }
 
-    const fs = require('fs');
+    // Wait for custom web fonts to be fully loaded
+    try {
+      await page.evaluate(() => document.fonts.ready);
+    } catch (e) {}
 
-    
+    // Inject CSS optimizations to strip heavy properties like box-shadow/text-shadow/filters for fast-scrolling/fast-loading PDFs
+    await page.addStyleTag({
+      content: `
+        *, *::before, *::after, [class], [id], div, p, span, button, a, h1, h2, h3, h4, h5, h6, section, main, header, footer {
+          box-shadow: none !important;
+          text-shadow: none !important;
+          filter: none !important;
+          backdrop-filter: none !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      `
+    });
 
-    let file = { content: html };
+    // Execute recursive JS DOM optimization to clean up shadow DOMs, inline styles, and performance-heavy background grids
+    await page.evaluate(() => {
+      function optimizeNode(node) {
+        if (node.nodeType !== Node.ELEMENT_NODE) return;
+        
+        // Strip inline styles with important
+        node.style.setProperty('box-shadow', 'none', 'important');
+        node.style.setProperty('text-shadow', 'none', 'important');
+        node.style.setProperty('filter', 'none', 'important');
+        node.style.setProperty('backdrop-filter', 'none', 'important');
+        node.style.setProperty('transition', 'none', 'important');
+        node.style.setProperty('animation', 'none', 'important');
 
-    let options = {
+        // Optimize background images
+        const computed = window.getComputedStyle(node);
+        const bgImg = computed.backgroundImage;
+        if (bgImg && bgImg !== 'none') {
+          if (
+            bgImg.includes('repeating-linear') ||
+            bgImg.includes('repeating-radial') ||
+            (bgImg.includes('linear-gradient') && (bgImg.match(/linear-gradient/g) || []).length > 1) ||
+            /rgba?\(.*?\)\s+(?:1|2)px/.test(bgImg) ||
+            /transparent\s+(?:1|2)px/.test(bgImg)
+          ) {
+            node.style.setProperty('background-image', 'none', 'important');
+          }
+        }
 
+        // Recurse children
+        for (const child of node.children) {
+          optimizeNode(child);
+        }
+
+        // Recurse shadow DOM
+        if (node.shadowRoot) {
+          const shadowStyle = document.createElement('style');
+          shadowStyle.textContent = `
+            *, *::before, *::after {
+              box-shadow: none !important;
+              text-shadow: none !important;
+              filter: none !important;
+              backdrop-filter: none !important;
+              transition: none !important;
+              animation: none !important;
+            }
+          `;
+          node.shadowRoot.appendChild(shadowStyle);
+
+          for (const child of node.shadowRoot.children) {
+            optimizeNode(child);
+          }
+        }
+      }
+
+      if (document.body) {
+        optimizeNode(document.body);
+      }
+    });
+
+    const pdfBuffer = await page.pdf({
       format: 'A4',
-
       printBackground: true,
-
-      margin: { top: '20px', right: '20px', bottom: '20px', left: '20px' },
-
-    };
-
-    
-
-    const pdfBuffer = await html_to_pdf.generatePdf(file, options);
-
-    
+      margin: { top: '20px', right: '20px', bottom: '20px', left: '20px' }
+    });
 
     res.setHeader('Content-Type', 'application/pdf');
-
     res.setHeader('Content-Disposition', `attachment; filename="${title.replace(/[^a-z0-9]/gi, '_')}.pdf"`);
-
     res.send(pdfBuffer);
-
-  } catch (err) { next(err); }
-
+  } catch (err) {
+    if (err.message && /browserType.launch/i.test(err.message)) {
+      return res.status(500).json({
+        success: false,
+        error: 'PDF generation requires a Playwright browser runtime. Run `playwright install chromium` on the server.',
+      });
+    }
+    next(err);
+  } finally {
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (e) {}
+    }
+  }
 });
 
 
