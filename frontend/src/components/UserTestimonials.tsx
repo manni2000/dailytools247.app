@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     content: "The JSON Formatter and Background Remover tools have become essential parts of my daily workflow. They save me hours every week and the results are consistently excellent.",
     toolUsed: "JSON Formatter",
-    date: "2024-05-01"
+    date: "2026-05-01"
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     content: "I use the PDF tools daily for client reports. The PDF Compressor maintains quality while reducing file size significantly. Absolutely game-changing for our team.",
     toolUsed: "PDF Compressor",
-    date: "2024-04-28"
+    date: "2026-04-28"
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     content: "As a student, I rely on the free tools for assignments. The Image Resizer and QR Code Generator are perfect for my projects. No signup required is a huge plus!",
     toolUsed: "Image Resizer",
-    date: "2024-04-25"
+    date: "2026-04-25"
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     content: "The EMI Calculator and Currency Converter tools are incredibly accurate and fast. I've recommended them to my entire team. Best free tools available online.",
     toolUsed: "EMI Calculator",
-    date: "2024-04-22"
+    date: "2026-04-22"
   },
   {
     id: 5,
@@ -68,7 +68,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     content: "The Background Remover tool is phenomenal! It works better than paid software I've used. The fact that it's free and processes images locally is amazing.",
     toolUsed: "Background Remover",
-    date: "2024-04-20"
+    date: "2026-04-20"
   }
 ];
 
