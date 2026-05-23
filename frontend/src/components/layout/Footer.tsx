@@ -234,7 +234,7 @@ const Footer = () => {
   }));
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-card" data-nosnippet="true">
       <div className="container py-12">
         {/* Top Section - Brand + Popular Tools */}
         <div className="grid gap-8 sm:grid-cols-2 mb-10">
