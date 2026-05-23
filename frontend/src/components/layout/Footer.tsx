@@ -525,6 +525,9 @@ const Footer = () => {
             <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground">
               About
             </Link>
+            <Link to="/write-for-us" className="text-sm text-muted-foreground hover:text-foreground">
+              Write for Us
+            </Link>
             <Link to="/blogs" className="text-sm text-muted-foreground hover:text-foreground">
               Blogs
             </Link>

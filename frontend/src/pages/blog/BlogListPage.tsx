@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CalendarDays, Clock3, ArrowRight, Sparkles } from "lucide-react";
+import { CalendarDays, Clock3, ArrowRight, Sparkles, Mail, PenTool, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
@@ -187,6 +187,71 @@ const BlogListPage = () => {
                 </motion.article>
               ))}
             </div>
+
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-3xl border border-border bg-gradient-to-br from-primary/10 via-card to-sky-500/10 p-6 shadow-lg md:p-10"
+            >
+              <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                <div>
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                    <PenTool className="h-4 w-4" />
+                    Write for Us
+                  </div>
+                  <h2 className="text-2xl font-bold md:text-3xl">Become a Guest Author at Creately</h2>
+                  <p className="mt-4 max-w-2xl text-muted-foreground">
+                    Share an original, practical article with a highly targeted tech audience. If your piece is useful,
+                    well structured, and written for readers first, we want to hear from you.
+                  </p>
+                  <div className="mt-6 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                      800 words or more
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                      Only one contextual link allowed
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                      One-time $10 review fee
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                      Original, unpublished content only
+                    </div>
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      to="/write-for-us"
+                      className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    >
+                      View Guidelines
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <a
+                      href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Creately"
+                      className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-medium transition-colors hover:bg-muted"
+                    >
+                      <Mail className="h-4 w-4" />
+                      Email Submission
+                    </a>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-border bg-background p-5 shadow-sm md:p-6">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-primary">Quick Rules</p>
+                  <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+                    <p>Only one link in the article body.</p>
+                    <p>Focus on practical value and clear writing.</p>
+                    <p>All submissions must be original.</p>
+                    <p>Fee: one-time $10 after acceptance.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
           </div>
         </section>
       </main>

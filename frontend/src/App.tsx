@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import About from "./pages/About";
+import WriteForUs from "./pages/WriteForUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BlogListPage from "./pages/blog/BlogListPage";
@@ -205,6 +206,7 @@ const AnimatedRoutes = () => {
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/write-for-us" element={<WriteForUs />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/blogs" element={<BlogListPage />} />

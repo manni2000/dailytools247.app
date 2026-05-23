@@ -6,6 +6,7 @@ DailyTools247 provides 100+ free online tools including PDF, image, developer, a
 / - Main homepage with all tool categories
 /categories - Browse tools by category
 /api-docs - API documentation for developers
+/write-for-us - Guest author submission and editorial guidelines
 
 ## Blog
 /blogs - Blog homepage with articles
