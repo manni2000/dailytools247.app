@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Zap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-//import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
@@ -281,9 +281,7 @@ const WebPToPNGConverter = () => {
               data={convertedUrl}
               fileName={getFileName()}
               fileType="image"              fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Convert Another WebP"
-                />
+            />
           </div>
         )}
 
