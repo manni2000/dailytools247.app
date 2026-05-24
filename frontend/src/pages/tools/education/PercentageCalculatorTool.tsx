@@ -118,21 +118,16 @@ const PercentageCalculatorTool = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <Percent className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <Percent className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Percentage Calculator</h2>
@@ -167,15 +162,9 @@ const PercentageCalculatorTool = () => {
                 onClick={() => setMode(m.id as "whatIsPercent" | "percentOf" | "increase" | "decrease")}
                 className={`rounded-lg px-4 py-3 text-sm font-medium transition-all ${
                   mode === m.id
-                    ? "text-white shadow-lg"
+                    ? "text-white shadow-lg bg-primary"
                     : "bg-muted hover:bg-muted/80"
                 }`}
-                style={{
-                  background:
-                    mode === m.id
-                      ? `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`
-                      : undefined,
-                }}
               >
                 {m.label}
               </motion.button>
@@ -223,12 +212,9 @@ const PercentageCalculatorTool = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={calculate}
-            className="w-full mt-6 rounded-lg text-white px-4 py-3 font-medium transition-colors"
-            style={{
-              background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
-            }}
+            className="w-full mt-6 rounded-lg text-white px-4 py-3 font-medium transition-colors bg-primary"
           >
-            <Percent className="inline h-4 w-4 mr-2" />
+            <Percent className="inline h-4 w-4 mr-2 text-primary-foreground" />
             Calculate
           </motion.button>
         </motion.div>
@@ -260,7 +246,7 @@ const PercentageCalculatorTool = () => {
                   <TrendingUp className="h-4 w-4" />
                   Calculation Result
                 </div>
-                <p className="text-3xl font-bold" style={{ color: `hsl(${categoryColor})` }}>
+                <p className="text-3xl font-bold text-primary">
                   {result}
                 </p>
               </div>

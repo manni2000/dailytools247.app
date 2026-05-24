@@ -5,7 +5,7 @@ import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { API_URLS } from "@/lib/api-complete";
-import { PreviewDownload } from "@/components/ui/preview-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -241,13 +241,13 @@ const VideoTrimTool = () => {
 
             {/* Download Section */}
             {videoData && (
-              <div ref={downloadSectionRef} className="space-y-4">
-                <PreviewDownload
-                  fileData={videoData}
+              <div ref={downloadSectionRef} className="space-y-4 w-full">
+                <DownloadCard
+                  fileUrl={videoData}
                   fileType="video"
                   fileName={fileName.replace(/\.[^/.]+$/, "_trimmed.mp4")}
                   fileSize={file ? file.size : undefined}
-                  title="Video Trimmed Successfully"
+                  title="Video Trimmed Successfully!"
                   description={`Video trimmed from ${startTime}s to ${endTime}s (Duration: ${endTime - startTime}s)`}
                   onDownload={() => {
                     const link = document.createElement('a');
@@ -255,14 +255,15 @@ const VideoTrimTool = () => {
                     link.download = fileName.replace(/\.[^/.]+$/, "_trimmed.mp4");
                     link.click();
                   }}
+                  onConvertAnother={reset}
                   metadata={{
                     'Start Time': `${startTime}s`,
                     'End Time': `${endTime}s`,
                     'Duration': `${endTime - startTime}s`,
                     'Original File': fileName,
                   }}
-                  showPreviewToggle={true}
-                  previewHeight="max-h-80"
+                  showPreview={true}
+                  onConvertAnotherLabel="Trim Another Video"
                 />
               </div>
             )}

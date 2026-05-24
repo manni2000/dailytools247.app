@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Zap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+//import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
@@ -203,27 +203,10 @@ const WebPToJPGConverter = () => {
               </motion.div>
             </div>
 
-            {/* Preview */}
-            <motion.div className="relative overflow-hidden flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "200%" }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                  repeatDelay: 1,
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              />
-              {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="max-h-80 max-w-full rounded-lg object-contain relative z-10"
-                />
-              )}
-            </motion.div>
+            {/* Preview removed */}
+            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
+              Image preview removed.
+            </div>
 
             {/* Quality Slider */}
             <div className="rounded-xl border border-border bg-card p-6">
@@ -238,6 +221,7 @@ const WebPToJPGConverter = () => {
                 value={quality}
                 onChange={(e) => setQuality(parseInt(e.target.value))}
                 className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+                title="Output quality"
               />
               <div className="mt-2 flex justify-between text-xs text-muted-foreground">
                 <span>Smaller file</span>
@@ -304,9 +288,6 @@ const WebPToJPGConverter = () => {
                   onClick={convert} 
                   disabled={isConverting}
                   className="btn-primary w-full"
-                  style={{
-                    background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
-                  }}
                   title="Convert WebP image to JPG format"
                 >
                   <RefreshCw className="h-5 w-5" />
@@ -327,7 +308,9 @@ const WebPToJPGConverter = () => {
               title="WebP Converted to JPG Successfully"
               description={`Your WebP image has been converted to JPG format at ${quality}% quality`}
               fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another WebP"
+                />
           </div>
         )}
 

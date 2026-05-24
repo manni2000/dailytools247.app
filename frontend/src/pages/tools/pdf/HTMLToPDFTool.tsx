@@ -335,7 +335,9 @@ const HTMLToPDFTool = () => {
               title="HTML Converted to PDF"
               description="Your HTML content has been converted to PDF"
               fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : undefined}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another HTML"
+                />
           </div>
         )}
 

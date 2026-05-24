@@ -179,6 +179,7 @@ const CompoundInterestTool = () => {
                     value={timeUnit}
                     onChange={(e) => setTimeUnit(e.target.value as "years" | "months")}
                     className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-transparent text-sm text-muted-foreground"
+                    title="Select time unit"
                   >
                     <option value="years">Years</option>
                     <option value="months">Months</option>
@@ -201,12 +202,7 @@ const CompoundInterestTool = () => {
                         ? "text-white shadow-lg"
                         : "bg-muted hover:bg-muted/80"
                     }`}
-                    style={{
-                      background:
-                        frequency === f.value
-                          ? `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`
-                          : undefined,
-                    }}
+                    
                   >
                     {f.label}
                   </motion.button>
@@ -243,7 +239,7 @@ const CompoundInterestTool = () => {
                   <TrendingUp className="h-4 w-4" />
                   Final Amount
                 </div>
-                <p className="text-5xl font-bold" style={{ color: `hsl(${categoryColor})` }}>
+                <p className="text-5xl font-bold text-primary">
                   ${result.finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground">

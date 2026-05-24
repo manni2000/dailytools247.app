@@ -7,7 +7,8 @@ import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-g
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData } from "@/components/ui/finance-chart";
-import { EnhancedDownload, downloadJSON, downloadText } from "@/components/EnhancedDownload";
+import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { downloadJSON, downloadText } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -170,7 +171,7 @@ const LumpsumCalculatorTool = () => {
           {/* Preset Scenarios */}
           <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
             <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
-              <Sparkles className="h-4 w-4" style={{ color: `hsl(${categoryColor})` }} />
+              <Sparkles className="h-4 w-4 text-primary" />
               Quick Scenarios
             </h3>
             <PresetButtonGroup
@@ -184,8 +185,8 @@ const LumpsumCalculatorTool = () => {
 
           {/* Interactive Sliders */}
           <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
-            <h3 className="text-sm font-semibold mb-6 flex items-center gap-2">
-              <Calculator className="h-4 w-4" style={{ color: `hsl(${categoryColor})` }} />
+              <h3 className="text-sm font-semibold mb-6 flex items-center gap-2">
+              <Calculator className="h-4 w-4 text-primary" />
               Investment Parameters
             </h3>
             
@@ -257,7 +258,7 @@ const LumpsumCalculatorTool = () => {
                   <TrendingUp className="h-4 w-4" />
                   Future Value
                 </div>
-                <p className="text-5xl font-bold" style={{ color: `hsl(${categoryColor})` }}>
+                <p className="text-5xl font-bold text-primary">
                   {formatIndianCurrency(result.futureValue)}
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground">

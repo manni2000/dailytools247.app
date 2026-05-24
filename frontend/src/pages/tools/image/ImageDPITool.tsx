@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Info, Image as ImageIcon, X, Sparkles, Ruler } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -169,9 +169,9 @@ const ImageDPITool = () => {
               </button>
             </div>
 
-            {/* Preview */}
+            {/* Preview removed */}
             <div className="flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <img src={image} alt="Preview" className="max-h-48 rounded-lg object-contain" />
+              <div className="text-sm text-muted-foreground">Image preview removed.</div>
             </div>
 
             {/* Image Info */}

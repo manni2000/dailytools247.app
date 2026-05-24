@@ -7,7 +7,8 @@ import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-g
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload, downloadText, downloadJSON } from "@/components/EnhancedDownload";
+import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import SimilarTools from "@/components/SimilarTools";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -380,7 +381,7 @@ const SIPCalculatorTool = () => {
         )}
 
         {/* Formula Card */}
-        <FormulaCard          formula="A = P × [{(1 + r)^n – 1} / r] × (1 + r)"
+        <FormulaCard title="SIP Formula" formula="A = P × [{(1 + r)^n – 1} / r] × (1 + r)"
           variables={[
             { symbol: 'A', description: 'Final amount', example: '₹11,61,695' },
             { symbol: 'P', description: 'Monthly investment amount', example: '₹5,000' },

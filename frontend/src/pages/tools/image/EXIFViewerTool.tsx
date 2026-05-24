@@ -220,10 +220,7 @@ const EXIFViewerTool = () => {
               </button>
             </div>
 
-            {/* Preview */}
-            <div className="flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <img src={image} alt="Preview" className="max-h-64 rounded-lg object-contain" />
-            </div>
+            {/* Image preview removed */}
 
             {noExif && (
               <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm">

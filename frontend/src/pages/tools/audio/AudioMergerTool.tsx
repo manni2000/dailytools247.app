@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Music, Upload, Trash2, ArrowUp, ArrowDown, Plus, Loader2, Download, Sparkles, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -427,6 +427,8 @@ const AudioMergerTool = () => {
                     1024 /
                     1024
                   ).toFixed(2)} MB`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Merge Another Audio"
                 />
               </div>
             )}

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Video, X, Loader2, Sparkles, Monitor, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
@@ -375,7 +375,9 @@ const VideoResolutionTool = () => {
                       title="Video Resolution Changed Successfully"
                       description={`Video converted to ${width}×${height}px resolution`}
                       fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Change Another Video Resolution"
+                />
                   </div>
                 </div>
               </div>

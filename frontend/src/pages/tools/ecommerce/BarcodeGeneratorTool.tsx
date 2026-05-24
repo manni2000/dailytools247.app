@@ -246,6 +246,9 @@ const BarcodeGeneratorTool = () => {
               <input
                 type="checkbox"
                 id="display-value"
+                name="display-value"
+                aria-label="Display text below barcode"
+                title="Display text below barcode"
                 checked={displayValue}
                 onChange={(e) => setDisplayValue(e.target.checked)}
                 className="h-4 w-4"

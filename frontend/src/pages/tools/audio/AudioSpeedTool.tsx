@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Gauge, Upload, Play, Pause, RotateCcw, Volume2, Sparkles, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -396,6 +396,8 @@ const AudioSpeedTool = () => {
                   title="Speed-Adjusted Audio Ready"
                   description={`Audio processed at ${speed}x speed`}
                   fileSize={audioFile ? `${(audioFile.size / 1024).toFixed(1)} KB` : 'Unknown size'}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Change Speed for Another Audio"
                 />
               </div>
             )}

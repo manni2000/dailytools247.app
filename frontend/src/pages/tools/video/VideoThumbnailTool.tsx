@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Camera, X, Loader2, Video, Sparkles, ImageIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
@@ -247,7 +247,9 @@ const VideoThumbnailTool = () => {
                       title="Thumbnail Generated Successfully"
                       description={`Video thumbnail captured at ${thumbnailTime}s from ${fileName}`}
                       fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Generate Another Thumbnail"
+                />
                   </div>
                 </div>
               </div>

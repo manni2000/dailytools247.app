@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
-import { PreviewDownload } from "@/components/ui/preview-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { PDFUploadZone } from "@/components/ui/pdf-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
+import JSZip from "jszip";
 
 const categoryColor = "0 70% 50%";
 
@@ -174,6 +175,29 @@ const PDFToImageTool = () => {
     }
   };
 
+  const downloadAllAsZip = async () => {
+    if (resultImages.length === 0) return;
+    try {
+      const zip = new JSZip();
+      resultImages.forEach((img, idx) => {
+        const base64Data = img.image.split(",")[1];
+        zip.file(img.name || `page-${idx + 1}.png`, base64Data, { base64: true });
+      });
+      const content = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = `${file?.name.replace('.pdf', '') || 'converted-images'}.zip`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    } catch (err) {
+      toast({
+        title: "ZIP creation failed",
+        description: "Failed to bundle images into a ZIP archive",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <>
       {CategorySEO.PDF(
@@ -283,25 +307,20 @@ const PDFToImageTool = () => {
                   <span>Converting pages...</span>
                   <span>{progress}%</span>
                 </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary transition-all duration-300"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
+                <progress value={progress} max={100} className="w-full h-2 rounded-full overflow-hidden bg-muted" />
               </div>
             )}
 
             {resultImages.length > 0 && conversionStats && (
               <div className="space-y-4">
                 {/* Download Section */}
-                <div ref={downloadSectionRef} className="flex justify-center">
-                  <PreviewDownload
-                    fileData={resultImages[0].image}
+                <div ref={downloadSectionRef} className="w-full">
+                  <DownloadCard
+                    previewUrl={resultImages.map(img => img.image)}
                     fileType="image"
-                    fileName={resultImages[0].name}
-                    fileSize={resultImages[0].size || file.size}
-                    title="PDF Converted to Images"
+                    fileName={resultImages.length === 1 ? resultImages[0].name : `${file?.name.replace('.pdf', '') || 'converted-images'}.zip`}
+                    fileSize={resultImages.reduce((sum, img) => sum + (img.size || 0), 0) || file.size}
+                    title="PDF Converted Successfully!"
                     description={`Successfully converted ${resultImages.length} page${resultImages.length !== 1 ? 's' : ''} to ${conversionStats.format.toUpperCase()} images`}
                     onDownload={() => {
                       const link = document.createElement('a');
@@ -309,6 +328,8 @@ const PDFToImageTool = () => {
                       link.download = resultImages[0].name;
                       link.click();
                     }}
+                    onDownloadZip={resultImages.length > 1 ? downloadAllAsZip : undefined}
+                    onConvertAnother={reset}
                     metadata={{
                       'Pages Converted': `${resultImages.length}`,
                       'Format': conversionStats.format.toUpperCase(),
@@ -317,9 +338,8 @@ const PDFToImageTool = () => {
                         ? `${resultImages[0].width}x${resultImages[0].height}px`
                         : 'High',
                     }}
-                    showPreviewToggle={true}
-                    previewHeight="max-h-80"
-                  />
+                  onConvertAnotherLabel="Convert Another PDF"
+                />
                 </div>
               </div>
             )}

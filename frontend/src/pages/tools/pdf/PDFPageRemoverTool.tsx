@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Trash2, FileText, X, Sparkles, MinusCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { API_URLS } from "@/lib/api-complete";
@@ -215,6 +215,8 @@ const PDFPageRemoverTool = () => {
                   title="Pages Removed Successfully"
                   description={`${pagesToRemove.length} page(s) have been removed from your PDF`}
                   fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Remove Another PDF Page"
                 />
               </div>
             )}

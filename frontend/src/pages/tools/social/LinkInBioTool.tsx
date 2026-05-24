@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Trash2, ExternalLink, Download, Eye, GripVertical, Sparkles } from "lucide-react";
+import { Plus, Trash2, ExternalLink, Download, GripVertical, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
@@ -23,7 +23,6 @@ const LinkInBioTool = () => {
     { id: "1", title: "", url: "" },
   ]);
   const [theme, setTheme] = useState("default");
-  const [showPreview, setShowPreview] = useState(false);
 
   const themes = [
     { id: "default", name: "Default", bg: "bg-gradient-to-br from-purple-600 to-blue-500", button: "bg-white text-gray-900" },
@@ -148,21 +147,16 @@ const LinkInBioTool = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <ExternalLink className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <ExternalLink className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Link in Bio Generator</h2>
@@ -180,7 +174,7 @@ const LinkInBioTool = () => {
           </div>
         </motion.div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8">
           {/* Editor */}
           <div className="space-y-6">
             {/* Profile Info */}
@@ -241,19 +235,15 @@ const LinkInBioTool = () => {
                   <div key={link.id} className="flex items-start gap-2 rounded-lg border border-border bg-card p-3">
                     <GripVertical className="mt-2 h-5 w-5 flex-shrink-0 text-muted-foreground" />
                     <div className="flex-1 space-y-2">
-                      <input
-                        type="text"
-                        id={`linkinbio-title-${link.id}`}
-                        name={`linkinbio-title-${link.id}`}
-                        value={link.title}
-                        onChange={(e) => updateLink(link.id, "title", e.target.value)}
-                        placeholder="Link Title"
-                        className="input-tool"
-                      />
+                              <input
+                                type="text"
+                                value={link.title}
+                                onChange={(e) => updateLink(link.id, "title", e.target.value)}
+                                placeholder="Link Title"
+                                className="input-tool"
+                              />
                       <input
                         type="url"
-                        id={`linkinbio-url-${link.id}`}
-                        name={`linkinbio-url-${link.id}`}
                         value={link.url}
                         onChange={(e) => updateLink(link.id, "url", e.target.value)}
                         placeholder="https://example.com"
@@ -285,62 +275,13 @@ const LinkInBioTool = () => {
 
             {/* Actions */}
             <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setShowPreview(!showPreview)}
-                className="btn-secondary flex-1 lg:hidden"
-              >
-                <Eye className="h-5 w-5" />
-                {showPreview ? "Hide Preview" : "Show Preview"}
-              </button>
               <button type="button" onClick={downloadHTML} className="btn-primary flex-1">
                 <Download className="h-5 w-5" />
                 Download HTML
               </button>
             </div>
           </div>
-
-          {/* Preview */}
-          <div className={`${showPreview ? "block" : "hidden"} lg:block`}>
-            <div className="sticky top-24">
-              <h3 className="mb-3 text-lg font-semibold">Preview</h3>
-              <div
-                className={`overflow-hidden rounded-2xl ${currentTheme.bg} p-6`}
-                style={{ minHeight: "500px" }}
-              >
-                <div className="mx-auto max-w-[280px] text-center">
-                  {/* Profile */}
-                  <div className={`mb-6 ${theme === "light" ? "text-gray-900" : "text-white"}`}>
-                    <h2 className="text-xl font-bold">{profileName || "Your Name"}</h2>
-                    {profileBio && <p className="mt-1 text-sm opacity-90">{profileBio}</p>}
-                  </div>
-
-                  {/* Links */}
-                  <div className="space-y-3">
-                    {links
-                      .filter((l) => l.title)
-                      .map((link) => (
-                        <a
-                          key={link.id}
-                          href={link.url || "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-medium transition-all hover:scale-[1.02] ${currentTheme.button}`}
-                        >
-                          {link.title}
-                          <ExternalLink className="h-4 w-4 opacity-50" />
-                        </a>
-                      ))}
-                    {links.filter((l) => l.title).length === 0 && (
-                      <div className={`rounded-xl px-4 py-3 ${currentTheme.button} opacity-50`}>
-                        Add your first link
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Preview removed per global setting */}
         </div>
 
         {/* Tool Definition Section */}

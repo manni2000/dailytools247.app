@@ -244,6 +244,8 @@ const CreateZipTool = () => {
                     ? formatSize(files.reduce((acc, file) => acc + file.size, 0))
                     : 'Unknown size'
                   }
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Create Another ZIP"
                 />
               </div>
             )}

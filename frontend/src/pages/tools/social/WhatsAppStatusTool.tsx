@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Smartphone, X, Type, Palette, AlignLeft, AlignCenter, AlignRight, Sparkles, Image as ImageIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
@@ -649,7 +649,9 @@ const WhatsAppStatusTool = () => {
               description="Perfectly sized at 1080×1920 pixels for WhatsApp Status"
               fileSize="High Quality JPEG"
               dimensions={{ width: 1080, height: 1920 }}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Generate Another Status"
+                />
           </div>
         )}
 

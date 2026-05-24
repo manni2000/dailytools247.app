@@ -301,6 +301,8 @@ const CompressionZipTool = () => {
                     ? formatSize(files.reduce((acc, file) => acc + file.size, 0))
                     : 'Unknown size'
                   }
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Compress Another ZIP"
                 />
               </div>
             )}

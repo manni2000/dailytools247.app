@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Merge, X, FileText, GripVertical, Sparkles, Layers, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { DownloadCard } from "@/components/ui/download-card";
@@ -211,12 +211,13 @@ const PDFMergeTool = () => {
         )}
 
         {mergedUrl && (
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-6 w-full">
             <DownloadCard
+              fileUrl={mergedUrl}
               fileName={files.length > 0 ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf` : "merged.pdf"}
               fileType="pdf"
               fileSize={files.reduce((acc, f) => acc + f.file.size, 0)}
-              title="PDFs Merged Successfully"
+              title="PDFs Merged Successfully!"
               description={`${files.length} PDF files have been merged into one document`}
               onDownload={() => {
                 const link = document.createElement('a');
@@ -226,13 +227,15 @@ const PDFMergeTool = () => {
                 link.click();
                 document.body.removeChild(link);
               }}
+              onConvertAnother={() => { setFiles([]); setMergedUrl(null); }}
               metadata={{
                 'Files': `${files.length} combined`,
                 'Format': 'PDF',
               }}
-              showPreview={false}
+              showPreview={true}
               variant="default"
-            />
+                  onConvertAnotherLabel="Merge More PDFs"
+                />
           </div>
         )}
 

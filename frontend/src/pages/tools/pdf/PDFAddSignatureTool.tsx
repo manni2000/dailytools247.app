@@ -512,7 +512,14 @@ const PDFAddSignatureTool = () => {
                       {signatureDataUrl ? "Click to change signature" : "Upload PNG / JPG signature"}
                     </p>
                   </div>
-                  <input ref={signatureInputRef} type="file" accept="image/*" className="hidden" onChange={handleSignatureUpload} />
+                  <input
+                    ref={signatureInputRef}
+                    type="file"
+                    accept="image/*"
+                    title="Upload signature image"
+                    className="hidden"
+                    onChange={handleSignatureUpload}
+                  />
 
                   {signatureDataUrl && (
                     <div className="mt-2 bg-white border border-border rounded-lg p-2 flex items-center justify-center" style={{ minHeight: 60 }}>

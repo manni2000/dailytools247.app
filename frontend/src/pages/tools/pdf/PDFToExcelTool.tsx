@@ -198,6 +198,8 @@ const PDFToExcelTool = () => {
                   title="PDF Converted to Excel"
                   description="Your PDF has been successfully converted to an Excel spreadsheet"
                   fileSize={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another PDF"
                 />
               </div>
             )}

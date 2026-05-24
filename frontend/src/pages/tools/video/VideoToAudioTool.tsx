@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Music, X, Loader2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
@@ -282,7 +282,9 @@ const VideoToAudioTool = () => {
                       title="Audio Extracted Successfully"
                       description={`Video converted to ${audioFormat.toUpperCase()} format`}
                       fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another Video"
+                />
                   </div>
                 </div>
               </div>

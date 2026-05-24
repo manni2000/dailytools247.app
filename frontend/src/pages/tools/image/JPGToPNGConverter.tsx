@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Sparkles, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
@@ -206,27 +206,10 @@ const JPGToPNGConverter = () => {
               </motion.div>
             </div>
 
-            {/* Preview */}
-            <motion.div className="relative overflow-hidden flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "200%" }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                  repeatDelay: 1,
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              />
-              {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="max-h-80 max-w-full rounded-lg object-contain relative z-10"
-                />
-              )}
-            </motion.div>
+            {/* Preview removed */}
+            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
+              Image preview removed.
+            </div>
 
             {/* Conversion Flow */}
             <div className="flex items-center justify-center gap-4 text-sm">
@@ -310,7 +293,9 @@ const JPGToPNGConverter = () => {
               title="JPG Converted to PNG Successfully"
               description="Your image has been converted to PNG format with lossless quality"
               fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another JPG"
+                />
           </div>
         )}
 

@@ -123,18 +123,16 @@ const CropPDFTool = () => {
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `hsl(${categoryColor} / 0.15)`, boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)` }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <Scissors className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <Scissors className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Crop PDF Pages</h2>
@@ -210,6 +208,7 @@ const CropPDFTool = () => {
               
               {!applyToAllPages && pageCount > 1 && (
                 <select
+                  title="Select page"
                   value={selectedPage}
                   onChange={(e) => setSelectedPage(parseInt(e.target.value))}
                   className="w-full rounded-lg border border-input bg-background px-4 py-2 text-sm"
@@ -306,7 +305,9 @@ const CropPDFTool = () => {
               title="PDF Cropped Successfully"
               description="Your PDF margins have been cropped"
               fileSize={file ? `${(file.file.size / 1024 / 1024).toFixed(2)} MB` : "Unknown"}
-            />
+              onConvertAnother={resetMargins}
+                  onConvertAnotherLabel="Crop Another PDF"
+                />
           </div>
         )}
 

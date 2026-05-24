@@ -7,7 +7,8 @@ import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-g
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateEMIData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload, downloadText, downloadJSON } from "@/components/EnhancedDownload";
+import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";

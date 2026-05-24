@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, FileText, Download, X, FileType, Loader2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { useToast } from "@/hooks/use-toast";
@@ -295,6 +295,8 @@ const PDFToWordTool = () => {
                   description="Your PDF has been successfully converted to an editable Word document"
                   fileSize={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
                   pageCount={pageCount}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another PDF"
                 />
               </div>
             )}

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Copy, Check, Image as ImageIcon, FileCode, Download, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
@@ -276,6 +276,8 @@ const ImageBase64Tool = () => {
                   title="Base64 Decoded Successfully"
                   description="Your Base64 string has been decoded to an image"
                   fileSize={`${(base64.length / 1024).toFixed(1)} KB (encoded)`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another Image"
                 />
               </div>
             )}

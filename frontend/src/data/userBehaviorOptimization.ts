@@ -318,7 +318,7 @@ export const abTestVariations: AITestVariation[] = [
       },
       {
         name: 'Smart Upload',
-        changes: ['Auto-detect file type', 'Show preview', 'Batch processing options'],
+        changes: ['Auto-detect file type', 'Batch processing options'],
         expectedImprovement: '+20% upload rate, +15% satisfaction',
         priority: 'high'
       }

@@ -7,7 +7,8 @@ import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-g
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload, downloadText, downloadJSON } from "@/components/EnhancedDownload";
+import { EnhancedDownload } from "@/components/ui/enhanced-download";
+import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import SimilarTools from "@/components/SimilarTools";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
@@ -388,7 +389,9 @@ const ROICalculatorTool = () => {
         )}
 
         {/* Formula Card */}
-        <FormulaCard          formula="ROI = [(Final Value - Initial Investment) / Initial Investment] × 100"
+        <FormulaCard
+          title="ROI Formula"
+          formula="ROI = [(Final Value - Initial Investment) / Initial Investment] × 100"
           variables={[
             { symbol: 'ROI', description: 'Return on Investment percentage', example: '50%' },
             { symbol: 'CAGR', description: 'Compound Annual Growth Rate', example: '14.47%' },

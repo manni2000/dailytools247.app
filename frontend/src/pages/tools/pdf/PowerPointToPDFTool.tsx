@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { FileText, Upload, X, Loader2, Sparkles, Presentation } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { API_URLS } from "@/lib/api-complete";
@@ -202,6 +202,8 @@ const PowerPointToPDFTool = () => {
                   title="PowerPoint Converted to PDF"
                   description="Your PowerPoint presentation has been successfully converted to PDF"
                   fileSize={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another PowerPoint"
                 />
               </div>
             )}

@@ -166,6 +166,7 @@ const SalaryCalculatorTool = () => {
                   <select
                     value={period}
                     onChange={(e) => setPeriod(e.target.value as typeof period)}
+                    title="Pay Period"
                     className="w-full rounded-lg bg-muted pl-10 pr-4 py-3 appearance-none"
                   >
                     {periods.map((p) => (

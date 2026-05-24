@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Scissors, FileText, X, Settings, Download, Sparkles, SplitSquareHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { DownloadCard } from "@/components/ui/download-card";
@@ -397,13 +397,14 @@ const PDFSplitTool = () => {
 
         {/* Download */}
         {resultUrl && (
-          <div>
+          <div className="w-full flex justify-center">
             <DownloadCard
+              fileUrl={resultUrl}
               fileName={file ? file.name.replace(/\.[^/.]+$/, "-split.pdf") : "split_document.pdf"}
               fileType="pdf"
               fileSize={file?.size}
-              title="PDF Split Complete"
-              description={`Your PDF has been split successfully. Extract ${
+              title="PDF Split Completed Successfully!"
+              description={`Your PDF has been split successfully. Extracted ${
                 splitMode === 'range'
                   ? `pages ${startPage} to ${endPage}`
                   : `specific pages`
@@ -416,12 +417,15 @@ const PDFSplitTool = () => {
                 link.click();
                 document.body.removeChild(link);
               }}
+              onConvertAnother={reset}
               metadata={{
                 'Original': file?.name || 'PDF file',
                 'Split Mode': splitMode === 'range' ? `Pages ${startPage}-${endPage}` : 'Specific pages',
               }}
+              showPreview={true}
               variant="default"
-            />
+                  onConvertAnotherLabel="Split Another PDF"
+                />
           </div>
         )}
 

@@ -14,7 +14,6 @@ const MarkdownHTMLTool = () => {
   const toolSeoData = getToolSeoMetadata('markdown-html-converter');
   const [markdown, setMarkdown] = useState("");
   const [copied, setCopied] = useState(false);
-  const [showPreview, setShowPreview] = useState(false);
 
   const html = markdown ? marked(markdown, { breaks: true }) : "";
 
@@ -87,29 +86,7 @@ const MarkdownHTMLTool = () => {
             </div>
           </motion.div>
 
-          <div className="flex gap-3">
-            <button
-              onClick={() => setShowPreview(false)}
-              className={`rounded-lg px-6 py-2 text-sm font-medium transition-all ${
-                !showPreview
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              <Code className="mr-2 inline-block h-4 w-4" />
-              HTML Code
-            </button>
-            <button
-              onClick={() => setShowPreview(true)}
-              className={`rounded-lg px-6 py-2 text-sm font-medium transition-all ${
-                showPreview
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              Preview
-            </button>
-          </div>
+          {/* Preview removed: always show HTML output */}
 
         {/* Input/Output */}
         <div className="grid gap-6 lg:grid-cols-2">
@@ -124,42 +101,31 @@ const MarkdownHTMLTool = () => {
           </div>
           <div>
             <div className="mb-2 flex items-center justify-between">
-              <label className="text-sm font-medium">
-                {showPreview ? "Preview" : "HTML Output"}
-              </label>
-              {!showPreview && (
-                <button
-                  onClick={handleCopy}
-                  disabled={!html}
-                  className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="h-4 w-4 text-primary" />
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="h-4 w-4" />
-                      Copy
-                    </>
-                  )}
-                </button>
-              )}
+              <label className="text-sm font-medium">HTML Output</label>
+              <button
+                onClick={handleCopy}
+                disabled={!html}
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50"
+              >
+                {copied ? (
+                  <>
+                    <Check className="h-4 w-4 text-primary" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="h-4 w-4" />
+                    Copy
+                  </>
+                )}
+              </button>
             </div>
-            {showPreview ? (
-              <div
-                className="prose prose-sm dark:prose-invert max-w-none rounded-lg border border-border bg-card p-4 min-h-[400px]"
-                dangerouslySetInnerHTML={{ __html: html as string }}
-              />
-            ) : (
-              <textarea
-                value={html as string}
-                readOnly
-                placeholder="HTML output will appear here..."
-                className="input-tool min-h-[400px] font-mono text-sm"
-              />
-            )}
+            <textarea
+              value={html as string}
+              readOnly
+              placeholder="HTML output will appear here..."
+              className="input-tool min-h-[400px] font-mono text-sm"
+            />
           </div>
         </div>
 

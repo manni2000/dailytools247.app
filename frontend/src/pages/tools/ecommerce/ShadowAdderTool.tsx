@@ -29,6 +29,7 @@ const ShadowAdderTool = () => {
   const [shadowColor, setShadowColor] = useState("#000000");
   const [shadowOpacity, setShadowOpacity] = useState(0.3);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     return () => {
@@ -176,21 +177,16 @@ const ShadowAdderTool = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+              className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <ImageIcon className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <ImageIcon className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Professional Shadow Adder</h2>
@@ -216,21 +212,23 @@ const ShadowAdderTool = () => {
           >
             <Card className="shadow-lg hover:shadow-xl transition-shadow duration-500">
               <CardContent className="pt-6">
-              <div
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-                className="border-2 border-dashed rounded-lg p-12 text-center hover:border-primary transition-colors cursor-pointer"
-                onClick={() => document.getElementById('image-upload')?.click()}
-              >
+                <div
+                  onDrop={handleDrop}
+                  onDragOver={handleDragOver}
+                  className="border-2 border-dashed rounded-lg p-12 text-center hover:border-primary transition-colors cursor-pointer"
+                  onClick={() => fileInputRef.current?.click()}
+                >
                 <Upload className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
                 <p className="text-lg font-medium mb-2">Drop your image here</p>
                 <p className="text-sm text-muted-foreground mb-4">or click to browse</p>
                 <input
-                  id="image-upload"
+                  ref={fileInputRef}
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
                   className="hidden"
+                  title="Upload image"
+                  aria-label="Upload image"
                 />
                 <Button type="button">Select Image</Button>
               </div>
@@ -312,18 +310,21 @@ const ShadowAdderTool = () => {
                       value={shadowColor}
                       onChange={(e) => setShadowColor(e.target.value)}
                       className="w-20 h-10"
+                      title="Shadow color picker"
+                      aria-label="Shadow color picker"
                     />
                     <Input
                       type="text"
                       value={shadowColor}
                       onChange={(e) => setShadowColor(e.target.value)}
                       className="flex-1"
+                      title="Shadow color hex"
                     />
                   </div>
                 </div>
 
                 <div className="flex gap-2">
-                  <Button onClick={() => document.getElementById('image-upload')?.click()} variant="outline">
+                  <Button onClick={() => fileInputRef.current?.click()} variant="outline">
                     <Upload className="w-4 h-4 mr-2" />
                     Change Image
                   </Button>
@@ -386,13 +387,7 @@ const ShadowAdderTool = () => {
             </Card>
             </motion.div>
 
-            <input
-              id="image-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
+            {/* file input moved earlier; no duplicate id needed */}
           </motion.div>
         )}
 

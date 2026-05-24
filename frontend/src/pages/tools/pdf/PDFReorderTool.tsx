@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, ArrowUpDown, X, FileText, GripVertical, Sparkles, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
@@ -83,6 +83,13 @@ const PDFReorderTool = () => {
     }
   };
 
+  const reset = () => {
+    setFile(null);
+    setPageCount(0);
+    setPageOrder([]);
+    setReorderedUrl(null);
+  };
+
   return (
     <>
       {CategorySEO.PDF(
@@ -155,12 +162,7 @@ const PDFReorderTool = () => {
             <div className="mb-4 flex items-center justify-between">
               <h3 className="font-semibold">Pages ({pageCount})</h3>
               <button
-                onClick={() => {
-                  setFile(null);
-                  setPageCount(0);
-                  setPageOrder([]);
-                  setReorderedUrl(null);
-                }}
+                onClick={reset}
                 className="text-sm text-destructive hover:underline"
               >
                 Remove File
@@ -219,7 +221,9 @@ const PDFReorderTool = () => {
               data={reorderedUrl}
               fileName={file ? `${file.name.replace(/\.[^/.]+$/, "")}-reordered.pdf` : "reordered.pdf"}
               fileType="pdf"              fileSize={file ? `${(file.file.size / 1024 / 1024).toFixed(2)} MB` : "Unknown"}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Reorder Another PDF"
+                />
           </div>
         )}
 

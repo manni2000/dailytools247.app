@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Scissors, Upload, Play, Pause, RotateCcw, Sparkles, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -427,6 +427,8 @@ const AudioTrimmerTool = () => {
                   title="Trimmed Audio Ready"
                   description={`Trimmed from ${formatTime(startTime)} to ${formatTime(endTime)}`}
                   fileSize={audioFile ? `${(audioFile.size / 1024).toFixed(1)} KB` : 'Unknown size'}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Trim Another Audio"
                 />
               </div>
             )}

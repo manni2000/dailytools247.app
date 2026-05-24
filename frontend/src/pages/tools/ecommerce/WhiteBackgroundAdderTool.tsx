@@ -191,6 +191,8 @@ const WhiteBackgroundAdderTool = () => {
                   accept="image/*"
                   onChange={handleFileSelect}
                   className="hidden"
+                  title="Upload image"
+                  aria-label="Upload image"
                 />
                 <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
                 <p className="text-sm text-muted-foreground">Click to upload or drag and drop</p>
@@ -198,17 +200,17 @@ const WhiteBackgroundAdderTool = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="relative">
-                  <img src={previewUrl} alt="Preview" className="max-w-full h-auto rounded-lg mx-auto max-h-64 object-contain" />
+                <div className="flex items-center justify-between rounded-lg border border-border p-4">
+                  <div className="text-sm font-medium">{selectedFile?.name}</div>
                   <button
                     onClick={() => {
                       setSelectedFile(null);
                       setPreviewUrl('');
                       setProcessedUrl('');
                     }}
-                    className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                    className="p-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
                   >
-                    <X className="h-4 w-4" />
+                    Remove
                   </button>
                 </div>
               </div>
@@ -255,7 +257,7 @@ const WhiteBackgroundAdderTool = () => {
                 Result
               </h3>
               <div className="space-y-4">
-                <img src={processedUrl} alt="With White Background" className="max-w-full h-auto rounded-lg mx-auto max-h-64 object-contain bg-white" />
+                <div className="text-sm text-muted-foreground">Your processed image is ready.</div>
                 <button
                   onClick={downloadImage}
                   className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"

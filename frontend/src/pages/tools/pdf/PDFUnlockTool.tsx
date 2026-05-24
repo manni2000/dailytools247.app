@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Unlock, FileText, X, Key, Sparkles, AlertCircle, Download, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
@@ -228,32 +228,17 @@ const PDFUnlockTool = () => {
         )}
 
         {unlockedPdf && (
-          <div className="space-y-6">
-            <div className="rounded-xl border border-green-500/30 bg-green-500/10 p-6 text-center">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Unlock className="h-8 w-8 text-green-500" />
-                <h3 className="text-xl font-semibold text-green-600 dark:text-green-400">
-                  PDF Unlocked Successfully!
-                </h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Your PDF has been unlocked and is ready for download.
-              </p>
-              <button
-                onClick={handleDownload}
-                className="btn-primary flex items-center justify-center gap-2 mx-auto"
-              >
-                <Download className="h-5 w-5" />
-                Download Unlocked PDF
-              </button>
-            </div>
-
-            <button
-              onClick={reset}
-              className="btn-secondary w-full"
-            >
-              Unlock Another PDF
-            </button>
+          <div className="flex justify-center mt-6 w-full">
+            <EnhancedDownload
+              data={unlockedPdf}
+              fileName={fileName.replace(/\.[^/.]+$/, "_unlocked.pdf")}
+              fileType="pdf"
+              title="PDF Unlocked Successfully!"
+              description="Your PDF has been unlocked and is ready for download."
+              fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : undefined}
+              onConvertAnother={reset}
+              onConvertAnotherLabel="Unlock Another PDF"
+            />
           </div>
         )}
 

@@ -247,6 +247,8 @@ const BackgroundRemoverTool = () => {
                   title="Background Removed Successfully"
                   description="The background has been automatically removed from your image"
                   fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Remove Another Background"
                 />
               </div>
             )}

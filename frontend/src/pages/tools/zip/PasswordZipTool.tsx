@@ -348,6 +348,8 @@ const PasswordZipTool = () => {
                     if (totalSize < 1024 * 1024) return `${(totalSize / 1024).toFixed(1)} KB`;
                     return `${(totalSize / (1024 * 1024)).toFixed(1)} MB`;
                   })()}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Protect Another ZIP"
                 />
                 
                 <motion.button

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Gauge, X, Loader2, Video, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
@@ -257,7 +257,9 @@ const VideoSpeedTool = () => {
                       title="Video Speed Changed Successfully"
                       description={`Video speed adjusted to ${speedFactor}x original speed`}
                       fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Change Another Video Speed"
+                />
                   </div>
                 </div>
               </div>

@@ -83,21 +83,16 @@ const SimpleInterestTool = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+              className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <TrendingUp className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <TrendingUp className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Simple Interest Calculator</h2>
@@ -164,6 +159,7 @@ const SimpleInterestTool = () => {
                     className="w-full rounded-lg bg-muted pl-10 pr-4 py-3"
                   />
                   <select
+                    title="Select time unit"
                     value={timeUnit}
                     onChange={(e) => setTimeUnit(e.target.value as "years" | "months")}
                     className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-transparent text-sm text-muted-foreground"

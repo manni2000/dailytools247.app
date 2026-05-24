@@ -273,9 +273,9 @@ const ImageCropTool = () => {
                 </div>
               </div>
 
-              {/* Preview */}
+              {/* Preview removed */}
               <div className="flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-                <img src={image} alt="Preview" className="max-h-64 rounded-lg object-contain" />
+                <div className="text-sm text-muted-foreground">Image preview removed.</div>
               </div>
 
               {/* Actions */}
@@ -296,7 +296,9 @@ const ImageCropTool = () => {
                     description={`Cropped to ${cropArea.width}×${cropArea.height}px from original ${originalSize.width}×${originalSize.height}px`}
                     fileSize="Unknown size"
                     dimensions={{ width: cropArea.width, height: cropArea.height }}
-                  />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Crop Another Image"
+                />
                 </div>
               )}
             </div>

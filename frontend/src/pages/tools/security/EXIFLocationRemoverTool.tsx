@@ -168,8 +168,8 @@ export default function EXIFLocationRemoverTool() {
                 </label>
               </div>
               {previewUrl && (
-                <div className="mt-4">
-                  <img src={previewUrl} alt="Preview" className="rounded-lg shadow-md max-h-60 mx-auto" />
+                <div className="mt-4 rounded-lg shadow-sm max-h-60 mx-auto p-4 text-sm text-muted-foreground text-center border border-border bg-muted/20">
+                  Image preview removed.
                 </div>
               )}
             </div>
@@ -236,7 +236,7 @@ export default function EXIFLocationRemoverTool() {
               <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
                 <h3 className="text-lg font-semibold mb-4">Processed Image</h3>
                 <div className="space-y-4">
-                  <img src={result.image_data} alt="Processed" className="rounded-lg shadow-md max-h-60 mx-auto" />
+                  <div className="rounded-lg shadow-sm max-h-60 mx-auto p-4 text-sm text-muted-foreground text-center border border-border bg-muted/20">Processed image preview removed.</div>
                   <motion.a
                     href={result.image_data}
                     download="processed-image.jpg"

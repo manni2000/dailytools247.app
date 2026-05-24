@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Download, Image as ImageIcon, X, Package, Sparkles, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
@@ -271,7 +271,9 @@ const FaviconGeneratorTool = () => {
                       title="Favicons Generated Successfully"
                       description={`Generated ${favicons.length} favicon sizes with manifest.json and HTML snippet`}
                       fileSize={`${favicons.length} files`}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Generate Another Favicon"
+                />
                   </div>
                 )}
 

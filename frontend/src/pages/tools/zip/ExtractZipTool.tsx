@@ -250,7 +250,9 @@ const ExtractZipTool = () => {
                         name: file.name,
                         page: index + 1
                       }))}
-                    />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Extract Another ZIP"
+                />
                   </div>
                 )}
               </>

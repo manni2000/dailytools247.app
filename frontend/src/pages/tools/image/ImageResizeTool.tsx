@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, Image as ImageIcon, X, Maximize2, Settings, Download, Sparkles, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
@@ -361,11 +361,11 @@ const ImageResizeTool = () => {
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
               />
               {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="max-h-64 max-w-full rounded-lg object-contain relative z-10"
-                />
+                  <img
+                    src={preview}
+                    alt=""
+                    className="hidden"
+                  />
               )}
             </motion.div>
 
@@ -482,6 +482,8 @@ const ImageResizeTool = () => {
                   description={`Original: ${originalSize?.width}×${originalSize?.height}px → Resized: ${width}×${height}px`}
                   fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
                   dimensions={{ width, height }}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Resize Another Image"
                 />
               </motion.div>
             )}

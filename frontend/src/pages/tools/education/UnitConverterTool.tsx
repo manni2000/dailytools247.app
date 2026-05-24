@@ -165,21 +165,16 @@ const UnitConverterTool = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl bg-muted/20"
           />
           <div className="relative flex items-start gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-muted/10 shadow-lg"
             >
-              <RefreshCw className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              <RefreshCw className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
               <h2 className="text-2xl font-bold">Unit Converter</h2>
@@ -214,15 +209,9 @@ const UnitConverterTool = () => {
                 onClick={() => { setCategory(cat.id); setFromUnit(0); setToUnit(1); }}
                 className={`rounded-lg px-4 py-3 text-sm font-medium transition-all ${
                   category === cat.id
-                    ? "text-white shadow-lg"
+                    ? "text-white shadow-lg bg-primary"
                     : "bg-muted hover:bg-muted/80"
                 }`}
-                style={{
-                  background:
-                    category === cat.id
-                      ? `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`
-                      : undefined,
-                }}
               >
                 {cat.label}
               </motion.button>
@@ -266,11 +255,12 @@ const UnitConverterTool = () => {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="relative">
                   <Target className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <select
-                    value={fromUnit}
-                    onChange={(e) => setFromUnit(Number(e.target.value))}
-                    className="w-full rounded-lg bg-muted pl-10 pr-4 py-3 appearance-none"
-                  >
+                      <select
+                        title="From unit"
+                        value={fromUnit}
+                        onChange={(e) => setFromUnit(Number(e.target.value))}
+                        className="w-full rounded-lg bg-muted pl-10 pr-4 py-3 appearance-none"
+                      >
                     {currentUnits.map((unit, i) => (
                       <option key={i} value={i}>{unit.name}</option>
                     ))}
@@ -295,12 +285,9 @@ const UnitConverterTool = () => {
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={swap}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-muted to-muted/80 text-muted-foreground transition-all hover:shadow-lg"
-                style={{
-                  background: `linear-gradient(135deg, hsl(${categoryColor} / 0.1) 0%, hsl(${categoryColor} / 0.2) 100%)`,
-                }}
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-muted/20 text-muted-foreground transition-all hover:shadow-lg"
               >
-                <ArrowUpDown className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
+                <ArrowUpDown className="h-5 w-5 text-primary" />
               </motion.button>
             </div>
 
@@ -311,6 +298,7 @@ const UnitConverterTool = () => {
                 <div className="relative">
                   <Target className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <select
+                    title="To unit"
                     value={toUnit}
                     onChange={(e) => setToUnit(Number(e.target.value))}
                     className="w-full rounded-lg bg-muted pl-10 pr-4 py-3 appearance-none"

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Zap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
@@ -212,27 +212,10 @@ const PNGToWebPConverter = () => {
               </motion.div>
             </div>
 
-            {/* Preview */}
-            <motion.div className="relative overflow-hidden flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "200%" }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                  repeatDelay: 1,
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              />
-              {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="max-h-80 max-w-full rounded-lg object-contain relative z-10"
-                />
-              )}
-            </motion.div>
+            {/* Preview removed */}
+            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
+              Image preview removed.
+            </div>
 
             {/* Conversion Flow */}
             <div className="flex items-center justify-center gap-4 text-sm">
@@ -332,9 +315,6 @@ const PNGToWebPConverter = () => {
                   onClick={convert} 
                   disabled={isConverting}
                   className="btn-primary w-full"
-                  style={{
-                    background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
-                  }}
                   title="Convert PNG image to WebP format"
                 >
                   <RefreshCw className="h-5 w-5" />
@@ -355,7 +335,9 @@ const PNGToWebPConverter = () => {
               title="PNG Converted to WebP Successfully"
               description={`Your PNG image has been converted to WebP format at ${quality}% quality`}
               fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-            />
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another PNG"
+                />
           </div>
         )}
 

@@ -732,7 +732,8 @@ const ImageToPDFTool = () => {
                   fileSize={`${(pdfSize / 1024 / 1024).toFixed(2)} MB`}
 
                   pageCount={images.length}
-
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Convert Another Image"
                 />
 
               </div>

@@ -237,14 +237,18 @@ const BulkImageResizerTool = () => {
             >
               <input
                 ref={fileInputRef}
+                id="upload-images"
                 type="file"
                 accept="image/*"
                 multiple
+                aria-label="Upload images"
                 onChange={handleFileSelect}
                 className="hidden"
               />
-              <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-sm text-muted-foreground">Click to upload or drag and drop multiple images</p>
+              <label htmlFor="upload-images" className="cursor-pointer block">
+                <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">Click to upload or drag and drop multiple images</p>
+              </label>
               <p className="text-xs text-muted-foreground mt-2">JPG, PNG, WebP up to 10MB each</p>
             </div>
           </motion.div>
@@ -260,8 +264,9 @@ const BulkImageResizerTool = () => {
               <h3 className="text-lg font-semibold mb-4">Resize Settings</h3>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Width: {width}px</label>
+                  <label htmlFor="resize-width" className="text-sm font-medium mb-2 block">Width: {width}px</label>
                   <input
+                    id="resize-width"
                     type="number"
                     value={width}
                     onChange={(e) => setWidth(Number(e.target.value))}
@@ -271,8 +276,9 @@ const BulkImageResizerTool = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Height: {height}px</label>
+                  <label htmlFor="resize-height" className="text-sm font-medium mb-2 block">Height: {height}px</label>
                   <input
+                    id="resize-height"
                     type="number"
                     value={height}
                     onChange={(e) => setHeight(Number(e.target.value))}
@@ -341,9 +347,11 @@ const BulkImageResizerTool = () => {
                   <div key={index} className="border border-border rounded-lg p-3 relative group">
                     <button
                       onClick={() => removeImage(index)}
+                      aria-label={`Remove image ${index + 1}`}
+                      title={`Remove image ${index + 1}`}
                       className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
                     >
-                      <X className="h-3 w-3" />
+                      <X className="h-3 w-3" aria-hidden="true" />
                     </button>
                     <img src={img.processed || img.preview} alt={`Image ${index + 1}`} className="w-full h-32 object-contain bg-muted/20 rounded mb-2" />
                     <p className="text-xs text-muted-foreground truncate">{img.file.name}</p>

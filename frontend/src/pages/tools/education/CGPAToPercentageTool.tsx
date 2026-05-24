@@ -170,6 +170,7 @@ const CGPAToPercentageTool = () => {
               <select
                 value={scale}
                 onChange={(e) => setScale(e.target.value)}
+                aria-label="CGPA Scale"
                 className="w-full rounded-lg bg-muted px-4 py-3"
               >
                 <option value="10">10.0 Scale</option>

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, ScanLine, Copy, Check, X, ExternalLink, QrCode, Sparkles, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";

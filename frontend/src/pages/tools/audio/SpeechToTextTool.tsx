@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Mic, Upload, Languages, FileText, Loader2, Sparkles, MicOff, Play, StopCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -467,6 +467,8 @@ const SpeechToTextTool = () => {
                   title="Transcription Exported as TXT"
                   description={`Plain text transcription in ${language} language`}
                   fileSize={`${transcription.length} characters`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Transcribe Another Audio"
                 />
               </div>
             )}
@@ -480,6 +482,8 @@ const SpeechToTextTool = () => {
                   title="Transcription Exported as SRT"
                   description={`Subtitle file with timestamps for video editing`}
                   fileSize={`${transcription.length} characters`}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Transcribe Another Audio"
                 />
               </div>
             )}

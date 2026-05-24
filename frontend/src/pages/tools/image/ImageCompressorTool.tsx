@@ -2,11 +2,11 @@ import { useState, useCallback, useRef } from "react";
 import { Upload, Image, X, Zap, Settings, Download, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
-import { PreviewDownload } from "@/components/ui/preview-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { useToast } from "@/hooks/use-toast";
 import { CategorySEO } from "@/components/ToolSEO";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -484,14 +484,11 @@ const ImageCompressorTool = () => {
                     animate={{ rotate: [0, 360] }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   >
-                    <Settings className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
+                    <Settings className="h-5 w-5 text-primary" />
                   </motion.div>
                   Quality Level
                 </label>
-                <span className="text-sm font-bold px-3 py-1 rounded-full" style={{ 
-                  backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                  color: `hsl(${categoryColor})`
-                }}>
+                <span className="text-sm font-bold px-3 py-1 rounded-full bg-muted/50 text-primary">
                   {quality}%
                 </span>
               </div>
@@ -557,6 +554,7 @@ const ImageCompressorTool = () => {
                         setTargetSize(value + e.target.value.toUpperCase());
                       }}
                       className="px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      title="Select size unit"
                     >
                       <option value="KB">KB</option>
                       <option value="MB">MB</option>
@@ -579,9 +577,6 @@ const ImageCompressorTool = () => {
               <button
                 onClick={compressImage} 
                 className="btn-primary flex-1"
-                style={{
-                  background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
-                }}
                 title="Compress image with selected quality"
               >
                 <Zap className="h-5 w-5 mr-2" />
@@ -593,14 +588,15 @@ const ImageCompressorTool = () => {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex justify-center mt-6"
+                className="flex justify-center mt-6 w-full"
               >
-                <PreviewDownload
-                  fileData={compressedUrl}
+                <DownloadCard
+                  fileUrl={compressedUrl}
+                  previewUrl={compressedUrl}
                   fileType="image"
                   fileName={image.name.replace(/\.[^/.]+$/, quality > 70 && image.type === "image/png" ? ".webp" : ".jpg")}
                   fileSize={compressedSize}
-                  title="Image Compressed Successfully"
+                  title="Image Compressed Successfully!"
                   description={`Original: ${(originalSize / 1024).toFixed(1)}KB → Compressed: ${(compressedSize / 1024).toFixed(1)}KB (${Math.round((1 - compressedSize / originalSize) * 100)}% reduction)`}
                   onDownload={() => {
                     const link = document.createElement('a');
@@ -608,15 +604,15 @@ const ImageCompressorTool = () => {
                     link.download = image.name.replace(/\.[^/.]+$/, quality > 70 && image.type === "image/png" ? ".webp" : ".jpg");
                     link.click();
                   }}
+                  onConvertAnother={() => { setImage(null); setPreview(null); setCompressedUrl(null); }}
                   metadata={{
                     'Original Size': `${(originalSize / 1024).toFixed(1)} KB`,
                     'Compressed Size': `${(compressedSize / 1024).toFixed(1)} KB`,
                     'Reduction': `${Math.round((1 - compressedSize / originalSize) * 100)}%`,
                     'Quality': `${quality}%`,
                   }}
-                  showPreviewToggle={true}
-                  previewHeight="max-h-80"
-                  downloadVariant="default"
+                  showPreview={true}
+                  onConvertAnotherLabel="Compress Another Image"
                 />
               </motion.div>
             )}

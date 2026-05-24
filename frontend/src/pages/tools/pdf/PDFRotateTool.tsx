@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Upload, RotateCw, FileText, X, Sparkles, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument, degrees } from "pdf-lib";
 import { API_URLS } from "@/lib/api-complete";
@@ -243,6 +243,8 @@ const PDFRotateTool = () => {
                   title="PDF Rotated Successfully"
                   description={`Your PDF has been rotated according to your specifications`}
                   fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
+                  onConvertAnother={reset}
+                  onConvertAnotherLabel="Rotate Another PDF"
                 />
               </div>
             )}

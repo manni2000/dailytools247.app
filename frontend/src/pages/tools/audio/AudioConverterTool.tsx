@@ -2,11 +2,11 @@ import { useState, useRef } from "react";
 import { Music2, Upload, X, Loader2, Sparkles, Settings, Info, ChevronDown, Zap, Shield, Volume2, Music } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
-import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
+
 import ToolLayout from "@/components/layout/ToolLayout";
 import { useToast } from "@/hooks/use-toast";
 import { API_URLS } from "@/lib/api-complete";
-import { PreviewDownload } from "@/components/ui/preview-download";
+import { DownloadCard } from "@/components/ui/download-card";
 import { AudioUploadZone } from "@/components/ui/audio-upload-zone";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -322,7 +322,7 @@ const AudioConverterTool = () => {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium mb-2">Quality</label>
-                        <select className="input-tool text-sm w-full">
+                        <select className="input-tool text-sm w-full" title="Quality">
                           <option>High (320 kbps)</option>
                           <option>Medium (192 kbps)</option>
                           <option>Low (128 kbps)</option>
@@ -330,7 +330,7 @@ const AudioConverterTool = () => {
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">Sample Rate</label>
-                        <select className="input-tool text-sm w-full">
+                        <select className="input-tool text-sm w-full" title="Sample rate">
                           <option>48 kHz</option>
                           <option>44.1 kHz</option>
                           <option>22 kHz</option>
@@ -389,12 +389,12 @@ const AudioConverterTool = () => {
             {/* Download Section */}
             {audioData && (
               <div ref={downloadSectionRef}>
-                <PreviewDownload
-                  fileData={audioData}
+                <DownloadCard
+                  fileUrl={audioData}
                   fileType="audio"
                   fileName={fileName.replace(/\.[^/.]+$/, `.${outputFormat}`)}
                   fileSize={file ? file.size : undefined}
-                  title={`Audio Converted to ${outputFormat.toUpperCase()}`}
+                  title={`Audio Converted Successfully!`}
                   description={`Your audio file has been successfully converted to ${outputFormat.toUpperCase()} format`}
                   onDownload={() => {
                     const link = document.createElement('a');
@@ -402,13 +402,15 @@ const AudioConverterTool = () => {
                     link.download = fileName.replace(/\.[^/.]+$/, `.${outputFormat}`);
                     link.click();
                   }}
+                  onConvertAnother={reset}
                   metadata={{
                     'Format': outputFormat.toUpperCase(),
                     'Original File': fileName,
                     'Quality': 'High (320 kbps)',
                     'Status': 'Ready to download',
                   }}
-                  showPreviewToggle={true}
+                  showPreview={true}
+                  onConvertAnotherLabel="Convert Another Audio"
                 />
               </div>
             )}
