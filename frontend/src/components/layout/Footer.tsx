@@ -549,7 +549,7 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} dailytools247. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center sm:justify-start sm:text-left">
             <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground">
               About
             </Link>
