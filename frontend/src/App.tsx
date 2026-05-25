@@ -193,6 +193,18 @@ import LinkInBioTool from "./pages/tools/social/LinkInBioTool";
 import MemeGeneratorTool from "./pages/tools/social/MemeGeneratorTool";
 import WhatsAppStatusTool from "./pages/tools/social/WhatsAppStatusTool";
 
+// Email Marketing Tools
+import EmailSubjectLineGeneratorTool from "./pages/tools/email/EmailSubjectLineGeneratorTool";
+import EmailSignatureGeneratorTool from "./pages/tools/email/EmailSignatureGeneratorTool";
+import HTMLEmailPreviewerTool from "./pages/tools/email/HTMLEmailPreviewerTool";
+import SpamScoreCheckerTool from "./pages/tools/email/SpamScoreCheckerTool";
+import EmailTemplateBuilderTool from "./pages/tools/email/EmailTemplateBuilderTool";
+import EmailHeaderAnalyzerTool from "./pages/tools/email/EmailHeaderAnalyzerTool";
+import SPFRecordGeneratorTool from "./pages/tools/email/SPFRecordGeneratorTool";
+import DKIMGeneratorTool from "./pages/tools/email/DKIMGeneratorTool";
+import DMARCGeneratorTool from "./pages/tools/email/DMARCGeneratorTool";
+import MailtoLinkGeneratorTool from "./pages/tools/email/MailtoLinkGeneratorTool";
+
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
@@ -403,6 +415,18 @@ const AnimatedRoutes = () => {
           <Route path="/link-in-bio" element={<LinkInBioTool />} />
           <Route path="/meme-generator" element={<MemeGeneratorTool />} />
           <Route path="/whatsapp-status-generator" element={<WhatsAppStatusTool />} />
+
+          {/* Email Marketing Tools */}
+          <Route path="/email-subject-line-generator" element={<EmailSubjectLineGeneratorTool />} />
+          <Route path="/email-signature-generator" element={<EmailSignatureGeneratorTool />} />
+          <Route path="/html-email-previewer" element={<HTMLEmailPreviewerTool />} />
+          <Route path="/spam-score-checker" element={<SpamScoreCheckerTool />} />
+          <Route path="/email-template-builder" element={<EmailTemplateBuilderTool />} />
+          <Route path="/email-header-analyzer" element={<EmailHeaderAnalyzerTool />} />
+          <Route path="/spf-record-generator" element={<SPFRecordGeneratorTool />} />
+          <Route path="/dkim-generator" element={<DKIMGeneratorTool />} />
+          <Route path="/dmarc-generator" element={<DMARCGeneratorTool />} />
+          <Route path="/mailto-link-generator" element={<MailtoLinkGeneratorTool />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

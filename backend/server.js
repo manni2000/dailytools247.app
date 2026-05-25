@@ -308,6 +308,7 @@ app.use('/api/finance', require('./routes/finance'));
 app.use('/api/education', require('./routes/education'));
 app.use('/api/date-time', require('./routes/datetime'));
 app.use('/api/blog', require('./routes/blog'));
+app.use('/api/email', require('./routes/email'));
 
 app.use((_req, res, next) => {
   if (!_req.url.startsWith('/api')) {

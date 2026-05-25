@@ -11281,7 +11281,257 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       },
     },
   },
-
+  'email-subject-line-generator': {
+    slug: 'email-subject-line-generator',
+    title: 'Email Subject Line Generator - Catchy Subject Lines Online Free',
+    description: 'Generate catchy, high-converting subject lines for your email campaigns instantly. Analyze character lengths, test spam score, and copy with one click.',
+    keywords: [
+      'email subject line generator',
+      'subject line generator',
+      'email subject lines',
+      'subject line creator',
+      'email open rate optimizer',
+      'subject line tester',
+      'catchy email subjects',
+      'email headline generator',
+      'open rates'
+    ],
+    longTailKeywords: [
+      'generate catchy email subject lines free',
+      'best email subject line generator for sales',
+      'how to write open worthy subject lines',
+      'free email subject line tester online',
+      'cold outreach subject line generator',
+      'email subject line builder for marketing',
+      'increase newsletter open rate subject lines'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'email-signature-generator': {
+    slug: 'email-signature-generator',
+    title: 'Email Signature Generator - Create Professional HTML Signatures Free',
+    description: 'Build professional, responsive HTML signatures for Gmail, Outlook, and Apple Mail. Customize colors, layout styles, avatar logos, and social profile links.',
+    keywords: [
+      'email signature generator',
+      'create email signature',
+      'free html signature creator',
+      'gmail signature builder',
+      'outlook email signature maker',
+      'professional email signature',
+      'html signature',
+      'gmail signature'
+    ],
+    longTailKeywords: [
+      'create html signature for gmail and outlook',
+      'best email signature generator with photo',
+      'free professional email signature template',
+      'how to install html signature in apple mail',
+      'responsive email signature builder online',
+      'interactive email signature layout generator',
+      'email signature maker for business cards'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'html-email-previewer': {
+    slug: 'html-email-previewer',
+    title: 'HTML Email Previewer - Responsive Email Templates Tester Free',
+    description: 'Preview marketing emails on desktop and mobile viewports. Validate code size limits, check compatibility issues, and test unsubscribe links.',
+    keywords: [
+      'html email previewer',
+      'email template tester',
+      'html email renderer',
+      'preview html emails online',
+      'email layout tester',
+      'responsive email preview',
+      'email renderer',
+      'preview email templates'
+    ],
+    longTailKeywords: [
+      'preview html email on mobile and desktop',
+      'free online html email rendering test',
+      'check html email clipping in gmail',
+      'inspect html email compatibility issues',
+      'best responsive email template previewer',
+      'html newsletter preview client tool',
+      'test email layout sizing online'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'spam-score-checker': {
+    slug: 'spam-score-checker',
+    title: 'Spam Score Checker - Audit Email Deliverability Risks Online',
+    description: 'Scan subject lines and email body text to identify spam trigger phrases, excessive caps, over-punctuations, and calculate deliverability score.',
+    keywords: [
+      'spam score checker',
+      'email spam checker',
+      'spam trigger word finder',
+      'email deliverability tester',
+      'check email spam rating',
+      'inbox placement tester',
+      'email deliverability',
+      'spam word check'
+    ],
+    longTailKeywords: [
+      'check email for spam words before sending',
+      'how to reduce email spam score online',
+      'free email spam score calculator',
+      'find spam trigger words in sales email',
+      'test email deliverability placement free',
+      'cold email spam test checker online',
+      'deliverability rating tool for marketing emails'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'email-template-builder': {
+    slug: 'email-template-builder',
+    title: 'Email Template Builder - Build Responsive Inline-CSS Templates',
+    description: 'Design responsive, table-based email layouts for newsletters, promotional campaigns, and welcome setup. Complete with inlined styles and download options.',
+    keywords: [
+      'email template builder',
+      'html email template creator',
+      'responsive newsletter builder',
+      'inline css email designer',
+      'newsletter layout maker',
+      'free email builder',
+      'responsive email template',
+      'newsletter builder'
+    ],
+    longTailKeywords: [
+      'create responsive html email template online',
+      'free newsletter template builder with inline css',
+      'best email template designer for marketing',
+      'download responsive html email layout',
+      'drag and drop email template builder free',
+      'responsive newsletter table layout generator',
+      'inlined css email template exporter free'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'email-header-analyzer': {
+    slug: 'email-header-analyzer',
+    title: 'Email Header Analyzer - Trace routing hops, delays, and authentication records from raw headers',
+    description: 'Paste raw email headers to trace delivery server paths, Hop-by-Hop delays, and verify SPF, DKIM, and DMARC authentication status.',
+    keywords: [
+      'email header analyzer',
+      'trace email sender ip',
+      'mime header parser',
+      'analyze email routing hops',
+      'email delay calculator',
+      'spf dkim dmarc header check',
+      'trace email route',
+      'mime headers'
+    ],
+    longTailKeywords: [
+      'trace email path using raw headers',
+      'free online email header analyzer tool',
+      'calculate mail server hop delays',
+      'inspect authentication headers for spf dkim',
+      'how to read raw email header information',
+      'trace spoofed email sender IP address',
+      'email header analyzer report generator'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'spf-record-generator': {
+    slug: 'spf-record-generator',
+    title: 'SPF Record Generator - Create Sender Policy Framework Records',
+    description: 'Generate customized SPF records for domain name TXT files. Instantly query active DNS records to check for existing SPF rules.',
+    keywords: [
+      'spf record generator',
+      'spf txt record builder',
+      'sender policy framework creator',
+      'check spf dns records',
+      'spf lookup tool',
+      'spf record helper',
+      'spf generator',
+      'sender policy framework',
+      'spf lookup'
+    ],
+    longTailKeywords: [
+      'generate sender policy framework txt record',
+      'free spf record generator online',
+      'how to configure spf record for domains',
+      'check active spf record in dns',
+      'spf record builder for multiple ip addresses',
+      'spf DNS record check for godaddy',
+      'merge multiple spf records into one'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'dkim-generator': {
+    slug: 'dkim-generator',
+    title: 'DKIM Generator - Create RSA Public/Private Key Pairs Online',
+    description: 'Generate cryptographically secure 1024-bit or 2048-bit RSA key pairs. Automatically format the public key into DKIM TXT record syntax.',
+    keywords: [
+      'dkim generator',
+      'dkim record creator',
+      'generate dkim rsa keys',
+      'domainkeys identified mail builder',
+      'dkim txt record helper',
+      'generate public private keys',
+      'dkim keys'
+    ],
+    longTailKeywords: [
+      'generate dkim public and private keys online',
+      'free 2048-bit dkim record generator',
+      'how to add dkim txt record to godaddy dns',
+      'create dkim key pair for mail server',
+      'dkim txt record formatting tool',
+      'generate rsa 2048 dkim records free',
+      'dkim key pair creator in browser'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'dmarc-generator': {
+    slug: 'dmarc-generator',
+    title: 'DMARC Generator - Create and Verify Domain DMARC Records',
+    description: 'Build robust DMARC DNS policies for quarantine or reject rules. Check active DNS servers to confirm DMARC status.',
+    keywords: [
+      'dmarc generator',
+      'dmarc record creator',
+      'dmarc policy builder',
+      'check dmarc status',
+      'dmarc lookup tool',
+      'configure dmarc reports',
+      'dmarc record',
+      'dmarc check'
+    ],
+    longTailKeywords: [
+      'generate dmarc txt record for domain',
+      'free online dmarc record builder',
+      'how to configure dmarc quarantine or reject',
+      'check active dmarc record in dns',
+      'configure rua aggregate reports email',
+      'dmarc policies for phishing prevention',
+      'how to set up dmarc records for office 365'
+    ],
+    category: 'Email Marketing Tools'
+  },
+  'mailto-link-generator': {
+    slug: 'mailto-link-generator',
+    title: 'Mailto Link Generator - Pre-fill Email Links Online Free',
+    description: 'Quickly compose and generate pre-filled email mailto links. Format in raw URL, HTML code tag, and Markdown syntax.',
+    keywords: [
+      'mailto link generator',
+      'create mailto link',
+      'mailto url encoder',
+      'mailto code generator',
+      'prefill email link helper',
+      'mailto html href tag',
+      'mailto links',
+      'url encode email'
+    ],
+    longTailKeywords: [
+      'generate mailto link with subject and body',
+      'free online mailto link url builder',
+      'how to write mailto link in markdown',
+      'url encode email subject and body mailto',
+      'create html email link for website',
+      'mailto url encoder with cc and bcc',
+      'mailto anchor tag generator online'
+    ],
+    category: 'Email Marketing Tools'
+  }
 };
 
 export const getToolSeoMetadata = (toolSlug: string): ToolSeoMetadata | null => {

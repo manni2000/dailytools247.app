@@ -16,6 +16,7 @@ import {
   Search,
   Scale,
   ShoppingBag,
+  Mail,
   LucideIcon,
 } from "lucide-react";
 
@@ -345,6 +346,25 @@ export const toolCategories: ToolCategory[] = [
       { id: "ecommerce-calculator", name: "GST/Margin/EMI Calculator", description: "Calculate GST, profit margins, and EMI", path: "/ecommerce-calculator", isAvailable: true },
     ],
   },
+  {
+    id: "email",
+    name: "Email Marketing Tools",
+    description: "Subject lines, signature builders, spam score check, templates & records",
+    icon: Mail,
+    color: "250 85% 55%",
+    tools: [
+      { id: "email-subject-line-generator", name: "Email Subject Line Generator", description: "Generate engaging email subject lines with dynamic scoring", path: "/email-subject-line-generator", isAvailable: true },
+      { id: "email-signature-generator", name: "Email Signature Generator", description: "Build professional HTML signatures for your emails", path: "/email-signature-generator", isAvailable: true },
+      { id: "html-email-previewer", name: "HTML Email Previewer", description: "Preview HTML emails on desktop/mobile and check rendering issues", path: "/html-email-previewer", isAvailable: true },
+      { id: "spam-score-checker", name: "Spam Score Checker", description: "Analyze your email subject & body for spam risk indicators", path: "/spam-score-checker", isAvailable: true },
+      { id: "email-template-builder", name: "Email Template Builder", description: "Design responsive, inline-styled HTML templates", path: "/email-template-builder", isAvailable: true },
+      { id: "email-header-analyzer", name: "Email Header Analyzer", description: "Trace routing hops, delays, and authentication records from raw headers", path: "/email-header-analyzer", isAvailable: true },
+      { id: "spf-record-generator", name: "SPF Record Generator", description: "Construct Sender Policy Framework records and check active DNS", path: "/spf-record-generator", isAvailable: true },
+      { id: "dkim-generator", name: "DKIM Generator", description: "Generate RSA public/private keys and DKIM TXT records", path: "/dkim-generator", isAvailable: true },
+      { id: "dmarc-generator", name: "DMARC Generator", description: "Configure DMARC validation rules and verify active DNS records", path: "/dmarc-generator", isAvailable: true },
+      { id: "mailto-link-generator", name: "Mailto Link Generator", description: "Quickly compose pre-filled mailto URLs and code tags", path: "/mailto-link-generator", isAvailable: true }
+    ]
+  }
 ];
 
 export const getAllTools = (): Tool[] => {

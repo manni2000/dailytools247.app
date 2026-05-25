@@ -349,6 +349,48 @@ export const categoryHubs: HubConfig[] = [
         description: 'Calculate business days'
       }
     ]
+  },
+  {
+    categoryId: 'email',
+    categoryName: 'Email Marketing Tools',
+    hubToolSlug: 'email-template-builder',
+    hubToolPath: '/email-template-builder',
+    workflowSteps: [
+      {
+        step: '1',
+        toolSlug: 'email-subject-line-generator',
+        toolName: 'Email Subject Line Generator',
+        description: 'Generate engaging subject lines'
+      },
+      {
+        step: '2',
+        toolSlug: 'email-template-builder',
+        toolName: 'Email Template Builder',
+        description: 'Build your HTML email template'
+      },
+      {
+        step: '3',
+        toolSlug: 'spam-score-checker',
+        toolName: 'Spam Score Checker',
+        description: 'Check spam risk indicators of your email'
+      },
+      {
+        step: '4',
+        toolSlug: 'html-email-previewer',
+        toolName: 'HTML Email Previewer',
+        description: 'Preview rendering of your HTML email'
+      }
+    ],
+    subClusters: [
+      {
+        name: 'Email Generation',
+        tools: ['email-subject-line-generator', 'email-signature-generator', 'email-template-builder', 'mailto-link-generator']
+      },
+      {
+        name: 'Email Validation & Security',
+        tools: ['spam-score-checker', 'email-header-analyzer', 'spf-record-generator', 'dkim-generator', 'dmarc-generator']
+      }
+    ]
   }
 ];
 
@@ -364,6 +406,8 @@ export const crossClusterLinks: Record<string, string[]> = {
   'json-formatter': ['jwt-decoder'], // Dev → Dev
   'emi-calculator': ['budget-planner'], // Finance → Finance
   'sip-calculator': ['lumpsum-calculator'], // Finance → Finance
+  'email-template-builder': ['html-email-previewer', 'spam-score-checker'], // Email → Email
+  'email-signature-generator': ['mailto-link-generator'], // Email → Email
 };
 
 // Get hub configuration for a category

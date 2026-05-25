@@ -183,6 +183,18 @@ export const API_URLS = {
   TO_7Z: `/api/zip/to-7z`,
   TO_TAR: `/api/zip/to-tar`,
   REPAIR_ZIP: `/api/zip/repair`,
+
+  // Email Marketing Tools
+  EMAIL_SUBJECT_LINE: `/api/email/subject-line-generator`,
+  EMAIL_SIGNATURE: `/api/email/signature-generator`,
+  HTML_EMAIL_PREVIEWER: `/api/email/previewer-analyze`,
+  SPAM_SCORE_CHECKER: `/api/email/spam-checker`,
+  EMAIL_TEMPLATE_BUILDER: `/api/email/template-builder`,
+  EMAIL_HEADER_ANALYZER: `/api/email/header-analyzer`,
+  SPF_RECORD_GENERATOR: `/api/email/spf-generator`,
+  DKIM_GENERATOR: `/api/email/dkim-generator`,
+  DMARC_GENERATOR: `/api/email/dmarc-generator`,
+  MAILTO_LINK_GENERATOR: `/api/email/mailto-generator`,
 };
 
 export default API_BASE_URL;

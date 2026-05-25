@@ -167,7 +167,19 @@ export const existingTools = [
   'create-zip',
   'extract-zip',
   'password-zip',
-  'compression-zip'
+  'compression-zip',
+
+  // Email Marketing Tools
+  'email-subject-line-generator',
+  'email-signature-generator',
+  'html-email-previewer',
+  'spam-score-checker',
+  'email-template-builder',
+  'email-header-analyzer',
+  'spf-record-generator',
+  'dkim-generator',
+  'dmarc-generator',
+  'mailto-link-generator'
 ];
 
 // Helper function to check if a tool exists

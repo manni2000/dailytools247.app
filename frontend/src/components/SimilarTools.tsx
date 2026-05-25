@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { ArrowRight, FileText, Image, Code, Shield, Type, Search, DollarSign, Video, Music, GraduationCap, Calendar, Globe, Share2, Archive, Wrench } from "lucide-react";
+import { ArrowRight, FileText, Image, Code, Shield, Type, Search, DollarSign, Video, Music, GraduationCap, Calendar, Globe, Share2, Archive, Wrench, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToolCategory } from "@/hooks/useToolCategory";
 import { useCurrentTool } from "@/hooks/useCurrentTool";
@@ -89,6 +89,7 @@ const SimilarTools = ({ currentToolSlug, excludeCurrent = true }: { currentToolS
       'Internet Tools': Globe,
       'Social Media Tools': Share2,
       'Zip Tools': Archive,
+      'Email Marketing Tools': Mail,
       'General Tools': Wrench,
     };
     

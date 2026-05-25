@@ -15,6 +15,7 @@ const Footer = () => {
     { name: "Video Tools", path: "/category/video" },
     { name: "SEO Tools", path: "/category/seo" },
     { name: "Date & Time Tools", path: "/category/date-time" },
+    { name: "Email Marketing Tools", path: "/category/email" },
   ];
 
   const popularTools = [
@@ -226,6 +227,19 @@ const Footer = () => {
     { name: "White Background Adder", path: "/white-background-adder" },
     { name: "Bulk Image Resizer", path: "/bulk-image-resizer" },
     { name: "Image Color Enhancer", path: "/image-color-enhancer" },
+  ];
+
+  const emailTools = [
+    { name: "Email Subject Line Generator", path: "/email-subject-line-generator" },
+    { name: "Email Signature Generator", path: "/email-signature-generator" },
+    { name: "HTML Email Previewer", path: "/html-email-previewer" },
+    { name: "Spam Score Checker", path: "/spam-score-checker" },
+    { name: "Email Template Builder", path: "/email-template-builder" },
+    { name: "Email Header Analyzer", path: "/email-header-analyzer" },
+    { name: "SPF Record Generator", path: "/spf-record-generator" },
+    { name: "DKIM Generator", path: "/dkim-generator" },
+    { name: "DMARC Generator", path: "/dmarc-generator" },
+    { name: "Mailto Link Generator", path: "/mailto-link-generator" },
   ];
 
   const categories = toolCategories.slice(0, 8).map(cat => ({
@@ -489,6 +503,20 @@ const Footer = () => {
             <h4 className="text-sm font-semibold">E-commerce Tools</h4>
             <ul className="space-y-2">
               {ecommerceTools.map(tool => (
+                <li key={tool.path}>
+                  <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
+                    {tool.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Email Marketing Tools */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold">Email Marketing Tools</h4>
+            <ul className="space-y-2">
+              {emailTools.map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}

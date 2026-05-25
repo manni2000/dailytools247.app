@@ -347,6 +347,29 @@ export const categorySpecificFaqs: CategoryFAQs = {
       answer: 'No, you can use these tools as many times as you need without any restrictions.',
     },
   ],
+
+  'Email Marketing Tools': [
+    {
+      question: 'Are my email templates and lists secure?',
+      answer: 'Yes, all template design and processing happens locally in your browser. We never store or transmit your email copy, templates, or contact lists to any external servers.',
+    },
+    {
+      question: 'Will my generated HTML signatures work across all email clients?',
+      answer: 'Our signatures are built using standard nested HTML tables and inline CSS styles, which are compatible with major clients like Gmail, Outlook, Apple Mail, and Yahoo.',
+    },
+    {
+      question: 'How does the Spam Score Checker evaluate emails?',
+      answer: 'It analyzes the email content for spam trigger words, subject line length, excessive punctuation, uppercase text, and formatting patterns that trigger spam filters.',
+    },
+    {
+      question: 'Do DKIM, SPF, and DMARC generators make actual DNS changes?',
+      answer: 'No, they generate the TXT records you need to copy and paste into your domain registrar\'s DNS settings (e.g., GoDaddy, Cloudflare, Namecheap) to verify your domain.',
+    },
+    {
+      question: 'Can I import and edit existing HTML emails?',
+      answer: 'Yes, both the HTML Email Previewer and Email Template Builder allow you to paste or import custom HTML code, render it in real-time, and tweak inline CSS styling.',
+    },
+  ],
 };
 
 // Helper function to get FAQs for a specific category
