@@ -381,7 +381,7 @@ const APIDocs = () => {
                       <ArrowRight className="h-3 w-3 text-primary" />
                       Example Request
                     </p>
-                    <pre className="flex-1 text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary break-all border border-border font-mono">
+                    <pre className="block w-full text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary whitespace-pre-wrap break-words sm:whitespace-pre sm:break-normal border border-border font-mono leading-relaxed">
 {`curl -X POST "${API_BASE_URL}/api/v1/text/word-count" \\
   -H "X-API-Key: YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
@@ -658,7 +658,7 @@ const APIDocs = () => {
                                       Copy
                                     </Button>
                                   </div>
-                                  <pre className="text-[10px] sm:text-xs bg-slate-900 p-2 sm:p-3 rounded-lg text-slate-200 overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal border border-slate-800 font-mono">
+                                  <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal border border-border font-mono">
                                     {endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)}
                                   </pre>
                                 </div>
@@ -668,7 +668,7 @@ const APIDocs = () => {
                                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                                     Example Response
                                   </h5>
-                                  <pre className="text-[10px] sm:text-xs bg-slate-900 p-2 sm:p-3 rounded-lg text-slate-200 overflow-x-auto border border-slate-800 font-mono">
+                                  <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto border border-border font-mono">
                                     {JSON.stringify(endpoint.example.response, null, 2)}
                                   </pre>
                                 </div>
