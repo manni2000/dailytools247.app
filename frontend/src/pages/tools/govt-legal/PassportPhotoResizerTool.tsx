@@ -294,9 +294,13 @@ export default function PassportPhotoResizerTool() {
               >
                 <input
                   ref={fileInputRef}
+                  id="passport-photo-upload"
                   type="file"
                   accept="image/*"
                   onChange={handleFileSelect}
+                  aria-label="Upload passport photo"
+                  title="Upload passport photo"
+                  placeholder="Choose a passport photo"
                   className="hidden"
                 />
                 <motion.div

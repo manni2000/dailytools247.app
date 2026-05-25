@@ -247,6 +247,8 @@ export default function PDFCompressorTool() {
                   ref={fileInputRef}
                   type="file"
                   accept="application/pdf"
+                  aria-label="Upload PDF file"
+                  title="Upload PDF file"
                   onChange={handleFileSelect}
                   className="hidden"
                 />

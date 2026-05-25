@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { Button } from "../components/ui/button";
@@ -8,24 +7,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Badge } from "../components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { toast } from "sonner";
-import { Copy, Key, Code2, Zap, Shield, Clock, ChevronDown, ChevronRight, Eye, EyeOff, ExternalLink, Terminal, Rocket, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
+import { Copy, Key, Code2, Zap, Shield, Clock, ChevronDown, ChevronRight, Eye, EyeOff, Terminal, Rocket, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
 import APIPlayground from "../components/APIPlayground";
 import { ToolSEO } from "../components/ToolSEO";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring" as const,
-      stiffness: 100,
-      damping: 10
-    }
-  }
-};
+const noopApiKeyChange = (_key: string) => undefined;
 
 interface ApiEndpoint {
   method: string;
@@ -72,7 +59,7 @@ const APIDocs = () => {
   const [userKeys, setUserKeys] = useState<ApiKey[]>([]);
   const [lookupEmail, setLookupEmail] = useState("");
   const [expandedEndpoints, setExpandedEndpoints] = useState<Set<string>>(new Set());
-  const [playgroundApiKey, setPlaygroundApiKey] = useState<string>("");
+  const [activeTab, setActiveTab] = useState("getstarted");
 
   useEffect(() => {
     fetchApiDocs();
@@ -189,20 +176,9 @@ const APIDocs = () => {
       <Header />
       <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-8 sm:mb-12 px-2 relative">
-            <motion.div
-            variants={itemVariants}
-            className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
+            <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.02]">
              Developer API
-            </motion.span>
-          </motion.div>
+          </div>
           <div className="relative z-10">
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
               Toolbox API for Developers
@@ -214,7 +190,7 @@ const APIDocs = () => {
             
             {/* Feature cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto">
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
                 <div className="w-10 h-10 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
                   <Zap className="h-5 w-5 text-yellow-600" />
                 </div>
@@ -222,7 +198,7 @@ const APIDocs = () => {
                 <p className="text-muted-foreground text-xs sm:text-sm">Optimized endpoints with sub-second response times</p>
               </div>
               
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
                 <div className="w-10 h-10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
                   <Shield className="h-5 w-5 text-green-600" />
                 </div>
@@ -230,7 +206,7 @@ const APIDocs = () => {
                 <p className="text-muted-foreground text-xs sm:text-sm">Bank-level encryption and secure API key management</p>
               </div>
               
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
                   <Rocket className="h-5 w-5 text-blue-600" />
                 </div>
@@ -261,22 +237,24 @@ const APIDocs = () => {
           </div>
         </div>
 
-        <Tabs defaultValue="getstarted" className="space-y-4 sm:space-y-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-8">
           <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted border border-border h-auto p-1 rounded-xl">
-            <TabsTrigger value="getstarted" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-all">Get Started</TabsTrigger>
-            <TabsTrigger value="endpoints" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-all">Endpoints</TabsTrigger>
-            <TabsTrigger value="playground" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 flex items-center justify-center gap-1 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-all">
+            <TabsTrigger value="getstarted" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Get Started</TabsTrigger>
+            <TabsTrigger value="endpoints" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Endpoints</TabsTrigger>
+            <TabsTrigger value="playground" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 flex items-center justify-center gap-1 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">
               <Terminal className="h-3.5 w-3.5 text-current" />
               Playground
             </TabsTrigger>
-            <TabsTrigger value="mykeys" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-all">My Keys</TabsTrigger>
+            <TabsTrigger value="mykeys" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">My Keys</TabsTrigger>
           </TabsList>
 
           {/* Get Started Tab */}
           <TabsContent value="getstarted" className="space-y-4 sm:space-y-8">
+            {activeTab === "getstarted" && (
+            <>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
               {/* Generate API Key */}
-              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-all duration-300 hover:scale-[1.01] overflow-hidden relative group">
+              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
                 <CardHeader className="p-4 sm:p-6 relative z-10">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl flex items-center justify-center mb-4">
                     <Key className="h-6 w-6 text-primary" />
@@ -305,7 +283,7 @@ const APIDocs = () => {
                   <Button
                     onClick={generateApiKey}
                     disabled={generatingKey}
-                    className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300"
+                    className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-colors duration-300"
                   >
                     {generatingKey ? (
                       <>
@@ -355,7 +333,7 @@ const APIDocs = () => {
               </Card>
 
               {/* Quick Start */}
-              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-all duration-300 hover:scale-[1.01] overflow-hidden relative group">
+              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
                 <CardHeader className="p-4 sm:p-6 relative z-10">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
                     <Code2 className="h-6 w-6 text-blue-600" />
@@ -415,7 +393,7 @@ const APIDocs = () => {
             </div>
 
             {/* Enhanced Rate Limits */}
-            <Card className="bg-card border border-border hover:shadow-lg transition-all duration-300 overflow-hidden relative group">
+            <Card className="bg-card border border-border hover:shadow-lg transition-shadow duration-300 overflow-hidden relative group">
               <CardHeader className="p-4 sm:p-6 relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
@@ -523,17 +501,20 @@ const APIDocs = () => {
                 </div>
               </CardContent>
             </Card>
+            </>
+            )}
           </TabsContent>
 
           {/* API Endpoints Tab */}
           <TabsContent value="endpoints" className="space-y-4 sm:space-y-6">
-            {loading ? (
+            {activeTab === "endpoints" && (
+            loading ? (
               <div className="text-center py-8 sm:py-12">
                 <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-primary mx-auto"></div>
                 <p className="text-slate-400 mt-3 sm:mt-4 text-sm">Loading API documentation...</p>
               </div>            ) : (
               apiDocs?.endpoints?.map((category, catIndex) => (
-                <Card key={catIndex} className="bg-card border border-border hover:shadow-md transition-all duration-300 overflow-hidden relative group">
+                <Card key={catIndex} className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
                   <CardHeader className="p-4 sm:p-6 relative z-10">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl flex items-center justify-center">
@@ -555,7 +536,7 @@ const APIDocs = () => {
                       return (
                         <div
                           key={endIndex}
-                          className="border border-border rounded-lg overflow-hidden bg-muted/20 hover:bg-muted/30 transition-all duration-300"
+                          className="border border-border rounded-lg overflow-hidden bg-muted/20 hover:bg-muted/30 transition-colors duration-300"
                         >
                           <button
                             onClick={() => toggleEndpoint(endpointId)}
@@ -700,20 +681,23 @@ const APIDocs = () => {
                   </CardContent>
                 </Card>
               ))
-            )}
+            ))}
           </TabsContent>
 
           {/* API Playground Tab */}
           <TabsContent value="playground" className="space-y-4 sm:space-y-6">
-            <APIPlayground 
-              apiDocs={apiDocs} 
-              onApiKeyChange={setPlaygroundApiKey}
-            />
+            {activeTab === "playground" && (
+              <APIPlayground 
+                apiDocs={apiDocs} 
+                onApiKeyChange={noopApiKeyChange}
+              />
+            )}
           </TabsContent>
 
           {/* My API Keys Tab */}
           <TabsContent value="mykeys" className="space-y-4 sm:space-y-6">
-            <Card className="bg-card border border-border hover:shadow-md transition-all duration-300 overflow-hidden relative group">
+            {activeTab === "mykeys" && (
+            <Card className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
               <CardHeader className="p-4 sm:p-6 relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
@@ -738,7 +722,7 @@ const APIDocs = () => {
                   />
                   <Button 
                     onClick={lookupKeys} 
-                    className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-all duration-300"
+                    className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
                   >
                     <Shield className="h-4 w-4 mr-2" />
                     Lookup Keys
@@ -754,7 +738,7 @@ const APIDocs = () => {
                     {userKeys.map((key, index) => (
                       <div
                         key={index}
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border hover:bg-muted/30 transition-all duration-300 group"
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border hover:bg-muted/30 transition-colors duration-300 group"
                       >
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 mb-2">
@@ -841,6 +825,7 @@ const APIDocs = () => {
                 )}
               </CardContent>
             </Card>
+            )}
           </TabsContent>
         </Tabs>
       </main>

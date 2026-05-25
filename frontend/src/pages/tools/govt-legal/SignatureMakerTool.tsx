@@ -371,6 +371,8 @@ export default function SignatureMakerTool() {
                 accept="image/*"
                 onChange={handleSignatureUpload}
                 className="hidden"
+                title="Upload signature image"
+                aria-label="Upload signature image"
               />
               {hasSignature && (
                 <motion.div
@@ -410,7 +412,7 @@ export default function SignatureMakerTool() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Pen Color */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium">
+                <label htmlFor="pen-color-input" className="flex items-center gap-2 text-sm font-medium">
                   <Palette className="h-4 w-4" />
                   Pen Color
                 </label>
@@ -419,25 +421,29 @@ export default function SignatureMakerTool() {
                     <button
                       key={color}
                       onClick={() => setPenColor(color)}
+                      aria-label={`Select pen color ${color}`}
                       className={`w-8 h-8 rounded-full border-2 transition-all ${
                         penColor === color ? 'border-primary scale-110' : 'border-border'
                       }`}
                       style={{ backgroundColor: color }}
-                      title={color}
+                      title={`Select pen color ${color}`}
                     />
                   ))}
                 </div>
                 <input
+                  id="pen-color-input"
                   type="color"
                   value={penColor}
                   onChange={(e) => setPenColor(e.target.value)}
                   className="w-full h-10 rounded border border-border cursor-pointer"
+                  title="Select pen color"
+                  aria-label="Select pen color"
                 />
               </div>
 
               {/* Pen Size */}
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-medium">
+                <label htmlFor="pen-size-input" className="flex items-center gap-2 text-sm font-medium">
                   <Sliders className="h-4 w-4" />
                   Pen Size: {penSize}px
                 </label>
@@ -446,9 +452,11 @@ export default function SignatureMakerTool() {
                     <button
                       key={size}
                       onClick={() => setPenSize(size)}
+                      aria-label={`Set pen size to ${size}px`}
                       className={`w-8 h-8 rounded-lg border-2 flex items-center justify-center transition-all ${
                         penSize === size ? 'border-primary bg-primary/5' : 'border-border'
                       }`}
+                      title={`Set pen size to ${size}px`}
                     >
                       <div
                         className="rounded-full bg-foreground"
@@ -458,12 +466,15 @@ export default function SignatureMakerTool() {
                   ))}
                 </div>
                 <input
+                  id="pen-size-input"
                   type="range"
                   min="1"
                   max="10"
                   value={penSize}
                   onChange={(e) => setPenSize(Number(e.target.value))}
                   className="w-full"
+                  title="Adjust pen size"
+                  aria-label="Adjust pen size"
                 />
               </div>
 

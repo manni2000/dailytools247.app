@@ -249,7 +249,7 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-border bg-card" data-nosnippet="true">
-      <div className="container py-12">
+      <div className="container py-12 [content-visibility:auto] [contain-intrinsic-size:1800px]">
         {/* Top Section - Brand + Popular Tools */}
         <div className="grid gap-8 sm:grid-cols-2 mb-10">
           {/* Brand */}

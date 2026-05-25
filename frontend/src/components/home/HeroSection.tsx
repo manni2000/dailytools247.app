@@ -133,7 +133,7 @@ const HeroSection = () => {
           {/* Description & CTAs */}
           <div className="mx-auto mt-4 max-w-3xl">
             <p className="mx-auto text-lg text-muted-foreground/90">
-              A suite of fast, secure, and privacy-first web tools for documents, images, and developer workflows — designed to keep your data local and your team productive.
+             Your All-in-One Platform for PDF, Image & SEO Tools
             </p>
             <div className="mt-6 flex items-center justify-center gap-3">
               <button
