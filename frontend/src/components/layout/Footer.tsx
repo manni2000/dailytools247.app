@@ -553,13 +553,13 @@ const Footer = () => {
             <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground">
               About
             </Link>
-            <Link to="/write-for-us" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link to="/write-for-us" className="text-sm text-muted-foreground hover:text-foreground whitespace-nowrap">
               Write for Us
             </Link>
             <Link to="/blogs" className="text-sm text-muted-foreground hover:text-foreground">
               Blogs
             </Link>
-            <Link to="/api-docs" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link to="/api-docs" className="text-sm text-muted-foreground hover:text-foreground whitespace-nowrap">
               API for Developers
             </Link>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">
