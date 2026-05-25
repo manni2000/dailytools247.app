@@ -642,7 +642,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
       { tool: "Desktop Converters", bestFor: "Batch processing", free: "No", speed: "Variable" },
     ],
     ctaLabel: "Convert JPG to PDF",
-    ctaPath: "/jpg-to-pdf",
+    ctaPath: "/image-to-pdf",
     secondaryCtaLabel: "Try Image to PDF",
     secondaryCtaPath: "/image-to-pdf",
     additionalFaqs: [

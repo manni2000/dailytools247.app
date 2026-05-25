@@ -85,7 +85,7 @@ const faqs = [
 ];
 
 const howTo = {
-  name: "Submit a guest post to Creately",
+  name: "Submit a guest post to Dailytools247",
   description: "A simple editorial process for sending an original guest article with one contextual link and a one-time $10 fee.",
   steps: [
     {
@@ -476,7 +476,7 @@ const WriteForUs = () => {
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Creately"
+                  href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   <Mail className="h-4 w-4" />

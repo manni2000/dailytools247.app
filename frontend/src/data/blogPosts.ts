@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
         links: [
           { label: "PDF Compressor", path: "/pdf-compressor" },
           { label: "PDF Merge", path: "/pdf-merge" },
-          { label: "JPG to PDF", path: "/jpg-to-pdf" },
+          { label: "JPG to PDF", path: "/image-to-pdf" },
           { label: "Image Compressor", path: "/image-compressor" },
         ],
       },
@@ -771,7 +771,7 @@ export const blogPosts: BlogPost[] = [
           "Download the PDF file. The output will be print-ready and suitable for sharing or official use.",
         ],
         links: [
-          { label: "JPG to PDF", path: "/jpg-to-pdf" },
+          { label: "JPG to PDF", path: "/image-to-pdf" },
           { label: "Image to PDF", path: "/image-to-pdf" },
           { label: "PDF Merge", path: "/pdf-merge" },
           { label: "PDF to Word", path: "/pdf-to-word" },

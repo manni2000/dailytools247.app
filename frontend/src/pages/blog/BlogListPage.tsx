@@ -200,7 +200,7 @@ const BlogListPage = () => {
                     <PenTool className="h-4 w-4" />
                     Write for Us
                   </div>
-                  <h2 className="text-2xl font-bold md:text-3xl">Become a Guest Author at Creately</h2>
+                  <h2 className="text-2xl font-bold md:text-3xl">Become a Guest Author at Dailytools247</h2>
                   <p className="mt-4 max-w-2xl text-muted-foreground">
                     Share an original, practical article with a highly targeted tech audience. If your piece is useful,
                     well structured, and written for readers first, we want to hear from you.
@@ -232,7 +232,7 @@ const BlogListPage = () => {
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                     <a
-                      href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Creately"
+                      href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
                       className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-medium transition-colors hover:bg-muted"
                     >
                       <Mail className="h-4 w-4" />
