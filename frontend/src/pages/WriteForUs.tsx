@@ -107,8 +107,8 @@ const WriteForUs = () => {
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <SEOHelmet
-        title="Write for Us | Guest Post Submission at Creately"
-        description="Write for us at Creately and submit original guest posts for a highly targeted tech audience. Review the rules, one-link policy, 800-word minimum, and one-time $10 fee."
+        title="Write for Us | Guest Post Submission at Dailytools247"
+        description="Write for us at Dailytools247 and submit original guest posts for a highly targeted tech audience. Review the rules, one-link policy, 800-word minimum, and one-time $10 fee."
         keywords={[
           "write for us",
           "guest post guidelines",
@@ -116,7 +116,7 @@ const WriteForUs = () => {
           "guest author submission",
           "write for us guest post",
           "guest post article",
-          "Creately blog write for us",
+          "Dailytools247 blog write for us",
           "submit guest post",
           "guest blogging opportunity",
         ]}
@@ -128,8 +128,8 @@ const WriteForUs = () => {
         schema={{
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'Write for Us | Guest Post Submission at Creately',
-          description: 'Guest post guidelines, one-link rule, and submission fee for Creately blog contributors.',
+          name: 'Write for Us | Guest Post Submission at Dailytools247',
+          description: 'Guest post guidelines, one-link rule, and submission fee for Dailytools247 blog contributors.',
           url: 'https://www.dailytools247.app/write-for-us',
           inLanguage: 'en',
           isPartOf: {
@@ -188,15 +188,15 @@ const WriteForUs = () => {
                   Guest Posting Open
                 </div>
                 <h1 className="max-w-3xl text-4xl font-black tracking-tight text-balance md:text-6xl">
-                  Write for Us and Become a Guest Author at Creately
+                  Write for Us and Become a Guest Author at Dailytools247
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  Share a practical, original article with a highly targeted audience. Creately welcomes contributors who
+                  Share a practical, original article with a highly targeted audience. Dailytools247 welcomes contributors who
                   can teach something useful, keep the writing sharp, and deliver value without unnecessary noise.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
-                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Creately"
+                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
                     className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90"
                   >
                     <Mail className="h-4 w-4" />
