@@ -311,7 +311,7 @@ const CategoriesPage = () => {
             )}
 
             {/* Categories List */}
-            <div className={viewMode === "grid" ? "space-y-6 sm:space-y-8" : "space-y-4 sm:space-y-6"}>
+            <div className={viewMode === "grid" ? "grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" : "space-y-4 sm:space-y-6"}>
               <AnimatePresence mode="popLayout">
                 {filteredCategories.map((category, categoryIndex) => {
                   const Icon = category.icon;

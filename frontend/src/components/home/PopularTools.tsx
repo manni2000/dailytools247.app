@@ -1,176 +1,119 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Image, FileText, Video, GraduationCap, QrCode, Archive, Sparkles, Search } from "lucide-react";
+import { ArrowRight, Sparkles, Eraser, FileType2, Image, QrCode, Lock, Code2 } from "lucide-react";
 
 const popularTools = [
   {
-    id: "image-tools",
-    name: "Image Tools",
-    description: "Compress, convert, resize and edit images easily",
-    path: "/category/image",
+    id: "background-remover",
+    name: "Background Remover",
+    description: "Remove background from images automatically using AI processing.",
+    path: "/background-remover",
+    icon: Eraser,
+  },
+  {
+    id: "pdf-to-word",
+    name: "PDF to Word",
+    description: "Convert PDF documents to editable DOCX files while keeping layouts.",
+    path: "/pdf-to-word",
+    icon: FileType2,
+  },
+  {
+    id: "image-compressor",
+    name: "Image Compressor",
+    description: "Reduce image file size up to 90% without sacrificing image resolution.",
+    path: "/image-compressor",
     icon: Image,
-    gradient: "from-pink-500 to-rose-500",
-    bgGradient: "from-pink-500/10 to-rose-500/10",
-  },
-  {
-    id: "pdf-tools",
-    name: "PDF Tools",
-    description: "Merge, split, compress and convert PDF files",
-    path: "/category/pdf",
-    icon: FileText,
-    gradient: "from-red-500 to-orange-500",
-    bgGradient: "from-red-500/10 to-orange-500/10",
-  },
-  {
-    id: "education-tools",
-    name: "Education Tools",
-    description: "Calculators, converters and learning utilities",
-    path: "/category/education",
-    icon: GraduationCap,
-    gradient: "from-blue-500 to-cyan-500",
-    bgGradient: "from-blue-500/10 to-cyan-500/10",
   },
   {
     id: "qr-generator",
     name: "QR Code Generator",
-    description: "Create QR codes from any URL or text instantly",
+    description: "Generate customized QR codes for websites, texts, and contact cards.",
     path: "/qr-code-generator",
     icon: QrCode,
-    gradient: "from-emerald-500 to-teal-500",
-    bgGradient: "from-emerald-500/10 to-teal-500/10",
   },
   {
-    id: "seo-tools",
-    name: "SEO Tools",
-    description: "Meta tags, robots.txt, sitemap, keyword analysis",
-    path: "/category/seo",
-    icon: Search,
-    gradient: "from-green-500 to-lime-500",
-    bgGradient: "from-green-500/10 to-lime-500/10",
+    id: "password-generator",
+    name: "Password Generator",
+    description: "Create highly secure random passwords in your local browser environment.",
+    path: "/password-generator",
+    icon: Lock,
   },
   {
-    id: "zip-tools",
-    name: "Zip Tools",
-    description: "Create, extract and manage compressed files",
-    path: "/category/zip",
-    icon: Archive,
-    gradient: "from-amber-500 to-yellow-500",
-    bgGradient: "from-amber-500/10 to-yellow-500/10",
+    id: "json-formatter",
+    name: "JSON Formatter",
+    description: "Clean, format, indent, and validate JSON data strings instantly.",
+    path: "/json-formatter",
+    icon: Code2,
   },
 ];
 
 const PopularTools = () => {
   return (
-    <section className="relative py-24 lg:py-32">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/50 via-transparent to-transparent" />
-      
-      <div className="container relative">
+    <section className="py-16 sm:py-20 border-b border-border bg-background">
+      <div className="container mx-auto px-4">
+        
         {/* Section Header */}
-        <div className="mb-16 flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
-            >
-              <Sparkles className="h-4 w-4" />
-              Most Popular
-            </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl font-bold tracking-tight md:text-5xl"
-            >
-              Popular Tools
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mt-3 text-lg text-muted-foreground"
-            >
-              The most used tools by thousands of users daily
-            </motion.p>
+        <div className="mb-12 flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="text-center md:text-left">
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded bg-muted px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+              <Sparkles className="h-3 w-3" />
+              Most Popular Tools
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Trending Online Utilities
+            </h2>
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              Fast, free online applications most frequently used by our visitors.
+            </p>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+          <Link
+            to="/categories"
+            className="inline-flex items-center gap-2 rounded-md border border-input bg-background hover:bg-muted text-foreground px-4 py-2 text-sm font-semibold transition-colors shadow-sm"
           >
-            <Link
-              to="/categories"
-              className="group hidden items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90 md:flex"
-            >
-              View All Tools
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
+            Explore All Tools
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        {/* Tools Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {popularTools.map((tool, index) => {
+        {/* Tools Horizontal Leaderboard List Grid */}
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+          {popularTools.map((tool, idx) => {
             const Icon = tool.icon;
             return (
-              <motion.div
+              <Link
                 key={tool.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                to={tool.path}
+                className="group flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition-all hover:bg-muted/40 hover:border-primary/40 hover:shadow-sm"
               >
-                <Link
-                  to={tool.path}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
-                >
-                  {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${tool.bgGradient} opacity-0 transition-opacity group-hover:opacity-100`} />
-                  
-                  <div className="relative flex items-start gap-4">
-                    <div className={`flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${tool.gradient} shadow-lg`}>
-                      <Icon className="h-7 w-7 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-semibold text-card-foreground transition-colors group-hover:text-primary">
-                        {tool.name}
-                      </h3>
-                      <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2">
-                        {tool.description}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="relative mt-6 flex items-center justify-between border-t border-border/50 pt-4">
-                    <span className="text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                      Use Tool
-                    </span>
-                    <ArrowRight className="h-5 w-5 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-primary" />
-                  </div>
-                </Link>
-              </motion.div>
+                {/* Monospaced Rank Index */}
+                <span className="font-mono text-base font-bold text-muted-foreground/40 group-hover:text-primary transition-colors select-none ml-2">
+                  {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                </span>
+
+                {/* Separator Line */}
+                <div className="h-8 w-px bg-border select-none" />
+
+                {/* Tool Icon */}
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded border border-border bg-muted/40 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors select-none">
+                  <Icon className="h-5 w-5" />
+                </div>
+
+                {/* Content info */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-foreground group-hover:text-primary transition-colors text-sm sm:text-base truncate">
+                    {tool.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate mt-0.5">
+                    {tool.description}
+                  </p>
+                </div>
+
+                {/* Action Arrow */}
+                <ArrowRight className="h-4 w-4 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-1 transition-all mr-2 flex-shrink-0" />
+              </Link>
             );
           })}
         </div>
 
-        {/* Mobile CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-10 text-center md:hidden"
-        >
-          <Link
-            to="/categories"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"
-          >
-            View All Tools
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

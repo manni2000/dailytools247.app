@@ -1,69 +1,34 @@
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search, Sparkles, Shield, ArrowRight, TrendingUp,
-  Code2, Image, FileText, FileType2, Lock, RefreshCw, Globe, Palette, Scale, ShoppingBag,
-  Eraser, QrCode,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Search, Shield, Activity, Sparkle, Terminal, FileText, Image as ImageIcon, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllTools } from "@/data/toolCategories";
+import { toolCategories, getAllTools } from "@/data/toolCategories";
 
-const ORBS = [
-  { icon: Code2,     color: "#22d3ee", bg: "rgba(34,211,238,0.15)",  top: "14%", left: "5%",   size: 56, delay: 0    },
-  { icon: Image,     color: "#a78bfa", bg: "rgba(167,139,250,0.15)", top: "38%", left: "2%",   size: 64, delay: 0.15 },
-  { icon: FileType2, color: "#fb923c", bg: "rgba(251,146,60,0.15)",  top: "62%", left: "6%",   size: 56, delay: 0.3  },
-  { icon: FileText,  color: "#f87171", bg: "rgba(248,113,113,0.15)", top: "14%", right: "5%",  size: 60, delay: 0.1  },
-  { icon: Lock,      color: "#38bdf8", bg: "rgba(56,189,248,0.15)",  top: "40%", right: "2%",  size: 56, delay: 0.25 },
-  { icon: Globe,     color: "#4ade80", bg: "rgba(74,222,128,0.15)",  top: "65%", right: "7%",  size: 52, delay: 0.4  },
-];
-
-const POPULAR_TOOLS = [
-  { icon: Eraser,    title: "Background Remover", sub: "Remove backgrounds from images automatically",       path: "/background-remover" },
-  { icon: FileType2, title: "PDF to Word",        sub: "Convert PDF files to editable Word documents",       path: "/pdf-to-word" },
-  { icon: Image,     title: "Image Compressor",   sub: "Compress images while maintaining quality",         path: "/image-compressor" },
-  { icon: QrCode,    title: "QR Code Generator",  sub: "Generate QR codes for payments and businesses",     path: "/qr-code-scanner" },
-  { icon: Lock,      title: "Password Generator", sub: "Create strong passwords for security",             path: "/password-generator" },
-  { icon: Code2,     title: "JSON Formatter",     sub: "Format and validate JSON data for developers",     path: "/json-formatter" },
+const POPULAR_SEARCHES = [
+  { name: "PNG to JPG", path: "/png-to-jpg-converter" },
+  { name: "Email Subject Generator", path: "/email-subject-line-generator" },
+  { name: "Zip Extractor", path: "/extract-zip" },
+  { name: "WhatsApp Status Generator", path: "/whatsapp-status-generator" },
+  { name: "Passport Photo Resizer", path: "/passport-photo-resizer" },
 ];
 
 const STATS = [
-  { icon: Shield,     value: "100%",  label: "Privacy Safe"   },
-  { icon: Sparkles,   value: "Zero",  label: "Ads or Pop-ups" },
-  { icon: TrendingUp, value: "10K+",  label: "Daily Users"    },
-  { icon: TrendingUp, value: "100M+", label: "Total Users"    },
+  {
+    icon: Shield,
+    title: "100% Private & Local",
+    desc: "All files remain on your computer. Zero server uploads.",
+  },
+  {
+    icon: Sparkle,
+    title: "No Sign-up Required",
+    desc: "Instant access to all tools. No subscription, limits, or ads.",
+  },
+  {
+    icon: Activity,
+    title: "Fast Processing",
+    desc: "Runs directly in your browser. Lightning-fast response times.",
+  },
 ];
-
-
-const FloatingOrb = ({
-  icon: Icon, color, bg, top, left, right, size, delay,
-}: {
-  icon: React.ComponentType<{ style?: React.CSSProperties; size?: string | number }>;
-  color: string; bg: string; top?: string; left?: string; right?: string; size: number; delay: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay, duration: 0.6, type: "spring", stiffness: 80 }}
-    style={{ position: "absolute", top, left, right, zIndex: 1 }}
-    className="hero-orb"
-  >
-    <motion.div
-      animate={{ y: [0, -12, 0] }}
-      transition={{ duration: 4 + delay, repeat: Infinity, ease: "easeInOut", delay }}
-      style={{
-        width: size, height: size,
-        background: bg,
-        border: `1.5px solid ${color}40`,
-        borderRadius: 18,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        backdropFilter: "blur(8px)",
-        boxShadow: `0 0 24px ${color}30`,
-      }}
-    >
-      <Icon style={{ color }} size={Math.round(size * 0.42)} />
-    </motion.div>
-  </motion.div>
-);
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery]     = useState("");
@@ -71,17 +36,20 @@ const HeroSection = () => {
   const [showResults, setShowResults]     = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate  = useNavigate();
 
   const handleSearch = (q: string) => {
     setSearchQuery(q);
     setSelectedIndex(-1);
     if (q.length >= 2) {
-      const r = getAllTools().filter(
+      const matches = getAllTools().filter(
         (t) => t.name.toLowerCase().includes(q.toLowerCase()) ||
                t.description.toLowerCase().includes(q.toLowerCase()),
       );
-      setSearchResults(r);
+      // Deduplicate by id (tools can appear in multiple categories)
+      const unique = Array.from(new Map(matches.map(m => [m.id, m])).values());
+      setSearchResults(unique);
       setShowResults(true);
     } else {
       setSearchResults([]);
@@ -97,484 +65,233 @@ const HeroSection = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showResults || !searchResults.length) return;
-    if (e.key === "ArrowDown")  { e.preventDefault(); setSelectedIndex((p) => Math.min(p + 1, Math.min(searchResults.length - 1, 5))); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); setSelectedIndex((p) => Math.max(p - 1, -1)); }
-    else if (e.key === "Enter" && selectedIndex >= 0) { e.preventDefault(); handleSelectTool(searchResults[selectedIndex].path); }
-    else if (e.key === "Escape") setShowResults(false);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((p) => Math.min(p + 1, Math.min(searchResults.length - 1, 5)));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((p) => Math.max(p - 1, -1));
+    } else if (e.key === "Enter" && selectedIndex >= 0) {
+      e.preventDefault();
+      handleSelectTool(searchResults[selectedIndex].path);
+    } else if (e.key === "Escape") {
+      setShowResults(false);
+      inputRef.current?.blur();
+    }
   };
 
+  // Click outside listener
   useEffect(() => {
-    const h = (e: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(e.target as Node))
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
         setShowResults(false);
+      }
     };
-    document.addEventListener("mousedown", h);
-    return () => document.removeEventListener("mousedown", h);
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
+  // Global key listener for '/' key focus
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
+
+  // Find category name for a given tool ID
+  const getToolCategoryName = (toolId: string) => {
+    const category = toolCategories.find((cat) => cat.tools.some((t) => t.id === toolId));
+    return category ? category.name : "Tool";
+  };
+
+  const bubbles = [
+    { label: "PDF Document", tag: ".pdf", icon: FileText, iconColor: "text-red-500 bg-red-50/50 border-red-100", floatDelay: 0 },
+    { label: "Word Document", tag: ".docx", icon: FileText, iconColor: "text-blue-500 bg-blue-50/50 border-blue-100", floatDelay: 0.15 },
+    { label: "Image File", tag: ".png / .jpg / .webp", icon: ImageIcon, iconColor: "text-emerald-500 bg-emerald-50/50 border-emerald-100", floatDelay: 0.3 },
+  ];
+
   return (
-    <div style={{ background: "#080d18", minHeight: "100vh", fontFamily: "'Sora','DM Sans',system-ui,sans-serif", color: "#e2e8f0", overflowX: "hidden" }}>
+    <section className="relative bg-gradient-to-b from-blue-50/45 via-background to-background border-b border-border py-16 sm:py-24">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-4xl text-center">
+          
+          {/* Subtitle / Badge */}
+          <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
+            Trusted by professionals · Fast & Private
+          </div>
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
+          {/* Heading */}
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            100+ Online Free Tools
+          </h1>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+          {/* Description & CTAs */}
+          <div className="mx-auto mt-4 max-w-3xl">
+            <p className="mx-auto text-lg text-muted-foreground/90">
+              A suite of fast, secure, and privacy-first web tools for documents, images, and developer workflows — designed to keep your data local and your team productive.
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <button
+                onClick={() => navigate('/categories')}
+                className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md hover:shadow-lg transition"
+              >
+                Explore Tools
+              </button>
+              <button
+                onClick={() => navigate('/api-docs')}
+                className="rounded-full border border-border bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted/30 transition"
+              >
+                API for Developers
+              </button>
+            </div>
+          </div>
 
-        .gradient-text {
-          background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 50%, #818cf8 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
+          {/* Format Bubbles */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 select-none">
+            {bubbles.map((b) => {
+              const BIcon = b.icon;
+              return (
+                <motion.div
+                  key={b.label}
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: b.floatDelay,
+                  }}
+                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm text-xs font-semibold text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-colors"
+                >
+                  <div className={`flex h-6 w-6 items-center justify-center rounded-full border ${b.iconColor}`}>
+                    <BIcon className="h-3.5 w-3.5" />
+                  </div>
+                  <span>{b.label}</span>
+                  <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-mono text-slate-500 border border-slate-200/60">
+                    {b.tag}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </div>
 
-        /* ── Search ── */
-        .search-wrapper { position: relative; z-index: 200; max-width: 640px; margin: 0 auto; width: 100%; }
-
-        .search-box {
-          display: flex; align-items: center;
-          background: rgba(255,255,255,0.055);
-          border: 1.5px solid rgba(255,255,255,0.11);
-          border-radius: 14px;
-          transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-          width: 100%;
-        }
-        /* ✅ Fix: no default browser outline — clean teal ring only */
-        .search-box:focus-within {
-          background: rgba(255,255,255,0.07);
-          border-color: rgba(45,212,191,0.5);
-          box-shadow: 0 0 0 3px rgba(45,212,191,0.13), 0 8px 32px rgba(0,0,0,0.3);
-        }
-        .search-input {
-          flex: 1; min-width: 0;
-          background: none; border: none;
-          outline: none !important;
-          -webkit-appearance: none;
-          box-shadow: none !important;
-          padding: 15px 12px;
-          font-size: 14px; color: #e2e8f0; font-family: inherit;
-        }
-        .search-input::placeholder { color: rgba(226,232,240,0.36); }
-        .search-icon-left { color: rgba(226,232,240,0.36); margin-left: 16px; flex-shrink: 0; }
-        .search-clear-btn {
-          background: none; border: none;
-          color: rgba(226,232,240,0.38); cursor: pointer;
-          padding: 0 10px; font-size: 16px; line-height: 1; flex-shrink: 0;
-          transition: color 0.15s;
-        }
-        .search-clear-btn:hover { color: rgba(226,232,240,0.7); }
-        .search-submit-btn {
-          margin: 5px; padding: 10px 22px; border-radius: 10px; border: none;
-          background: linear-gradient(135deg, #0d9488, #0891b2);
-          box-shadow: 0 0 22px rgba(13,148,136,0.38), 0 3px 12px rgba(0,0,0,0.3);
-          color: #fff; font-weight: 700; font-size: 14px;
-          cursor: pointer; font-family: inherit;
-          display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;
-          transition: box-shadow 0.2s, transform 0.15s;
-        }
-        .search-submit-btn:hover {
-          box-shadow: 0 0 32px rgba(13,148,136,0.58), 0 4px 18px rgba(0,0,0,0.4);
-          transform: translateY(-1px);
-        }
-
-        /* ── Dropdown ── */
-        .search-dropdown {
-          position: absolute; left: 0; right: 0; top: calc(100% + 10px); z-index: 9999;
-          background: #0d1627;
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 18px; overflow: hidden;
-          box-shadow: 0 28px 72px rgba(0,0,0,0.7), 0 0 0 1px rgba(45,212,191,0.07);
-        }
-        .dropdown-item {
-          display: flex; align-items: center; gap: 14px;
-          width: 100%; padding: 13px 18px;
-          background: transparent; border: none;
-          color: #e2e8f0; cursor: pointer; font-family: inherit; text-align: left;
-          transition: background 0.12s;
-        }
-        .dropdown-item:hover, .dropdown-item.active { background: rgba(45,212,191,0.07); }
-
-        /* ── Pulse dot ── */
-        .pulse-dot {
-          width: 7px; height: 7px; border-radius: 50%;
-          background: #2dd4bf; box-shadow: 0 0 8px #2dd4bf; flex-shrink: 0;
-          animation: blink 2s ease-in-out infinite;
-        }
-        @keyframes blink {
-          0%,100% { opacity:1; transform:scale(1); }
-          50% { opacity:0.42; transform:scale(1.45); }
-        }
-
-        /* ── Pill buttons ── */
-        .pill {
-          background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 100px; padding: 5px 14px;
-          font-size: 12.5px; color: rgba(226,232,240,0.7);
-          cursor: pointer; font-family: inherit; white-space: nowrap;
-          transition: all 0.15s;
-        }
-        .pill:hover { background: rgba(45,212,191,0.12); border-color: rgba(45,212,191,0.32); color: #2dd4bf; }
-
-        /* ── Backgrounds ── */
-        .mesh-bg {
-          background:
-            radial-gradient(ellipse 80% 50% at 20% 20%, rgba(13,148,136,0.13) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 40% at 80% 70%, rgba(56,189,248,0.09) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 60% at 50% 100%, rgba(129,140,248,0.08) 0%, transparent 60%);
-        }
-        .grid-lines {
-          background-image:
-            linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-          background-size: 60px 60px;
-        }
-
-        /* ── Floating orbs: xl only ── */
-        .hero-orb { display: none; }
-        @media (min-width: 1200px) { .hero-orb { display: flex; } }
-
-        /* ── Popular tools grid ── */
-        .popular-tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-        /* ── Category grid ── */
-        .cat-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
-        .cat-card {
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 14px; padding: 18px 10px; text-align: center; cursor: pointer;
-          transition: all 0.2s ease;
-        }
-        .cat-card:hover {
-          background: rgba(255,255,255,0.08); border-color: rgba(45,212,191,0.28);
-          transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.28);
-        }
-
-        /* ── Stat cards ── */
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .stat-card {
-          background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 20px; padding: 36px 20px 28px;
-          display: flex; flex-direction: column; align-items: center; gap: 13px;
-          transition: all 0.22s ease;
-        }
-        .stat-card:hover {
-          background: rgba(45,212,191,0.07); border-color: rgba(45,212,191,0.2);
-          transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.35);
-        }
-        .stat-icon {
-          width: 52px; height: 52px; border-radius: 14px;
-          background: rgba(45,212,191,0.14);
-          display: flex; align-items: center; justify-content: center;
-        }
-
-        /* ── Trust bar ── */
-        /* Trust bar removed */
-
-        /* ════ RESPONSIVE ════════════════════════════════════════════════ */
-
-        /* Tablet landscape / small desktop: ≤1024px */
-        @media (max-width: 1024px) {
-          .cat-grid { grid-template-columns: repeat(4, 1fr); }
-          .stats-grid { grid-template-columns: repeat(2, 1fr); }
-          .popular-tools-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        }
-
-        /* Tablet portrait: ≤768px */
-        @media (max-width: 768px) {
-          .hero-section-inner { padding: 64px 20px 52px !important; }
-          .section-wrap { padding-left: 20px !important; padding-right: 20px !important; }
-          .cat-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
-          .cat-card { padding: 14px 8px; }
-          .search-submit-btn .btn-label { display: none; }
-          .search-submit-btn { padding: 10px 14px; }
-          .hero-h1 { letter-spacing: -0.015em !important; }
-          .popular-tools-grid { grid-template-columns: repeat(1, 1fr); gap: 16px; }
-        }
-
-        /* Mobile: ≤480px */
-        @media (max-width: 480px) {
-          .hero-section-inner { padding: 52px 16px 40px !important; }
-          .section-wrap { padding-left: 16px !important; padding-right: 16px !important; }
-          .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 7px; }
-          .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
-          .stat-card { padding: 24px 14px 20px; border-radius: 16px; }
-          .search-input { font-size: 13px; padding: 13px 8px; }
-          .search-submit-btn { padding: 9px 12px; font-size: 13px; }
-          .badge-pill { font-size: 11.5px !important; padding: 6px 14px !important; }
-          .popular-tools-grid { grid-template-columns: repeat(1, 1fr); gap: 12px; }
-        }
-
-        /* Large desktop: ≥1440px */
-        @media (min-width: 1440px) {
-          .hero-content { max-width: 960px !important; }
-          .section-max { max-width: 1200px !important; }
-        }
-      `}</style>
-
-      {/* ══ HERO ════════════════════════════════════════════════════════ */}
-      <section className="mesh-bg grid-lines" style={{ position: "relative", overflow: "visible" }}>
-        <div className="hero-section-inner" style={{ padding: "88px 32px 72px" }}>
-          {ORBS.map((o, i) => <FloatingOrb key={i} {...o} />)}
-
-          <div className="hero-content" style={{ maxWidth: 860, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 2 }}>
-
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="badge-pill"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: "rgba(45,212,191,0.1)", border: "1px solid rgba(45,212,191,0.24)",
-                borderRadius: 100, padding: "7px 18px",
-                fontSize: 13, fontWeight: 500, color: "#2dd4bf", marginBottom: 28,
-              }}
-            >
-              <span className="pulse-dot" />
-              100% Free • No Sign-up Required • Works Offline
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              className="hero-h1"
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              style={{
-                fontSize: "clamp(36px, 7vw, 78px)",
-                fontWeight: 800, lineHeight: 1.08,
-                marginBottom: 18, fontFamily: "'Sora', sans-serif",
-                letterSpacing: "-0.025em",
-              }}
-            >
-              All-in-One Online Tools.
-              <br />
-              <span className="gradient-text">100+ Free Tools for PDF, Image & More.</span>
-            </motion.h1>
-
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.25 }}
-              style={{
-                fontSize: "clamp(14px, 2vw, 17px)",
-                color: "rgba(226,232,240,0.6)", maxWidth: 520, margin: "0 auto 40px", lineHeight: 1.72,
-              }}
-            >
-              100+ free tools to simplify your work. Fast, private, and always available.
-              Built for{" "}
-              <strong style={{ color: "#e2e8f0", fontWeight: 700 }}>developers, creators, students</strong>,
-              {" "}and everyday productivity.
-            </motion.p>
-
-            {/* Search */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              ref={searchRef}
-              className="search-wrapper"
-            >
-              <div className="search-box">
-                <Search size={17} className="search-icon-left" />
-                <input
-                  className="search-input"
-                  type="text"
-                  placeholder="Search tools… (e.g., Background Remover, ZIP Extract)"
-                  value={searchQuery}
-                  onChange={(e) => handleSearch(e.target.value)}
-                  onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
-                  onKeyDown={handleKeyDown}
-                  autoComplete="off"
-                  spellCheck={false}
-                />
-                {searchQuery && (
-                  <button
-                    className="search-clear-btn"
-                    onClick={() => { setSearchQuery(""); setShowResults(false); }}
-                    aria-label="Clear search"
-                  >
-                    ✕
-                  </button>
-                )}
-                <button className="search-submit-btn" aria-label="Search tools">
-                  <Search size={14} />
-                  <span className="btn-label">Search</span>
+          {/* Search container */}
+          <div
+            ref={searchRef}
+            className="relative mx-auto mt-8 max-w-3xl"
+          >
+            <div className="flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg transition-all duration-200 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10">
+              <Search className="ml-1 mr-4 h-6 w-6 text-muted-foreground" />
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder="Search tools... (e.g. PDF split, image resize)"
+                className="w-full bg-transparent px-2 py-2 text-base text-foreground placeholder:text-muted-foreground/70 focus:outline-none sm:text-base"
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+                onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
+                onKeyDown={handleKeyDown}
+                autoComplete="off"
+                spellCheck={false}
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => { setSearchQuery(""); setShowResults(false); }}
+                  className="mr-2 rounded-full p-1 text-muted-foreground/80 hover:bg-muted hover:text-foreground transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="h-4 w-4" />
                 </button>
+              )}
+              <div className="ml-2 hidden items-center sm:flex select-none">
+                <kbd className="pointer-events-none inline-flex h-7 select-none items-center gap-1 rounded border border-slate-200 bg-slate-50 px-2 font-mono text-[11px] font-semibold text-slate-400 shadow-sm">
+                  /
+                </kbd>
               </div>
+            </div>
 
-              {/* Dropdown */}
-              <AnimatePresence>
-                {showResults && searchResults.length > 0 && (
-                  <motion.div
-                    className="search-dropdown"
-                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                    transition={{ duration: 0.16 }}
-                  >
-                    {searchResults.slice(0, 6).map((tool, i) => (
+            {/* Autocomplete Dropdown - Clean & Standardized */}
+            {showResults && searchResults.length > 0 && (
+              <div className="absolute left-0 right-0 z-50 mt-1.5 max-h-[300px] overflow-y-auto rounded-xl border border-slate-200 bg-popover text-popover-foreground shadow-xl">
+                <div className="space-y-0.5 p-1.5">
+                  {searchResults.slice(0, 6).map((tool, i) => {
+                    const catName = getToolCategoryName(tool.id);
+                    return (
                       <button
                         key={tool.id}
-                        className={`dropdown-item${selectedIndex === i ? " active" : ""}`}
+                        className={`w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
+                          selectedIndex === i
+                            ? "bg-primary text-primary-foreground"
+                            : "hover:bg-muted text-foreground"
+                        }`}
                         onClick={() => handleSelectTool(tool.path)}
                         onMouseEnter={() => setSelectedIndex(i)}
                         aria-label={`Open ${tool.name}`}
-                        style={{ borderBottom: i < Math.min(searchResults.length, 6) - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}
                       >
-                        <div style={{
-                          width: 38, height: 38, borderRadius: 9, flexShrink: 0,
-                          background: "rgba(45,212,191,0.11)",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                        }}>
-                          <Search size={14} style={{ color: "#2dd4bf" }} />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 2 }}>{tool.name}</div>
-                          <div style={{ fontSize: 12, color: "rgba(226,232,240,0.42)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        <div className="min-w-0 flex-1">
+                          <div className="font-semibold truncate">{tool.name}</div>
+                          <div className={`text-xs truncate mt-0.5 ${
+                            selectedIndex === i ? "text-primary-foreground/80" : "text-muted-foreground"
+                          }`}>
                             {tool.description}
                           </div>
                         </div>
-                        <ArrowRight size={13} style={{ color: "rgba(226,232,240,0.26)", flexShrink: 0 }} />
+                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ml-2 flex-shrink-0 ${
+                          selectedIndex === i ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"
+                        }`}>
+                          {catName.split(" ")[0]}
+                        </span>
                       </button>
-                    ))}
-                    {searchResults.length > 6 && (
-                      <div style={{ padding: "10px 18px", textAlign: "center", fontSize: 12.5, color: "rgba(226,232,240,0.36)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                        +{searchResults.length - 6} more results
-                      </div>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Popular Searches Quick Links */}
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm">
+              <span className="text-muted-foreground font-medium">Popular:</span>
+              {POPULAR_SEARCHES.map((ps) => (
+                <button
+                  key={ps.name}
+                  onClick={() => navigate(ps.path)}
+                  className="rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 hover:shadow-sm px-3 py-1 transition-colors border border-blue-100 text-xs font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-100"
+                >
+                  {ps.name}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Simple Features panel */}
+          <div className="mt-16 grid gap-6 sm:grid-cols-3 text-left">
+            {STATS.map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.title}
+                  className="rounded-lg border border-border bg-card p-5 shadow-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded bg-primary/10 text-primary">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-bold text-foreground">{stat.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{stat.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
-
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(to top, #080d18, transparent)", pointerEvents: "none" }} />
-      </section>
-
-      {/* ══ POPULAR TOOLS ════════════════════════════════════════════════ */}
-      <section className="section-wrap" style={{ padding: "0 32px 44px" }}>
-        <div className="section-max" style={{ maxWidth: 1080, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <h2 style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 700, marginBottom: 8, fontFamily: "'Sora', sans-serif" }}>
-              Popular Tools
-            </h2>
-            <p style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "rgba(226,232,240,0.6)" }}>
-              The most used tools by thousands of users daily
-            </p>
-          </div>
-          <div className="popular-tools-grid">
-            {POPULAR_TOOLS.map(({ icon: Icon, title, sub, path }) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                onClick={() => navigate(path)}
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  borderRadius: 16,
-                  padding: 24,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                  transition: "all 0.2s ease",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-                  e.currentTarget.style.borderColor = "rgba(45,212,191,0.28)";
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <div style={{
-                  width: 48, height: 48, borderRadius: 12,
-                  background: "rgba(45,212,191,0.1)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <Icon size={22} style={{ color: "#2dd4bf" }} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>{title}</h3>
-                  <p style={{ fontSize: 13, color: "rgba(226,232,240,0.5)", lineHeight: 1.5 }}>{sub}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 32 }}>
-            <button
-              onClick={() => navigate("/categories")}
-              style={{
-                padding: "12px 32px",
-                borderRadius: 12,
-                border: "1px solid rgba(45,212,191,0.4)",
-                background: "transparent",
-                color: "#2dd4bf",
-                fontWeight: 600,
-                fontSize: 14,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(45,212,191,0.1)";
-                e.currentTarget.style.borderColor = "rgba(45,212,191,0.6)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "rgba(45,212,191,0.4)";
-              }}
-            >
-              View All Tools
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ STATS ════════════════════════════════════════════════════ */}
-      <section
-        className="section-wrap"
-        style={{ padding: "44px 32px 88px", background: "linear-gradient(180deg, #080d18 0%, #0b1322 55%, #f1f5f9 100%)" }}
-      >
-        <div className="section-max" style={{ maxWidth: 1080, margin: "0 auto" }}>
-          <div className="stats-grid">
-            {STATS.map(({ icon: Icon, value, label }, i) => (
-              <motion.div
-                key={label}
-                className="stat-card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 * i, duration: 0.5 }}
-              >
-                <div className="stat-icon">
-                  <Icon size={22} style={{ color: "#2dd4bf" }} />
-                </div>
-                <div style={{
-                  fontSize: "clamp(30px, 4vw, 46px)",
-                  fontWeight: 800, color: "#e2e8f0",
-                  fontFamily: "'Sora', sans-serif", lineHeight: 1, letterSpacing: "-0.025em",
-                }}>
-                  {value}
-                </div>
-                <div style={{ fontSize: 13.5, color: "rgba(226,232,240,0.46)", fontWeight: 500 }}>
-                  {label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-    </div>
+      </div>
+    </section>
   );
 };
+
 export default HeroSection;
