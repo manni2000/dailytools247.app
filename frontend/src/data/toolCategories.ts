@@ -229,6 +229,7 @@ export const toolCategories: ToolCategory[] = [
       { id: "dns-lookup", name: "DNS Lookup", description: "Query DNS records for domains", path: "/dns-lookup", isAvailable: true },
       { id: "ssl-checker", name: "SSL Certificate Checker", description: "Check SSL validity and expiry", path: "/ssl-checker", isAvailable: true },
       { id: "website-ping", name: "Website Ping Test", description: "Test website availability", path: "/website-ping", isAvailable: true },
+      { id: "ping-test", name: "Ping Test", description: "Test network latency and response time", path: "/ping-test", isAvailable: true },
       { id: "website-screenshot", name: "Website Screenshot", description: "Capture full-page website screenshots", path: "/website-screenshot", isAvailable: true },
     ],
   },

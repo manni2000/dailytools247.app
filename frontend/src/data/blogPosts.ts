@@ -1055,7 +1055,7 @@ export const blogPosts: BlogPost[] = [
           { label: "Base64 Encoder/Decoder", path: "/base64-tool" },
           { label: "Base64 Image Converter", path: "/base64-image" },
           { label: "Hash Generator", path: "/hash-generator" },
-          { label: "URL Encoder/Decoder", path: "/url-encoder-decoder" },
+          { label: "URL Encoder/Decoder", path: "/url-encoder" },
         ],
       },
       {

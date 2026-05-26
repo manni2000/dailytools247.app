@@ -106,6 +106,7 @@ const Footer = () => {
     { name: "SSL Certificate Checker", path: "/ssl-checker" },
     { name: "Website Ping Test", path: "/website-ping" },
     { name: "Ping Test", path: "/ping-test" },
+    { name: "Website Screenshot", path: "/website-screenshot" },
   ];
 
   const imageTools = [
@@ -125,6 +126,7 @@ const Footer = () => {
     { name: "Image DPI Checker", path: "/image-dpi-checker" },
     { name: "Favicon Generator", path: "/favicon-generator" },
     { name: "EXIF Viewer", path: "/exif-viewer" },
+    { name: "Image ↔ Base64", path: "/image-base64" },
   ];
 
   const financeTools = [
@@ -143,7 +145,7 @@ const Footer = () => {
     { name: "Budget Planner", path: "/budget-planner" },
     { name: "Stock CAGR Calculator", path: "/stock-cagr-calculator" },
     { name: "Mutual Fund Calculator", path: "/mutual-fund-calculator" },
-    { name: "Lump Sum Calculator", path: "/lump-sum-calculator" },
+    { name: "Lumpsum Calculator", path: "/lumpsum-calculator" },
     { name: "SIP Calculator", path: "/sip-calculator" },
     { name: "ROI Calculator", path: "/roi-calculator" },
   ];
@@ -157,7 +159,6 @@ const Footer = () => {
     { name: "Lorem Ipsum Generator", path: "/lorem-ipsum-generator" },
     { name: "Cron Generator", path: "/cron-generator" },
     { name: "HTTP Header Checker", path: "/http-header-checker" },
-    { name: "Website Screenshot", path: "/website-screenshot" },
     { name: "Token Calculator", path: "/token-calculator" },
     { name: "API Response Formatter", path: "/api-response-formatter" },
     { name: "JSON to TypeScript", path: "/json-to-typescript-interface" },
@@ -196,7 +197,7 @@ const Footer = () => {
     { name: "Remove Spaces", path: "/remove-spaces" },
     { name: "Line Sorter", path: "/line-sorter" },
     { name: "Duplicate Remover", path: "/duplicate-remover" },
-    { name: "Markdown to HTML", path: "/markdown-html" },
+    { name: "Markdown to HTML", path: "/markdown-to-html" },
     { name: "Text Summarizer", path: "/text-summarizer" },
     { name: "Text Diff Checker", path: "/text-diff" },
   ];

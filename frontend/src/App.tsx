@@ -324,7 +324,7 @@ const AnimatedRoutes = () => {
           {/* Developer Tools */}
           <Route path="/json-formatter" element={<JSONFormatterTool />} />
           <Route path="/regex-tester" element={<RegexTesterTool />} />
-          <Route path="/url-encoder-decoder" element={<URLEncoderTool />} />
+          <Route path="/url-encoder" element={<URLEncoderTool />} />
           <Route path="/color-converter" element={<ColorConverterTool />} />
           <Route path="/lorem-ipsum-generator" element={<LoremGeneratorTool />} />
           <Route path="/jwt-decoder" element={<JWTDecoderTool />} />

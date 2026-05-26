@@ -1,13 +1,13 @@
-# dailytools247 - 130+ Free Online Tools Platform
+# dailytools247 - 160+ Free Online Tools Platform
 
-A comprehensive web application providing **130+ free online tools** for image processing, PDF editing, video conversion, text utilities, finance calculators, SEO optimization, and more. Built with Node.js/Express backend and React frontend with TypeScript.
+A comprehensive web application providing **160+ free online tools** for image processing, PDF editing, video conversion, text utilities, finance calculators, SEO optimization, and more. Built with Node.js/Express backend and React frontend with TypeScript.
 
 ## 🎯 Overview
 
-Dailytools247 is a modern, feature-rich platform that offers a wide variety of utility tools organized into 14 categories. Whether you need to compress images, merge PDFs, convert videos, generate passwords, calculate EMIs, or optimize SEO - we've got you covered with professional-grade tools that work entirely in your browser.
+Dailytools247 is a modern, feature-rich platform that offers a wide variety of utility tools organized into 17 categories. Whether you need to compress images, merge PDFs, convert videos, generate passwords, calculate EMIs, or optimize SEO - we've got you covered with professional-grade tools that work entirely in your browser.
 
 ### ✨ Key Features
-- **130+ Tools** across 14 categories
+- **160+ Tools** across 17 categories
 - **Modern UI** with React, TypeScript, and Tailwind CSS
 - **SEO-Friendly URLs** for better discoverability
 - **Responsive Design** works on all devices
@@ -18,44 +18,46 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 
 ## 📊 Tool Statistics
 
-- **Total Tools**: 131
-- **Categories**: 14
-- **Image Tools**: 16
-- **PDF Tools**: 13
+- **Total Tools**: 168
+- **Categories**: 17
+- **Image Tools**: 15
+- **PDF Tools**: 16
 - **Video Tools**: 5
 - **SEO Tools**: 11
 - **Audio Tools**: 5
 - **Text Tools**: 9
 - **Security Tools**: 13
 - **Date & Time Tools**: 5
-- **Developer Tools**: 18
-- **Internet Tools**: 6
+- **Developer Tools**: 20
+- **Internet Tools**: 7
 - **Education Tools**: 9
-- **Finance Tools**: 16
+- **Finance Tools**: 18
+- **Govt Legal Tools**: 12
 - **ZIP Tools**: 4
 - **Social Media Tools**: 7
+- **E-commerce Tools**: 10
+- **Email Marketing Tools**: 10
 
 ## 🚀 Features
 
-### Image Tools (16 Tools)
-- **QR Code Generator** - Generate QR codes from URLs or text
+### Image Tools (15 Tools)
 - **QR Code Scanner** - Scan and decode QR codes from images
 - **PNG to JPG Converter** - Convert PNG images to JPG format with quality control
 - **JPG to PNG Converter** - Convert JPG images to PNG with transparency support
 - **WebP to PNG Converter** - Convert WebP images to PNG for better compatibility
 - **PNG to WebP Converter** - Convert PNG images to WebP for web optimization
+- **WebP to JPG Converter** - Convert WebP images to JPG with adjustable quality
+- **JPG to WebP Converter** - Convert JPG images to WebP for better compression
 - **Image Compressor** - Compress images while maintaining quality
 - **Image Resize Tool** - Resize images to any dimension
 - **Image Crop Tool** - Crop images with custom dimensions
-- **Background Remover** - AI-powered background removal from images
 - **Image to PDF** - Convert multiple images to PDF document
-- **Image to Word** - Convert images to Word with OCR
 - **Image ↔ Base64** - Convert images to/from Base64
 - **Image DPI Checker** - Check image DPI and print sizes
 - **EXIF Metadata Viewer** - View photo metadata and camera info
 - **Favicon Generator** - Create favicons from images
 
-### PDF Tools (13 Tools)
+### PDF Tools (16 Tools)
 - **PDF Merge** - Combine multiple PDFs into one
 - **PDF Split** - Extract pages from PDF
 - **PDF to Image** - Convert PDF pages to images
@@ -69,6 +71,9 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **PDF Unlocker** - Remove password from PDFs
 - **PDF Page Remover** - Remove specific pages from PDF
 - **PDF Rotate Pages** - Rotate PDF pages
+- **PDF Reorder Pages** - Reorder pages in PDF documents
+- **PDF Add Signature** - Add signature to PDF documents
+- **Crop PDF** - Crop margins from PDF pages
 
 ### SEO Tools (11 Tools)
 - **Meta Title & Description Generator** - Generate SEO-optimized meta titles and descriptions
@@ -130,7 +135,7 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Countdown Timer** - Create countdown to any date
 - **World Time** - View current time across different time zones worldwide
 
-### Developer Tools (18 Tools)
+### Developer Tools (20 Tools)
 - **JSON Formatter** - Format and validate JSON
 - **Regex Tester** - Test regular expressions
 - **JWT Decoder** - Decode and inspect JWT tokens
@@ -149,13 +154,16 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Dockerfile Generator** - Generate optimized Dockerfiles for containerization
 - **cURL to Axios Converter** - Convert cURL commands to multiple programming languages
 - **HTTP Status Code Explainer** - Comprehensive guide to HTTP status codes
+- **HTML Validator** - Validate and check HTML code for errors
+- **CSS Validator** - Validate and check CSS code for errors
 
-### Internet Tools (6 Tools)
+### Internet Tools (7 Tools)
 - **IP Address Lookup** - Get info about any IP address
 - **User-Agent Parser** - Parse browser user-agent strings
 - **DNS Lookup** - Query DNS records for domains
 - **SSL Certificate Checker** - Check SSL validity and expiry
 - **Website Ping Test** - Test website availability
+- **Ping Test** - Test network latency and response time
 - **Website Screenshot** - Capture full-page website screenshots
 
 ### Education Tools (9 Tools)
@@ -169,7 +177,7 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Study Timetable Generator** - Create personalized study schedules with break times
 - **MCQ Generator from Text** - Generate multiple choice questions from text or create custom questions
 
-### Finance Tools (16 Tools)
+### Finance Tools (18 Tools)
 - **EMI Calculator** - Calculate loan EMI payments
 - **GST Calculator** - Calculate GST amounts
 - **Salary Calculator** - Convert hourly, monthly, yearly salary
@@ -181,11 +189,27 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Invoice Generator** - Create professional invoices with PDF download
 - **Profit Margin Calculator** - Calculate gross margin, net margin, and markup
 - **Freelancer Rate Calculator** - Calculate optimal freelance rates
+- **Salary Breakup Generator** - Generate detailed salary breakup
+- **Budget Planner** - Create and analyze monthly budget
 - **Stock CAGR Calculator** - Calculate compound annual growth rate
 - **Mutual Fund Calculator** - Calculate mutual fund returns with SIP and lumpsum
 - **Lumpsum Calculator** - Calculate lumpsum investment returns
-- **Budget Planner** - Create and analyze monthly budget
-- **Salary Breakup Generator** - Generate detailed salary breakup
+- **SIP Calculator** - Calculate Systematic Investment Plan returns
+- **ROI Calculator** - Calculate Return on Investment and annualized returns
+
+### Govt Legal Tools (12 Tools)
+- **Passport/Aadhaar Photo Resizer** - Resize photos for passport and Aadhaar under 50KB
+- **PDF Compressor** - Compress PDF files for document submission
+- **PDF Merge** - Combine multiple PDFs into one document
+- **PDF Split** - Extract pages from PDF documents
+- **PDF Password Protector** - Add password protection to PDF files
+- **PDF Rotate Pages** - Rotate PDF pages to correct orientation
+- **PDF to Image** - Convert PDF pages to JPG/PNG images
+- **Image to PDF** - Convert images to PDF documents
+- **PNG to JPG Converter** - Convert PNG photos to JPG format
+- **JPG to PNG Converter** - Convert JPG photos to PNG format
+- **Signature Maker** - Draw and create digital signatures
+- **Document Template Generator** - Generate legal document and agreement templates
 
 ### ZIP Tools (4 Tools)
 - **Create ZIP** - Create ZIP from multiple files
@@ -201,6 +225,30 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Link-in-Bio Generator** - Create link-in-bio pages
 - **WhatsApp Status Generator** - Create perfect WhatsApp status images
 - **Meme Generator** - Create memes with custom text
+
+### E-commerce Tools (10 Tools)
+- **Background Remover** - Remove background from product images with AI
+- **QR Code Generator** - Generate QR codes for products
+- **White Background Adder** - Add white background to product images
+- **Bulk Image Resizer** - Resize multiple images at once for e-commerce
+- **Watermark Adder** - Add watermarks to protect product images
+- **Image Color Enhancer** - Enhance colors in product photos
+- **Shadow Adder** - Add professional shadows to product images
+- **Barcode Generator** - Generate barcodes for products
+- **GST Invoice Generator** - Create GST-compliant invoices
+- **GST/Margin/EMI Calculator** - Calculate GST, profit margins, and EMI
+
+### Email Marketing Tools (10 Tools)
+- **Email Subject Line Generator** - Generate engaging email subject lines with dynamic scoring
+- **Email Signature Generator** - Build professional HTML signatures for your emails
+- **HTML Email Previewer** - Preview HTML emails on desktop/mobile and check rendering issues
+- **Spam Score Checker** - Analyze your email subject & body for spam risk indicators
+- **Email Template Builder** - Design responsive, inline-styled HTML templates
+- **Email Header Analyzer** - Trace routing hops, delays, and authentication records from raw headers
+- **SPF Record Generator** - Construct Sender Policy Framework records and check active DNS
+- **DKIM Generator** - Generate RSA public/private keys and DKIM TXT records
+- **DMARC Generator** - Configure DMARC validation rules and verify active DNS records
+- **Mailto Link Generator** - Quickly compose pre-filled mailto URLs and code tags
 
 ## 🔧 Tools API Architecture
 
