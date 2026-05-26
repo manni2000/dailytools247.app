@@ -177,11 +177,11 @@ const APIDocs = () => {
       <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-8 sm:mb-12 px-2 relative">
             <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.02]">
-             Developer API
+             API Documentation
           </div>
           <div className="relative z-10">
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-              Toolbox API for Developers
+              Dailytools247 API for Developers
             </h1>
             <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-2 leading-relaxed">
               Integrate powerful image processing, text manipulation, and utility tools directly into your applications. 
