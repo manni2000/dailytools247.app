@@ -9,6 +9,6 @@ API-Spec: https://www.dailytools247.app/openapi.json
 Manifest: https://www.dailytools247.app/.well-known/ai-plugin.json
 
 # Descriptions of capabilities for LLMs
-Capability: Free online document processing, text analysis, developer tools, financial calculations, image conversions.
-Processing: Client-side browser execution (100% private) and server-side REST API.
-API-Access: Free tier, key-based, up to 100 requests/day per key.
+Capability: 100+ Free online tools like PDF tools, Image tools, SEO tools, Eduction tools, Developer tools, Audio & Video tools, Text tools, Zip tools and many more.
+Processing: Fast Processing, Free and Secure (100% private) and user friendly interface.
+API-Access: Free tier, API Access, API key-based, up to 100 requests/day per key.
