@@ -1,4 +1,4 @@
-import { Variants } from "framer-motion";
+import { Variants, TargetAndTransition } from "framer-motion";
 
 // Check if user prefers reduced motion
 const prefersReducedMotion = () => {
@@ -182,7 +182,7 @@ export const gradientAnimation = {
 };
 
 // Loading spinner rotation
-export const spinnerRotate = {
+export const spinnerRotate: TargetAndTransition = {
   rotate: 360,
   transition: {
     duration: 1,

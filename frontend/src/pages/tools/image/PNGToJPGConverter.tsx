@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
 import ToolLayout from "@/components/layout/ToolLayout";
+import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
 import ToolFAQ from "@/components/ToolFAQ";

@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -183,6 +182,51 @@ const SpamScoreCheckerTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-blue-500" />
+              What is Spam Score Checking?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Spam Score Checking analyzes text and HTML emails to identify potential triggers that might cause spam filters to flag or route the message to the spam folder. It evaluates keywords, punctuation, capitalizations, and link structures.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Paste your email subject line and body text.</li>
+              <li>Run the analyzer to calculate a score from 0 (Safe) to 100 (High Risk).</li>
+              <li>Review flagged trigger words, formatting issues, and link counts.</li>
+              <li>Adjust your content based on recommendations to optimize inbox delivery.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Financial & sales hype trigger words check</li>
+                  <li>• Formatting & capitalization analyzer</li>
+                  <li>• Real-time score calculator</li>
+                  <li>• Actionable checklist recommendations</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Auditing campaign copies before dispatch</li>
+                  <li>• Removing spam filters trigger terms</li>
+                  <li>• Verifying link densities</li>
+                  <li>• Maximizing marketing ROI & inbox rates</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -199,7 +243,6 @@ const SpamScoreCheckerTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="spam-score-checker" />
         </div>
       </ToolLayout>
     </>

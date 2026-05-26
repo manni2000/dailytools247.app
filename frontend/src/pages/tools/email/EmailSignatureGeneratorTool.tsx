@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -450,6 +449,51 @@ const EmailSignatureGeneratorTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <User className="h-5 w-5 text-blue-500" />
+              What is an Email Signature?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              An Email Signature is a block of personalized text, links, and images placed at the end of an email. It provides professional branding, contact info, and links to websites or social profiles.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Choose a layout template (Classic, Modern, Minimalist, Creative).</li>
+              <li>Fill in personal details, company name, contact info, and website links.</li>
+              <li>Add profile image URLs and social media links.</li>
+              <li>Copy the generated signature as rich text or raw HTML to configure in Gmail, Outlook, or Apple Mail.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Custom design layouts & styles</li>
+                  <li>• Custom brand colors & palettes</li>
+                  <li>• Social media link integration</li>
+                  <li>• Live preview and HTML output</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Corporate professional communications</li>
+                  <li>• Consistent team branding</li>
+                  <li>• Marketing call-to-actions</li>
+                  <li>• Easy contact details sharing</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -466,7 +510,6 @@ const EmailSignatureGeneratorTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="email-signature-generator" />
         </div>
       </ToolLayout>
     </>

@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -284,6 +283,51 @@ const DMARCGeneratorTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-blue-500" />
+              What is DMARC?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Domain-based Message Authentication, Reporting, and Conformance (DMARC) is an email authentication protocol. It builds on the SPF and DKIM protocols to block fraudulent senders, protect domain ownership, and provide detailed reporting on email traffic.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Specify your domain and configure your authentication alignment settings.</li>
+              <li>Set a policy action (None to monitor, Quarantine for spam, or Reject to discard).</li>
+              <li>Provide email addresses to receive aggregate and forensic reports.</li>
+              <li>Publish the generated DMARC TXT record in your DNS settings to enforce policy rules.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Custom policy configuration</li>
+                  <li>• DNS lookup for existing DMARC records</li>
+                  <li>• Live DNS record validation</li>
+                  <li>• Formatted TXT record builder</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Stopping email phishing & spoofing campaigns</li>
+                  <li>• Auditing domain-wide sender sources</li>
+                  <li>• Meeting modern deliverability standards</li>
+                  <li>• Monitoring third-party mail vendor security</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -300,7 +344,6 @@ const DMARCGeneratorTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="dmarc-generator" />
         </div>
       </ToolLayout>
     </>

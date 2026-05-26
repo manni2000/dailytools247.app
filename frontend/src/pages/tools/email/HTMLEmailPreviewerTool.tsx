@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -14,13 +13,14 @@ const defaultPresetHtml = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome Newsletter</title>
 </head>
 <body style="margin:0; padding:0; background-color:#f4f4f5; font-family:sans-serif;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#f4f4f5; padding:30px 0;">
     <tr>
-      <td align="center">
-        <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden;">
+      <td align="center" style="padding:10px;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden; max-width:600px; width:100%;">
           <tr>
             <td style="background-color:#4f46e5; padding:40px; text-align:center; color:#ffffff;">
               <h1 style="margin:0; font-size:28px;">Welcome to Acme Corp!</h1>
@@ -221,6 +221,7 @@ const HTMLEmailPreviewerTool = () => {
                     className="transition-all duration-300 bg-white shadow-inner rounded overflow-hidden"
                     style={{
                       width: viewportMode === "mobile" ? "375px" : "100%",
+                      maxWidth: "100%",
                       height: "400px",
                     }}
                   >
@@ -284,6 +285,51 @@ const HTMLEmailPreviewerTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Eye className="h-5 w-5 text-blue-500" />
+              What is HTML Email Previewing?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              HTML Email Previewing renders your raw HTML email templates in an isolated environment. It tests how the markup displays on different viewport sizes and analyzes compatibility issues across different email software.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Paste your raw email HTML code into the editor.</li>
+              <li>View the layout instantly in desktop or mobile frames.</li>
+              <li>Click Analyze to run a compatibility check.</li>
+              <li>Read suggestions on layout width, CSS usage, images, and HTML size constraints.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Isolated sandboxed iframe render</li>
+                  <li>• Interactive desktop/mobile viewport toggle</li>
+                  <li>• Real-time HTML size calculation</li>
+                  <li>• CSS compatibility checker</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Checking responsive mobile layouts</li>
+                  <li>• Avoiding Gmail 102KB email clipping</li>
+                  <li>• Identifying broken HTML syntax/tags</li>
+                  <li>• Reviewing image and link paths</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -300,7 +346,6 @@ const HTMLEmailPreviewerTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="html-email-previewer" />
         </div>
       </ToolLayout>
     </>

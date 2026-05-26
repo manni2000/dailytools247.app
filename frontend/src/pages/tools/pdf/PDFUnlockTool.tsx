@@ -20,7 +20,7 @@ const PDFUnlockTool = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [unlockedPdf, setUnlockedPdf] = useState<Blob | null>(null);
+  const [unlockedPdf, setUnlockedPdf] = useState<string | null>(null);
   const [unlockedFileName, setUnlockedFileName] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -70,9 +70,10 @@ const PDFUnlockTool = () => {
       
       if (response.ok) {
         const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
         const originalName = file.name.replace('.pdf', '');
         setUnlockedFileName(`${originalName}_unlocked.pdf`);
-        setUnlockedPdf(blob);
+        setUnlockedPdf(url);
       } else {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to unlock PDF');
@@ -88,17 +89,18 @@ const PDFUnlockTool = () => {
   const handleDownload = () => {
     if (!unlockedPdf) return;
     
-    const url = URL.createObjectURL(unlockedPdf);
     const a = document.createElement('a');
-    a.href = url;
+    a.href = unlockedPdf;
     a.download = unlockedFileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   const reset = () => {
+    if (unlockedPdf && unlockedPdf.startsWith('blob:')) {
+      URL.revokeObjectURL(unlockedPdf);
+    }
     setFile(null);
     setPassword("");
     setError(null);
@@ -231,7 +233,7 @@ const PDFUnlockTool = () => {
           <div className="flex justify-center mt-6 w-full">
             <EnhancedDownload
               data={unlockedPdf}
-              fileName={fileName.replace(/\.[^/.]+$/, "_unlocked.pdf")}
+              fileName={unlockedFileName}
               fileType="pdf"
               title="PDF Unlocked Successfully!"
               description="Your PDF has been unlocked and is ready for download."

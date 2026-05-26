@@ -5,7 +5,7 @@ import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
+import ToolHero from "@/components/ToolHero";
 
 const categoryColor = "250 85% 55%";
 
@@ -228,6 +228,51 @@ const MailtoLinkGeneratorTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Mail className="h-5 w-5 text-blue-500" />
+              What is a Mailto Link?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              A Mailto Link is a specialized hyperlink (`mailto:`) that opens the user's default email client pre-populated with recipient addresses, subject lines, CC/BCC targets, and body templates.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Input the primary email address and optional CC/BCC.</li>
+              <li>Write a default subject line and pre-filled body text.</li>
+              <li>Click generate to build the URL, HTML tag code, and Markdown syntax.</li>
+              <li>Test the mailto behavior directly or copy the generated code blocks for your site.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• To, CC, and BCC recipient fields</li>
+                  <li>• Automatic URL encoding for body text</li>
+                  <li>• HTML and Markdown code generation</li>
+                  <li>• In-browser mail client testing</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Simple contact links on websites</li>
+                  <li>• Pre-filled feedback form triggers</li>
+                  <li>• Direct support mail integrations</li>
+                  <li>• Pre-formatted email client templates</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -244,7 +289,6 @@ const MailtoLinkGeneratorTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="mailto-link-generator" />
         </div>
       </ToolLayout>
     </>

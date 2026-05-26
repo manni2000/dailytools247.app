@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -297,6 +296,7 @@ const EmailTemplateBuilderTool = () => {
                     className="transition-all duration-300 bg-white shadow-inner rounded overflow-hidden"
                     style={{
                       width: viewportMode === "mobile" ? "375px" : "100%",
+                      maxWidth: "100%",
                       height: "440px",
                     }}
                   >
@@ -322,6 +322,51 @@ const EmailTemplateBuilderTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <FileCode className="h-5 w-5 text-blue-500" />
+              What is Email Template Building?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Email Template Building allows you to visually design beautiful, responsive HTML email templates. It compiles structural elements (like banners, buttons, and callouts) into inline-styled HTML optimized for client rendering.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Choose a layout template (Newsletter, Promotional, Welcome, Transactional).</li>
+              <li>Customize text, subheaders, body paragraphs, button labels, and URLs.</li>
+              <li>Review the layout in real-time in desktop and mobile preview panes.</li>
+              <li>Copy the inline HTML or download it as a file to paste into your email service provider.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Dynamic layout presets</li>
+                  <li>• Custom content fields</li>
+                  <li>• Inline CSS compiler</li>
+                  <li>• Responsive viewport previews</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Designing monthly newsletters</li>
+                  <li>• Creating promotional/discount offers</li>
+                  <li>• Sending welcome onboarding templates</li>
+                  <li>• Crafting transactional/receipt layouts</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -338,7 +383,6 @@ const EmailTemplateBuilderTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="email-template-builder" />
         </div>
       </ToolLayout>
     </>

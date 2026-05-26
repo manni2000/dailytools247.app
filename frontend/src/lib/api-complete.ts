@@ -119,6 +119,7 @@ export const API_URLS = {
   DNS_LOOKUP: `/api/internet/dns-lookup`,
   SSL_CHECKER: `/api/internet/ssl-checker`,
   WEBSITE_PING: `/api/internet/website-ping`,
+  PING_TEST: `/api/internet/website-ping`,
   HTTP_STATUS: `/api/internet/http-status`,
   PORT_SCANNER: `/api/internet/port-scanner`,
   WHOIS: `/api/internet/whois`,

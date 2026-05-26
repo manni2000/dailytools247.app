@@ -9,7 +9,6 @@ import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { downloadText, downloadJSON } from "@/components/ui/download-utils";
-import SimilarTools from "@/components/SimilarTools";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -467,7 +466,6 @@ const SIPCalculatorTool = () => {
             answer: "Returns depend on the mutual fund scheme and market conditions. Historically, equity funds have delivered 12-15% annually over long periods, but past performance doesn't guarantee future returns."
         }
       ]} />
-      <SimilarTools currentToolSlug="sip-calculator" />
       </div>
     </ToolLayout>
       </>

@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -333,6 +332,51 @@ const EmailSubjectLineGeneratorTool = () => {
             </div>
           </motion.div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Mail className="h-5 w-5 text-blue-500" />
+              What is Email Subject Line Generation?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Email Subject Line Generation utilizes structured parameters and keyword matching to produce engaging, click-worthy subject lines. It helps marketers write subjects optimized for high open rates while avoiding spam filters.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Enter the main keywords or topic of your email.</li>
+              <li>Select your campaign category and brand tone.</li>
+              <li>Generate catchy options with estimated open-rate scores.</li>
+              <li>Paste custom subject lines into the tester to evaluate spam triggers and character lengths.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Topic-based subject line generator</li>
+                  <li>• Custom brand tone alignment</li>
+                  <li>• Real-time custom subject line tester</li>
+                  <li>• Detailed readability/open rate scoring</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Improving campaign open rates</li>
+                  <li>• A/B testing subject lines</li>
+                  <li>• Removing spam trigger words</li>
+                  <li>• Optimizing titles for mobile displays</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -349,8 +393,6 @@ const EmailSubjectLineGeneratorTool = () => {
               },
             ]}
           />
-          
-          <SimilarTools currentToolSlug="email-subject-line-generator" />
         </div>
       </ToolLayout>
     </>

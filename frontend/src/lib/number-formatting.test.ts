@@ -88,9 +88,8 @@ const amount = 5372829203;
 // console.log(`Large negative:             ${formatIndianCurrency(-5372829203)}`);
 
 // console.log('\n✅ All tests completed!\n');
-// console.log('Usage examples for components:');
-// console.log('─'.repeat(60));
-// console.log(`
+/*
+Usage examples for components:
 import { formatIndianCurrency } from '@/lib/number-formatting';
 
 // In your component:
@@ -101,7 +100,7 @@ import { formatIndianCurrency } from '@/lib/number-formatting';
 // With options:
 <p>{formatIndianCurrency(value, { decimals: 0 })}</p>
 <p>{formatIndianCurrency(value, { compact: true })}</p>
-`);
+*/
 
 describe("number formatting", () => {
   it("formats INR values using Indian digit grouping", () => {

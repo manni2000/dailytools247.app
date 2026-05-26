@@ -21,6 +21,15 @@ const CreateZipTool = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [zipUrl, setZipUrl] = useState<string | null>(null);
 
+  const reset = () => {
+    setFiles([]);
+    setZipName("archive");
+    if (zipUrl && zipUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(zipUrl);
+    }
+    setZipUrl(null);
+  };
+
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);

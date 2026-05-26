@@ -6,7 +6,6 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
-import SimilarTools from "@/components/SimilarTools";
 
 const categoryColor = "250 85% 55%";
 
@@ -225,6 +224,51 @@ const EmailHeaderAnalyzerTool = () => {
             </div>
           </div>
 
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <FileText className="h-5 w-5 text-blue-500" />
+              What is Email Header Analysis?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Email Header Analysis is the process of inspecting the metadata headers of an email message. These headers reveal the routing path, sender validation status (SPF, DKIM, DMARC), spam scores, and delivery delays.
+            </p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Open the raw source or original format of an email.</li>
+              <li>Copy all the header lines and paste them into the input text area.</li>
+              <li>Click Analyze to parse the routing history and security checks.</li>
+              <li>Review the security protocol statuses, relay hops, and potential delay points.</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Detailed routing path timeline</li>
+                  <li>• SPF, DKIM, and DMARC verification check</li>
+                  <li>• Basic sender and receiver metadata parsing</li>
+                  <li>• Server relay delay detection</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Investigating phishing or spoofed emails</li>
+                  <li>• Diagnosing email transit delays</li>
+                  <li>• Auditing server IPs and relays</li>
+                  <li>• Debugging email delivery and DNS settings</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
           <ToolFAQ
             faqs={[
               {
@@ -241,7 +285,6 @@ const EmailHeaderAnalyzerTool = () => {
               },
             ]}
           />
-          <SimilarTools currentToolSlug="email-header-analyzer" />
         </div>
       </ToolLayout>
     </>

@@ -9,7 +9,6 @@ import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { downloadText, downloadJSON } from "@/components/ui/download-utils";
-import SimilarTools from "@/components/SimilarTools";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -478,7 +477,6 @@ const ROICalculatorTool = () => {
             answer: "Profit is the absolute gain (Final - Initial). ROI is profit as a percentage of investment, allowing comparison across different investment sizes."
           }
         ]} />
-        <SimilarTools currentToolSlug="roi-calculator" />
         </div>
     </ToolLayout>
       </>

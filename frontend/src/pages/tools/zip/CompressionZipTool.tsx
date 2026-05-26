@@ -22,6 +22,16 @@ const CompressionZipTool = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [zipUrl, setZipUrl] = useState<string | null>(null);
 
+  const reset = () => {
+    setFiles([]);
+    setZipName("archive");
+    setCompressionLevel(6);
+    if (zipUrl && zipUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(zipUrl);
+    }
+    setZipUrl(null);
+  };
+
   const compressionLevels = [
     { value: 0, label: "Store (No compression)", description: "Fastest, largest file" },
     { value: 1, label: "Fastest", description: "Minimal compression" },
