@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -35,6 +37,7 @@ interface AnalyzerResult {
 }
 
 const EmailHeaderAnalyzerTool = () => {
+  const toolSeoData = getToolSeoMetadata('email-header-analyzer');
   const [rawHeaders, setRawHeaders] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalyzerResult | null>(null);
@@ -85,6 +88,11 @@ const EmailHeaderAnalyzerTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Email Header Analyzer",
+        toolSeoData?.description || "Paste raw email headers to trace routing server paths, transfer delays, and cryptographic authentication results.",
+        "email-header-analyzer"
+      )}
       <ToolLayout
         breadcrumbTitle="Email Header Analyzer"
         category="Email Marketing Tools"

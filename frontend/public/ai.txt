@@ -1,0 +1,14 @@
+# ai.txt - AI Crawler Instructions for DailyTools247
+# https://www.dailytools247.app/
+
+User-agent: *
+Allow: /
+Sitemap: https://www.dailytools247.app/sitemap.xml
+Info: https://www.dailytools247.app/llms.txt
+API-Spec: https://www.dailytools247.app/openapi.json
+Manifest: https://www.dailytools247.app/.well-known/ai-plugin.json
+
+# Descriptions of capabilities for LLMs
+Capability: Free online document processing, text analysis, developer tools, financial calculations, image conversions.
+Processing: Client-side browser execution (100% private) and server-side REST API.
+API-Access: Free tier, key-based, up to 100 requests/day per key.

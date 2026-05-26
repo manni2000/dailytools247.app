@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -17,6 +19,7 @@ interface DmarcResult {
 }
 
 const DMARCGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('dmarc-generator');
   const [domain, setDomain] = useState("");
   const [policy, setPolicy] = useState("none");
   const [subdomainPolicy, setSubdomainPolicy] = useState("none");
@@ -70,6 +73,11 @@ const DMARCGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "DMARC Record Generator & Checker",
+        toolSeoData?.description || "Build DMARC deployment policies, enable aggregate reports, and verify existing active records in DNS.",
+        "dmarc-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="DMARC Generator"
         category="Email Marketing Tools"

@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -18,6 +20,7 @@ interface SubjectResult {
 }
 
 const EmailSubjectLineGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('email-subject-line-generator');
   const [keywords, setKeywords] = useState("");
   const [category, setCategory] = useState("newsletter");
   const [tone, setTone] = useState("professional");
@@ -106,6 +109,11 @@ const EmailSubjectLineGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Email Subject Line Generator",
+        toolSeoData?.description || "Create catchy, high-converting subject lines tailored to your target audience.",
+        "email-subject-line-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="Email Subject Line Generator"
         category="Email Marketing Tools"

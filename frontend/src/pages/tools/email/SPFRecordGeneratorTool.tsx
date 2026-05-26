@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -17,6 +19,7 @@ interface SpfResult {
 }
 
 const SPFRecordGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('spf-record-generator');
   const [domain, setDomain] = useState("");
   const [mxHosts, setMxHosts] = useState(true);
   const [aHosts, setAHosts] = useState(true);
@@ -98,6 +101,11 @@ const SPFRecordGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "SPF Record Generator & Checker",
+        toolSeoData?.description || "Generate SPF records for your domain and check active DNS records to prevent email bouncebacks.",
+        "spf-record-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="SPF Record Generator"
         category="Email Marketing Tools"

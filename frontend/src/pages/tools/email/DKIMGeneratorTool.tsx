@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -19,6 +21,7 @@ interface DkimResult {
 }
 
 const DKIMGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('dkim-generator');
   const [domain, setDomain] = useState("");
   const [selector, setSelector] = useState("default");
   const [keyLength, setKeyLength] = useState("2048");
@@ -73,6 +76,11 @@ const DKIMGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "DKIM Record Generator",
+        toolSeoData?.description || "Generate public and private keys for DKIM and format them into DNS TXT records.",
+        "dkim-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="DKIM Generator"
         category="Email Marketing Tools"

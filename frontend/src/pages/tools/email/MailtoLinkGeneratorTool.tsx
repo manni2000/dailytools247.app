@@ -6,10 +6,13 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import { API_URLS } from "@/lib/api-complete";
 import ToolHero from "@/components/ToolHero";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
 const MailtoLinkGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('mailto-link-generator');
   const [to, setTo] = useState("hello@example.com");
   const [cc, setCc] = useState("");
   const [bcc, setBcc] = useState("");
@@ -56,6 +59,11 @@ const MailtoLinkGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Mailto Link Generator",
+        toolSeoData?.description || "Instantly compose pre-filled email mailto links with To, CC, BCC, Subject, and Body parameters.",
+        "mailto-link-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="Mailto Link Generator"
         category="Email Marketing Tools"

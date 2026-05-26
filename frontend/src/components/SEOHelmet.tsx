@@ -549,6 +549,11 @@ const SEOHelmet = ({
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={Array.isArray(finalKeywords) ? finalKeywords.join(', ') : ''} />
       <meta name="author" content="Dailytools247" />
+
+      {/* AI Agent Discovery Endpoints (GEO/SEO) */}
+      <link rel="alternate" type="application/json" title="API Specification" href="/openapi.json" />
+      <link rel="alternate" type="application/json" title="AI Plugin Manifest" href="/.well-known/ai-plugin.json" />
+      <link rel="index" type="text/plain" title="AI Instructions" href="/ai.txt" />
       <meta name="robots" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <meta name="googlebot" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />
       <meta name="bingbot" content={shouldNoindex ? "noindex,nofollow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"} />

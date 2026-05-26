@@ -6,10 +6,13 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
 const EmailSignatureGeneratorTool = () => {
+  const toolSeoData = getToolSeoMetadata('email-signature-generator');
   const [name, setName] = useState("John Doe");
   const [role, setRole] = useState("Marketing Director");
   const [company, setCompany] = useState("Acme Corporation");
@@ -92,6 +95,11 @@ const EmailSignatureGeneratorTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Email Signature Generator",
+        toolSeoData?.description || "Create modern, responsive HTML email signatures that copy directly into your email client.",
+        "email-signature-generator"
+      )}
       <ToolLayout
         breadcrumbTitle="Email Signature Generator"
         category="Email Marketing Tools"

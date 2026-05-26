@@ -2,6 +2,11 @@
 
 DailyTools247 provides 100+ free online tools including PDF, image, developer, and SEO tools. All tools are completely free to use with no signup required.
 
+## Developer & AI Agent Specifications
+- API Specification: /openapi.json
+- AI Assistant Manifest: /.well-known/ai-plugin.json
+- AI Crawler Rules: /ai.txt
+
 ## Important pages
 / - Main homepage with all tool categories
 /categories - Browse tools by category

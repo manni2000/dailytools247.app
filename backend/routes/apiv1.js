@@ -1861,4 +1861,19 @@ router.get('/health', (req, res) => {
   res.json({ success: true, version: '2.0.0', status: 'ok', timestamp: new Date().toISOString() });
 });
 
+router.get('/openapi.json', (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const specPath = path.join(__dirname, '../../frontend/public/openapi.json');
+    if (fs.existsSync(specPath)) {
+      const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'));
+      return res.json(spec);
+    }
+    return res.status(404).json({ success: false, error: 'OpenAPI specification not found' });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: 'Failed to load API specification: ' + err.message });
+  }
+});
+
 module.exports = router;

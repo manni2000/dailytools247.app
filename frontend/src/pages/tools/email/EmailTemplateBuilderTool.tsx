@@ -6,10 +6,13 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
 const EmailTemplateBuilderTool = () => {
+  const toolSeoData = getToolSeoMetadata('email-template-builder');
   const [layout, setLayout] = useState("newsletter");
   const [title, setTitle] = useState("Exciting Updates Ahead!");
   const [subtitle, setSubtitle] = useState("Here is what we have been building for you this month");
@@ -103,6 +106,11 @@ const EmailTemplateBuilderTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Email Template Builder",
+        toolSeoData?.description || "Create responsive, inline-styled HTML marketing email templates without writing code.",
+        "email-template-builder"
+      )}
       <ToolLayout
         breadcrumbTitle="Email Template Builder"
         category="Email Marketing Tools"

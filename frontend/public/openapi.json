@@ -1,0 +1,358 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DailyTools247 API",
+    "description": "Comprehensive set of free utility APIs for developers, including text analysis, formatting, security utilities, and financial calculations.",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://www.dailytools247.app/api/v1",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/text/word-count": {
+      "post": {
+        "summary": "Count words and analyze text statistics",
+        "description": "Calculates word count, character count (with/without spaces), sentence count, paragraph count, and estimated reading time.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text to analyze."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "words": { "type": "integer" },
+                        "characters": { "type": "integer" },
+                        "charactersNoSpaces": { "type": "integer" },
+                        "sentences": { "type": "integer" },
+                        "paragraphs": { "type": "integer" },
+                        "lines": { "type": "integer" },
+                        "readingTimeMinutes": { "type": "integer" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text/case-converter": {
+      "post": {
+        "summary": "Convert text case",
+        "description": "Converts input text to upper, lower, title, sentence, camel, pascal, snake, kebab, alternating, or inverse case.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "case": {
+                    "type": "string",
+                    "enum": ["upper", "lower", "title", "sentence", "camel", "pascal", "snake", "kebab", "alternating", "inverse"],
+                    "default": "upper"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "original": { "type": "string" },
+                        "converted": { "type": "string" },
+                        "case": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text/markdown-to-html": {
+      "post": {
+        "summary": "Convert Markdown to HTML",
+        "description": "Translates standard Markdown text elements (headings, bold, italic, code blocks, links, lists) into clean HTML nodes.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["markdown"],
+                "properties": {
+                  "markdown": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "html": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dev/json-formatter": {
+      "post": {
+        "summary": "Format, validate, or minify JSON data",
+        "description": "Cleans up and beautifies raw JSON strings, minifies them, or performs format validation with explicit error diagnostics.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["json"],
+                "properties": {
+                  "json": { "type": "string" },
+                  "action": {
+                    "type": "string",
+                    "enum": ["format", "minify", "validate"],
+                    "default": "format"
+                  },
+                  "indent": { "type": "integer", "default": 2 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "formatted": { "type": "string" },
+                        "valid": { "type": "boolean" },
+                        "action": { "type": "string" },
+                        "error": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dev/url-encoder": {
+      "post": {
+        "summary": "URL encode or decode string values",
+        "description": "Helper to safely encode query parameters or decode URL components using standard percent-encoding.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "action": {
+                    "type": "string",
+                    "enum": ["encode", "decode"],
+                    "default": "encode"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "input": { "type": "string" },
+                        "output": { "type": "string" },
+                        "action": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security/password-generator": {
+      "post": {
+        "summary": "Generate cryptographically secure passwords",
+        "description": "Creates random strings with custom lengths and character types, suitable for high-security applications.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "length": { "type": "integer", "default": 16 },
+                  "uppercase": { "type": "boolean", "default": true },
+                  "lowercase": { "type": "boolean", "default": true },
+                  "numbers": { "type": "boolean", "default": true },
+                  "symbols": { "type": "boolean", "default": true },
+                  "count": { "type": "integer", "default": 1 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "password": { "type": "string" },
+                        "passwords": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        "length": { "type": "integer" },
+                        "strength": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/finance/emi-calculator": {
+      "post": {
+        "summary": "Calculate Loan EMI details",
+        "description": "Computes monthly installments, total interest, and total payout details based on principal, rate, and tenure inputs.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["principal", "rate", "tenure"],
+                "properties": {
+                  "principal": { "type": "number", "description": "Principal amount." },
+                  "rate": { "type": "number", "description": "Annual interest rate (%)." },
+                  "tenure": { "type": "integer", "description": "Loan duration." },
+                  "tenureType": {
+                    "type": "string",
+                    "enum": ["months", "years"],
+                    "default": "months"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "emi": { "type": "number" },
+                        "totalPayment": { "type": "number" },
+                        "totalInterest": { "type": "number" },
+                        "principal": { "type": "number" },
+                        "rate": { "type": "number" },
+                        "tenure": { "type": "integer" },
+                        "tenureType": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

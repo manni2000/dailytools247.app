@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -58,6 +60,7 @@ interface AnalysisResult {
 }
 
 const HTMLEmailPreviewerTool = () => {
+  const toolSeoData = getToolSeoMetadata('html-email-previewer');
   const [htmlCode, setHtmlCode] = useState(defaultPresetHtml);
   const [viewportMode, setViewportMode] = useState<"desktop" | "mobile">("desktop");
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
@@ -102,6 +105,11 @@ const HTMLEmailPreviewerTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "HTML Email Previewer & Analyzer",
+        toolSeoData?.description || "Paste your HTML code, preview it across responsive screen sizes, and identify compatibility errors before sending.",
+        "html-email-previewer"
+      )}
       <ToolLayout
         breadcrumbTitle="HTML Email Previewer"
         category="Email Marketing Tools"

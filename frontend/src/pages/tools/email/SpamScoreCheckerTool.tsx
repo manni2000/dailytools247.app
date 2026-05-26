@@ -6,6 +6,8 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import ToolHero from "@/components/ToolHero";
 import { API_URLS } from "@/lib/api-complete";
+import { CategorySEO } from "@/components/ToolSEO";
+import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 
 const categoryColor = "250 85% 55%";
 
@@ -17,6 +19,7 @@ interface SpamCheckResult {
 }
 
 const SpamScoreCheckerTool = () => {
+  const toolSeoData = getToolSeoMetadata('spam-score-checker');
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
@@ -52,6 +55,11 @@ const SpamScoreCheckerTool = () => {
 
   return (
     <>
+      {CategorySEO.Email(
+        toolSeoData?.title || "Email Spam Score Checker",
+        toolSeoData?.description || "Scan your subject lines and email copy for words, links, and formatting that trigger spam filters.",
+        "spam-score-checker"
+      )}
       <ToolLayout
         breadcrumbTitle="Spam Score Checker"
         category="Email Marketing Tools"

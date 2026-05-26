@@ -321,4 +321,24 @@ export const CategorySEO = {
       toolSlug={toolSlug}
     />
   ),
+  Email: (toolName: string, description: string, toolSlug?: string) => (
+    <ToolSEO
+      toolName={toolName}
+      toolDescription={description}
+      category="Email Marketing Tools"
+      keywords={[
+        'email marketing tools',
+        'email generator',
+        'subject line generator',
+        'signature builder',
+        'spam score check',
+        'email previewer',
+        'spf generator',
+        'dkim generator',
+        'dmarc generator',
+        'mailto link generator'
+      ]}
+      toolSlug={toolSlug}
+    />
+  ),
 };
