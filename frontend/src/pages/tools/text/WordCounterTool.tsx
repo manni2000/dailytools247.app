@@ -39,197 +39,197 @@ const WordCounterTool = () => {
         "word-counter"
       )}
       <ToolLayout
-      breadcrumbTitle="Word Counter"
-      category="Text Tools"
-      categoryPath="/category/text"
-    >
-      {/* Keyword Tags Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-muted/50 via-background to-muted/30 rounded-xl border border-border p-6 mb-8"
+        breadcrumbTitle="Word Counter"
+        category="Text Tools"
+        categoryPath="/category/text"
       >
-        <div className="relative flex items-start gap-4">
+        <div className="space-y-8">
+          {/* Keyword Tags Section */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-            style={{
-              backgroundColor: `hsl(217 91% 60% / 0.15)`,
-              boxShadow: `0 8px 30px hsl(217 91% 60% / 0.3)`,
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-muted/50 via-background to-muted/30 rounded-xl border border-border p-6"
           >
-            <Type className="h-7 w-7" style={{ color: `hsl(217 91% 60%)` }} />
+            <div className="relative flex items-start gap-4">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
+                style={{
+                  backgroundColor: `hsl(217 91% 60% / 0.15)`,
+                  boxShadow: `0 8px 30px hsl(217 91% 60% / 0.3)`,
+                }}
+              >
+                <Type className="h-7 w-7" style={{ color: `hsl(217 91% 60%)` }} />
+              </motion.div>
+              <div>
+                <h2 className="text-2xl font-bold">Word Counter Free Online</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Count words, characters, sentences, and paragraphs instantly. Perfect for writers, bloggers, and content creators.
+                </p>
+                {/* Keyword Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
+                    word counter
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+                    character counter
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
+                    word count tool
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
+                    count words online
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
-          <div>
-            <h2 className="text-2xl font-bold">Word Counter Free Online</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Count words, characters, sentences, and paragraphs instantly. Perfect for writers, bloggers, and content creators.
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Text Input */}
+            <div className="lg:col-span-2">
+              <div className="relative">
+                <textarea
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  placeholder="Type or paste your text here..."
+                  className="input-tool min-h-[400px] resize-y font-mono text-sm"
+                />
+                <button
+                  onClick={handleCopy}
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground transition-colors hover:bg-secondary/80"
+                >
+                  {copied ? (
+                    <Check className="h-5 w-5 text-green-500" />
+                  ) : (
+                    <Copy className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Statistics</h3>
+              <div className="space-y-3">
+                <StatCard
+                  icon={Type}
+                  label="Characters"
+                  value={stats.characters.toLocaleString()}
+                  subValue={`${stats.charactersNoSpaces.toLocaleString()} without spaces`}
+                />
+                <StatCard
+                  icon={AlignLeft}
+                  label="Words"
+                  value={stats.words.toLocaleString()}
+                />
+                <StatCard
+                  icon={FileText}
+                  label="Sentences"
+                  value={stats.sentences.toLocaleString()}
+                />
+                <StatCard
+                  icon={Hash}
+                  label="Paragraphs"
+                  value={stats.paragraphs.toLocaleString()}
+                />
+                <StatCard
+                  icon={Hash}
+                  label="Lines"
+                  value={stats.lines.toLocaleString()}
+                />
+              </div>
+
+              <div className="mt-6 rounded-lg border border-border bg-muted/50 p-4">
+                <h4 className="mb-3 text-sm font-medium text-muted-foreground">
+                  Reading Time
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-2xl font-bold">{stats.readingTime}</p>
+                    <p className="text-xs text-muted-foreground">min read</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold">{stats.speakingTime}</p>
+                    <p className="text-xs text-muted-foreground">min speak</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Type className="h-5 w-5 text-blue-500" />
+              What is Word Counting?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Word counting analyzes text to count words, characters, sentences, and paragraphs. This is essential for meeting content requirements, tracking writing progress, and ensuring text meets length specifications.
             </p>
-            {/* Keyword Tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
-                word counter
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-                character counter
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-                word count tool
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-                count words online
-              </span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      <div className="grid gap-8 lg:grid-cols-3">
-        {/* Text Input */}
-        <div className="lg:col-span-2">
-          <div className="relative">
-            <textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Type or paste your text here..."
-              className="input-tool min-h-[400px] resize-y font-mono text-sm"
-            />
-            <button
-              onClick={handleCopy}
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground transition-colors hover:bg-secondary/80"
-            >
-              {copied ? (
-                <Check className="h-5 w-5 text-green-500" />
-              ) : (
-                <Copy className="h-5 w-5" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Statistics</h3>
-          <div className="space-y-3">
-            <StatCard
-              icon={Type}
-              label="Characters"
-              value={stats.characters.toLocaleString()}
-              subValue={`${stats.charactersNoSpaces.toLocaleString()} without spaces`}
-            />
-            <StatCard
-              icon={AlignLeft}
-              label="Words"
-              value={stats.words.toLocaleString()}
-            />
-            <StatCard
-              icon={FileText}
-              label="Sentences"
-              value={stats.sentences.toLocaleString()}
-            />
-            <StatCard
-              icon={Hash}
-              label="Paragraphs"
-              value={stats.paragraphs.toLocaleString()}
-            />
-            <StatCard
-              icon={Hash}
-              label="Lines"
-              value={stats.lines.toLocaleString()}
-            />
-          </div>
-
-          <div className="mt-6 rounded-lg border border-border bg-muted/50 p-4">
-            <h4 className="mb-3 text-sm font-medium text-muted-foreground">
-              Reading Time
-            </h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-2xl font-bold">{stats.readingTime}</p>
-                <p className="text-xs text-muted-foreground">min read</p>
+            
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Paste or enter your text</li>
+              <li>The tool analyzes the content</li>
+              <li>Counts words, characters, sentences</li>
+              <li>Displays detailed statistics</li>
+            </ol>
+            
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Count Metrics</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Word count</li>
+                  <li>• Character count</li>
+                  <li>• Sentence count</li>
+                  <li>• Paragraph count</li>
+                </ul>
               </div>
-              <div>
-                <p className="text-2xl font-bold">{stats.speakingTime}</p>
-                <p className="text-xs text-muted-foreground">min speak</p>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Meeting length requirements</li>
+                  <li>• Essay word limits</li>
+                  <li>• Social media limits</li>
+                  <li>• SEO content optimization</li>
+                </ul>
               </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* FAQ Section */}
+          <ToolFAQ faqs={[
+            {
+              question: "What counts as a word?",
+              answer: "Words are typically defined as sequences of characters separated by spaces or punctuation. Hyphenated words and contractions may be counted differently by different tools."
+            },
+            {
+              question: "Do spaces count as characters?",
+              answer: "Character count typically includes spaces, but some tools offer options to include or exclude them. Check your requirements to know which count to use."
+            },
+            {
+              question: "How are sentences counted?",
+              answer: "Sentences are counted by detecting sentence-ending punctuation (., !, ?). Abbreviations with periods may be miscounted. Review results for accuracy."
+            },
+            {
+              question: "Why is word count important for SEO?",
+              answer: "Word count affects SEO as search engines prefer comprehensive content. Too short may lack depth, too long may be overwhelming. Aim for optimal length for your topic."
+            },
+            {
+              question: "Can I count words in multiple languages?",
+              answer: "Word counting works for most languages, but accuracy may vary. Some languages don't use spaces between words, which can affect count accuracy."
+            }
+          ]} />
         </div>
-
-        {/* Tool Definition Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="rounded-xl border border-border bg-card p-6"
-        >
-          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-            <Type className="h-5 w-5 text-blue-500" />
-            What is Word Counting?
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            Word counting analyzes text to count words, characters, sentences, and paragraphs. This is essential for meeting content requirements, tracking writing progress, and ensuring text meets length specifications.
-          </p>
-          
-          <h4 className="font-semibold mb-2">How It Works</h4>
-          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
-            <li>Paste or enter your text</li>
-            <li>The tool analyzes the content</li>
-            <li>Counts words, characters, sentences</li>
-            <li>Displays detailed statistics</li>
-          </ol>
-          
-          <div className="grid sm:grid-cols-2 gap-4 mt-4">
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Count Metrics</h5>
-              <ul className="text-sm text-blue-800 space-y-1">
-                <li>• Word count</li>
-                <li>• Character count</li>
-                <li>• Sentence count</li>
-                <li>• Paragraph count</li>
-              </ul>
-            </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
-              <ul className="text-sm text-green-800 space-y-1">
-                <li>• Meeting length requirements</li>
-                <li>• Essay word limits</li>
-                <li>• Social media limits</li>
-                <li>• SEO content optimization</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="mt-8">
-        {/* FAQ Section */}
-        <ToolFAQ faqs={[
-          {
-            question: "What counts as a word?",
-            answer: "Words are typically defined as sequences of characters separated by spaces or punctuation. Hyphenated words and contractions may be counted differently by different tools."
-          },
-          {
-            question: "Do spaces count as characters?",
-            answer: "Character count typically includes spaces, but some tools offer options to include or exclude them. Check your requirements to know which count to use."
-          },
-          {
-            question: "How are sentences counted?",
-            answer: "Sentences are counted by detecting sentence-ending punctuation (., !, ?). Abbreviations with periods may be miscounted. Review results for accuracy."
-          },
-          {
-            question: "Why is word count important for SEO?",
-            answer: "Word count affects SEO as search engines prefer comprehensive content. Too short may lack depth, too long may be overwhelming. Aim for optimal length for your topic."
-          },
-          {
-            question: "Can I count words in multiple languages?",
-            answer: "Word counting works for most languages, but accuracy may vary. Some languages don't use spaces between words, which can affect count accuracy."
-          }
-        ]} />
-      </div>
-    </ToolLayout>
+      </ToolLayout>
       </>
   );
 };
