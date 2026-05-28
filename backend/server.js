@@ -1,6 +1,6 @@
 // Suppress dotenvx and logging messages
 const originalConsoleLog = console.log;
-console.log = () => {};
+console.log = () => { };
 require('dotenv').config();
 // Restore console.log but filter out unwanted messages
 console.log = (message, ...args) => {
@@ -247,13 +247,18 @@ app.get('/', (_req, res) => {
         </div>
 
         <div class="footer">
-            <p>© 2026 DailyTools247 | Built with ❤️ and Node.js</p>
+            <p>© 2026 DailyTools247 | Built with ❤️</p>
             <p>Server Time: ${new Date().toLocaleString()}</p>
         </div>
     </div>
 </body>
 </html>
   `);
+});
+
+app.get('/robots.txt', (_req, res) => {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /\n');
 });
 
 app.get('/api/health', cacheMiddleware('health', 30), (_req, res) => {
@@ -314,13 +319,13 @@ app.use((_req, res, next) => {
   if (!_req.url.startsWith('/api')) {
     res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
   }
-  
+
   res.setHeader('Last-Modified', new Date().toUTCString());
-  
+
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1; mode=block');
-  
+
   next();
 });
 
@@ -336,7 +341,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }
   }));
-  
+
   app.get('*', (_req, res) => {
     res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

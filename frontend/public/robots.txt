@@ -64,6 +64,7 @@ Allow: /
 Sitemap: https://www.dailytools247.app/sitemap.xml
 
 # AI Engine Signposts
-Info: https://www.dailytools247.app/llms.txt
-API-Spec: https://www.dailytools247.app/openapi.json
-Manifest: https://www.dailytools247.app/.well-known/ai-plugin.json
+# Info: https://www.dailytools247.app/llms.txt
+# API-Spec: https://www.dailytools247.app/openapi.json
+# Manifest: https://www.dailytools247.app/.well-known/ai-plugin.json
+
