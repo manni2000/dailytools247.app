@@ -258,7 +258,7 @@ app.get('/', (_req, res) => {
 
 app.get('/robots.txt', (_req, res) => {
   res.type('text/plain');
-  res.send('User-agent: *\nDisallow: /\n');
+  res.send('User-agent: *\nDisallow:\n');
 });
 
 app.get('/api/health', cacheMiddleware('health', 30), (_req, res) => {

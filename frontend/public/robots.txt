@@ -51,7 +51,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-User-agent: GoogleExtendedBot
+User-agent: Google-Extended
 Allow: /
 
 User-agent: cohere-ai

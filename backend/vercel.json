@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
+    },
+    {
       "src": "/(.*)",
       "dest": "/server.js"
     }
