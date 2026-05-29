@@ -10,7 +10,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "0 80% 55%";
 
 const Base64Tool = () => {
-  const toolSeoData = getToolSeoMetadata('base64-encoder-decoder');
+  const toolSeoData = getToolSeoMetadata('base64-encoder');
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -57,7 +57,7 @@ const Base64Tool = () => {
       {CategorySEO.Security(
         toolSeoData?.title || "Base64 Encode/Decode",
         toolSeoData?.description || "Encode or decode Base64 strings",
-        "base64-tool"
+        "base64-encoder"
       )}
       <ToolLayout
       breadcrumbTitle="Base64 Encoder/Decoder"

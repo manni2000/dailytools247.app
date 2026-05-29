@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, Download, Database, RefreshCw, FileText, AlertCircle, Code, Sparkles, Settings, Lightbulb } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -10,7 +11,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "210 80% 55%";
 
 const SQLQueryBeautifierTool = () => {
-  const toolSeoData = getToolSeoMetadata('sql-query-beautifier');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-sql-query-beautifier');
   const [sqlInput, setSqlInput] = useState('');
   const [formattedSQL, setFormattedSQL] = useState('');
   const [indentSize, setIndentSize] = useState(2);
@@ -26,7 +28,7 @@ const SQLQueryBeautifierTool = () => {
     'WHEN', 'THEN', 'ELSE', 'END', 'IF', 'BEGIN', 'COMMIT', 'ROLLBACK', 'TRANSACTION'
   ];
 
-  const beautifySQL = () => {
+  const runGenerationLogic = () => {
     let formatted = sqlInput.trim();
     
     // Remove extra whitespace and normalize line breaks
@@ -129,6 +131,17 @@ const SQLQueryBeautifierTool = () => {
     setSqlInput(exampleSQL);
   };
 
+  const beautifySQL = () => {
+    if (!sqlInput.trim()) return;
+    setIsProcessing(true);
+    setSqlOutput("");
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const minifySQL = () => {
     const minified = formattedSQL
       .replace(/\s+/g, ' ')
@@ -147,12 +160,12 @@ const SQLQueryBeautifierTool = () => {
   return (
     <>
       {CategorySEO.Dev(
-        toolSeoData?.title || "SQL Query Beautifier",
+        toolSeoData?.title || "AI SQL Query Beautifier",
         toolSeoData?.description || "Format and beautify SQL queries with customizable indentation and keyword formatting",
-        "sql-query-beautifier"
+        "ai-sql-query-beautifier"
       )}
       <ToolLayout
-      breadcrumbTitle="SQL Query Beautifier"
+      breadcrumbTitle="AI SQL Query Beautifier"
       category="Developer Tools"
       categoryPath="/category/dev"
     >
@@ -191,7 +204,7 @@ const SQLQueryBeautifierTool = () => {
               <Database className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">SQL Query Beautifier</h2>
+              <h2 className="text-2xl font-bold">AI SQL Query Beautifier</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Format and beautify SQL queries with customizable indentation and keyword formatting
               </p>
@@ -233,7 +246,7 @@ const SQLQueryBeautifierTool = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={beautifySQL}
-                disabled={!sqlInput.trim()}
+                disabled={isProcessing || !sqlInput.trim()}
                 className="flex-1 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
@@ -297,7 +310,7 @@ const SQLQueryBeautifierTool = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={beautifySQL}
-                disabled={!sqlInput.trim()}
+                disabled={isProcessing || !sqlInput.trim()}
                 className="rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
@@ -467,3 +480,7 @@ const SQLQueryBeautifierTool = () => {
 };
 
 export default SQLQueryBeautifierTool;
+
+function setSqlOutput(arg0: string) {
+  throw new Error("Function not implemented.");
+}

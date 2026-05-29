@@ -100,8 +100,8 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '4',
-        toolSlug: 'background-remover',
-        toolName: 'Background Remover',
+        toolSlug: 'ai-background-remover',
+        toolName: ' AI Background Remover',
         description: 'Remove background for products'
       }
     ]
@@ -126,7 +126,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '3',
-        toolSlug: 'budget-planner',
+        toolSlug: 'ai-budget-planner',
         toolName: 'Budget Planner',
         description: 'Plan monthly budget'
       }
@@ -134,7 +134,7 @@ export const categoryHubs: HubConfig[] = [
     subClusters: [
       {
         name: 'Loan Planning',
-        tools: ['emi-calculator', 'emi-comparison', 'budget-planner']
+        tools: ['emi-calculator', 'emi-comparison', 'ai-budget-planner']
       },
       {
         name: 'Investment',
@@ -184,7 +184,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         name: 'Code Generation',
-        tools: ['cron-generator', 'dockerfile-generator', 'environment-variable-generator', 'postman-collection-generator']
+        tools: ['ai-cron-generator', 'ai-dockerfile-generator', 'environment-variable-generator', 'ai-postman-collection-generator']
       }
     ]
   },
@@ -228,7 +228,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '2',
-        toolSlug: 'text-summarizer',
+        toolSlug: 'ai-text-summarizer',
         toolName: 'Text Summarizer',
         description: 'Summarize long text'
       },
@@ -248,8 +248,8 @@ export const categoryHubs: HubConfig[] = [
     workflowSteps: [
       {
         step: '1',
-        toolSlug: 'background-remover',
-        toolName: 'Background Remover',
+        toolSlug: 'ai-background-remover',
+        toolName: 'AI Background Remover',
         description: 'Remove image background'
       },
       {
@@ -292,7 +292,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '3',
-        toolSlug: 'video-to-audio',
+        toolSlug: 'ai-video-to-audio',
         toolName: 'Video to Audio',
         description: 'Extract audio from video'
       }
@@ -301,18 +301,18 @@ export const categoryHubs: HubConfig[] = [
   {
     categoryId: 'seo',
     categoryName: 'SEO Tools',
-    hubToolSlug: 'meta-title-description-generator',
-    hubToolPath: '/meta-title-description-generator',
+    hubToolSlug: 'ai-meta-tag-generator',
+    hubToolPath: '/ai-meta-tag-generator',
     workflowSteps: [
       {
         step: '1',
-        toolSlug: 'meta-title-description-generator',
-        toolName: 'Meta Title Generator',
+        toolSlug: 'ai-meta-tag-generator',
+        toolName: 'Meta Tag Generator',
         description: 'Generate SEO meta tags'
       },
       {
         step: '2',
-        toolSlug: 'keyword-density-checker',
+        toolSlug: 'ai-keyword-density-checker',
         toolName: 'Keyword Density',
         description: 'Check keyword density'
       },
@@ -353,24 +353,24 @@ export const categoryHubs: HubConfig[] = [
   {
     categoryId: 'email',
     categoryName: 'Email Marketing Tools',
-    hubToolSlug: 'email-template-builder',
-    hubToolPath: '/email-template-builder',
+    hubToolSlug: 'ai-email-template-builder',
+    hubToolPath: '/ai-email-template-builder',
     workflowSteps: [
       {
         step: '1',
-        toolSlug: 'email-subject-line-generator',
+        toolSlug: 'ai-email-subject-line-generator',
         toolName: 'Email Subject Line Generator',
         description: 'Generate engaging subject lines'
       },
       {
         step: '2',
-        toolSlug: 'email-template-builder',
+        toolSlug: 'ai-email-template-builder',
         toolName: 'Email Template Builder',
         description: 'Build your HTML email template'
       },
       {
         step: '3',
-        toolSlug: 'spam-score-checker',
+        toolSlug: 'ai-spam-score-checker',
         toolName: 'Spam Score Checker',
         description: 'Check spam risk indicators of your email'
       },
@@ -384,11 +384,11 @@ export const categoryHubs: HubConfig[] = [
     subClusters: [
       {
         name: 'Email Generation',
-        tools: ['email-subject-line-generator', 'email-signature-generator', 'email-template-builder', 'mailto-link-generator']
+        tools: ['ai-email-subject-line-generator', 'ai-email-signature-generator', 'ai-email-template-builder', 'mailto-link-generator']
       },
       {
         name: 'Email Validation & Security',
-        tools: ['spam-score-checker', 'email-header-analyzer', 'spf-record-generator', 'dkim-generator', 'dmarc-generator']
+        tools: ['ai-spam-score-checker', 'ai-email-header-analyzer', 'spf-record-generator', 'dkim-generator', 'dmarc-generator']
       }
     ]
   }
@@ -396,18 +396,18 @@ export const categoryHubs: HubConfig[] = [
 
 // Cross-cluster linking configuration
 export const crossClusterLinks: Record<string, string[]> = {
-  'pdf-to-word': ['word-counter', 'text-summarizer'], // PDF → Text
+  'pdf-to-word': ['word-counter', 'ai-text-summarizer'], // PDF → Text
   'image-compressor': ['pdf-add-signature'], // Image → PDF
   'invoice-generator': ['pdf-merge'], // Finance → PDF
   'qr-code-generator': ['barcode-generator'], // E-commerce → E-commerce
   'word-counter': ['pdf-to-word'], // Text → PDF
-  'text-summarizer': ['pdf-to-word'], // Text → PDF
+  'ai-text-summarizer': ['pdf-to-word'], // Text → PDF
   'password-generator': ['hash-generator'], // Security → Security
   'json-formatter': ['jwt-decoder'], // Dev → Dev
-  'emi-calculator': ['budget-planner'], // Finance → Finance
+  'emi-calculator': ['ai-budget-planner'], // Finance → Finance
   'sip-calculator': ['lumpsum-calculator'], // Finance → Finance
-  'email-template-builder': ['html-email-previewer', 'spam-score-checker'], // Email → Email
-  'email-signature-generator': ['mailto-link-generator'], // Email → Email
+  'ai-email-template-builder': ['html-email-previewer', 'ai-spam-score-checker'], // Email → Email
+  'ai-email-signature-generator': ['mailto-link-generator'], // Email → Email
 };
 
 // Get hub configuration for a category

@@ -19,7 +19,7 @@ interface PasswordAnalysis {
 }
 
 export default function PasswordStrengthExplainerTool() {
-  const toolSeoData = getToolSeoMetadata('password-strength-explainer');
+  const toolSeoData = getToolSeoMetadata('ai-password-strength-explainer');
   const [password, setPassword] = useState('');
   const [analysis, setAnalysis] = useState<PasswordAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ export default function PasswordStrengthExplainerTool() {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URLS.BASE_URL}/api/security/password-strength-explainer/`, {
+      const response = await fetch(`${API_URLS.BASE_URL}/api/security/ai-password-strength-explainer/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,12 +97,12 @@ export default function PasswordStrengthExplainerTool() {
   return (
     <>
       {CategorySEO.Security(
-        toolSeoData?.title || "Password Strength Explainer",
+        toolSeoData?.title || "AI Password Strength Explainer",
         toolSeoData?.description || "Analyze password strength with detailed feedback and suggestions",
-        "password-strength-explainer"
+        "ai-password-strength-explainer"
       )}
       <ToolLayout
-      breadcrumbTitle="Password Strength Explainer"
+      breadcrumbTitle="AI Password Strength Explainer"
       category="Security Tools"
       categoryPath="/category/security"
     >
@@ -141,7 +141,7 @@ export default function PasswordStrengthExplainerTool() {
               <Shield className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Password Strength Explainer</h2>
+              <h2 className="text-2xl font-bold">AI Password Strength Explainer</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Analyze password strength with detailed feedback and suggestions
               </p>

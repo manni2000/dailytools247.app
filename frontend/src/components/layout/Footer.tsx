@@ -23,7 +23,7 @@ const Footer = () => {
     { name: "Image to PDF", path: "/image-to-pdf" },
     { name: "PDF to Word", path: "/pdf-to-word" },
     { name: "PDF to Image", path: "/pdf-to-image" },
-    { name: "Background Remover", path: "/background-remover" },
+    { name: "AI Background Remover", path: "/ai-background-remover" },
     { name: "Invoice Generator", path: "/invoice-generator" },
   ];
 
@@ -47,8 +47,8 @@ const Footer = () => {
   ];
 
   const seoTools = [
-    { name: "Meta Title & Description Generator", path: "/meta-title-description-generator" },
-    { name: "Keyword Density Checker", path: "/keyword-density-checker" },
+    { name: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
+    { name: "Keyword Density Checker", path: "/ai-keyword-density-checker" },
     { name: "Robots.txt Generator", path: "/robots-txt-generator" },
     { name: "Sitemap Validator", path: "/sitemap-validator" },
     { name: "Page Speed Checklist Generator", path: "/page-speed-checklist-generator" },
@@ -56,8 +56,8 @@ const Footer = () => {
     { name: "Broken Image Finder", path: "/broken-image-finder" },
     { name: "UTM Link Builder", path: "/utm-link-builder" },
     { name: "Domain Age Checker", path: "/domain-age-checker" },
-    { name: "Website Tech Stack Detector", path: "/tech-stack-detector" },
-    { name: "Page SEO Analyzer", path: "/page-seo-analyzer" },
+    { name: "Website Tech Stack Detector", path: "/ai-tech-stack-detector" },
+    { name: "Page SEO Analyzer", path: "/ai-page-seo-analyzer" },
   ];
 
   const zipTools = [
@@ -68,7 +68,7 @@ const Footer = () => {
   ];
 
   const videoTools = [
-    { name: "Video to Audio", path: "/video-to-audio" },
+    { name: "Video to Audio", path: "/ai-video-to-audio" },
     { name: "Video Trim", path: "/video-trim" },
     { name: "Video Speed Controller", path: "/video-speed" },
     { name: "Video Thumbnail Generator", path: "/video-thumbnail" },
@@ -77,7 +77,7 @@ const Footer = () => {
 
   const audioTools = [
     { name: "Audio Converter", path: "/audio-converter" },
-    { name: "Speech to Text", path: "/speech-to-text" },
+    { name: "Speech to Text", path: "/ai-speech-to-text" },
     { name: "Audio Trimmer", path: "/audio-trimmer" },
     { name: "Audio Merger", path: "/audio-merger" },
     { name: "Audio Speed Changer", path: "/audio-speed" },
@@ -89,14 +89,14 @@ const Footer = () => {
     { name: "Hash Generator", path: "/hash-generator" },
     { name: "Base64 Encoder", path: "/base64-encoder" },
     { name: "UUID Generator", path: "/uuid-generator" },
-    { name: "Password Strength Explainer", path: "/password-strength-explainer" },
+    { name: "Password Strength Explainer", path: "/ai-password-strength-explainer" },
     { name: "Data Breach Email Checker", path: "/data-breach-email-checker" },
     { name: "File Hash Comparison", path: "/file-hash-comparison" },
     { name: "EXIF Location Remover", path: "/exif-location-remover" },
-    { name: "Text Redaction", path: "/text-redaction" },
-    { name: "QR Phishing Scanner", path: "/qr-phishing-scanner" },
+    { name: "Text Redaction", path: "/ai-text-redaction" },
+    { name: "QR Phishing Scanner", path: "/ai-qr-phishing-scanner" },
     { name: "Secure Notes", path: "/secure-notes" },
-    { name: "URL Reputation Checker", path: "/url-reputation-checker" },
+    { name: "URL Reputation Checker", path: "/ai-url-reputation-checker" },
   ];
 
   const internetTools = [
@@ -121,7 +121,7 @@ const Footer = () => {
     { name: "Image Compressor", path: "/image-compressor" },
     { name: "Image Resize", path: "/image-resize" },
     { name: "Image Crop", path: "/image-crop" },
-    { name: "Background Remover", path: "/background-remover" },
+    { name: "AI Background Remover", path: "/ai-background-remover" },
     { name: "Image to PDF", path: "/image-to-pdf" },
     { name: "Image DPI Checker", path: "/image-dpi-checker" },
     { name: "Favicon Generator", path: "/favicon-generator" },
@@ -135,14 +135,14 @@ const Footer = () => {
     { name: "Salary Calculator", path: "/salary-calculator" },
     { name: "Currency Converter", path: "/currency-converter" },
     { name: "Startup Burn Rate Calculator", path: "/startup-burn-rate-calculator" },
-    { name: "SaaS Pricing Calculator", path: "/saas-pricing-calculator" },
+    { name: "SaaS Pricing Calculator", path: "/ai-saas-pricing-calculator" },
     { name: "EMI Comparison", path: "/emi-comparison" },
-    { name: "Tax Slab Analyzer", path: "/tax-slab-analyzer" },
+    { name: "Tax Slab Analyzer", path: "/ai-tax-slab-analyzer" },
     { name: "Invoice Generator", path: "/invoice-generator" },
     { name: "Profit Margin Calculator", path: "/profit-margin-calculator" },
     { name: "Freelancer Rate Calculator", path: "/freelancer-rate-calculator" },
     { name: "Salary Breakup Generator", path: "/salary-breakup-generator" },
-    { name: "Budget Planner", path: "/budget-planner" },
+    { name: "Budget Planner", path: "/ai-budget-planner" },
     { name: "Stock CAGR Calculator", path: "/stock-cagr-calculator" },
     { name: "Mutual Fund Calculator", path: "/mutual-fund-calculator" },
     { name: "Lumpsum Calculator", path: "/lumpsum-calculator" },
@@ -157,16 +157,16 @@ const Footer = () => {
     { name: "URL Encoder", path: "/url-encoder" },
     { name: "Color Palettes Generator", path: "/color-palettes" },
     { name: "Lorem Ipsum Generator", path: "/lorem-ipsum-generator" },
-    { name: "Cron Generator", path: "/cron-generator" },
+    { name: "Cron Generator", path: "/ai-cron-generator" },
     { name: "HTTP Header Checker", path: "/http-header-checker" },
     { name: "Token Calculator", path: "/token-calculator" },
     { name: "API Response Formatter", path: "/api-response-formatter" },
-    { name: "JSON to TypeScript", path: "/json-to-typescript-interface" },
-    { name: "SQL Query Beautifier", path: "/sql-query-beautifier" },
+    { name: "JSON to TypeScript", path: "/ai-json-to-typescript-interface" },
+    { name: "SQL Query Beautifier", path: "/ai-sql-query-beautifier" },
     { name: "JWT Token Expiry Calculator", path: "/jwt-token-expiry-calculator" },
     { name: "Environment Variable Generator", path: "/environment-variable-generator" },
-    { name: "Postman Collection Generator", path: "/postman-collection-generator" },
-    { name: "Dockerfile Generator", path: "/dockerfile-generator" },
+    { name: "Postman Collection Generator", path: "/ai-postman-collection-generator" },
+    { name: "Dockerfile Generator", path: "/ai-dockerfile-generator" },
     { name: "Curl to Axios Converter", path: "/curl-to-axios-converter" },
     { name: "HTTP Status Code Explainer", path: "/http-status-code-explainer" },
     { name: "HTML Validator", path: "/html-validator" },
@@ -178,11 +178,11 @@ const Footer = () => {
     { name: "CGPA to Percentage", path: "/cgpa-to-percentage" },
     { name: "LCM HCF Calculator", path: "/lcm-hcf-calculator" },
     { name: "Percentage Calculator", path: "/percentage-calculator" },
-    { name: "Unit Converter", path: "/unit-converter" },
+    { name: "Unit Converter", path: "/ai-unit-converter" },
     { name: "Compound Interest", path: "/compound-interest-calculator" },
     { name: "Simple Interest", path: "/simple-interest-calculator" },
-    { name: "Study Timetable Generator", path: "/study-timetable-generator" },
-    { name: "MCQ Generator", path: "/mcq-generator" },
+    { name: "Study Timetable Generator", path: "/ai-study-timetable-generator" },
+    { name: "MCQ Generator", path: "/ai-mcq-generator" },
     { name: "World Time", path: "/world-time" },
     { name: "Age Calculator", path: "/age-calculator" },
     { name: "Date Difference", path: "/date-difference" },
@@ -197,19 +197,19 @@ const Footer = () => {
     { name: "Remove Spaces", path: "/remove-spaces" },
     { name: "Line Sorter", path: "/line-sorter" },
     { name: "Duplicate Remover", path: "/duplicate-remover" },
-    { name: "Markdown to HTML", path: "/markdown-to-html" },
-    { name: "Text Summarizer", path: "/text-summarizer" },
+    { name: "Markdown to HTML", path: "/ai-markdown-to-html" },
+    { name: "Text Summarizer", path: "/ai-text-summarizer" },
     { name: "Text Diff Checker", path: "/text-diff" },
   ];
 
   const socialMediaTools = [
-    { name: "Hashtag Generator", path: "/hashtag-generator" },
-    { name: "Bio Generator", path: "/bio-generator" },
-    { name: "Caption Formatter", path: "/caption-formatter" },
+    { name: "Hashtag Generator", path: "/ai-hashtag-generator" },
+    { name: "Bio Generator", path: "/ai-bio-generator" },
+    { name: "Caption Formatter", path: "/ai-caption-formatter" },
     { name: "Line Break Generator", path: "/line-break-generator" },
     { name: "Link-in-Bio", path: "/link-in-bio" },
-    { name: "WhatsApp Status Generator", path: "/whatsapp-status-generator" },
-    { name: "Meme Generator", path: "/meme-generator" },
+    { name: "WhatsApp Status Generator", path: "/ai-whatsapp-status-generator" },
+    { name: "Meme Generator", path: "/ai-meme-generator" },
   ];
 
   const govtLegalTools = [
@@ -223,20 +223,20 @@ const Footer = () => {
     { name: "Barcode Generator", path: "/barcode-generator" },
     { name: "GST Invoice Generator", path: "/gst-invoice-generator" },
     { name: "Business Calculator", path: "/ecommerce-calculator" },
-    { name: "Shadow Adder", path: "/shadow-adder" },
+    { name: "Shadow Adder", path: "/ai-shadow-adder" },
     { name: "Watermark Adder", path: "/watermark-adder" },
     { name: "White Background Adder", path: "/white-background-adder" },
     { name: "Bulk Image Resizer", path: "/bulk-image-resizer" },
-    { name: "Image Color Enhancer", path: "/image-color-enhancer" },
+    { name: "Image Color Enhancer", path: "/ai-image-color-enhancer" },
   ];
 
   const emailTools = [
-    { name: "Email Subject Line Generator", path: "/email-subject-line-generator" },
-    { name: "Email Signature Generator", path: "/email-signature-generator" },
+    { name: "Email Subject Line Generator", path: "/ai-email-subject-line-generator" },
+    { name: "Email Signature Generator", path: "/ai-email-signature-generator" },
     { name: "HTML Email Previewer", path: "/html-email-previewer" },
-    { name: "Spam Score Checker", path: "/spam-score-checker" },
-    { name: "Email Template Builder", path: "/email-template-builder" },
-    { name: "Email Header Analyzer", path: "/email-header-analyzer" },
+    { name: "Spam Score Checker", path: "/ai-spam-score-checker" },
+    { name: "Email Template Builder", path: "/ai-email-template-builder" },
+    { name: "Email Header Analyzer", path: "/ai-email-header-analyzer" },
     { name: "SPF Record Generator", path: "/spf-record-generator" },
     { name: "DKIM Generator", path: "/dkim-generator" },
     { name: "DMARC Generator", path: "/dmarc-generator" },
@@ -256,32 +256,41 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex flex-col sm:items-start gap-4">
             <div className="flex flex-col sm:items-start -mt-2">
-            <div className="relative flex h-40 w-40 sm:h-48 sm:w-48 overflow-hidden ml-[-30px]">
-              <img
-                src="/dailytools247.webp"
-                alt="dailytools247 logo"
-                className="h-40 w-40 sm:h-48 sm:w-48 object-contain"
-                loading="lazy"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <Wrench className="h-20 w-20 sm:h-24 sm:w-24 text-primary hidden" />
-            </div>
-            <div className="flex flex-col sm:items-start sm:text-left -mt-8">
-              <span className="text-xl font-bold tracking-tight">
-                Daily<span className="text-primary">tools247</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                Free Online Tools
-              </span>
-              <p className="max-w-md text-sm text-muted-foreground mt-2">
-                100+ free online tools for images, PDFs, videos, text, and more. 
-                No signup required. 100% browser-based.
-              </p>
-            </div>
+              <div className="relative flex h-40 w-40 sm:h-48 sm:w-48 overflow-hidden ml-[-30px]">
+                <img
+                  src="/dailytools247.webp"
+                  alt="dailytools247 logo"
+                  className="h-40 w-40 sm:h-48 sm:w-48 object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <Wrench className="h-20 w-20 sm:h-24 sm:w-24 text-primary hidden" />
+              </div>
+              <div className="flex flex-col sm:items-start sm:text-left -mt-8">
+                <span className="text-xl font-bold tracking-tight">
+                  Daily<span className="text-primary">tools247</span>
+                </span>
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Free Online Tools
+                </span>
+                <p className="max-w-md text-sm text-muted-foreground mt-2">
+                  200+ free online tools for images, PDFs, videos, text, and developer workflows.
+                  No signup, no limits, 100% browser-local processing.
+                </p>
+                <div className="mt-4">
+                  <Link
+                    to="/categories"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground shadow hover:bg-primary/95 transition-all duration-300"
+                  >
+                    View All 200+ Tools
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -307,13 +316,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">PDF Tools</h4>
             <ul className="space-y-2">
-              {pdfTools.map(tool => (
+              {pdfTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {pdfTools.length > 5 && (
+                <li>
+                  <Link to="/category/pdf" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all PDF Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -321,13 +337,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Image Tools</h4>
             <ul className="space-y-2">
-              {imageTools.map(tool => (
+              {imageTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {imageTools.length > 5 && (
+                <li>
+                  <Link to="/category/image" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Image Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -335,13 +358,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Security Tools</h4>
             <ul className="space-y-2">
-              {securityTools.map(tool => (
+              {securityTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {securityTools.length > 5 && (
+                <li>
+                  <Link to="/category/security" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Security Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -349,13 +379,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Finance Tools</h4>
             <ul className="space-y-2">
-              {financeTools.map(tool => (
+              {financeTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {financeTools.length > 5 && (
+                <li>
+                  <Link to="/category/finance" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Finance Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -363,13 +400,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Govt Legal Tools</h4>
             <ul className="space-y-2">
-              {govtLegalTools.map(tool => (
+              {govtLegalTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {govtLegalTools.length > 5 && (
+                <li>
+                  <Link to="/category/govt-legal" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Legal Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -377,13 +421,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Developer Tools</h4>
             <ul className="space-y-2">
-              {devTools.map(tool => (
+              {devTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {devTools.length > 5 && (
+                <li>
+                  <Link to="/category/dev" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Dev Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -391,13 +442,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Education Tools</h4>
             <ul className="space-y-2">
-              {educationTools.map(tool => (
+              {educationTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {educationTools.length > 5 && (
+                <li>
+                  <Link to="/category/education" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Edu Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -405,13 +463,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Text Tools</h4>
             <ul className="space-y-2">
-              {textTools.map(tool => (
+              {textTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {textTools.length > 5 && (
+                <li>
+                  <Link to="/category/text" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Text Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -419,13 +484,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Video Tools</h4>
             <ul className="space-y-2">
-              {videoTools.map(tool => (
+              {videoTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {videoTools.length > 5 && (
+                <li>
+                  <Link to="/category/video" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Video Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -433,13 +505,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Audio Tools</h4>
             <ul className="space-y-2">
-              {audioTools.map(tool => (
+              {audioTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {audioTools.length > 5 && (
+                <li>
+                  <Link to="/category/audio" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Audio Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -447,13 +526,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Internet Tools</h4>
             <ul className="space-y-2">
-              {internetTools.map(tool => (
+              {internetTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {internetTools.length > 5 && (
+                <li>
+                  <Link to="/category/internet" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Internet Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -461,13 +547,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">SEO Tools</h4>
             <ul className="space-y-2">
-              {seoTools.map(tool => (
+              {seoTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {seoTools.length > 5 && (
+                <li>
+                  <Link to="/category/seo" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all SEO Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -475,13 +568,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">ZIP Tools</h4>
             <ul className="space-y-2">
-              {zipTools.map(tool => (
+              {zipTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {zipTools.length > 5 && (
+                <li>
+                  <Link to="/category/zip" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all ZIP Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -489,13 +589,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Social Media Tools</h4>
             <ul className="space-y-2">
-              {socialMediaTools.map(tool => (
+              {socialMediaTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {socialMediaTools.length > 5 && (
+                <li>
+                  <Link to="/category/social" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Social Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -503,13 +610,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">E-commerce Tools</h4>
             <ul className="space-y-2">
-              {ecommerceTools.map(tool => (
+              {ecommerceTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {ecommerceTools.length > 5 && (
+                <li>
+                  <Link to="/category/ecommerce" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all E-commerce Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -517,13 +631,20 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Email Marketing Tools</h4>
             <ul className="space-y-2">
-              {emailTools.map(tool => (
+              {emailTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
                   <Link to={tool.path} className="text-sm text-muted-foreground hover:text-foreground">
                     {tool.name}
                   </Link>
                 </li>
               ))}
+              {emailTools.length > 5 && (
+                <li>
+                  <Link to="/category/email" className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors flex items-center mt-1">
+                    View all Email Tools →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 

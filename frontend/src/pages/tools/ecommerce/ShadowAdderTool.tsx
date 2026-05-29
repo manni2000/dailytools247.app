@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 const categoryColor = "142 76% 36%";
 
 const ShadowAdderTool = () => {
-  const toolSeoData = getToolSeoMetadata('shadow-adder');
+  const toolSeoData = getToolSeoMetadata('ai-shadow-adder');
   const [image, setImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const [processedUrl, setProcessedUrl] = useState<string>("");
@@ -151,12 +151,12 @@ const ShadowAdderTool = () => {
   return (
     <>
       {CategorySEO.Ecommerce(
-        toolSeoData?.title || "Shadow Adder",
+        toolSeoData?.title || "AI Shadow Adder",
         toolSeoData?.description || "Add professional shadows to product images",
-        "shadow-adder"
+        "ai-shadow-adder"
       )}
       <ToolLayout
-      breadcrumbTitle="Shadow Adder"
+      breadcrumbTitle="AI Shadow Adder"
       category="Ecommerce Tools"
       categoryPath="/category/ecommerce"
       >
@@ -189,13 +189,13 @@ const ShadowAdderTool = () => {
               <ImageIcon className="h-7 w-7 text-primary" />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Professional Shadow Adder</h2>
+              <h2 className="text-2xl font-bold">Professional AI Shadow Adder</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Add professional drop shadows to product images for e-commerce. Customize blur, offset, opacity, and color for perfect product presentations.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">shadow adder</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI shadow adder</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">drop shadow</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">product shadow</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">image shadow effect</span>
@@ -403,7 +403,7 @@ const ShadowAdderTool = () => {
         >
           <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <Zap className="h-5 w-5 text-blue-500" />
-            Shadow Adder Explained
+            AI Shadow Adder Explained
           </h3>
           <p className="text-muted-foreground mb-4">
             Add professional drop shadows to product images to create depth and dimension. Perfect for e-commerce product photos, marketing materials, and design projects.

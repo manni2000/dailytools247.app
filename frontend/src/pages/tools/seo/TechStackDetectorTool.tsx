@@ -33,7 +33,7 @@ interface TechStack {
 }
 
 const TechStackDetectorTool = () => {
-  const toolSeoData = getToolSeoMetadata('tech-stack-detector');
+  const toolSeoData = getToolSeoMetadata('ai-tech-stack-detector');
   const [url, setUrl] = useState("");
   const [techStack, setTechStack] = useState<TechStack | null>(null);
   const [isScanning, setIsScanning] = useState(false);
@@ -91,7 +91,7 @@ const TechStackDetectorTool = () => {
           description: `Technology stack detected for ${data.result.url}`,
         });
       } else {
-        throw new Error(data.error || "Tech stack detection failed");
+        throw new Error(data.error || "AI Tech stack detection failed");
       }
     } catch (error) {
       toast({
@@ -175,12 +175,12 @@ const TechStackDetectorTool = () => {
   return (
     <>
       {CategorySEO.SEO(
-        toolSeoData?.title || "Website Tech Stack Detector",
+        toolSeoData?.title || "Website AI Tech Stack Detector",
         toolSeoData?.description || "Analyze websites to detect the technology stack, frameworks, and tools being used",
-        "tech-stack-detector"
+        "ai-tech-stack-detector"
       )}
       <ToolLayout
-      breadcrumbTitle="Tech Stack Detector"
+      breadcrumbTitle="AI Tech Stack Detector"
       category="SEO Tools"
       categoryPath="/category/seo"
     >
@@ -219,7 +219,7 @@ const TechStackDetectorTool = () => {
               <Code className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Tech Stack Detector</h2>
+              <h2 className="text-2xl font-bold">AI Tech Stack Detector</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Analyze websites to discover the technology stack and tools.
               </p>
@@ -498,10 +498,10 @@ const TechStackDetectorTool = () => {
         >
           <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <Code className="h-5 w-5 text-blue-500" />
-            What is Tech Stack Detection?
+            What is AI Tech Stack Detection?
           </h3>
           <p className="text-muted-foreground mb-4">
-            Tech stack detection analyzes a website to identify the technologies, frameworks, and tools used to build it. This is useful for competitor analysis, technology research, and understanding site architecture.
+            AI Tech stack detection analyzes a website to identify the technologies, frameworks, and tools used to build it. This is useful for competitor analysis, technology research, and understanding site architecture.
           </p>
           
           <h4 className="font-semibold mb-2">How It Works</h4>
@@ -539,7 +539,7 @@ const TechStackDetectorTool = () => {
         {/* FAQ Section */}
         <ToolFAQ faqs={[
           {
-            question: "How does tech stack detection work?",
+            question: "How does AI tech stack detection work?",
             answer: "Detection analyzes HTTP headers, HTML source code, JavaScript files, CSS, and other responses to identify signatures of known technologies, frameworks, and libraries."
           },
           {
@@ -551,7 +551,7 @@ const TechStackDetectorTool = () => {
             answer: "Understanding competitor tech stacks helps identify industry standards, discover new tools, inform technology decisions, and gain competitive insights."
           },
           {
-            question: "Is tech stack detection accurate?",
+            question: "Is AI tech stack detection accurate?",
             answer: "Detection is generally accurate for popular technologies but may have false positives or miss newer or custom solutions. Use results as a guide, not absolute truth."
           },
           {

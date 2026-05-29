@@ -265,7 +265,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['image-converter', 'image-resize', 'png-to-jpg-converter', 'background-remover'],
+    relatedTools: ['image-converter', 'image-resize', 'png-to-jpg-converter', 'ai-background-remover'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Image Editor',
@@ -570,7 +570,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'calculate reading time online',
     ],
     category: 'Text Tools',
-    relatedTools: ['case-converter', 'text-summarizer', 'duplicate-remover'],
+    relatedTools: ['case-converter', 'ai-text-summarizer', 'duplicate-remover'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Analysis',
@@ -579,37 +579,31 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'meta-title-description-generator': {
-    slug: 'meta-title-description-generator',
-    title: 'Meta Title & Description Generator - SEO Tool Online Free',
-    description: 'Generate SEO-optimized meta titles and descriptions automatically. Perfect for WordPress, Shopify, and any website. Get suggestions with character counts and preview SERP appearance.',
+  'ai-meta-tag-generator': {
+    slug: 'ai-meta-tag-generator',
+    title: 'AI SEO Meta Description & Title Generator - Free Tag Maker',
+    description: 'Generate SEO-optimized meta titles and descriptions using AI. Perfect for SEO, WordPress, and Shopify. Instantly create click-through rate optimized tags and preview search snippets.',
     keywords: [
-      'meta title and description generator',
-      'meta title and description',
-      'generate meta title and description',
-      'meta title and description generator online',
-      'meta title and description generator free',
-      'free meta title and description generator',
-      'meta title description generator',
-      'meta title and description generator tool',
-      'meta title and description generator app',
-      'meta title and description generator for website optimization',
-      'meta title and description generator for search rankings',
-      'meta title and description generator for meta tags',
+      'ai meta tag generator',
+      'ai meta description generator',
+      'ai seo title generator',
+      'ai meta generator',
+      'ai metadata generator',
+      'generate meta tags with ai',
+      'ai seo generator',
+      'seo tag generator ai',
+      'ai meta tags writer',
+      'best ai seo meta generator'
     ],
     longTailKeywords: [
-      'how to generate meta title and description online free',
-      'best free meta title and description generator tool',
-      'meta title and description generator without software',
-      'meta title and description generator no signup',
-      'meta title and description generator in browser',
-      'fast and secure meta title and description generator',
-      'free online meta title and description generator for search rankings',
-      'meta title and description generator for meta tags',
-      'meta title and description generator for sitemaps',
-      'meta title and description generator for serp preview',
-      'generate meta titles and descriptions for seo',
-      'best meta description generator online',
+      'how to generate meta tags using ai',
+      'best free ai seo description writer',
+      'ai metadata generation tool for websites',
+      'free online ai meta description creator',
+      'generate click through rate optimized meta tags',
+      'ai tags generator for wordpress and shopify',
+      'free meta title and description writer online',
+      'ai search preview tag generator'
     ],
     category: 'SEO Tools',
     relatedTools: ['keyword-density', 'robots-txt', 'sitemap-validator'],
@@ -879,9 +873,9 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'background-remover': {
-    slug: 'background-remover',
-    title: 'Background Remover - Remove Image Backgrounds Online Free',
+  'ai-background-remover': {
+    slug: 'ai-background-remover',
+    title: 'AI Background Remover - Remove Image Backgrounds Online Free',
     description: 'Remove image backgrounds instantly with AI-powered technology. Convert to PNG with transparency. Perfect for product photos, portraits, and design projects.',
     keywords: [
       'background remover',
@@ -1516,37 +1510,27 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'text-summarizer': {
-    slug: 'text-summarizer',
-    title: 'Text Summarizer - Summarize Text Online Free',
-    description: 'Summarize long texts instantly using AI. Extract key points and create concise summaries. Perfect for research, articles, and documents.',
+  'ai-text-summarizer': {
+    slug: 'ai-text-summarizer',
+    title: 'AI Text Summarizer - Summarize Articles & Papers',
+    description: 'Summarize long articles, documents, notes, and research papers using AI-driven semantic relevance scoring.',
     keywords: [
-      'text summarizer',
-      'use text summarizer',
-      'text summarizer online',
-      'text summarizer free',
-      'free text summarizer',
-      'text summarizer tool',
-      'text summarizer app',
-      'text summarizer for writing',
-      'text summarizer for seo content',
-      'text summarizer for editing',
-      'summarize text online',
+      'ai text summarizer',
+      'summarize articles online',
+      'notes summarizer',
+      'research paper summarizer',
       'text summarization tool',
+      'ai text generator summary',
+      'pdf summarizer tool',
+      'summarize text ai',
     ],
     longTailKeywords: [
-      'best text summarizer tool for writers',
-      'how to use text summarizer for seo content',
-      'text summarizer for editing and analysis',
-      'free online text summarizer without signup',
-      'text summarizer in browser for documents',
-      'text summarizer for students and content creators',
-      'how to use text summarizer online free',
-      'best free text summarizer tool',
-      'text summarizer without software',
-      'text summarizer no signup',
-      'text summarizer in browser',
-      'fast and secure text summarizer',
+      'best free ai text summarizer online',
+      'generate summaries of research papers with ai',
+      'extract key points from document free',
+      'how to summarize article using ai',
+      'ai that summarizes books free',
+      'best website to summarize pdf online',
     ],
     category: 'Text Tools',
     relatedTools: ['word-counter', 'case-converter', 'duplicate-remover'],
@@ -1591,7 +1575,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure case converter',
     ],
     category: 'Text Tools',
-    relatedTools: ['text-summarizer', 'word-counter', 'duplicate-remover'],
+    relatedTools: ['ai-text-summarizer', 'word-counter', 'duplicate-remover'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Formatter',
@@ -1633,7 +1617,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure duplicate remover',
     ],
     category: 'Text Tools',
-    relatedTools: ['text-summarizer', 'case-converter', 'word-counter'],
+    relatedTools: ['ai-text-summarizer', 'case-converter', 'word-counter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Cleaner',
@@ -1759,7 +1743,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'free online image resizer for social media',
     ],
     category: 'Image Tools',
-    relatedTools: ['image-compressor', 'image-converter', 'background-remover'],
+    relatedTools: ['image-compressor', 'image-converter', 'ai-background-remover'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Image Editor',
@@ -1815,7 +1799,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     title: 'PDF Compressor Tool - Compress PDF Files for Government Documents',
     description: 'Compress PDF files for government applications, passport photos, and official documents. Reduce file size while maintaining quality for online submissions.',
     keywords: [
-      'pdf compressor', 
+      'pdf compressor',
       'compress pdf for government',
       'reduce pdf size online',
       'pdf file compressor',
@@ -2086,37 +2070,30 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'shadow-adder': {
-    slug: 'shadow-adder',
-    title: 'Shadow Adder - Add Drop Shadows to Product Images Online Free',
+  'ai-shadow-adder': {
+    slug: 'ai-shadow-adder',
+    title: 'AI Image Shadow Adder - Add Drop Shadows to Product Images Online',
     description: 'Add professional drop shadows to product images for e-commerce. Customize blur, offset, opacity, and color for perfect product presentations.',
     keywords: [
-      'shadow adder',
-      'drop shadow',
-      'product shadow',
-      'image shadow',
-      'shadow effect',
-      'add shadow to image',
-      'product image editor',
-      'ecommerce image tools',
-      'shadow generator',
-      'online shadow tool',
-      'free shadow tool',
-      'product photography',
-      'image effects',
-      'drop shadow creator',
+      'ai shadow adder',
+      'ai drop shadow generator',
+      'add professional drop shadow with ai',
+      'ai product shadow tool',
+      'online drop shadow adder',
+      'product photo shadow maker',
+      '3d shadow generator online',
+      'image shadow editor free',
     ],
     longTailKeywords: [
-      'add shadow to product images online',
-      'professional product photo editor',
-      'drop shadow generator for images',
-      'free online shadow adder tool',
-      'product photography effects',
-      'amazon product image tools',
-      'shadow effect for ecommerce',
+      'best free ai shadow adder for product images',
+      'add realistic drop shadows to photos online using ai',
+      'ai drop shadow generator for e-commerce listings',
+      'add drop shadow to product photo online free',
+      'how to make shadows in product pictures',
+      'best online image shadow adder tool',
     ],
     category: 'E-commerce Tools',
-    relatedTools: ['background-remover', 'image-compressor', 'image-resize'],
+    relatedTools: ['ai-background-remover', 'image-compressor', 'image-resize'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Design Tool',
@@ -2202,7 +2179,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure text diff checker',
     ],
     category: 'Text Tools',
-    relatedTools: ['text-summarizer', 'word-counter', 'case-converter'],
+    relatedTools: ['ai-text-summarizer', 'word-counter', 'case-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Analysis',
@@ -2244,7 +2221,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure line sorter',
     ],
     category: 'Text Tools',
-    relatedTools: ['text-summarizer', 'case-converter', 'duplicate-remover'],
+    relatedTools: ['ai-text-summarizer', 'case-converter', 'duplicate-remover'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Formatter',
@@ -2253,40 +2230,29 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'markdown-html': {
-    slug: 'markdown-html',
-    title: 'Markdown to HTML Converter - Convert Markdown Online Free',
-    description: 'Convert Markdown to HTML instantly. Support GitHub Flavored Markdown and custom styling. Perfect for documentation and content creation.',
+  'markdown-to-html': {
+    slug: 'markdown-to-html',
+    title: 'AI Markdown to HTML Converter - Format Markdown Code',
+    description: 'Convert, format, and preview Markdown files to styled HTML layouts using AI-optimized stylesheets.',
     keywords: [
-      'markdown to html converter',
-      'markdown to html',
-      'convert markdown to html',
-      'markdown to html converter online',
-      'markdown to html converter free',
-      'free markdown to html converter',
-      'markdown html',
-      'markdown to html converter tool',
-      'markdown to html converter app',
-      'markdown to html converter for writing',
-      'markdown to html converter for seo content',
-      'markdown to html converter for editing',
+      'ai markdown to html',
+      'markdown editor online',
+      'format markdown code',
+      'markdown converter',
+      'convert markdown to html free',
+      'markdown to html format',
+      'online markdown parser',
     ],
     longTailKeywords: [
-      'best markdown to html converter tool for writers',
-      'how to use markdown to html converter for seo content',
-      'markdown to html converter for editing and analysis',
-      'free online markdown to html converter without signup',
-      'markdown to html converter in browser for documents',
-      'markdown to html converter for students and content creators',
-      'how to convert markdown to html online free',
-      'best free markdown to html converter tool',
-      'markdown to html converter without software',
-      'markdown to html converter no signup',
-      'markdown to html converter in browser',
-      'fast and secure markdown to html converter',
+      'best free markdown to html converter online',
+      'convert readmes to styled html files',
+      'live markdown preview editor with ai',
+      'how to convert markdown to html code',
+      'best online markdown editor with live preview',
+      'convert markdown readme to html online',
     ],
     category: 'Text Tools',
-    relatedTools: ['text-summarizer', 'word-counter', 'case-converter'],
+    relatedTools: ['ai-text-summarizer', 'word-counter', 'case-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Text Converter',
@@ -2379,7 +2345,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   'currency-converter': {
     slug: 'currency-converter',
     title: 'Currency Converter - Convert Currencies Online Free',
@@ -2665,7 +2631,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'best robots txt generator tool',
     ],
     category: 'SEO Tools',
-    relatedTools: ['sitemap-generator', 'meta-title-description-generator', 'keyword-density'],
+    relatedTools: ['sitemap-validator', 'ai-meta-tag-generator', 'keyword-density'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'SEO Tool',
@@ -2674,8 +2640,8 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'sitemap-generator': {
-    slug: 'sitemap-generator',
+  'sitemap-validator': {
+    slug: 'sitemap-validator',
     title: 'Sitemap Generator - Create XML Sitemaps Online Free',
     description: 'Generate XML sitemaps instantly for better SEO. Include all pages and control update frequency. Perfect for search engine optimization.',
     keywords: [
@@ -2707,7 +2673,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'best sitemap generator tool',
     ],
     category: 'SEO Tools',
-    relatedTools: ['robots-txt', 'meta-title-description-generator', 'keyword-density'],
+    relatedTools: ['robots-txt', 'ai-meta-tag-generator', 'keyword-density'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'SEO Tool',
@@ -2718,38 +2684,28 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'keyword-density-checker': {
     slug: 'keyword-density-checker',
-    title: 'Keyword Density Checker - Analyze Keyword Density Online Free',
-    description: 'Analyze keyword density in text instantly. Check SEO optimization and keyword usage. Perfect for content optimization.',
+    title: 'AI Keyword Density Checker - Optimize Content Clusters',
+    description: 'Analyze keyword density, frequency, and semantic content clusters in your writing using AI-driven optimization rules.',
     keywords: [
-      'keyword density checker',
-      'keyword density',
-      'check keyword density',
-      'keyword density checker online',
-      'keyword density checker free',
-      'free keyword density checker',
-      'keyword density checker tool',
-      'keyword density checker app',
-      'keyword density checker for website optimization',
-      'keyword density checker for search rankings',
-      'keyword density checker for meta tags',
-      'keyword density analyzer',
+      'ai keyword density checker',
+      'keyword analyzer online',
+      'content optimization checker',
+      'keyword density tool',
+      'ai keyword clusters',
+      'seo keyword density checker',
+      'on page seo keyword analyzer',
+      'check keyword frequency online',
     ],
     longTailKeywords: [
-      'how to check keyword density online free',
-      'best free keyword density checker tool',
-      'keyword density checker without software',
-      'keyword density checker no signup',
-      'keyword density checker in browser',
-      'fast and secure keyword density checker',
-      'free online keyword density checker for search rankings',
-      'keyword density checker for meta tags',
-      'keyword density checker for sitemaps',
-      'keyword density checker for serp preview',
-      'analyze keyword density online',
-      'best keyword density checker tool',
+      'best free keyword density checker with ai',
+      'analyze semantic keyword clusters online',
+      'optimize text for search engine rankings',
+      'how to check keyword density in seo article',
+      'best free on page seo analysis tool',
+      'keyword frequency checker for web page',
     ],
     category: 'SEO Tools',
-    relatedTools: ['meta-title-description-generator', 'robots-txt', 'sitemap-generator'],
+    relatedTools: ['ai-meta-tag-generator', 'robots-txt', 'sitemap-validator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'SEO Tool',
@@ -2758,8 +2714,8 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
-  
+
+
   'file-converter': {
     slug: 'file-converter',
     title: 'File Converter - Convert Files Online Free',
@@ -2919,7 +2875,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure text to speech',
     ],
     category: 'Audio Tools',
-    relatedTools: ['audio-converter', 'audio-compressor', 'video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-compressor', 'ai-video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Tool',
@@ -2961,7 +2917,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure audio converter',
     ],
     category: 'Audio Tools',
-    relatedTools: ['text-to-speech', 'audio-compressor', 'video-to-audio'],
+    relatedTools: ['text-to-speech', 'audio-compressor', 'ai-video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Converter',
@@ -3003,7 +2959,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure audio compressor',
     ],
     category: 'Audio Tools',
-    relatedTools: ['audio-converter', 'text-to-speech', 'video-to-audio'],
+    relatedTools: ['audio-converter', 'text-to-speech', 'ai-video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -3014,35 +2970,23 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'video-to-audio': {
     slug: 'video-to-audio',
-    title: 'Video to Audio Converter - Extract Audio from Videos Online Free',
-    description: 'Extract audio from video files instantly. Support MP4, AVI, MOV and convert to MP3, WAV. Perfect for extracting music and dialogue.',
+    title: 'AI Video to Audio & Transcriber - Extract & Transcribe Video',
+    description: 'Extract high-quality audio and generate transcription text from video files instantly using AI conversion models.',
     keywords: [
-      'video to audio converter',
-      'video to audio',
-      'convert video to audio',
-      'video to audio converter online',
+      'ai video to audio converter',
+      'video transcriber online',
+      'extract mp3 from mp4',
       'video to audio converter free',
-      'free video to audio converter',
-      'video to audio converter tool',
-      'video to audio converter app',
-      'video to audio converter for podcasts',
-      'video to audio converter for voice notes',
-      'video to audio converter for music files',
-      'extract audio from video',
+      'online mp4 to mp3 extractor',
+      'audio transcriber from video',
     ],
     longTailKeywords: [
-      'best video to audio converter tool for audio editing',
-      'how to use video to audio converter for podcasts and voice notes',
-      'video to audio converter for music files and speech',
-      'free online video to audio converter without signup',
-      'video to audio converter in browser for sound files',
-      'video to audio converter for content creators',
-      'how to convert video to audio online free',
-      'best free video to audio converter tool',
-      'video to audio converter without software',
-      'video to audio converter no signup',
-      'video to audio converter in browser',
-      'fast and secure video to audio converter',
+      'best free video to audio converter with ai transcription',
+      'extract audio and transcribe youtube video using ai',
+      'convert mp4 to mp3 online free with ai',
+      'extract audio from video file online free',
+      'how to convert video to mp3 using ai',
+      'best video to audio transcription tool',
     ],
     category: 'Audio Tools',
     relatedTools: ['audio-converter', 'audio-compressor', 'text-to-speech'],
@@ -3180,37 +3124,27 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'tech-stack-detector': {
-    slug: 'tech-stack-detector',
-    title: 'Tech Stack Detector - Detect Website Technologies Online Free',
-    description: 'Detect technologies used by any website instantly. Find frameworks, CMS, analytics, and more. Perfect for competitive analysis.',
+  'ai-tech-stack-detector': {
+    slug: 'ai-tech-stack-detector',
+    title: 'AI Website Tech Stack Detector - Profile Website Tech',
+    description: 'Profile any website\'s technology stack using AI-driven lookup. Identify hosting, frameworks, CMS, and analytics.',
     keywords: [
-      'tech stack detector',
-      'tech stack',
-      'detect tech stack',
-      'tech stack detector online',
-      'tech stack detector free',
-      'free tech stack detector',
-      'tech stack detector tool',
-      'tech stack detector app',
-      'tech stack detector for website optimization',
-      'tech stack detector for search rankings',
-      'tech stack detector for meta tags',
-      'website technology detector',
+      'ai tech stack detector',
+      'website profiling tool',
+      'detect website technology stack',
+      'cms detector',
+      'framework finder',
+      'find website tech stack',
+      'what website built with',
+      'detect technologies of website',
     ],
     longTailKeywords: [
-      'how to detect tech stack online free',
-      'best free tech stack detector tool',
-      'tech stack detector without software',
-      'tech stack detector no signup',
-      'tech stack detector in browser',
-      'fast and secure tech stack detector',
-      'free online tech stack detector for search rankings',
-      'tech stack detector for meta tags',
-      'tech stack detector for sitemaps',
-      'tech stack detector for serp preview',
-      'detect website technologies online',
-      'best tech stack detector tool',
+      'best free website tech stack checker online',
+      'profile CMS and frameworks of any site',
+      'detect hosting and analytics tools with ai',
+      'how to check what tech stack a website uses',
+      'find web frameworks used by website online',
+      'best online tool to detect website cms',
     ],
     category: 'SEO Tools',
     relatedTools: ['website-screenshot', 'html-validator', 'css-validator'],
@@ -3255,7 +3189,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'best og image preview tool',
     ],
     category: 'SEO Tools',
-    relatedTools: ['meta-title-description-generator', 'keyword-density', 'tech-stack-detector'],
+    relatedTools: ['ai-meta-tag-generator', 'keyword-density', 'ai-tech-stack-detector'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'SEO Tool',
@@ -3297,7 +3231,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure secure notes',
     ],
     category: 'Security Tools',
-    relatedTools: ['password-generator', 'hash-generator', 'text-redaction'],
+    relatedTools: ['password-generator', 'hash-generator', 'ai-text-redaction'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Security Tool',
@@ -3306,40 +3240,28 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'qr-phishing-scanner': {
-    slug: 'qr-phishing-scanner',
-    title: 'QR Phishing Scanner - Detect Malicious QR Codes Online Free',
-    description: 'Scan QR codes for phishing and malware threats instantly. Check URL safety and detect suspicious content. Perfect for security.',
+  'ai-qr-phishing-scanner': {
+    slug: 'ai-qr-phishing-scanner',
+    title: 'AI QR Phishing Scanner - Audit Security & Redirects',
+    description: 'Scan and audit QR codes for phishing links, malicious redirects, and safety risks using AI reputational insights.',
     keywords: [
-      'qr phishing scanner',
-      'qr phishing',
-      'scan qr phishing',
-      'qr phishing scanner online',
-      'qr phishing scanner free',
-      'free qr phishing scanner',
-      'qr phishing scanner tool',
-      'qr phishing scanner app',
-      'qr phishing scanner for account security',
-      'qr phishing scanner for data protection',
-      'qr phishing scanner for privacy',
-      'qr code security scanner',
+      'ai qr phishing scanner',
+      'qr code security audit',
+      'safe qr scanner online',
+      'qr code scanner for security',
+      'phishing qr code detector',
+      'scan qr code redirects online',
     ],
     longTailKeywords: [
-      'best qr phishing scanner tool for account security',
-      'how to use qr phishing scanner for privacy protection',
-      'qr phishing scanner for passwords and authentication',
-      'free online qr phishing scanner without signup',
-      'qr phishing scanner in browser for secure workflows',
-      'qr phishing scanner for data protection',
-      'how to scan qr phishing online free',
-      'best free qr phishing scanner tool',
-      'qr phishing scanner without software',
-      'qr phishing scanner no signup',
-      'qr phishing scanner in browser',
-      'fast and secure qr phishing scanner',
+      'best free qr code safety checker and scanner',
+      'scan qr for phishing and dangerous links',
+      'verify qr redirect reputation with ai',
+      'how to check if qr code is safe',
+      'qr code link scanner for phishing scams',
+      'best secure qr code scanner online free',
     ],
     category: 'Security Tools',
-    relatedTools: ['qr-scanner', 'url-reputation-checker', 'text-redaction'],
+    relatedTools: ['qr-scanner', 'ai-url-reputation-checker', 'ai-text-redaction'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Security Tool',
@@ -3348,7 +3270,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   'exif-location-remover': {
     slug: 'exif-location-remover',
     title: 'EXIF Location Remover - Remove GPS Data from Images Online Free',
@@ -3382,7 +3304,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure exif location remover',
     ],
     category: 'Security Tools',
-    relatedTools: ['image-compressor', 'background-remover', 'text-redaction'],
+    relatedTools: ['image-compressor', 'ai-background-remover', 'ai-text-redaction'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Security Tool',
@@ -3391,28 +3313,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'json-to-typescript': {
-    slug: 'json-to-typescript',
-    title: 'JSON to TypeScript Converter - Convert JSON to TypeScript Interfaces Online Free',
-    description: 'Convert JSON to TypeScript interfaces instantly. Generate type definitions from JSON objects. Perfect for TypeScript developers.',
+  'ai-json-to-typescript-interface': {
+    slug: 'ai-json-to-typescript-interface',
+    title: 'AI JSON to TypeScript Converter - Type-Safe Interfaces',
+    description: 'Convert raw JSON structures into clean, type-safe TypeScript interfaces or type declarations instantly using AI.',
     keywords: [
-      'json to typescript converter',
-      'typescript interface generator',
-      'json to typescript online',
+      'ai json to typescript converter',
+      'json to ts interfaces maker',
+      'type safe compiler tools',
+      'json to typescript converter free',
+      'generate ts interface from json',
+      'online json to typescript parser',
     ],
     longTailKeywords: [
-      'best json to typescript converter tool for developers',
-      'how to use json to typescript converter for api debugging',
-      'json to typescript converter for web development workflows',
-      'free online json to typescript converter without signup',
-      'json to typescript converter in browser for code work',
-      'json to typescript converter for testing and validation',
-      'how to convert json to typescript online free',
-      'best free json to typescript converter tool',
-      'json to typescript converter without software',
-      'json to typescript converter no signup',
-      'json to typescript converter in browser',
-      'fast and secure json to typescript converter',
+      'best free ai json to typescript interface generator',
+      'convert nested json to type safe ts declarations using ai',
+      'online ai json to typescript type parser',
+      'how to convert json payload to typescript types',
+      'best online json to ts interface builder',
+      'automatic typescript type generator from json',
     ],
     category: 'Developer Tools',
     relatedTools: ['json-formatter', 'regex-tester', 'jwt-decoder'],
@@ -3423,7 +3342,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       offers: { price: '0', priceCurrency: 'INR' },
     },
   },
-  
+
   'jpg-to-png-converter': {
     slug: 'jpg-to-png-converter',
     title: 'JPG to PNG Converter - Convert Images Online Free',
@@ -3634,9 +3553,9 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
-  
-  
+
+
+
   'api-docs': {
     slug: 'api-docs',
     title: 'API Documentation - Dailytools247 API Reference',
@@ -3869,7 +3788,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['audio-converter', 'audio-trimmer', 'video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-trimmer', 'ai-video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -3947,7 +3866,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['audio-converter', 'audio-merger', 'video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-merger', 'ai-video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -4034,37 +3953,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'speech-to-text': {
-    slug: 'speech-to-text',
-    title: 'Speech to Text - Convert Audio to Text Online Free',
-    description: 'Convert speech and audio to text instantly using AI. Transcribe recordings, meetings, and voice notes. Supports multiple languages.',
+  'ai-speech-to-text': {
+    slug: 'ai-speech-to-text',
+    title: 'AI Speech to Text Converter - Transcribe Audio Online Free',
+    description: 'Transcribe spoken speech and audio files into highly accurate text format using AI models. Supports multiple languages.',
     keywords: [
-      'speech to text',
-      'use speech to text',
-      'speech to text online',
-      'speech to text free',
-      'free speech to text',
-      'speech to text tool',
-      'speech to text app',
-      'speech to text for podcasts',
-      'speech to text for voice notes',
-      'speech to text for music files',
-      'audio to text',
-      'voice to text',
+      'ai speech to text converter',
+      'audio transcriber online',
+      'voice to text generator',
+      'speech to text online free',
+      'audio voice to text converter',
+      'best speech to text helper',
     ],
     longTailKeywords: [
-      'best speech to text tool for audio editing',
-      'how to use speech to text for podcasts and voice notes',
-      'speech to text for music files and speech',
-      'free online speech to text without signup',
-      'speech to text in browser for sound files',
-      'speech to text for content creators',
-      'how to use speech to text online free',
-      'best free speech to text tool',
-      'speech to text without software',
-      'speech to text no signup',
-      'speech to text in browser',
-      'fast and secure speech to text',
+      'best free audio transcription tool with ai',
+      'convert speech to text online no signup',
+      'transcribe mp3 files to word document',
+      'how to convert speech to text online free',
+      'best voice to text transcription tool online',
+      'convert speech recording to text instantly',
     ],
     category: 'Audio Tools',
     faqs: [
@@ -4087,7 +3994,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Convert Speech to Text',
-      description: 'Step-by-step guide to transcribe audio to text',
+      description: 'Transcribe spoken speech and audio files into highly accurate text format using AI models. Supports multiple languages.',
       steps: [
         {
           name: 'Upload Audio File',
@@ -4107,7 +4014,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['text-summarizer', 'word-counter'],
+    relatedTools: ['ai-text-summarizer', 'word-counter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -4195,7 +4102,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   'working-days': {
     slug: 'working-days',
     title: 'Working Days Calculator - Calculate Business Days Online',
@@ -4274,7 +4181,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   // Developer Tools
   'api-response-formatter': {
     slug: 'api-response-formatter',
@@ -4432,37 +4339,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'cron-generator': {
-    slug: 'cron-generator',
-    title: 'Cron Generator - Create Cron Expressions Online Free',
-    description: 'Generate cron expressions easily with visual builder. Schedule tasks for Unix/Linux systems. Perfect for developers and system administrators.',
+  'ai-cron-generator': {
+    slug: 'ai-cron-generator',
+    title: 'AI Cron Expression Generator - Write & Explain Schedules',
+    description: 'Write, explain, and validate complex crontab schedule expressions using natural language AI commands.',
     keywords: [
-      'cron generator',
-      'cron',
-      'generate cron',
-      'cron generator online',
-      'cron generator free',
-      'free cron generator',
-      'cron generator tool',
-      'cron generator app',
-      'cron generator for api debugging',
-      'cron generator for web development',
-      'cron generator for code validation',
-      'cron expression',
+      'ai cron expression generator',
+      'crontab builder online',
+      'cron schedule explainer',
+      'cron schedule generator free',
+      'cron job builder online',
+      'cron schedule helper',
     ],
     longTailKeywords: [
-      'best cron generator tool for developers',
-      'how to use cron generator for api debugging',
-      'cron generator for web development workflows',
-      'free online cron generator without signup',
-      'cron generator in browser for code work',
-      'cron generator for testing and validation',
-      'how to generate cron online free',
-      'best free cron generator tool',
-      'cron generator without software',
-      'cron generator no signup',
-      'cron generator in browser',
-      'fast and secure cron generator',
+      'best free cron expression generator with ai',
+      'generate cron schedule from natural language',
+      'explain cron command online free',
+      'how to write cron expression in natural language',
+      'best online crontab scheduler builder',
+      'generate cron job for every hour daily',
     ],
     category: 'Developer Tools',
     faqs: [
@@ -4481,7 +4376,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Generate Cron Expressions',
-      description: 'Step-by-step guide to create cron schedules',
+      description: 'Write, explain, and validate complex crontab schedule expressions using natural language AI commands.',
       steps: [
         {
           name: 'Select Schedule Type',
@@ -4588,37 +4483,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'dockerfile-generator': {
-    slug: 'dockerfile-generator',
-    title: 'Dockerfile Generator - Create Dockerfiles Online Free',
-    description: 'Generate Dockerfiles for various languages and frameworks. Create optimized container configurations. Perfect for DevOps and developers.',
+  'ai-dockerfile-generator': {
+    slug: 'ai-dockerfile-generator',
+    title: 'AI Dockerfile Generator - Build Optimized Containers',
+    description: 'Generate optimized, secure, and production-ready Dockerfiles for any tech stack using AI best practices.',
     keywords: [
-      'dockerfile generator',
-      'dockerfile',
-      'generate dockerfile',
-      'dockerfile generator online',
-      'dockerfile generator free',
-      'free dockerfile generator',
-      'dockerfile generator tool',
-      'dockerfile generator app',
-      'dockerfile generator for api debugging',
-      'dockerfile generator for web development',
-      'dockerfile generator for code validation',
-      'docker generator',
+      'ai dockerfile generator',
+      'docker builder online',
+      'optimize docker container config',
+      'dockerfile creator online free',
+      'docker build optimizer',
+      'generate docker configuration',
     ],
     longTailKeywords: [
-      'best dockerfile generator tool for developers',
-      'how to use dockerfile generator for api debugging',
-      'dockerfile generator for web development workflows',
-      'free online dockerfile generator without signup',
-      'dockerfile generator in browser for code work',
-      'dockerfile generator for testing and validation',
-      'how to generate dockerfile online free',
-      'best free dockerfile generator tool',
-      'dockerfile generator without software',
-      'dockerfile generator no signup',
-      'dockerfile generator in browser',
-      'fast and secure dockerfile generator',
+      'best free dockerfile generator online',
+      'generate optimized node js dockerfile with ai',
+      'create secure multi stage docker builds',
+      'how to write optimized dockerfile with ai',
+      'generate dockerfile for react application online',
+      'best online dockerfile generator helper',
     ],
     category: 'Developer Tools',
     faqs: [
@@ -4637,7 +4520,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Generate Dockerfiles',
-      description: 'Step-by-step guide to create Dockerfiles',
+      description: 'Generate optimized, secure, and production-ready Dockerfiles for any tech stack using AI best practices.',
       steps: [
         {
           name: 'Select Technology Stack',
@@ -4657,7 +4540,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['cron-generator', 'environment-variable'],
+    relatedTools: ['ai-cron-generator', 'environment-variable'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'DevOps Tool',
@@ -4735,7 +4618,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['dockerfile-generator', 'hash-generator'],
+    relatedTools: ['ai-dockerfile-generator', 'hash-generator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Developer Tools',
@@ -4900,7 +4783,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   'jwt-expiry': {
     slug: 'jwt-expiry',
     title: 'JWT Expiry Checker - Check Token Expiration Time Online Free',
@@ -5057,37 +4940,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'sql-query-beautifier': {
-    slug: 'sql-query-beautifier',
-    title: 'SQL Query Beautifier - Format SQL Code Online Free',
-    description: 'Format and beautify SQL queries automatically. Improve code readability. Perfect for database developers and SQL optimization.',
+  'ai-sql-query-beautifier': {
+    slug: 'ai-sql-query-beautifier',
+    title: 'AI SQL Query Builder & Beautifier - Format & Build SQL',
+    description: 'Format, beautify, build, and optimize complex SQL queries for PostgreSQL, MySQL, and SQL Server using AI guidelines.',
     keywords: [
-      'sql query beautifier',
-      'use sql query beautifier',
-      'sql query beautifier online',
-      'sql query beautifier free',
-      'free sql query beautifier',
-      'sql query beautifier tool',
-      'sql query beautifier app',
-      'sql query beautifier for api debugging',
-      'sql query beautifier for web development',
-      'sql query beautifier for code validation',
-      'sql beautifier',
-      'sql formatter',
+      'ai sql query builder',
+      'sql beautifier online',
+      'optimize sql queries',
+      'sql query formatter online',
+      'beautify sql code free',
+      'sql optimization tool',
     ],
     longTailKeywords: [
-      'best sql query beautifier tool for developers',
-      'how to use sql query beautifier for api debugging',
-      'sql query beautifier for web development workflows',
-      'free online sql query beautifier without signup',
-      'sql query beautifier in browser for code work',
-      'sql query beautifier for testing and validation',
-      'how to use sql query beautifier online free',
-      'best free sql query beautifier tool',
-      'sql query beautifier without software',
-      'sql query beautifier no signup',
-      'sql query beautifier in browser',
-      'fast and secure sql query beautifier',
+      'best free sql query formatter and optimizer',
+      'generate complex sql join queries with ai',
+      'beautify sql queries online free',
+      'how to format and optimize sql queries',
+      'best online sql beautifier and formatter',
+      'beautify complex database queries using ai',
     ],
     category: 'Developer Tools',
     faqs: [
@@ -5106,7 +4977,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Format SQL Queries',
-      description: 'Step-by-step guide to beautify SQL code',
+      description: 'Format, beautify, build, and optimize complex SQL queries for PostgreSQL, MySQL, and SQL Server using AI guidelines.',
       steps: [
         {
           name: 'Paste SQL Code',
@@ -5204,7 +5075,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['word-counter', 'text-summarizer'],
+    relatedTools: ['word-counter', 'ai-text-summarizer'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Developer Tools',
@@ -5369,37 +5240,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       offers: { price: '0', priceCurrency: 'INR' },
     },
   },
-  'mcq-generator': {
-    slug: 'mcq-generator',
-    title: 'MCQ Generator - Create Multiple Choice Questions Online',
-    description: 'Generate multiple choice questions from text or topics. Create quizzes and tests instantly. Perfect for teachers and educators.',
+  'ai-mcq-generator': {
+    slug: 'ai-mcq-generator',
+    title: 'AI MCQ Generator - Create Quizzes & Tests Instantly',
+    description: 'Generate multiple choice questions (MCQs) from any text, article, or topic using AI. Perfect for teachers, students, and exam prep.',
     keywords: [
-      'mcq generator',
-      'mcq',
-      'generate mcq',
-      'mcq generator online',
-      'mcq generator free',
-      'free mcq generator',
-      'mcq generator tool',
-      'mcq generator app',
-      'mcq generator for students',
-      'mcq generator for exams',
-      'mcq generator for study planning',
-      'multiple choice questions',
+      'ai mcq generator',
+      'quiz maker online',
+      'test generator from text',
+      'multiple choice question maker',
+      'online quiz generator from doc',
+      'ai test question creator',
     ],
     longTailKeywords: [
-      'best mcq generator tool for students',
-      'how to use mcq generator for exams and homework',
-      'mcq generator for study planning and assignments',
-      'free online mcq generator without signup',
-      'mcq generator in browser for classroom work',
-      'mcq generator for learning and practice',
-      'how to generate mcq online free',
-      'best free mcq generator tool',
-      'mcq generator without software',
-      'mcq generator no signup',
-      'mcq generator in browser',
-      'fast and secure mcq generator',
+      'best free ai mcq generator from text',
+      'create multiple choice questions online free',
+      'generate tests from pdf with ai',
+      'how to generate multiple choice questions online',
+      'best free online quiz maker for teachers',
+      'generate exam papers from text files using ai',
     ],
     category: 'Education Tools',
     faqs: [
@@ -5418,7 +5277,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Generate MCQs',
-      description: 'Step-by-step guide to create multiple choice questions',
+      description: 'Generate multiple choice questions (MCQs) from any text, article, or topic using AI. Perfect for teachers, students, and exam prep.',
       steps: [
         {
           name: 'Input Topic or Text',
@@ -5449,35 +5308,23 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'unit-converter': {
     slug: 'unit-converter',
-    title: 'Unit Converter - Convert Units Online Free',
-    description: 'Convert between different units of measurement. Length, weight, temperature, volume and more. Perfect for everyday conversions.',
+    title: 'AI Unit Converter & Solver - Smart Dimensional Equations',
+    description: 'Convert standard physical units and solve complex dimensional formula equations using AI algorithms. Real-time conversion feedback.',
     keywords: [
-      'unit converter',
-      'unit',
-      'convert unit',
-      'unit converter online',
-      'unit converter free',
-      'free unit converter',
-      'unit converter tool',
-      'unit converter app',
-      'unit converter for students',
-      'unit converter for exams',
-      'unit converter for study planning',
-      'unit conversion',
+      'ai unit converter',
+      'dimensional formula solver',
+      'smart unit conversion',
+      'smart unit converter online',
+      'convert physics units online',
+      'dimensional analysis calculator',
     ],
     longTailKeywords: [
-      'best unit converter tool for students',
-      'how to use unit converter for exams and homework',
-      'unit converter for study planning and assignments',
-      'free online unit converter without signup',
-      'unit converter in browser for classroom work',
-      'unit converter for learning and practice',
-      'how to convert unit online free',
-      'best free unit converter tool',
-      'unit converter without software',
-      'unit converter no signup',
-      'unit converter in browser',
-      'fast and secure unit converter',
+      'best online unit converter and solver',
+      'solve physics dimensional equations with ai',
+      'scientific unit converter free',
+      'how to solve physics dimensional equations online',
+      'best unit converter for science and engineering',
+      'convert units of measurement with explanation',
     ],
     category: 'Education Tools',
     faqs: [
@@ -5496,7 +5343,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Convert Units',
-      description: 'Step-by-step guide for unit conversion',
+      description: 'Convert standard physical units and solve complex dimensional formula equations using AI algorithms. Real-time conversion feedback.',
       steps: [
         {
           name: 'Select Category',
@@ -5605,37 +5452,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
 
   // Finance Tools
-  'budget-planner': {
-    slug: 'budget-planner',
-    title: 'Budget Planner - Create Personal Budget Online',
-    description: 'Plan and track your personal budget with our free online tool. Manage income, expenses, and savings. Perfect for financial planning.',
+  'ai-budget-planner': {
+    slug: 'ai-budget-planner',
+    title: 'AI Budget Planner & Optimizer - Forecast Monthly Budget',
+    description: 'Create, optimize, and forecast your personal or business monthly budget using AI advice and smart expense allocation.',
     keywords: [
-      'budget planner',
-      'use budget planner',
-      'budget planner online',
-      'budget planner free',
-      'free budget planner',
-      'budget planner tool',
-      'budget planner app',
-      'budget planner for loan planning',
-      'budget planner for tax calculation',
-      'budget planner for investment planning',
-      'personal budget',
-      'budget calculator',
+      'ai budget planner',
+      'monthly budget optimizer',
+      'expense tracker and forecaster',
+      'household budget planner online',
+      'smart expense tracker generator',
+      'budget forecaster free',
     ],
     longTailKeywords: [
-      'best free budget planner for financial planning',
-      'how to calculate with budget planner online',
-      'budget planner for loans taxes and investments',
-      'free online budget planner calculator',
-      'budget planner without software',
-      'budget planner no signup',
-      'how to use budget planner online free',
-      'best free budget planner tool',
-      'budget planner in browser',
-      'fast and secure budget planner',
-      'free online budget planner for loan planning',
-      'budget planner for tax calculation',
+      'best free ai budget planner online',
+      'optimize monthly budget and increase savings',
+      'forecast household expenses with ai',
+      'how to optimize monthly budget using ai',
+      'best free online monthly budget planning tool',
+      'forecast personal finances and expense limits',
     ],
     category: 'Finance Tools',
     faqs: [
@@ -5654,7 +5489,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Create a Budget',
-      description: 'Step-by-step guide to plan your budget',
+      description: 'Create, optimize, and forecast your personal or business monthly budget using AI advice and smart expense allocation.',
       steps: [
         {
           name: 'Enter Income',
@@ -5683,7 +5518,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
+
   'emi-comparison': {
     slug: 'emi-comparison',
     title: 'EMI Comparison Tool - Compare Loan EMIs Online',
@@ -5752,7 +5587,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['emi-calculator', 'budget-planner'],
+    relatedTools: ['emi-calculator', 'ai-budget-planner'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -5830,7 +5665,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['budget-planner', 'invoice-generator'],
+    relatedTools: ['ai-budget-planner', 'invoice-generator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -5908,7 +5743,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['budget-planner', 'invoice-generator'],
+    relatedTools: ['ai-budget-planner', 'invoice-generator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -5917,37 +5752,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'saas-pricing-calculator': {
-    slug: 'saas-pricing-calculator',
-    title: 'SaaS Pricing Calculator - Optimize Subscription Pricing',
-    description: 'Calculate optimal SaaS pricing strategies. Analyze customer lifetime value and churn rates. Perfect for SaaS businesses.',
+  'ai-saas-pricing-calculator': {
+    slug: 'ai-saas-pricing-calculator',
+    title: 'AI SaaS Pricing Optimizer - Model Unit Economics & Strategy',
+    description: 'Model and optimize your SaaS pricing structure, subscription tiers, and unit economics using AI strategy frameworks.',
     keywords: [
-      'saas pricing calculator',
-      'saas pricing',
-      'calculate saas pricing',
-      'saas pricing calculator online',
-      'saas pricing calculator free',
-      'free saas pricing calculator',
-      'saas pricing calculator tool',
-      'saas pricing calculator app',
-      'saas pricing calculator for loan planning',
-      'saas pricing calculator for tax calculation',
-      'saas pricing calculator for investment planning',
-      'subscription pricing',
+      'ai saas pricing calculator',
+      'saas pricing optimizer',
+      'subscription business model calculator',
+      'saas business model calculator',
+      'optimize subscription pricing tiers',
+      'saas unit economics modeler',
     ],
     longTailKeywords: [
-      'best free saas pricing calculator for financial planning',
-      'how to calculate with saas pricing calculator online',
-      'saas pricing calculator for loans taxes and investments',
-      'free online saas pricing calculator',
-      'saas pricing calculator without software',
-      'saas pricing calculator no signup',
-      'how to calculate saas pricing online free',
-      'best free saas pricing calculator tool',
-      'saas pricing calculator in browser',
-      'fast and secure saas pricing calculator',
-      'free online saas pricing calculator for loan planning',
-      'saas pricing calculator for tax calculation',
+      'best free saas pricing strategy optimizer',
+      'model subscription pricing tiers with ai',
+      'calculate saas unit economics online',
+      'how to model subscription pricing tiers for saas',
+      'best free saas pricing calculator online',
+      'optimize subscription revenue tiers with ai',
     ],
     category: 'Finance Tools',
     faqs: [
@@ -5966,7 +5789,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Calculate SaaS Pricing',
-      description: 'Step-by-step guide for pricing optimization',
+      description: 'Model and optimize your SaaS pricing structure, subscription tiers, and unit economics using AI strategy frameworks.',
       steps: [
         {
           name: 'Input Costs',
@@ -5986,7 +5809,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['profit-margin', 'budget-planner'],
+    relatedTools: ['profit-margin', 'ai-budget-planner'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -6064,7 +5887,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['income-tax', 'budget-planner'],
+    relatedTools: ['income-tax', 'ai-budget-planner'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -6142,7 +5965,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['budget-planner', 'profit-margin'],
+    relatedTools: ['ai-budget-planner', 'profit-margin'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -6229,37 +6052,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'tax-slab-analyzer': {
-    slug: 'tax-slab-analyzer',
-    title: 'Tax Slab Analyzer - Calculate Income Tax by Slabs',
-    description: 'Analyze income tax slabs and calculate tax liability. Compare different tax regimes. Perfect for tax planning and filing.',
+  'ai-tax-slab-analyzer': {
+    slug: 'ai-tax-slab-analyzer',
+    title: 'AI Tax Analyzer & Planner - Optimize Deductions & Liability',
+    description: 'Analyze your tax slabs, optimize deductions, and plan your income tax liability using AI-driven heuristics. Supports latest regimes.',
     keywords: [
-      'tax slab analyzer',
-      'use tax slab analyzer',
-      'tax slab analyzer online',
-      'tax slab analyzer free',
-      'free tax slab analyzer',
-      'tax slab analyzer tool',
-      'tax slab analyzer app',
-      'tax slab analyzer for loan planning',
-      'tax slab analyzer for tax calculation',
-      'tax slab analyzer for investment planning',
-      'income tax calculator',
-      'tax slabs',
+      'ai tax analyzer',
+      'tax slab planner',
+      'income tax optimizer',
+      'income tax slab calculator',
+      'optimize income tax deductions',
+      'tax liability analyzer free',
     ],
     longTailKeywords: [
-      'best free tax slab analyzer for financial planning',
-      'how to calculate with tax slab analyzer online',
-      'tax slab analyzer for loans taxes and investments',
-      'free online tax slab analyzer calculator',
-      'tax slab analyzer without software',
-      'tax slab analyzer no signup',
-      'how to use tax slab analyzer online free',
-      'best free tax slab analyzer tool',
-      'tax slab analyzer in browser',
-      'fast and secure tax slab analyzer',
-      'free online tax slab analyzer for loan planning',
-      'tax slab analyzer for tax calculation',
+      'best free ai tax planner online',
+      'optimize income tax deductions under new regime',
+      'calculate tax liability with ai advice',
+      'how to calculate tax liability under new regime',
+      'best online tax slab analyzer tool free',
+      'optimize income tax planning with ai suggestions',
     ],
     category: 'Finance Tools',
     faqs: [
@@ -6278,7 +6089,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Analyze Tax Slabs',
-      description: 'Step-by-step guide for tax calculation',
+      description: 'Analyze your tax slabs, optimize deductions, and plan your income tax liability using AI-driven heuristics. Supports latest regimes.',
       steps: [
         {
           name: 'Enter Income',
@@ -6776,37 +6587,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'whatsapp-status': {
-    slug: 'whatsapp-status',
-    title: 'WhatsApp Status Saver - Download Status Images & Videos Online',
-    description: 'Save and download WhatsApp status images and videos. Export status content to your device. Perfect for preserving favorite status updates.',
+  'ai-whatsapp-status-generator': {
+    slug: 'ai-whatsapp-status-generator',
+    title: 'AI WhatsApp Status Generator - Smart Quotes & Statuses',
+    description: 'Generate engaging, creative WhatsApp statuses, quotes, and bio texts using AI. Select different moods and download status layouts.',
     keywords: [
-      'whatsapp status saver',
-      'use whatsapp status saver',
-      'whatsapp status saver online',
-      'whatsapp status saver free',
-      'free whatsapp status saver',
-      'whatsapp status',
-      'whatsapp status saver tool',
-      'whatsapp status saver app',
-      'whatsapp status saver for social media',
-      'whatsapp status saver for product photos',
-      'whatsapp status saver for website graphics',
-      'download whatsapp status',
+      'ai whatsapp status generator',
+      'whatsapp status quotes',
+      'best whatsapp statuses',
+      'whatsapp status creator online',
+      'whatsapp quotes generator free',
+      'creative whatsapp status quotes',
     ],
     longTailKeywords: [
-      'best free whatsapp status saver tool for images',
-      'how to use whatsapp status saver for social media',
-      'whatsapp status saver for product photos and websites',
-      'free online whatsapp status saver without signup',
-      'whatsapp status saver for fast image editing',
-      'whatsapp status saver in browser',
-      'how to use whatsapp status saver online free',
-      'best free whatsapp status saver tool',
-      'whatsapp status saver without software',
-      'whatsapp status saver no signup',
-      'fast and secure whatsapp status saver',
-      'free online whatsapp status saver for social media',
+      'generate creative whatsapp status online free',
+      'ai whatsapp quotes generator for couples',
+      'cool and sad whatsapp status generator',
+      'how to generate creative whatsapp status online',
+      'best free whatsapp status writer tool',
+      'generate cool and sad whatsapp statuses with ai',
     ],
     category: 'Image Tools',
     faqs: [
@@ -6825,7 +6624,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Save WhatsApp Status',
-      description: 'Step-by-step guide to download status content',
+      description: 'Generate engaging, creative WhatsApp statuses, quotes, and bio texts using AI. Select different moods and download status layouts.',
       steps: [
         {
           name: 'Access Status Content',
@@ -7482,37 +7281,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   // Security & Other Tools
 
-  'url-reputation-checker': {
-    slug: 'url-reputation-checker',
-    title: 'URL Reputation Checker - Analyze Website Safety Online Free',
-    description: 'Check URL reputation and website safety. Analyze malicious content and threats. Perfect for online security verification.',
+  'ai-url-reputation-checker': {
+    slug: 'ai-url-reputation-checker',
+    title: 'AI URL Phishing & Safety Checker - Check Link Reputation',
+    description: 'Analyze website URL safety, phishing risk, domain reputation, and SSL score using AI reputational intelligence.',
     keywords: [
-      'url reputation checker',
-      'url reputation',
-      'check url reputation',
-      'url reputation checker online',
-      'url reputation checker free',
-      'free url reputation checker',
-      'url reputation checker tool',
-      'url reputation checker app',
-      'url reputation checker for account security',
-      'url reputation checker for data protection',
-      'url reputation checker for privacy',
+      'ai url reputation checker',
       'website safety checker',
+      'phishing link scanner',
+      'website domain reputation lookup',
+      'check link security status',
+      'url safety scanner online',
     ],
     longTailKeywords: [
-      'best url reputation checker tool for account security',
-      'how to use url reputation checker for privacy protection',
-      'url reputation checker for passwords and authentication',
-      'free online url reputation checker without signup',
-      'url reputation checker in browser for secure workflows',
-      'url reputation checker for data protection',
-      'how to check url reputation online free',
-      'best free url reputation checker tool',
-      'url reputation checker without software',
-      'url reputation checker no signup',
-      'url reputation checker in browser',
-      'fast and secure url reputation checker',
+      'best free url safety and phishing checker',
+      'scan suspicious links for security risks',
+      'verify domain reputation online free',
+      'how to check website domain reputation online',
+      'best online link safety scanner for phishing',
+      'verify if a url is safe to click with ai',
     ],
     category: 'Security Tools',
     faqs: [
@@ -7531,7 +7318,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Check URL Reputation',
-      description: 'Step-by-step guide for URL security analysis',
+      description: 'Analyze website URL safety, phishing risk, domain reputation, and SSL score using AI reputational intelligence.',
       steps: [
         {
           name: 'Enter URL',
@@ -7551,7 +7338,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['qr-phishing-scanner', 'secure-notes'],
+    relatedTools: ['ai-qr-phishing-scanner', 'secure-notes'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Security Tool',
@@ -7560,35 +7347,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'text-redaction': {
-    slug: 'text-redaction',
-    title: 'Text Redaction Tool - Redact Sensitive Information',
-    description: 'Redact and black out sensitive text from documents. Remove personal information securely. Perfect for document privacy.',
+  'ai-text-redaction': {
+    slug: 'ai-text-redaction',
+    title: 'AI Text Redactor & PII Masker - Redact Sensitive Details',
+    description: 'Scan, mask, and redact sensitive PII details (emails, phone numbers, cards) from documents using AI-driven heuristics.',
     keywords: [
-      'text redaction tool',
-      'redact text',
+      'ai text redactor',
+      'pii masking tool',
+      'redact sensitive document details',
+      'text redactor online free',
+      'mask pii data tool',
       'redact sensitive information',
-      'text censor',
-      'black out text',
-      'text redaction',
-      'document redaction',
-      'privacy tool',
-      'text blackout',
-      'redact documents',
-      'censor text',
     ],
     longTailKeywords: [
-      'redact sensitive information online free',
-      'best text redaction tool for privacy',
-      'hide personal data in text',
-      'redact text without software',
-      'secure text censor tool',
-      'online privacy redaction tool',
-      'redact sensitive text online',
-      'black out personal information',
-      'text redaction tool',
-      'censor documents',
-      'remove sensitive data',
+      'best free online ai text redactor without signup',
+      'mask credit cards and phone numbers with ai rules',
+      'redact personal information using ai pii masker',
+      'how to redact personal information from text online',
+      'best free tool to mask credit card numbers',
+      'pii masking and text redaction tool online',
     ],
     category: 'Security Tools',
     faqs: [
@@ -7607,7 +7384,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Redact Text',
-      description: 'Step-by-step guide for text redaction',
+      description: 'Scan, mask, and redact sensitive PII details (emails, phone numbers, cards) from documents using AI-driven heuristics.',
       steps: [
         {
           name: 'Input Text',
@@ -7636,38 +7413,26 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  
-  'meme-generator': {
-    slug: 'meme-generator',
-    title: 'Meme Generator - Create Memes Online Free',
-    description: 'Create custom memes with popular templates. Add text and generate viral content. Perfect for social media and entertainment.',
+
+  'ai-meme-generator': {
+    slug: 'ai-meme-generator',
+    title: 'AI Meme Generator - Generate Funny Memes & Text Overlays',
+    description: 'Generate viral memes and hilarious text suggestions using AI. Pick popular templates or upload your own image.',
     keywords: [
-      'meme generator',
-      'meme',
-      'generate meme',
-      'meme generator online',
-      'meme generator free',
-      'free meme generator',
-      'meme generator tool',
-      'meme generator app',
-      'meme generator for meme creation',
-      'meme generator for viral posts',
-      'meme generator for templates',
-      'create memes',
+      'ai meme generator',
+      'meme maker online',
+      'funny meme generator',
+      'online meme creator free',
+      'ai meme text writer',
+      'make funny memes online',
     ],
     longTailKeywords: [
-      'how to generate meme online free',
-      'best free meme generator tool',
-      'meme generator without software',
-      'meme generator no signup',
-      'meme generator in browser',
-      'fast and secure meme generator',
-      'free online meme generator for memes',
-      'meme generator for content creation',
-      'meme generator for viral posts',
-      'meme generator for templates',
-      'create memes online free',
-      'custom meme generator',
+      'best free ai meme maker without watermark',
+      'generate trending memes with ai text',
+      'create custom memes online free',
+      'how to create custom memes online without watermark',
+      'best free online ai meme maker with templates',
+      'generate funny trending memes with ai text',
     ],
     category: 'Social Media Tools',
     faqs: [
@@ -7686,7 +7451,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Create Memes',
-      description: 'Step-by-step guide for meme creation',
+      description: 'Generate viral memes and hilarious text suggestions using AI. Pick popular templates or upload your own image.',
       steps: [
         {
           name: 'Choose Template',
@@ -8042,89 +7807,6 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       offers: { price: '0', priceCurrency: 'INR' },
     },
   },
-
-  'json-to-typescript-interface': {
-    slug: 'json-to-typescript-interface',
-    title: 'JSON to TypeScript Interface Converter - Convert Online Free',
-    description: 'Convert JSON objects to TypeScript interfaces instantly. Generate type-safe interfaces from JSON data. Perfect for TypeScript developers working with APIs.',
-    keywords: [
-      'json to typescript interface converter',
-      'json to typescript interface',
-      'convert json to typescript interface',
-      'json to typescript interface converter online',
-      'json to typescript interface converter free',
-      'free json to typescript interface converter',
-      'json to typescript interface converter tool',
-      'json to typescript interface converter app',
-      'json to typescript interface converter for api debugging',
-      'json to typescript interface converter for web development',
-      'json to typescript interface converter for code validation',
-      'json to typescript',
-    ],
-    longTailKeywords: [
-      'best json to typescript interface converter tool for developers',
-      'how to use json to typescript interface converter for api debugging',
-      'json to typescript interface converter for web development workflows',
-      'free online json to typescript interface converter without signup',
-      'json to typescript interface converter in browser for code work',
-      'json to typescript interface converter for testing and validation',
-      'how to convert json to typescript interface online free',
-      'best free json to typescript interface converter tool',
-      'json to typescript interface converter without software',
-      'json to typescript interface converter no signup',
-      'json to typescript interface converter in browser',
-      'fast and secure json to typescript interface converter',
-    ],
-    category: 'Developer Tools',
-    faqs: [
-      {
-        question: 'Does it handle nested objects?',
-        answer: 'Yes, the converter recursively processes nested objects and arrays to create proper TypeScript interfaces.',
-      },
-      {
-        question: 'Can it handle arrays?',
-        answer: 'Yes, arrays are properly typed with the correct item interface.',
-      },
-      {
-        question: 'What TypeScript version is used?',
-        answer: 'We generate modern TypeScript interfaces compatible with TypeScript 4.0+.',
-      },
-      {
-        question: 'Can I customize the interface names?',
-        answer: 'Yes, you can specify custom interface names or use the auto-generated names.',
-      },
-    ],
-    howTo: {
-      name: 'How to Convert JSON to TypeScript',
-      description: 'Step-by-step guide to generate TypeScript interfaces',
-      steps: [
-        {
-          name: 'Paste JSON',
-          text: 'Paste your JSON object or array into the input area.',
-        },
-        {
-          name: 'Configure Options',
-          text: 'Set interface name preferences, enable optional fields, or add root interface.',
-        },
-        {
-          name: 'Generate Interfaces',
-          text: 'Click convert to generate TypeScript interfaces from your JSON structure.',
-        },
-        {
-          name: 'Copy Code',
-          text: 'Copy the generated TypeScript interfaces and paste them into your project.',
-        },
-      ],
-    },
-    relatedTools: ['json-formatter', 'api-response-formatter', 'jwt-decoder'],
-    schema: {
-      type: 'SoftwareApplication',
-      appCategory: 'Developer Tools',
-      operatingSystem: 'Web',
-      offers: { price: '0', priceCurrency: 'INR' },
-    },
-  },
-
   'jwt-token-expiry-calculator': {
     slug: 'jwt-token-expiry-calculator',
     title: 'JWT Token Expiry Calculator - Check Token Expiration Online',
@@ -8280,7 +7962,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['json-formatter', 'dockerfile-generator', 'postman-collection-generator'],
+    relatedTools: ['json-formatter', 'ai-dockerfile-generator', 'ai-postman-collection-generator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Developer Tools',
@@ -8289,37 +7971,26 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'postman-collection-generator': {
-    slug: 'postman-collection-generator',
-    title: 'Postman Collection Generator - Create API Collections Online',
+  'ai-postman-collection-generator': {
+    slug: 'ai-postman-collection-generator',
+    title: 'AI Postman Collection Generator - Create API Collections Online',
     description: 'Generate Postman collections from API definitions or curl commands. Create structured API requests for testing and documentation. Perfect for API developers.',
     keywords: [
-      'postman collection generator',
-      'postman collection',
-      'generate postman collection',
-      'postman collection generator online',
-      'postman collection generator free',
-      'free postman collection generator',
-      'postman collection generator tool',
-      'postman collection generator app',
-      'postman collection generator for api debugging',
-      'postman collection generator for web development',
-      'postman collection generator for code validation',
-      'create postman collection',
+      'ai postman collection generator',
+      'generate postman collection with ai',
+      'api collection creator online',
+      'free postman generator',
+      'ai api testing helper',
+      'postman collection creator free',
+      'api testing schema builder',
     ],
     longTailKeywords: [
-      'best postman collection generator tool for developers',
-      'how to use postman collection generator for api debugging',
-      'postman collection generator for web development workflows',
-      'free online postman collection generator without signup',
-      'postman collection generator in browser for code work',
-      'postman collection generator for testing and validation',
-      'how to generate postman collection online free',
-      'best free postman collection generator tool',
-      'postman collection generator without software',
-      'postman collection generator no signup',
-      'postman collection generator in browser',
-      'fast and secure postman collection generator',
+      'best free ai postman collection generator online',
+      'generate api test collection from curl using ai',
+      'how to generate postman schemas with ai',
+      'how to generate postman collection schema from curl',
+      'best online postman generator helper free',
+      'create postman api testing suite online',
     ],
     category: 'Developer Tools',
     faqs: [
@@ -8444,7 +8115,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['api-response-formatter', 'postman-collection-generator', 'http-header-checker'],
+    relatedTools: ['api-response-formatter', 'ai-postman-collection-generator', 'http-header-checker'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Developer Tools',
@@ -8694,7 +8365,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['compound-interest-calculator', 'percentage-calculator', 'unit-converter'],
+    relatedTools: ['compound-interest-calculator', 'percentage-calculator', 'ai-unit-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Educational Calculator',
@@ -8776,7 +8447,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['percentage-calculator', 'scientific-calculator', 'unit-converter'],
+    relatedTools: ['percentage-calculator', 'scientific-calculator', 'ai-unit-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Educational Calculator',
@@ -8785,37 +8456,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'study-timetable-generator': {
-    slug: 'study-timetable-generator',
-    title: 'Study Timetable Generator - Create Study Schedule Online',
-    description: 'Create personalized study timetables for exams and courses. Organize subjects, set study hours, and track progress. Perfect for students and educators.',
+  'ai-study-timetable-generator': {
+    slug: 'ai-study-timetable-generator',
+    title: 'AI Study Timetable Generator - Create Personalized Schedules',
+    description: 'Generate optimized study schedules and daily timetables using AI. Input your subjects, hours, and goals for a balanced routine.',
     keywords: [
-      'study timetable generator',
-      'study timetable',
-      'generate study timetable',
-      'study timetable generator online',
-      'study timetable generator free',
-      'free study timetable generator',
-      'study timetable generator tool',
-      'study timetable generator app',
-      'study timetable generator for students',
-      'study timetable generator for exams',
-      'study timetable generator for study planning',
+      'ai study timetable generator',
       'study schedule maker',
+      'exam preparation planner',
+      'exam study schedule generator',
+      'personalized study routine creator',
+      'timetable planner online free',
     ],
     longTailKeywords: [
-      'best study timetable generator tool for students',
-      'how to use study timetable generator for exams and homework',
-      'study timetable generator for study planning and assignments',
-      'free online study timetable generator without signup',
-      'study timetable generator in browser for classroom work',
-      'study timetable generator for learning and practice',
-      'how to generate study timetable online free',
-      'best free study timetable generator tool',
-      'study timetable generator without software',
-      'study timetable generator no signup',
-      'study timetable generator in browser',
-      'fast and secure study timetable generator',
+      'best free ai study timetable maker online',
+      'generate personalized study schedules for exams',
+      'daily study routine planner with ai',
+      'how to make a study schedule for exams',
+      'best free online study timetable generator',
+      'generate study routine to pass exams with ai',
     ],
     category: 'Education Tools',
     faqs: [
@@ -8838,7 +8497,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     howTo: {
       name: 'How to Create Study Timetable',
-      description: 'Step-by-step guide to create study schedule',
+      description: 'Generate optimized study schedules and daily timetables using AI. Input your subjects, hours, and goals for a balanced routine.',
       steps: [
         {
           name: 'Add Subjects',
@@ -8862,7 +8521,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['scientific-calculator', 'percentage-calculator', 'mcq-generator'],
+    relatedTools: ['scientific-calculator', 'percentage-calculator', 'ai-mcq-generator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Educational Tool',
@@ -9034,89 +8693,6 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       offers: { price: '0', priceCurrency: 'INR' },
     },
   },
-
-  'whatsapp-status-generator': {
-    slug: 'whatsapp-status-generator',
-    title: 'WhatsApp Status Generator - Create Status Images Online',
-    description: 'Create custom WhatsApp status images with text and backgrounds. Perfect for sharing updates, quotes, and announcements on WhatsApp.',
-    keywords: [
-      'whatsapp status generator',
-      'whatsapp status',
-      'generate whatsapp status',
-      'whatsapp status generator online',
-      'whatsapp status generator free',
-      'free whatsapp status generator',
-      'whatsapp status generator tool',
-      'whatsapp status generator app',
-      'whatsapp status generator for social media',
-      'whatsapp status generator for product photos',
-      'whatsapp status generator for website graphics',
-      'create whatsapp status',
-    ],
-    longTailKeywords: [
-      'best free whatsapp status generator tool for images',
-      'how to use whatsapp status generator for social media',
-      'whatsapp status generator for product photos and websites',
-      'free online whatsapp status generator without signup',
-      'whatsapp status generator for fast image editing',
-      'whatsapp status generator in browser',
-      'how to generate whatsapp status online free',
-      'best free whatsapp status generator tool',
-      'whatsapp status generator without software',
-      'whatsapp status generator no signup',
-      'fast and secure whatsapp status generator',
-      'free online whatsapp status generator for social media',
-    ],
-    category: 'Social Media Tools',
-    faqs: [
-      {
-        question: 'What image size is generated?',
-        answer: 'We generate images in WhatsApp status dimensions (1080x1920 pixels) for optimal display.',
-      },
-      {
-        question: 'Can I add custom backgrounds?',
-        answer: 'Yes, choose from solid colors, gradients, or upload your own background image.',
-      },
-      {
-        question: 'What fonts are available?',
-        answer: 'Multiple fonts are available including bold, italic, and decorative styles.',
-      },
-      {
-        question: 'Can I add emojis?',
-        answer: 'Yes, you can add emojis to your status text for more expressive content.',
-      },
-    ],
-    howTo: {
-      name: 'How to Create WhatsApp Status',
-      description: 'Step-by-step guide to create status images',
-      steps: [
-        {
-          name: 'Enter Text',
-          text: 'Type the text you want to display on your WhatsApp status.',
-        },
-        {
-          name: 'Choose Background',
-          text: 'Select a solid color, gradient, or upload your own background image.',
-        },
-        {
-          name: 'Customize Styling',
-          text: 'Adjust font size, color, and text position to your preference.',
-        },
-        {
-          name: 'Generate and Download',
-          text: 'Generate your status image and download it to share on WhatsApp.',
-        },
-      ],
-    },
-    relatedTools: ['image-compressor', 'image-resize', 'qr-code-generator'],
-    schema: {
-      type: 'SoftwareApplication',
-      appCategory: 'Social Media Tool',
-      operatingSystem: 'Web',
-      offers: { price: '0', priceCurrency: 'INR' },
-    },
-  },
-
   'image-dpi-checker': {
     slug: 'image-dpi-checker',
     title: 'Image DPI Checker - Check Image Resolution Online',
@@ -10423,7 +9999,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['password-generator', 'hash-generator', 'password-strength-explainer'],
+    relatedTools: ['password-generator', 'hash-generator', 'ai-password-strength-explainer'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Security Tool',
@@ -10514,37 +10090,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'password-strength-explainer': {
-    slug: 'password-strength-explainer',
-    title: 'Password Strength Explainer - Understand Password Security',
+  'ai-password-strength-explainer': {
+    slug: 'ai-password-strength-explainer',
+    title: 'AI Password Strength Explainer - Smart Security Analysis',
     description: 'Learn about password security best practices. Understand what makes passwords strong and weak. Educational resource for security.',
     keywords: [
+      'ai password strength explainer',
+      'ai password checker',
+      'ai password advisor',
       'password strength explainer',
-      'password strength checker',
-      'password security guide',
       'password security tips',
-      'password strength test',
-      'understand password strength',
-      'password best practices',
-      'password security education',
-      'strong password guide',
-      'password security explained',
-      'password strength tips',
-      'how to create strong passwords',
+      'how to create strong passwords'
     ],
     longTailKeywords: [
-      'understand password strength online',
-      'password security guide for strong accounts',
-      'how to improve password strength',
-      'password strength tips and best practices',
-      'explain password security simply',
-      'password safety checker online',
-      'how to create strong passwords',
-      'password security best practices',
-      'understand password strength',
-      'password security guide for beginners',
-      'what makes a password strong',
-      'password security tips online',
+      'best free ai password strength checker',
+      'analyze password security using ai suggestions',
+      'ai password safety check online free',
+      'how to improve password security using ai heuristics',
+      'check password strength and vulnerability online',
+      'how to make your password secure with ai',
     ],
     category: 'Security Tools',
     faqs: [
@@ -11035,7 +10599,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         answer: 'Watermarks help prevent image theft but may affect customer trust. Use subtle, transparent watermarks that don\'t distract from the product.',
       },
     ],
-    relatedTools: ['image-color-enhancer', 'shadow-adder'],
+    relatedTools: ['ai-image-color-enhancer', 'ai-shadow-adder'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Design Tool',
@@ -11043,27 +10607,25 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       offers: { price: '0', priceCurrency: 'INR' },
     },
   },
-  'image-color-enhancer': {
-    slug: 'image-color-enhancer',
-    title: 'Image Color Enhancer - Enhance Product Photo Colors',
+  'ai-image-color-enhancer': {
+    slug: 'ai-image-color-enhancer',
+    title: 'AI Image Color Enhancer - Enhance Product Photo Colors',
     description: 'Enhance and adjust colors in product photos. Improve brightness, contrast, saturation, and make products look more appealing.',
     keywords: [
-      'image color enhancer',
-      'photo color correction',
-      'product photo enhancer',
-      'image brightness',
-      'color adjustment',
-      'photo editor',
-      'enhance product images',
-      'image contrast',
+      'ai image color enhancer',
+      'ai photo color correction',
+      'ai product photo enhancer',
+      'enhance product images with ai',
+      'automatic color correction tool',
+      'color correct image online free',
     ],
     longTailKeywords: [
-      'enhance product photo colors online',
-      'color correction for product images',
-      'improve photo brightness contrast',
-      'make product photos look better',
-      'enhance ecommerce product images',
-      'photo color enhancer free',
+      'best free ai image color enhancer online',
+      'ai color correction for e-commerce product photos',
+      'make product photos look professional with ai color',
+      'how to color enhance product photos with ai',
+      'best online photo color correction software free',
+      'enhance brightness and contrast of photos using ai',
     ],
     category: 'E-commerce Tools',
     faqs: [
@@ -11072,7 +10634,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         answer: 'Use color enhancement to adjust brightness, contrast, and saturation. Ensure colors are accurate to the actual product. Avoid over-processing which can look unnatural.',
       },
     ],
-    relatedTools: ['watermark-adder', 'shadow-adder'],
+    relatedTools: ['watermark-adder', 'ai-shadow-adder'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Design Tool',
@@ -11126,7 +10688,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         answer: 'Absolutely. You can add white backgrounds to any image for presentations, documents, or design projects where a clean background is needed.',
       },
     ],
-    relatedTools: ['background-remover', 'shadow-adder'],
+    relatedTools: ['ai-background-remover', 'ai-shadow-adder'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Image Editor',
@@ -11281,54 +10843,47 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       },
     },
   },
-  'email-subject-line-generator': {
-    slug: 'email-subject-line-generator',
-    title: 'Email Subject Line Generator - Catchy Subject Lines Online Free',
-    description: 'Generate catchy, high-converting subject lines for your email campaigns instantly. Analyze character lengths, test spam score, and copy with one click.',
+  'ai-email-subject-line-generator': {
+    slug: 'ai-email-subject-line-generator',
+    title: 'AI Email Subject Line Generator - High-Converting Subject Lines',
+    description: 'Generate high-converting email subject lines using AI. Score open-rate probability, tone, and character limits in real-time.',
     keywords: [
-      'email subject line generator',
-      'subject line generator',
-      'email subject lines',
-      'subject line creator',
-      'email open rate optimizer',
-      'subject line tester',
-      'catchy email subjects',
-      'email headline generator',
-      'open rates'
+      'ai email subject line generator',
+      'newsletter subject lines maker',
+      'high open rate subjects',
+      'email subject creator online',
+      'newsletter subject generator free',
+      'cold email subject builder',
     ],
     longTailKeywords: [
-      'generate catchy email subject lines free',
-      'best email subject line generator for sales',
-      'how to write open worthy subject lines',
-      'free email subject line tester online',
-      'cold outreach subject line generator',
-      'email subject line builder for marketing',
-      'increase newsletter open rate subject lines'
+      'best free email subject line generator online',
+      'generate click worthy cold email subject lines',
+      'score email subject lines with ai',
+      'how to generate high open rate email subjects',
+      'best free cold email subject line generator',
+      'generate newsletter subject lines that convert',
     ],
     category: 'Email Marketing Tools'
   },
-  'email-signature-generator': {
-    slug: 'email-signature-generator',
-    title: 'Email Signature Generator - Create Professional HTML Signatures Free',
-    description: 'Build professional, responsive HTML signatures for Gmail, Outlook, and Apple Mail. Customize colors, layout styles, avatar logos, and social profile links.',
+  'ai-email-signature-generator': {
+    slug: 'ai-email-signature-generator',
+    title: 'AI Email Signature Generator - Create Professional HTML Signatures',
+    description: 'Design beautiful, responsive HTML email signatures using AI layouts. Compatible with Gmail, Outlook, and Apple Mail.',
     keywords: [
-      'email signature generator',
-      'create email signature',
-      'free html signature creator',
-      'gmail signature builder',
-      'outlook email signature maker',
-      'professional email signature',
-      'html signature',
-      'gmail signature'
+      'ai email signature generator',
+      'html signature builder',
+      'professional email footer',
+      'html email signature creator',
+      'professional email footer maker',
+      'signature generator for email',
     ],
     longTailKeywords: [
-      'create html signature for gmail and outlook',
-      'best email signature generator with photo',
-      'free professional email signature template',
-      'how to install html signature in apple mail',
-      'responsive email signature builder online',
-      'interactive email signature layout generator',
-      'email signature maker for business cards'
+      'best free email signature generator with photo',
+      'create responsive html signatures online',
+      'signature builder for business cards',
+      'how to make professional html email signature',
+      'best free email signature builder with image',
+      'generate responsive email footer in html',
     ],
     category: 'Email Marketing Tools'
   },
@@ -11357,78 +10912,69 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     ],
     category: 'Email Marketing Tools'
   },
-  'spam-score-checker': {
-    slug: 'spam-score-checker',
-    title: 'Spam Score Checker - Audit Email Deliverability Risks Online',
-    description: 'Scan subject lines and email body text to identify spam trigger phrases, excessive caps, over-punctuations, and calculate deliverability score.',
+  'ai-spam-score-checker': {
+    slug: 'ai-spam-score-checker',
+    title: 'AI Email Spam Checker - Analyze Deliverability & Risks',
+    description: 'Scan your email subject and body copy for spam trigger words and deliverability risks using AI heuristics before sending.',
     keywords: [
-      'spam score checker',
-      'email spam checker',
-      'spam trigger word finder',
-      'email deliverability tester',
-      'check email spam rating',
-      'inbox placement tester',
-      'email deliverability',
-      'spam word check'
+      'ai email spam checker',
+      'spam trigger word detector',
+      'email deliverability score',
+      'email spam score calculator',
+      'spam word finder online',
+      'deliverability risk tester',
     ],
     longTailKeywords: [
-      'check email for spam words before sending',
-      'how to reduce email spam score online',
-      'free email spam score calculator',
-      'find spam trigger words in sales email',
-      'test email deliverability placement free',
-      'cold email spam test checker online',
-      'deliverability rating tool for marketing emails'
+      'best free online email spam checker',
+      'check email body for spam score with ai',
+      'improve email sender score and open rate',
+      'how to check email body for spam words',
+      'best free online tool to score email deliverability',
+      'avoid email spam folders with trigger word scanner',
     ],
     category: 'Email Marketing Tools'
   },
-  'email-template-builder': {
-    slug: 'email-template-builder',
-    title: 'Email Template Builder - Build Responsive Inline-CSS Templates',
-    description: 'Design responsive, table-based email layouts for newsletters, promotional campaigns, and welcome setup. Complete with inlined styles and download options.',
+  'ai-email-template-builder': {
+    slug: 'ai-email-template-builder',
+    title: 'AI Email Template Generator - Design Responsive HTML Newsletters',
+    description: 'Build responsive, inline-styled HTML email newsletter templates using AI drag-and-drop code generators.',
     keywords: [
-      'email template builder',
-      'html email template creator',
-      'responsive newsletter builder',
-      'inline css email designer',
-      'newsletter layout maker',
-      'free email builder',
-      'responsive email template',
-      'newsletter builder'
+      'ai email template generator',
+      'html newsletter builder',
+      'responsive email templates',
+      'html email newsletter builder',
+      'responsive email layout creator',
+      'marketing email template writer',
     ],
     longTailKeywords: [
-      'create responsive html email template online',
-      'free newsletter template builder with inline css',
-      'best email template designer for marketing',
-      'download responsive html email layout',
-      'drag and drop email template builder free',
-      'responsive newsletter table layout generator',
-      'inlined css email template exporter free'
+      'best free html email template builder online',
+      'design responsive newsletters with inline css',
+      'email template generator for marketing',
+      'how to generate responsive html email template',
+      'best free online newsletter builder with inline styles',
+      'generate custom email templates with html code',
     ],
     category: 'Email Marketing Tools'
   },
-  'email-header-analyzer': {
-    slug: 'email-header-analyzer',
-    title: 'Email Header Analyzer - Trace routing hops, delays, and authentication records from raw headers',
-    description: 'Paste raw email headers to trace delivery server paths, Hop-by-Hop delays, and verify SPF, DKIM, and DMARC authentication status.',
+  'ai-email-header-analyzer': {
+    slug: 'ai-email-header-analyzer',
+    title: 'AI Email Header Analyzer - Trace Mail Server Routing',
+    description: 'Trace mail server routing, check transmission delays, and analyze email header hops using AI diagnostics.',
     keywords: [
-      'email header analyzer',
-      'trace email sender ip',
-      'mime header parser',
-      'analyze email routing hops',
-      'email delay calculator',
-      'spf dkim dmarc header check',
-      'trace email route',
-      'mime headers'
+      'ai email header analyzer',
+      'trace email server headers',
+      'spf dmarc dkim validator',
+      'email header tracer tool',
+      'parse raw email header online',
+      'hops and delays calculator',
     ],
     longTailKeywords: [
-      'trace email path using raw headers',
-      'free online email header analyzer tool',
-      'calculate mail server hop delays',
-      'inspect authentication headers for spf dkim',
-      'how to read raw email header information',
-      'trace spoofed email sender IP address',
-      'email header analyzer report generator'
+      'best online email header tracer and analyzer',
+      'check email hop delays with ai routing',
+      'parse raw email headers online free',
+      'how to trace email routing hops using headers',
+      'best online spf dkim dmarc header check',
+      'analyze raw email headers for server delays',
     ],
     category: 'Email Marketing Tools'
   },
@@ -11531,11 +11077,507 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'mailto anchor tag generator online'
     ],
     category: 'Email Marketing Tools'
-  }
+  },
+  'ai-page-seo-analyzer': {
+    slug: 'ai-page-seo-analyzer',
+    title: 'AI SEO Checker & Analyzer - Audit Web Page SEO',
+    description: 'Conduct a comprehensive, AI-driven SEO audit and analysis of any web page. Check titles, tags, links, and speed.',
+    keywords: [
+      'ai seo checker',
+      'web page seo analyzer',
+      'page audit tool',
+      'seo checker online',
+      'ai website audit',
+      'on page seo checkup tool',
+    ],
+    longTailKeywords: [
+      'best free online page seo audit tool',
+      'analyze web page seo rankings with ai advice',
+      'conduct website seo checkup free',
+      'how to audit website on page seo with ai',
+      'best free web page speed and seo analyzer',
+      'inspect header hierarchy and meta tags online',
+    ],
+    category: 'SEO Tools'
+  },
+  'ai-hashtag-generator': {
+    slug: 'ai-hashtag-generator',
+    title: 'AI Hashtag Generator - Viral Social Media Tags Maker',
+    description: 'Generate trending and viral hashtags for Instagram, TikTok, YouTube, and LinkedIn using AI. Maximize your post reach and engagement instantly.',
+    keywords: [
+      'ai hashtag generator',
+      'instagram hashtags',
+      'viral hashtags',
+      'trending hashtags',
+      'social media tags generator',
+      'hashtag search tool online',
+    ],
+    longTailKeywords: [
+      'best free ai hashtag generator online',
+      'generate viral hashtags for instagram reels',
+      'trending tiktok hashtags generator free',
+      'boost social media reach with ai tags',
+      'how to find viral instagram hashtags using ai',
+      'best free trending tiktok tag generator',
+    ],
+    category: 'Social Media Tools'
+  },
+  'ai-bio-generator': {
+    slug: 'ai-bio-generator',
+    title: 'AI Bio Generator - Free Custom Social Profile Bios',
+    description: 'Create professional and engaging social media bios for Twitter, LinkedIn, and Instagram using AI. Customize tone and length easily.',
+    keywords: [
+      'ai bio generator',
+      'social media bio creator',
+      'instagram bio generator',
+      'linkedin bio writer',
+      'professional social bio writer',
+      'twitter bio generator free',
+    ],
+    longTailKeywords: [
+      'best free ai bio generator online',
+      'create professional linkedin bios with ai',
+      'short and catchy instagram bio generator',
+      'how to write catchy social media bio with ai',
+      'best online bio maker for profiles free',
+      'generate customized twitter and linkedin bios',
+    ],
+    category: 'Social Media Tools'
+  },
+  'caption-formatter': {
+    slug: 'caption-formatter',
+    title: 'AI Social Caption Generator & Formatter - Free Post Writer',
+    description: 'Generate and style engaging social media captions for Instagram, Facebook, and LinkedIn using AI. Add spaces, emojis, and styling.',
+    keywords: [
+      'ai caption generator',
+      'social media caption writer',
+      'instagram caption generator',
+      'facebook caption generator free',
+      'social caption formatter tool',
+      'add spaces to captions online',
+    ],
+    longTailKeywords: [
+      'best free ai caption writer online',
+      'generate formatted instagram captions with line breaks',
+      'linkedin post caption generator',
+      'how to format instagram captions with spaces',
+      'best free caption writer for linkedin posts',
+      'social media post formatting and spaces tool',
+    ],
+    category: 'Social Media Tools'
+  },
+
+  'crop-pdf': {
+    slug: 'crop-pdf',
+    title: 'Crop PDF Online - Crop PDF Pages & Margins Free',
+    description: 'Crop PDF pages online for free. Adjust margins, trim borders, and crop specific page areas. Perfect for resizing PDF documents, trimming white borders, and custom formatting.',
+    keywords: [
+      'crop pdf',
+      'pdf cropper',
+      'trim pdf',
+      'crop pdf online',
+      'free pdf cropper',
+      'pdf margin cropper',
+      'pdf page cropper',
+      'crop pdf pages',
+      'online pdf cropper',
+    ],
+    longTailKeywords: [
+      'how to crop pdf online free',
+      'best free pdf cropper tool',
+      'crop pdf pages custom margins',
+      'trim white borders from pdf free',
+      'crop multiple pdf pages at once',
+    ],
+    category: 'PDF Tools',
+    relatedTools: ['pdf-reorder', 'pdf-to-word', 'pdf-to-jpg-converter'],
+    faqs: [
+      {
+        question: 'Does cropping a PDF reduce its quality?',
+        answer: 'No, cropping a PDF simply hides the cropped margins. The resolution and quality of text and images in the PDF remain unaffected.'
+      },
+      {
+        question: 'Can I crop all pages in the PDF at once?',
+        answer: 'Yes, our PDF cropper allows you to apply the same crop dimensions to all pages, or choose specific pages to crop.'
+      }
+    ],
+    howTo: {
+      name: 'How to Crop a PDF Page Online',
+      description: 'Upload your PDF, adjust the crop box to trim margins, and download the cropped file.',
+      steps: [
+        { name: 'Upload PDF', text: 'Select and upload the PDF file you want to crop.' },
+        { name: 'Adjust Margins', text: 'Drag the handles on the crop box to select the area you want to keep.' },
+        { name: 'Apply Crop', text: 'Click Crop PDF to process your changes.' },
+        { name: 'Download File', text: 'Save the cropped PDF file to your device.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'PDF Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'pdf-reorder': {
+    slug: 'pdf-reorder',
+    title: 'Reorder PDF Pages Online - Rearrange PDF Pages Free',
+    description: 'Rearrange and reorder PDF pages online. Drag and drop pages to change sequence, delete pages, and customize page order. Free, fast, and secure tool.',
+    keywords: [
+      'reorder pdf',
+      'rearrange pdf pages',
+      'pdf page organizer',
+      'change pdf page order',
+      'reorder pdf online',
+      'pdf reorder tool',
+      'free pdf organizer',
+      'organize pdf pages',
+    ],
+    longTailKeywords: [
+      'how to reorder pages in pdf online',
+      'best free pdf page organizer tool',
+      'drag and drop rearrange pdf pages',
+      'change pdf page sequence online free',
+      'reorder pdf pages without software',
+    ],
+    category: 'PDF Tools',
+    relatedTools: ['crop-pdf', 'pdf-to-word', 'merge-pdf'],
+    faqs: [
+      {
+        question: 'Is it safe to reorder PDF pages here?',
+        answer: 'Yes, your files are processed completely in your browser. They are not uploaded to our servers, ensuring 100% privacy and security.'
+      },
+      {
+        question: 'Can I delete pages while reordering?',
+        answer: 'Yes, you can click the delete icon on any page thumbnail to remove it from the final PDF document.'
+      }
+    ],
+    howTo: {
+      name: 'How to Rearrange PDF Pages',
+      description: 'Drag and drop page thumbnails to reorder your PDF pages instantly.',
+      steps: [
+        { name: 'Upload PDF', text: 'Upload your PDF document to see page thumbnails.' },
+        { name: 'Drag and Drop', text: 'Drag thumbnails to rearrange the pages in your desired sequence.' },
+        { name: 'Organize', text: 'Optionally rotate or delete specific pages.' },
+        { name: 'Save PDF', text: 'Click Save to compile and download your organized PDF file.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'PDF Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'broken-image-finder': {
+    slug: 'broken-image-finder',
+    title: 'Broken Image Finder - Check Website for Broken Images',
+    description: 'Scan your website or HTML code for broken images online. Identify 404 image links, missing alt tags, and slow-loading images instantly. Perfect for SEO audits.',
+    keywords: [
+      'broken image finder',
+      'find broken images',
+      'website image checker',
+      'check for broken images',
+      'broken image link checker',
+      'image 404 finder',
+      'online broken image checker',
+      'seo image checker',
+    ],
+    longTailKeywords: [
+      'free website broken image finder tool',
+      'how to find broken images on website',
+      'check website for 404 broken images online',
+      'broken image link checker for seo audit',
+      'find missing image files on web page',
+    ],
+    category: 'SEO Tools',
+    relatedTools: ['sitemap-validator', 'page-speed-checklist', 'domain-age-checker'],
+    faqs: [
+      {
+        question: 'Why are broken images bad for SEO?',
+        answer: 'Broken images hurt user experience and signals poor site maintenance to search engines, potentially lowering your search rankings.'
+      },
+      {
+        question: 'How do I fix a broken image?',
+        answer: 'Verify the image URL path, make sure the file is uploaded to the server, or replace the source link with a working image.'
+      }
+    ],
+    howTo: {
+      name: 'How to Find Broken Images on a Page',
+      description: 'Scan any web page URL to find and identify broken image links.',
+      steps: [
+        { name: 'Enter URL', text: 'Type or paste the target web page URL into the input field.' },
+        { name: 'Start Scan', text: 'Click Scan to analyze all image tags on the page.' },
+        { name: 'Review Report', text: 'See a detailed list of broken links, HTTP status codes, and alt attributes.' },
+        { name: 'Fix Links', text: 'Locate the broken images in your HTML source code and fix their source paths.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'SEO Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'domain-age-checker': {
+    slug: 'domain-age-checker',
+    title: 'Domain Age Checker - Find Website Creation Date & Age',
+    description: 'Check the age of any domain name instantly. Find domain registration date, expiry date, update history, and domain authority details. Free online WHOIS tool.',
+    keywords: [
+      'domain age checker',
+      'check domain age',
+      'website age checker',
+      'domain age lookup',
+      'domain creation date',
+      'domain registration age',
+      'whois domain age checker',
+      'free domain age checker',
+    ],
+    longTailKeywords: [
+      'how to check domain age online free',
+      'best domain age checker tool',
+      'domain registration and expiry date checker',
+      'check domain age for seo analysis',
+      'website age and creation date lookup',
+    ],
+    category: 'SEO Tools',
+    relatedTools: ['broken-image-finder', 'page-speed-checklist', 'sitemap-validator'],
+    faqs: [
+      {
+        question: 'Does domain age affect SEO search rankings?',
+        answer: 'While age itself is not a major ranking factor, older domains often have established backlink profiles and trust value with search engines.'
+      },
+      {
+        question: 'What details does the domain age checker show?',
+        answer: 'It displays the domain creation date, expiration date, last updated date, and domain age in years, months, and days.'
+      }
+    ],
+    howTo: {
+      name: 'How to Check Domain Age',
+      description: 'Find out the exact registration date and age of any domain name.',
+      steps: [
+        { name: 'Input Domain', text: 'Enter the domain URL (e.g., example.com) in the search box.' },
+        { name: 'Check Age', text: 'Click Check Domain Age to perform a WHOIS query.' },
+        { name: 'Read WHOIS Details', text: 'Analyze the domain creation, expiry, and updated timestamps.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'SEO Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'page-speed-checklist': {
+    slug: 'page-speed-checklist',
+    title: 'Page Speed Checklist - Optimize Website Performance & Load Time',
+    description: 'Get a complete, step-by-step checklist to optimize web page speed. Improve Core Web Vitals, optimize images, enable caching, and minify CSS/JS. Boost search rankings.',
+    keywords: [
+      'page speed checklist',
+      'website speed optimization checklist',
+      'improve page speed',
+      'seo speed checklist',
+      'optimize website performance',
+      'core web vitals checklist',
+      'web page speed guide',
+    ],
+    longTailKeywords: [
+      'step by step page speed checklist for seo',
+      'how to optimize website page load speed',
+      'improve core web vitals speed checklist',
+      'best website performance optimization checklist',
+      'page speed checklist for developers',
+    ],
+    category: 'SEO Tools',
+    relatedTools: ['broken-image-finder', 'domain-age-checker', 'utm-link-builder'],
+    faqs: [
+      {
+        question: 'What is the most effective way to improve page speed?',
+        answer: 'Optimizing and compressing images, utilizing lazy loading, and enabling server-side browser caching are the highest-impact optimization techniques.'
+      },
+      {
+        question: 'What are Core Web Vitals?',
+        answer: 'Core Web Vitals are user-centric performance metrics defined by Google, including Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS).'
+      }
+    ],
+    howTo: {
+      name: 'How to Use the Page Speed Checklist',
+      description: 'Audit website performance tasks and mark off optimizations to speed up your web pages.',
+      steps: [
+        { name: 'Audit Page', text: 'Run a speed audit using tools like Lighthouse or PageSpeed Insights.' },
+        { name: 'Follow Tasks', text: 'Follow each item in our speed checklist, starting with image compression and caching.' },
+        { name: 'Track Progress', text: 'Check off tasks as you implement improvements on your site.' },
+        { name: 'Retest Speed', text: 'Retest your site performance to measure improvements.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'SEO Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'utm-link-builder': {
+    slug: 'utm-link-builder',
+    title: 'UTM Link Builder - Generate Google Analytics Campaign URLs',
+    description: 'Build trackable campaign URLs with UTM parameters online. Add source, medium, campaign, term, and content to track links in Google Analytics. Free UTM generator.',
+    keywords: [
+      'utm link builder',
+      'utm builder',
+      'utm campaign generator',
+      'google analytics link builder',
+      'utm parameter builder',
+      'generate utm links',
+      'online campaign url builder',
+      'free utm generator',
+    ],
+    longTailKeywords: [
+      'free online utm campaign link builder',
+      'how to build utm links for google analytics',
+      'generate campaign tracking links with utm parameters',
+      'best google analytics utm builder tool',
+      'utm parameter generator for social media links',
+    ],
+    category: 'SEO Tools',
+    relatedTools: ['page-speed-checklist', 'broken-image-finder', 'sitemap-validator'],
+    faqs: [
+      {
+        question: 'What are the required UTM parameters?',
+        answer: 'Only URL (Website URL) and Campaign Source (utm_source) are strictly required, though Campaign Medium and Campaign Name are highly recommended.'
+      },
+      {
+        question: 'Are UTM parameters case-sensitive?',
+        answer: 'Yes, Google Analytics treats lowercase and uppercase terms (e.g., "newsletter" vs "Newsletter") as distinct campaign mediums.'
+      }
+    ],
+    howTo: {
+      name: 'How to Generate a UTM Link',
+      description: 'Enter your landing page URL and define tracking parameters to build a campaign URL.',
+      steps: [
+        { name: 'Enter URL', text: 'Paste the destination website URL.' },
+        { name: 'Set Source & Medium', text: 'Specify the traffic source (e.g., newsletter) and medium (e.g., email).' },
+        { name: 'Name Campaign', text: 'Provide a name for the marketing campaign (e.g., summer_sale).' },
+        { name: 'Copy URL', text: 'Copy the generated tracking link or shorten it for campaign posts.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'SEO Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'line-break-generator': {
+    slug: 'line-break-generator',
+    title: 'Line Break Generator - Instagram Caption Spaces Maker',
+    description: 'Clean line breaks and spaces for Instagram captions. Avoid caption formatting issues, add blank lines, and format posts with spaces. No special dots needed.',
+    keywords: [
+      'line break generator',
+      'instagram spaces maker',
+      'instagram line breaks',
+      'caption space generator',
+      'clean caption formatter',
+      'instagram caption spaces',
+      'add spaces to instagram bio',
+    ],
+    longTailKeywords: [
+      'free instagram line break generator online',
+      'how to add clean spaces in instagram caption',
+      'best instagram caption spaces maker tool',
+      'generate clean spaces for instagram bio and posts',
+    ],
+    category: 'Social Media Tools',
+    relatedTools: ['link-in-bio', 'caption-formatter', 'ai-hashtag-generator'],
+    faqs: [
+      {
+        question: 'Why do my Instagram line breaks disappear?',
+        answer: 'Instagram stripping spaces from standard entries is a common issue. Our tool replaces spaces with invisible character entities that preserve formatting.'
+      },
+      {
+        question: 'Can I use this for Facebook and TikTok?',
+        answer: 'Yes, the line break formatter works perfectly for formatting bios, posts, and captions on Facebook, TikTok, Twitter, and LinkedIn.'
+      }
+    ],
+    howTo: {
+      name: 'How to Format Instagram Captions with Spaces',
+      description: 'Write your caption with clean spacing and copy the formatted text to Instagram.',
+      steps: [
+        { name: 'Write Caption', text: 'Type or paste your text into the editor, adding line breaks where desired.' },
+        { name: 'Generate', text: 'Click Generate to format the spacing elements.' },
+        { name: 'Copy and Post', text: 'Copy the output text and paste it directly into Instagram.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'Social Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
+
+  'link-in-bio': {
+    slug: 'link-in-bio',
+    title: 'Link in Bio Generator - Custom Mobile Landing Pages',
+    description: 'Create a free, custom link in bio landing page. Share multiple links, social media profiles, and promotions from a single mobile-optimized URL. Perfect for Instagram.',
+    keywords: [
+      'link in bio',
+      'link in bio generator',
+      'bio link builder',
+      'custom landing page for instagram',
+      'free link in bio tool',
+      'social media landing page',
+      'multiple links in bio',
+      'one link builder',
+    ],
+    longTailKeywords: [
+      'best free link in bio generator for instagram',
+      'how to make custom link in bio landing page',
+      'create mobile landing page for multiple links',
+      'multiple links in bio builder online free',
+      'link in bio tool for tiktok and instagram',
+    ],
+    category: 'Social Media Tools',
+    relatedTools: ['line-break-generator', 'ai-bio-generator', 'ai-hashtag-generator'],
+    faqs: [
+      {
+        question: 'Is there a limit to how many links I can add?',
+        answer: 'No, you can add as many external links, social icons, and customized media as you need to build your landing page.'
+      },
+      {
+        question: 'Do I need a domain name for my bio link?',
+        answer: 'No, we host your mobile landing page for you. Just copy the unique URL and paste it into your social media bio.'
+      }
+    ],
+    howTo: {
+      name: 'How to Build a Link in Bio Page',
+      description: 'Design a single landing page to compile and display all your website links.',
+      steps: [
+        { name: 'Add Links', text: 'Enter the titles and destination URLs for your important resources.' },
+        { name: 'Customize Style', text: 'Select custom layout colors, styles, and background templates.' },
+        { name: 'Publish', text: 'Generate your link-in-bio page and copy the unique shareable link.' },
+        { name: 'Share on Social', text: 'Paste the landing page URL into your Instagram, TikTok, or Twitter bio.' }
+      ]
+    },
+    schema: {
+      type: 'SoftwareApplication',
+      appCategory: 'Social Tool',
+      operatingSystem: 'Web',
+      offers: { price: '0', priceCurrency: 'INR' }
+    }
+  },
 };
 
 export const getToolSeoMetadata = (toolSlug: string): ToolSeoMetadata | null => {
-  const toolData = toolSeoEnhancements[toolSlug];
+  let slug = toolSlug;
+  if (slug === 'page-speed-checklist-generator') slug = 'page-speed-checklist';
+  if (slug === 'og-image-preview-tool') slug = 'og-image-preview';
+
+  const toolData = toolSeoEnhancements[slug];
   if (!toolData) return null;
 
   const mergedFaqs = [...universalToolFaqs, ...(toolData.faqs || [])];
@@ -11554,27 +11596,32 @@ export const generateLongTailVariations = (baseKeywords: string[], toolSlug: str
   const variations: string[] = [];
   const qualifiers = [
     'online free', 'without registration', 'no signup', 'instantly', 'fast', 'secure', 'professional',
-    'high quality', 'best', 'top rated', '2024', 'mobile friendly', 'browser based', 'no watermark',
-    'unlimited', 'batch processing', 'for business', 'for students', 'for developers'
+    'high quality', 'best', 'top rated', '2026', 'mobile friendly', 'browser based', 'no watermark',
+    'unlimited', 'batch processing', 'for business', 'for students', 'for developers', 'ai', 'AI', 'AI tools',
+    'ai tools for business', 'ai tools for students', 'ai tools for developers', 'ai tools for social media',
+    'AI tool', 'AI tools online', 'AI tools for business', 'AI tools for students', 'AI tools for developers',
+    'AI tools for social media'
   ];
-  
+
   const intents = [
     'how to', 'best way to', 'easy way to', 'quick way to', 'step by step', 'tutorial', 'guide',
-    'free tool for', 'online service for', 'web based', 'cloud based', 'automatic', 'instant'
+    'free tool for', 'online service for', 'web based', 'cloud based', 'automatic', 'instant',
+    'AI tool for', 'AI tool for business', 'AI tool for students', 'AI tool for developers',
+    'AI tool for social media'
   ];
-  
+
   baseKeywords.forEach(keyword => {
     qualifiers.forEach(qualifier => {
       variations.push(`${keyword} ${qualifier}`);
     });
-    
+
     intents.forEach(intent => {
       if (keyword.includes('converter') || keyword.includes('generator')) {
         variations.push(`${intent} ${keyword}`);
       }
     });
   });
-  
+
   const toolSpecificTerms: Record<string, string[]> = {
     'pdf-to-word': [
       'convert pdf to word for editing',
@@ -11598,12 +11645,12 @@ export const generateLongTailVariations = (baseKeywords: string[], toolSlug: str
       'product qr code generator'
     ]
   };
-  
+
   if (toolSpecificTerms[toolSlug]) {
     variations.push(...toolSpecificTerms[toolSlug]);
   }
-  
-  return variations.slice(0, 50); 
+
+  return variations.slice(0, 50);
 };
 
 export const getToolCategory = (slug: string): string | undefined => {

@@ -73,21 +73,21 @@ const CategoryPage = () => {
   const getTrendingTools = () => {
     const trendingMap: Record<string, string[]> = {
       "pdf": ["pdf-to-word", "pdf-to-image", "pdf-merge", "pdf-compressor"],
-      "image": ["png-to-jpg-converter", "qr-code-generator", "image-compressor", "background-remover"],
+      "image": ["png-to-jpg-converter", "qr-code-generator", "image-compressor", "ai-background-remover"],
       "video": ["video-to-audio", "video-trim", "video-speed", "video-thumbnail"],
-      "audio": ["audio-converter", "speech-to-text", "audio-trimmer", "audio-merger"],
+      "audio": ["audio-converter", "ai-speech-to-text", "audio-trimmer", "audio-merger"],
       "text": ["word-counter", "case-converter", "color-converter", "text-diff"],
       "security": ["password-generator", "password-strength", "hash-generator", "base64-tool"],
       "finance": ["invoice-generator", "gst-calculator", "emi-calculator", "currency-converter"],
       "dev": ["json-formatter", "regex-tester", "jwt-decoder", "url-encoder"],
       "education": ["scientific-calculator", "percentage-calc", "unit-converter", "compound-interest"],
       "internet": ["ip-lookup", "dns-lookup", "ssl-checker", "ping-test"],
-      "seo": ["meta-title-description-generator", "keyword-density-checker", "robots-txt-generator", "page-seo-analyzer"],
-      "social": ["hashtag-generator", "bio-generator", "caption-formatter", "meme-generator"],
+      "seo": ["ai-meta-tag-generator", "keyword-density-checker", "robots-txt-generator", "ai-page-seo-analyzer"],
+      "social": ["ai-hashtag-generator", "ai-bio-generator", "caption-formatter", "ai-meme-generator"],
       "zip": ["create-zip", "extract-zip", "password-zip", "compression-zip"],
       "date-time": ["date-difference", "age-calculator", "working-days", "countdown-timer"],
       "govt-legal": ["passport-photo-resizer", "pdf-compressor", "signature-maker", "document-template"],
-      "ecommerce": ["shadow-adder", "barcode-generator", "gst-invoice-generator", "ecommerce-calculator"]
+      "ecommerce": ["ai-shadow-adder", "barcode-generator", "gst-invoice-generator", "ecommerce-calculator"]
     };
 
     return trendingMap[categoryId || ""] || [];

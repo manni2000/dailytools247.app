@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import {
   FileText,
   Plus,
@@ -30,7 +31,8 @@ interface Question {
 }
 
 const MCQGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('mcq-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-mcq-generator');
   const [inputText, setInputText] = useState("");
   const [topic, setTopic] = useState("");
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -40,7 +42,7 @@ const MCQGeneratorTool = () => {
     correctAnswer: 0,
   });
 
-  const generateQuestionsFromText = () => {
+  const runGenerationLogic = () => {
     if (!inputText.trim()) return;
 
     const sentences = inputText.split(".").filter((s) => s.trim().length > 20);
@@ -68,6 +70,16 @@ const MCQGeneratorTool = () => {
 
     setQuestions([...questions, ...newQuestions]);
     setInputText("");
+  };
+
+  const generateQuestionsFromText = () => {
+    if (!inputText.trim()) return;
+    setIsProcessing(true);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
   };
 
   const addCustomQuestion = () => {
@@ -233,12 +245,12 @@ const MCQGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Education(
-        toolSeoData?.title || "MCQ Generator from Text",
+        toolSeoData?.title || "AI MCQ Generator from Text",
         toolSeoData?.description || "Generate multiple choice questions from text or create custom questions",
-        "mcq-generator"
+        "ai-mcq-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="MCQ Generator"
+      breadcrumbTitle="AI MCQ Generator"
       category="Education Tools"
       categoryPath="/category/education"
     >
@@ -263,13 +275,13 @@ const MCQGeneratorTool = () => {
               <FileText className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">MCQ Generator Free Online</h2>
+              <h2 className="text-2xl font-bold">AI MCQ Generator Free Online</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Generate multiple choice questions from text or create custom questions.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">mcq generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI mcq generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">question generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">quiz maker</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">multiple choice</span>
@@ -291,7 +303,7 @@ const MCQGeneratorTool = () => {
           />
 
           <button
-            onClick={generateQuestionsFromText}
+            onClick={generateQuestionsFromText} disabled={isProcessing}
             className="btn-primary mt-4"
           >
             Generate Questions
@@ -365,7 +377,23 @@ const MCQGeneratorTool = () => {
         </div>
 
         {/* Questions List */}
-        {questions.length > 0 && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Scanning source document text structure...",
+                  "Extracting key entities and vocabulary definitions...",
+                  "Formulating multiple choice question prompts...",
+                  "Generating plausible incorrect distractors and correct keys..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {questions.length > 0 && !isProcessing && (
           <div className="rounded-xl border border-border bg-card p-6">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-semibold">
@@ -453,10 +481,10 @@ const MCQGeneratorTool = () => {
         >
           <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <FileText className="h-5 w-5 text-blue-500" />
-            What is MCQ Generator from Text?
+            What is AI MCQ Generator from Text?
           </h3>
           <p className="text-muted-foreground mb-4">
-            MCQ Generator from Text is a tool that automatically creates multiple choice questions from any text content. It analyzes your text and generates relevant questions with answer options, making it easy to create quizzes, assessments, and educational materials quickly.
+            AI MCQ Generator from Text is a tool that automatically creates multiple choice questions from any text content. It analyzes your text and generates relevant questions with answer options, making it easy to create quizzes, assessments, and educational materials quickly.
           </p>
 
           <h4 className="font-semibold mb-2">How It Works</h4>

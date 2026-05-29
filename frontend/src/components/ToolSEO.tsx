@@ -32,7 +32,7 @@ export const ToolSEO = ({ toolName, toolDescription, category, keywords = [], to
 
     keywords.slice(0, 5).forEach(k => keywordSet.add(k.toLowerCase()));
 
-    
+
     if (toolSlug) {
       const slugParts = toolSlug.split('-').filter(Boolean);
       slugParts.slice(0, 2).forEach(part => keywordSet.add(part.toLowerCase()));
@@ -308,7 +308,7 @@ export const CategorySEO = {
       category="E-commerce Tools"
       keywords={[
         'product image editor',
-        'background remover',
+        'ai background remover',
         'qr code generator',
         'barcode generator',
         'bulk image resizer',

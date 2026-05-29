@@ -15,7 +15,7 @@ import ToolFAQ from "@/components/ToolFAQ";
 const categoryColor = "350 80% 55%";
 
 const VideoSpeedTool = () => {
-  const toolSeoData = getToolSeoMetadata('video-speed-changer');
+  const toolSeoData = getToolSeoMetadata('video-speed');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [videoData, setVideoData] = useState<string | null>(null);

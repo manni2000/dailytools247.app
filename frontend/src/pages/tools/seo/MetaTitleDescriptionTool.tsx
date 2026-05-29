@@ -1,26 +1,34 @@
 import { useState } from "react";
 import { Copy, Check, FileText, Search, Zap, Globe, Target, BarChart3, Sparkles, Settings } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 
 const categoryColor = "25 90% 50%";
 
 const MetaTitleDescriptionTool = () => {
-  const toolSeoData = getToolSeoMetadata('meta-title-description-generator');
+  const toolSeoData = getToolSeoMetadata('ai-meta-tag-generator');
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [keywords, setKeywords] = useState("");
   const [generatedTitle, setGeneratedTitle] = useState("");
   const [generatedDescription, setGeneratedDescription] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const generateMetaTags = () => {
     if (!title && !keywords) return;
+    setIsProcessing(true);
+    setGeneratedTitle("");
+    setGeneratedDescription("");
+  };
 
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
     // Generate optimized title
     let optimizedTitle = title;
     if (keywords) {
@@ -73,12 +81,12 @@ const MetaTitleDescriptionTool = () => {
   return (
     <>
       {CategorySEO.SEO(
-        toolSeoData?.title || "Meta Title & Description Generator",
-        toolSeoData?.description || "Generate SEO-optimized meta titles and descriptions for better search engine rankings",
-        "meta-title-description-generator"
+        toolSeoData?.title || "AI SEO Meta Description Generator",
+        toolSeoData?.description || "Generate SEO-optimized meta titles and descriptions using AI for better search engine rankings",
+        "ai-meta-tag-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Meta Title & Description"
+      breadcrumbTitle="AI SEO Meta Tags"
       category="SEO Tools"
       categoryPath="/category/seo"
     >
@@ -117,16 +125,16 @@ const MetaTitleDescriptionTool = () => {
               <FileText className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">SEO Meta Tags Generator</h2>
+              <h2 className="text-2xl font-bold">AI SEO Meta Description Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Create perfect meta titles and descriptions that rank higher in search results.
+                Create perfect meta titles and descriptions using AI that rank higher in search results.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">meta tags generator</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">meta title</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">meta description</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">seo meta tags</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">ai meta tag generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">ai seo description generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">ai title generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">seo meta tags ai</span>
               </div>
             </div>
           </div>
@@ -147,7 +155,7 @@ const MetaTitleDescriptionTool = () => {
               >
                 <Settings className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
-              <h3 className="font-semibold">Meta Tag Options</h3>
+              <h3 className="font-semibold">AI Meta Tag Options</h3>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Page Title</label>
@@ -184,21 +192,38 @@ const MetaTitleDescriptionTool = () => {
 
             <motion.button
               onClick={generateMetaTags}
+              disabled={isProcessing}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full rounded-lg px-4 py-3 font-medium transition-colors text-white"
+              className="w-full rounded-lg px-4 py-3 font-medium transition-colors text-white disabled:opacity-50"
               style={{
                 background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
               }}
             >
-              <Zap className="inline h-4 w-4 mr-2" />
-              Generate Meta Tags
+              <Sparkles className="inline h-4 w-4 mr-2 animate-pulse" />
+              Generate Meta Tags with AI
             </motion.button>
           </div>
         </motion.div>
 
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Analyzing page content, title and target keywords...",
+                  "Evaluating competitor search patterns and search volumes...",
+                  "Structuring title and meta description tag with optimal character constraints...",
+                  "Generating click-through rate optimized meta tags..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
         {/* Results Section */}
-        {(generatedTitle || generatedDescription) && (
+        {(generatedTitle || generatedDescription) && !isProcessing && (
           <motion.div 
             variants={scaleIn}
             initial="hidden"

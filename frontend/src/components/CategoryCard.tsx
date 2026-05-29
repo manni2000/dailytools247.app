@@ -83,7 +83,7 @@ const CategoryCard = ({
             {/* Icon with animated background */}
             <motion.div
               variants={iconScale}
-              className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-500"
+              className="mb-5 inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl transition-all duration-500"
               style={{
                 backgroundColor: `hsl(${color} / 0.15)`,
                 boxShadow: `0 4px 20px hsl(${color} / 0.2)`,
@@ -100,14 +100,21 @@ const CategoryCard = ({
                   ease: "easeInOut",
                 }}
               >
-                <Icon className="h-8 w-8" style={{ color: `hsl(${color})` }} />
+                <Icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: `hsl(${color})` }} />
               </motion.div>
             </motion.div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-card-foreground transition-colors duration-300 group-hover:text-primary">
-              {name}
-            </h3>
+            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+              <h3 className="text-xl font-bold text-card-foreground transition-colors duration-300 group-hover:text-primary">
+                {name}
+              </h3>
+              {id === "ai" && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary/20 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary border border-primary/30 animate-pulse">
+                  AI-First
+                </span>
+              )}
+            </div>
 
             {/* Description */}
             <p className="mt-2 flex-1 text-sm text-muted-foreground line-clamp-2">
@@ -121,17 +128,14 @@ const CategoryCard = ({
                 <motion.span
                   whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}
-                  className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white shadow-lg"
+                  className="flex h-7 px-3 items-center justify-center rounded-full text-xs font-bold text-white shadow-lg whitespace-nowrap"
                   style={{
                     backgroundColor: `hsl(${color})`,
                     boxShadow: `0 2px 10px hsl(${color} / 0.4)`,
                   }}
                 >
-                  {toolCount}
+                  {toolCount}+ {id === "ai" ? "AI Models" : "Tools"}
                 </motion.span>
-                <span className="text-sm font-medium text-muted-foreground">
-                  tools
-                </span>
               </div>
 
               {/* Arrow icon */}

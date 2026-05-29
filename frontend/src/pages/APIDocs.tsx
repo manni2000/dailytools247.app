@@ -173,664 +173,662 @@ const APIDocs = () => {
         toolSlug="api-docs"
       />
       <div className="flex min-h-screen flex-col bg-background">
-      <Header />
-      <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-        <div className="text-center mb-8 sm:mb-12 px-2 relative">
+        <Header />
+        <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+          <div className="text-center mb-8 sm:mb-12 px-2 relative">
             <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.02]">
-             API Documentation
-          </div>
-          <div className="relative z-10">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-              Dailytools247 API for Developers
-            </h1>
-            <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-2 leading-relaxed">
-              Integrate powerful image processing, text manipulation, and utility tools directly into your applications. 
-              <span className="text-primary font-semibold"> Free tier with 100 requests/day.</span>
-            </p>
-            
-            {/* Feature cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto">
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                <div className="w-10 h-10 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <Zap className="h-5 w-5 text-yellow-600" />
-                </div>
-                <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Lightning Fast</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">Optimized endpoints with sub-second response times</p>
-              </div>
-              
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <Shield className="h-5 w-5 text-green-600" />
-                </div>
-                <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Enterprise Security</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">Bank-level encryption and secure API key management</p>
-              </div>
-              
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                  <Rocket className="h-5 w-5 text-blue-600" />
-                </div>
-                <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Easy Integration</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm">RESTful API with comprehensive documentation</p>
-              </div>
+              API Documentation
             </div>
+            <div className="relative z-10">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+                Dailytools247 API for Developers
+              </h1>
+              <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-2 leading-relaxed">
+                Integrate powerful image processing, text manipulation, and utility tools directly into your applications.
+                <span className="text-primary font-semibold"> Free tier with 100 requests/day.</span>
+              </p>
 
-            {/* Quick stats */}
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-xs sm:text-sm">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">15+</div>
-                <div className="text-muted-foreground">API Endpoints</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">99.9%</div>
-                <div className="text-muted-foreground">Uptime</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">&lt;100ms</div>
-                <div className="text-muted-foreground">Avg Response</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">100</div>
-                <div className="text-muted-foreground">Free Requests/Day</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-8">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted border border-border h-auto p-1 rounded-xl">
-            <TabsTrigger value="getstarted" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Get Started</TabsTrigger>
-            <TabsTrigger value="endpoints" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Endpoints</TabsTrigger>
-            <TabsTrigger value="playground" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 flex items-center justify-center gap-1 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">
-              <Terminal className="h-3.5 w-3.5 text-current" />
-              Playground
-            </TabsTrigger>
-            <TabsTrigger value="mykeys" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">My Keys</TabsTrigger>
-          </TabsList>
-
-          {/* Get Started Tab */}
-          <TabsContent value="getstarted" className="space-y-4 sm:space-y-8">
-            {activeTab === "getstarted" && (
-            <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-              {/* Generate API Key */}
-              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
-                <CardHeader className="p-4 sm:p-6 relative z-10">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl flex items-center justify-center mb-4">
-                    <Key className="h-6 w-6 text-primary" />
+              {/* Feature cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto">
+                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
+                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                    <Zap className="h-5 w-5 text-yellow-600" />
                   </div>
-                  <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
-                    Generate API Key
-                  </CardTitle>
-                  <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                    Get your free API key to start making requests instantly
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
-                  />
-                  <Input
-                    placeholder="Key name (optional)"
-                    value={keyName}
-                    onChange={(e) => setKeyName(e.target.value)}
-                    className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
-                  />
-                  <Button
-                    onClick={generateApiKey}
-                    disabled={generatingKey}
-                    className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-colors duration-300"
-                  >
-                    {generatingKey ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2"></div>
-                        Generating...
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="h-4 w-4 mr-2" />
-                        Generate API Key
-                      </>
-                    )}
-                  </Button>
+                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Lightning Fast</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">Optimized endpoints with sub-second response times</p>
+                </div>
 
-                  {newApiKey && (
-                    <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 border border-emerald-100 rounded-lg relative overflow-hidden">
-                      <div className="relative z-10">
-                        <p className="text-xs sm:text-sm text-emerald-800 mb-2 font-medium flex items-center gap-2">
-                          <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                          Your API Key (save it securely!)
-                        </p>
-                        <div className="flex items-center gap-1 sm:gap-2">
-                          <code className="flex-1 text-[10px] sm:text-xs bg-background p-2 rounded text-emerald-700 font-mono break-all leading-relaxed border border-emerald-200/60">
-                            {showKey ? newApiKey : "•".repeat(20)}
-                          </code>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => setShowKey(!showKey)}
-                            className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
-                          >
-                            {showKey ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => copyToClipboard(newApiKey)}
-                            className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
-                          >
-                            <Copy className="h-3.5 w-3.5" />
-                          </Button>
+                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                    <Shield className="h-5 w-5 text-green-600" />
+                  </div>
+                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Enterprise Security</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">Bank-level encryption and secure API key management</p>
+                </div>
+
+                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                    <Rocket className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Easy Integration</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">RESTful API with comprehensive documentation</p>
+                </div>
+              </div>
+
+              {/* Quick stats */}
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-xs sm:text-sm">
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">15+</div>
+                  <div className="text-muted-foreground">API Endpoints</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">99.9%</div>
+                  <div className="text-muted-foreground">Uptime</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">&lt;100ms</div>
+                  <div className="text-muted-foreground">Avg Response</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">100</div>
+                  <div className="text-muted-foreground">Free Requests/Day</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-8">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted border border-border h-auto p-1 rounded-xl">
+              <TabsTrigger value="getstarted" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Get Started</TabsTrigger>
+              <TabsTrigger value="endpoints" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Endpoints</TabsTrigger>
+              <TabsTrigger value="playground" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 flex items-center justify-center gap-1 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">
+                <Terminal className="h-3.5 w-3.5 text-current" />
+                Playground
+              </TabsTrigger>
+              <TabsTrigger value="mykeys" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">My Keys</TabsTrigger>
+            </TabsList>
+
+            {/* Get Started Tab */}
+            <TabsContent value="getstarted" className="space-y-4 sm:space-y-8">
+              {activeTab === "getstarted" && (
+                <>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+                    {/* Generate API Key */}
+                    <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
+                      <CardHeader className="p-4 sm:p-6 relative z-10">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl flex items-center justify-center mb-4">
+                          <Key className="h-6 w-6 text-primary" />
                         </div>
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                        <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
+                          Generate API Key
+                        </CardTitle>
+                        <CardDescription className="text-xs sm:text-sm text-muted-foreground">
+                          Get your free API key to start making requests instantly
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                        <Input
+                          type="email"
+                          placeholder="your@email.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
+                        />
+                        <Input
+                          placeholder="Key name (optional)"
+                          value={keyName}
+                          onChange={(e) => setKeyName(e.target.value)}
+                          className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
+                        />
+                        <Button
+                          onClick={generateApiKey}
+                          disabled={generatingKey}
+                          className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-colors duration-300"
+                        >
+                          {generatingKey ? (
+                            <>
+                              <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2"></div>
+                              Generating...
+                            </>
+                          ) : (
+                            <>
+                              <Sparkles className="h-4 w-4 mr-2" />
+                              Generate API Key
+                            </>
+                          )}
+                        </Button>
 
-              {/* Quick Start */}
-              <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
-                <CardHeader className="p-4 sm:p-6 relative z-10">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
-                    <Code2 className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
-                    Quick Start
-                  </CardTitle>
-                  <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                    Start using the API in seconds with our simple integration
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                  <div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                      <ArrowRight className="h-3 w-3 text-primary" />
-                      API URL
-                    </p>
-                    <div className="flex items-center gap-1.5 sm:gap-2">
-                      <code className="flex-1 text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary break-all border border-border font-mono">
-                        {API_BASE_URL}/api/v1
-                      </code>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => copyToClipboard(`${API_BASE_URL}/api/v1`)}
-                        className="h-8 w-8 p-0 shrink-0 hover:bg-primary/10 text-primary"
-                      >
-                        <Copy className="h-3.5 w-3.5" />
-                      </Button>
-                    </div>
-                  </div>
+                        {newApiKey && (
+                          <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 border border-emerald-100 rounded-lg relative overflow-hidden">
+                            <div className="relative z-10">
+                              <p className="text-xs sm:text-sm text-emerald-800 mb-2 font-medium flex items-center gap-2">
+                                <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                                Your API Key (save it securely!)
+                              </p>
+                              <div className="flex items-center gap-1 sm:gap-2">
+                                <code className="flex-1 text-[10px] sm:text-xs bg-background p-2 rounded text-emerald-700 font-mono break-all leading-relaxed border border-emerald-200/60">
+                                  {showKey ? newApiKey : "•".repeat(20)}
+                                </code>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => setShowKey(!showKey)}
+                                  className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
+                                >
+                                  {showKey ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => copyToClipboard(newApiKey)}
+                                  className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
+                                >
+                                  <Copy className="h-3.5 w-3.5" />
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
 
-                  <div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                      <ArrowRight className="h-3 w-3 text-primary" />
-                      Authentication
-                    </p>
-                    <code className="block text-xs sm:text-sm bg-muted p-2 rounded-lg text-foreground break-all border border-border font-mono">
-                      Header: X-API-Key: YOUR_API_KEY
-                    </code>
-                  </div>
+                    {/* Quick Start */}
+                    <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
+                      <CardHeader className="p-4 sm:p-6 relative z-10">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
+                          <Code2 className="h-6 w-6 text-blue-600" />
+                        </div>
+                        <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
+                          Quick Start
+                        </CardTitle>
+                        <CardDescription className="text-xs sm:text-sm text-muted-foreground">
+                          Start using the API in seconds with our simple integration
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                        <div>
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3 w-3 text-primary" />
+                            API URL
+                          </p>
+                          <div className="flex items-center gap-1.5 sm:gap-2">
+                            <code className="flex-1 text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary break-all border border-border font-mono">
+                              {API_BASE_URL}/api/v1
+                            </code>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => copyToClipboard(`${API_BASE_URL}/api/v1`)}
+                              className="h-8 w-8 p-0 shrink-0 hover:bg-primary/10 text-primary"
+                            >
+                              <Copy className="h-3.5 w-3.5" />
+                            </Button>
+                          </div>
+                        </div>
 
-                  <div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                      <ArrowRight className="h-3 w-3 text-primary" />
-                      Example Request
-                    </p>
-                    <pre className="block w-full text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary whitespace-pre-wrap break-words sm:whitespace-pre sm:break-normal border border-border font-mono leading-relaxed">
-{`curl -X POST "${API_BASE_URL}/api/v1/text/word-count" \\
+                        <div>
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3 w-3 text-primary" />
+                            Authentication
+                          </p>
+                          <code className="block text-xs sm:text-sm bg-muted p-2 rounded-lg text-foreground break-all border border-border font-mono">
+                            Header: X-API-Key: YOUR_API_KEY
+                          </code>
+                        </div>
+
+                        <div>
+                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3 w-3 text-primary" />
+                            Example Request
+                          </p>
+                          <pre className="block w-full text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary whitespace-pre-wrap break-words sm:whitespace-pre sm:break-normal border border-border font-mono leading-relaxed">
+                            {`curl -X POST "${API_BASE_URL}/api/v1/text/word-count" \\
   -H "X-API-Key: YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"text": "Hello world!"}'`}
-                    </pre>
+                          </pre>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
 
-            {/* Enhanced Rate Limits */}
-            <Card className="bg-card border border-border hover:shadow-lg transition-shadow duration-300 overflow-hidden relative group">
-              <CardHeader className="p-4 sm:p-6 relative z-10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
-                    <Clock className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-foreground text-base sm:text-lg">Rate Limits & Features</CardTitle>
-                    <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                      Understand your usage limits and API capabilities
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                  <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                    <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
-                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                      Free Tier
-                    </h4>
-                    <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        100 requests per day
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Resets at midnight UTC
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        All endpoints available
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Up to 3 API keys per email
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                    <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                      Response Headers
-                    </h4>
-                    <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm font-mono">
-                      <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
-                        X-RateLimit-Limit: 100
-                      </li>
-                      <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
-                        X-RateLimit-Remaining: 95
-                      </li>
-                      <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
-                        X-RateLimit-Reset: 1234567890
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                    <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
-                      <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                      Supported Formats
-                    </h4>
-                    <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        JSON requests/responses
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Form data uploads
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Base64 encoding
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        CORS enabled
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                    <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                      Error Handling
-                    </h4>
-                    <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Detailed error messages
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Standard HTTP codes
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Rate limit warnings
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                        Validation feedback
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            </>
-            )}
-          </TabsContent>
+                  {/* Enhanced Rate Limits */}
+                  <Card className="bg-card border border-border hover:shadow-lg transition-shadow duration-300 overflow-hidden relative group">
+                    <CardHeader className="p-4 sm:p-6 relative z-10">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
+                          <Clock className="h-6 w-6 text-purple-600" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-foreground text-base sm:text-lg">Rate Limits & Features</CardTitle>
+                          <CardDescription className="text-xs sm:text-sm text-muted-foreground">
+                            Understand your usage limits and API capabilities
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                            Free Tier
+                          </h4>
+                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              100 requests per day
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Resets at midnight UTC
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              All endpoints available
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Up to 3 API keys per email
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            Response Headers
+                          </h4>
+                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm font-mono">
+                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
+                              X-RateLimit-Limit: 100
+                            </li>
+                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
+                              X-RateLimit-Remaining: 95
+                            </li>
+                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
+                              X-RateLimit-Reset: 1234567890
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+                            <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                            Supported Formats
+                          </h4>
+                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              JSON requests/responses
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Form data uploads
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Base64 encoding
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              CORS enabled
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
+                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+                            <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                            Error Handling
+                          </h4>
+                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Detailed error messages
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Standard HTTP codes
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Rate limit warnings
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              Validation feedback
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
+            </TabsContent>
 
-          {/* API Endpoints Tab */}
-          <TabsContent value="endpoints" className="space-y-4 sm:space-y-6">
-            {activeTab === "endpoints" && (
-            loading ? (
-              <div className="text-center py-8 sm:py-12">
-                <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-primary mx-auto"></div>
-                <p className="text-slate-400 mt-3 sm:mt-4 text-sm">Loading API documentation...</p>
-              </div>            ) : (
-              apiDocs?.endpoints?.map((category, catIndex) => (
-                <Card key={catIndex} className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
+            {/* API Endpoints Tab */}
+            <TabsContent value="endpoints" className="space-y-4 sm:space-y-6">
+              {activeTab === "endpoints" && (
+                loading ? (
+                  <div className="text-center py-8 sm:py-12">
+                    <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="text-slate-400 mt-3 sm:mt-4 text-sm">Loading API documentation...</p>
+                  </div>) : (
+                  apiDocs?.endpoints?.map((category, catIndex) => (
+                    <Card key={catIndex} className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
+                      <CardHeader className="p-4 sm:p-6 relative z-10">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl flex items-center justify-center">
+                            <Terminal className="h-6 w-6 text-primary" />
+                          </div>
+                          <div>
+                            <CardTitle className="text-foreground text-base sm:text-lg">{category.category}</CardTitle>
+                            <CardDescription className="text-xs sm:text-sm text-muted-foreground">
+                              {category.endpoints.length} endpoint{category.endpoints.length !== 1 ? 's' : ''} available
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                        {category.endpoints.map((endpoint, endIndex) => {
+                          const endpointId = `${catIndex}-${endIndex}`;
+                          const isExpanded = expandedEndpoints.has(endpointId);
+
+                          return (
+                            <div
+                              key={endIndex}
+                              className="border border-border rounded-lg overflow-hidden bg-muted/20 hover:bg-muted/30 transition-colors duration-300"
+                            >
+                              <button
+                                onClick={() => toggleEndpoint(endpointId)}
+                                className="w-full flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 hover:bg-muted/40 transition-colors text-left group"
+                              >
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                  {isExpanded ? (
+                                    <ChevronDown className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
+                                  ) : (
+                                    <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
+                                  )}
+                                  <Badge className={`${getMethodColor(endpoint.method)} font-mono text-[10px] sm:text-xs shrink-0`}>
+                                    {endpoint.method}
+                                  </Badge>
+                                </div>
+                                <code className="text-xs sm:text-sm text-foreground break-all flex-1 group-hover:text-primary transition-colors duration-200 font-mono">{endpoint.path}</code>
+                                <span className="text-xs sm:text-sm text-muted-foreground hidden lg:block shrink-0 group-hover:text-foreground transition-colors duration-200">
+                                  {endpoint.name}
+                                </span>
+                              </button>
+
+                              {isExpanded && (
+                                <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-2 border-t border-border bg-card">
+                                  {/* Mobile endpoint name */}
+                                  <p className="text-xs text-primary font-medium mb-2 lg:hidden">{endpoint.name}</p>
+                                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
+                                    {endpoint.description}
+                                  </p>
+
+                                  {endpoint.parameters.length > 0 && (
+                                    <div className="mb-3 sm:mb-4">
+                                      <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        Parameters
+                                      </h5>
+                                      {/* Mobile: Card layout */}
+                                      <div className="space-y-2 sm:hidden">
+                                        {endpoint.parameters.map((param, pIndex) => (
+                                          <div key={pIndex} className="bg-muted/40 p-2.5 rounded-lg border border-border">
+                                            <div className="flex items-center justify-between mb-1">
+                                              <code className="text-xs font-mono text-primary">{param.name}</code>
+                                              {param.required ? (
+                                                <Badge variant="destructive" className="text-[10px] h-5">Required</Badge>
+                                              ) : (
+                                                <Badge variant="secondary" className="text-[10px] h-5">Optional</Badge>
+                                              )}
+                                            </div>
+                                            <p className="text-[10px] text-muted-foreground mb-1">Type: {param.type}</p>
+                                            <p className="text-[11px] text-muted-foreground">
+                                              {param.description}
+                                              {param.default !== undefined && (
+                                                <span className="text-muted-foreground/60"> (default: {String(param.default)})</span>
+                                              )}
+                                            </p>
+                                          </div>
+                                        ))}
+                                      </div>
+                                      {/* Desktop: Table layout */}
+                                      <div className="overflow-x-auto hidden sm:block">
+                                        <table className="w-full text-sm border-collapse">
+                                          <thead>
+                                            <tr className="text-left text-xs border-b border-border">
+                                              <th className="pb-2 pr-4 text-foreground font-semibold">Name</th>
+                                              <th className="pb-2 pr-4 text-foreground font-semibold">Type</th>
+                                              <th className="pb-2 pr-4 text-foreground font-semibold">Required</th>
+                                              <th className="pb-2 text-foreground font-semibold">Description</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody className="text-foreground">
+                                            {endpoint.parameters.map((param, pIndex) => (
+                                              <tr key={pIndex} className="border-b border-border/50">
+                                                <td className="py-2 pr-4 font-mono text-primary text-xs">
+                                                  {param.name}
+                                                </td>
+                                                <td className="py-2 pr-4 text-muted-foreground text-xs">
+                                                  <Badge variant="outline" className="text-[10px] border-border bg-muted/30">
+                                                    {param.type}
+                                                  </Badge>
+                                                </td>
+                                                <td className="py-2 pr-4">
+                                                  {param.required ? (
+                                                    <Badge variant="destructive" className="text-[10px]">Required</Badge>
+                                                  ) : (
+                                                    <Badge variant="secondary" className="text-[10px]">Optional</Badge>
+                                                  )}
+                                                </td>
+                                                <td className="py-2 text-muted-foreground text-xs">
+                                                  {param.description}
+                                                  {param.default !== undefined && (
+                                                    <span className="text-muted-foreground/60 ml-1">(default: {String(param.default)})</span>
+                                                  )}
+                                                </td>
+                                              </tr>
+                                            ))}
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  <div className="space-y-3">
+                                    <div>
+                                      <div className="flex items-center justify-between mb-2">
+                                        <h5 className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
+                                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                          Example Request
+                                        </h5>
+                                        <Button
+                                          size="sm"
+                                          variant="ghost"
+                                          onClick={() =>
+                                            copyToClipboard(
+                                              endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)
+                                            )
+                                          }
+                                          className="h-7 px-2 text-xs hover:bg-green-50 text-green-600"
+                                        >
+                                          <Copy className="h-3 w-3 mr-1" />
+                                          Copy
+                                        </Button>
+                                      </div>
+                                      <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal border border-border font-mono">
+                                        {endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)}
+                                      </pre>
+                                    </div>
+
+                                    <div>
+                                      <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                                        Example Response
+                                      </h5>
+                                      <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto border border-border font-mono">
+                                        {JSON.stringify(endpoint.example.response, null, 2)}
+                                      </pre>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </CardContent>
+                    </Card>
+                  ))
+                ))}
+            </TabsContent>
+
+            {/* API Playground Tab */}
+            <TabsContent value="playground" className="space-y-4 sm:space-y-6">
+              {activeTab === "playground" && (
+                <APIPlayground
+                  apiDocs={apiDocs}
+                  onApiKeyChange={noopApiKeyChange}
+                />
+              )}
+            </TabsContent>
+
+            {/* My API Keys Tab */}
+            <TabsContent value="mykeys" className="space-y-4 sm:space-y-6">
+              {activeTab === "mykeys" && (
+                <Card className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
                   <CardHeader className="p-4 sm:p-6 relative z-10">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl flex items-center justify-center">
-                        <Terminal className="h-6 w-6 text-primary" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
+                        <Key className="h-6 w-6 text-purple-600" />
                       </div>
                       <div>
-                        <CardTitle className="text-foreground text-base sm:text-lg">{category.category}</CardTitle>
+                        <CardTitle className="text-foreground text-base sm:text-lg">Manage Your API Keys</CardTitle>
                         <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                          {category.endpoints.length} endpoint{category.endpoints.length !== 1 ? 's' : ''} available
+                          Enter your email to view and manage your existing API keys
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                    {category.endpoints.map((endpoint, endIndex) => {
-                      const endpointId = `${catIndex}-${endIndex}`;
-                      const isExpanded = expandedEndpoints.has(endpointId);
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Input
+                        type="email"
+                        placeholder="your@email.com"
+                        value={lookupEmail}
+                        onChange={(e) => setLookupEmail(e.target.value)}
+                        className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-purple-500/50 transition-colors"
+                      />
+                      <Button
+                        onClick={lookupKeys}
+                        className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
+                      >
+                        <Shield className="h-4 w-4 mr-2" />
+                        Lookup Keys
+                      </Button>
+                    </div>
 
-                      return (
-                        <div
-                          key={endIndex}
-                          className="border border-border rounded-lg overflow-hidden bg-muted/20 hover:bg-muted/30 transition-colors duration-300"
-                        >
-                          <button
-                            onClick={() => toggleEndpoint(endpointId)}
-                            className="w-full flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 hover:bg-muted/40 transition-colors text-left group"
+                    {userKeys.length > 0 && (
+                      <div className="space-y-3 mt-3 sm:mt-4">
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                          Found {userKeys.length} API key{userKeys.length !== 1 ? 's' : ''}
+                        </div>
+                        {userKeys.map((key, index) => (
+                          <div
+                            key={index}
+                            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border hover:bg-muted/30 transition-colors duration-300 group"
                           >
-                            <div className="flex items-center gap-2 sm:gap-3">
-                              {isExpanded ? (
-                                <ChevronDown className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
-                              ) : (
-                                <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
-                              )}
-                              <Badge className={`${getMethodColor(endpoint.method)} font-mono text-[10px] sm:text-xs shrink-0`}>
-                                {endpoint.method}
-                              </Badge>
-                            </div>
-                            <code className="text-xs sm:text-sm text-foreground break-all flex-1 group-hover:text-primary transition-colors duration-200 font-mono">{endpoint.path}</code>
-                            <span className="text-xs sm:text-sm text-muted-foreground hidden lg:block shrink-0 group-hover:text-foreground transition-colors duration-200">
-                              {endpoint.name}
-                            </span>
-                          </button>
-
-                          {isExpanded && (
-                            <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-2 border-t border-border bg-card">
-                              {/* Mobile endpoint name */}
-                              <p className="text-xs text-primary font-medium mb-2 lg:hidden">{endpoint.name}</p>
-                              <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                                {endpoint.description}
-                              </p>
-
-                              {endpoint.parameters.length > 0 && (
-                                <div className="mb-3 sm:mb-4">
-                                  <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                                    Parameters
-                                  </h5>
-                                  {/* Mobile: Card layout */}
-                                  <div className="space-y-2 sm:hidden">
-                                    {endpoint.parameters.map((param, pIndex) => (
-                                      <div key={pIndex} className="bg-muted/40 p-2.5 rounded-lg border border-border">
-                                        <div className="flex items-center justify-between mb-1">
-                                          <code className="text-xs font-mono text-primary">{param.name}</code>
-                                          {param.required ? (
-                                            <Badge variant="destructive" className="text-[10px] h-5">Required</Badge>
-                                          ) : (
-                                            <Badge variant="secondary" className="text-[10px] h-5">Optional</Badge>
-                                          )}
-                                        </div>
-                                        <p className="text-[10px] text-muted-foreground mb-1">Type: {param.type}</p>
-                                        <p className="text-[11px] text-muted-foreground">
-                                          {param.description}
-                                          {param.default !== undefined && (
-                                            <span className="text-muted-foreground/60"> (default: {String(param.default)})</span>
-                                          )}
-                                        </p>
-                                      </div>
-                                    ))}
-                                  </div>
-                                  {/* Desktop: Table layout */}
-                                  <div className="overflow-x-auto hidden sm:block">
-                                    <table className="w-full text-sm border-collapse">
-                                      <thead>
-                                        <tr className="text-left text-xs border-b border-border">
-                                          <th className="pb-2 pr-4 text-foreground font-semibold">Name</th>
-                                          <th className="pb-2 pr-4 text-foreground font-semibold">Type</th>
-                                          <th className="pb-2 pr-4 text-foreground font-semibold">Required</th>
-                                          <th className="pb-2 text-foreground font-semibold">Description</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody className="text-foreground">
-                                        {endpoint.parameters.map((param, pIndex) => (
-                                          <tr key={pIndex} className="border-b border-border/50">
-                                            <td className="py-2 pr-4 font-mono text-primary text-xs">
-                                              {param.name}
-                                            </td>
-                                            <td className="py-2 pr-4 text-muted-foreground text-xs">
-                                              <Badge variant="outline" className="text-[10px] border-border bg-muted/30">
-                                                {param.type}
-                                              </Badge>
-                                            </td>
-                                            <td className="py-2 pr-4">
-                                              {param.required ? (
-                                                <Badge variant="destructive" className="text-[10px]">Required</Badge>
-                                              ) : (
-                                                <Badge variant="secondary" className="text-[10px]">Optional</Badge>
-                                              )}
-                                            </td>
-                                            <td className="py-2 text-muted-foreground text-xs">
-                                              {param.description}
-                                              {param.default !== undefined && (
-                                                <span className="text-muted-foreground/60 ml-1">(default: {String(param.default)})</span>
-                                              )}
-                                            </td>
-                                          </tr>
-                                        ))}
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              )}
-
-                              <div className="space-y-3">
-                                <div>
-                                  <div className="flex items-center justify-between mb-2">
-                                    <h5 className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
-                                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                      Example Request
-                                    </h5>
-                                    <Button
-                                      size="sm"
-                                      variant="ghost"
-                                      onClick={() =>
-                                        copyToClipboard(
-                                          endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)
-                                        )
-                                      }
-                                      className="h-7 px-2 text-xs hover:bg-green-50 text-green-600"
-                                    >
-                                      <Copy className="h-3 w-3 mr-1" />
-                                      Copy
-                                    </Button>
-                                  </div>
-                                  <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal border border-border font-mono">
-                                    {endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)}
-                                  </pre>
-                                </div>
-
-                                <div>
-                                  <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                    Example Response
-                                  </h5>
-                                  <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto border border-border font-mono">
-                                    {JSON.stringify(endpoint.example.response, null, 2)}
-                                  </pre>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2 mb-2">
+                                <p className="text-foreground font-medium text-sm sm:text-base">{key.name}</p>
+                                <div className="flex gap-1">
+                                  {key.status === "active" && (
+                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                  )}
                                 </div>
                               </div>
+                              <div className="flex items-center gap-2 mb-2">
+                                <code className="text-xs sm:text-sm text-muted-foreground break-all bg-background px-2 py-1 rounded border border-border font-mono">
+                                  {key.key.slice(0, 8)}••••••••••••{key.key.slice(-4)}
+                                </code>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => copyToClipboard(key.key)}
+                                  className="h-6 w-6 p-0 hover:bg-muted text-muted-foreground hover:text-foreground"
+                                >
+                                  <Copy className="h-3 w-3" />
+                                </Button>
+                              </div>
+                              {/* API key usage info */}
+                              {typeof key.usage === "number" && (
+                                <div className="flex flex-wrap gap-2 mb-2">
+                                  <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-blue-50 text-blue-800 border border-blue-100">
+                                    Used: {key.usage}
+                                  </span>
+                                  <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-emerald-50 text-emerald-800 border border-emerald-100">
+                                    Remaining: {Math.max(0, (key.dailyLimit || 0) - key.usage)}
+                                  </span>
+                                </div>
+                              )}
+                              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                {/* Status badge: active (green text, light green bg), others (default/destructive) */}
+                                <span
+                                  className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${key.status === "active"
+                                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                      : "bg-red-50 text-red-700 border-red-200"
+                                    } flex items-center gap-1`}
+                                >
+                                  {key.status === "active" && (
+                                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-pulse"></span>
+                                  )}
+                                  {key.status}
+                                </span>
+                                {/* Tier badge: free (white text, green bg), others (default) */}
+                                <span
+                                  className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${key.tier === "free"
+                                      ? "bg-green-500 text-white border-green-500"
+                                      : "bg-slate-100 text-slate-700 border-slate-200"
+                                    }`}
+                                >
+                                  {key.tier}
+                                </span>
+                                {/* Daily limit badge */}
+                                <span
+                                  className="text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border bg-slate-50 text-slate-700 border-border"
+                                >
+                                  {key.dailyLimit} req/day
+                                </span>
+                              </div>
                             </div>
-                          )}
+                            <div className="text-xs sm:text-sm text-muted-foreground shrink-0 flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {new Date(key.createdAt).toLocaleDateString()}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {userKeys.length === 0 && lookupEmail && (
+                      <div className="text-center py-8">
+                        <div className="w-16 h-16 bg-muted/40 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Key className="h-8 w-8 text-muted-foreground" />
                         </div>
-                      );
-                    })}
+                        <p className="text-muted-foreground text-sm">No API keys found for this email</p>
+                        <p className="text-muted-foreground/60 text-xs mt-2">Generate a new API key from the Get Started tab</p>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
-              ))
-            ))}
-          </TabsContent>
-
-          {/* API Playground Tab */}
-          <TabsContent value="playground" className="space-y-4 sm:space-y-6">
-            {activeTab === "playground" && (
-              <APIPlayground 
-                apiDocs={apiDocs} 
-                onApiKeyChange={noopApiKeyChange}
-              />
-            )}
-          </TabsContent>
-
-          {/* My API Keys Tab */}
-          <TabsContent value="mykeys" className="space-y-4 sm:space-y-6">
-            {activeTab === "mykeys" && (
-            <Card className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
-              <CardHeader className="p-4 sm:p-6 relative z-10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
-                    <Key className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-foreground text-base sm:text-lg">Manage Your API Keys</CardTitle>
-                    <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                      Enter your email to view and manage your existing API keys
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={lookupEmail}
-                    onChange={(e) => setLookupEmail(e.target.value)}
-                    className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-purple-500/50 transition-colors"
-                  />
-                  <Button 
-                    onClick={lookupKeys} 
-                    className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
-                  >
-                    <Shield className="h-4 w-4 mr-2" />
-                    Lookup Keys
-                  </Button>
-                </div>
-
-                {userKeys.length > 0 && (
-                  <div className="space-y-3 mt-3 sm:mt-4">
-                    <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
-                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                      Found {userKeys.length} API key{userKeys.length !== 1 ? 's' : ''}
-                    </div>
-                    {userKeys.map((key, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border hover:bg-muted/30 transition-colors duration-300 group"
-                      >
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <p className="text-foreground font-medium text-sm sm:text-base">{key.name}</p>
-                            <div className="flex gap-1">
-                              {key.status === "active" && (
-                                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-2 mb-2">
-                            <code className="text-xs sm:text-sm text-muted-foreground break-all bg-background px-2 py-1 rounded border border-border font-mono">
-                              {key.key.slice(0, 8)}••••••••••••{key.key.slice(-4)}
-                            </code>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => copyToClipboard(key.key)}
-                              className="h-6 w-6 p-0 hover:bg-muted text-muted-foreground hover:text-foreground"
-                            >
-                              <Copy className="h-3 w-3" />
-                            </Button>
-                          </div>
-                          {/* API key usage info */}
-                          {typeof key.usage === "number" && (
-                            <div className="flex flex-wrap gap-2 mb-2">
-                              <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-blue-50 text-blue-800 border border-blue-100">
-                                Used: {key.usage}
-                              </span>
-                              <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-emerald-50 text-emerald-800 border border-emerald-100">
-                                Remaining: {Math.max(0, (key.dailyLimit || 0) - key.usage)}
-                              </span>
-                            </div>
-                          )}
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                            {/* Status badge: active (green text, light green bg), others (default/destructive) */}
-                            <span
-                              className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${
-                                key.status === "active"
-                                  ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                                  : "bg-red-50 text-red-700 border-red-200"
-                              } flex items-center gap-1`}
-                            >
-                              {key.status === "active" && (
-                                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-pulse"></span>
-                              )}
-                              {key.status}
-                            </span>
-                            {/* Tier badge: free (white text, green bg), others (default) */}
-                            <span
-                              className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${
-                                key.tier === "free"
-                                  ? "bg-green-500 text-white border-green-500"
-                                  : "bg-slate-100 text-slate-700 border-slate-200"
-                              }`}
-                            >
-                              {key.tier}
-                            </span>
-                            {/* Daily limit badge */}
-                            <span
-                              className="text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border bg-slate-50 text-slate-700 border-border"
-                            >
-                              {key.dailyLimit} req/day
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text-xs sm:text-sm text-muted-foreground shrink-0 flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          {new Date(key.createdAt).toLocaleDateString()}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {userKeys.length === 0 && lookupEmail && (
-                  <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-muted/40 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Key className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                    <p className="text-muted-foreground text-sm">No API keys found for this email</p>
-                    <p className="text-muted-foreground/60 text-xs mt-2">Generate a new API key from the Get Started tab</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-            )}
-          </TabsContent>
-        </Tabs>
-      </main>
-      <Footer />
-    </div>
+              )}
+            </TabsContent>
+          </Tabs>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };

@@ -24,11 +24,15 @@ const FAQSection = () => {
     },
     {
       question: "What types of tools are available?",
-      answer: "We offer 100+ free online tools across multiple categories including: PDF tools, Image tools, Video tools, Audio tools, Text tools, Security utilities, Finance calculators, Developer tools, and more."
+      answer: "We offer 130+ free online tools across multiple categories including: AI-powered utilities, PDF tools, Image tools, Video tools, Audio tools, Text tools, Security utilities, Finance calculators, Developer tools, and more."
+    },
+    {
+      question: "How do your AI-powered tools process my data?",
+      answer: "Our AI tools (like text summarizers, bio generators, and scanners) are engineered with privacy in mind. Some execute client-side inside your browser, while others use secure API calls to our backend for advanced inference. In all cases, your prompts and data are never saved or stored on our servers."
     },
     {
       question: "Do the tools require an active internet connection?",
-      answer: "Most tools work completely offline once loaded! However, certain advanced features (such as scanning URL reputations or finding data breaches) require network access to pull data."
+      answer: "Most tools work completely offline once loaded! However, certain advanced features (such as AI-powered generators, scanning URL reputations, or checking data breaches) require network access to pull data or run models."
     },
     {
       question: "Can I use DailyTools247 for commercial purposes?",
@@ -43,7 +47,7 @@ const FAQSection = () => {
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4">
-        
+
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="mb-2 inline-flex items-center gap-1.5 rounded bg-muted px-2.5 py-1 text-xs font-semibold text-muted-foreground">
@@ -54,7 +58,7 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
-            Get answers to common questions about local processing security, offline functionality, and platform access.
+            Get answers to common questions about AI tools, local processing security, offline functionality, and platform access.
           </p>
         </div>
 
@@ -65,9 +69,8 @@ const FAQSection = () => {
             return (
               <div
                 key={index}
-                className={`rounded-lg border bg-card transition-colors duration-200 ${
-                  isOpen ? "border-slate-300 shadow-sm" : "border-border"
-                }`}
+                className={`rounded-lg border bg-card transition-colors duration-200 ${isOpen ? "border-slate-300 shadow-sm" : "border-border"
+                  }`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -78,14 +81,13 @@ const FAQSection = () => {
                     {faq.question}
                   </span>
                   <div
-                    className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded border border-border bg-background text-muted-foreground transition-all ${
-                      isOpen ? "rotate-180 border-slate-300 text-foreground" : ""
-                    }`}
+                    className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded border border-border bg-background text-muted-foreground transition-all ${isOpen ? "rotate-180 border-slate-300 text-foreground" : ""
+                      }`}
                   >
                     <ChevronDown className="h-4 w-4" />
                   </div>
                 </button>
-                
+
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div

@@ -11,7 +11,7 @@ import ToolFAQ from "@/components/ToolFAQ";
 const categoryColor = "142 76% 36%";
 
 const ImageColorEnhancerTool = () => {
-  const toolSeoData = getToolSeoMetadata('image-color-enhancer');
+  const toolSeoData = getToolSeoMetadata('ai-image-color-enhancer');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const [processedUrl, setProcessedUrl] = useState<string>('');
@@ -125,12 +125,12 @@ const ImageColorEnhancerTool = () => {
   return (
     <>
       {CategorySEO.Ecommerce(
-        toolSeoData?.title || "Image Color Enhancer",
+        toolSeoData?.title || "AI Image Color Enhancer",
         toolSeoData?.description || "Enhance colors in product photos",
-        "image-color-enhancer"
+        "ai-image-color-enhancer"
       )}
       <ToolLayout
-      breadcrumbTitle="Image Color Enhancer"
+      breadcrumbTitle="AI Image Color Enhancer"
       category="Ecommerce Tools"
       categoryPath="/category/ecommerce"
       >

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Smile, Download, Type, Image as ImageIcon, Upload, X, Palette, AlignLeft, AlignCenter, AlignRight, Sparkles, RotateCw, RefreshCw, Grid3X3 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -10,7 +11,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "330 80% 55%";
 
 const MemeGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('meme-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-meme-generator');
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
   const [image, setImage] = useState<string | null>(null);
@@ -178,7 +180,7 @@ const MemeGeneratorTool = () => {
     setShowTemplates(false);
   };
 
-  const generateMeme = async () => {
+  const runGenerationLogic = async () => {
     setIsGenerating(true);
     
     const canvas = canvasRef.current;
@@ -288,6 +290,16 @@ const MemeGeneratorTool = () => {
     return lines;
   };
 
+  const generateMeme = () => {
+    setIsProcessing(true);
+    setMemeUrl(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const reset = () => {
     setTopText("");
     setBottomText("");
@@ -298,12 +310,12 @@ const MemeGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Social(
-        toolSeoData?.title || "Meme Generator",
+        toolSeoData?.title || "AI Meme Generator",
         toolSeoData?.description || "Create professional memes with templates, custom text, and advanced styling options",
-        "meme-generator"
+        "ai-meme-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Meme Generator"
+      breadcrumbTitle="AI Meme Generator"
       category="Social Tools"
       categoryPath="/category/social"
     >
@@ -344,13 +356,13 @@ const MemeGeneratorTool = () => {
               <Smile className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Meme Generator</h2>
+              <h2 className="text-2xl font-bold">AI Meme Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Create professional memes with templates, custom text, and advanced styling options.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">meme generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI meme generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">meme maker</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">custom memes</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">viral meme creator</span>
@@ -633,7 +645,7 @@ const MemeGeneratorTool = () => {
                   <div className="flex flex-col sm:flex-row gap-2">
                     <button
                       onClick={generateMeme}
-                      disabled={isGenerating}
+                      disabled={isProcessing || isGenerating}
                       className="btn-primary flex-1 disabled:opacity-50 py-2 md:py-3"
                     >
                       <RefreshCw className={`h-4 w-4 md:h-5 md:w-5 ${isGenerating ? 'animate-spin' : ''}`} />
@@ -665,7 +677,7 @@ const MemeGeneratorTool = () => {
             <div className="flex flex-col sm:flex-row gap-2">
               <button
                 onClick={generateMeme}
-                disabled={isGenerating}
+                disabled={isProcessing || isGenerating}
                 className="btn-primary flex-1 disabled:opacity-50 py-2 md:py-3"
               >
                 <Sparkles className={`h-4 w-4 md:h-5 md:w-5 ${isGenerating ? 'animate-pulse' : ''}`} />

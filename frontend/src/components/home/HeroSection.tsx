@@ -5,39 +5,37 @@ import { useNavigate } from "react-router-dom";
 import { toolCategories, getAllTools } from "@/data/toolCategories";
 
 const POPULAR_SEARCHES = [
-  { name: "PNG to JPG", path: "/png-to-jpg-converter" },
-  { name: "Email Subject Generator", path: "/email-subject-line-generator" },
-  { name: "Zip Extractor", path: "/extract-zip" },
-  { name: "WhatsApp Status Generator", path: "/whatsapp-status-generator" },
-  { name: "Passport Photo Resizer", path: "/passport-photo-resizer" },
+  { name: "AI Background Remover", path: "/ai-background-remover" },
+  { name: "AI Text Summarizer", path: "/ai-text-summarizer" },
+  { name: "AI Speech to Text", path: "/ai-speech-to-text" },
 ];
 
 const STATS = [
   {
     icon: Shield,
-    title: "100% Private & Local",
-    desc: "All files remain on your computer. Zero server uploads.",
+    title: "Private & Local AI",
+    desc: "Secure in-browser and local memory processing. Your data never leaves your device.",
   },
   {
     icon: Sparkle,
-    title: "No Sign-up Required",
-    desc: "Instant access to all tools. No subscription, limits, or ads.",
+    title: "Unlimited Free Access",
+    desc: "Instant access to all AI tools. No credits, subscriptions, or login required.",
   },
   {
     icon: Activity,
-    title: "Fast Processing",
-    desc: "Runs directly in your browser. Lightning-fast response times.",
+    title: "Instant Processing",
+    desc: "High-speed heuristics and local intelligence provide lightning-fast results.",
   },
 ];
 
 const HeroSection = () => {
-  const [searchQuery, setSearchQuery]     = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<ReturnType<typeof getAllTools>>([]);
-  const [showResults, setShowResults]     = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const handleSearch = (q: string) => {
     setSearchQuery(q);
@@ -45,7 +43,7 @@ const HeroSection = () => {
     if (q.length >= 2) {
       const matches = getAllTools().filter(
         (t) => t.name.toLowerCase().includes(q.toLowerCase()) ||
-               t.description.toLowerCase().includes(q.toLowerCase()),
+          t.description.toLowerCase().includes(q.toLowerCase()),
       );
       // Deduplicate by id (tools can appear in multiple categories)
       const unique = Array.from(new Map(matches.map(m => [m.id, m])).values());
@@ -110,25 +108,27 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-blue-50/45 via-background to-background border-b border-border py-16 sm:py-24">
-      <div className="container mx-auto px-4">
+    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/45 via-background to-background border-b border-border py-16 sm:py-24">
+      {/* Decorative glowing gradient blobs */}
+      <div className="absolute top-[-10%] left-[-5%] h-[400px] w-[400px] rounded-full bg-primary/5 blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-5%] h-[400px] w-[400px] rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="mx-auto max-w-4xl text-center">
-          
+
           {/* Subtitle / Badge */}
-          <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm">
             Trusted by professionals · Fast & Private
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            100+ Online Free Tools
-          </h1>
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-primary to-indigo-600 dark:from-white dark:via-primary dark:to-indigo-400">
+            Free AI Tools, PDF Tools, Image Tools & More        </h1>
 
           {/* Description & CTAs */}
           <div className="mx-auto mt-4 max-w-3xl">
-            <p className="mx-auto text-lg text-muted-foreground/90">
-             Your All-in-One Platform for PDF, Image & SEO Tools
-            </p>
+            <p className="mx-auto text-lg text-muted-foreground/90 leading-relaxed">
+              Boost productivity with AI tools and 100+ free utilities.            </p>
             <div className="mt-6 flex items-center justify-center gap-3">
               <button
                 onClick={() => navigate('/categories')}
@@ -144,8 +144,6 @@ const HeroSection = () => {
               </button>
             </div>
           </div>
-
-          
 
           {/* Search container */}
           <div
@@ -188,26 +186,23 @@ const HeroSection = () => {
                     return (
                       <button
                         key={tool.id}
-                        className={`w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
-                          selectedIndex === i
-                            ? "bg-primary text-primary-foreground"
-                            : "hover:bg-muted text-foreground"
-                        }`}
+                        className={`w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${selectedIndex === i
+                          ? "bg-primary text-primary-foreground"
+                          : "hover:bg-muted text-foreground"
+                          }`}
                         onClick={() => handleSelectTool(tool.path)}
                         onMouseEnter={() => setSelectedIndex(i)}
                         aria-label={`Open ${tool.name}`}
                       >
                         <div className="min-w-0 flex-1">
                           <div className="font-semibold truncate">{tool.name}</div>
-                          <div className={`text-xs truncate mt-0.5 ${
-                            selectedIndex === i ? "text-primary-foreground/80" : "text-muted-foreground"
-                          }`}>
+                          <div className={`text-xs truncate mt-0.5 ${selectedIndex === i ? "text-primary-foreground/80" : "text-muted-foreground"
+                            }`}>
                             {tool.description}
                           </div>
                         </div>
-                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ml-2 flex-shrink-0 ${
-                          selectedIndex === i ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"
-                        }`}>
+                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ml-2 flex-shrink-0 ${selectedIndex === i ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"
+                          }`}>
                           {catName.split(" ")[0]}
                         </span>
                       </button>
@@ -219,13 +214,14 @@ const HeroSection = () => {
 
             {/* Popular Searches Quick Links */}
             <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm">
-              <span className="text-muted-foreground font-medium">Popular:</span>
+              <span className="text-muted-foreground font-medium">Popular AI:</span>
               {POPULAR_SEARCHES.map((ps) => (
                 <button
                   key={ps.name}
                   onClick={() => navigate(ps.path)}
-                  className="rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 hover:shadow-sm px-3 py-1 transition-colors border border-blue-100 text-xs font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  className="rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 hover:shadow-sm px-3.5 py-1.5 transition-colors border border-blue-100 text-xs font-semibold cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-100 flex items-center gap-1 shadow-sm"
                 >
+                  <Sparkle className="h-3 w-3 text-blue-500" />
                   {ps.name}
                 </button>
               ))}
@@ -239,10 +235,10 @@ const HeroSection = () => {
               return (
                 <div
                   key={stat.title}
-                  className="rounded-lg border border-border bg-card p-5 shadow-sm"
+                  className="rounded-xl border border-border bg-card/60 backdrop-blur-md p-5 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded bg-primary/10 text-primary">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary shadow-sm">
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="font-bold text-foreground">{stat.title}</h3>

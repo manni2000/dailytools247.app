@@ -81,7 +81,7 @@ async function withTempVideo(file, outputExt, fn) {
   }
 }
 
-router.post('/to-audio', upload.single('video'), async (req, res, next) => {
+router.post('/video-to-audio', upload.single('video'), async (req, res, next) => {
   if (!req.file) return res.status(400).json({ success: false, error: 'Video file required' });
   if (!validateVideoFile(req.file)) return res.status(400).json({ success: false, error: 'Invalid video file' });
   if (!(await ensureFfmpegAvailable(res, 'Video to audio conversion'))) return;

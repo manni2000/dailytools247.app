@@ -17,7 +17,7 @@ interface KeywordAnalysis {
 }
 
 const KeywordDensityTool = () => {
-  const toolSeoData = getToolSeoMetadata('keyword-density-analyzer');
+  const toolSeoData = getToolSeoMetadata('keyword-density-checker');
   const [text, setText] = useState("");
   const [targetKeyword, setTargetKeyword] = useState("");
   const [analysis, setAnalysis] = useState<KeywordAnalysis[]>([]);

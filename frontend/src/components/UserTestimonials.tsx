@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
     company: "TechCorp",
     avatar: "SC",
     rating: 5,
-    content: "The JSON Formatter and Background Remover tools have become essential parts of my daily workflow. They save me hours every week and the results are consistently excellent.",
+    content: "The JSON Formatter and AI Background Remover tools have become essential parts of my daily workflow. They save me hours every week and the results are consistently excellent.",
     toolUsed: "JSON Formatter",
     date: "2026-05-01"
   },
@@ -65,8 +65,8 @@ const testimonials: Testimonial[] = [
     company: "Freelance",
     avatar: "LT",
     rating: 5,
-    content: "The Background Remover tool is phenomenal! It works better than paid software I've used. The fact that it's free and processes images locally is amazing.",
-    toolUsed: "Background Remover",
+    content: "The AI Background Remover tool is phenomenal! It works better than paid software I've used. The fact that it's free and processes images locally is amazing.",
+    toolUsed: "AI Background Remover",
     date: "2026-04-20"
   }
 ];

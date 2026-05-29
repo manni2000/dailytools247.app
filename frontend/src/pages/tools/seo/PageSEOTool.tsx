@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Copy, Check, Search, Download, Globe, AlertCircle, CheckCircle, XCircle, FileText, Filter, Sparkles, Settings, Loader } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -65,7 +66,8 @@ const getLinkHrefByRel = (doc: Document, rel: string) => {
 const clampScore = (score: number) => Math.max(0, Math.min(100, score));
 
 const PageSEOTool = () => {
-  const toolSeoData = getToolSeoMetadata('page-seo-analyzer');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-page-seo-analyzer');
   const [url, setUrl] = useState("");
   const [htmlContent, setHtmlContent] = useState("");
   const [analysis, setAnalysis] = useState<SEOAnalysis | null>(null);
@@ -73,7 +75,7 @@ const PageSEOTool = () => {
   const [copied, setCopied] = useState<string | null>(null);
   const [issueFilter, setIssueFilter] = useState<'all' | SEOIssue['type']>('all');
 
-  const analyzeSEO = async () => {
+  const runGenerationLogic = async () => {
     if (!htmlContent && !url) {
       alert('Please enter either a URL to analyze or HTML content');
       return;
@@ -528,6 +530,17 @@ const PageSEOTool = () => {
     }
   };
 
+  const analyzeSEO = () => {
+    if (!htmlContent && !url) return;
+    setIsProcessing(true);
+    setAnalysis(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const filteredIssues = useMemo(() => {
     if (!analysis) return [] as SEOIssue[];
     if (issueFilter === 'all') return analysis.issues;
@@ -624,12 +637,12 @@ const PageSEOTool = () => {
   return (
     <>
       {CategorySEO.SEO(
-        toolSeoData?.title || "Page SEO Analyzer",
+        toolSeoData?.title || "AI Page SEO Analyzer",
         toolSeoData?.description || "Comprehensive SEO analysis tool to optimize your web pages for better search rankings",
         "page-seo"
       )}
       <ToolLayout
-      breadcrumbTitle="Page SEO Analyzer"
+      breadcrumbTitle="AI Page SEO Analyzer"
       category="SEO Tools"
       categoryPath="/category/seo"
     >
@@ -668,7 +681,7 @@ const PageSEOTool = () => {
               <Globe className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Page SEO Analyzer</h2>
+              <h2 className="text-2xl font-bold">AI Page SEO Analyzer</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Comprehensive SEO analysis for better search engine optimization.
               </p>
@@ -717,7 +730,7 @@ const PageSEOTool = () => {
 
             <motion.button
               onClick={analyzeSEO}
-              disabled={isAnalyzing || (!htmlContent && !url)}
+              disabled={isProcessing || (!htmlContent && !url)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full rounded-lg px-4 py-3 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-white"
@@ -725,7 +738,7 @@ const PageSEOTool = () => {
                 background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
               }}
             >
-              {isAnalyzing ? (
+              {isProcessing ? (
                 <>
                   <Loader className="inline h-4 w-4 mr-2 animate-spin" />
                   Analyzing...
@@ -741,7 +754,23 @@ const PageSEOTool = () => {
         </motion.div>
 
         {/* Results */}
-        {analysis && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Crawling page document structure & scanning DOM nodes...",
+                  "Evaluating meta tags, viewport constraints and canonical links...",
+                  "Analyzing semantic HTML tags hierarchy and image alt tags...",
+                  "Compiling comprehensive SEO audit report and score card..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {analysis && !isProcessing && (
           <motion.div 
             variants={scaleIn}
             initial="hidden"

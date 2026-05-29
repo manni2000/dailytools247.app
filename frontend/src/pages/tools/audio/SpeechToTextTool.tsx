@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Mic, Upload, Languages, FileText, Loader2, Sparkles, MicOff, Play, StopCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
 import ToolLayout from "@/components/layout/ToolLayout";
@@ -53,10 +54,10 @@ declare global {
 }
 
 const SpeechToTextTool = () => {
-  const toolSeoData = getToolSeoMetadata('speech-to-text');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-speech-to-text');
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [transcription, setTranscription] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [language, setLanguage] = useState("en-US");
   const [isDragging, setIsDragging] = useState(false);
@@ -117,6 +118,21 @@ const SpeechToTextTool = () => {
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
+  };
+
+  const handleAudioUpload = (file: File) => {
+    setIsProcessing(true);
+    setTranscription("");
+    setTempFile(file);
+  };
+
+  const [tempFile, setTempFile] = useState<File | null>(null);
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    if (tempFile) {
+      runGenerationLogic(tempFile);
+    }
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -263,7 +279,7 @@ const SpeechToTextTool = () => {
       {CategorySEO.Audio(
         toolSeoData?.title || "Speech to Text",
         toolSeoData?.description || "Convert audio files to text with language support. Export as TXT or SRT subtitles.",
-        "speech-to-text"
+        "ai-speech-to-text"
       )}
       <ToolLayout
       breadcrumbTitle="Speech to Text"
@@ -568,3 +584,7 @@ const SpeechToTextTool = () => {
 };
 
 export default SpeechToTextTool;
+function runGenerationLogic(tempFile: File) {
+  throw new Error("Function not implemented.");
+}
+

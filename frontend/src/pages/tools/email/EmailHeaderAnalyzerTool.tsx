@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, ShieldCheck, ShieldAlert, GitCommit, Clock, Server, FileText, ArrowRight, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -37,7 +38,7 @@ interface AnalyzerResult {
 }
 
 const EmailHeaderAnalyzerTool = () => {
-  const toolSeoData = getToolSeoMetadata('email-header-analyzer');
+  const toolSeoData = getToolSeoMetadata('ai-email-header-analyzer');
   const [rawHeaders, setRawHeaders] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalyzerResult | null>(null);
@@ -89,20 +90,20 @@ const EmailHeaderAnalyzerTool = () => {
   return (
     <>
       {CategorySEO.Email(
-        toolSeoData?.title || "Email Header Analyzer",
+        toolSeoData?.title || "AI Email Header Analyzer",
         toolSeoData?.description || "Paste raw email headers to trace routing server paths, transfer delays, and cryptographic authentication results.",
-        "email-header-analyzer"
+        "ai-email-header-analyzer"
       )}
       <ToolLayout
-        breadcrumbTitle="Email Header Analyzer"
+        breadcrumbTitle="AI Email Header Analyzer"
         category="Email Marketing Tools"
         categoryPath="/category/email"
       >
         <div className="space-y-6">
           <ToolHero
-            title="Email Header Analyzer"
+            title="AI Email Header Analyzer"
             subtitle="Paste raw email headers to trace routing server paths, transfer delays, and cryptographic authentication results."
-            tags={["email header analyzer", "spf dkim dmarc", "email routing"]}
+            tags={["AI email header analyzer", "spf dkim dmarc", "email routing"]}
             Icon={Mail}
             categoryColor={categoryColor}
           />

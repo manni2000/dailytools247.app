@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Copy, Check, Shield, Globe, AlertTriangle, CheckCircle, XCircle, Sparkles, Settings } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
@@ -21,7 +22,8 @@ interface URLReputation {
 }
 
 export default function URLReputationCheckerTool() {
-  const toolSeoData = getToolSeoMetadata('url-reputation-checker');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-url-reputation-checker');
   const [url, setUrl] = useState('');
   const [result, setResult] = useState<URLReputation | null>(null);
   const [loading, setLoading] = useState(false);
@@ -109,12 +111,12 @@ export default function URLReputationCheckerTool() {
   return (
     <>
       {CategorySEO.Security(
-        toolSeoData?.title || "URL Reputation Checker",
+        toolSeoData?.title || "AI URL Reputation Checker",
         toolSeoData?.description || "Check website reputation and identify potentially malicious URLs",
-        "url-reputation-checker"
+        "ai-url-reputation-checker"
       )}
       <ToolLayout
-      breadcrumbTitle="URL Reputation Checker"
+      breadcrumbTitle="AI URL Reputation Checker"
       category="Security Tools"
       categoryPath="/category/security"
     >
@@ -153,7 +155,7 @@ export default function URLReputationCheckerTool() {
                 <Shield className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">URL Reputation Checker</h2>
+                <h2 className="text-2xl font-bold">AI URL Reputation Checker</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Check website reputation and identify potentially malicious URLs.
                 </p>
@@ -206,7 +208,23 @@ export default function URLReputationCheckerTool() {
         )}
 
         {/* Results Section */}
-        {result && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Parsing domain name syntax...",
+                  "Scanning known phishing & malware registers...",
+                  "Auditing SSL certificate configuration...",
+                  "Compiling final threat intelligence report..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {result && !isProcessing && (
           <div className="space-y-6">
             {/* Reputation Result */}
             <div className={`rounded-xl border p-6 ${getReputationColor(result.color)}`}>

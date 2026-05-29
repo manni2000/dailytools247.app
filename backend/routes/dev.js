@@ -18,7 +18,7 @@ router.post('/json-formatter', (req, res) => {
   }
 });
 
-router.post('/json-to-typescript', (req, res) => {
+router.post('/ai-json-to-typescript-interface', (req, res) => {
   const { json, interfaceName = 'RootObject' } = req.body;
   if (!json) return res.status(400).json({ success: false, error: 'JSON input required' });
 
@@ -168,9 +168,9 @@ function handleSqlBeautifier(req, res) {
   }
 }
 
-router.post('/sql-query-beautifier', handleSqlBeautifier);
+router.post('/ai-sql-query-beautifier', handleSqlBeautifier);
 
-router.post('/cron-generator', (req, res) => {
+router.post('/ai-cron-generator', (req, res) => {
   const { minute = '*', hour = '*', dayOfMonth = '*', month = '*', dayOfWeek = '*', description } = req.body;
   const expression = `${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek}`;
 
@@ -314,7 +314,7 @@ router.get('/http-status-codes', (req, res) => {
   res.json({ success: true, result: codes });
 });
 
-router.post('/dockerfile-generator', (req, res) => {
+router.post('/ai-dockerfile-generator', (req, res) => {
   const { language = 'node', version = 'latest', appPort = 3000, startCommand } = req.body;
 
   const nodeCmd = startCommand ? `CMD ["${startCommand}"]` : `CMD ["node", "server.js"]`;

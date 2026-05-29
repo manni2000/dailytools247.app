@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, AlertTriangle, AlertOctagon, HelpCircle, FileText, HeartCrack, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -19,7 +20,7 @@ interface SpamCheckResult {
 }
 
 const SpamScoreCheckerTool = () => {
-  const toolSeoData = getToolSeoMetadata('spam-score-checker');
+  const toolSeoData = getToolSeoMetadata('ai-spam-score-checker');
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
@@ -56,18 +57,18 @@ const SpamScoreCheckerTool = () => {
   return (
     <>
       {CategorySEO.Email(
-        toolSeoData?.title || "Email Spam Score Checker",
+        toolSeoData?.title || "Email AI Spam Score Checker",
         toolSeoData?.description || "Scan your subject lines and email copy for words, links, and formatting that trigger spam filters.",
-        "spam-score-checker"
+        "ai-spam-score-checker"
       )}
       <ToolLayout
-        breadcrumbTitle="Spam Score Checker"
+        breadcrumbTitle="AI Spam Score Checker"
         category="Email Marketing Tools"
         categoryPath="/category/email"
       >
         <div className="space-y-6">
           <ToolHero
-            title="Email Spam Score Checker"
+            title="Email AI Spam Score Checker"
             subtitle="Scan your subject lines and email copy for words, links, and formatting that trigger spam filters."
             tags={["spam checker", "deliverability", "email content"]}
             Icon={Mail}

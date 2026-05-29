@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, Download, Code, FileText, Zap, AlertCircle, RefreshCw, Sparkles, Settings } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -23,7 +24,8 @@ interface GeneratedInterface {
 }
 
 const JsonToTypeScriptTool = () => {
-  const toolSeoData = getToolSeoMetadata('json-to-typescript');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-json-to-typescript-interface');
   const [jsonInput, setJsonInput] = useState('');
   const [interfaceName, setInterfaceName] = useState('ApiResponse');
   const [generatedInterface, setGeneratedInterface] = useState<GeneratedInterface | null>(null);
@@ -47,7 +49,7 @@ const JsonToTypeScriptTool = () => {
     return 'any';
   };
 
-  const generateInterface = () => {
+  const runGenerationLogic = () => {
     try {
       const parsed = JSON.parse(jsonInput);
       const properties: TypeProperty[] = [];
@@ -108,6 +110,17 @@ const JsonToTypeScriptTool = () => {
     setTimeout(() => setCopied(null), 2000);
   };
 
+  const generateInterface = () => {
+    if (!jsonInput.trim()) return;
+    setIsProcessing(true);
+    setTsOutput("");
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const downloadInterface = () => {
     if (!generatedInterface) return;
     
@@ -162,9 +175,9 @@ const JsonToTypeScriptTool = () => {
   return (
     <>
       {CategorySEO.Dev(
-        toolSeoData?.title || "JSON to TypeScript Interface Generator",
+        toolSeoData?.title || "AI JSON to TypeScript Interface Generator",
         toolSeoData?.description || "Convert JSON objects to TypeScript interfaces with automatic type inference",
-        "json-to-typescript"
+        "ai-json-to-typescript-interface"
       )}
       <ToolLayout
       breadcrumbTitle="JSON to TypeScript"
@@ -206,7 +219,7 @@ const JsonToTypeScriptTool = () => {
               <Code className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">JSON to TypeScript Interface</h2>
+              <h2 className="text-2xl font-bold">AI JSON to TypeScript Interface</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Generate TypeScript interfaces from JSON with automatic type inference
               </p>
@@ -259,7 +272,7 @@ const JsonToTypeScriptTool = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={generateInterface}
-                disabled={!jsonInput.trim()}
+                disabled={isProcessing || !jsonInput.trim()}
                 className="flex-1 rounded-lg text-white px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
@@ -458,3 +471,7 @@ const JsonToTypeScriptTool = () => {
 };
 
 export default JsonToTypeScriptTool;
+function setTsOutput(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+

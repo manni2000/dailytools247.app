@@ -49,37 +49,32 @@ const SEOHelmet = ({
   noindex = false
 }: SEOHelmetProps) => {
   const location = useLocation();
-  
+
   // For pages with query parameters, use clean canonical URL without parameters
   const hasTrackingParams = location.search && (location.search.includes('ref=') || location.search.includes('q=') || location.search.includes('utm_'));
   const isSearchPage = location.search.includes('q=');
-  const canonicalUrl = hasTrackingParams 
+  const canonicalUrl = hasTrackingParams
     ? `https://www.dailytools247.app${location.pathname}`
     : `https://www.dailytools247.app${location.pathname}${location.search}`;
-  
+
   const currentUrl = url || canonical || canonicalUrl;
-  
+
   // Add noindex for search result pages
   const shouldNoindex = noindex || isSearchPage;
-  
+
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
-  
+
   const finalTitle = title || toolMetadata?.title || 'Dailytools247 - 100+ Free Online Tools';
   const finalDescription = description || toolMetadata?.description || '100+ free online tools for PDF conversion, image editing, video processing, text formatting, QR codes, password generation, JSON formatting and more. No signup required.';
   const baseKeywords = [...(toolMetadata?.keywords || []), ...(toolMetadata?.longTailKeywords || [])];
   const dynamicLongTail = toolSlug ? generateLongTailVariations(toolMetadata?.keywords || [], toolSlug) : [];
-  
-  const semanticKeywords = category ? generateSemanticKeywords(
-    category === 'PDF Tools' ? 'pdf-conversion' : 
-    category === 'Image Tools' ? 'image-optimization' : 
-    category, 
-    baseKeywords
-  ) : [];
-  
+
+  const semanticKeywords = category ? generateSemanticKeywords(category, baseKeywords) : [];
+
   const finalKeywords = keywords.length > 0 ? keywords : [...baseKeywords, ...dynamicLongTail, ...semanticKeywords];
-  
+
   const internalLinks = toolSlug && category ? generateInternalLinkingStrategy(toolSlug, category) : [];
-  
+
   const competitiveStrategy = generateCompetitiveAdvantageStrategy();
   const finalCategory = category || toolMetadata?.category || 'Online Tools';
   const finalFaqs = faqs.length > 0 ? faqs : toolMetadata?.faqs || [];
@@ -92,7 +87,7 @@ const SEOHelmet = ({
 
   const generateStructuredData = () => {
     const schemas: any[] = [];
-    
+
     if (toolSlug || toolMetadata) {
       const baseSchema = {
         '@context': 'https://schema.org',
@@ -162,18 +157,12 @@ const SEOHelmet = ({
       };
       schemas.push(baseSchema);
     }
-    
-    // Add semantic structured data
+
     if (toolSlug && category) {
-      const semanticSchema = generateSemanticStructuredData(toolSlug, 
-        category === 'PDF Tools' ? 'pdf-tools' : 
-        category === 'Image Tools' ? 'image-tools' : 
-        'general'
-      );
+      const semanticSchema = generateSemanticStructuredData(toolSlug, category);
       schemas.push(...semanticSchema['@graph']);
     }
-    
-    // Add E-E-A-T structured data
+
     schemas.push(generateEEATStructuredData());
 
     const categorySlugMap: Record<string, string> = {
@@ -281,8 +270,8 @@ const SEOHelmet = ({
           hash = hash & hash;
         }
         const absHash = Math.abs(hash);
-        const ratingValue = (4.5 + (absHash % 50) / 100).toFixed(1); 
-        const ratingCount = 1000 + (absHash % 9000); 
+        const ratingValue = (4.5 + (absHash % 50) / 100).toFixed(1);
+        const ratingCount = 1000 + (absHash % 9000);
         return { ratingValue, ratingCount };
       };
 
@@ -647,9 +636,9 @@ const SEOHelmet = ({
           '@type': 'Organization',
           name: 'Dailytools247',
           description: competitiveStrategy.positioning.primary,
-            knowsAbout: [
+          knowsAbout: [
             'PDF Processing',
-            'Image Optimization', 
+            'Image Optimization',
             'Document Conversion',
             'File Compression',
             'Web Development',
@@ -657,14 +646,14 @@ const SEOHelmet = ({
             'Privacy-First Processing',
             'Client-Side Technology'
           ],
-            slogan: competitiveStrategy.positioning.secondary,
-            sameAs: [
+          slogan: competitiveStrategy.positioning.secondary,
+          sameAs: [
             'https://github.com/dailytools247',
             'https://twitter.com/dailytools247'
           ],
-            areaServed: 'Worldwide',
-            foundingDate: '2019',
-            contactPoint: {
+          areaServed: 'Worldwide',
+          foundingDate: '2019',
+          contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer service',
             email: 'support@dailytools247.com',

@@ -260,7 +260,7 @@ router.post('/merge', upload.array('audio', 10), async (req, res, next) => {
   }
 });
 
-router.post('/speech-to-text', upload.single('audio'), async (req, res) => {
+router.post('/ai-speech-to-text', upload.single('audio'), async (req, res) => {
   res.json({
     success: false,
     error: 'Speech-to-text requires a cloud AI service (OpenAI Whisper, Google Speech-to-Text, etc.). The browser Web Speech API is available for real-time recognition.',

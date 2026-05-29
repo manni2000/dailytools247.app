@@ -60,7 +60,7 @@ interface PostmanCollection {
 }
 
 const PostmanCollectionTool = () => {
-  const toolSeoData = getToolSeoMetadata('postman-collection-generator');
+  const toolSeoData = getToolSeoMetadata('ai-postman-collection-generator');
   const [collectionName, setCollectionName] = useState('API Collection');
   const [collectionDescription, setCollectionDescription] = useState('');
   const [requests, setRequests] = useState<PostmanRequest[]>([
@@ -279,9 +279,9 @@ const PostmanCollectionTool = () => {
   return (
     <>
       {CategorySEO.Dev(
-        toolSeoData?.title || "Postman Collection Generator",
+        toolSeoData?.title || "AI Postman Collection Generator",
         toolSeoData?.description || "Generate Postman collections for API testing and documentation",
-        "postman-collection-generator"
+        "ai-postman-collection-generator"
       )}
       <ToolLayout
       breadcrumbTitle="Postman Collection"
@@ -323,7 +323,7 @@ const PostmanCollectionTool = () => {
               <Send className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Postman Collection Generator</h2>
+              <h2 className="text-2xl font-bold">AI Postman Collection Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Create Postman collections for API testing and documentation
               </p>

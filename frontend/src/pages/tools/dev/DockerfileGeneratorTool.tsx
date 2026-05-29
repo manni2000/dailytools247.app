@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, Download, Code, Plus, Trash2, AlertCircle, Settings, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -23,7 +24,8 @@ interface DockerfileTemplate {
 }
 
 const DockerfileGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('dockerfile-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-dockerfile-generator');
   const [baseImage, setBaseImage] = useState('node:18-alpine');
   const [instructions, setInstructions] = useState<DockerfileInstruction[]>([
     {
@@ -149,7 +151,7 @@ const DockerfileGeneratorTool = () => {
     ));
   };
 
-  const generateDockerfile = () => {
+  const runGenerationLogic = () => {
     let dockerfile = '';
     
     instructions.forEach(instruction => {
@@ -198,6 +200,16 @@ const DockerfileGeneratorTool = () => {
     setTimeout(() => setCopied(null), 2000);
   };
 
+  const generateDockerfile = () => {
+    setIsProcessing(true);
+    setDockerfile("");
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const downloadDockerfile = () => {
     const data = new Blob([generatedDockerfile], { type: 'text/plain' });
     const url = URL.createObjectURL(data);
@@ -236,12 +248,12 @@ const DockerfileGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Dev(
-        toolSeoData?.title || "Dockerfile Generator",
+        toolSeoData?.title || "AI Dockerfile Generator",
         toolSeoData?.description || "Generate optimized Dockerfiles for different applications and frameworks",
-        "dockerfile-generator"
+        "ai-dockerfile-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Dockerfile Generator"
+      breadcrumbTitle="AI Dockerfile Generator"
       category="Developer Tools"
       categoryPath="/category/dev"
     >
@@ -280,13 +292,13 @@ const DockerfileGeneratorTool = () => {
               <Settings className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Dockerfile Generator</h2>
+              <h2 className="text-2xl font-bold">AI Dockerfile Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Generate optimized Dockerfiles for containerization with templates for popular frameworks
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">dockerfile generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI dockerfile generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">docker file</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">containerization</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">docker templates</span>
@@ -389,7 +401,7 @@ const DockerfileGeneratorTool = () => {
         {/* Generate Button */}
         <motion.button
           type="button"
-          onClick={generateDockerfile}
+          onClick={generateDockerfile} disabled={isProcessing}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="w-full rounded-lg px-4 py-3 font-medium text-white transition-colors"

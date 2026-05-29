@@ -227,7 +227,7 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 - **Meme Generator** - Create memes with custom text
 
 ### E-commerce Tools (10 Tools)
-- **Background Remover** - Remove background from product images with AI
+- **AI Background Remover** - Remove background from product images with AI
 - **QR Code Generator** - Generate QR codes for products
 - **White Background Adder** - Add white background to product images
 - **Bulk Image Resizer** - Resize multiple images at once for e-commerce
@@ -764,12 +764,15 @@ The project includes a `vercel.json` configuration optimized for Vercel deployme
 }
 ```
 
-### SEO Optimization
-- **Sitemap**: Automatically generated at `/sitemap.xml`
-- **Robots.txt**: Configured for optimal search engine crawling
-- **Meta Tags**: Properly configured Open Graph and Twitter Card meta tags
-- **Canonical URLs**: Set to `https://www.dailytools247.app`
-- **Structured Data**: JSON-LD schema for better search engine understanding
+### SEO & AI Agent Optimization
+- **Sitemaps**: Categorized sitemaps generated at `/sitemap.xml` linking to tools, pages, and blog indices.
+- **Robots.txt**: Configured for search engine crawling and optimized for indexing.
+- **Meta Tags**: Dynamically rendered Open Graph and Twitter Card tags via `SEOHelmet` leveraging structured metadata with fallback boundaries.
+- **Semantic Entity Recognition**: Generates JSON-LD schema graphs matching Topical Clusters (PDF, Image, Developer, Security, SEO, Email, and Social Media categories) in `semanticSEO.ts`.
+- **AI Agent Discoverability**:
+  - **llms.txt**: Markdown spec indices exposing all tool routes for LLM agents (ChatGPT, Gemini, Claude).
+  - **openapi.json**: Formal REST specification of endpoints and schemas for direct agentic invocation.
+  - **ai.txt / ai-plugin.json**: Declarations of capability specs and plugin manifests for AI crawlers.
 
 ### Environment Variables
 Create `.env.local` for local development:

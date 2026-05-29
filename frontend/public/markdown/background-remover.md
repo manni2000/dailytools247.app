@@ -1,4 +1,4 @@
-# Background Remover Tool - DailyTools247
+# AI Background Remover Tool - DailyTools247
 
 Remove backgrounds from images automatically using AI technology.
 

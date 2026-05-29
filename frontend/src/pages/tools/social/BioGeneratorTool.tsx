@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, User, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -10,7 +11,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "330 80% 55%";
 
 const BioGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('bio-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-bio-generator');
   const [name, setName] = useState("");
   const [profession, setProfession] = useState("");
   const [interests, setInterests] = useState("");
@@ -124,7 +126,7 @@ const BioGeneratorTool = () => {
     },
   };
 
-  const generate = () => {
+  const runGenerationLogic = () => {
     const templates = bioTemplates[tone]?.[platform] || bioTemplates.professional.instagram;
     const template = templates[Math.floor(Math.random() * templates.length)];
     
@@ -141,6 +143,16 @@ const BioGeneratorTool = () => {
     setBio(generatedBio);
   };
 
+  const generate = () => {
+    setIsProcessing(true);
+    setBio("");
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(bio);
     setCopied(true);
@@ -152,12 +164,12 @@ const BioGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Social(
-        toolSeoData?.title || "Bio Generator",
+        toolSeoData?.title || "AI Bio Generator",
         toolSeoData?.description || "Create engaging social media bios with character limits",
-        "bio-generator"
+        "ai-bio-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Bio Generator"
+      breadcrumbTitle="AI Bio Generator"
       category="Social Tools"
       categoryPath="/category/social"
     >
@@ -196,13 +208,13 @@ const BioGeneratorTool = () => {
               <User className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Social Media Bio Generator</h2>
+              <h2 className="text-2xl font-bold">Social Media AI Bio Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Create engaging social media bios with character limits for Instagram, Twitter, LinkedIn, and TikTok.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">bio generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI bio generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">instagram bio</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">social media bio</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">profile bio maker</span>
@@ -286,13 +298,29 @@ const BioGeneratorTool = () => {
           </div>
         </div>
 
-        <button onClick={generate} className="btn-primary w-full">
+        <button onClick={generate} disabled={isProcessing} className="btn-primary w-full disabled:opacity-50">
           <Sparkles className="h-5 w-5" />
           Generate Bio
         </button>
 
         {/* Result */}
-        {bio && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Parsing profile details, interests, and selected tone...",
+                  "Running semantic tone matching models...",
+                  "Drafting platform-optimized descriptions...",
+                  "Finishing bio generation within character limit constraints..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {bio && !isProcessing && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Your Bio</h3>

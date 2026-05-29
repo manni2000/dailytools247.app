@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Copy, Check, FileText, Layout, Paintbrush, User, Link, ClipboardCheck, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -12,7 +13,9 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "250 85% 55%";
 
 const EmailSignatureGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('email-signature-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-email-signature-generator');
   const [name, setName] = useState("John Doe");
   const [role, setRole] = useState("Marketing Director");
   const [company, setCompany] = useState("Acme Corporation");
@@ -96,18 +99,18 @@ const EmailSignatureGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Email(
-        toolSeoData?.title || "Email Signature Generator",
+        toolSeoData?.title || "AI Email Signature Generator",
         toolSeoData?.description || "Create modern, responsive HTML email signatures that copy directly into your email client.",
-        "email-signature-generator"
+        "ai-email-signature-generator"
       )}
       <ToolLayout
-        breadcrumbTitle="Email Signature Generator"
+        breadcrumbTitle="AI Email Signature Generator"
         category="Email Marketing Tools"
         categoryPath="/category/email"
       >
         <div className="space-y-6">
           <ToolHero
-            title="Email Signature Generator"
+            title="AI Email Signature Generator"
             subtitle="Create modern, responsive HTML email signatures that copy directly into your email client."
             tags={["email signature", "html signature", "email template"]}
             Icon={Mail}

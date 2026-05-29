@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Copy, Check, Calculator, DollarSign, FileText, TrendingUp, AlertCircle, Sparkles } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
@@ -29,7 +30,8 @@ interface TaxResult {
 }
 
 export default function TaxSlabAnalyzerTool() {
-  const toolSeoData = getToolSeoMetadata('tax-slab-analyzer');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-tax-slab-analyzer');
   const [income, setIncome] = useState('');
   const [regime, setRegime] = useState<'old' | 'new'>('old');
   const [ageGroup, setAgeGroup] = useState<'regular' | 'senior' | 'super_senior'>('regular');
@@ -37,12 +39,12 @@ export default function TaxSlabAnalyzerTool() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const analyzeTax = async () => {
+  const runGenerationLogic = async () => {
     if (!income) return;
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URLS.BASE_URL}/api/finance/tax-slab-analyzer/`, {
+      const response = await fetch(`${API_URLS.BASE_URL}/api/finance/ai-tax-slab-analyzer/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,6 +65,17 @@ export default function TaxSlabAnalyzerTool() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const analyzeTax = () => {
+    if (!income) return;
+    setIsProcessing(true);
+    setResult(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
   };
 
   const formatCurrency = (amount: number) => {
@@ -104,12 +117,12 @@ export default function TaxSlabAnalyzerTool() {
   return (
     <>
       {CategorySEO.Finance(
-        toolSeoData?.title || "Tax Slab Analyzer",
+        toolSeoData?.title || "AI Tax Slab Analyzer",
         toolSeoData?.description || "Calculate your tax liability under different tax regimes",
-        "tax-slab-analyzer"
+        "ai-tax-slab-analyzer"
       )}
       <ToolLayout
-      breadcrumbTitle="Tax Slab Analyzer"
+      breadcrumbTitle="AI Tax Slab Analyzer"
       category="Finance Tools"
       categoryPath="/category/finance"
     >
@@ -148,7 +161,7 @@ export default function TaxSlabAnalyzerTool() {
                 <Calculator className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">Tax Slab Analyzer</h2>
+                <h2 className="text-2xl font-bold">AI Tax Slab Analyzer</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Calculate your tax liability under different tax regimes.
                 </p>
@@ -212,11 +225,11 @@ export default function TaxSlabAnalyzerTool() {
 
           <button
             onClick={analyzeTax} 
-            disabled={!income || loading}
+            disabled={!income || isProcessing}
             className="btn-primary w-full flex items-center justify-center gap-2 mt-4"
           >
             <Calculator className="h-4 w-4" />
-            {loading ? 'Calculating...' : 'Calculate Tax'}
+            {isProcessing ? 'Evaluating slabs...' : 'Calculate Tax'}
           </button>
         </div>
 
@@ -229,7 +242,23 @@ export default function TaxSlabAnalyzerTool() {
         )}
 
         {/* Results Section */}
-        {result && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Evaluating income structure and tax regimes...",
+                  "Calculating slab breakdowns and base tax liability...",
+                  "Applying statutory health & education cess...",
+                  "Optimizing effective tax rate suggestions..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {result && !isProcessing && (
           <div className="space-y-6">
             {/* Tax Summary */}
             <div className="rounded-xl border border-border bg-gradient-to-r from-blue-50 to-purple-50 p-6">

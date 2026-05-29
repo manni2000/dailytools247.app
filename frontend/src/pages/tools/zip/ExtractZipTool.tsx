@@ -21,7 +21,7 @@ interface ExtractedFile {
 }
 
 const ExtractZipTool = () => {
-  const toolSeoData = getToolSeoMetadata('zip-extractor');
+  const toolSeoData = getToolSeoMetadata('extract-zip');
   const [zipFile, setZipFile] = useState<File | null>(null);
   const [extractedFiles, setExtractedFiles] = useState<ExtractedFile[]>([]);
   const [extractedUrls, setExtractedUrls] = useState<Array<{ url: string; name: string }>>([]);

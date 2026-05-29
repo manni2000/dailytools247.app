@@ -10,11 +10,12 @@ const priorityCategoryIds = ["audio", "social", "finance", "viewers", "dev"];
 const featuredCategoryIds = ["image", "pdf", "video", "education", "zip"];
 
 const CategoryGrid = () => {
-  // Reorder: priority first, then others, then featured at the end
+  // Reorder: AI first, then priority, then others, then featured at the end
   const reorderedCategories = [
-    ...toolCategories.filter(cat => priorityCategoryIds.includes(cat.id)),
-    ...toolCategories.filter(cat => !priorityCategoryIds.includes(cat.id) && !featuredCategoryIds.includes(cat.id)),
-    ...toolCategories.filter(cat => featuredCategoryIds.includes(cat.id)),
+    ...toolCategories.filter(cat => cat.id === "ai"),
+    ...toolCategories.filter(cat => cat.id !== "ai" && priorityCategoryIds.includes(cat.id)),
+    ...toolCategories.filter(cat => cat.id !== "ai" && !priorityCategoryIds.includes(cat.id) && !featuredCategoryIds.includes(cat.id)),
+    ...toolCategories.filter(cat => cat.id !== "ai" && featuredCategoryIds.includes(cat.id)),
   ];
 
   return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, Sparkles, Wand2, Star, ThumbsUp, AlertTriangle, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -20,7 +21,7 @@ interface SubjectResult {
 }
 
 const EmailSubjectLineGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('email-subject-line-generator');
+  const toolSeoData = getToolSeoMetadata('ai-email-subject-line-generator');
   const [keywords, setKeywords] = useState("");
   const [category, setCategory] = useState("newsletter");
   const [tone, setTone] = useState("professional");
@@ -110,18 +111,18 @@ const EmailSubjectLineGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Email(
-        toolSeoData?.title || "Email Subject Line Generator",
+        toolSeoData?.title || "AI Email Subject Line Generator",
         toolSeoData?.description || "Create catchy, high-converting subject lines tailored to your target audience.",
-        "email-subject-line-generator"
+        "ai-email-subject-line-generator"
       )}
       <ToolLayout
-        breadcrumbTitle="Email Subject Line Generator"
+        breadcrumbTitle="AI Email Subject Line Generator"
         category="Email Marketing Tools"
         categoryPath="/category/email"
       >
         <div className="space-y-6">
           <ToolHero
-            title="Email Subject Line Generator"
+            title="AI Email Subject Line Generator"
             subtitle="Create catchy, high-converting subject lines tailored to your target audience."
             tags={["subject line generator", "email marketing", "open rate"]}
             Icon={Mail}

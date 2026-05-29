@@ -24,6 +24,28 @@ export interface TopicalCluster {
   semanticVariations: string[];
 }
 
+const normalizeCluster = (key: string): string => {
+  const map: Record<string, string> = {
+    'pdf-conversion': 'pdf-tools',
+    'pdf-tools': 'pdf-tools',
+    'PDF Tools': 'pdf-tools',
+    'image-optimization': 'image-tools',
+    'image-tools': 'image-tools',
+    'Image Tools': 'image-tools',
+    'Developer Tools': 'dev-tools',
+    'dev-tools': 'dev-tools',
+    'Security Tools': 'security-tools',
+    'security-tools': 'security-tools',
+    'SEO Tools': 'seo-tools',
+    'seo-tools': 'seo-tools',
+    'Email Marketing Tools': 'email-tools',
+    'email-tools': 'email-tools',
+    'Social Media Tools': 'social-tools',
+    'social-tools': 'social-tools'
+  };
+  return map[key] || key;
+};
+
 export const semanticEntities: Record<string, SemanticEntity[]> = {
   'pdf-tools': [
     {
@@ -72,11 +94,78 @@ export const semanticEntities: Record<string, SemanticEntity[]> = {
         { target: 'SEO', type: 'improves', strength: 0.85 }
       ]
     }
+  ],
+  'dev-tools': [
+    {
+      type: 'Technology',
+      name: 'JSON',
+      description: 'JavaScript Object Notation, a lightweight data-interchange format',
+      properties: {
+        standard: 'ECMA-404',
+        mimeType: 'application/json'
+      },
+      relationships: [
+        { target: 'TypeScript', type: 'converts_to', strength: 0.90 }
+      ]
+    }
+  ],
+  'security-tools': [
+    {
+      type: 'Technology',
+      name: 'Encryption',
+      description: 'Process of encoding information to prevent unauthorized access',
+      properties: {
+        standard: 'AES-256',
+        keys: 'symmetric, asymmetric'
+      },
+      relationships: [
+        { target: 'Secure Notes', type: 'protects', strength: 0.95 }
+      ]
+    }
+  ],
+  'seo-tools': [
+    {
+      type: 'Service',
+      name: 'Search Engine Optimization',
+      description: 'Optimizing websites to improve search visibility and traffic',
+      properties: {
+        factors: ['meta tags', 'keywords', 'page speed', 'sitemaps']
+      },
+      relationships: [
+        { target: 'Web Performance', type: 'correlates_with', strength: 0.90 }
+      ]
+    }
+  ],
+  'email-tools': [
+    {
+      type: 'Technology',
+      name: 'Email Delivery Protocol',
+      description: 'Authentication and validation frameworks for email security',
+      properties: {
+        standards: ['SPF', 'DKIM', 'DMARC']
+      },
+      relationships: [
+        { target: 'Deliverability', type: 'improves', strength: 0.95 }
+      ]
+    }
+  ],
+  'social-tools': [
+    {
+      type: 'Service',
+      name: 'Social Media Optimization',
+      description: 'Creating and formatting high-engagement content for social media channels',
+      properties: {
+        platforms: ['Instagram', 'TikTok', 'WhatsApp', 'Facebook']
+      },
+      relationships: [
+        { target: 'Engagement Rate', type: 'drives', strength: 0.90 }
+      ]
+    }
   ]
 };
 
 export const topicalClusters: Record<string, TopicalCluster> = {
-  'pdf-conversion': {
+  'pdf-tools': {
     mainTopic: 'PDF Document Conversion',
     relatedEntities: ['PDF', 'Microsoft Word', 'Adobe Acrobat', 'Document Management'],
     supportingKeywords: [
@@ -118,7 +207,7 @@ export const topicalClusters: Record<string, TopicalCluster> = {
       'document format standardization'
     ]
   },
-  'image-optimization': {
+  'image-tools': {
     mainTopic: 'Image Optimization for Web',
     relatedEntities: ['JPEG', 'PNG', 'WebP', 'Website Performance', 'Core Web Vitals'],
     supportingKeywords: [
@@ -159,11 +248,158 @@ export const topicalClusters: Record<string, TopicalCluster> = {
       'web-ready image processing',
       'media file size reduction'
     ]
+  },
+  'dev-tools': {
+    mainTopic: 'Developer Utilities and Syntax Converters',
+    relatedEntities: ['JSON', 'TypeScript', 'Regex', 'Postman', 'Docker'],
+    supportingKeywords: [
+      'syntax formatting', 'code validation', 'regular expressions',
+      'API debugging', 'web development toolset', 'JSON schema translation'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['format json online', 'json to typescript interface', 'sql query beautifier'],
+        questions: [
+          'how to convert json to typescript',
+          'beautify sql queries online',
+          'generate dockerfile with ai'
+        ]
+      }
+    ],
+    contentAngles: [
+      'Full Stack Development',
+      'DevOps Workflow Automation',
+      'Database Administration',
+      'API Engineering'
+    ],
+    semanticVariations: [
+      'software developer helpers',
+      'programmer syntax formatters',
+      'code parsing tools'
+    ]
+  },
+  'security-tools': {
+    mainTopic: 'Cybersecurity, Cryptography, and Privacy',
+    relatedEntities: ['AES-256', 'Password Strength', 'Phishing detection', 'Redaction'],
+    supportingKeywords: [
+      'password generator', 'secure hashing algorithms', 'data redaction',
+      'qr code phishing scanner', 'url reputation checker', 'private secure notes'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['generate strong password', 'check data breach email', 'encrypt text notes'],
+        questions: [
+          'how to check password strength',
+          'redact sensitive information from text',
+          'check if qr code is safe'
+        ]
+      }
+    ],
+    contentAngles: [
+      'Personal Cybersecurity',
+      'Corporate Privacy Compliance',
+      'Safe Web Browsing'
+    ],
+    semanticVariations: [
+      'digital privacy protection',
+      'cryptographic hash generation',
+      'data leak scanner'
+    ]
+  },
+  'seo-tools': {
+    mainTopic: 'Search Engine Optimization and Technical Audit',
+    relatedEntities: ['Meta Tags', 'Robots.txt', 'Sitemap Validator', 'Core Web Vitals'],
+    supportingKeywords: [
+      'meta description generator', 'keyword density checker', 'robots.txt creator',
+      'sitemap analysis', 'page speed analyzer', 'utm link builder'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['generate seo meta tags', 'validate xml sitemaps', 'check domain age'],
+        questions: [
+          'how to generate click-through optimized descriptions',
+          'how to audit website tech stack',
+          'best free page seo analyzer'
+        ]
+      }
+    ],
+    contentAngles: [
+      'Content Marketing',
+      'Technical SEO Auditing',
+      'Growth Hacking'
+    ],
+    semanticVariations: [
+      'seo page optimization',
+      'technical search optimization',
+      'metadata generators'
+    ]
+  },
+  'email-tools': {
+    mainTopic: 'Email Marketing Optimization and Deliverability',
+    relatedEntities: ['SPF', 'DKIM', 'DMARC', 'Spam Filters', 'Email Signature'],
+    supportingKeywords: [
+      'subject line generator', 'spam score checker', 'email template builder',
+      'header analysis', 'dns security records', 'mailto link generator'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['check email spam score', 'create email signature', 'generate spf record'],
+        questions: [
+          'how to improve email open rates',
+          'generate dkim public key online',
+          'create html emails free'
+        ]
+      }
+    ],
+    contentAngles: [
+      'B2B Email Outreach',
+      'Drip Campaign Design',
+      'Newsletter Deliverability'
+    ],
+    semanticVariations: [
+      'email deliverability setup',
+      'email subject copywriting',
+      'dns mail authentication'
+    ]
+  },
+  'social-tools': {
+    mainTopic: 'Social Media Management and Engagement',
+    relatedEntities: ['Instagram Bio', 'Hashtags', 'WhatsApp Status', 'Meme Generator'],
+    supportingKeywords: [
+      'social bio link', 'hashtag generator', 'caption formatter',
+      'whatsapp status generator', 'custom mobile landing page'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['generate instagram hashtags', 'create link in bio page', 'format caption line breaks'],
+        questions: [
+          'how to format instagram captions with spaces',
+          'best bio link builders',
+          'generate viral meme online'
+        ]
+      }
+    ],
+    contentAngles: [
+      'Social Influencer Marketing',
+      'Brand Engagement Campaigns',
+      'Viral Content Formatting'
+    ],
+    semanticVariations: [
+      'social marketing optimization',
+      'instagram biography generator',
+      'line break formatter'
+    ]
   }
 };
 
 export const generateSemanticKeywords = (cluster: string, baseKeywords: string[]): string[] => {
-  const topicalData = topicalClusters[cluster];
+  const normalizedKey = normalizeCluster(cluster);
+  const topicalData = topicalClusters[normalizedKey];
   if (!topicalData) return baseKeywords;
   
   const semanticKeywords: string[] = [...baseKeywords];
@@ -196,8 +432,9 @@ export const generateSemanticKeywords = (cluster: string, baseKeywords: string[]
 };
 
 export const generateStructuredData = (toolSlug: string, cluster: string) => {
-  const entities = semanticEntities[cluster] || [];
-  const clusterData = topicalClusters[cluster];
+  const normalizedKey = normalizeCluster(cluster);
+  const entities = semanticEntities[normalizedKey] || [];
+  const clusterData = topicalClusters[normalizedKey];
   
   const structuredData = {
     '@context': 'https://schema.org',
@@ -232,32 +469,32 @@ export const generateStructuredData = (toolSlug: string, cluster: string) => {
               text: `Our ${toolSlug.replace(/-/g, ' ')} tool provides the best solution for ${question.toLowerCase()}.`
             }
           }))
-        )
+        ) || []
       },
       {
         '@type': 'HowTo',
         name: `How to use ${toolSlug.replace(/-/g, ' ')}`,
-        description: `Step-by-step guide for ${clusterData?.mainTopic}`,
+        description: `Step-by-step guide for ${clusterData?.mainTopic || 'this tool'}`,
         step: [
           {
             '@type': 'HowToStep',
-            name: 'Upload File',
-            text: 'Select or drag and drop your file'
+            name: 'Upload File / Input Data',
+            text: 'Select your files or type your input parameters'
           },
           {
             '@type': 'HowToStep',
-            name: 'Configure Settings',
-            text: 'Adjust parameters according to your needs'
+            name: 'Configure Options',
+            text: 'Customize settings to suit your target result'
           },
           {
             '@type': 'HowToStep',
             name: 'Process',
-            text: 'Click the process button to start conversion'
+            text: 'Click the action button to calculate, encrypt, format, or generate'
           },
           {
             '@type': 'HowToStep',
-            name: 'Download Result',
-            text: 'Download your processed file'
+            name: 'Download / Copy Results',
+            text: 'Save or copy the final optimized output'
           }
         ]
       }

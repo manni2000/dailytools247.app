@@ -41,7 +41,7 @@ interface JWTInfo {
 }
 
 const JWTExpiryTool = () => {
-  const toolSeoData = getToolSeoMetadata('jwt-expiry-calculator');
+  const toolSeoData = getToolSeoMetadata('jwt-token-expiry-calculator');
   const [jwtInput, setJwtInput] = useState('');
   const [jwtInfo, setJwtInfo] = useState<JWTInfo | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
@@ -193,7 +193,7 @@ const JWTExpiryTool = () => {
       {CategorySEO.Dev(
         toolSeoData?.title || "JWT Token Expiry Calculator",
         toolSeoData?.description || "Analyze JWT tokens, check expiry times, and decode payload information",
-        "jwt-expiry-calculator"
+        "jwt-token-expiry-calculator"
       )}
       <ToolLayout
       breadcrumbTitle="JWT Expiry Checker"

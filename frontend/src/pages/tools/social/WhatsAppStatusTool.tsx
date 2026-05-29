@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Upload, Smartphone, X, Type, Palette, AlignLeft, AlignCenter, AlignRight, Sparkles, Image as ImageIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
 import ToolLayout from "@/components/layout/ToolLayout";
@@ -13,7 +14,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "173 80% 40%";
 
 const WhatsAppStatusTool = () => {
-  const toolSeoData = getToolSeoMetadata('whatsapp-status-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-whatsapp-status-generator');
   const [image, setImage] = useState<string | null>(null);
   const [text, setText] = useState("");
   const [textPosition, setTextPosition] = useState<"top" | "center" | "bottom">("center");
@@ -77,7 +79,7 @@ const WhatsAppStatusTool = () => {
     if (file) handleFile(file);
   };
 
-  const generate = async () => {
+  const runGenerationLogic = async () => {
     setIsGenerating(true);
     
     const canvas = canvasRef.current;
@@ -185,6 +187,16 @@ const WhatsAppStatusTool = () => {
     }
   };
 
+  const generate = () => {
+    setIsProcessing(true);
+    setResultUrl(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const reset = () => {
     setImage(null);
     setText("");
@@ -194,12 +206,12 @@ const WhatsAppStatusTool = () => {
   return (
     <>
       {CategorySEO.Social(
-        toolSeoData?.title || "WhatsApp Status Generator",
-        toolSeoData?.description || "Create perfectly sized images for WhatsApp Status with professional design tools",
-        "whatsapp-status-generator"
+        toolSeoData?.title || "AI WhatsApp Status Generator",
+        toolSeoData?.description || "Create perfectly sized images for AI WhatsApp Status with professional design tools",
+        "ai-whatsapp-status-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="WhatsApp Status"
+      breadcrumbTitle="AI WhatsApp Status"
       category="Social Media"
       categoryPath="/category/social"
     >
@@ -243,13 +255,13 @@ const WhatsAppStatusTool = () => {
               <Smartphone className="h-5 w-5 sm:h-7 sm:w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold">WhatsApp Status Creator</h2>
+              <h2 className="text-xl sm:text-2xl font-bold">AI WhatsApp Status Creator</h2>
               <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground">
                 Design professional status images with the perfect 1080×1920 resolution for WhatsApp.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">whatsapp status</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI whatsapp status</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">status creator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">social media</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">image generator</span>
@@ -298,7 +310,7 @@ const WhatsAppStatusTool = () => {
               onFileSelect={handleFile}
               multiple={false}
               title="Drop image here or click to upload"
-              subtitle="Optimized for WhatsApp Status (1080×1920) - Optional"
+              subtitle="Optimized for AI WhatsApp Status (1080×1920) - Optional"
             />
             {image && (
               <motion.div 
@@ -605,13 +617,13 @@ const WhatsAppStatusTool = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={generate} 
-            disabled={isGenerating}
+            onClick={generate}
+            disabled={isProcessing || isGenerating}
             className="w-full sm:flex-1 rounded-lg text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:font-medium transition-colors disabled:opacity-50 shadow-lg hover:shadow-xl"
             style={{
               background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
             }}
-            title="Generate WhatsApp status"
+            title="Generate AI WhatsApp status"
           >
             <Sparkles className={`inline h-4 w-4 sm:h-5 sm:w-5 mr-2 ${isGenerating ? 'animate-pulse' : ''}`} />
             {isGenerating ? "Generating..." : "Generate Status"}
@@ -629,14 +641,30 @@ const WhatsAppStatusTool = () => {
         </motion.div>
 
         {/* Result Preview and Download */}
-        {resultUrl && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Analyzing status text overlay and background configuration...",
+                  "Selecting optimized text placement and color contrast...",
+                  "Rendering background and overlay elements on canvas...",
+                  "Compiling final status image at 1080x1920 resolution..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {resultUrl && !isProcessing && (
           <div ref={downloadSectionRef} className="space-y-4 sm:space-y-6">
             <div className="text-center">
               <p className="mb-3 sm:mb-4 text-base sm:text-lg font-semibold">Preview</p>
               <div className="inline-block rounded-2xl border border-border bg-muted/30 p-3 sm:p-4 shadow-lg">
                 <img
                   src={resultUrl}
-                  alt="WhatsApp Status"
+                  alt="AI WhatsApp Status"
                   className="h-64 sm:h-80 lg:h-96 max-w-full rounded-xl object-contain"
                 />
               </div>
@@ -645,8 +673,8 @@ const WhatsAppStatusTool = () => {
               data={resultUrl}
               fileName="whatsapp-status.jpg"
               fileType="image"
-              title="WhatsApp Status Generated Successfully"
-              description="Perfectly sized at 1080×1920 pixels for WhatsApp Status"
+              title="AI WhatsApp Status Generated Successfully"
+              description="Perfectly sized at 1080×1920 pixels for AI WhatsApp Status"
               fileSize="High Quality JPEG"
               dimensions={{ width: 1080, height: 1920 }}
                   onConvertAnother={reset}
@@ -664,10 +692,10 @@ const WhatsAppStatusTool = () => {
         >
           <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center gap-2">
             <Smartphone className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
-            What is WhatsApp Status Creation?
+            What is AI WhatsApp Status Creation?
           </h3>
           <p className="text-muted-foreground mb-4 text-sm">
-            WhatsApp Status creator generates custom status images for WhatsApp stories. You can add text, choose colors, and customize the design to create engaging status updates that appear as full-screen stories in WhatsApp.
+            AI WhatsApp Status creator generates custom status images for WhatsApp stories. You can add text, choose colors, and customize the design to create engaging status updates that appear as full-screen stories in WhatsApp.
           </p>
           
           <h4 className="font-semibold mb-2 text-sm">How It Works</h4>
@@ -704,8 +732,8 @@ const WhatsAppStatusTool = () => {
         {/* FAQ Section */}
         <ToolFAQ faqs={[
           {
-            question: "What resolution should WhatsApp status images be?",
-            answer: "WhatsApp status images should be 1080x1920 pixels (9:16 aspect ratio) for full-screen display. This ensures your status appears correctly on all devices without cropping."
+            question: "What resolution should AI WhatsApp status images be?",
+            answer: "AI WhatsApp status images should be 1080x1920 pixels (9:16 aspect ratio) for full-screen display. This ensures your status appears correctly on all devices without cropping."
           },
           {
             question: "Can I use any image as a background?",

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Copy, Check, FileCode, Monitor, Smartphone, LayoutGrid, Download, Sliders, Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -12,7 +13,9 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "250 85% 55%";
 
 const EmailTemplateBuilderTool = () => {
-  const toolSeoData = getToolSeoMetadata('email-template-builder');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-email-template-builder');
   const [layout, setLayout] = useState("newsletter");
   const [title, setTitle] = useState("Exciting Updates Ahead!");
   const [subtitle, setSubtitle] = useState("Here is what we have been building for you this month");
@@ -107,18 +110,18 @@ const EmailTemplateBuilderTool = () => {
   return (
     <>
       {CategorySEO.Email(
-        toolSeoData?.title || "Email Template Builder",
+        toolSeoData?.title || "AI Email Template Builder",
         toolSeoData?.description || "Create responsive, inline-styled HTML marketing email templates without writing code.",
-        "email-template-builder"
+        "ai-email-template-builder"
       )}
       <ToolLayout
-        breadcrumbTitle="Email Template Builder"
+        breadcrumbTitle="AI Email Template Builder"
         category="Email Marketing Tools"
         categoryPath="/category/email"
       >
         <div className="space-y-6">
           <ToolHero
-            title="Email Template Builder"
+            title="AI Email Template Builder"
             subtitle="Create responsive, inline-styled HTML marketing email templates without writing code."
             tags={["email template", "html email", "responsive"]}
             Icon={Mail}

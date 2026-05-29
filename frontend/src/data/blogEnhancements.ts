@@ -62,7 +62,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
     ctaLabel: "Open SEO Tools",
     ctaPath: "/category/seo",
     secondaryCtaLabel: "Try Meta Title Tool",
-    secondaryCtaPath: "/meta-title-description-generator",
+    secondaryCtaPath: "/ai-meta-tag-generator",
     additionalFaqs: [
       {
         question: "Do I need paid SEO software for blog publishing?",
@@ -954,7 +954,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
       { tool: "Wappalyzer", bestFor: "Browser extension", free: "Yes", speed: "Instant" },
     ],
     ctaLabel: "Detect Tech Stack",
-    ctaPath: "/tech-stack-detector",
+    ctaPath: "/ai-tech-stack-detector",
     secondaryCtaLabel: "Explore Dev Tools",
     secondaryCtaPath: "/category/dev",
     additionalFaqs: [

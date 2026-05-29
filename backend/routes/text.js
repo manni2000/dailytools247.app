@@ -155,7 +155,7 @@ router.post('/text-diff', (req, res) => {
   res.json({ success: true, result: { diff, stats: { added, removed, unchanged, total: maxLen } } });
 });
 
-router.post('/text-summarizer', (req, res) => {
+router.post('/ai-text-summarizer', (req, res) => {
   const { text, sentences: sentenceCount = 3 } = req.body;
   if (!text) return res.status(400).json({ success: false, error: 'Text required' });
 

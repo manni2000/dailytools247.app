@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check, Hash, Sparkles, TrendingUp, Users, Target, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -10,7 +11,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "330 80% 55%";
 
 const HashtagGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('hashtag-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-hashtag-generator');
   const [topic, setTopic] = useState("");
   const [category, setCategory] = useState("general");
   const [hashtags, setHashtags] = useState<string[]>([]);
@@ -38,7 +40,7 @@ const HashtagGeneratorTool = () => {
     tech: ["technology", "tech", "innovation", "coding", "programming", "developer", "software", "computer", "ai", "data", "startup", "digital", "code", "python", "javascript", "machinelearning", "cybersecurity", "ios", "android", "webdevelopment"],
   };
 
-  const generate = () => {
+  const runGenerationLogic = () => {
     const baseHashtags = hashtagSets[category] || hashtagSets.general;
     const topicWords = topic.toLowerCase().split(/\s+/).filter(w => w.length > 2);
     
@@ -54,6 +56,17 @@ const HashtagGeneratorTool = () => {
     setHashtags(shuffled.map(h => `#${h}`));
   };
 
+  const generate = () => {
+    if (!topic.trim()) return;
+    setIsProcessing(true);
+    setHashtags([]);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const handleCopy = async () => {
     await navigator.clipboard.writeText(hashtags.join(" "));
     setCopied(true);
@@ -63,12 +76,12 @@ const HashtagGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Social(
-        toolSeoData?.title || "Hashtag Generator",
+        toolSeoData?.title || "AI Hashtag Generator",
         toolSeoData?.description || "Generate relevant hashtags for social media engagement",
-        "hashtag-generator"
+        "ai-hashtag-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Hashtag Generator"
+      breadcrumbTitle="AI Hashtag Generator"
       category="Social Tools"
       categoryPath="/category/social"
     >
@@ -107,13 +120,13 @@ const HashtagGeneratorTool = () => {
               <Hash className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Hashtag Generator</h2>
+              <h2 className="text-2xl font-bold">AI Hashtag Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Boost your social media reach with smart, relevant hashtags
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">hashtag generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI hashtag generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">instagram hashtags</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">social media tags</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">trending hashtags</span>
@@ -174,8 +187,8 @@ const HashtagGeneratorTool = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={generate}
-              className="w-full rounded-lg text-white px-4 py-3 font-medium transition-colors"
+              onClick={generate} disabled={isProcessing}
+              className="w-full rounded-lg text-white px-4 py-3 font-medium transition-colors disabled:opacity-50"
               style={{
                 background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
               }}
@@ -186,7 +199,23 @@ const HashtagGeneratorTool = () => {
           </div>
         </motion.div>
           {/* Results Section */}
-        {hashtags.length > 0 && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Analyzing topic and input keywords...",
+                  "Checking trending search queries on social platforms...",
+                  "Selecting high-engagement niche tags...",
+                  "Formatting final hashtag list..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {hashtags.length > 0 && !isProcessing && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

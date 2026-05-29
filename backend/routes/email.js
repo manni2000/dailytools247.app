@@ -9,7 +9,7 @@ router.use(strictLimiter);
 // -------------------------------------------------------------
 // 1. Email Subject Line Generator
 // -------------------------------------------------------------
-router.post('/subject-line-generator', (req, res) => {
+router.post('/ai-subject-line-generator', (req, res) => {
   const { keywords = '', tone = 'professional', category = 'newsletter' } = req.body;
   
   if (!keywords.trim()) {
@@ -134,7 +134,7 @@ router.post('/subject-line-generator', (req, res) => {
 // -------------------------------------------------------------
 // 2. Email Signature Generator
 // -------------------------------------------------------------
-router.post('/signature-generator', (req, res) => {
+router.post('/ai-signature-generator', (req, res) => {
   const {
     name = 'John Doe',
     role = 'Marketing Specialist',
@@ -337,7 +337,7 @@ router.post('/previewer-analyze', (req, res) => {
 // -------------------------------------------------------------
 // 4. Spam Score Checker
 // -------------------------------------------------------------
-router.post('/spam-checker', (req, res) => {
+router.post('/ai-spam-checker', (req, res) => {
   const { subject = '', body = '' } = req.body;
 
   if (!subject.trim() && !body.trim()) {
@@ -419,7 +419,7 @@ router.post('/spam-checker', (req, res) => {
 // -------------------------------------------------------------
 // 5. Email Template Builder
 // -------------------------------------------------------------
-router.post('/template-builder', (req, res) => {
+router.post('/ai-template-builder', (req, res) => {
   const {
     layout = 'newsletter',
     content = {}
@@ -581,7 +581,7 @@ router.post('/template-builder', (req, res) => {
 // -------------------------------------------------------------
 // 6. Email Header Analyzer
 // -------------------------------------------------------------
-router.post('/header-analyzer', (req, res) => {
+router.post('/ai-header-analyzer', (req, res) => {
   const { headers = '' } = req.body;
 
   if (!headers.trim()) {

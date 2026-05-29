@@ -14,7 +14,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "280 70% 55%";
 
 const CompressionZipTool = () => {
-  const toolSeoData = getToolSeoMetadata('zip-compression');
+  const toolSeoData = getToolSeoMetadata('compression-zip');
   const [files, setFiles] = useState<File[]>([]);
   const [zipName, setZipName] = useState("archive");
   const [compressionLevel, setCompressionLevel] = useState<number>(6);

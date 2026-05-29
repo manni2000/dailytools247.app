@@ -21,7 +21,8 @@ const CheckItem = ({ passed, label }: { passed: boolean; label: string }) => (
 );
 
 const PasswordStrengthTool = () => {
-  const toolSeoData = getToolSeoMetadata('password-strength-checker');
+
+  const toolSeoData = getToolSeoMetadata('password-strength');
   const [password, setPassword] = useState("");
 
   const analyze = () => {

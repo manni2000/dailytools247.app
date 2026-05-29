@@ -1,7 +1,5 @@
-// API Client Helper Functions
 import { API_URLS } from './api-complete';
 
-// Generic API client for making requests
 export class ApiClient {
   private baseUrl: string;
 
@@ -9,7 +7,6 @@ export class ApiClient {
     this.baseUrl = baseUrl;
   }
 
-  // Generic POST request with file upload support
   async post(endpoint: string, data: any, isFormData = false) {
     const config: RequestInit = {
       method: 'POST',
@@ -17,7 +14,7 @@ export class ApiClient {
     };
 
     if (isFormData) {
-      config.body = data; // FormData object
+      config.body = data;
     } else {
       config.headers = {
         'Content-Type': 'application/json',
@@ -35,12 +32,10 @@ export class ApiClient {
 
       return result;
     } catch (error) {
-      // console.error('API Error:', error);
       throw error;
     }
   }
 
-  // Generic GET request
   async get(endpoint: string) {
     try {
       const response = await fetch(endpoint);
@@ -52,17 +47,14 @@ export class ApiClient {
 
       return result;
     } catch (error) {
-      // console.error('API Error:', error);
       throw error;
     }
   }
 
-  // File upload helper
   async uploadFile(endpoint: string, file: File, additionalData: Record<string, any> = {}) {
     const formData = new FormData();
     formData.append('file', file);
-    
-    // Add additional form data
+
     Object.entries(additionalData).forEach(([key, value]) => {
       formData.append(key, value.toString());
     });
@@ -70,15 +62,13 @@ export class ApiClient {
     return this.post(endpoint, formData, true);
   }
 
-  // Multiple files upload helper
   async uploadFiles(endpoint: string, files: File[], additionalData: Record<string, any> = {}) {
     const formData = new FormData();
-    
+
     files.forEach((file, index) => {
       formData.append(`files`, file);
     });
-    
-    // Add additional form data
+
     Object.entries(additionalData).forEach(([key, value]) => {
       formData.append(key, value.toString());
     });
@@ -87,12 +77,9 @@ export class ApiClient {
   }
 }
 
-// Create singleton instance
 export const apiClient = new ApiClient();
 
-// Specific API methods for common operations
 export const api = {
-  // Image operations
   compressImage: (file: File, quality: number) => {
     const formData = new FormData();
     formData.append('image', file);
@@ -135,7 +122,6 @@ export const api = {
     });
   },
 
-  // Audio operations
   convertAudio: (file: File, format: string) => {
     const formData = new FormData();
     formData.append('audio', file);
@@ -171,7 +157,6 @@ export const api = {
     return apiClient.post(API_URLS.SPEECH_TO_TEXT, formData, true);
   },
 
-  // Video operations
   videoToAudio: (file: File, format?: string, quality?: string) => {
     const formData = new FormData();
     formData.append('video', file);
@@ -213,29 +198,6 @@ export const api = {
     return apiClient.post(API_URLS.VIDEO_RESOLUTION, formData, true);
   },
 
-  convertVideo: (file: File, format: string, quality?: string) => {
-    const formData = new FormData();
-    formData.append('video', file);
-    formData.append('format', format);
-    if (quality) formData.append('quality', quality);
-    return apiClient.post(API_URLS.VIDEO_CONVERT, formData, true);
-  },
-
-  compressVideo: (file: File, quality?: string, crf?: string) => {
-    const formData = new FormData();
-    formData.append('video', file);
-    if (quality) formData.append('quality', quality);
-    if (crf) formData.append('crf', crf);
-    return apiClient.post(API_URLS.VIDEO_COMPRESS, formData, true);
-  },
-
-  getVideoInfo: (file: File) => {
-    const formData = new FormData();
-    formData.append('video', file);
-    return apiClient.post(API_URLS.VIDEO_INFO, formData, true);
-  },
-
-  // PDF operations
   mergePDF: (files: File[]) => {
     const formData = new FormData();
     files.forEach(file => formData.append('pdfs', file));
@@ -295,13 +257,6 @@ export const api = {
     return apiClient.post(API_URLS.PDF_COMPRESS, formData, true);
   },
 
-  getPDFInfo: (file: File) => {
-    const formData = new FormData();
-    formData.append('pdf', file);
-    return apiClient.post(API_URLS.PDF_INFO, formData, true);
-  },
-
-  // ZIP operations
   createZip: (files: File[], zipName?: string, compressionLevel?: number) => {
     const formData = new FormData();
     files.forEach(file => formData.append('files', file));
@@ -325,7 +280,6 @@ export const api = {
     return apiClient.post(API_URLS.PASSWORD_ZIP, formData, true);
   },
 
-  // Security operations
   generatePassword: (options: any) => {
     return apiClient.post(API_URLS.PASSWORD_GENERATOR, options);
   },
@@ -350,7 +304,6 @@ export const api = {
     return apiClient.post(API_URLS.UUID_GENERATOR, { version, count });
   },
 
-  // Text operations
   countWords: (text: string) => {
     return apiClient.post(API_URLS.WORD_COUNTER, { text });
   },

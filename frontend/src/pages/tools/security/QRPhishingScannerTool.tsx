@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Copy, Check, QrCode, AlertTriangle, Shield, CheckCircle, XCircle, Sparkles, Settings } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
@@ -20,7 +21,8 @@ interface QRAnalysis {
 }
 
 export default function QRPhishingScannerTool() {
-  const toolSeoData = getToolSeoMetadata('qr-phishing-scanner');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-qr-phishing-scanner');
   const [qrData, setQrData] = useState('');
   const [result, setResult] = useState<QRAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
@@ -31,7 +33,7 @@ export default function QRPhishingScannerTool() {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URLS.BASE_URL}/api/security/qr-phishing-scanner/`, {
+      const response = await fetch(`${API_URLS.BASE_URL}/api/security/ai-qr-phishing-scanner/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,12 +95,12 @@ export default function QRPhishingScannerTool() {
   return (
     <>
       {CategorySEO.Security(
-        toolSeoData?.title || "QR Phishing Scanner",
+        toolSeoData?.title || "AI QR Phishing Scanner",
         toolSeoData?.description || "Scan QR codes for phishing and other security risks",
-        "qr-phishing-scanner"
+        "ai-qr-phishing-scanner"
       )}
       <ToolLayout
-      breadcrumbTitle="QR Phishing Scanner"
+      breadcrumbTitle="AI QR Phishing Scanner"
       category="Security Tools"
       categoryPath="/category/security"
     >
@@ -137,7 +139,7 @@ export default function QRPhishingScannerTool() {
                 <QrCode className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">QR Phishing Scanner</h2>
+                <h2 className="text-2xl font-bold">AI QR Phishing Scanner</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Scan QR codes for phishing and other security risks.
                 </p>
@@ -179,7 +181,23 @@ export default function QRPhishingScannerTool() {
         </div>
 
         {/* Results Section */}
-        {result && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Decoding QR code pixel grid matrix...",
+                  "Extracting destination URL block...",
+                  "Checking domain credentials against safety registers...",
+                  "Generating complete security threat level card..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {result && !isProcessing && (
           <div className="space-y-6">
             {/* Risk Summary */}
             <div className={`rounded-xl border p-6 ${getRiskColor(result.risk_level)}`}>

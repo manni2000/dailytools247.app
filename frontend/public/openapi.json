@@ -2,20 +2,20 @@
   "openapi": "3.0.0",
   "info": {
     "title": "DailyTools247 API",
-    "description": "Comprehensive set of free utility APIs for developers, including text analysis, formatting, security utilities, and financial calculations.",
+    "description": "Comprehensive set of free utility and AI-powered APIs for developers, including text analysis, security checkers, formatting utilities, social media copy generation, and email marketing analytics.",
     "version": "2.0.0"
   },
   "servers": [
     {
-      "url": "https://www.dailytools247.app/api/v1",
+      "url": "https://www.dailytools247.app/api",
       "description": "Production Server"
     }
   ],
   "paths": {
-    "/text/word-count": {
+    "/text/word-counter": {
       "post": {
         "summary": "Count words and analyze text statistics",
-        "description": "Calculates word count, character count (with/without spaces), sentence count, paragraph count, and estimated reading time.",
+        "description": "Calculates word count, character count, sentence count, paragraph count, and estimated reading time.",
         "requestBody": {
           "required": true,
           "content": {
@@ -47,10 +47,8 @@
                       "properties": {
                         "words": { "type": "integer" },
                         "characters": { "type": "integer" },
-                        "charactersNoSpaces": { "type": "integer" },
                         "sentences": { "type": "integer" },
                         "paragraphs": { "type": "integer" },
-                        "lines": { "type": "integer" },
                         "readingTimeMinutes": { "type": "integer" }
                       }
                     }
@@ -97,9 +95,7 @@
                     "result": {
                       "type": "object",
                       "properties": {
-                        "original": { "type": "string" },
-                        "converted": { "type": "string" },
-                        "case": { "type": "string" }
+                        "converted": { "type": "string" }
                       }
                     }
                   }
@@ -151,10 +147,54 @@
         }
       }
     },
+    "/text/ai-text-summarizer": {
+      "post": {
+        "summary": "Summarize text using AI",
+        "description": "Summarizes long paragraphs of text into a concise summary with a specified number of sentences.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "sentences": { "type": "integer", "default": 3 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "summary": { "type": "string" },
+                        "originalSentences": { "type": "integer" },
+                        "summarySentences": { "type": "integer" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/dev/json-formatter": {
       "post": {
         "summary": "Format, validate, or minify JSON data",
-        "description": "Cleans up and beautifies raw JSON strings, minifies them, or performs format validation with explicit error diagnostics.",
+        "description": "Cleans up and beautifies raw JSON strings, minifies them, or performs format validation.",
         "requestBody": {
           "required": true,
           "content": {
@@ -189,7 +229,6 @@
                       "properties": {
                         "formatted": { "type": "string" },
                         "valid": { "type": "boolean" },
-                        "action": { "type": "string" },
                         "error": { "type": "string" }
                       }
                     }
@@ -204,7 +243,7 @@
     "/dev/url-encoder": {
       "post": {
         "summary": "URL encode or decode string values",
-        "description": "Helper to safely encode query parameters or decode URL components using standard percent-encoding.",
+        "description": "Safely encodes query parameters or decodes URL components using standard percent-encoding.",
         "requestBody": {
           "required": true,
           "content": {
@@ -236,9 +275,133 @@
                     "result": {
                       "type": "object",
                       "properties": {
-                        "input": { "type": "string" },
-                        "output": { "type": "string" },
-                        "action": { "type": "string" }
+                        "output": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dev/ai-cron-generator": {
+      "post": {
+        "summary": "Generate cron expressions from natural language description",
+        "description": "Uses AI to convert plain text descriptions of schedules (e.g. 'every Monday at 5 PM') into valid cron expressions.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["description"],
+                "properties": {
+                  "description": { "type": "string", "description": "e.g., 'every Monday at 5 PM'" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "cron": { "type": "string" },
+                        "explanation": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dev/ai-json-to-typescript-interface": {
+      "post": {
+        "summary": "Convert JSON structure into TypeScript interfaces",
+        "description": "Translates arbitrary JSON input into strongly typed TypeScript interface code blocks dynamically using AI.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["json"],
+                "properties": {
+                  "json": { "type": "string" },
+                  "rootName": { "type": "string", "default": "RootInterface" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "typescript": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dev/ai-sql-query-beautifier": {
+      "post": {
+        "summary": "Beautify, lint, and format SQL queries",
+        "description": "Processes raw SQL text and reformats it with standardized keywords and indentations.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["sql"],
+                "properties": {
+                  "sql": { "type": "string" },
+                  "dialect": { "type": "string", "default": "sql" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "formattedSql": { "type": "string" }
                       }
                     }
                   }
@@ -287,11 +450,571 @@
                         "passwords": {
                           "type": "array",
                           "items": { "type": "string" }
-                        },
-                        "length": { "type": "integer" },
-                        "strength": { "type": "string" }
+                        }
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security/ai-password-strength-explainer": {
+      "post": {
+        "summary": "Analyze and explain password security and vulnerabilities",
+        "description": "Performs password entropy analysis and uses AI to provide actionable advice on how to improve its strength.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["password"],
+                "properties": {
+                  "password": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "score": { "type": "integer" },
+                        "crackTime": { "type": "string" },
+                        "feedback": { "type": "string" },
+                        "suggestions": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security/ai-text-redaction": {
+      "post": {
+        "summary": "Redact personally identifiable information (PII) from text",
+        "description": "Automatically scans text inputs and redacts sensitive data (emails, phone numbers, IP addresses, names) using AI.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "redactedText": { "type": "string" },
+                        "entitiesFound": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security/ai-qr-phishing-scanner": {
+      "post": {
+        "summary": "Scan QR codes and evaluate phishing risk",
+        "description": "Extracts URLs from uploaded images of QR codes and runs them through AI analysis to detect potential phishing or malware risks.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["qrUrl"],
+                "properties": {
+                  "qrUrl": { "type": "string", "description": "URL extracted from QR code" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "isSafe": { "type": "boolean" },
+                        "riskScore": { "type": "integer" },
+                        "malwareDetected": { "type": "boolean" },
+                        "phishingDetected": { "type": "boolean" },
+                        "explanation": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security/ai-url-reputation-checker": {
+      "post": {
+        "summary": "Check URL safety and reputation",
+        "description": "Audits a domain or URL against global reputation, spam, and malware databases.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "domain": { "type": "string" },
+                        "reputation": { "type": "string" },
+                        "score": { "type": "integer" },
+                        "categories": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/seo/ai-tech-stack-detector": {
+      "post": {
+        "summary": "Detect CMS, libraries, and web frameworks of a website",
+        "description": "Scans the HTML headers and source files of a given domain to detect its technical stack.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": { "type": "string", "description": "Website URL to scan" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "technologies": { "type": "array", "items": { "type": "string" } },
+                        "server": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/seo/ai-page-seo-analyzer": {
+      "post": {
+        "summary": "Analyze URL on-page SEO",
+        "description": "Crawls a web page to extract tags, headers, and images and evaluate on-page optimization compliance.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "score": { "type": "integer" },
+                        "issues": { "type": "array", "items": { "type": "string" } },
+                        "title": { "type": "string" },
+                        "description": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/social/ai-hashtag-generator": {
+      "post": {
+        "summary": "Generate hashtags using AI",
+        "description": "Creates highly relevant, high-reach hashtags based on keywords and selected platform.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["keywords"],
+                "properties": {
+                  "keywords": { "type": "string" },
+                  "platform": { "type": "string", "enum": ["instagram", "tiktok", "twitter", "linkedin"], "default": "instagram" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "hashtags": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/social/ai-bio-generator": {
+      "post": {
+        "summary": "Generate social media profile bios using AI",
+        "description": "Creates customized biographies and descriptions for social accounts based on occupation and tone.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "role", "keywords"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "role": { "type": "string" },
+                  "keywords": { "type": "string" },
+                  "tone": { "type": "string", "default": "professional" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "bios": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/ai-email-subject-line-generator": {
+      "post": {
+        "summary": "Generate high-converting email subject lines using AI",
+        "description": "Generates click-through rate optimized subject lines based on core keywords, target tone, and campaign category.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["keywords"],
+                "properties": {
+                  "keywords": { "type": "string" },
+                  "tone": { "type": "string", "default": "professional" },
+                  "category": { "type": "string", "default": "newsletter" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "subject": { "type": "string" },
+                          "score": { "type": "integer" },
+                          "rating": { "type": "string" },
+                          "reason": { "type": "string" },
+                          "tips": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/ai-email-signature-generator": {
+      "post": {
+        "summary": "Generate structured HTML email signatures",
+        "description": "Constructs fully customized responsive email signature code blocks in HTML for multiple visual layouts.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "role", "company", "email"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "role": { "type": "string" },
+                  "company": { "type": "string" },
+                  "phone": { "type": "string" },
+                  "email": { "type": "string" },
+                  "website": { "type": "string" },
+                  "address": { "type": "string" },
+                  "layout": { "type": "string", "enum": ["classic", "modern", "minimalist", "creative"], "default": "classic" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "html": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/ai-spam-score-checker": {
+      "post": {
+        "summary": "Analyze email subject and body for spam score",
+        "description": "Evaluates the spam risk of mail content by scanning for keywords, link ratios, and formatting patterns.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subject": { "type": "string" },
+                  "body": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "score": { "type": "integer" },
+                    "rating": { "type": "string" },
+                    "spamWordsFound": { "type": "array", "items": { "type": "string" } },
+                    "recommendations": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/ai-email-template-builder": {
+      "post": {
+        "summary": "Generate responsive HTML newsletter templates",
+        "description": "Compiles HTML email templates based on content options and visual layouts.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "layout": { "type": "string", "enum": ["newsletter", "promotional", "welcome", "transactional"], "default": "newsletter" },
+                  "content": {
+                    "type": "object",
+                    "properties": {
+                      "title": { "type": "string" },
+                      "subtitle": { "type": "string" },
+                      "body": { "type": "string" },
+                      "buttonText": { "type": "string" },
+                      "buttonUrl": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "html": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/ai-email-header-analyzer": {
+      "post": {
+        "summary": "Parse raw email headers and analyze email hops",
+        "description": "Inspects hops, relay servers, SPF/DKIM authentication, and delays from raw MIME headers.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["headers"],
+                "properties": {
+                  "headers": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "details": { "type": "object" },
+                    "hops": { "type": "array", "items": { "type": "object" } },
+                    "authStatus": { "type": "object" }
                   }
                 }
               }
@@ -303,7 +1026,7 @@
     "/finance/emi-calculator": {
       "post": {
         "summary": "Calculate Loan EMI details",
-        "description": "Computes monthly installments, total interest, and total payout details based on principal, rate, and tenure inputs.",
+        "description": "Computes monthly installments, total interest, and total payout details based on principal, rate, and tenure.",
         "requestBody": {
           "required": true,
           "content": {
@@ -312,14 +1035,10 @@
                 "type": "object",
                 "required": ["principal", "rate", "tenure"],
                 "properties": {
-                  "principal": { "type": "number", "description": "Principal amount." },
-                  "rate": { "type": "number", "description": "Annual interest rate (%)." },
-                  "tenure": { "type": "integer", "description": "Loan duration." },
-                  "tenureType": {
-                    "type": "string",
-                    "enum": ["months", "years"],
-                    "default": "months"
-                  }
+                  "principal": { "type": "number" },
+                  "rate": { "type": "number" },
+                  "tenure": { "type": "integer" },
+                  "tenureType": { "type": "string", "enum": ["months", "years"], "default": "months" }
                 }
               }
             }
@@ -339,11 +1058,7 @@
                       "properties": {
                         "emi": { "type": "number" },
                         "totalPayment": { "type": "number" },
-                        "totalInterest": { "type": "number" },
-                        "principal": { "type": "number" },
-                        "rate": { "type": "number" },
-                        "tenure": { "type": "integer" },
-                        "tenureType": { "type": "string" }
+                        "totalInterest": { "type": "number" }
                       }
                     }
                   }

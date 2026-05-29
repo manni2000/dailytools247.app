@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Music, X, Loader2, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
 import { VideoUploadZone } from "@/components/ui/video-upload-zone";
@@ -15,12 +16,12 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "350 80% 55%";
 
 const VideoToAudioTool = () => {
-  const toolSeoData = getToolSeoMetadata('video-to-audio-converter');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-video-to-audio');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [audioData, setAudioData] = useState<string | null>(null);
   const [resultFileName, setResultFileName] = useState<string>("");
-  const [isProcessing, setIsProcessing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [audioFormat, setAudioFormat] = useState("mp3");
   const downloadSectionRef = useRef<HTMLDivElement>(null);
@@ -60,6 +61,21 @@ const VideoToAudioTool = () => {
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
+  };
+
+  const handleFileUpload = (file: File) => {
+    setIsProcessing(true);
+    setAudioUrl(null);
+    setTempFile(file);
+  };
+
+  const [tempFile, setTempFile] = useState<File | null>(null);
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    if (tempFile) {
+      runGenerationLogic(tempFile);
+    }
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -152,7 +168,7 @@ const VideoToAudioTool = () => {
       {CategorySEO.Video(
         toolSeoData?.title || "Video to Audio Converter",
         toolSeoData?.description || "Extract audio from video files (MP4, AVI, MOV → MP3, WAV)",
-        "video-to-audio"
+        "ai-video-to-audio"
       )}
       <ToolLayout
       breadcrumbTitle="Video to Audio"
@@ -381,3 +397,11 @@ const VideoToAudioTool = () => {
 };
 
 export default VideoToAudioTool;
+function runGenerationLogic(tempFile: File) {
+  throw new Error("Function not implemented.");
+}
+
+function setAudioUrl(arg0: null) {
+  throw new Error("Function not implemented.");
+}
+

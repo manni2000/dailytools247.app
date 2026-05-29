@@ -91,7 +91,7 @@ router.post('/password-strength', strictLimiter, (req, res) => {
   res.json({ success: true, result: { score, strengthLabel, checks, suggestions, length: password.length } });
 });
 
-router.post('/password-strength-explainer', strictLimiter, (req, res) => {
+router.post('/ai-password-strength-explainer', strictLimiter, (req, res) => {
   const { password } = req.body;
   if (!password) return res.status(400).json({ success: false, error: 'Password required' });
 
@@ -222,7 +222,7 @@ router.post('/uuid-generator', strictLimiter, (req, res) => {
   res.json({ success: true, result: { uuids, count: uuids.length } });
 });
 
-router.post('/text-redaction', strictLimiter, (req, res) => {
+router.post('/ai-text-redaction', strictLimiter, (req, res) => {
   const { text, redactionTypes = {} } = req.body;
   if (!text) return res.status(400).json({ success: false, error: 'Text is required' });
 
@@ -306,7 +306,7 @@ router.post('/file-hash-comparison', uploadLimiter, upload.fields([{ name: 'file
   });
 });
 
-router.post('/qr-phishing-scanner', strictLimiter, (req, res) => {
+router.post('/ai-qr-phishing-scanner', strictLimiter, (req, res) => {
   const url = req.body.url || req.body.qr_data;
   if (!url) return res.status(400).json({ success: false, error: 'URL is required' });
 
@@ -387,7 +387,7 @@ function buildUrlReputationResult(url) {
   };
 }
 
-router.post('/url-reputation-checker', strictLimiter, (req, res) => {
+router.post('/ai-url-reputation-checker', strictLimiter, (req, res) => {
   const { url } = req.body;
   if (!url) return res.status(400).json({ success: false, error: 'URL is required' });
 

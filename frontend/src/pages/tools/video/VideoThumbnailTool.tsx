@@ -15,7 +15,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "350 80% 55%";
 
 const VideoThumbnailTool = () => {
-  const toolSeoData = getToolSeoMetadata('video-thumbnail-extractor');
+  const toolSeoData = getToolSeoMetadata('video-thumbnail');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [thumbnailData, setThumbnailData] = useState<string | null>(null);

@@ -214,7 +214,7 @@ router.post('/burn-rate-calculator', (req, res) => {
   });
 });
 
-router.post('/saas-pricing-calculator', (req, res) => {
+router.post('/ai-saas-pricing-calculator', (req, res) => {
   const { mrr = 0, churnRate = 5, cac = 0, avgContractValue = 0, growthRate = 10 } = req.body;
   const mrrVal = parseFloat(mrr);
   const churn = parseFloat(churnRate) / 100;
@@ -268,7 +268,7 @@ router.post('/freelancer-rate-calculator', (req, res) => {
   });
 });
 
-router.post('/budget-planner', (req, res) => {
+router.post('/ai-budget-planner', (req, res) => {
   const { monthlyIncome = 0, expenses = [] } = req.body;
   const income = parseFloat(monthlyIncome) || 0;
 
@@ -342,7 +342,7 @@ router.post('/stock-cagr-calculator', (req, res) => {
   });
 });
 
-router.post('/tax-slab-analyzer', (req, res) => {
+router.post('/ai-tax-slab-analyzer', (req, res) => {
   let { income, regime = 'new', age_group = 'below_60' } = req.body;
   if (!income) return res.status(400).json({ success: false, error: 'Income required' });
 

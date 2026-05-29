@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Copy, Check, FileText, Shield, Eye, EyeOff, Sparkles, Settings } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
@@ -23,7 +24,8 @@ interface RedactionResult {
 }
 
 export default function TextRedactionTool() {
-  const toolSeoData = getToolSeoMetadata('text-redaction');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-text-redaction');
   const [text, setText] = useState('');
   const [redactionTypes, setRedactionTypes] = useState({
     email: true,
@@ -40,7 +42,7 @@ export default function TextRedactionTool() {
 
     setLoading(true);
     try {
-      const response = await fetch(`${API_URLS.BASE_URL}/api/security/text-redaction/`, {
+      const response = await fetch(`${API_URLS.BASE_URL}/api/security/ai-text-redaction/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,9 +61,20 @@ export default function TextRedactionTool() {
     }
   };
 
+  const handleRedact = () => {
+    if (!inputText) return;
+    setIsProcessing(true);
+    setResult(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const handleCopy = async () => {
     if (!result) return;
-    const text = `Text Redaction Result\n` +
+    const text = `AI Text Redaction Result\n` +
       `Original Text: ${result.original_text}\n` +
       `Redacted Text: ${result.redacted_text}\n\n` +
       `Items Found: ${result.items_found}\n\n` +
@@ -82,12 +95,12 @@ export default function TextRedactionTool() {
   return (
     <>
       {CategorySEO.Security(
-        toolSeoData?.title || "Text Redaction",
+        toolSeoData?.title || "AI Text Redaction",
         toolSeoData?.description || "Remove sensitive information from text documents",
-        "text-redaction"
+        "ai-text-redaction"
       )}
       <ToolLayout
-      breadcrumbTitle="Text Redaction"
+      breadcrumbTitle="AI Text Redaction"
       category="Security Tools"
       categoryPath="/category/security"
     >
@@ -126,13 +139,13 @@ export default function TextRedactionTool() {
                 <FileText className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">Text Redaction</h2>
+                <h2 className="text-2xl font-bold">AI Text Redaction</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Remove sensitive information from text documents.
                 </p>
                 {/* Keyword Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">text redaction</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI text redaction</span>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">remove sensitive</span>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">document privacy</span>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">hide information</span>
@@ -143,7 +156,7 @@ export default function TextRedactionTool() {
 
         {/* Input Section */}
         <div className="rounded-xl border border-border bg-card p-6">
-          <h3 className="text-lg font-semibold mb-4">Text Redaction</h3>
+          <h3 className="text-lg font-semibold mb-4">AI Text Redaction</h3>
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="block text-sm font-medium mb-2">Text to Redact</label>
@@ -186,7 +199,23 @@ export default function TextRedactionTool() {
         </div>
 
         {/* Results Section */}
-        {result && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Parsing text content and identifying entities...",
+                  "Scanning for PII (emails, names, credit cards)...",
+                  "Applying masking rules and formatting constraints...",
+                  "Generating redacted safe text structure..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {result && !isProcessing && (
           <div className="space-y-6">
             {/* Redaction Summary */}
             <div className="rounded-xl border border-border bg-card p-6">
@@ -231,7 +260,7 @@ export default function TextRedactionTool() {
 
         {/* Information Section */}
         <div className="rounded-xl border border-border bg-card p-6">
-          <h3 className="text-lg font-semibold mb-4">Text Redaction Guide</h3>
+          <h3 className="text-lg font-semibold mb-4">AI Text Redaction Guide</h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <h4 className="font-semibold text-blue-600">🔍 Common Redaction Types</h4>
@@ -285,10 +314,10 @@ export default function TextRedactionTool() {
         >
           <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <Shield className="h-5 w-5 text-blue-500" />
-            What is Text Redaction?
+            What is AI Text Redaction?
           </h3>
           <p className="text-muted-foreground mb-4">
-            Text redaction removes or obscures sensitive information from documents before sharing. This protects personal data, confidential information, and private details while maintaining document structure and readability.
+            AI Text redaction removes or obscures sensitive information from documents before sharing. This protects personal data, confidential information, and private details while maintaining document structure and readability.
           </p>
           
           <h4 className="font-semibold mb-2">How It Works</h4>

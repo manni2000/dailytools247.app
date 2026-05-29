@@ -5,12 +5,12 @@ import HeroSection from "@/components/home/HeroSection";
 import PopularTools from "@/components/home/PopularTools";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import UserTestimonials from "@/components/UserTestimonials";
+import { CompetitiveComparison } from "@/components/home/CompetitiveComparison";
 
 // Lazy load below-the-fold components
 const BlogHighlights = lazy(() => import("@/components/home/BlogHighlights"));
 const HowItWorks = lazy(() => import("@/components/home/HowItWorks"));
 const FAQSection = lazy(() => import("@/components/home/FAQSection"));
-const TrustSection = lazy(() => import("@/components/home/TrustSection"));
 const ContactSection = lazy(() => import("@/components/home/ContactSection"));
 
 const PageLoader = () => (
@@ -27,6 +27,7 @@ const Index = () => {
         <HeroSection />
         <PopularTools />
         <CategoryGrid />
+        <CompetitiveComparison />
         <UserTestimonials />
         <Suspense fallback={<PageLoader />}>
           <BlogHighlights />
@@ -36,9 +37,6 @@ const Index = () => {
         </Suspense>
         <Suspense fallback={<PageLoader />}>
           <FAQSection />
-        </Suspense>
-        <Suspense fallback={<PageLoader />}>
-          <TrustSection />
         </Suspense>
         <Suspense fallback={<PageLoader />}>
           <ContactSection />

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Copy, Check, Calculator, DollarSign, Users, Zap, AlertCircle, Sparkles } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -23,7 +24,8 @@ interface SaaSResult {
 }
 
 export default function SaaSPricingCalculatorTool() {
-  const toolSeoData = getToolSeoMetadata('saas-pricing-calculator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-saas-pricing-calculator');
   const [basePrice, setBasePrice] = useState('');
   const [pricingModel, setPricingModel] = useState<'monthly' | 'annual'>('monthly');
   const [expectedCustomers, setExpectedCustomers] = useState('');
@@ -34,7 +36,7 @@ export default function SaaSPricingCalculatorTool() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const calculatePricing = async () => {
+  const runGenerationLogic = async () => {
     if (!basePrice || !expectedCustomers || !cac) return;
 
     setLoading(true);
@@ -79,6 +81,17 @@ export default function SaaSPricingCalculatorTool() {
     }
   };
 
+  const calculatePricing = () => {
+    if (!targetArr || !cac || !ltv) return;
+    setIsProcessing(true);
+    setResult(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -90,7 +103,7 @@ export default function SaaSPricingCalculatorTool() {
 
   const handleCopy = async () => {
     if (!result) return;
-    const text = `SaaS Pricing Calculator\n` +
+    const text = `AI SaaS Pricing Calculator\n` +
       `Monthly Price: ${formatCurrency(result.monthly_price)}\n` +
       `Annual Price: ${formatCurrency(result.annual_price)}\n` +
       `Expected Monthly Customers: ${result.monthly_customers}\n` +
@@ -123,12 +136,12 @@ export default function SaaSPricingCalculatorTool() {
   return (
     <>
       {CategorySEO.Finance(
-        toolSeoData?.title || "SaaS Pricing Calculator",
+        toolSeoData?.title || "AI SaaS Pricing Calculator",
         toolSeoData?.description || "Calculate optimal pricing, revenue projections, and unit economics",
-        "saas-pricing-calculator"
+        "ai-saas-pricing-calculator"
       )}
       <ToolLayout
-      breadcrumbTitle="SaaS Pricing Calculator"
+      breadcrumbTitle="AI SaaS Pricing Calculator"
       category="Finance Tools"
       categoryPath="/category/finance"
     >
@@ -167,7 +180,7 @@ export default function SaaSPricingCalculatorTool() {
                 <DollarSign className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">SaaS Pricing Calculator</h2>
+                <h2 className="text-2xl font-bold">AI SaaS Pricing Calculator</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Calculate optimal pricing, revenue projections, and unit economics.
                 </p>
@@ -268,7 +281,23 @@ export default function SaaSPricingCalculatorTool() {
         ) : null}
 
         {/* Results Section */}
-        {result && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Analyzing target ARR and acquisition metrics...",
+                  "Evaluating LTV/CAC ratio viability...",
+                  "Designing subscription tier price boundaries...",
+                  "Generating pricing strategy recommendations..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {result && !isProcessing && (
           <div className="space-y-6">
             {/* LTV:CAC Ratio */}
             <div className={`rounded-xl border border-border p-6 ${

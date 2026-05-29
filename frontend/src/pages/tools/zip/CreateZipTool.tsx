@@ -14,7 +14,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "280 70% 55%";
 
 const CreateZipTool = () => {
-  const toolSeoData = getToolSeoMetadata('zip-creator');
+  const toolSeoData = getToolSeoMetadata('create-zip');
   const [files, setFiles] = useState<File[]>([]);
   const [zipName, setZipName] = useState("archive");
   const [isCreating, setIsCreating] = useState(false);

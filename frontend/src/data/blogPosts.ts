@@ -98,8 +98,8 @@ export const blogPosts: BlogPost[] = [
           "Combine an AI image generator with an image optimizer to create and compress blog hero images quickly.",
         ],
         links: [
-          { label: "Meta Title & Description Generator", path: "/meta-title-description-generator" },
-          { label: "Text Summarizer", path: "/text-summarizer" },
+          { label: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
+          { label: "Text Summarizer", path: "/ai-text-summarizer" },
           { label: "Image Compressor", path: "/image-compressor" },
         ],
       },
@@ -139,7 +139,7 @@ export const blogPosts: BlogPost[] = [
         links: [
           { label: "PDF Compressor", path: "/pdf-compressor" },
           { label: "Image Compressor", path: "/image-compressor" },
-          { label: "Meta Title & Description Generator", path: "/meta-title-description-generator" },
+          { label: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
         ],
       },
     ],
@@ -178,9 +178,9 @@ export const blogPosts: BlogPost[] = [
           "For technical basics, validate your sitemap and generate or review robots.txt settings so search engines can crawl the right pages.",
         ],
         links: [
-          { label: "Meta Title & Description Generator", path: "/meta-title-description-generator" },
-          { label: "Keyword Density Checker", path: "/keyword-density-checker" },
-          { label: "Page SEO Analyzer", path: "/page-seo-analyzer" },
+          { label: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
+          { label: "Keyword Density Checker", path: "/ai-keyword-density-checker" },
+          { label: "Page SEO Analyzer", path: "/ai-page-seo-analyzer" },
           { label: "Sitemap Validator", path: "/sitemap-validator" },
           { label: "Robots.txt Generator", path: "/robots-txt-generator" },
         ],
@@ -289,7 +289,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Top 25 Tools Worth Bookmarking",
         paragraphs: [
-          "1) PDF to Word. 2) Word to PDF. 3) PDF Merge. 4) PDF Split. 5) Image Compressor. 6) webp to JPG Converter. 7) JPG to webp Converter. 8) WebP to webp Converter. 9) Background Remover. 10) Image Resize.",
+          "1) PDF to Word. 2) Word to PDF. 3) PDF Merge. 4) PDF Split. 5) Image Compressor. 6) webp to JPG Converter. 7) JPG to webp Converter. 8) WebP to webp Converter. 9) AI Background Remover. 10) Image Resize.",
           "11) QR Code Generator. 12) QR Code Scanner. 13) JSON Formatter. 14) Regex Tester. 15) URL Encoder. 16) JWT Decoder. 17) HTTP Header Checker. 18) Password Generator. 19) Password Strength Checker. 20) Hash Generator.",
           "21) Meta Title & Description Generator. 22) Keyword Density Checker. 23) UTM Link Builder. 24) GST Calculator. 25) Invoice Generator.",
         ],
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
           { label: "Image Compressor", path: "/image-compressor" },
           { label: "JSON Formatter", path: "/json-formatter" },
           { label: "Password Generator", path: "/password-generator" },
-          { label: "Meta Title Generator", path: "/meta-title-description-generator" },
+          { label: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
         ],
       },
       {
@@ -669,7 +669,7 @@ export const blogPosts: BlogPost[] = [
         links: [
           { label: "Image Resize", path: "/image-resize" },
           { label: "Image Crop", path: "/image-crop" },
-          { label: "Background Remover", path: "/background-remover" },
+          { label: "AI Background Remover", path: "/ai-background-remover" },
           { label: "Image Compressor", path: "/image-compressor" },
         ],
       },
@@ -718,7 +718,7 @@ export const blogPosts: BlogPost[] = [
           { label: "Image Resize", path: "/image-resize" },
           { label: "Image Compressor", path: "/image-compressor" },
           { label: "Image Crop", path: "/image-crop" },
-          { label: "Background Remover", path: "/background-remover" },
+          { label: "AI Background Remover", path: "/ai-background-remover" },
         ],
       },
       {
@@ -1108,7 +1108,7 @@ export const blogPosts: BlogPost[] = [
           "Advanced detectors can also identify CDNs, hosting providers, and third-party services.",
         ],
         links: [
-          { label: "Tech Stack Detector", path: "/tech-stack-detector" },
+          { label: "Tech Stack Detector", path: "/ai-tech-stack-detector" },
           { label: "HTTP Header Checker", path: "/http-header-checker" },
           { label: "API Response Formatter", path: "/api-response-formatter" },
         ],
@@ -1232,7 +1232,7 @@ export const blogPosts: BlogPost[] = [
         links: [
           { label: "Image Crop", path: "/image-crop" },
           { label: "Image Resize", path: "/image-resize" },
-          { label: "Background Remover", path: "/background-remover" },
+          { label: "AI Background Remover", path: "/ai-background-remover" },
           { label: "Image Compressor", path: "/image-compressor" },
         ],
       },
@@ -1395,7 +1395,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Top 25 Tools You'll Use Regularly",
         paragraphs: [
           "PDF Tools: Compressor, Merge, Split, to Word, to Excel, Unlock, Password Protect.",
-          "Image Tools: Compressor, Resize, Crop, Format Converters (JPG/PNG/WebP), Background Remover.",
+          "Image Tools: Compressor, Resize, Crop, Format Converters (JPG/PNG/WebP), AI Background Remover.",
           "Developer Tools: JSON Formatter, Base64 Encoder, Regex Tester, JWT Decoder, Tech Stack Detector.",
           "SEO Tools: Meta Title Generator, Keyword Density Checker, Page SEO Analyzer, Sitemap Validator.",
           "Security Tools: Password Generator, Hash Generator, Password Strength Checker.",

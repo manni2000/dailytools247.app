@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Copy, Check, Calculator, Wallet, Target, TrendingUp, AlertCircle, Trash2, Plus, Sparkles } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -33,7 +34,8 @@ interface BudgetResult {
 }
 
 export default function BudgetPlannerTool() {
-  const toolSeoData = getToolSeoMetadata('budget-planner');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-budget-planner');
   const [income, setIncome] = useState('');
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [newCategory, setNewCategory] = useState('');
@@ -137,6 +139,17 @@ export default function BudgetPlannerTool() {
     }).format(amount);
   };
 
+  const handleAnalyze = () => {
+    if (expenses.length === 0) return;
+    setIsProcessing(true);
+    setAnalysis(null);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    runGenerationLogic();
+  };
+
   const handleCopy = async () => {
     if (!result) return;
     const text = `Budget Analysis\n` +
@@ -166,12 +179,12 @@ export default function BudgetPlannerTool() {
   return (
     <>
       {CategorySEO.Finance(
-        toolSeoData?.title || "Budget Planner",
+        toolSeoData?.title || "AI Budget Planner",
         toolSeoData?.description || "Create and analyze your monthly budget for better financial planning",
-        "budget-planner"
+        "ai-budget-planner"
       )}
       <ToolLayout
-      breadcrumbTitle="Budget Planner"
+      breadcrumbTitle="AI Budget Planner"
       category="Finance Tools"
       categoryPath="/category/finance"
     >
@@ -196,13 +209,13 @@ export default function BudgetPlannerTool() {
               <TrendingUp className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Budget Planner Free Online</h2>
+              <h2 className="text-2xl font-bold">AI Budget Planner Free Online</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Create and analyze your monthly budget for better financial planning.
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">budget planner</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI budget planner</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">monthly budget</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">expense tracker</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">budget calculator</span>

@@ -14,7 +14,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "173 80% 40%";
 
 const BackgroundRemoverTool = () => {
-  const toolSeoData = getToolSeoMetadata('background-remover');
+  const toolSeoData = getToolSeoMetadata('ai-background-remover');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [image, setImage] = useState<string | null>(null);
@@ -109,240 +109,240 @@ const BackgroundRemoverTool = () => {
   return (
     <>
       {CategorySEO.Image(
-        toolSeoData?.title || "Image Background Remover",
+        toolSeoData?.title || "AI Background Remover",
         toolSeoData?.description || "Remove backgrounds from images automatically",
-        "background-remover"
+        "ai-background-remover"
       )}
       <ToolLayout
-      breadcrumbTitle="Image Background Remover"
-      category="Image Tools"
+        breadcrumbTitle="AI Background Remover"
+        category="Image Tools"
         categoryPath="/category/image"
       >
-      <div className="space-y-6">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
-        >
+        <div className="space-y-6">
           <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
-          />
-          <div className="relative flex items-start gap-4">
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
+          >
             <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `hsl(${categoryColor} / 0.15)`, boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)` }}
-            >
-              <Eraser className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
-            </motion.div>
-            <div>
-              <h2 className="text-2xl font-bold">AI Background Removal</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Remove backgrounds from images instantly with AI-powered precision.
-              </p>
-              {/* Keyword Tags */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">background remover</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">remove background</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">ai background removal</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">transparent background</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Upload Area */}
-        {!image && (
-          <ImageUploadZone
-            isDragging={isDragging}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onClick={() => inputRef.current?.click()}
-            onFileSelect={handleFile}
-            multiple={false}
-            title="Drop your image here"
-            subtitle="PNG, JPG, WebP supported"
-            buttonLabel="Choose Image"
-          />
-        )}
-
-        {image && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <ImageIcon className="h-5 w-5 text-muted-foreground" />
-                <span className="font-medium">{fileName}</span>
-              </div>
-              <button onClick={reset} className="rounded-lg p-2 hover:bg-muted" title="Reset image">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Preview */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-xl border border-border bg-card p-4">
-                <h3 className="mb-3 text-sm font-medium text-muted-foreground">Original</h3>
-                <div className="flex justify-center rounded-lg bg-muted/30 p-4">
-                  <img src={image} alt="Original" className="max-h-64 rounded-lg object-contain" />
+              animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
+              style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            />
+            <div className="relative flex items-start gap-4">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
+                style={{ backgroundColor: `hsl(${categoryColor} / 0.15)`, boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)` }}
+              >
+                <Eraser className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              </motion.div>
+              <div>
+                <h2 className="text-2xl font-bold">AI Background Removal</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Remove backgrounds from images instantly with AI-powered precision.
+                </p>
+                {/* Keyword Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI background remover</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">remove background</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">ai background removal</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">transparent background</span>
                 </div>
               </div>
-              <div className="rounded-xl border border-border bg-card p-4">
-                <h3 className="mb-3 text-sm font-medium text-muted-foreground">Background Removed</h3>
-                <div
-                  className="flex items-center justify-center rounded-lg p-4"
-                  style={{
-                    backgroundImage: `linear-gradient(45deg, hsl(var(--muted)) 25%, transparent 25%),
+            </div>
+          </motion.div>
+
+          {/* Upload Area */}
+          {!image && (
+            <ImageUploadZone
+              isDragging={isDragging}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              onClick={() => inputRef.current?.click()}
+              onFileSelect={handleFile}
+              multiple={false}
+              title="Drop your image here"
+              subtitle="PNG, JPG, WebP supported"
+              buttonLabel="Choose Image"
+            />
+          )}
+
+          {image && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <ImageIcon className="h-5 w-5 text-muted-foreground" />
+                  <span className="font-medium">{fileName}</span>
+                </div>
+                <button onClick={reset} className="rounded-lg p-2 hover:bg-muted" title="Reset image">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Preview */}
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="rounded-xl border border-border bg-card p-4">
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Original</h3>
+                  <div className="flex justify-center rounded-lg bg-muted/30 p-4">
+                    <img src={image} alt="Original" className="max-h-64 rounded-lg object-contain" />
+                  </div>
+                </div>
+                <div className="rounded-xl border border-border bg-card p-4">
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Background Removed</h3>
+                  <div
+                    className="flex items-center justify-center rounded-lg p-4"
+                    style={{
+                      backgroundImage: `linear-gradient(45deg, hsl(var(--muted)) 25%, transparent 25%),
                       linear-gradient(-45deg, hsl(var(--muted)) 25%, transparent 25%),
                       linear-gradient(45deg, transparent 75%, hsl(var(--muted)) 75%),
                       linear-gradient(-45deg, transparent 75%, hsl(var(--muted)) 75%)`,
-                    backgroundSize: "20px 20px",
-                    backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
-                  }}
-                >
-                  {processedImage ? (
-                    <img src={processedImage} alt="Result" className="max-h-64 rounded-lg object-contain" />
-                  ) : (
-                    <div className="text-center text-muted-foreground">
-                      <p>Click "Remove Background" to process</p>
-                    </div>
-                  )}
+                      backgroundSize: "20px 20px",
+                      backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
+                    }}
+                  >
+                    {processedImage ? (
+                      <img src={processedImage} alt="Result" className="max-h-64 rounded-lg object-contain" />
+                    ) : (
+                      <div className="text-center text-muted-foreground">
+                        <p>Click "Remove Background" to process</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Action Button */}
-            <button
-              onClick={removeBackground}
-              disabled={isProcessing}
-              className="btn-primary w-full"
-              title="Remove background from image using AI"
-            >
-              {isProcessing ? (
-                <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                <>
-                  <Eraser className="h-5 w-5" />
-                  Remove Background
-                </>
+              {/* Action Button */}
+              <button
+                onClick={removeBackground}
+                disabled={isProcessing}
+                className="btn-primary w-full"
+                title="Remove background from image using AI"
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <Eraser className="h-5 w-5" />
+                    Remove Background
+                  </>
+                )}
+              </button>
+
+              {processedImage && (
+                <div ref={downloadSectionRef}>
+                  <EnhancedDownload
+                    data={processedImage}
+                    fileName={fileName.replace(/\.[^/.]+$/, "_no_bg.png")}
+                    fileType="image"
+                    title="Background Removed Successfully"
+                    description="The background has been automatically removed from your image"
+                    fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
+                    onConvertAnother={reset}
+                    onConvertAnotherLabel="Remove Another Background"
+                  />
+                </div>
               )}
-            </button>
-            
-            {processedImage && (
-              <div ref={downloadSectionRef}>
-                <EnhancedDownload
-                  data={processedImage}
-                  fileName={fileName.replace(/\.[^/.]+$/, "_no_bg.png")}
-                  fileType="image"
-                  title="Background Removed Successfully"
-                  description="The background has been automatically removed from your image"
-                  fileSize={file ? `${(file.size / 1024 / 1024).toFixed(2)} MB` : 'Unknown size'}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Remove Another Background"
-                />
-              </div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
 
-        {/* How It Works */}
-        <div className="rounded-xl border border-border bg-card p-6">
-          <h3 className="mb-4 font-semibold">How It Works</h3>
-          <div className="space-y-3 text-sm text-muted-foreground">
-            <p>
-              <strong className="text-foreground">1. Upload:</strong> Select an image with a clear subject
-            </p>
-            <p>
-              <strong className="text-foreground">2. Process:</strong> AI detects and separates the subject from background
-            </p>
-            <p>
-              <strong className="text-foreground">3. Download:</strong> Get your transparent PNG with the background removed
-            </p>
+          {/* How It Works */}
+          <div className="rounded-xl border border-border bg-card p-6">
+            <h3 className="mb-4 font-semibold">How It Works</h3>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p>
+                <strong className="text-foreground">1. Upload:</strong> Select an image with a clear subject
+              </p>
+              <p>
+                <strong className="text-foreground">2. Process:</strong> AI detects and separates the subject from background
+              </p>
+              <p>
+                <strong className="text-foreground">3. Download:</strong> Get your transparent PNG with the background removed
+              </p>
+            </div>
           </div>
+
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Eraser className="h-5 w-5 text-blue-500" />
+              What is Background Removal?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Background removal removes the background from images, leaving the main subject with a transparent background. This is essential for product photography, profile pictures, and graphic design work where you need isolated subjects.
+            </p>
+
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Upload your image (JPG, PNG, WebP)</li>
+              <li>The AI detects and removes the background</li>
+              <li>Preview the transparent result</li>
+              <li>Download the PNG with transparent background</li>
+            </ol>
+
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <h5 className="font-semibold text-blue-900 mb-1">Removal Features</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• AI-powered detection</li>
+                  <li>• Transparent PNG output</li>
+                  <li>• Edge refinement</li>
+                  <li>• Multiple formats supported</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+                <ul className="text-sm text-green-800 space-y-1">
+                  <li>• Product photography</li>
+                  <li>• Profile pictures</li>
+                  <li>• Graphic design</li>
+                  <li>• E-commerce images</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Tool Definition Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="rounded-xl border border-border bg-card p-6"
-        >
-          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-            <Eraser className="h-5 w-5 text-blue-500" />
-            What is Background Removal?
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            Background removal removes the background from images, leaving the main subject with a transparent background. This is essential for product photography, profile pictures, and graphic design work where you need isolated subjects.
-          </p>
-          
-          <h4 className="font-semibold mb-2">How It Works</h4>
-          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
-            <li>Upload your image (JPG, PNG, WebP)</li>
-            <li>The AI detects and removes the background</li>
-            <li>Preview the transparent result</li>
-            <li>Download the PNG with transparent background</li>
-          </ol>
-          
-          <div className="grid sm:grid-cols-2 gap-4 mt-4">
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Removal Features</h5>
-              <ul className="text-sm text-blue-800 space-y-1">
-                <li>• AI-powered detection</li>
-                <li>• Transparent PNG output</li>
-                <li>• Edge refinement</li>
-                <li>• Multiple formats supported</li>
-              </ul>
-            </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
-              <ul className="text-sm text-green-800 space-y-1">
-                <li>• Product photography</li>
-                <li>• Profile pictures</li>
-                <li>• Graphic design</li>
-                <li>• E-commerce images</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="mt-8">
-        {/* FAQ Section */}
-        <ToolFAQ faqs={[
-          {
-            question: "What image formats work best for background removal?",
-            answer: "JPG and PNG work well. PNG is recommended as output since it supports transparency. WebP also supports transparency with better compression."
-          },
-          {
-            question: "Does background removal affect image quality?",
-            answer: "Modern AI tools maintain subject quality while removing backgrounds. Complex subjects (hair, fur) may need manual touch-up for perfect edges."
-          },
-          {
-            question: "Can I remove backgrounds from complex images?",
-            answer: "AI can handle many complex subjects, but challenging backgrounds (similar colors, transparent objects) may require manual editing or multiple attempts."
-          },
-          {
-            question: "Why use transparent backgrounds?",
-            answer: "Transparent backgrounds allow images to blend into any design. Essential for product photos, logos, icons, and web graphics where versatility is needed."
-          },
-          {
-            question: "Is background removal destructive?",
-            answer: "Always keep your original image. Background removal creates a new file with transparency. The original remains unchanged, allowing you to try different approaches."
-          }
-        ]} />
-      </div>
-    </ToolLayout>
+        <div className="mt-8">
+          {/* FAQ Section */}
+          <ToolFAQ faqs={[
+            {
+              question: "What image formats work best for background removal?",
+              answer: "JPG and PNG work well. PNG is recommended as output since it supports transparency. WebP also supports transparency with better compression."
+            },
+            {
+              question: "Does background removal affect image quality?",
+              answer: "Modern AI tools maintain subject quality while removing backgrounds. Complex subjects (hair, fur) may need manual touch-up for perfect edges."
+            },
+            {
+              question: "Can I remove backgrounds from complex images?",
+              answer: "AI can handle many complex subjects, but challenging backgrounds (similar colors, transparent objects) may require manual editing or multiple attempts."
+            },
+            {
+              question: "Why use transparent backgrounds?",
+              answer: "Transparent backgrounds allow images to blend into any design. Essential for product photos, logos, icons, and web graphics where versatility is needed."
+            },
+            {
+              question: "Is background removal destructive?",
+              answer: "Always keep your original image. Background removal creates a new file with transparency. The original remains unchanged, allowing you to try different approaches."
+            }
+          ]} />
+        </div>
+      </ToolLayout>
     </>
   );
 };

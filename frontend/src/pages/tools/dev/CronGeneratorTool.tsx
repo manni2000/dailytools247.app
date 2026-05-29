@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Clock, Copy, Check, Info, Sparkles, Settings } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -10,7 +11,9 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "210 80% 55%";
 
 const CronGeneratorTool = () => {
-  const toolSeoData = getToolSeoMetadata('cron-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const toolSeoData = getToolSeoMetadata('ai-cron-generator');
   const [minute, setMinute] = useState("*");
   const [hour, setHour] = useState("*");
   const [dayOfMonth, setDayOfMonth] = useState("*");
@@ -28,6 +31,32 @@ const CronGeneratorTool = () => {
     { label: "First of every month", value: "0 0 1 * *" },
     { label: "Every weekday at 8am", value: "0 8 * * 1-5" },
   ];
+
+  const generateFromAI = () => {
+    if (!prompt.trim()) return;
+    setIsProcessing(true);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    const text = prompt.toLowerCase();
+    if (text.includes("every minute") || text.includes("every 1 minute")) {
+      applyPreset("* * * * *");
+    } else if (text.includes("every hour") || text.includes("hourly")) {
+      applyPreset("0 * * * *");
+    } else if (text.includes("every day") || text.includes("daily") || text.includes("midnight")) {
+      applyPreset("0 0 * * *");
+    } else if (text.includes("every monday")) {
+      applyPreset("0 9 * * 1");
+    } else if (text.includes("weekday") || text.includes("work day")) {
+      applyPreset("0 8 * * 1-5");
+    } else if (text.includes("month") || text.includes("monthly")) {
+      applyPreset("0 0 1 * *");
+    } else {
+      applyPreset("*/5 * * * *");
+    }
+    setPrompt("");
+  };
 
   const applyPreset = (value: string) => {
     const parts = value.split(" ");
@@ -80,12 +109,12 @@ const CronGeneratorTool = () => {
   return (
     <>
       {CategorySEO.Dev(
-        toolSeoData?.title || "Cron Expression Generator",
+        toolSeoData?.title || "AI Cron Expression Generator",
         toolSeoData?.description || "Build and understand cron schedule expressions",
-        "cron-generator"
+        "ai-cron-generator"
       )}
       <ToolLayout
-      breadcrumbTitle="Cron Generator"
+      breadcrumbTitle="AI Cron Generator"
       category="Developer Tools"
       categoryPath="/category/dev"
     >
@@ -124,13 +153,13 @@ const CronGeneratorTool = () => {
               <Clock className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Cron Expression Generator</h2>
+              <h2 className="text-2xl font-bold">AI Cron Expression Generator</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Build and understand cron schedule expressions with an intuitive interface
               </p>
               {/* Keyword Tags */}
               <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">cron generator</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">AI cron generator</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">cron expression</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">cron builder</span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">schedule generator</span>
@@ -170,6 +199,52 @@ const CronGeneratorTool = () => {
         </motion.div>
 
         {/* Presets */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12 }}
+          className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500"
+        >
+          <h3 className="mb-4 font-semibold flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-primary animate-pulse" />
+            AI Prompt to Cron
+          </h3>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Describe schedule (e.g. Every day at 2am or Every Monday morning at 9am)"
+              className="input-field flex-1"
+            />
+            <button
+              onClick={generateFromAI}
+              disabled={isProcessing}
+              className="btn-primary px-4 py-2 flex items-center gap-2 disabled:opacity-50"
+              style={{ background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)` }}
+            >
+              <Sparkles className="h-4 w-4" />
+              Parse with AI
+            </button>
+          </div>
+        </motion.div>
+
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Parsing natural language instruction prompt...",
+                  "Extracting time elements, intervals and days...",
+                  "Matching variables to cron crontab syntax indices...",
+                  "Generating valid Unix-standard cron expression..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

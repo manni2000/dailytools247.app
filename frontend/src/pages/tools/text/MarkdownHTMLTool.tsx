@@ -11,7 +11,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "260 70% 55%";
 
 const MarkdownHTMLTool = () => {
-  const toolSeoData = getToolSeoMetadata('markdown-html-converter');
+  const toolSeoData = getToolSeoMetadata('markdown-to-html');
   const [markdown, setMarkdown] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -29,7 +29,7 @@ const MarkdownHTMLTool = () => {
       {CategorySEO.Text(
         toolSeoData?.title || "Markdown → HTML",
         toolSeoData?.description || "Convert Markdown to HTML",
-        "markdown-html-converter"
+        "markdown-to-html"
       )}
       <ToolLayout
       breadcrumbTitle="Markdown to HTML"

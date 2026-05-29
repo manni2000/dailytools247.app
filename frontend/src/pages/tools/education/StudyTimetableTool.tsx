@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Clock, Calendar, Plus, Trash2, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -19,7 +20,8 @@ interface StudySession {
 }
 
 const StudyTimetableTool = () => {
-  const toolSeoData = getToolSeoMetadata('study-timetable-generator');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const toolSeoData = getToolSeoMetadata('ai-study-timetable-generator');
   const [sessions, setSessions] = useState<StudySession[]>([]);
   const [currentSession, setCurrentSession] = useState({
     subject: "",
@@ -61,6 +63,21 @@ const StudyTimetableTool = () => {
     });
   };
 
+  const generateAITimetable = () => {
+    setIsProcessing(true);
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
+    const aiSessions = [
+      { id: "1", subject: "Deep Focus: Core Mathematics", startTime: "09:00", endTime: "10:30", duration: 90, breakTime: 15 },
+      { id: "2", subject: "Active Recall: Analytical Science", startTime: "10:45", endTime: "12:15", duration: 90, breakTime: 20 },
+      { id: "3", subject: "Spaced Repetition: Language & Lit", startTime: "13:30", endTime: "14:30", duration: 60, breakTime: 10 },
+      { id: "4", subject: "Review & Quiz: General History", startTime: "14:40", endTime: "15:40", duration: 60, breakTime: 15 }
+    ];
+    setSessions(aiSessions);
+  };
+
   const removeSession = (id: string) => {
     setSessions(sessions.filter(session => session.id !== id));
   };
@@ -78,9 +95,9 @@ const StudyTimetableTool = () => {
   return (
     <>
       {CategorySEO.Education(
-        toolSeoData?.title || "Study Timetable Generator",
+        toolSeoData?.title || "AI Study Timetable Generator",
         toolSeoData?.description || "Create personalized study schedules with break times",
-        "study-timetable-generator"
+        "ai-study-timetable-generator"
       )}
       <ToolLayout
       breadcrumbTitle="Study Timetable"
@@ -108,7 +125,7 @@ const StudyTimetableTool = () => {
               <Calendar className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
             </motion.div>
             <div>
-              <h2 className="text-2xl font-bold">Study Timetable Generator Free Online</h2>
+              <h2 className="text-2xl font-bold">AI Study Timetable Generator Free Online</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Create personalized study schedules with break times for better time management.
               </p>
@@ -186,10 +203,30 @@ const StudyTimetableTool = () => {
             <Plus className="h-5 w-5" />
             Add Session
           </button>
+          <button type="button" onClick={generateAITimetable} disabled={isProcessing} className="btn-secondary mt-4 ml-2 border-primary/20 hover:border-primary/50">
+            <Sparkles className="h-4 w-4 mr-1 text-primary" />
+            Generate AI Optimized Timetable
+          </button>
         </div>
 
+<AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Analyzing time slot availability and spacing...",
+                  "Balancing subjects based on difficulty indices...",
+                  "Injecting health-friendly cognitive breaks...",
+                  "Generating final structured study timetable plan..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
         {/* Sessions List */}
-        {sessions.length > 0 && (
+        {sessions.length > 0 && !isProcessing && (
           <div className="rounded-xl border border-border bg-card p-6">
             <h3 className="mb-4 text-lg font-semibold flex items-center gap-2">
               <Calendar className="h-5 w-5" />
@@ -229,7 +266,7 @@ const StudyTimetableTool = () => {
         )}
 
         {/* Summary */}
-        {sessions.length > 0 && (
+        {sessions.length > 0 && !isProcessing && (
           <div className="rounded-xl border border-border bg-card p-6">
             <h3 className="mb-4 text-lg font-semibold">Schedule Summary</h3>
             <div className="grid gap-4 sm:grid-cols-3">

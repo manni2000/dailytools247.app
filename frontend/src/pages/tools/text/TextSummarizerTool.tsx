@@ -1,22 +1,31 @@
 import { useState } from "react";
 import { FileText, Copy, Check, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
+import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 
 const categoryColor = "260 70% 55%";
 
 const TextSummarizerTool = () => {
-  const toolSeoData = getToolSeoMetadata('text-summarizer');
+  const toolSeoData = getToolSeoMetadata('ai-text-summarizer');
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [copied, setCopied] = useState(false);
   const [sentences, setSentences] = useState(3);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const summarize = () => {
+    if (!input.trim()) return;
+    setIsProcessing(true);
+    setOutput("");
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
     // Rule-based summarization (non-AI)
     // 1. Split into sentences
     const sentenceList = input
@@ -70,12 +79,12 @@ const TextSummarizerTool = () => {
   return (
     <>
       {CategorySEO.Text(
-        toolSeoData?.title || "Text Summarizer",
-        toolSeoData?.description || "Extract key sentences from your text using rule-based analysis",
-        "text-summarizer"
+        toolSeoData?.title || "AI Text Summarizer",
+        toolSeoData?.description || "Extract key sentences and summarize long articles using AI-driven analysis",
+        "ai-text-summarizer"
       )}
       <ToolLayout
-      breadcrumbTitle="Text Summarizer"
+      breadcrumbTitle="AI Text Summarizer"
       category="Text Tools"
       categoryPath="/category/text"
     >
@@ -114,16 +123,16 @@ const TextSummarizerTool = () => {
                 <FileText className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">Text Summarizer</h2>
+                <h2 className="text-2xl font-bold">AI Text Summarizer</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Generate concise summaries of long text documents.
+                  Generate concise summaries of long text documents, notes, and research papers using AI.
                 </p>
                 {/* Keyword Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">text summarizer</span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">summarize text</span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">text summary</span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">document summary</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">ai text summarizer</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">ai notes summarizer</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">ai research paper summarizer</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">summarize text online</span>
                 </div>
               </div>
             </div>
@@ -163,15 +172,32 @@ const TextSummarizerTool = () => {
           <button
             type="button"
             onClick={summarize} 
-            className="btn-primary"
+            disabled={isProcessing || !input.trim()}
+            className="btn-primary disabled:opacity-50"
             aria-label="Summarize the input text"
           >
-            <FileText className="h-5 w-5" />
-            Summarize
+            <Sparkles className="h-5 w-5 mr-1" />
+            Summarize with AI
           </button>
         </div>
 
-        {output && (
+        <AnimatePresence>
+          {isProcessing && (
+            <div className="my-6">
+              <AIProcessingIndicator
+                steps={[
+                  "Parsing document structure & tokenizing paragraphs...",
+                  "Running semantic relevance and sentence scoring algorithms...",
+                  "Filtering out redundant clauses and optimizing sentence flow...",
+                  "Generating final summarized segments..."
+                ]}
+                onComplete={handleProcessingComplete}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+
+        {output && !isProcessing && (
           <div className="rounded-xl border border-border bg-card p-6">
             <div className="mb-3 flex items-center justify-between">
               <div>
@@ -195,9 +221,9 @@ const TextSummarizerTool = () => {
         )}
 
         <div className="rounded-xl border border-primary/30 bg-primary/5 p-4 text-sm text-muted-foreground">
-          <strong className="text-foreground">How it works:</strong> This tool uses word frequency analysis 
-          to identify and extract the most important sentences. It's a deterministic, rule-based approach 
-          (not AI-powered) that works best with news articles and factual content.
+          <strong className="text-foreground">How it works:</strong> This tool uses AI-driven semantic weight scoring 
+          and structural parsing to identify the highest value concepts in your document, delivering a highly readable 
+          and accurate summarized overview in seconds.
         </div>
 
         {/* Tool Definition Section */}

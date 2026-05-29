@@ -15,7 +15,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "350 80% 55%";
 
 const VideoResolutionTool = () => {
-  const toolSeoData = getToolSeoMetadata('video-resolution-changer');
+  const toolSeoData = getToolSeoMetadata('video-resolution');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [resultData, setResultData] = useState<string | null>(null);

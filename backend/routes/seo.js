@@ -120,7 +120,7 @@ router.post('/meta-title-description', async (req, res, next) => {
   }
 });
 
-router.post('/keyword-density', (req, res) => {
+router.post('/keyword-density-checker', (req, res) => {
   const { text, topN = 20 } = req.body;
   if (!text) return res.status(400).json({ success: false, error: 'Text required' });
 
@@ -279,7 +279,7 @@ async function handleDomainAge(req, res, next) {
 
 router.post('/domain-age-checker', handleDomainAge);
 
-router.post('/tech-stack-detector', async (req, res, next) => {
+router.post('/ai-tech-stack-detector', async (req, res, next) => {
   try {
     const { url } = req.body;
     if (!url || !isValidUrl(url)) return res.status(400).json({ success: false, error: 'Valid URL required' });

@@ -252,7 +252,7 @@ router.post('/favicon-generator', upload.single('image'), async (req, res, next)
   }
 });
 
-router.post('/background-remover', upload.single('image'), async (req, res, next) => {
+router.post('/ai-background-remover', upload.single('image'), async (req, res, next) => {
   try {
     if (!req.file) return res.status(400).json({ success: false, error: 'Image file required' });
     if (!validateImageFile(req.file)) return res.status(400).json({ success: false, error: 'Invalid image type' });

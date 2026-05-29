@@ -13,7 +13,7 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "280 70% 55%";
 
 const PasswordZipTool = () => {
-  const toolSeoData = getToolSeoMetadata('password-protector-zip');
+  const toolSeoData = getToolSeoMetadata('password-zip');
   const [files, setFiles] = useState<File[]>([]);
   const [fileName, setFileName] = useState("");
   const [zipData, setZipData] = useState<string | null>(null);

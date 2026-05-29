@@ -4,7 +4,7 @@ const { strictLimiter } = require('../middleware/security');
 const router = express.Router();
 router.use(strictLimiter);
 
-router.post('/hashtag-generator', (req, res) => {
+router.post('/ai-hashtag-generator', (req, res) => {
   const { topic, niche, count = 30 } = req.body;
   if (!topic) return res.status(400).json({ success: false, error: 'Topic required' });
 
@@ -38,7 +38,7 @@ router.post('/hashtag-generator', (req, res) => {
   res.json({ success: true, result: { hashtags: result, count: result.length, string: result.join(' ') } });
 });
 
-router.post('/bio-generator', (req, res) => {
+router.post('/ai-bio-generator', (req, res) => {
   const { name, profession, skills = [], emoji = true, platform = 'instagram' } = req.body;
   if (!name || !profession) return res.status(400).json({ success: false, error: 'Name and profession required' });
 

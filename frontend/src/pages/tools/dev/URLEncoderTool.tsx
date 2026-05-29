@@ -10,7 +10,8 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "210 80% 55%";
 
 const URLEncoderTool = () => {
-  const toolSeoData = getToolSeoMetadata('url-encoder-decoder');
+
+  const toolSeoData = getToolSeoMetadata('url-encoder');
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -50,7 +51,7 @@ const URLEncoderTool = () => {
       {CategorySEO.Dev(
         toolSeoData?.title || "URL Encoder/Decoder",
         toolSeoData?.description || "Encode or decode URLs and query parameters",
-        "url-encoder-decoder"
+        "url-encoder"
       )}
       <ToolLayout
       breadcrumbTitle="URL Encoder/Decoder"
