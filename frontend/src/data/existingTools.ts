@@ -34,6 +34,8 @@ export const existingTools = [
   'ai-dockerfile-generator',
   'curl-to-axios-converter',
   'http-status-code-explainer',
+  'html-validator',
+  'css-validator',
   
   // Education Tools
   'scientific-calculator',
@@ -63,6 +65,8 @@ export const existingTools = [
   'stock-cagr-calculator',
   'mutual-fund-calculator',
   'lumpsum-calculator',
+  'sip-calculator',
+  'roi-calculator',
   
   // Image Tools
   'qr-code-generator',
@@ -91,6 +95,7 @@ export const existingTools = [
   'ssl-checker',
   'website-ping',
   'website-screenshot',
+  'ping-test',
   
   // PDF Tools
   'pdf-merge',
@@ -168,6 +173,22 @@ export const existingTools = [
   'extract-zip',
   'password-zip',
   'compression-zip',
+
+  // Govt Legal Tools
+  'passport-photo-resizer',
+  'pdf-compressor',
+  'signature-maker',
+  'document-template',
+
+  // E-commerce Tools
+  'ai-shadow-adder',
+  'barcode-generator',
+  'gst-invoice-generator',
+  'ecommerce-calculator',
+  'watermark-adder',
+  'white-background-adder',
+  'bulk-image-resizer',
+  'ai-image-color-enhancer',
 
   // Email Marketing Tools
   'ai-email-subject-line-generator',

@@ -70,7 +70,6 @@ export const API_URLS = {
   AGE_CALCULATOR: `/api/date-time/age-calculator`,
 
   JSON_FORMATTER: `/api/dev/json-formatter`,
-  REGEX_TESTER: `/api/dev/regex-tester`,
   URL_ENCODER: `/api/dev/url-encoder`,
   COLOR_CONVERTER: `/api/dev/color-converter`,
   LOREM_GENERATOR: `/api/dev/lorem-generator`,
@@ -78,25 +77,16 @@ export const API_URLS = {
   CRON_GENERATOR: `/api/dev/ai-cron-generator`,
   UUID_GENERATOR_DEV: `/api/dev/uuid-generator`,
   HTTP_HEADER_CHECKER: `/api/dev/http-header-checker`,
-  API_RESPONSE_FORMATTER: `/api/dev/api-response-formatter`,
   JSON_TO_TYPESCRIPT: `/api/dev/ai-json-to-typescript-interface`,
   SQL_QUERY_BEAUTIFIER: `/api/dev/ai-sql-query-beautifier`,
-  JWT_EXPIRY: `/api/dev/jwt-expiry`,
-  ENVIRONMENT_VARIABLE: `/api/dev/environment-variable`,
-  POSTMAN_COLLECTION: `/api/dev/ai-postman-collection`,
   DOCKERFILE_GENERATOR: `/api/dev/ai-dockerfile-generator`,
   CURL_TO_AXIOS: `/api/dev/curl-to-axios`,
   HTTP_STATUS_CODE: `/api/dev/http-status-codes`,
 
-  SCIENTIFIC_CALCULATOR: `/api/education/scientific-calculator`,
-  PERCENTAGE_CALCULATOR: `/api/education/percentage-calculator`,
   UNIT_CONVERTER: `/api/education/unit-converter`,
-  COMPOUND_INTEREST: `/api/education/compound-interest`,
   SIMPLE_INTEREST: `/api/education/simple-interest`,
   CGPA_TO_PERCENTAGE: `/api/education/cgpa-to-percentage`,
   LCM_HCF: `/api/education/lcm-hcf`,
-  STUDY_TIMETABLE: `/api/education/ai-study-timetable`,
-  MCQ_GENERATOR: `/api/education/ai-mcq-generator`,
 
   EMI_CALCULATOR: `/api/finance/emi-calculator`,
   GST_CALCULATOR: `/api/finance/gst-calculator`,
@@ -119,27 +109,22 @@ export const API_URLS = {
   SSL_CHECKER: `/api/internet/ssl-checker`,
   WEBSITE_PING: `/api/internet/website-ping`,
   PING_TEST: `/api/internet/website-ping`,
-  HTTP_STATUS: `/api/internet/http-status`,
   WEBSITE_SCREENSHOT: `/api/internet/website-screenshot`,
 
   META_TITLE_DESCRIPTION: `/api/seo/meta-title-description`,
   KEYWORD_DENSITY: `/api/seo/keyword-density-checker`,
   ROBOTS_TXT: `/api/seo/robots-txt-generator`,
   SITEMAP_VALIDATOR: `/api/seo/sitemap-validator`,
-  PAGE_SPEED_CHECKLIST: `/api/seo/page-speed-checklist`,
   OG_IMAGE_PREVIEW: `/api/seo/og-image-preview`,
   BROKEN_IMAGE_FINDER: `/api/seo/broken-image-finder`,
   UTM_LINK_BUILDER: `/api/seo/utm-link-builder`,
   DOMAIN_AGE: `/api/seo/domain-age-checker`,
   TECH_STACK_DETECTOR: `/api/seo/ai-tech-stack-detector`,
-  PAGE_SEO: `/api/seo/ai-page-seo-analyzer`,
 
   HASHTAG_GENERATOR: `/api/social/ai-hashtag-generator`,
   BIO_GENERATOR: `/api/social/ai-bio-generator`,
   CAPTION_FORMATTER: `/api/social/caption-formatter`,
   LINE_BREAK_GENERATOR: `/api/social/line-break-generator`,
-  LINK_IN_BIO: `/api/social/link-in-bio`,
-  MEME_GENERATOR: `/api/social/ai-meme-generator`,
 
   WORD_COUNTER: `/api/text/word-counter`,
   CASE_CONVERTER: `/api/text/case-converter`,
@@ -150,30 +135,11 @@ export const API_URLS = {
   TEXT_SUMMARIZER: `/api/text/ai-text-summarizer`,
   TEXT_DIFF: `/api/text/text-diff`,
 
-  // Govt & Legal Tools
-  DOCUMENT_TEMPLATE: `/api/govt-legal/document-template`,
-  PDF_COMPRESSOR_GOV: `/api/govt-legal/pdf-compressor`,
-  PASSPORT_PHOTO_RESIZER: `/api/govt-legal/passport-photo-resizer`,
-  SIGNATURE_MAKER: `/api/govt-legal/signature-maker`,
-
-  // Ecommerce Tools
-  BARCODE_GENERATOR: `/api/ecommerce/barcode-generator`,
-  BULK_IMAGE_RESIZER: `/api/ecommerce/bulk-image-resizer`,
-  ECOMMERCE_CALCULATOR: `/api/ecommerce/calculator`,
-  GST_INVOICE_GENERATOR: `/api/ecommerce/gst-invoice-generator`,
-  IMAGE_COLOR_ENHANCER: `/api/ecommerce/ai-image-color-enhancer`,
-  SHADOW_ADDER: `/api/ecommerce/ai-shadow-adder`,
-  WATERMARK_ADDER: `/api/ecommerce/watermark-adder`,
-  WHITE_BACKGROUND_ADDER: `/api/ecommerce/white-background-adder`,
-
   CREATE_ZIP: `/api/zip/create`,
   EXTRACT_ZIP: `/api/zip/extract`,
   PASSWORD_ZIP: `/api/zip/password`,
   COMPRESSION_ZIP: `/api/zip/compression-test`,
-  SPLIT_ZIP: `/api/zip/split`,
-  MERGE_ZIP: `/api/zip/merge`,
 
-  // Email Marketing Tools
   EMAIL_SUBJECT_LINE: `/api/email/ai-subject-line-generator`,
   EMAIL_SIGNATURE: `/api/email/ai-signature-generator`,
   HTML_EMAIL_PREVIEWER: `/api/email/previewer-analyze`,
@@ -184,6 +150,41 @@ export const API_URLS = {
   DKIM_GENERATOR: `/api/email/dkim-generator`,
   DMARC_GENERATOR: `/api/email/dmarc-generator`,
   MAILTO_LINK_GENERATOR: `/api/email/mailto-generator`,
+
+  // ==========================================
+  // Client-Side Only Tools (No Server Requests)
+  // ==========================================
+  // These tools perform all operations locally inside the browser.
+  // The endpoints below are placeholders for schema structure and self-checks.
+  REGEX_TESTER: `/api/dev/regex-tester`,
+  API_RESPONSE_FORMATTER: `/api/dev/api-response-formatter`,
+  JWT_EXPIRY: `/api/dev/jwt-expiry`,
+  ENVIRONMENT_VARIABLE: `/api/dev/environment-variable`,
+  POSTMAN_COLLECTION: `/api/dev/ai-postman-collection`,
+  SCIENTIFIC_CALCULATOR: `/api/education/scientific-calculator`,
+  PERCENTAGE_CALCULATOR: `/api/education/percentage-calculator`,
+  COMPOUND_INTEREST: `/api/education/compound-interest`,
+  STUDY_TIMETABLE: `/api/education/ai-study-timetable`,
+  MCQ_GENERATOR: `/api/education/ai-mcq-generator`,
+  HTTP_STATUS: `/api/internet/http-status`,
+  PAGE_SPEED_CHECKLIST: `/api/seo/page-speed-checklist`,
+  PAGE_SEO: `/api/seo/ai-page-seo-analyzer`,
+  LINK_IN_BIO: `/api/social/link-in-bio`,
+  MEME_GENERATOR: `/api/social/ai-meme-generator`,
+  DOCUMENT_TEMPLATE: `/api/govt-legal/document-template`,
+  PDF_COMPRESSOR_GOV: `/api/govt-legal/pdf-compressor`,
+  PASSPORT_PHOTO_RESIZER: `/api/govt-legal/passport-photo-resizer`,
+  SIGNATURE_MAKER: `/api/govt-legal/signature-maker`,
+  BARCODE_GENERATOR: `/api/ecommerce/barcode-generator`,
+  BULK_IMAGE_RESIZER: `/api/ecommerce/bulk-image-resizer`,
+  ECOMMERCE_CALCULATOR: `/api/ecommerce/calculator`,
+  GST_INVOICE_GENERATOR: `/api/ecommerce/gst-invoice-generator`,
+  IMAGE_COLOR_ENHANCER: `/api/ecommerce/ai-image-color-enhancer`,
+  SHADOW_ADDER: `/api/ecommerce/ai-shadow-adder`,
+  WATERMARK_ADDER: `/api/ecommerce/watermark-adder`,
+  WHITE_BACKGROUND_ADDER: `/api/ecommerce/white-background-adder`,
+  SPLIT_ZIP: `/api/zip/split`,
+  MERGE_ZIP: `/api/zip/merge`,
 };
 
 export default API_BASE_URL;
