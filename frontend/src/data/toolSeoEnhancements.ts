@@ -186,8 +186,12 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'compress image online',
     ],
     longTailKeywords: [
+      'compress image to 20kb',
       'compress image to 50kb',
       'compress image to 100kb',
+      'compress image for whatsapp',
+      'compress image for passport upload',
+      'reduce jpg size below 200kb',
       'reduce image size without losing quality',
       'compress jpg online free',
       'compress png online free',
