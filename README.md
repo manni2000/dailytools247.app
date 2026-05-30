@@ -97,7 +97,7 @@ Dailytools247 is a modern, feature-rich platform that offers a wide variety of u
 
 ### Audio Tools (5 Tools)
 - **Audio Format Converter** - Convert between MP3, WAV, AAC formats
-- **Speech to Text** - Convert audio to text with language support
+- **AI Speech to Text** - Convert audio to text with language support
 - **Audio Trimmer** - Cut and trim audio files
 - **Audio Merger** - Merge multiple audio files into one
 - **Audio Speed Changer** - Change speed from 0.5x to 2x with pitch control
@@ -343,7 +343,7 @@ The frontend is built with modern React patterns and best practices:
 - **AI-powered background removal** - remove.bg, Cloudinary, Stability AI
 - **OCR (text extraction from images)** - Google Cloud Vision, AWS Textract, Tesseract Cloud
 - **Browser automation** (screenshots, HTML-to-PDF) - Browserless.io, Puppeteer Cloud, Apify
-- **Speech to text** - Google Cloud Speech-to-Text, AWS Transcribe, OpenAI Whisper
+- **AI Speech to text** - Google Cloud Speech-to-Text, AWS Transcribe, OpenAI Whisper
 
 The API provides helpful error messages with recommended cloud alternatives for all disabled features.
 

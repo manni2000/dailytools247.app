@@ -142,7 +142,7 @@ const SpeechToTextTool = () => {
 
   const startRecording = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    
+
     if (!SpeechRecognition) {
       toast({
         title: "Not Supported",
@@ -227,7 +227,7 @@ const SpeechToTextTool = () => {
     const blob = new Blob([transcription], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     setTxtUrl(url);
-    
+
     // Auto download
     const a = document.createElement('a');
     a.href = url;
@@ -247,11 +247,11 @@ const SpeechToTextTool = () => {
       srtContent += `${formatSRTTime(startTime)} --> ${formatSRTTime(endTime)}\n`;
       srtContent += `${line}\n\n`;
     });
-    
+
     const blob = new Blob([srtContent], { type: "text/srt" });
     const url = URL.createObjectURL(blob);
     setSrtUrl(url);
-    
+
     // Auto download
     const a = document.createElement('a');
     a.href = url;
@@ -277,309 +277,309 @@ const SpeechToTextTool = () => {
   return (
     <>
       {CategorySEO.Audio(
-        toolSeoData?.title || "Speech to Text",
+        toolSeoData?.title || "AI Speech to Text",
         toolSeoData?.description || "Convert audio files to text with language support. Export as TXT or SRT subtitles.",
         "ai-speech-to-text"
       )}
       <ToolLayout
-      breadcrumbTitle="Speech to Text"
-      category="Audio Tools"
-      categoryPath="/category/audio"
-    >
-      <div className="space-y-6">
-        {/* Keyword Tags Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-muted/50 via-background to-muted/30 rounded-xl border border-border p-6"
-        >
-          <div className="relative flex items-start gap-4">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
-            >
-              <Mic className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
-            </motion.div>
-            <div>
-              <h2 className="text-2xl font-bold">Speech to Text Free Online</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Convert audio files to text with language support. Export as TXT or SRT subtitles.
-              </p>
-              {/* Keyword Tags */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">speech to text</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">audio transcription</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">voice to text</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">audio converter</span>
+        breadcrumbTitle="AI Speech to Text"
+        category="Audio Tools"
+        categoryPath="/category/audio"
+      >
+        <div className="space-y-6">
+          {/* Keyword Tags Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-muted/50 via-background to-muted/30 rounded-xl border border-border p-6"
+          >
+            <div className="relative flex items-start gap-4">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
+                style={{
+                  backgroundColor: `hsl(${categoryColor} / 0.15)`,
+                  boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
+                }}
+              >
+                <Mic className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              </motion.div>
+              <div>
+                <h2 className="text-2xl font-bold">Speech to Text Free Online</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Convert audio files to text with language support. Export as TXT or SRT subtitles.
+                </p>
+                {/* Keyword Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">ai speech to text</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">audio transcription</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">voice to text</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">audio converter</span>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-        {/* Language Selection */}
-        <Card className="p-3 sm:p-4">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-            <Languages className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-            <div className="flex-1 min-w-0">
-              <label className="text-xs sm:text-sm font-medium mb-1 block">Select Language</label>
-              <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="text-sm">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {languages.map((lang) => (
-                    <SelectItem key={lang.code} value={lang.code} className="text-sm">
-                      {lang.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          </motion.div>
+          {/* Language Selection */}
+          <Card className="p-3 sm:p-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+              <Languages className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <label className="text-xs sm:text-sm font-medium mb-1 block">Select Language</label>
+                <Select value={language} onValueChange={setLanguage}>
+                  <SelectTrigger className="text-sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {languages.map((lang) => (
+                      <SelectItem key={lang.code} value={lang.code} className="text-sm">
+                        {lang.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
 
-        {/* Recording Button */}
-        {supportsRecording && (
-          <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10">
-            <div className="flex flex-col items-center gap-4">
-              <h3 className="font-semibold text-lg">Live Speech Recognition</h3>
-              <p className="text-sm text-muted-foreground text-center">
-                Record your speech directly using your microphone
-              </p>
-              {!isRecording ? (
-                <Button
-                  onClick={startRecording}
-                  size="lg"
-                  className="w-full sm:w-auto"
-                >
-                  <Mic className="h-5 w-5 mr-2" />
-                  Start Recording
-                </Button>
-              ) : (
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <div className="flex items-center gap-2 text-red-500 animate-pulse">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <span className="font-medium">Recording...</span>
-                  </div>
+          {/* Recording Button */}
+          {supportsRecording && (
+            <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10">
+              <div className="flex flex-col items-center gap-4">
+                <h3 className="font-semibold text-lg">Live Speech Recognition</h3>
+                <p className="text-sm text-muted-foreground text-center">
+                  Record your speech directly using your microphone
+                </p>
+                {!isRecording ? (
                   <Button
-                    onClick={stopRecording}
-                    variant="destructive"
+                    onClick={startRecording}
                     size="lg"
                     className="w-full sm:w-auto"
                   >
-                    <StopCircle className="h-5 w-5 mr-2" />
-                    Stop Recording
+                    <Mic className="h-5 w-5 mr-2" />
+                    Start Recording
                   </Button>
+                ) : (
+                  <div className="flex flex-col items-center gap-3 w-full">
+                    <div className="flex items-center gap-2 text-red-500 animate-pulse">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <span className="font-medium">Recording...</span>
+                    </div>
+                    <Button
+                      onClick={stopRecording}
+                      variant="destructive"
+                      size="lg"
+                      className="w-full sm:w-auto"
+                    >
+                      <StopCircle className="h-5 w-5 mr-2" />
+                      Stop Recording
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </Card>
+          )}
+
+          {!supportsRecording && (
+            <Card className="p-4 bg-amber-500/10 border-amber-500/30">
+              <div className="flex items-start gap-3">
+                <MicOff className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-semibold text-amber-600 dark:text-amber-400 mb-1">
+                    Speech Recognition Not Supported
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    Your browser doesn't support live speech recognition. Please use Chrome, Edge, or Safari for this feature.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          )}
+
+          {/* Upload Area */}
+          <AudioUploadZone
+            isDragging={isDragging}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onClick={() => inputRef.current?.click()}
+            onFileSelect={handleFile}
+            multiple={false}
+            title={audioFile ? audioFile.name : "Drop audio file here or click to browse"}
+            subtitle="Supports MP3, WAV, M4A, OGG, FLAC for accurate speech recognition"
+          />
+
+          {audioFile && (
+            <>
+              {/* Audio Preview */}
+              <Card className="p-3 sm:p-4">
+                <audio controls className="w-full h-8 sm:h-10">
+                  <source src={URL.createObjectURL(audioFile)} />
+                </audio>
+              </Card>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button
+                  onClick={transcribe}
+                  disabled={isProcessing}
+                  className="flex-1 text-sm sm:text-base py-3 sm:py-4"
+                >
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin mr-2" />
+                      Transcribing...
+                    </>
+                  ) : (
+                    <>
+                      <FileText className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                      <span className="hidden sm:inline">Transcribe Audio</span>
+                      <span className="sm:hidden">Transcribe</span>
+                    </>
+                  )}
+                </Button>
+                <Button variant="outline" onClick={reset} className="text-sm sm:text-base py-3 sm:py-4">
+                  <span className="hidden sm:inline">Reset</span>
+                  <span className="sm:hidden">Rst</span>
+                </Button>
+              </div>
+            </>
+          )}
+
+          {/* Transcription Result */}
+          {transcription && (
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <h3 className="text-base sm:text-lg font-semibold">Transcription Result</h3>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" onClick={exportAsTXT} className="text-xs sm:text-sm">
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                    <span className="hidden sm:inline">Export TXT</span>
+                    <span className="sm:hidden">TXT</span>
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={exportAsSRT} className="text-xs sm:text-sm">
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                    <span className="hidden sm:inline">Export SRT</span>
+                    <span className="sm:hidden">SRT</span>
+                  </Button>
+                </div>
+              </div>
+              <Textarea
+                value={transcription}
+                onChange={(e) => setTranscription(e.target.value)}
+                rows={8}
+                className="font-mono text-sm"
+              />
+
+              {/* Download Sections */}
+              {txtUrl && (
+                <div className="flex justify-center mt-6">
+                  <EnhancedDownload
+                    data={txtUrl}
+                    fileName="transcription.txt"
+                    fileType="word"
+                    title="Transcription Exported as TXT"
+                    description={`Plain text transcription in ${language} language`}
+                    fileSize={`${transcription.length} characters`}
+                    onConvertAnother={reset}
+                    onConvertAnotherLabel="Transcribe Another Audio"
+                  />
+                </div>
+              )}
+
+              {srtUrl && (
+                <div className="flex justify-center mt-6">
+                  <EnhancedDownload
+                    data={srtUrl}
+                    fileName="transcription.srt"
+                    fileType="word"
+                    title="Transcription Exported as SRT"
+                    description={`Subtitle file with timestamps for video editing`}
+                    fileSize={`${transcription.length} characters`}
+                    onConvertAnother={reset}
+                    onConvertAnotherLabel="Transcribe Another Audio"
+                  />
                 </div>
               )}
             </div>
-          </Card>
-        )}
+          )}
 
-        {!supportsRecording && (
-          <Card className="p-4 bg-amber-500/10 border-amber-500/30">
-            <div className="flex items-start gap-3">
-              <MicOff className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-semibold text-amber-600 dark:text-amber-400 mb-1">
-                  Speech Recognition Not Supported
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Your browser doesn't support live speech recognition. Please use Chrome, Edge, or Safari for this feature.
-                </p>
+          {/* Tool Definition Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Languages className="h-5 w-5 text-indigo-500" />
+              What is Speech to Text?
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              Speech to text converts spoken words into written text using automatic speech recognition. This technology is useful for transcribing meetings, creating captions, or converting voice notes into searchable text.
+            </p>
+
+            <h4 className="font-semibold mb-2">How It Works</h4>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+              <li>Choose between live recording or upload an audio file</li>
+              <li>Select your language for accurate recognition</li>
+              <li>Start recording or upload your audio file</li>
+              <li>The system transcribes the speech to text</li>
+              <li>Edit, copy, or export the transcription as needed</li>
+            </ol>
+
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              <div className="p-3 bg-indigo-50 rounded-lg">
+                <h5 className="font-semibold text-indigo-900 mb-1">Common Applications</h5>
+                <ul className="text-sm text-indigo-800 space-y-1">
+                  <li>• Meeting transcription</li>
+                  <li>• Voice memos to text</li>
+                  <li>• Podcast subtitles</li>
+                  <li>• Accessibility captions</li>
+                </ul>
+              </div>
+              <div className="p-3 bg-teal-50 rounded-lg">
+                <h5 className="font-semibold text-teal-900 mb-1">Supported Features</h5>
+                <ul className="text-sm text-teal-800 space-y-1">
+                  <li>• Multiple languages</li>
+                  <li>• Real-time transcription</li>
+                  <li>• Export to TXT/SRT</li>
+                  <li>• Copy to clipboard</li>
+                </ul>
               </div>
             </div>
-          </Card>
-        )}
+          </motion.div>
 
-        {/* Upload Area */}
-        <AudioUploadZone
-          isDragging={isDragging}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onClick={() => inputRef.current?.click()}
-          onFileSelect={handleFile}
-          multiple={false}
-          title={audioFile ? audioFile.name : "Drop audio file here or click to browse"}
-          subtitle="Supports MP3, WAV, M4A, OGG, FLAC for accurate speech recognition"
-        />
-
-        {audioFile && (
-          <>
-            {/* Audio Preview */}
-            <Card className="p-3 sm:p-4">
-              <audio controls className="w-full h-8 sm:h-10">
-                <source src={URL.createObjectURL(audioFile)} />
-              </audio>
-            </Card>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                onClick={transcribe}
-                disabled={isProcessing}
-                className="flex-1 text-sm sm:text-base py-3 sm:py-4"
-              >
-                {isProcessing ? (
-                  <>
-                    <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin mr-2" />
-                    Transcribing...
-                  </>
-                ) : (
-                  <>
-                    <FileText className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                    <span className="hidden sm:inline">Transcribe Audio</span>
-                    <span className="sm:hidden">Transcribe</span>
-                  </>
-                )}
-              </Button>
-              <Button variant="outline" onClick={reset} className="text-sm sm:text-base py-3 sm:py-4">
-                <span className="hidden sm:inline">Reset</span>
-                <span className="sm:hidden">Rst</span>
-              </Button>
-            </div>
-          </>
-        )}
-
-        {/* Transcription Result */}
-        {transcription && (
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <h3 className="text-base sm:text-lg font-semibold">Transcription Result</h3>
-              <div className="flex gap-2">
-                <Button size="sm" variant="outline" onClick={exportAsTXT} className="text-xs sm:text-sm">
-                  <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                  <span className="hidden sm:inline">Export TXT</span>
-                  <span className="sm:hidden">TXT</span>
-                </Button>
-                <Button size="sm" variant="outline" onClick={exportAsSRT} className="text-xs sm:text-sm">
-                  <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                  <span className="hidden sm:inline">Export SRT</span>
-                  <span className="sm:hidden">SRT</span>
-                </Button>
-              </div>
-            </div>
-            <Textarea
-              value={transcription}
-              onChange={(e) => setTranscription(e.target.value)}
-              rows={8}
-              className="font-mono text-sm"
-            />
-
-            {/* Download Sections */}
-            {txtUrl && (
-              <div className="flex justify-center mt-6">
-                <EnhancedDownload
-                  data={txtUrl}
-                  fileName="transcription.txt"
-                  fileType="word"
-                  title="Transcription Exported as TXT"
-                  description={`Plain text transcription in ${language} language`}
-                  fileSize={`${transcription.length} characters`}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Transcribe Another Audio"
-                />
-              </div>
-            )}
-
-            {srtUrl && (
-              <div className="flex justify-center mt-6">
-                <EnhancedDownload
-                  data={srtUrl}
-                  fileName="transcription.srt"
-                  fileType="word"
-                  title="Transcription Exported as SRT"
-                  description={`Subtitle file with timestamps for video editing`}
-                  fileSize={`${transcription.length} characters`}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Transcribe Another Audio"
-                />
-              </div>
-            )}
+          <div className="mt-8">
+            {/* FAQ Section */}
+            <ToolFAQ faqs={[
+              {
+                question: "How accurate is the speech recognition?",
+                answer: "Accuracy depends on audio quality, background noise, and speaking clarity. Clear speech with minimal noise typically achieves 90-95% accuracy."
+              },
+              {
+                question: "What languages are supported?",
+                answer: "The tool supports multiple languages including English, Spanish, French, German, and more. Select your language before recording for best results."
+              },
+              {
+                question: "Can I transcribe pre-recorded audio files?",
+                answer: "Yes, you can upload audio files in MP3, WAV, M4A, OGG, or FLAC format. The transcription process may take longer for longer files."
+              },
+              {
+                question: "Is my audio data stored or sent to servers?",
+                answer: "For live recording, processing happens in your browser using the Web Speech API. For file uploads, audio is sent to our secure backend for transcription and is not stored permanently."
+              },
+              {
+                question: "What export formats are available?",
+                answer: "You can export transcriptions as plain text (.txt) or as subtitle files (.srt) with timestamps for video editing purposes."
+              }
+            ]} />
           </div>
-        )}
-
-        {/* Tool Definition Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="rounded-xl border border-border bg-card p-6"
-        >
-          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-            <Languages className="h-5 w-5 text-indigo-500" />
-            What is Speech to Text?
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            Speech to text converts spoken words into written text using automatic speech recognition. This technology is useful for transcribing meetings, creating captions, or converting voice notes into searchable text.
-          </p>
-          
-          <h4 className="font-semibold mb-2">How It Works</h4>
-          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
-            <li>Choose between live recording or upload an audio file</li>
-            <li>Select your language for accurate recognition</li>
-            <li>Start recording or upload your audio file</li>
-            <li>The system transcribes the speech to text</li>
-            <li>Edit, copy, or export the transcription as needed</li>
-          </ol>
-          
-          <div className="grid sm:grid-cols-2 gap-4 mt-4">
-            <div className="p-3 bg-indigo-50 rounded-lg">
-              <h5 className="font-semibold text-indigo-900 mb-1">Common Applications</h5>
-              <ul className="text-sm text-indigo-800 space-y-1">
-                <li>• Meeting transcription</li>
-                <li>• Voice memos to text</li>
-                <li>• Podcast subtitles</li>
-                <li>• Accessibility captions</li>
-              </ul>
-            </div>
-            <div className="p-3 bg-teal-50 rounded-lg">
-              <h5 className="font-semibold text-teal-900 mb-1">Supported Features</h5>
-              <ul className="text-sm text-teal-800 space-y-1">
-                <li>• Multiple languages</li>
-                <li>• Real-time transcription</li>
-                <li>• Export to TXT/SRT</li>
-                <li>• Copy to clipboard</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="mt-8">
-        {/* FAQ Section */}
-        <ToolFAQ faqs={[
-          {
-            question: "How accurate is the speech recognition?",
-            answer: "Accuracy depends on audio quality, background noise, and speaking clarity. Clear speech with minimal noise typically achieves 90-95% accuracy."
-          },
-          {
-            question: "What languages are supported?",
-            answer: "The tool supports multiple languages including English, Spanish, French, German, and more. Select your language before recording for best results."
-          },
-          {
-            question: "Can I transcribe pre-recorded audio files?",
-            answer: "Yes, you can upload audio files in MP3, WAV, M4A, OGG, or FLAC format. The transcription process may take longer for longer files."
-          },
-          {
-            question: "Is my audio data stored or sent to servers?",
-            answer: "For live recording, processing happens in your browser using the Web Speech API. For file uploads, audio is sent to our secure backend for transcription and is not stored permanently."
-          },
-          {
-            question: "What export formats are available?",
-            answer: "You can export transcriptions as plain text (.txt) or as subtitle files (.srt) with timestamps for video editing purposes."
-          }
-        ]} />
         </div>
-      </div>
-    </ToolLayout>
-      </>
+      </ToolLayout>
+    </>
   );
 };
 

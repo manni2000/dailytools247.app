@@ -77,7 +77,7 @@ const Footer = () => {
 
   const audioTools = [
     { name: "Audio Converter", path: "/audio-converter" },
-    { name: "Speech to Text", path: "/ai-speech-to-text" },
+    { name: "AI Speech to Text", path: "/ai-speech-to-text" },
     { name: "Audio Trimmer", path: "/audio-trimmer" },
     { name: "Audio Merger", path: "/audio-merger" },
     { name: "Audio Speed Changer", path: "/audio-speed" },

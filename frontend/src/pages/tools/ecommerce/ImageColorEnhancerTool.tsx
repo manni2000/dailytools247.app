@@ -130,9 +130,9 @@ const ImageColorEnhancerTool = () => {
         "ai-image-color-enhancer"
       )}
       <ToolLayout
-      breadcrumbTitle="AI Image Color Enhancer"
-      category="Ecommerce Tools"
-      categoryPath="/category/ecommerce"
+        breadcrumbTitle="AI Image Color Enhancer"
+        category="Ecommerce Tools"
+        categoryPath="/category/ecommerce"
       >
         <div className="space-y-8">
           {/* Enhanced Hero Section */}
@@ -169,7 +169,7 @@ const ImageColorEnhancerTool = () => {
                 <Sun className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold">Product Photo Color Enhancer</h2>
+                <h2 className="text-2xl font-bold">AI Image Color Enhancer</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Enhance and adjust colors in product photos. Improve brightness, contrast, and saturation for professional-looking images.
                 </p>
@@ -366,7 +366,7 @@ const ImageColorEnhancerTool = () => {
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
                 <h5 className="font-semibold text-green-900 mb-1">Best Practices</h5>
-                  <ul className="text-sm text-green-800 space-y-1">
+                <ul className="text-sm text-green-800 space-y-1">
                   <li>• Don't over-enhance</li>
                   <li>• Keep colors accurate</li>
                   <li>• Test on various devices</li>
