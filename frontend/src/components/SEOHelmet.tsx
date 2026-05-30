@@ -64,8 +64,8 @@ const SEOHelmet = ({
 
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
 
-  const finalTitle = title || toolMetadata?.title || 'Dailytools247 - 100+ Free Online Tools';
-  const finalDescription = description || toolMetadata?.description || '100+ free online tools for PDF conversion, image editing, video processing, text formatting, QR codes, password generation, JSON formatting and more. No signup required.';
+  const finalTitle = title || toolMetadata?.title || 'Free PDF, Image & Video Tools — DailyTools247';
+  const finalDescription = description || toolMetadata?.description || '100+ free online tools for PDF, image, video, text & more. No signup required. Fast, private & browser-based.';
   const baseKeywords = [...(toolMetadata?.keywords || []), ...(toolMetadata?.longTailKeywords || [])];
   const dynamicLongTail = toolSlug ? generateLongTailVariations(toolMetadata?.keywords || [], toolSlug) : [];
 

@@ -167,8 +167,8 @@ const APIDocs = () => {
   return (
     <>
       <ToolSEO
-        toolName="API Documentation"
-        toolDescription="Complete API documentation for Dailytools247 tools. Learn how to integrate our tools into your applications. Perfect for developers."
+        toolName="Developer API Documentation — DailyTools247"
+        toolDescription="Access and integrate powerful APIs for PDF, Image, Video, and Developer tools from DailyTools247."
         category="Developer Tools"
         toolSlug="api-docs"
       />

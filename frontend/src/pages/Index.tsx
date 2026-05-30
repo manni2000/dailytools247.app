@@ -6,6 +6,7 @@ import PopularTools from "@/components/home/PopularTools";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import UserTestimonials from "@/components/UserTestimonials";
 import { CompetitiveComparison } from "@/components/home/CompetitiveComparison";
+import SEOHelmet from "@/components/SEOHelmet";
 
 // Lazy load below-the-fold components
 const BlogHighlights = lazy(() => import("@/components/home/BlogHighlights"));
@@ -22,6 +23,7 @@ const PageLoader = () => (
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col">
+      <SEOHelmet />
       <Header />
       <main className="flex-1">
         <HeroSection />

@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHelmet from "@/components/SEOHelmet";
 
 const PrivacyPolicy = () => {
   return (
     <div className="flex min-h-screen flex-col">
+      <SEOHelmet
+        title="Privacy Policy — DailyTools247"
+        description="Read the privacy policy of DailyTools247. Your data security and privacy are our top priorities."
+      />
       <Header />
       <main className="flex-1">
         {/* Header */}

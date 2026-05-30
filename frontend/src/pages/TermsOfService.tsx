@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHelmet from "@/components/SEOHelmet";
 
 const TermsOfService = () => {
   return (
     <div className="flex min-h-screen flex-col">
+      <SEOHelmet
+        title="Terms of Service — DailyTools247"
+        description="Read the terms of service of DailyTools247 online utilities."
+      />
       <Header />
       <main className="flex-1">
         {/* Header */}

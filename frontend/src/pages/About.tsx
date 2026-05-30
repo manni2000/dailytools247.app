@@ -3,6 +3,7 @@ import { Wrench, Users, Shield, Zap, Globe, Heart, Target, Sparkles } from "luci
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Link } from "react-router-dom";
+import SEOHelmet from "@/components/SEOHelmet";
 
 const About = () => {
   const stats = [
@@ -43,6 +44,10 @@ const About = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEOHelmet
+        title="About Us — DailyTools247"
+        description="Learn about the mission, values, and creators of DailyTools247, a free online toolbox for daily utilities."
+      />
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
