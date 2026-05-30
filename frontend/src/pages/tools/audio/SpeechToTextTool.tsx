@@ -66,6 +66,7 @@ const SpeechToTextTool = () => {
   const [supportsRecording, setSupportsRecording] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const languages = [
@@ -85,10 +86,18 @@ const SpeechToTextTool = () => {
   ];
 
   useEffect(() => {
-    // Check for Web Speech API support
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     setSupportsRecording(!!SpeechRecognition);
   }, []);
+
+  useEffect(() => {
+    if (!isRecording && transcription) {
+      const timer = setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isRecording]);
 
   const handleFile = (file: File) => {
     if (!file.type.startsWith("audio/")) {
@@ -450,7 +459,7 @@ const SpeechToTextTool = () => {
 
           {/* Transcription Result */}
           {transcription && (
-            <div className="space-y-4">
+            <div ref={resultRef} className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <h3 className="text-base sm:text-lg font-semibold">Transcription Result</h3>
                 <div className="flex gap-2">
