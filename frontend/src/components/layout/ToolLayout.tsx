@@ -101,7 +101,7 @@ const ToolLayout = ({ title, description, breadcrumbTitle, category, categoryPat
                     Help & Resources
                   </h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Want to learn more? Read our <Link to="/privacy" className="text-primary hover:underline font-medium">Privacy Policy</Link> or <Link to="/terms" className="text-primary hover:underline font-medium">Terms of Service</Link>. Learn <Link to="/about" className="text-primary hover:underline font-medium">About Us</Link> or email support at <a href="mailto:info@dailytools247.app" className="text-primary hover:underline font-medium font-mono">info@dailytools247.app</a>.
+                    Want to learn more? Read our <Link to="/privacy" className="text-primary hover:underline font-medium">Privacy Policy</Link> or <Link to="/terms" className="text-primary hover:underline font-medium">Terms of Service</Link>. Learn <Link to="/about" className="text-primary hover:underline font-medium">About Us</Link> or email support at <a href="mailto:manishmandal9734@gmail.com" className="text-primary hover:underline font-medium font-mono">manishmandal9734@gmail.com</a>.
                   </p>
                 </div>
               </div>
