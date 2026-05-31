@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Wrench, Heart } from "lucide-react";
 import { toolCategories } from "@/data/toolCategories";
 
 const Footer = () => {
+  const location = useLocation();
   // Category hub links for topical authority - Rule 7: Homepage links to high-value pages only
   const categoryHubs = [
     { name: "Free PDF Tools", path: "/category/pdf" },
@@ -690,6 +691,12 @@ const Footer = () => {
             <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground">
               Terms
             </Link>
+            <a
+              href={`mailto:manishmandal9734@gmail.com?subject=Bug Report - Dailytools247 (${location.pathname})`}
+              className="text-sm text-muted-foreground hover:text-foreground whitespace-nowrap"
+            >
+              Report a Bug
+            </a>
           </div>
           <p className="flex items-center gap-1 text-sm text-muted-foreground">
             Made with <Heart className="h-4 w-4 text-destructive" /> for everyone
