@@ -494,37 +494,7 @@ const SEOHelmet = ({
       });
     }
 
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'Dailytools247',
-      url: 'https://www.dailytools247.app',
-      logo: 'https://www.dailytools247.app/dailytools247.png',
-      description: '130+ Free Online Tools for PDF conversion, image editing, video processing, text formatting, QR codes, password generation, JSON formatting and more.',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        email: 'info@dailytools247.com'
-      },
-      sameAs: [
-        'https://www.dailytools247.app'
-      ]
-    });
 
-    schemas.push({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'Dailytools247',
-      url: 'https://www.dailytools247.app',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: 'https://www.dailytools247.app/?q={search_term_string}'
-        },
-        'query-input': 'required name=search_term_string'
-      }
-    });
 
     return schemas;
   };
@@ -628,39 +598,6 @@ const SEOHelmet = ({
           })}
         </script>
       )}
-
-      {/* EXTREME SEO: Competitive Advantage Signals */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: 'Dailytools247',
-          description: competitiveStrategy.positioning.primary,
-          knowsAbout: [
-            'PDF Processing',
-            'Image Optimization',
-            'Document Conversion',
-            'File Compression',
-            'Web Development',
-            'User Experience Design',
-            'Privacy-First Processing',
-            'Client-Side Technology'
-          ],
-          slogan: competitiveStrategy.positioning.secondary,
-          sameAs: [
-            'https://github.com/dailytools247',
-            'https://twitter.com/dailytools247'
-          ],
-          areaServed: 'Worldwide',
-          foundingDate: '2019',
-          contactPoint: {
-            '@type': 'ContactPoint',
-            contactType: 'customer service',
-            email: 'support@dailytools247.com',
-            availableLanguage: ['English']
-          }
-        })}
-      </script>
     </Helmet>
   );
 };

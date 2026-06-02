@@ -1051,34 +1051,34 @@ async function run() {
 
       // Inject custom meta tags before </head>
       const customHead = `
-        <title>${escapeHtml(title)}</title>
-        <meta name="title" content="${escapeHtml(title)}" />
-        <meta name="description" content="${escapeHtml(description)}" />
-        <meta name="keywords" content="${escapeHtml(keywords.join(', '))}" />
-        <meta name="author" content="Dailytools247" />
-        <link rel="canonical" href="${currentUrl}" />
-        <meta name="robots" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
-        <meta name="googlebot" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}" />
-        <meta name="bingbot" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}" />
-        <meta name="language" content="en" />
-        <meta name="revisit-after" content="7 days" />
+        <title data-rh="true">${escapeHtml(title)}</title>
+        <meta name="title" content="${escapeHtml(title)}" data-rh="true" />
+        <meta name="description" content="${escapeHtml(description)}" data-rh="true" />
+        <meta name="keywords" content="${escapeHtml(keywords.join(', '))}" data-rh="true" />
+        <meta name="author" content="Dailytools247" data-rh="true" />
+        <link rel="canonical" href="${currentUrl}" data-rh="true" />
+        <meta name="robots" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" data-rh="true" />
+        <meta name="googlebot" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}" data-rh="true" />
+        <meta name="bingbot" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}" data-rh="true" />
+        <meta name="language" content="en" data-rh="true" />
+        <meta name="revisit-after" content="7 days" data-rh="true" />
         
-        <meta property="og:type" content="${ogType}" />
-        <meta property="og:url" content="${currentUrl}" />
-        <meta property="og:title" content="${escapeHtml(title)}" />
-        <meta property="og:description" content="${escapeHtml(description)}" />
-        <meta property="og:image" content="https://www.dailytools247.app/og-image.webp" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="${escapeHtml(title)}" />
-        <meta property="og:site_name" content="Dailytools247" />
-        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="${ogType}" data-rh="true" />
+        <meta property="og:url" content="${currentUrl}" data-rh="true" />
+        <meta property="og:title" content="${escapeHtml(title)}" data-rh="true" />
+        <meta property="og:description" content="${escapeHtml(description)}" data-rh="true" />
+        <meta property="og:image" content="https://www.dailytools247.app/og-image.webp" data-rh="true" />
+        <meta property="og:image:width" content="1200" data-rh="true" />
+        <meta property="og:image:height" content="630" data-rh="true" />
+        <meta property="og:image:alt" content="${escapeHtml(title)}" data-rh="true" />
+        <meta property="og:site_name" content="Dailytools247" data-rh="true" />
+        <meta property="og:locale" content="en_IN" data-rh="true" />
         
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="${currentUrl}" />
-        <meta name="twitter:title" content="${escapeHtml(title)}" />
-        <meta name="twitter:description" content="${escapeHtml(description)}" />
-        <meta name="twitter:image" content="https://www.dailytools247.app/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+        <meta name="twitter:url" content="${currentUrl}" data-rh="true" />
+        <meta name="twitter:title" content="${escapeHtml(title)}" data-rh="true" />
+        <meta name="twitter:description" content="${escapeHtml(description)}" data-rh="true" />
+        <meta name="twitter:image" content="https://www.dailytools247.app/og-image.webp" data-rh="true" />
         
         ${schemaScripts}
       `;
