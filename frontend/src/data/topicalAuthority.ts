@@ -22,7 +22,7 @@ export interface AuthorityPillar {
 }
 
 export const authorityPillars: Record<string, AuthorityPillar> = {
-  'pdf-management': {
+  'PDF Tools': {
     pillarTopic: 'PDF Document Management & Conversion',
     pillarUrl: '/pdf-tools-complete-guide',
     clusterContent: [
@@ -148,7 +148,7 @@ export const authorityPillars: Record<string, AuthorityPillar> = {
     contentDepth: 'expert',
     searchIntent: 'transactional'
   },
-  'image-optimization': {
+  'Image Tools': {
     pillarTopic: 'Image Optimization & Visual Content Processing',
     pillarUrl: '/image-optimization-complete-guide',
     clusterContent: [
@@ -225,7 +225,8 @@ export const generateInternalLinkingStrategy = (currentTool: string, category: s
   const pillar = authorityPillars[category];
   if (!pillar) return [];
   
-  const currentCluster = pillar.clusterContent.find(item => item.url === currentTool);
+  const targetUrl = currentTool.startsWith('/') ? currentTool : `/${currentTool}`;
+  const currentCluster = pillar.clusterContent.find(item => item.url === targetUrl);
   if (!currentCluster) return [];
   
   // Generate contextual internal links
