@@ -2916,10 +2916,10 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'video-to-audio': {
     slug: 'video-to-audio',
-    title: 'AI Video to Audio & Transcriber - Extract & Transcribe Video',
+    title: 'Video to Audio Transcriber - Extract & Transcribe Video',
     description: 'Extract high-quality audio and generate transcription text from video files instantly using AI conversion models.',
     keywords: [
-      'ai video to audio converter',
+      'video to audio converter',
       'video transcriber online',
       'extract mp3 from mp4',
       'video to audio converter free',
