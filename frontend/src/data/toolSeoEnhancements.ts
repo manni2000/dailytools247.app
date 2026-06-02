@@ -5760,7 +5760,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['profit-margin', 'ai-budget-planner'],
+    relatedTools: ['profit-margin-calculator', 'ai-budget-planner'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',
@@ -5916,7 +5916,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['ai-budget-planner', 'profit-margin'],
+    relatedTools: ['ai-budget-planner', 'profit-margin-calculator'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Finance',

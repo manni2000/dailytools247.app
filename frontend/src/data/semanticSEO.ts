@@ -41,7 +41,27 @@ const normalizeCluster = (key: string): string => {
     'Email Marketing Tools': 'email-tools',
     'email-tools': 'email-tools',
     'Social Media Tools': 'social-tools',
-    'social-tools': 'social-tools'
+    'social-tools': 'social-tools',
+    'Finance Tools': 'finance-tools',
+    'finance-tools': 'finance-tools',
+    'Education Tools': 'education-tools',
+    'education-tools': 'education-tools',
+    'ZIP Tools': 'zip-tools',
+    'zip-tools': 'zip-tools',
+    'Govt Legal Tools': 'govt-legal-tools',
+    'govt-legal-tools': 'govt-legal-tools',
+    'E-commerce Tools': 'ecommerce-tools',
+    'ecommerce-tools': 'ecommerce-tools',
+    'Video Tools': 'video-tools',
+    'video-tools': 'video-tools',
+    'Audio Tools': 'audio-tools',
+    'audio-tools': 'audio-tools',
+    'Text Tools': 'text-tools',
+    'text-tools': 'text-tools',
+    'Date & Time Tools': 'date-time-tools',
+    'date-time-tools': 'date-time-tools',
+    'Internet Tools': 'internet-tools',
+    'internet-tools': 'internet-tools'
   };
   return map[key] || key;
 };
@@ -159,6 +179,22 @@ export const semanticEntities: Record<string, SemanticEntity[]> = {
       },
       relationships: [
         { target: 'Engagement Rate', type: 'drives', strength: 0.90 }
+      ]
+    }
+  ],
+  'finance-tools': [
+    {
+      type: 'Technology',
+      name: 'SaaS Pricing Calculator',
+      description: 'Calculator tool for modeling subscription business unit economics, MRR, ARR, LTV, and CAC.',
+      properties: {
+        applicationType: 'Financial Modeler',
+        outputs: ['Monthly Recurring Revenue', 'Customer Lifetime Value', 'Customer Acquisition Cost Ratio'],
+        calculationMethod: 'Local Browser-based JS Calculations'
+      },
+      relationships: [
+        { target: 'Unit Economics', type: 'analyzes', strength: 0.95 },
+        { target: 'Business Viability', type: 'forecasts', strength: 0.90 }
       ]
     }
   ]
@@ -394,6 +430,35 @@ export const topicalClusters: Record<string, TopicalCluster> = {
       'instagram biography generator',
       'line break formatter'
     ]
+  },
+  'finance-tools': {
+    mainTopic: 'SaaS Pricing & Unit Economics',
+    relatedEntities: ['SaaS Pricing Calculator', 'Customer Lifetime Value', 'Customer Acquisition Cost', 'Monthly Recurring Revenue'],
+    supportingKeywords: [
+      'saas pricing optimizer', 'subscription pricing tiers', 'saas unit economics modeler',
+      'ltv cac ratio calculator', 'churn rate impact on ltv', 'payback period projection'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['calculate saas pricing', 'optimize subscription pricing tiers', 'model saas unit economics'],
+        questions: [
+          'what is a good ltv cac ratio',
+          'how to calculate customer lifetime value',
+          'how to optimize subscription pricing'
+        ]
+      }
+    ],
+    contentAngles: [
+      'SaaS Startups Financial Projections',
+      'Subscription Business Growth Strategy',
+      'Unit Economics Optimizations'
+    ],
+    semanticVariations: [
+      'subscription software pricing calculator',
+      'saas unit economics modeler online',
+      'calculate subscription payback period'
+    ]
   }
 };
 
@@ -436,70 +501,37 @@ export const generateStructuredData = (toolSlug: string, cluster: string) => {
   const entities = semanticEntities[normalizedKey] || [];
   const clusterData = topicalClusters[normalizedKey];
   
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebApplication',
-        name: toolSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-        applicationCategory: 'UtilitiesApplication',
-        operatingSystem: 'Web',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'INR'
-        },
-        featureList: clusterData?.supportingKeywords || [],
-        screenshot: `https://www.dailytools247.app/og-${toolSlug}.webp`
-      },
-      ...entities.map(entity => ({
-        '@type': entity.type,
-        name: entity.name,
-        description: entity.description,
-        ...entity.properties
-      })),
-      {
-        '@type': 'FAQPage',
-        mainEntity: clusterData?.userIntents.flatMap(intent => 
-          intent.questions.map(question => ({
-            '@type': 'Question',
-            name: question,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: `Our ${toolSlug.replace(/-/g, ' ')} tool provides the best solution for ${question.toLowerCase()}.`
-            }
-          }))
-        ) || []
-      },
-      {
-        '@type': 'HowTo',
-        name: `How to use ${toolSlug.replace(/-/g, ' ')}`,
-        description: `Step-by-step guide for ${clusterData?.mainTopic || 'this tool'}`,
-        step: [
-          {
-            '@type': 'HowToStep',
-            name: 'Upload File / Input Data',
-            text: 'Select your files or type your input parameters'
-          },
-          {
-            '@type': 'HowToStep',
-            name: 'Configure Options',
-            text: 'Customize settings to suit your target result'
-          },
-          {
-            '@type': 'HowToStep',
-            name: 'Process',
-            text: 'Click the action button to calculate, encrypt, format, or generate'
-          },
-          {
-            '@type': 'HowToStep',
-            name: 'Download / Copy Results',
-            text: 'Save or copy the final optimized output'
-          }
-        ]
+  const graphElements: any[] = [
+    ...entities.map(entity => ({
+      '@context': 'https://schema.org',
+      '@type': entity.type,
+      name: entity.name,
+      description: entity.description,
+      ...entity.properties
+    }))
+  ];
+
+  const faqQuestions = clusterData?.userIntents.flatMap(intent => 
+    intent.questions.map(question => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Our ${toolSlug.replace(/-/g, ' ')} tool provides the best solution for ${question.toLowerCase()}.`
       }
-    ]
+    }))
+  ) || [];
+
+  if (faqQuestions.length > 0) {
+    graphElements.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqQuestions
+    });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graphElements
   };
-  
-  return structuredData;
 };
