@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, Calculator, Wallet, Target, TrendingUp, AlertCircle, Trash2, Plus, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
-import AIProcessingIndicator from "@/components/AIProcessingIndicator";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -34,7 +33,6 @@ interface BudgetResult {
 }
 
 export default function BudgetPlannerTool() {
-  const [isProcessing, setIsProcessing] = useState(false);
   const toolSeoData = getToolSeoMetadata('ai-budget-planner');
   const [income, setIncome] = useState('');
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -137,17 +135,6 @@ export default function BudgetPlannerTool() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
-  };
-
-  const handleAnalyze = () => {
-    if (expenses.length === 0) return;
-    setIsProcessing(true);
-    setAnalysis(null);
-  };
-
-  const handleProcessingComplete = () => {
-    setIsProcessing(false);
-    runGenerationLogic();
   };
 
   const handleCopy = async () => {

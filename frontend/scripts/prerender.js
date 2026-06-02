@@ -266,8 +266,8 @@ async function run() {
             operatingSystem: 'Web',
             browserRequirements: 'Any modern web browser',
             softwareVersion: '1.0.0',
-            author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://dailytools247.app' },
-            publisher: { '@type': 'Organization', name: 'Dailytools247', url: 'https://dailytools247.app' },
+            author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
+            publisher: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
             offers: {
               '@type': 'Offer',
               price: '0',
@@ -413,7 +413,7 @@ async function run() {
               },
               validFrom: '2024-01-01'
             },
-            brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://dailytools247.app' }
+            brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://www.dailytools247.app' }
           });
 
           // Internal linking
@@ -428,7 +428,7 @@ async function run() {
                 '@type': 'ListItem',
                 position: index + 1,
                 name: link.anchorText,
-                url: `https://dailytools247.app${link.url}`,
+                url: `https://www.dailytools247.app${link.url}`,
                 description: link.context
               }))
             });
@@ -630,7 +630,7 @@ async function run() {
                 },
                 validFrom: '2024-01-01'
               },
-              brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://dailytools247.app' }
+              brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://www.dailytools247.app' }
             }
           ];
 
@@ -736,7 +736,7 @@ async function run() {
               url: currentUrl,
               image: post.image ? `https://www.dailytools247.app${post.image}` : 'https://www.dailytools247.app/og-image.webp',
               datePublished: post.publishedDate,
-              author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://dailytools247.app' },
+              author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
               publisher: {
                 '@type': 'Organization',
                 name: 'Dailytools247',

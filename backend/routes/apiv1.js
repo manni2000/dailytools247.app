@@ -489,7 +489,7 @@ const API_DOCUMENTATION = {
             },
           ],
           example: {
-            curl: `curl -X POST /api/image/qr-generator -H "X-API-Key: YOUR_KEY" -d '{"text":"https://dailytools247.app","size":300}'`,
+            curl: `curl -X POST /api/image/qr-generator -H "X-API-Key: YOUR_KEY" -d '{"text":"https://www.dailytools247.app","size":300}'`,
             response: "Binary PNG image",
           },
         },

@@ -82,7 +82,7 @@ export default function SaaSPricingCalculatorTool() {
   };
 
   const calculatePricing = () => {
-    if (!targetArr || !cac || !ltv) return;
+    if (!basePrice || !expectedCustomers || !cac) return;
     setIsProcessing(true);
     setResult(null);
   };

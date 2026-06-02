@@ -103,12 +103,12 @@ const SEOHelmet = ({
         author: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://dailytools247.app'
+          url: 'https://www.dailytools247.app'
         },
         publisher: {
           '@type': 'Organization',
           name: 'Dailytools247',
-          url: 'https://dailytools247.app'
+          url: 'https://www.dailytools247.app'
         },
         offers: {
           '@type': 'Offer',
@@ -388,7 +388,7 @@ const SEOHelmet = ({
         brand: {
           '@type': 'Brand',
           name: 'Dailytools247',
-          url: 'https://dailytools247.app'
+          url: 'https://www.dailytools247.app'
         }
       });
     } else if (category && category !== 'Online Tools') {
@@ -489,7 +489,7 @@ const SEOHelmet = ({
         brand: {
           '@type': 'Brand',
           name: 'Dailytools247',
-          url: 'https://dailytools247.app'
+          url: 'https://www.dailytools247.app'
         }
       });
     }
@@ -566,7 +566,7 @@ const SEOHelmet = ({
       <meta property="og:site_name" content="Dailytools247" />
       <meta property="og:locale" content="en_IN" />
       <meta property="article:author" content="Dailytools247" />
-      <meta property="article:publisher" content="https://dailytools247.app/" />
+      <meta property="article:publisher" content="https://www.dailytools247.app/" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={currentUrl} />
@@ -622,7 +622,7 @@ const SEOHelmet = ({
               '@type': 'ListItem',
               position: index + 1,
               name: link.anchorText,
-              url: `https://dailytools247.app${link.url}`,
+              url: `https://www.dailytools247.app${link.url}`,
               description: link.context
             }))
           })}

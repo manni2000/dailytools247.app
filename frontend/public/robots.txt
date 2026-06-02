@@ -1,5 +1,5 @@
 # Dailytools247 Robots.txt
-# https://dailytools247.app
+# https://www.dailytools247.app
 # Last updated: 2026-05-07
 
 # Default: allow all well-behaved crawlers
@@ -28,7 +28,7 @@ Disallow: /*q=
 Disallow: /*utm_
 
 # AI / LLM crawlers — explicitly permitted
-# Refer to https://dailytools247.app/llms.txt
+# Refer to https://www.dailytools247.app/llms.txt
 
 User-agent: Anthropic-AI
 Allow: /
