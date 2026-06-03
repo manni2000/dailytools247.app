@@ -41,7 +41,7 @@ function parseLocsFromSitemap(filePath) {
 // Custom page metadata mapping for static pages
 const staticPageMeta = {
   '/': {
-    title: 'Free PDF, Image & Video Tools — DailyTools247',
+    title: 'Free AI Tool, PDF, Image & SEO Tools - DailyTools247',
     description: '100+ free online tools for PDF, image, video, text & more. No signup required. Fast, private & browser-based.',
     keywords: ['free online tools', 'pdf converter', 'image compressor', 'qr code generator', 'video tools', 'dailytools247']
   },
