@@ -349,7 +349,7 @@ const APIDocs = () => {
                         <div>
                           <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
                             <ArrowRight className="h-3 w-3 text-primary" />
-                            API URL
+                            BASE URL
                           </p>
                           <div className="flex items-center gap-1.5 sm:gap-2">
                             <code className="flex-1 text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary break-all border border-border font-mono">
