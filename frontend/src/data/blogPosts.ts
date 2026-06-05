@@ -30,9 +30,9 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "dailytools247-vs-ilovepdf-vs-smallpdf-2026",
-    title: "DailyTools247 vs iLovePDF vs Smallpdf — Best Free PDF Tool in 2026",
+    title: "DailyTools247 vs iLovePDF vs Smallpdf - Best Free PDF Tool in 2026",
     description:
-      "Compare DailyTools247, iLovePDF, and Smallpdf — find the best free PDF tools, compressors, and editors in 2026.",
+      "Compare DailyTools247, iLovePDF, and Smallpdf - find the best free PDF tools, compressors, and editors in 2026.",
     keywords:
       "free PDF tools, PDF converter online, compress PDF free, merge PDF online, Smallpdf alternative, iLovePDF alternative, best PDF editor",
     publishedDate: "2026-05-23",
