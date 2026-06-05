@@ -103,19 +103,6 @@ const BlogPostPage = () => {
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <SEOHelmet
@@ -125,10 +112,10 @@ const BlogPostPage = () => {
         canonical={`https://www.dailytools247.app/blogs/${post.slug}`}
         image={post.image}
         ogType="article"
+        faqs={faqs}
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <Header />
       <main className="flex-1">
