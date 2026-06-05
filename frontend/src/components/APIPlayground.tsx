@@ -30,8 +30,70 @@ import {
   Send,
   Globe,
   Shield,
-  Activity
+  Activity,
+  Search
 } from "lucide-react";
+
+const highlightCode = (code: string, lang: string) => {
+  if (!code) return "";
+  let escaped = code
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  if (lang === "curl") {
+    escaped = escaped
+      .replace(/\b(curl)\b/g, '<span class="text-cyan-400 font-semibold">$1</span>')
+      .replace(/(-X\s+POST|-X\s+GET|-X\s+PUT|-X\s+DELETE)\b/g, '<span class="text-amber-400 font-medium">$1</span>')
+      .replace(/(-H\s+("[^"]+"|\'[^\']+\'))/g, '<span class="text-emerald-400">$1</span>')
+      .replace(/(-d\s+(\'[^\']+\'|"[^"]+"))/g, '<span class="text-purple-400">$1</span>')
+      .replace(/("https?:\/\/[^\s"]+")/g, '<span class="text-sky-400">$1</span>');
+  } else if (lang === "javascript" || lang === "node") {
+    escaped = escaped
+      .replace(/\b(const|let|var|await|async|import|from|require|module|exports|return)\b/g, '<span class="text-purple-400 font-semibold">$1</span>')
+      .replace(/\b(fetch|Headers|Response|JSON|stringify|log|error|request|write|end|on)\b/g, '<span class="text-sky-400">$1</span>')
+      .replace(/(\'[^\']*\'|"[^"]*")/g, '<span class="text-emerald-400">$1</span>')
+      .replace(/(\/\/[^\n]*)/g, '<span class="text-zinc-500 italic">$1</span>');
+  } else if (lang === "python") {
+    escaped = escaped
+      .replace(/\b(import|as|from|def|print|return)\b/g, '<span class="text-purple-400 font-semibold">$1</span>')
+      .replace(/\b(requests|json|post|get|put|delete|json|headers)\b/g, '<span class="text-sky-400">$1</span>')
+      .replace(/(\'[^\\'\n]*\'|"[^"\n]*")/g, '<span class="text-emerald-400">$1</span>')
+      .replace(/(#[^\n]*)/g, '<span class="text-zinc-500 italic">$1</span>');
+  } else if (lang === "php") {
+    escaped = escaped
+      .replace(/\b(php|echo|curl_init|curl_setopt_array|curl_exec|curl_error|curl_close|json_encode)\b/g, '<span class="text-sky-400 font-semibold">$1</span>')
+      .replace(/\b(if|else|true|false|null)\b/g, '<span class="text-purple-400 font-semibold">$1</span>')
+      .replace(/(\'[^\']*\'|"[^"]*")/g, '<span class="text-emerald-400">$1</span>');
+  }
+  return escaped;
+};
+
+const highlightJson = (json: any) => {
+  if (!json) return "";
+  const str = typeof json === "string" ? json : JSON.stringify(json, null, 2);
+  const escaped = str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  
+  return escaped.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, (match) => {
+    let cls = "text-blue-400";
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) {
+        cls = "text-amber-400 font-medium";
+      } else {
+        cls = "text-emerald-400";
+      }
+    } else if (/true|false/.test(match)) {
+      cls = "text-purple-400 font-semibold";
+    } else if (/null/.test(match)) {
+      cls = "text-zinc-400 italic";
+    }
+    return `<span class="${cls}">${match}</span>`;
+  });
+};
+
 
 interface ApiEndpoint {
   method: string;
@@ -108,6 +170,7 @@ const APIPlayground = ({
   const [selectedLanguage, setSelectedLanguage] = useState("curl");
   const [responseFormat, setResponseFormat] = useState("pretty");
   const [backendUrl, setBackendUrl] = useState<string>(DEFAULT_BACKEND);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const saved = localStorage.getItem("api-playground-history");
@@ -513,6 +576,16 @@ if ($err) {
     toast.success("History cleared!");
   };
 
+  const filteredCategories = apiDocs?.endpoints?.map((category) => {
+    const endpoints = category.endpoints.filter(
+      (endpoint) =>
+        endpoint.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        endpoint.path.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        endpoint.method.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return { ...category, endpoints };
+  }).filter((category) => category.endpoints.length > 0) || [];
+
   return (
     <div className="space-y-6">
       {/* Enhanced Header */}
@@ -617,14 +690,14 @@ if ($err) {
             </Button>
           </div>
           {!apiKey && (
-            <div className="flex items-center gap-2 text-xs text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200/50">
-              <AlertCircle className="h-3.5 w-3.5 text-amber-600 flex-shrink-0" />
+            <div className="flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-lg">
+              <AlertCircle className="h-3.5 w-3.5 text-amber-500 flex-shrink-0" />
               <span>API key is required to make requests. Get one from the Get Started tab.</span>
             </div>
           )}
           {apiKey && (
-            <div className="flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200/50">
-              <CheckCircle className="h-3.5 w-3.5 text-emerald-600 flex-shrink-0" />
+            <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 p-2.5 rounded-lg">
+              <CheckCircle className="h-3.5 w-3.5 text-emerald-500 flex-shrink-0" />
               <span>API key authenticated and ready to use</span>
             </div>
           )}
@@ -648,39 +721,58 @@ if ($err) {
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-2 max-h-64 sm:max-h-80 lg:max-h-96 overflow-y-auto relative z-10 pr-2">
-              {apiDocs?.endpoints?.map((category, catIndex) => (
-                <div key={catIndex} className="mb-3 sm:mb-4">
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2 flex items-center gap-2">
-                    <span className="w-1 h-1 bg-primary rounded-full"></span>
-                    {category.category}
-                  </h4>
-                  {category.endpoints.map((endpoint, endIndex) => (
-                    <button
-                      key={endIndex}
-                      onClick={() => handleEndpointSelect(endpoint)}
-                      className={`w-full text-left p-2 sm:p-3 rounded-lg border transition-all duration-200 mb-2 group endpoint-button ${
-                        selectedEndpoint === endpoint
-                          ? "bg-primary/5 border-primary/30 shadow-sm"
-                          : "bg-muted/20 border-border hover:bg-muted/40 hover:border-border/80"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 mb-1">
-                        <Badge className={`${getMethodColor(endpoint.method)} text-[10px] sm:text-xs font-medium`}>
-                          {endpoint.method}
-                        </Badge>
-                        {selectedEndpoint === endpoint && (
-                          <span className="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
-                        )}
-                      </div>
-                      <code className="responsive-text-xs text-foreground block mb-1 group-hover:text-primary transition-colors break-all font-mono">
-                        {endpoint.path}
-                      </code>
-                      <p className="responsive-text-xs text-muted-foreground line-clamp-2">{endpoint.name}</p>
-                    </button>
-                  ))}
+            <CardContent className="space-y-4 max-h-[500px] sm:max-h-[600px] overflow-y-auto relative z-10 pr-2 scrollbar-thin">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Filter endpoints..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 bg-background border-border text-foreground placeholder:text-muted-foreground text-xs h-9 focus:border-primary/50 transition-colors"
+                />
+              </div>
+
+              {filteredCategories.length === 0 ? (
+                <div className="text-center py-8 text-muted-foreground text-xs">
+                  No matching endpoints found
                 </div>
-              ))}
+              ) : (
+                filteredCategories.map((category, catIndex) => (
+                  <div key={catIndex} className="mb-4">
+                    <h4 className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5 px-1">
+                      <span className="w-1.5 h-1.5 bg-primary/80 rounded-full"></span>
+                      {category.category}
+                    </h4>
+                    {category.endpoints.map((endpoint, endIndex) => (
+                      <button
+                        key={endIndex}
+                        onClick={() => handleEndpointSelect(endpoint)}
+                        className={`w-full text-left p-2.5 rounded-xl border transition-all duration-200 mb-2 group endpoint-button relative overflow-hidden ${
+                          selectedEndpoint === endpoint
+                            ? "bg-primary/10 border-primary/40 shadow-sm"
+                            : "bg-muted/15 border-border/60 hover:bg-muted/30 hover:border-border/80"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1.5">
+                          <Badge className={`${getMethodColor(endpoint.method)} text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-md`}>
+                            {endpoint.method}
+                          </Badge>
+                          {selectedEndpoint === endpoint && (
+                            <span className="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
+                          )}
+                        </div>
+                        <code className={`responsive-text-xs text-foreground block mb-1 font-mono break-all leading-normal ${
+                          selectedEndpoint === endpoint ? "text-primary" : "group-hover:text-primary transition-colors"
+                        }`}>
+                          {endpoint.path}
+                        </code>
+                        <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">{endpoint.name}</p>
+                      </button>
+                    ))}
+                  </div>
+                ))
+              )}
             </CardContent>
           </Card>
         </div>
@@ -750,21 +842,25 @@ if ($err) {
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-3 sm:space-y-4 relative z-10">
+                  <CardContent className="space-y-4 relative z-10">
                     {selectedEndpoint.parameters.map((param) => (
-                      <div key={param.name} className="space-y-2 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border">
+                      <div key={param.name} className="space-y-2.5 p-4 bg-muted/10 hover:bg-muted/20 border border-border/60 hover:border-primary/20 transition-all duration-300 rounded-xl shadow-sm">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                           <div className="flex items-center gap-2">
-                            <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                            <label className="text-sm font-semibold text-foreground flex items-center gap-2 font-mono">
                               {param.name}
-                              {param.required && (
-                                <Badge variant="destructive" className="text-xs bg-red-500/10 border-red-500/20 text-red-700 font-medium">
+                              {param.required ? (
+                                <Badge variant="destructive" className="text-[10px] bg-red-500/10 border-red-500/20 text-red-700 font-semibold px-2 py-0.5 rounded-md">
                                   Required
+                                </Badge>
+                              ) : (
+                                <Badge variant="secondary" className="text-[10px] bg-muted border-border/60 text-muted-foreground font-semibold px-2 py-0.5 rounded-md">
+                                  Optional
                                 </Badge>
                               )}
                             </label>
                           </div>
-                          <Badge variant="outline" className="text-xs border-border text-foreground bg-muted w-fit font-medium">
+                          <Badge variant="outline" className="text-[10px] border-border text-foreground bg-muted/50 px-2.5 py-0.5 rounded-md font-mono font-medium">
                             {param.type}
                           </Badge>
                         </div>
@@ -773,7 +869,7 @@ if ($err) {
                             value={parameters[param.name]?.toString() || "false"}
                             onValueChange={(value) => handleParameterChange(param.name, value === "true")}
                           >
-                            <SelectTrigger className="bg-background border-border focus:border-primary/50 text-foreground text-sm">
+                            <SelectTrigger className="bg-background border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-xl text-foreground text-sm h-10">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -786,8 +882,7 @@ if ($err) {
                             placeholder={param.description}
                             value={parameters[param.name] || ""}
                             onChange={(e) => handleParameterChange(param.name, e.target.value)}
-                            className="bg-background border-border focus:border-primary/50 resize-none text-foreground text-sm"
-                            rows={2}
+                            className="bg-background border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-xl resize-none text-foreground text-sm p-3 min-h-[80px]"
                           />
                         ) : (
                           <Input
@@ -795,13 +890,13 @@ if ($err) {
                             placeholder={param.description}
                             value={parameters[param.name] || ""}
                             onChange={(e) => handleParameterChange(param.name, e.target.value)}
-                            className="bg-background border-border focus:border-primary/50 text-foreground text-sm"
+                            className="bg-background border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-xl text-foreground text-sm h-10 px-3"
                           />
                         )}
                         {param.default !== undefined && (
-                          <p className="text-xs text-muted-foreground flex items-center gap-1">
-                            <ArrowRight className="h-3 w-3" />
-                            Default: {String(param.default)}
+                          <p className="text-[11px] text-muted-foreground flex items-center gap-1.5 mt-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40" />
+                            <span>Default: <code className="bg-muted px-1 py-0.5 rounded text-[10px] font-mono text-foreground font-semibold">{String(param.default)}</code></span>
                           </p>
                         )}
                       </div>
@@ -814,66 +909,97 @@ if ($err) {
               <Card className="bg-card border border-border hover:shadow-md transition-all duration-300 overflow-hidden relative group">
                 <CardHeader className="pb-3 relative z-10">
                   <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-500/10 rounded-xl flex items-center justify-center shrink-0 border border-border">
-                        <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+                    <div className="flex items-center justify-between gap-3 flex-wrap">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-500/10 rounded-xl flex items-center justify-center shrink-0 border border-border">
+                          <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <CardTitle className="text-foreground text-base sm:text-lg flex items-center gap-2">
+                            Code Generation
+                          </CardTitle>
+                          <CardDescription className="text-muted-foreground text-xs sm:text-sm">
+                            Export request in multiple programming languages
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <CardTitle className="text-foreground text-base sm:text-lg flex items-center gap-2">
-                          Code Generation
-                        </CardTitle>
-                        <CardDescription className="text-muted-foreground text-xs sm:text-sm">
-                          Export request in multiple programming languages
-                        </CardDescription>
-                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={saveExample}
+                        className="border-border bg-muted/20 hover:bg-muted/40 text-foreground px-3 py-1.5 text-xs h-8"
+                      >
+                        <Save className="h-3.5 w-3.5 mr-1.5" />
+                        <span>Save Request</span>
+                      </Button>
                     </div>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                          <SelectTrigger className="w-28 sm:w-32 bg-background border-border text-foreground text-xs">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="curl">cURL</SelectItem>
-                            <SelectItem value="javascript">JavaScript</SelectItem>
-                            <SelectItem value="python">Python</SelectItem>
-                            <SelectItem value="node">Node.js</SelectItem>
-                            <SelectItem value="php">PHP</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => copyCode(generateCode(selectedLanguage))}
-                          className="border-border bg-muted hover:bg-muted/85 text-foreground px-3 py-2 text-xs sm:text-sm"
+                    
+                    {/* Horizontal tab-like selection bar */}
+                    <div className="flex flex-wrap items-center gap-1.5 border-b border-border/80 pb-2">
+                      {[
+                        { id: "curl", label: "cURL", file: "request.sh" },
+                        { id: "javascript", label: "JavaScript", file: "request.js" },
+                        { id: "python", label: "Python", file: "request.py" },
+                        { id: "node", label: "Node.js", file: "index.js" },
+                        { id: "php", label: "PHP", file: "request.php" }
+                      ].map(lang => (
+                        <button
+                          key={lang.id}
+                          onClick={() => setSelectedLanguage(lang.id)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
+                            selectedLanguage === lang.id
+                              ? "bg-primary/10 text-primary border border-primary/25 font-semibold"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground border border-transparent"
+                          }`}
                         >
-                          {copiedCode === generateCode(selectedLanguage) ? (
-                            <Check className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
-                          ) : (
-                            <Copy className="h-3 w-3 sm:h-4 sm:w-4" />
-                          )}
-                          <span className="ml-1 sm:ml-2">Copy</span>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={saveExample}
-                          className="border-border bg-muted hover:bg-muted/85 text-foreground px-3 py-2 text-xs sm:text-sm"
-                        >
-                          <Save className="h-3 w-3 sm:h-4 sm:w-4" />
-                          <span className="ml-1 sm:ml-2">Save</span>
-                        </Button>
-                      </div>
+                          {lang.file}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="relative z-10">
-                  <div className="overflow-x-auto">
-                    <pre className="text-xs bg-muted/65 p-3.5 sm:p-4 rounded-lg text-foreground whitespace-pre-wrap sm:whitespace-pre border border-border font-mono leading-relaxed min-w-[280px] sm:min-w-[300px] break-all sm:break-normal">
-                      {generateCode(selectedLanguage)}
-                    </pre>
+                <CardContent className="p-0 border-t border-border relative">
+                  <div className="bg-[#0f141c] text-zinc-100 rounded-b-xl border border-zinc-800/80 shadow-inner overflow-hidden font-mono text-xs">
+                    {/* macOS Chrome Header */}
+                    <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-zinc-800/80 select-none">
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5 mr-2">
+                          <div className="w-2 h-2 rounded-full bg-rose-500/80" />
+                          <div className="w-2 h-2 rounded-full bg-amber-500/80" />
+                          <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                        </div>
+                        <span className="text-[10px] text-zinc-400 font-sans tracking-wide">
+                          {selectedLanguage === "curl" ? "request.sh" :
+                           selectedLanguage === "javascript" ? "request.js" :
+                           selectedLanguage === "python" ? "request.py" :
+                           selectedLanguage === "node" ? "index.js" : "request.php"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          onClick={() => copyCode(generateCode(selectedLanguage))}
+                          className="h-7 px-2.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 text-xs border border-zinc-800/60 rounded-md font-sans"
+                        >
+                          {copiedCode === generateCode(selectedLanguage) ? (
+                            <Check className="h-3 w-3 text-green-400 mr-1.5" />
+                          ) : (
+                            <Copy className="h-3 w-3 mr-1.5" />
+                          )}
+                          Copy
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="p-4 overflow-x-auto max-h-[300px] scrollbar-thin">
+                      <pre className="m-0 leading-relaxed min-w-[280px]">
+                        <code 
+                          dangerouslySetInnerHTML={{ 
+                            __html: highlightCode(generateCode(selectedLanguage), selectedLanguage) 
+                          }} 
+                        />
+                      </pre>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -930,65 +1056,127 @@ if ($err) {
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="relative z-10">
-                    <div className="relative overflow-x-auto">
-                      <pre className={`text-xs p-3.5 sm:p-4 rounded-lg whitespace-pre border font-mono leading-relaxed min-w-[250px] sm:min-w-[300px] ${
-                        responseFormat === 'pretty' 
-                          ? 'bg-muted/65 text-emerald-800 border-border' 
-                          : responseFormat === 'raw'
-                          ? 'bg-muted/65 text-foreground border-border'
-                          : 'bg-muted/65 text-blue-800 border-border'
-                      }`}>
-                        {responseFormat === 'pretty' 
-                          ? JSON.stringify(response, null, 2)
-                          : responseFormat === 'raw'
-                          ? JSON.stringify(response)
-                          : JSON.stringify(response).replace(/\s+/g, ' ')
-                        }
-                      </pre>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => copyCode(JSON.stringify(response, null, 2))}
-                        className="absolute top-2 right-2 bg-muted hover:bg-muted/80 text-foreground border border-border"
-                      >
-                        {copiedCode === JSON.stringify(response, null, 2) ? (
-                          <Check className="h-3 w-3 text-green-600" />
-                        ) : (
-                          <Copy className="h-3 w-3" />
-                        )}
-                      </Button>
+                  <CardContent className="p-0 border-t border-border relative">
+                    <div className="bg-[#0f141c] text-zinc-100 rounded-b-xl border border-zinc-800/80 shadow-inner overflow-hidden font-mono text-xs">
+                      {/* macOS Chrome Header */}
+                      <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-zinc-800/80 select-none">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1.5 mr-2">
+                            <div className="w-2 h-2 rounded-full bg-rose-500/80" />
+                            <div className="w-2 h-2 rounded-full bg-amber-500/80" />
+                            <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                          </div>
+                          <span className="text-[10px] text-zinc-400 font-sans tracking-wide">response.json</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => copyCode(JSON.stringify(response, null, 2))}
+                            className="h-7 px-2.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 text-xs border border-zinc-800/60 rounded-md font-sans animate-none"
+                          >
+                            {copiedCode === JSON.stringify(response, null, 2) ? (
+                              <Check className="h-3.5 w-3.5 text-green-400 mr-1.5" />
+                            ) : (
+                              <Copy className="h-3.5 w-3.5 mr-1.5" />
+                            )}
+                            Copy
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="p-4 overflow-x-auto max-h-[400px] scrollbar-thin">
+                        <pre className="m-0 leading-relaxed min-w-[250px]">
+                          <code 
+                            dangerouslySetInnerHTML={{ 
+                              __html: highlightJson(
+                                responseFormat === "pretty" 
+                                  ? JSON.stringify(response, null, 2)
+                                  : responseFormat === "raw"
+                                  ? JSON.stringify(response)
+                                  : JSON.stringify(response).replace(/\s+/g, " ")
+                              )
+                            }} 
+                          />
+                        </pre>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               )}
             </>
           ) : (
-            <Card className="bg-card border border-border transition-all duration-300 overflow-hidden relative group">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-muted/60 border border-border rounded-2xl flex items-center justify-center mb-6">
-                  <Terminal className="h-8 w-8 sm:h-10 sm:w-10 text-muted-foreground" />
+            <Card className="bg-gradient-to-br from-card to-muted/20 border border-border/80 rounded-2xl flex flex-col items-center justify-center text-center p-8 sm:p-12 min-h-[500px] relative overflow-hidden group shadow-sm">
+              <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
+              <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+              
+              <div className="relative z-10 max-w-lg mx-auto flex flex-col items-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/10 to-purple-500/10 border border-primary/20 rounded-2xl flex items-center justify-center mb-6 shadow-sm pulse-dot">
+                  <Terminal className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3">Select an Endpoint</h3>
-                <p className="text-muted-foreground text-sm sm:text-base max-w-md mb-6">
-                  Choose an endpoint from the sidebar to start testing the API with our interactive playground.
+                
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 tracking-tight">
+                  Interactive API Playground
+                </h3>
+                <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-md leading-relaxed">
+                  Select an API endpoint from the sidebar to start customizing parameters, generating integration code, and executing real-time tests.
                 </p>
-                <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    <span className="hidden sm:inline">Real-time Testing</span>
-                    <span className="sm:hidden">Real-time</span>
+
+                {/* macOS Terminal Graphic Mockup */}
+                <div className="w-full max-w-md bg-[#0d1117] rounded-xl border border-zinc-800 shadow-xl overflow-hidden text-left mb-8 font-mono text-[11px] leading-relaxed select-none">
+                  <div className="flex items-center justify-between px-4 py-2.5 bg-[#161b22] border-b border-zinc-800">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-rose-500/90" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-500/90" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/90" />
+                    </div>
+                    <span className="text-zinc-400 text-xs font-sans">demo-request.sh</span>
+                    <div className="w-10" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span className="hidden sm:inline">Instant Response</span>
-                    <span className="sm:hidden">Instant</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                    <span className="hidden sm:inline">Code Export</span>
-                    <span className="sm:hidden">Export</span>
+                  <div className="p-4 space-y-2.5 text-zinc-300">
+                    <div>
+                      <span className="text-purple-400">curl</span> <span className="text-cyan-400">-X</span> <span className="text-yellow-400">POST</span> <span className="text-emerald-400">"https://api.dailytools247.app/api/v1/text/word-counter"</span> \
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-cyan-400">-H</span> <span className="text-emerald-400">"X-API-Key: dt_demo_key"</span> \
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-cyan-400">-H</span> <span className="text-emerald-400">"Content-Type: application/json"</span> \
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-cyan-400">-d</span> <span className="text-purple-400">'&#123;"text": "Test our API"&#125;'</span>
+                    </div>
+                    <div className="pt-2 border-t border-zinc-800/80 text-zinc-500">
+                      # Response (200 OK)
+                    </div>
+                    <div className="text-emerald-455 font-medium">
+                      &#123;
+                        <div className="pl-4"><span className="text-amber-400">"success"</span>: <span className="text-purple-400">true</span>,</div>
+                        <div className="pl-4"><span className="text-amber-400">"words"</span>: <span className="text-blue-400">3</span>,</div>
+                        <div className="pl-4"><span className="text-amber-400">"characters"</span>: <span className="text-blue-400">12</span></div>
+                      &#125;
+                    </div>
                   </div>
                 </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                  <div className="bg-muted/40 border border-border/60 hover:border-primary/20 p-4 rounded-xl transition-all duration-300 text-center">
+                    <Zap className="h-5 w-5 text-yellow-500 mx-auto mb-2" />
+                    <h4 className="text-xs font-semibold text-foreground mb-1">Real-time Testing</h4>
+                    <p className="text-[11px] text-muted-foreground">Send real HTTP requests & view responses instantly</p>
+                  </div>
+                  <div className="bg-muted/40 border border-border/60 hover:border-primary/20 p-4 rounded-xl transition-all duration-300 text-center">
+                    <Code2 className="h-5 w-5 text-purple-500 mx-auto mb-2" />
+                    <h4 className="text-xs font-semibold text-foreground mb-1">Code Export</h4>
+                    <p className="text-[11px] text-muted-foreground">Export copy-paste snippets in 5 programming languages</p>
+                  </div>
+                  <div className="bg-muted/40 border border-border/60 hover:border-primary/20 p-4 rounded-xl transition-all duration-300 text-center">
+                    <Shield className="h-5 w-5 text-emerald-500 mx-auto mb-2" />
+                    <h4 className="text-xs font-semibold text-foreground mb-1">Secure Sandboxing</h4>
+                    <p className="text-[11px] text-muted-foreground">Safe execution using standard CORS setup</p>
+                  </div>
+                </div>
+              </div>
             </Card>
           )}
         </div>
