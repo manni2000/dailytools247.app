@@ -6,12 +6,12 @@ import Footer from "@/components/layout/Footer";
 import SEOHelmet from "@/components/SEOHelmet";
 
 const guidelines = [
-  "Articles should be 800 words or more and stay focused on one clear topic.",
-  "Include only one contextual link in the body of the article.",
-  "All submissions must be original, unpublished, and written for readers first.",
-  "Avoid keyword stuffing, affiliate links, spun content, and promotional fluff.",
+  "Writing and submitting articles for any category or tool is completely free.",
+  "Articles should be 800 words or more and stay focused on a useful topic, guide, or tool.",
+  "You can list, advertise, and promote your own startup, business, or service.",
+  "Include backlinks to your startup or business within the body of the article.",
   "Use short paragraphs, descriptive headings, and a practical, easy-to-scan structure.",
-  "Add examples, data points, or steps where they genuinely improve the article.",
+  "All submissions must be original and unpublished elsewhere.",
 ];
 
 const regulations = [
@@ -21,24 +21,24 @@ const regulations = [
     tone: "neutral",
   },
   {
-    title: "Processing fee",
-    summary: "Accepted submissions carry a one-time $10 review and publication fee.",
+    title: "One-time publication fee",
+    summary: "It is 100% free to write and submit. Accepted submissions carry a flat one-time $10 publication fee.",
     tone: "accent",
   },
   {
-    title: "One-link policy",
-    summary: "Only one contextual link is allowed in the article body, and it must be relevant to the topic.",
-    tone: "warning",
+    title: "Promote your startup",
+    summary: "You are welcome to advertise, list your startup, promote your own business, and showcase your products.",
+    tone: "accent",
+  },
+  {
+    title: "Get backlinks",
+    summary: "You can include backlinks to your own business, startup, or website to drive traffic and boost SEO.",
+    tone: "neutral",
   },
   {
     title: "Content quality",
     summary: "We do not accept duplicate content, AI-generated spam, adult content, gambling, or deceptive claims.",
     tone: "danger",
-  },
-  {
-    title: "Promotions",
-    summary: "Sponsored placements, affiliate-heavy posts, and link exchanges are not permitted.",
-    tone: "warning",
   },
   {
     title: "Ownership",
@@ -50,17 +50,17 @@ const regulations = [
 const submissionSteps = [
   {
     title: "Send your draft",
-    description: "Email the article idea or finished draft, along with your target keyword and author note.",
+    description: "Email the article idea or finished draft, showcasing your startup or business and including backlink details. Submission is 100% free.",
     icon: Mail,
   },
   {
     title: "Editorial review",
-    description: "We check for originality, structure, clarity, and fit before moving it forward.",
+    description: "We check for originality, structure, clarity, and promotional alignment before moving it forward.",
     icon: BadgeCheck,
   },
   {
     title: "Publish and promote",
-    description: "After approval and fee processing, the article is prepared for publication.",
+    description: "After approval and the one-time $10 fee processing, the article is published with your backlink.",
     icon: Zap,
   },
 ];
@@ -71,12 +71,12 @@ const faqs = [
     answer: "Aim for at least 800 words. Longer posts are welcome if they stay useful, specific, and well structured.",
   },
   {
-    question: "How many links can I include?",
-    answer: "You may include one relevant contextual link in the article body. Extra promotional or affiliate links will be removed.",
+    question: "Can I promote my own business or startup?",
+    answer: "Yes, you can advertise and list your own startup or business in the form of an article, which acts as a valuable backlink. You can promote your business, product, or anything you want.",
   },
   {
-    question: "What is the fee?",
-    answer: "There is a one-time $10 fee for review and publication processing after the submission is accepted.",
+    question: "Is there a fee to write or submit?",
+    answer: "Writing and submitting articles is completely free. We only charge a flat one-time $10 fee for review and publication processing after your article is accepted.",
   },
   {
     question: "How do I submit my article?",
@@ -86,11 +86,11 @@ const faqs = [
 
 const howTo = {
   name: "Submit a guest post to Dailytools247",
-  description: "A simple editorial process for sending an original guest article with one contextual link and a one-time $10 fee.",
+  description: "A simple editorial process for sending an original guest article. Submitting is free, with a flat one-time $10 fee upon publication.",
   steps: [
     {
       name: "Prepare your draft",
-      text: "Write an original article of at least 800 words with one relevant contextual link.",
+      text: "Write an original article of at least 800 words, showcasing your startup or business and including your backlink.",
     },
     {
       name: "Email the submission",
@@ -98,7 +98,7 @@ const howTo = {
     },
     {
       name: "Complete review and publish",
-      text: "We review the article for quality and fit, then confirm the one-time $10 fee before publication.",
+      text: "We review the article for quality. Once accepted, we publish it for a one-time $10 fee.",
     },
   ],
 };
@@ -108,7 +108,7 @@ const WriteForUs = () => {
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <SEOHelmet
         title="Write for Us | Guest Post Submission at Dailytools247"
-        description="Write for us at Dailytools247 and submit original guest posts for a highly targeted tech audience. Review the rules, one-link policy, 800-word minimum, and one-time $10 fee."
+        description="Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee."
         keywords={[
           "write for us",
           "guest post guidelines",
@@ -129,7 +129,7 @@ const WriteForUs = () => {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           name: 'Write for Us | Guest Post Submission at Dailytools247',
-          description: 'Guest post guidelines, one-link rule, and submission fee for Dailytools247 blog contributors.',
+          description: 'Guest post guidelines, startup promotion, and publication fee for Dailytools247 blog contributors.',
           url: 'https://www.dailytools247.app/write-for-us',
           inLanguage: 'en',
           isPartOf: {
@@ -213,15 +213,15 @@ const WriteForUs = () => {
                   <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Link2 className="h-4 w-4" />
                   </div>
-                  <p className="text-sm font-semibold">One link only</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Only one contextual link in the article body.</p>
+                  <p className="text-sm font-semibold">Get Backlinks</p>
+                  <p className="mt-1 text-sm text-muted-foreground">List your startup and get a permanent backlink.</p>
                 </div>
                 <div className="rounded-2xl border border-border/70 bg-background/80 p-4 shadow-sm backdrop-blur">
                   <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Coins className="h-4 w-4" />
                   </div>
-                  <p className="text-sm font-semibold">$10 review fee</p>
-                  <p className="mt-1 text-sm text-muted-foreground">A one-time fee applies after acceptance.</p>
+                  <p className="text-sm font-semibold">One-time $10 Fee</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Free to submit. Paid only upon publication.</p>
                 </div>
               </div>
             </motion.div>
@@ -268,14 +268,14 @@ const WriteForUs = () => {
                 <h2 className="text-2xl font-bold">Submission Fee</h2>
               </div>
               <p className="mt-5 text-muted-foreground leading-relaxed">
-                There is a one-time $10 fee for review and publication processing. This keeps the submission process
-                organized and helps us maintain editorial quality across the blog.
+                Writing and submitting articles is completely free. We only charge a flat, one-time $10 fee for publication processing after your article is accepted.
               </p>
               <div className="mt-6 rounded-2xl border border-border bg-background p-4">
                 <p className="text-sm font-semibold uppercase tracking-wide text-primary">Quick summary</p>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />One-time $10 fee</li>
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />One contextual link only</li>
+                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />Completely free submission</li>
+                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />One-time $10 publication fee</li>
+                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />Advertise startup & get backlinks</li>
                   <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />800 words or more</li>
                 </ul>
               </div>
@@ -298,15 +298,14 @@ const WriteForUs = () => {
                 </div>
                 <h2 className="mt-5 text-3xl font-bold tracking-tight">Submission standards that keep the editorial bar high.</h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  The rules below are designed to keep the content useful, original, and clean for readers. If you meet
-                  these standards, your article is much more likely to move forward quickly.
+                  The rules below are designed to ensure high-quality content while giving you full freedom to promote your own products or business.
                 </p>
                 <div className="mt-6 rounded-2xl border border-primary/10 bg-primary/5 p-4">
                   <p className="text-sm font-semibold text-foreground">Quick checklist</p>
                   <div className="mt-3 space-y-2 text-sm text-muted-foreground">
                     <p>Original content only</p>
-                    <p>One link in the body</p>
-                    <p>Minimum 800 words</p>
+                    <p>Promote your business & startup</p>
+                    <p>Get backlinks to your website</p>
                     <p>One-time $10 fee after acceptance</p>
                   </div>
                 </div>
@@ -365,9 +364,9 @@ const WriteForUs = () => {
               <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
                 <li>How-to guides with clear steps and a practical takeaway</li>
                 <li>SEO, productivity, and tech articles backed by useful examples</li>
-                <li>Posts that educate readers instead of selling to them</li>
+                <li>Articles showcasing, reviewing, or promoting your startup/business</li>
                 <li>Clean formatting with headings, lists, and short paragraphs</li>
-                <li>Original opinions or experience that add real value</li>
+                <li>Original opinions or experiences that add real value</li>
               </ul>
               <p className="mt-6 text-sm text-muted-foreground">
                 If your article helps readers solve a real problem, it is a strong fit.
@@ -387,15 +386,13 @@ const WriteForUs = () => {
               <div className="mt-5 space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Email your guest post idea or completed draft to manishmandal9734@gmail.com with a clear subject line.
-                  If possible, include your proposed headline, a short author bio, and the link you want to include.
+                  If possible, include your proposed headline, a short author bio, and the startup or business website you want to promote and link.
                 </p>
                 <p>
-                  We review each submission manually. If the content fits our audience and follows the guidelines, we
-                  will reply with the next steps, including fee details and any editorial notes.
+                  We review each submission manually. Once the article is approved, we will coordinate the one-time $10 publication fee.
                 </p>
                 <p>
-                  Keep the tone practical, avoid unnecessary filler, and make sure the article teaches something the
-                  reader can use immediately.
+                  Keep the content engaging, avoid duplicate text, and feel free to showcase your business features, benefits, and use cases.
                 </p>
               </div>
             </motion.div>

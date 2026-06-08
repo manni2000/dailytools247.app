@@ -57,7 +57,7 @@ const staticPageMeta = {
   },
   '/write-for-us': {
     title: 'Write for Us | Guest Post Submission at Dailytools247',
-    description: 'Write for us at Dailytools247 and submit original guest posts for a highly targeted tech audience. Review the rules, one-link policy, 800-word minimum, and one-time $10 fee.',
+    description: 'Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee.',
     keywords: ['write for us', 'guest post guidelines', 'guest post submission', 'guest author', 'submit guest post']
   },
   '/privacy': {
@@ -1012,13 +1012,14 @@ async function run() {
               </header>
               <main class="container mx-auto px-4 py-12 max-w-3xl bg-white shadow-sm border border-gray-200 rounded-2xl my-8 p-8 sm:p-12">
                 <h1 class="text-4xl font-black text-gray-900 mb-6">Write for Us</h1>
-                <p class="text-lg text-gray-600 leading-relaxed mb-6">Share your expertise and write high-quality tech guides or utility tutorials for the DailyTools247 audience.</p>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">Share your expertise and write high-quality tech guides or showcase your startup for the DailyTools247 audience.</p>
                 <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Submission Guidelines</h2>
                 <ul class="list-disc pl-5 space-y-3 text-gray-600 leading-relaxed text-sm mb-8">
+                  <li><strong>Free to Submit:</strong> Writing and submitting guest posts for any category or tool is completely free.</li>
                   <li><strong>Minimum Length:</strong> All guest articles must be at least 800 words in length.</li>
-                  <li><strong>One Link Policy:</strong> You may include exactly one relevant, contextual backlink inside the article body.</li>
-                  <li><strong>Original Content Only:</strong> Plagiarism or duplicate/AI-spun content is strictly rejected.</li>
-                  <li><strong>Fee:</strong> A one-time editorial review and processing fee of $10 applies upon acceptance of submissions.</li>
+                  <li><strong>Promote Your Business:</strong> You are welcome to advertise, list your startup, promote your business, and get backlinks.</li>
+                  <li><strong>One-Time Fee:</strong> A flat one-time publication fee of $10 applies only after your article is accepted.</li>
+                  <li><strong>Original Content Only:</strong> Plagiarism or duplicate content is strictly rejected.</li>
                 </ul>
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Info</h2>
                 <p class="text-gray-600 leading-relaxed text-sm">Send your drafts or topics ideas directly to <a href="mailto:manishmandal9734@gmail.com" class="text-indigo-600 font-bold hover:underline">manishmandal9734@gmail.com</a>.</p>
