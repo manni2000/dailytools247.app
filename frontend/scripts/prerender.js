@@ -114,7 +114,7 @@ const redirects = [
   { from: '/bio-generator', to: '/ai-bio-generator' },
   { from: '/ai-caption-formatter', to: '/caption-formatter' },
   { from: '/meme-generator', to: '/ai-meme-generator' },
-  { from: '/whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
+  { from: '/ai-whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
   { from: '/email-subject-line-generator', to: '/ai-email-subject-line-generator' },
   { from: '/email-signature-generator', to: '/ai-email-signature-generator' },
   { from: '/spam-score-checker', to: '/ai-spam-score-checker' },

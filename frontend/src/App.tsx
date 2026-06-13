@@ -440,7 +440,7 @@ const AnimatedRoutes = () => {
       <Route path="/link-in-bio" element={<LinkInBioTool />} />
       <Route path="/meme-generator" element={<Navigate to="/ai-meme-generator" replace />} />
       <Route path="/ai-meme-generator" element={<MemeGeneratorTool />} />
-      <Route path="/whatsapp-status-generator" element={<Navigate to="/ai-whatsapp-status-generator" replace />} />
+      <Route path="/ai-whatsapp-status-generator" element={<Navigate to="/ai-whatsapp-status-generator" replace />} />
       <Route path="/ai-whatsapp-status-generator" element={<WhatsAppStatusTool />} />
 
       {/* Email Marketing Tools */}
