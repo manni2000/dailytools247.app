@@ -510,26 +510,6 @@ export const generateStructuredData = (toolSlug: string, cluster: string) => {
       ...entity.properties
     }))
   ];
-
-  const faqQuestions = clusterData?.userIntents.flatMap(intent => 
-    intent.questions.map(question => ({
-      '@type': 'Question',
-      name: question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Our ${toolSlug.replace(/-/g, ' ')} tool provides the best solution for ${question.toLowerCase()}.`
-      }
-    }))
-  ) || [];
-
-  if (faqQuestions.length > 0) {
-    graphElements.push({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: faqQuestions
-    });
-  }
-
   return {
     '@context': 'https://schema.org',
     '@graph': graphElements

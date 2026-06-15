@@ -319,17 +319,7 @@ async function run() {
           // FAQs schema
           const toolFaqs = toolMetadata.faqs || [];
           const combinedFaqs = [...toolFaqs, ...universalToolFaqs].slice(0, 10);
-          if (combinedFaqs.length > 0) {
-            schemas.push({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: combinedFaqs.map(faq => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: { '@type': 'Answer', text: faq.answer }
-              }))
-            });
-          }
+
 
           // HowTo schema
           if (toolMetadata.howTo) {
@@ -635,17 +625,7 @@ async function run() {
           ];
 
           const catFaqs = categorySpecificFaqs[category] || [];
-          if (catFaqs.length > 0) {
-            schemas.push({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: catFaqs.map(faq => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: { '@type': 'Answer', text: faq.answer }
-              }))
-            });
-          }
+
 
           schemaScripts = schemas.map(s => `<script type="application/ld+json">\n${JSON.stringify(s, null, 2)}\n</script>`).join('\n');
 
@@ -754,17 +734,7 @@ async function run() {
             }
           ];
 
-          if (post.faqs && post.faqs.length > 0) {
-            schemas.push({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: post.faqs.map(faq => ({
-                '@type': 'Question',
-                name: faq.question,
-                acceptedAnswer: { '@type': 'Answer', text: faq.answer }
-              }))
-            });
-          }
+
 
           schemaScripts = schemas.map(s => `<script type="application/ld+json">\n${JSON.stringify(s, null, 2)}\n</script>`).join('\n');
 

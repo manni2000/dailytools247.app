@@ -393,12 +393,10 @@ export const serpAnalysis: Record<string, SERPAnalysis> = {
     schemaUsage: {
       'WebApplication': 3,
       'SoftwareApplication': 1,
-      'FAQPage': 0,
       'HowTo': 0,
       'BreadcrumbList': 0
     },
     optimizationOpportunities: [
-      'Add FAQ schema markup',
       'Include HowTo structured data',
       'Create comparison content',
       'Add batch processing features',
@@ -463,7 +461,7 @@ const generateRecommendedActions = (gaps: ContentGap[], competitors: CompetitorD
   if (serpData && Object.values(serpData.schemaUsage).some(count => count === 0)) {
     actions.push({
       action: 'Implement missing schema markup',
-      details: ['FAQPage', 'HowTo', 'BreadcrumbList', 'Organization'],
+      details: ['HowTo', 'BreadcrumbList', 'Organization'],
       estimatedImpact: 'Medium',
       effort: 'Low',
       timeframe: '1 week'

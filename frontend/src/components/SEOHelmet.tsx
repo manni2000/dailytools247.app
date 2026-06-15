@@ -232,21 +232,6 @@ const SEOHelmet = ({
       schemas.push(generateBreadcrumbSchema());
     }
 
-    if (finalFaqs.length > 0) {
-      schemas.push({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: finalFaqs.map(faq => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer
-          }
-        }))
-      });
-    }
-
     if (finalHowTo) {
       schemas.push({
         '@context': 'https://schema.org',
