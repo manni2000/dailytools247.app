@@ -165,23 +165,44 @@ async function run() {
 
     // Track category mapping
     const categorySlugMap = {
+      'AI Utilities': 'ai',
+      'ai': 'ai',
       'Image Tools': 'image',
+      'image': 'image',
       'PDF Tools': 'pdf',
+      'pdf': 'pdf',
       'Video Tools': 'video',
+      'video': 'video',
       'Audio Tools': 'audio',
+      'audio': 'audio',
       'Text Tools': 'text',
+      'text': 'text',
       'Security Tools': 'security',
+      'security': 'security',
       'Developer Tools': 'dev',
+      'dev': 'dev',
       'Finance Tools': 'finance',
+      'finance': 'finance',
       'Education Tools': 'education',
+      'education': 'education',
       'SEO Tools': 'seo',
+      'seo': 'seo',
+      'Date & Time': 'date-time',
       'Date & Time Tools': 'date-time',
+      'date-time': 'date-time',
       'Internet Tools': 'internet',
+      'internet': 'internet',
       'ZIP Tools': 'zip',
+      'zip': 'zip',
+      'Social Media': 'social',
       'Social Media Tools': 'social',
+      'social': 'social',
       'Govt Legal Tools': 'govt-legal',
+      'govt-legal': 'govt-legal',
       'E-commerce Tools': 'ecommerce',
-      'Email Marketing Tools': 'email'
+      'ecommerce': 'ecommerce',
+      'Email Marketing Tools': 'email',
+      'email': 'email'
     };
 
     // Category descriptions (synced with CategoryPage.tsx)
@@ -1098,6 +1119,58 @@ async function run() {
       fs.writeFileSync(targetPath, redirectHtml, 'utf8');
       console.log(`🔗 Redirect route created: ${r.from} -> ${r.to}`);
     }
+
+    // 6. GENERATE VERCEL.JSON CONFIG DYNAMICALLY
+    console.log('📝 Programmatically updating vercel.json...');
+    const vercelConfigPath = path.join(projectRoot, 'vercel.json');
+    
+    let vercelConfig = {
+      cleanUrls: true,
+      redirects: [],
+      rewrites: [],
+      headers: []
+    };
+    
+    if (fs.existsSync(vercelConfigPath)) {
+      try {
+        vercelConfig = JSON.parse(fs.readFileSync(vercelConfigPath, 'utf8'));
+      } catch (e) {
+        console.warn('⚠️ Could not parse existing vercel.json, using defaults.', e);
+      }
+    }
+    
+    // Map redirects from redirects list to Vercel native redirect format
+    vercelConfig.redirects = redirects.map(r => ({
+      source: r.from,
+      destination: r.to,
+      permanent: true
+    }));
+    
+    // Gather all pre-rendered paths to exclude from SPA catch-all rewrite rule.
+    const staticPages = ['about', 'privacy', 'terms', 'write-for-us', 'categories', 'blogs', 'api-docs'];
+    const toolSlugs = toolLocs.map(loc => loc.replace(/^\//, ''));
+    
+    const excludedPrefixesAndSlugs = [
+      'assets/',
+      'public/',
+      'category/',
+      'blogs/',
+      ...staticPages,
+      ...toolSlugs
+    ];
+    
+    const excludePattern = excludedPrefixesAndSlugs.join('|');
+    
+    // Configure catch-all rewrite to /index.html with negative lookahead to prevent matching excluded paths and files with extensions
+    vercelConfig.rewrites = [
+      {
+        source: `/((?!${excludePattern}|.*\\.[a-zA-Z0-9]+$).*)`,
+        destination: '/index.html'
+      }
+    ];
+    
+    fs.writeFileSync(vercelConfigPath, JSON.stringify(vercelConfig, null, 4), 'utf8');
+    console.log('✅ Successfully updated vercel.json with native redirects and optimized SPA rewrites!');
 
     console.log('✨ Programmatic pre-rendering completed successfully!');
 
