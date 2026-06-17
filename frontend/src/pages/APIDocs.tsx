@@ -268,6 +268,7 @@ const APIDocs = () => {
                       </CardHeader>
                       <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
                         <Input
+                          id="api-email-input"
                           type="email"
                           placeholder="your@email.com"
                           value={email}
@@ -275,12 +276,14 @@ const APIDocs = () => {
                           className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
                         />
                         <Input
+                          id="api-key-name-input"
                           placeholder="Key name (optional)"
                           value={keyName}
                           onChange={(e) => setKeyName(e.target.value)}
                           className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
                         />
                         <Button
+                          id="generate-api-key-btn"
                           onClick={generateApiKey}
                           disabled={generatingKey}
                           className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-colors duration-300"
@@ -714,6 +717,7 @@ const APIDocs = () => {
                   <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Input
+                        id="lookup-email-input"
                         type="email"
                         placeholder="your@email.com"
                         value={lookupEmail}
@@ -721,6 +725,7 @@ const APIDocs = () => {
                         className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-purple-500/50 transition-colors"
                       />
                       <Button
+                        id="lookup-keys-btn"
                         onClick={lookupKeys}
                         className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
                       >
@@ -753,14 +758,9 @@ const APIDocs = () => {
                                 <code className="text-xs sm:text-sm text-muted-foreground break-all bg-background px-2 py-1 rounded border border-border font-mono">
                                   {key.key.slice(0, 8)}••••••••••••{key.key.slice(-4)}
                                 </code>
-                                <Button
-                                  size="sm"
-                                  variant="ghost"
-                                  onClick={() => copyToClipboard(key.key)}
-                                  className="h-6 w-6 p-0 hover:bg-muted text-muted-foreground hover:text-foreground"
-                                >
-                                  <Copy className="h-3 w-3" />
-                                </Button>
+                                <span className="text-[10px] text-muted-foreground italic bg-muted px-1.5 py-0.5 rounded border border-border/40 select-none">
+                                  Masked
+                                </span>
                               </div>
                               {/* API key usage info */}
                               {typeof key.usage === "number" && (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -171,6 +171,13 @@ const APIPlayground = ({
   const [responseFormat, setResponseFormat] = useState("pretty");
   const [backendUrl, setBackendUrl] = useState<string>(DEFAULT_BACKEND);
   const [searchQuery, setSearchQuery] = useState("");
+  const activeBlobUrlsRef = useRef<string[]>([]);
+
+  useEffect(() => {
+    return () => {
+      activeBlobUrlsRef.current.forEach(url => URL.revokeObjectURL(url));
+    };
+  }, []);
 
   useEffect(() => {
     const saved = localStorage.getItem("api-playground-history");
@@ -282,6 +289,10 @@ const APIPlayground = ({
     setResponseStatus(null);
     setResponseDuration(null);
     
+    // Revoke any previous object URLs to avoid memory leaks
+    activeBlobUrlsRef.current.forEach(url => URL.revokeObjectURL(url));
+    activeBlobUrlsRef.current = [];
+    
     const startTime = Date.now();
 
     try {
@@ -317,10 +328,22 @@ const APIPlayground = ({
       setResponseStatus(response.status);
 
       let responseData;
-      const contentType = response.headers.get("content-type");
+      const contentType = response.headers.get("content-type") || "";
+      const isImage = contentType.includes("image/");
+      const isPdf = contentType.includes("application/pdf");
       
-      if (contentType && contentType.includes("application/json")) {
+      if (contentType.includes("application/json")) {
         responseData = await response.json();
+      } else if (isImage || isPdf) {
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        activeBlobUrlsRef.current.push(blobUrl);
+        responseData = {
+          _isBinary: true,
+          blobUrl,
+          contentType,
+          size: blob.size,
+        };
       } else {
         responseData = await response.text();
       }
@@ -339,12 +362,12 @@ const APIPlayground = ({
         });
       }
 
-      // Add to history
+      // Add to history (avoid serializing blobUrl / large binary structures directly if possible)
       const historyItem: PlaygroundRequest = {
         id: Date.now().toString(),
         endpoint: selectedEndpoint,
         parameters: { ...parameters },
-        response: responseData,
+        response: responseData._isBinary ? { _isBinary: true, contentType: responseData.contentType, size: responseData.size } : responseData,
         status: response.status,
         duration: responseTime,
         timestamp: new Date(),
@@ -665,6 +688,7 @@ if ($err) {
           <div className="flex gap-2">
             <div className="relative flex-1">
               <Input
+                id="playground-api-key-input"
                 type="password"
                 placeholder="Enter your API key"
                 value={apiKey}
@@ -681,6 +705,7 @@ if ($err) {
               )}
             </div>
             <Button
+              id="playground-copy-key-btn"
               variant="outline"
               size="sm"
               onClick={() => copyCode(apiKey)}
@@ -725,6 +750,7 @@ if ($err) {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
+                  id="playground-filter-input"
                   type="text"
                   placeholder="Filter endpoints..."
                   value={searchQuery}
@@ -803,6 +829,7 @@ if ($err) {
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                       <Button
+                        id="playground-send-request-btn"
                         onClick={executeRequest}
                         disabled={loading || !apiKey}
                         className="bg-green-600 hover:bg-green-650 transition-all duration-300 shadow-sm text-white text-sm sm:text-base w-full sm:w-auto"
@@ -869,7 +896,7 @@ if ($err) {
                             value={parameters[param.name]?.toString() || "false"}
                             onValueChange={(value) => handleParameterChange(param.name, value === "true")}
                           >
-                            <SelectTrigger className="bg-background border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-xl text-foreground text-sm h-10">
+                            <SelectTrigger id={`param-input-${param.name}`} className="bg-background border-border focus:border-primary/50 focus:ring-2 focus:ring-primary/10 rounded-xl text-foreground text-sm h-10">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -879,6 +906,7 @@ if ($err) {
                           </Select>
                         ) : param.type === "text" || param.type === "string" ? (
                           <Textarea
+                            id={`param-input-${param.name}`}
                             placeholder={param.description}
                             value={parameters[param.name] || ""}
                             onChange={(e) => handleParameterChange(param.name, e.target.value)}
@@ -886,6 +914,7 @@ if ($err) {
                           />
                         ) : (
                           <Input
+                            id={`param-input-${param.name}`}
                             type={param.type === "number" ? "number" : "text"}
                             placeholder={param.description}
                             value={parameters[param.name] || ""}
@@ -924,6 +953,7 @@ if ($err) {
                         </div>
                       </div>
                       <Button
+                        id="playground-save-request-btn"
                         variant="outline"
                         size="sm"
                         onClick={saveExample}
@@ -944,6 +974,7 @@ if ($err) {
                         { id: "php", label: "PHP", file: "request.php" }
                       ].map(lang => (
                         <button
+                          id={`playground-lang-btn-${lang.id}`}
                           key={lang.id}
                           onClick={() => setSelectedLanguage(lang.id)}
                           className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
@@ -977,6 +1008,7 @@ if ($err) {
                       </div>
                       <div className="flex items-center gap-2">
                         <Button
+                          id="playground-copy-code-btn"
                           size="sm"
                           variant="ghost"
                           onClick={() => copyCode(generateCode(selectedLanguage))}
@@ -1044,7 +1076,7 @@ if ($err) {
                           </div>
                         )}
                         <Select value={responseFormat} onValueChange={setResponseFormat}>
-                          <SelectTrigger className="w-20 sm:w-24 bg-background border-border text-foreground text-xs">
+                          <SelectTrigger id="playground-response-format-select" className="w-20 sm:w-24 bg-background border-border text-foreground text-xs">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -1066,38 +1098,104 @@ if ($err) {
                             <div className="w-2 h-2 rounded-full bg-amber-500/80" />
                             <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
                           </div>
-                          <span className="text-[10px] text-zinc-400 font-sans tracking-wide">response.json</span>
+                          <span className="text-[10px] text-zinc-400 font-sans tracking-wide">
+                            {response._isBinary ? "binary-data" : "response.json"}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => copyCode(JSON.stringify(response, null, 2))}
-                            className="h-7 px-2.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 text-xs border border-zinc-800/60 rounded-md font-sans animate-none"
-                          >
-                            {copiedCode === JSON.stringify(response, null, 2) ? (
-                              <Check className="h-3.5 w-3.5 text-green-400 mr-1.5" />
-                            ) : (
-                              <Copy className="h-3.5 w-3.5 mr-1.5" />
-                            )}
-                            Copy
-                          </Button>
+                          {!response._isBinary && (
+                            <Button
+                              id="playground-copy-response-btn"
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => copyCode(JSON.stringify(response, null, 2))}
+                              className="h-7 px-2.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60 text-xs border border-zinc-800/60 rounded-md font-sans animate-none"
+                            >
+                              {copiedCode === JSON.stringify(response, null, 2) ? (
+                                <Check className="h-3.5 w-3.5 text-green-400 mr-1.5" />
+                              ) : (
+                                <Copy className="h-3.5 w-3.5 mr-1.5" />
+                              )}
+                              Copy
+                            </Button>
+                          )}
                         </div>
                       </div>
                       <div className="p-4 overflow-x-auto max-h-[400px] scrollbar-thin">
-                        <pre className="m-0 leading-relaxed min-w-[250px]">
-                          <code 
-                            dangerouslySetInnerHTML={{ 
-                              __html: highlightJson(
-                                responseFormat === "pretty" 
-                                  ? JSON.stringify(response, null, 2)
-                                  : responseFormat === "raw"
-                                  ? JSON.stringify(response)
-                                  : JSON.stringify(response).replace(/\s+/g, " ")
-                              )
-                            }} 
-                          />
-                        </pre>
+                        {response._isBinary ? (
+                          <div className="flex flex-col items-center justify-center p-6 bg-zinc-900 rounded-lg border border-zinc-800">
+                            {response.contentType.includes("image/") ? (
+                              <div className="space-y-4 text-center w-full">
+                                <img 
+                                  src={response.blobUrl} 
+                                  alt="API Preview" 
+                                  className="max-h-[250px] max-w-full rounded border border-zinc-700 shadow-md object-contain mx-auto" 
+                                />
+                                <div className="text-xs text-zinc-400 font-sans">
+                                  Format: <span className="font-semibold text-emerald-400">{response.contentType}</span> | Size: <span className="font-semibold">{(response.size / 1024).toFixed(2)} KB</span>
+                                </div>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => {
+                                    const a = document.createElement("a");
+                                    a.href = response.blobUrl;
+                                    a.download = `response-${Date.now()}.${response.contentType.split("/")[1] || "png"}`;
+                                    a.click();
+                                  }}
+                                  className="bg-zinc-800 border-zinc-700 text-zinc-300 hover:text-white hover:bg-zinc-700 text-xs mx-auto"
+                                >
+                                  Download Image
+                                </Button>
+                              </div>
+                            ) : (
+                              <div className="space-y-4 text-center w-full">
+                                <FileJson className="h-12 w-12 text-blue-500 mx-auto" />
+                                <div className="text-sm text-zinc-200 font-medium font-sans">PDF Document Output</div>
+                                <div className="text-xs text-zinc-400 font-sans">
+                                  Format: <span className="font-semibold text-emerald-400">{response.contentType}</span> | Size: <span className="font-semibold">{(response.size / 1024).toFixed(2)} KB</span>
+                                </div>
+                                <div className="flex gap-2 justify-center">
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => window.open(response.blobUrl, "_blank")}
+                                    className="bg-zinc-800 border-zinc-700 text-zinc-300 hover:text-white hover:bg-zinc-700 text-xs"
+                                  >
+                                    View PDF in New Tab
+                                  </Button>
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => {
+                                      const a = document.createElement("a");
+                                      a.href = response.blobUrl;
+                                      a.download = `response-${Date.now()}.pdf`;
+                                      a.click();
+                                    }}
+                                    className="bg-zinc-800 border-zinc-700 text-zinc-300 hover:text-white hover:bg-zinc-700 text-xs"
+                                  >
+                                    Download PDF
+                                  </Button>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <pre className="m-0 leading-relaxed min-w-[250px]">
+                            <code 
+                              dangerouslySetInnerHTML={{ 
+                                __html: highlightJson(
+                                  responseFormat === "pretty" 
+                                    ? JSON.stringify(response, null, 2)
+                                    : responseFormat === "raw"
+                                    ? JSON.stringify(response)
+                                    : JSON.stringify(response).replace(/\s+/g, " ")
+                                )
+                              }} 
+                            />
+                          </pre>
+                        )}
                       </div>
                     </div>
                   </CardContent>

@@ -1,61 +1,88 @@
 const express = require("express");
 const crypto = require("crypto");
 const { strictLimiter } = require("../middleware/security");
-const { cache } = require("../redis");
+const { cache, redis } = require("../redis");
 
 const router = express.Router();
-
-const apiKeys = new Map();
 
 function generateKey() {
   return "dt247_" + crypto.randomBytes(24).toString("hex");
 }
 
-function getKeyUsageToday(key) {
-  const record = apiKeys.get(key);
-  if (!record) return null;
-  const today = new Date().toDateString();
-  if (record.lastReset !== today) {
-    record.usageToday = 0;
-    record.lastReset = today;
+async function getKeyRecord(key) {
+  try {
+    const record = await redis.get(`api:key:${key}`);
+    if (!record) return null;
+    return typeof record === "string" ? JSON.parse(record) : record;
+  } catch (error) {
+    return null;
   }
-  return record;
 }
 
-function validateApiKey(req, res, next) {
-  const key = req.headers["x-api-key"];
-  if (!key) {
-    return res
-      .status(401)
-      .json({
+async function saveKeyRecord(key, record) {
+  try {
+    await redis.set(`api:key:${key}`, record);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+async function getEmailKeys(email) {
+  try {
+    const keys = await redis.smembers(`api:keys:by-email:${email}`);
+    if (!keys || keys.length === 0) return [];
+    const records = await Promise.all(keys.map(k => getKeyRecord(k)));
+    return records.filter(Boolean);
+  } catch (error) {
+    return [];
+  }
+}
+
+async function validateApiKey(req, res, next) {
+  try {
+    const key = req.headers["x-api-key"];
+    if (!key) {
+      return res
+        .status(401)
+        .json({
+          success: false,
+          error: "API key required. Add X-API-Key header.",
+        });
+    }
+    const record = await getKeyRecord(key);
+    if (!record) {
+      return res
+        .status(401)
+        .json({
+          success: false,
+          error: "Invalid API key. Generate one at /api-docs.",
+        });
+    }
+    const today = new Date().toDateString();
+    if (record.lastReset !== today) {
+      record.usageToday = 0;
+      record.lastReset = today;
+    }
+    const limit = record.tier === "pro" ? 1000 : 100;
+    if (record.usageToday >= limit) {
+      return res.status(429).json({
         success: false,
-        error: "API key required. Add X-API-Key header.",
+        error: "Daily API limit reached.",
+        limit,
+        resetAt: "midnight UTC",
       });
+    }
+    record.usageToday++;
+    record.totalRequests++;
+    await saveKeyRecord(key, record);
+    res.setHeader("X-RateLimit-Limit", limit);
+    res.setHeader("X-RateLimit-Remaining", limit - record.usageToday);
+    req.apiKeyRecord = record;
+    next();
+  } catch (error) {
+    next(error);
   }
-  const record = getKeyUsageToday(key);
-  if (!record) {
-    return res
-      .status(401)
-      .json({
-        success: false,
-        error: "Invalid API key. Generate one at /api-docs.",
-      });
-  }
-  const limit = record.tier === "pro" ? 1000 : 100;
-  if (record.usageToday >= limit) {
-    return res.status(429).json({
-      success: false,
-      error: "Daily API limit reached.",
-      limit,
-      resetAt: "midnight UTC",
-    });
-  }
-  record.usageToday++;
-  record.totalRequests++;
-  res.setHeader("X-RateLimit-Limit", limit);
-  res.setHeader("X-RateLimit-Remaining", limit - record.usageToday);
-  req.apiKeyRecord = record;
-  next();
 }
 
 const API_DOCUMENTATION = {
@@ -4213,7 +4240,7 @@ router.post("/keys/generate", strictLimiter, async (req, res) => {
       .json({ success: false, error: "Valid email required" });
   }
 
-  const emailKeys = [...apiKeys.values()].filter((k) => k.email === email);
+  const emailKeys = await getEmailKeys(email);
   if (emailKeys.length >= 3) {
     return res.status(400).json({
       success: false,
@@ -4225,7 +4252,7 @@ router.post("/keys/generate", strictLimiter, async (req, res) => {
   const key = generateKey();
   const today = new Date().toDateString();
 
-  apiKeys.set(key, {
+  const keyRecord = {
     key,
     name,
     email,
@@ -4236,7 +4263,10 @@ router.post("/keys/generate", strictLimiter, async (req, res) => {
     totalRequests: 0,
     lastReset: today,
     createdAt: new Date().toISOString(),
-  });
+  };
+
+  await saveKeyRecord(key, keyRecord);
+  await redis.sadd(`api:keys:by-email:${email}`, key);
 
   // Invalidate cache for this email's key list
   try {
@@ -4277,18 +4307,17 @@ router.post("/keys/list", async (req, res) => {
       return res.json(cachedKeys);
     }
 
-    const keys = [...apiKeys.values()]
-      .filter((k) => k.email === email)
-      .map((k) => ({
-        key: k.key.substring(0, 12) + "...",
-        name: k.name,
-        status: k.status,
-        tier: k.tier,
-        dailyLimit: k.dailyLimit,
-        usageToday: k.usageToday,
-        totalRequests: k.totalRequests,
-        createdAt: k.createdAt,
-      }));
+    const emailKeys = await getEmailKeys(email);
+    const keys = emailKeys.map((k) => ({
+      key: k.key.substring(0, 12) + "...",
+      name: k.name,
+      status: k.status,
+      tier: k.tier,
+      dailyLimit: k.dailyLimit,
+      usageToday: k.usageToday,
+      totalRequests: k.totalRequests,
+      createdAt: k.createdAt,
+    }));
 
     const response = { success: true, keys };
 
@@ -4299,9 +4328,9 @@ router.post("/keys/list", async (req, res) => {
   } catch (error) {
     // console.error('Cache error in /keys/list:', error);
     // Fallback to direct response if cache fails
-    const keys = [...apiKeys.values()]
-      .filter((k) => k.email === email)
-      .map((k) => ({
+    try {
+      const emailKeys = await getEmailKeys(email);
+      const keys = emailKeys.map((k) => ({
         key: k.key.substring(0, 12) + "...",
         name: k.name,
         status: k.status,
@@ -4311,8 +4340,10 @@ router.post("/keys/list", async (req, res) => {
         totalRequests: k.totalRequests,
         createdAt: k.createdAt,
       }));
-
-    res.json({ success: true, keys });
+      res.json({ success: true, keys });
+    } catch (fallbackError) {
+      res.status(500).json({ success: false, error: "Failed to list keys" });
+    }
   }
 });
 
@@ -4335,7 +4366,7 @@ router.get("/docs", async (req, res) => {
     const response = {
       success: true,
       ...API_DOCUMENTATION,
-      tier: req.apiKeyRecord?.tier || "free",
+      tier: "free",
     };
 
     cachedDocsResponse = response;
