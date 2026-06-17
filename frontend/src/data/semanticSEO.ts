@@ -61,7 +61,11 @@ const normalizeCluster = (key: string): string => {
     'Date & Time Tools': 'date-time-tools',
     'date-time-tools': 'date-time-tools',
     'Internet Tools': 'internet-tools',
-    'internet-tools': 'internet-tools'
+    'internet-tools': 'internet-tools',
+    'AI Utilities': 'ai-tools',
+    'ai-tools': 'ai-tools',
+    'Date & Time': 'date-time-tools',
+    'Social Media': 'social-tools'
   };
   return map[key] || key;
 };
@@ -195,6 +199,140 @@ export const semanticEntities: Record<string, SemanticEntity[]> = {
       relationships: [
         { target: 'Unit Economics', type: 'analyzes', strength: 0.95 },
         { target: 'Business Viability', type: 'forecasts', strength: 0.90 }
+      ]
+    }
+  ],
+  'ai-tools': [
+    {
+      type: 'Technology',
+      name: 'Artificial Intelligence Utilities',
+      description: 'Local web-browser based AI utilities powered by client-side heuristic engines and models.',
+      properties: {
+        modelsUsed: ['PII Redactor', 'Background Remover', 'MCQ Generator', 'SaaS Pricing Optimizer'],
+        processingType: 'Local Client-side Heuristics'
+      },
+      relationships: [
+        { target: 'Data Privacy', type: 'ensures', strength: 0.98 },
+        { target: 'Web Automation', type: 'powers', strength: 0.90 }
+      ]
+    }
+  ],
+  'video-tools': [
+    {
+      type: 'Technology',
+      name: 'Video Processing API',
+      description: 'Web browser-based video editing, format conversion, and rendering.',
+      properties: {
+        supportedCodecs: ['H.264', 'VP8', 'VP9', 'AAC', 'MP3'],
+        outputFormats: ['MP4', 'WebM', 'MP3']
+      },
+      relationships: [
+        { target: 'Media Optimization', type: 'supports', strength: 0.95 }
+      ]
+    }
+  ],
+  'audio-tools': [
+    {
+      type: 'Technology',
+      name: 'Web Audio Engine',
+      description: 'Client-side audio manipulation, conversion, speed adjustment, and trimming.',
+      properties: {
+        formats: ['MP3', 'WAV', 'M4A', 'OGG']
+      },
+      relationships: [
+        { target: 'Speech to Text', type: 'transcribes_to', strength: 0.92 }
+      ]
+    }
+  ],
+  'text-tools': [
+    {
+      type: 'Concept',
+      name: 'Text Processing and Analytics',
+      description: 'Parsing, sanitizing, and manipulating text structures such as markdown, diff, case, and line spacing.',
+      properties: {
+        operations: ['Diffing', 'Case Conversion', 'Word Count', 'Space Sanitization']
+      },
+      relationships: [
+        { target: 'SEO Content', type: 'improves', strength: 0.85 }
+      ]
+    }
+  ],
+  'education-tools': [
+    {
+      type: 'Service',
+      name: 'Academic Calculators',
+      description: 'Mathematical and scientific equations, unit conversions, and timetable generators.',
+      properties: {
+        mathFormulas: ['Percentage', 'Interest', 'CGPA', 'LCM/HCF']
+      },
+      relationships: [
+        { target: 'Student Productivity', type: 'improves', strength: 0.90 }
+      ]
+    }
+  ],
+  'zip-tools': [
+    {
+      type: 'Technology',
+      name: 'ZIP Compression Engine',
+      description: 'High-ratio file compression and password encryption executed client-side in JS.',
+      properties: {
+        format: 'ZIP',
+        encryption: 'AES'
+      },
+      relationships: [
+        { target: 'File Portability', type: 'improves', strength: 0.95 }
+      ]
+    }
+  ],
+  'govt-legal-tools': [
+    {
+      type: 'Service',
+      name: 'Legal and Govt Utilities',
+      description: 'Tools for official identity submissions and legal document template generation.',
+      properties: {
+        outputs: ['Rental Agreement', 'Passport Photo Resizing', 'Digital Signature']
+      },
+      relationships: [
+        { target: 'Document Workflow', type: 'accelerates', strength: 0.95 }
+      ]
+    }
+  ],
+  'internet-tools': [
+    {
+      type: 'Service',
+      name: 'Network Diagnostics',
+      description: 'Analyzing internet parameters, domain reputation, and active server routes.',
+      properties: {
+        queries: ['DNS Lookup', 'SSL Checking', 'IP Geolocation', 'Ping Test']
+      },
+      relationships: [
+        { target: 'Domain Security', type: 'checks', strength: 0.95 }
+      ]
+    }
+  ],
+  'date-time-tools': [
+    {
+      type: 'Concept',
+      name: 'Temporal Operations',
+      description: 'Time zone offsets, date intervals, and calendar arithmetic calculations.',
+      properties: {
+        calculations: ['Date Difference', 'Countdown', 'Working Days']
+      },
+      relationships: [
+        { target: 'Scheduling Integrity', type: 'maintains', strength: 0.90 }
+      ]
+    }
+  ],
+  'ecommerce-tools': [
+    {
+      type: 'Service',
+      name: 'E-commerce Utility Pack',
+      description: 'Operations for digital merchant catalog preparation and invoice structuring.',
+      properties: {
+        features: ['Background Remover', 'Barcode Generator', 'GST Invoice Builder']
+      },
+      relationships: [
+        { target: 'Seller Workflow', type: 'streamlines', strength: 0.95 }
       ]
     }
   ]
@@ -459,6 +597,167 @@ export const topicalClusters: Record<string, TopicalCluster> = {
       'saas unit economics modeler online',
       'calculate subscription payback period'
     ]
+  },
+  'ai-tools': {
+    mainTopic: 'AI Utilities and Client-Side Models',
+    relatedEntities: ['AI Background Remover', 'Speech to Text', 'Text Summarizer', 'AI MCQ Generator'],
+    supportingKeywords: [
+      'client side artificial intelligence', 'local browser ai models',
+      'privacy focused ai tools', 'free ai generators online'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['free ai speech to text', 'ai background remover online', 'ai summary tool'],
+        questions: ['how to remove image background with ai', 'best free offline speech to text']
+      }
+    ],
+    contentAngles: ['Privacy-first AI', 'Student Exam Prep', 'Developer Automation'],
+    semanticVariations: ['local browser heuristic models', 'machine learning online tools']
+  },
+  'video-tools': {
+    mainTopic: 'Web Video Compression and Conversion',
+    relatedEntities: ['MP4', 'WebM', 'Video Trim', 'Thumbnail Generator'],
+    supportingKeywords: [
+      'reduce video size online', 'convert video to mp3', 'video resizer', 'free video clipper'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['trim video online free', 'extract mp3 from video', 'change video resolution'],
+        questions: ['how to make a video smaller without quality loss', 'how to crop video online']
+      }
+    ],
+    contentAngles: ['Content Creation', 'Social Media Shorts', 'Presentation Formatting'],
+    semanticVariations: ['video processing browser engine', 'free video utility software']
+  },
+  'audio-tools': {
+    mainTopic: 'Audio Manipulation and Speech Processing',
+    relatedEntities: ['Audio Converter', 'Audio Trimmer', 'Audio Merger', 'AI Speech to Text'],
+    supportingKeywords: [
+      'convert mp3 to wav', 'join audio files online', 'speed up audio player', 'voice to text transcription'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['transcribe audio file free', 'merge audio clips online', 'trim mp3 ringtone'],
+        questions: ['how to convert speech to text online', 'how to cut audio files free']
+      }
+    ],
+    contentAngles: ['Podcast Production', 'Voice Notes Transcription', 'Music Ringtone Editing'],
+    semanticVariations: ['audio compiler tools', 'sound editors online']
+  },
+  'text-tools': {
+    mainTopic: 'Text Transformation and Character Auditing',
+    relatedEntities: ['Word Counter', 'Case Converter', 'Markdown Editor', 'Text Diff'],
+    supportingKeywords: [
+      'word and character counter', 'line sorter alphabetical', 'remove duplicate lines', 'markdown to HTML conversion'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['compare two text files', 'convert uppercase to lowercase', 'clean text spacing'],
+        questions: ['how to count words in text document', 'how to sort lines alphabetically online']
+      }
+    ],
+    contentAngles: ['Copywriting Editing', 'Coding Syntax Sanitation', 'Academic Writing Auditing'],
+    semanticVariations: ['string utilities web application', 'character counter tools']
+  },
+  'education-tools': {
+    mainTopic: 'Educational Calculators and Mathematical Solvers',
+    relatedEntities: ['Scientific Calculator', 'GPA Calculator', 'Percentage Calculator', 'Compound Interest'],
+    supportingKeywords: [
+      'convert units physics', 'compound interest calculator', 'percentage change finder', 'study scheduler tool'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['calculate percentage online', 'convert cgpa to percentage', 'solve physics dimensional formula'],
+        questions: ['how compound interest is calculated monthly', 'best online scientific calculator']
+      }
+    ],
+    contentAngles: ['Student Homework Helpers', 'Financial Literacy Learning', 'Physics Calculation Aides'],
+    semanticVariations: ['academic solver tools', 'curriculum timeline planner']
+  },
+  'zip-tools': {
+    mainTopic: 'File Archiving and Encryption',
+    relatedEntities: ['Create ZIP', 'Extract ZIP', 'Password ZIP', 'Compression Level ZIP'],
+    supportingKeywords: [
+      'compress files into zip', 'extract zip files online', 'encrypted zip maker', 'free zip creator'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['create password protected zip', 'unzip files online free', 'reduce file folder size'],
+        questions: ['how to password protect a zip folder', 'how to compress files without installing winrar']
+      }
+    ],
+    contentAngles: ['File Sharing Security', 'Data Storage Compression', 'Batch File Organisation'],
+    semanticVariations: ['archive packer tools', 'zip decompression online']
+  },
+  'govt-legal-tools': {
+    mainTopic: 'Official Identity Resizing and Document Drafting',
+    relatedEntities: ['Passport Photo Resizer', 'Signature Maker', 'Document Template Generator'],
+    supportingKeywords: [
+      'resize photo for govt application', 'rental agreement format PDF', 'make signature online', 'document layout builder'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['resize photo under 50kb', 'generate rental agreement online', 'draw digital signature free'],
+        questions: ['how to size passport photo for aadhaar card', 'how to sign a document digitally']
+      }
+    ],
+    contentAngles: ['Govt Application Preparations', 'Legal Agreement Templates', 'Identity Document Formats'],
+    semanticVariations: ['official application form helpers', 'legal contract generators']
+  },
+  'internet-tools': {
+    mainTopic: 'Network Diagnostics and Domain Auditing',
+    relatedEntities: ['DNS Lookup', 'SSL Checker', 'IP Address Lookup', 'Ping Test'],
+    supportingKeywords: [
+      'domain ssl validity checker', 'query dns records mx txt', 'check current public ip', 'test network delay speed'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['lookup ip geolocation', 'verify ssl certificate expiration', 'check dns records online'],
+        questions: ['how to run a ping test online', 'what is my user agent string']
+      }
+    ],
+    contentAngles: ['Webmaster Diagnostics', 'Network Troubleshooting', 'Domain Management Auditing'],
+    semanticVariations: ['dns nameserver queries', 'network path checkers']
+  },
+  'date-time-tools': {
+    mainTopic: 'Temporal Operations and Interval Tracking',
+    relatedEntities: ['Date Difference', 'Age Calculator', 'Working Days Calculator', 'Countdown Timer'],
+    supportingKeywords: [
+      'days between dates finder', 'calculate exact age in seconds', 'business day duration tracker', 'world clock timezones'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['count business days between dates', 'calculate days until target date', 'find timezone difference'],
+        questions: ['how many working days in a month', 'what is my exact age today']
+      }
+    ],
+    contentAngles: ['HR Business Day Planning', 'Event Goal Countdowns', 'Global Time Scheduling'],
+    semanticVariations: ['temporal interval calculators', 'calendar duration solvers']
+  },
+  'ecommerce-tools': {
+    mainTopic: 'E-commerce Asset Production and Billing Utilities',
+    relatedEntities: ['GST Invoice Generator', 'Barcode Generator', 'White Background Adder', 'AI Shadow Adder'],
+    supportingKeywords: [
+      'generate tax invoice free', 'create barcode for retail', 'make product photos white background', 'add drop shadow products'
+    ],
+    userIntents: [
+      {
+        intent: 'transactional',
+        keywords: ['generate gst invoice PDF', 'create barcode code128', 'enhance product photos online'],
+        questions: ['how to generate barcode online', 'how to create professional invoices for customers']
+      }
+    ],
+    contentAngles: ['Small Business Scaling', 'Product Catalogue Designing', 'Seller Invoice Compliance'],
+    semanticVariations: ['merchant catalog enhancers', 'retail billing systems']
   }
 };
 

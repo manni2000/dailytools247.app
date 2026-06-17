@@ -6,6 +6,7 @@ import { generateInternalLinkingStrategy } from '@/data/topicalAuthority';
 import { generateEEATStructuredData } from '@/data/eeatSignals';
 import { generateUBOTrackingCode, generatePersonalizationEngine } from '@/data/userBehaviorOptimization';
 import { generateCompetitiveAdvantageStrategy } from '@/data/competitiveAnalysis';
+import { getCategoryById } from '@/data/toolCategories';
 
 interface SEOHelmetProps {
   title?: string;
@@ -115,43 +116,45 @@ const SEOHelmet = ({
           price: '0',
           priceCurrency: 'INR',
           availability: 'https://schema.org/InStock',
-          hasMerchantReturnPolicy: {
-            '@type': 'MerchantReturnPolicy',
-            applicableCountry: 'IN',
-            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-            merchantReturnDays: 30,
-            returnMethod: 'https://schema.org/ReturnInStore',
-            returnFees: 'https://schema.org/FreeReturn'
-          },
-          shippingDetails: {
-            '@type': 'OfferShippingDetails',
-            shippingRate: {
-              '@type': 'MonetaryAmount',
-              value: '0',
-              currency: 'INR'
+          ...(toolMetadata?.schema?.type === 'Product' ? {
+            hasMerchantReturnPolicy: {
+              '@type': 'MerchantReturnPolicy',
+              applicableCountry: 'IN',
+              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+              merchantReturnDays: 30,
+              returnMethod: 'https://schema.org/ReturnInStore',
+              returnFees: 'https://schema.org/FreeReturn'
             },
-            deliveryTime: {
-              '@type': 'ShippingDeliveryTime',
-              handlingTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 0,
-                maxValue: 1,
-                unitText: 'Day',
-                unitCode: 'DAY'
+            shippingDetails: {
+              '@type': 'OfferShippingDetails',
+              shippingRate: {
+                '@type': 'MonetaryAmount',
+                value: '0',
+                currency: 'INR'
               },
-              transitTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 0,
-                maxValue: 0,
-                unitText: 'Day',
-                unitCode: 'DAY'
+              deliveryTime: {
+                '@type': 'ShippingDeliveryTime',
+                handlingTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 0,
+                  maxValue: 1,
+                  unitText: 'Day',
+                  unitCode: 'DAY'
+                },
+                transitTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 0,
+                  maxValue: 0,
+                  unitText: 'Day',
+                  unitCode: 'DAY'
+                }
+              },
+              shippingDestination: {
+                '@type': 'DefinedRegion',
+                addressCountry: 'IN'
               }
-            },
-            shippingDestination: {
-              '@type': 'DefinedRegion',
-              addressCountry: 'IN'
             }
-          }
+          } : {})
         },
         ...finalSchema
       };
@@ -166,21 +169,44 @@ const SEOHelmet = ({
     schemas.push(generateEEATStructuredData());
 
     const categorySlugMap: Record<string, string> = {
+      'AI Utilities': 'ai',
+      'ai': 'ai',
       'Image Tools': 'image',
+      'image': 'image',
       'PDF Tools': 'pdf',
+      'pdf': 'pdf',
       'Video Tools': 'video',
+      'video': 'video',
       'Audio Tools': 'audio',
+      'audio': 'audio',
       'Text Tools': 'text',
+      'text': 'text',
       'Security Tools': 'security',
+      'security': 'security',
       'Developer Tools': 'dev',
+      'dev': 'dev',
       'Finance Tools': 'finance',
+      'finance': 'finance',
       'Education Tools': 'education',
+      'education': 'education',
       'SEO Tools': 'seo',
+      'seo': 'seo',
+      'Date & Time': 'date-time',
       'Date & Time Tools': 'date-time',
+      'date-time': 'date-time',
       'Internet Tools': 'internet',
+      'internet': 'internet',
       'ZIP Tools': 'zip',
+      'zip': 'zip',
+      'Social Media': 'social',
       'Social Media Tools': 'social',
+      'social': 'social',
       'Govt Legal Tools': 'govt-legal',
+      'govt-legal': 'govt-legal',
+      'E-commerce Tools': 'ecommerce',
+      'ecommerce': 'ecommerce',
+      'Email Marketing Tools': 'email',
+      'email': 'email',
     };
 
     const generateBreadcrumbSchema = () => {
@@ -195,7 +221,8 @@ const SEOHelmet = ({
       ];
 
       if (pathSegments.length > 0 && pathSegments[0] === 'category' && pathSegments[1]) {
-        const categoryName = pathSegments[1].charAt(0).toUpperCase() + pathSegments[1].slice(1) + ' Tools';
+        const cat = getCategoryById(pathSegments[1]);
+        const categoryName = cat ? cat.name : (pathSegments[1].charAt(0).toUpperCase() + pathSegments[1].slice(1) + ' Tools');
         breadcrumbs.push({
           '@type': 'ListItem',
           position: 2,

@@ -11526,6 +11526,20 @@ export const getToolSeoMetadata = (toolSlug: string): ToolSeoMetadata | null => 
   let slug = toolSlug;
   if (slug === 'page-speed-checklist-generator') slug = 'page-speed-checklist';
   if (slug === 'og-image-preview-tool') slug = 'og-image-preview';
+  if (slug === 'jpg-to-png') slug = 'jpg-to-png-converter';
+  if (slug === 'jpg-to-webp') slug = 'jpg-to-webp-converter';
+  if (slug === 'png-to-jpg') slug = 'png-to-jpg-converter';
+  if (slug === 'png-to-webp') slug = 'png-to-webp-converter';
+  if (slug === 'webp-to-jpg') slug = 'webp-to-jpg-converter';
+  if (slug === 'webp-to-png') slug = 'webp-to-png-converter';
+  if (slug === 'pdf-unlocker') slug = 'pdf-unlock';
+  if (slug === 'broken-image') slug = 'broken-image-finder';
+  if (slug === 'domain-age') slug = 'domain-age-checker';
+  if (slug === 'page-seo') slug = 'ai-page-seo-analyzer';
+  if (slug === 'robotstxt-generator') slug = 'robots-txt-generator';
+  if (slug === 'utm-builder') slug = 'utm-link-builder';
+  if (slug === 'line-break') slug = 'line-break-generator';
+  if (slug === 'ai-video-to-audio') slug = 'video-to-audio';
 
   const toolData = toolSeoEnhancements[slug];
   if (!toolData) return null;
