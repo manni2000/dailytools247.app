@@ -2,7 +2,7 @@
     "cleanUrls": true,
     "rewrites": [
         {
-            "source": "/(.*)",
+            "source": "/((?!assets/|public/|category/|blogs/|about|privacy|terms|write-for-us|categories|blogs|api-docs|pdf-merge|pdf-split|pdf-to-image|pdf-to-word|pdf-to-powerpoint|pdf-to-excel|word-to-pdf|powerpoint-to-pdf|html-to-pdf|pdf-password|pdf-unlock|pdf-page-remover|pdf-rotate|pdf-reorder|pdf-add-signature|crop-pdf|passport-photo-resizer|pdf-compressor|signature-maker|document-template|qr-code-generator|qr-code-scanner|png-to-jpg-converter|jpg-to-png-converter|webp-to-png-converter|png-to-webp-converter|webp-to-jpg-converter|jpg-to-webp-converter|image-compressor|image-resize|image-crop|ai-background-remover|image-to-pdf|image-base64|image-dpi-checker|exif-viewer|favicon-generator|video-to-audio|video-trim|video-speed|video-thumbnail|video-resolution|audio-converter|ai-speech-to-text|audio-trimmer|audio-merger|audio-speed|word-counter|case-converter|remove-spaces|line-sorter|duplicate-remover|markdown-to-html|ai-text-summarizer|text-diff|password-generator|password-strength|hash-generator|base64-encoder|uuid-generator|ai-password-strength-explainer|data-breach-email-checker|file-hash-comparison|exif-location-remover|ai-text-redaction|ai-qr-phishing-scanner|secure-notes|ai-url-reputation-checker|date-difference|age-calculator|working-days-calculator|countdown-timer|world-time|json-formatter|regex-tester|jwt-decoder|url-encoder|color-converter|lorem-ipsum-generator|ai-cron-generator|http-header-checker|token-calculator|color-palettes|api-response-formatter|ai-json-to-typescript-interface|ai-sql-query-beautifier|jwt-token-expiry-calculator|environment-variable-generator|ai-postman-collection-generator|ai-dockerfile-generator|curl-to-axios-converter|http-status-code-explainer|ip-lookup|user-agent-parser|dns-lookup|ssl-checker|website-ping|website-screenshot|scientific-calculator|percentage-calculator|unit-converter|compound-interest-calculator|simple-interest-calculator|cgpa-to-percentage|lcm-hcf-calculator|ai-study-timetable-generator|ai-mcq-generator|emi-calculator|gst-calculator|salary-calculator|currency-converter|startup-burn-rate-calculator|ai-saas-pricing-calculator|emi-comparison|ai-tax-slab-analyzer|invoice-generator|profit-margin-calculator|freelancer-rate-calculator|stock-cagr-calculator|ai-budget-planner|salary-breakup-generator|mutual-fund-calculator|lumpsum-calculator|sip-calculator|roi-calculator|barcode-generator|ecommerce-calculator|gst-invoice-generator|ai-shadow-adder|watermark-adder|white-background-adder|bulk-image-resizer|ai-image-color-enhancer|create-zip|extract-zip|password-zip|compression-zip|ai-hashtag-generator|ai-bio-generator|caption-formatter|line-break-generator|link-in-bio|ai-whatsapp-status-generator|ai-meme-generator|ai-meta-tag-generator|keyword-density-checker|robots-txt-generator|sitemap-validator|page-speed-checklist-generator|og-image-preview-tool|broken-image-finder|utm-link-builder|domain-age-checker|ai-tech-stack-detector|ai-page-seo-analyzer|html-validator|css-validator|ping-test|ai-email-subject-line-generator|ai-email-signature-generator|html-email-previewer|ai-spam-score-checker|ai-email-template-builder|ai-email-header-analyzer|spf-record-generator|dkim-generator|dmarc-generator|mailto-link-generator|.*\\.[a-zA-Z0-9]+$).*)",
             "destination": "/index.html"
         }
     ],
@@ -33,6 +33,193 @@
                     "value": "public, max-age=31536000, immutable"
                 }
             ]
+        }
+    ],
+    "redirects": [
+        {
+            "source": "/background-remover",
+            "destination": "/ai-background-remover",
+            "permanent": true
+        },
+        {
+            "source": "/shadow-adder",
+            "destination": "/ai-shadow-adder",
+            "permanent": true
+        },
+        {
+            "source": "/image-color-enhancer",
+            "destination": "/ai-image-color-enhancer",
+            "permanent": true
+        },
+        {
+            "source": "/ai-video-to-audio",
+            "destination": "/video-to-audio",
+            "permanent": true
+        },
+        {
+            "source": "/speech-to-text",
+            "destination": "/ai-speech-to-text",
+            "permanent": true
+        },
+        {
+            "source": "/ai-markdown-to-html",
+            "destination": "/markdown-to-html",
+            "permanent": true
+        },
+        {
+            "source": "/text-summarizer",
+            "destination": "/ai-text-summarizer",
+            "permanent": true
+        },
+        {
+            "source": "/password-strength-explainer",
+            "destination": "/ai-password-strength-explainer",
+            "permanent": true
+        },
+        {
+            "source": "/text-redaction",
+            "destination": "/ai-text-redaction",
+            "permanent": true
+        },
+        {
+            "source": "/qr-phishing-scanner",
+            "destination": "/ai-qr-phishing-scanner",
+            "permanent": true
+        },
+        {
+            "source": "/url-reputation-checker",
+            "destination": "/ai-url-reputation-checker",
+            "permanent": true
+        },
+        {
+            "source": "/cron-generator",
+            "destination": "/ai-cron-generator",
+            "permanent": true
+        },
+        {
+            "source": "/json-to-typescript-interface",
+            "destination": "/ai-json-to-typescript-interface",
+            "permanent": true
+        },
+        {
+            "source": "/sql-query-beautifier",
+            "destination": "/ai-sql-query-beautifier",
+            "permanent": true
+        },
+        {
+            "source": "/postman-collection-generator",
+            "destination": "/ai-postman-collection-generator",
+            "permanent": true
+        },
+        {
+            "source": "/dockerfile-generator",
+            "destination": "/ai-dockerfile-generator",
+            "permanent": true
+        },
+        {
+            "source": "/ai-unit-converter",
+            "destination": "/unit-converter",
+            "permanent": true
+        },
+        {
+            "source": "/study-timetable-generator",
+            "destination": "/ai-study-timetable-generator",
+            "permanent": true
+        },
+        {
+            "source": "/mcq-generator",
+            "destination": "/ai-mcq-generator",
+            "permanent": true
+        },
+        {
+            "source": "/saas-pricing-calculator",
+            "destination": "/ai-saas-pricing-calculator",
+            "permanent": true
+        },
+        {
+            "source": "/tax-slab-analyzer",
+            "destination": "/ai-tax-slab-analyzer",
+            "permanent": true
+        },
+        {
+            "source": "/budget-planner",
+            "destination": "/ai-budget-planner",
+            "permanent": true
+        },
+        {
+            "source": "/meta-title-description-generator",
+            "destination": "/ai-meta-tag-generator",
+            "permanent": true
+        },
+        {
+            "source": "/ai-keyword-density-checker",
+            "destination": "/keyword-density-checker",
+            "permanent": true
+        },
+        {
+            "source": "/tech-stack-detector",
+            "destination": "/ai-tech-stack-detector",
+            "permanent": true
+        },
+        {
+            "source": "/page-seo-analyzer",
+            "destination": "/ai-page-seo-analyzer",
+            "permanent": true
+        },
+        {
+            "source": "/hashtag-generator",
+            "destination": "/ai-hashtag-generator",
+            "permanent": true
+        },
+        {
+            "source": "/bio-generator",
+            "destination": "/ai-bio-generator",
+            "permanent": true
+        },
+        {
+            "source": "/ai-caption-formatter",
+            "destination": "/caption-formatter",
+            "permanent": true
+        },
+        {
+            "source": "/meme-generator",
+            "destination": "/ai-meme-generator",
+            "permanent": true
+        },
+        {
+            "source": "/ai-whatsapp-status-generator",
+            "destination": "/ai-whatsapp-status-generator",
+            "permanent": true
+        },
+        {
+            "source": "/email-subject-line-generator",
+            "destination": "/ai-email-subject-line-generator",
+            "permanent": true
+        },
+        {
+            "source": "/email-signature-generator",
+            "destination": "/ai-email-signature-generator",
+            "permanent": true
+        },
+        {
+            "source": "/spam-score-checker",
+            "destination": "/ai-spam-score-checker",
+            "permanent": true
+        },
+        {
+            "source": "/email-template-builder",
+            "destination": "/ai-email-template-builder",
+            "permanent": true
+        },
+        {
+            "source": "/email-header-analyzer",
+            "destination": "/ai-email-header-analyzer",
+            "permanent": true
+        },
+        {
+            "source": "/developers",
+            "destination": "/api-docs",
+            "permanent": true
         }
     ]
 }

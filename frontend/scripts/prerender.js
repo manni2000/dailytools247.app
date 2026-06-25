@@ -41,42 +41,42 @@ function parseLocsFromSitemap(filePath) {
 // Custom page metadata mapping for static pages
 const staticPageMeta = {
   '/': {
-    title: 'Free AI Tool, PDF, Image & SEO Tools - DailyTools247',
+    title: 'Free AI Tool, PDF, Image & SEO Tools',
     description: '100+ free online tools for PDF, image, video, text & more. No signup required. Fast, private & browser-based.',
     keywords: ['free online tools', 'pdf converter', 'image compressor', 'qr code generator', 'video tools', 'dailytools247']
   },
   '/categories': {
-    title: 'All Categories — DailyTools247',
+    title: 'All Categories',
     description: 'Browse all categories of free online tools on DailyTools247. PDF, Image, Video, Developer, Finance, Security, and more.',
     keywords: ['tool categories', 'free online tools', 'pdf tools', 'image tools', 'developer tools', 'finance tools']
   },
   '/about': {
-    title: 'About Us — DailyTools247',
+    title: 'About Us',
     description: 'Learn about the mission, values, and creators of DailyTools247, a free online toolbox for daily utilities.',
     keywords: ['about dailytools247', 'free online toolbox', 'privacy focused tools', 'about us']
   },
   '/write-for-us': {
-    title: 'Write for Us | Guest Post Submission at Dailytools247',
+    title: 'Write for Us | Guest Post Submission',
     description: 'Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee.',
     keywords: ['write for us', 'guest post guidelines', 'guest post submission', 'guest author', 'submit guest post']
   },
   '/privacy': {
-    title: 'Privacy Policy — DailyTools247',
+    title: 'Privacy Policy',
     description: 'Read the privacy policy of DailyTools247. Your data security and privacy are our top priorities.',
     keywords: ['privacy policy', 'data security', 'local file processing', 'privacy guarantee']
   },
   '/terms': {
-    title: 'Terms of Service — DailyTools247',
+    title: 'Terms of Service',
     description: 'Read the terms of service of DailyTools247 online utilities.',
     keywords: ['terms of service', 'terms and conditions', 'user agreement', 'usage policy']
   },
   '/api-docs': {
-    title: 'API Reference & Documentation — DailyTools247',
+    title: 'API Reference & Documentation',
     description: 'Developers reference and API documentation for DailyTools247. Integrate and trigger local utility services directly.',
     keywords: ['api reference', 'developer api', 'api documentation', 'integrate tools']
   },
   '/blogs': {
-    title: 'DailyTools247 Blog — Tips, Guides & Tech Insights',
+    title: 'Blog — Tips, Guides & Tech Insights',
     description: 'Explore the DailyTools247 blog for practical guides, product comparisons, technology tips, and detailed tutorials.',
     keywords: ['dailytools247 blog', 'tech guides', 'pdf compression tips', 'image resizing tutorial']
   }

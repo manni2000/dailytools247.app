@@ -171,7 +171,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'image-compressor': {
     slug: 'image-compressor',
-    title: 'Image Compressor - Reduce Image Size Without Watermark Online',
+    title: 'Image Compressor - Reduce Image Size Without Watermark Online Free',
     description: 'Compress images online without watermark. Reduce file size while maintaining quality. Optimize JPG, PNG, WebP images for web. Free forever, no registration required.',
     keywords: [
       'image compressor',
@@ -564,7 +564,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-meta-tag-generator': {
     slug: 'ai-meta-tag-generator',
-    title: 'AI SEO Meta Description & Title Generator - Free Tag Maker',
+    title: 'AI SEO Meta Description & Title Generator - Free Tag Maker Online Free',
     description: 'Generate SEO-optimized meta titles and descriptions using AI. Perfect for SEO, WordPress, and Shopify. Instantly create click-through rate optimized tags and preview search snippets.',
     keywords: [
       'ai meta tag generator',
@@ -1470,7 +1470,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-text-summarizer': {
     slug: 'ai-text-summarizer',
-    title: 'AI Text Summarizer - Summarize Articles & Papers',
+    title: 'AI Text Summarizer - Summarize Articles & Papers Online Free',
     description: 'Summarize long articles, documents, notes, and research papers using AI-driven semantic relevance scoring.',
     keywords: [
       'ai text summarizer',
@@ -1742,7 +1742,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-compressor': {
     slug: 'pdf-compressor',
-    title: 'PDF Compressor Tool - Compress PDF Files for Government Documents',
+    title: 'PDF Compressor Tool - Compress PDF Files for Government Documents Online Free',
     description: 'Compress PDF files for government applications, passport photos, and official documents. Reduce file size while maintaining quality for online submissions.',
     keywords: [
       'pdf compressor',
@@ -2018,7 +2018,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-shadow-adder': {
     slug: 'ai-shadow-adder',
-    title: 'AI Image Shadow Adder - Add Drop Shadows to Product Images Online',
+    title: 'AI Image Shadow Adder - Add Drop Shadows to Product Images Online Free',
     description: 'Add professional drop shadows to product images for e-commerce. Customize blur, offset, opacity, and color for perfect product presentations.',
     keywords: [
       'ai shadow adder',
@@ -2178,7 +2178,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'markdown-to-html': {
     slug: 'markdown-to-html',
-    title: 'AI Markdown to HTML Converter - Format Markdown Code',
+    title: 'AI Markdown to HTML Converter - Format Markdown Code Online Free',
     description: 'Convert, format, and preview Markdown files to styled HTML layouts using AI-optimized stylesheets.',
     keywords: [
       'ai markdown to html',
@@ -2630,7 +2630,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'keyword-density-checker': {
     slug: 'keyword-density-checker',
-    title: 'AI Keyword Density Checker - Optimize Content Clusters',
+    title: 'AI Keyword Density Checker - Optimize Content Clusters Online Free',
     description: 'Analyze keyword density, frequency, and semantic content clusters in your writing using AI-driven optimization rules.',
     keywords: [
       'ai keyword density checker',
@@ -2916,7 +2916,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'video-to-audio': {
     slug: 'video-to-audio',
-    title: 'Video to Audio Transcriber - Extract & Transcribe Video',
+    title: 'Video to Audio Transcriber - Extract & Transcribe Video Online Free',
     description: 'Extract high-quality audio and generate transcription text from video files instantly using AI conversion models.',
     keywords: [
       'video to audio converter',
@@ -3076,7 +3076,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-tech-stack-detector': {
     slug: 'ai-tech-stack-detector',
-    title: 'AI Website Tech Stack Detector - Profile Website Tech',
+    title: 'AI Website Tech Stack Detector - Profile Website Tech Online Free',
     description: 'Profile any website\'s technology stack using AI-driven lookup. Identify hosting, frameworks, CMS, and analytics.',
     keywords: [
       'ai tech stack detector',
@@ -3192,7 +3192,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-qr-phishing-scanner': {
     slug: 'ai-qr-phishing-scanner',
-    title: 'AI QR Phishing Scanner - Audit Security & Redirects',
+    title: 'AI QR Phishing Scanner - Audit Security & Redirects Online Free',
     description: 'Scan and audit QR codes for phishing links, malicious redirects, and safety risks using AI reputational insights.',
     keywords: [
       'ai qr phishing scanner',
@@ -3265,7 +3265,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-json-to-typescript-interface': {
     slug: 'ai-json-to-typescript-interface',
-    title: 'AI JSON to TypeScript Converter - Type-Safe Interfaces',
+    title: 'AI JSON to TypeScript Converter - Type-Safe Interfaces Online Free',
     description: 'Convert raw JSON structures into clean, type-safe TypeScript interfaces or type declarations instantly using AI.',
     keywords: [
       'ai json to typescript converter',
@@ -3508,7 +3508,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'api-docs': {
     slug: 'api-docs',
-    title: 'API Documentation - Dailytools247 API Reference',
+    title: 'API Documentation API Reference',
     description: 'Complete API documentation for Dailytools247 tools. Learn how to integrate our tools into your applications. Perfect for developers.',
     keywords: [
       'api documentation',
@@ -3550,7 +3550,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'about': {
     slug: 'about',
-    title: 'About Dailytools247 Free Online Tools Platform',
+    title: 'About Free Online Tools Platform',
     description: 'Learn about Dailytools247 - your trusted platform for 100+ free online tools. Discover our mission, features, and commitment to privacy.',
     keywords: [
       'about dailytools247',
@@ -3590,7 +3590,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'privacy-policy': {
     slug: 'privacy-policy',
-    title: 'Privacy Policy - Dailytools247 Data Protection',
+    title: 'Privacy Policy Data Protection',
     description: 'Read Dailytools247 privacy policy. Learn how we protect your data, ensure privacy, and handle information securely.',
     keywords: [
       'privacy policy',
@@ -3629,7 +3629,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'terms-of-service': {
     slug: 'terms-of-service',
-    title: 'Terms of Service - Dailytools247 Terms and Conditions',
+    title: 'Terms of Service Terms and Conditions',
     description: 'Read Dailytools247 terms of service. Understand our terms, conditions, and usage policies for our free online tools platform.',
     keywords: [
       'terms of service',
@@ -3976,7 +3976,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   // Date & Time Tools
   'countdown-timer': {
     slug: 'countdown-timer',
-    title: 'Countdown Timer - Online Timer Free',
+    title: 'Countdown Timer - Online Timer Online Free',
     description: 'Set countdown timers for events, deadlines, and activities. Customizable with alerts. Perfect for presentations, cooking, and time management.',
     keywords: [
       'countdown timer',
@@ -4055,7 +4055,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'working-days': {
     slug: 'working-days',
-    title: 'Working Days Calculator - Calculate Business Days Online',
+    title: 'Working Days Calculator - Calculate Business Days Online Free',
     description: 'Calculate working days between dates excluding weekends and holidays. Perfect for project planning, payroll, and business calculations.',
     keywords: [
       'working days calculator',
@@ -4291,7 +4291,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-cron-generator': {
     slug: 'ai-cron-generator',
-    title: 'AI Cron Expression Generator - Write & Explain Schedules',
+    title: 'AI Cron Expression Generator - Write & Explain Schedules Online Free',
     description: 'Write, explain, and validate complex crontab schedule expressions using natural language AI commands.',
     keywords: [
       'ai cron expression generator',
@@ -4435,7 +4435,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-dockerfile-generator': {
     slug: 'ai-dockerfile-generator',
-    title: 'AI Dockerfile Generator - Build Optimized Containers',
+    title: 'AI Dockerfile Generator - Build Optimized Containers Online Free',
     description: 'Generate optimized, secure, and production-ready Dockerfiles for any tech stack using AI best practices.',
     keywords: [
       'ai dockerfile generator',
@@ -4892,7 +4892,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-sql-query-beautifier': {
     slug: 'ai-sql-query-beautifier',
-    title: 'AI SQL Query Builder & Beautifier - Format & Build SQL',
+    title: 'AI SQL Query Builder & Beautifier - Format & Build SQL Online Free',
     description: 'Format, beautify, build, and optimize complex SQL queries for PostgreSQL, MySQL, and SQL Server using AI guidelines.',
     keywords: [
       'ai sql query builder',
@@ -4958,7 +4958,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'token-calculator': {
     slug: 'token-calculator',
-    title: 'Token Calculator - Count Tokens for AI Models',
+    title: 'Token Calculator - Count Tokens for AI Models Online Free',
     description: 'Calculate token count for text input. Estimate costs for AI models like GPT. Perfect for developers working with AI APIs.',
     keywords: [
       'token calculator',
@@ -5115,7 +5115,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'compound-interest': {
     slug: 'compound-interest',
-    title: 'Compound Interest Calculator - Calculate Investment Growth Free',
+    title: 'Compound Interest Calculator - Calculate Investment Growth Online Free',
     description: 'Calculate compound interest on investments. See how your money grows over time. Perfect for financial planning and investment analysis.',
     keywords: [
       'compound interest calculator',
@@ -5192,7 +5192,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-mcq-generator': {
     slug: 'ai-mcq-generator',
-    title: 'AI MCQ Generator - Create Quizzes & Tests Instantly',
+    title: 'AI MCQ Generator - Create Quizzes & Tests Instantly Online Free',
     description: 'Generate multiple choice questions (MCQs) from any text, article, or topic using AI. Perfect for teachers, students, and exam prep.',
     keywords: [
       'ai mcq generator',
@@ -5258,7 +5258,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'unit-converter': {
     slug: 'unit-converter',
-    title: 'AI Unit Converter & Solver - Smart Dimensional Equations',
+    title: 'AI Unit Converter & Solver - Smart Dimensional Equations Online Free',
     description: 'Convert standard physical units and solve complex dimensional formula equations using AI algorithms. Real-time conversion feedback.',
     keywords: [
       'ai unit converter',
@@ -5405,7 +5405,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   // Finance Tools
   'ai-budget-planner': {
     slug: 'ai-budget-planner',
-    title: 'AI Budget Planner & Optimizer - Forecast Monthly Budget',
+    title: 'AI Budget Planner & Optimizer - Forecast Monthly Budget Online Free',
     description: 'Create, optimize, and forecast your personal or business monthly budget using AI advice and smart expense allocation.',
     keywords: [
       'ai budget planner',
@@ -5472,7 +5472,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'emi-comparison': {
     slug: 'emi-comparison',
-    title: 'EMI Comparison Tool - Compare Loan EMIs Online',
+    title: 'EMI Comparison Tool - Compare Loan EMIs Online Free',
     description: 'Compare EMIs from multiple lenders. Find the best loan rates and terms. Perfect for making informed borrowing decisions.',
     keywords: [
       'emi comparison tool',
@@ -5549,7 +5549,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'freelancer-rate-calculator': {
     slug: 'freelancer-rate-calculator',
-    title: 'Freelancer Rate Calculator - Calculate Hourly Rates',
+    title: 'Freelancer Rate Calculator - Calculate Hourly Rates Online Free',
     description: 'Calculate your ideal freelance hourly rate. Factor in expenses, taxes, and profit margin. Perfect for freelancers and consultants.',
     keywords: [
       'freelancer rate calculator',
@@ -5627,7 +5627,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'profit-margin-calculator': {
     slug: 'profit-margin-calculator',
-    title: 'Profit Margin Calculator - Calculate Business Profitability',
+    title: 'Profit Margin Calculator - Calculate Business Profitability Online Free',
     description: 'Calculate profit margin, markup, and profitability metrics. Analyze business performance. Perfect for entrepreneurs and businesses.',
     keywords: [
       'profit margin calculator',
@@ -5705,7 +5705,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-saas-pricing-calculator': {
     slug: 'ai-saas-pricing-calculator',
-    title: 'AI SaaS Pricing Optimizer - Model Unit Economics & Strategy',
+    title: 'AI SaaS Pricing Optimizer - Model Unit Economics & Strategy Online Free',
     description: 'Model and optimize your SaaS pricing structure, subscription tiers, and unit economics using AI strategy frameworks.',
     keywords: [
       'ai saas pricing calculator',
@@ -5771,7 +5771,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'salary-breakup-generator': {
     slug: 'salary-breakup-generator',
-    title: 'Salary Breakup Calculator - Calculate Take-Home Salary',
+    title: 'Salary Breakup Calculator - Calculate Take-Home Salary Online Free',
     description: 'Calculate detailed salary breakup with taxes and deductions. Find your take-home salary. Perfect for job offers and financial planning.',
     keywords: [
       'salary breakup calculator',
@@ -5849,7 +5849,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'startup-burn-rate-calculator': {
     slug: 'startup-burn-rate-calculator',
-    title: 'Startup Burn Rate Calculator - Track Cash Runway',
+    title: 'Startup Burn Rate Calculator - Track Cash Runway Online Free',
     description: 'Calculate startup burn rate and cash runway. Track monthly expenses and funding. Perfect for founders and investors.',
     keywords: [
       'startup burn rate calculator',
@@ -5927,7 +5927,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'stock-cagr-calculator': {
     slug: 'stock-cagr-calculator',
-    title: 'Stock CAGR Calculator - Calculate Investment Returns',
+    title: 'Stock CAGR Calculator - Calculate Investment Returns Online Free',
     description: 'Calculate Compound Annual Growth Rate for stocks and investments. Analyze historical performance. Perfect for investors.',
     keywords: [
       'stock cagr calculator',
@@ -6005,7 +6005,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-tax-slab-analyzer': {
     slug: 'ai-tax-slab-analyzer',
-    title: 'AI Tax Analyzer & Planner - Optimize Deductions & Liability',
+    title: 'AI Tax Analyzer & Planner - Optimize Deductions & Liability Online Free',
     description: 'Analyze your tax slabs, optimize deductions, and plan your income tax liability using AI-driven heuristics. Supports latest regimes.',
     keywords: [
       'ai tax analyzer',
@@ -6072,7 +6072,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   // Image Tools
   'exif-viewer': {
     slug: 'exif-viewer',
-    title: 'EXIF Viewer - Extract Image Metadata Online',
+    title: 'EXIF Viewer - Extract Image Metadata Online Free',
     description: 'View and analyze EXIF data from images. Extract camera settings, GPS location, and more. Perfect for photographers and metadata analysis.',
     keywords: [
       'exif viewer',
@@ -6228,7 +6228,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'image-base64': {
     slug: 'image-base64',
-    title: 'Image to Base64 Converter - Encode Images Online',
+    title: 'Image to Base64 Converter - Encode Images Online Free',
     description: 'Convert images to Base64 encoding. Embed images in HTML and CSS. Perfect for web development and email design.',
     keywords: [
       'image to base64 converter',
@@ -6306,7 +6306,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'image-crop': {
     slug: 'image-crop',
-    title: 'Image Cropper - Crop Images Free Online',
+    title: 'Image Cropper - Crop Images Online Free',
     description: 'Crop images with precision. Resize and trim photos to perfect dimensions. Perfect for social media and web design.',
     keywords: [
       'image cropper',
@@ -6384,7 +6384,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'image-dpi': {
     slug: 'image-dpi',
-    title: 'Image DPI Converter - Change Image Resolution Free Online',
+    title: 'Image DPI Converter - Change Image Resolution Online Free',
     description: 'Change image DPI and resolution settings. Optimize for print and web. Perfect for designers and print preparation.',
     keywords: [
       'image dpi converter',
@@ -6462,7 +6462,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'image-to-pdf': {
     slug: 'image-to-pdf',
-    title: 'Image to PDF Converter - Convert Images to PDF Online for Free',
+    title: 'Image to PDF Converter - Convert Images to PDF Online Free',
     description: 'Convert images to PDF documents. Merge multiple images into one PDF. Perfect for document creation and sharing.',
     keywords: [
       'image to pdf converter',
@@ -6540,7 +6540,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-whatsapp-status-generator': {
     slug: 'ai-whatsapp-status-generator',
-    title: 'AI WhatsApp Status Generator - Smart Quotes & Statuses',
+    title: 'AI WhatsApp Status Generator - Smart Quotes & Statuses Online Free',
     description: 'Generate engaging, creative WhatsApp statuses, quotes, and bio texts using AI. Select different moods and download status layouts.',
     keywords: [
       'ai whatsapp status generator',
@@ -6605,7 +6605,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'remove-spaces': {
     slug: 'remove-spaces',
-    title: 'Remove Extra Spaces - Clean Text Formatting Online for Free',
+    title: 'Remove Extra Spaces - Clean Text Formatting Online Free',
     description: 'Remove extra spaces, line breaks, and formatting from text. Clean up messy text instantly. Perfect for data cleaning and text normalization.',
     keywords: [
       'remove extra spaces',
@@ -6684,7 +6684,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   // Zip Tools
   'zip-compressor': {
     slug: 'zip-compressor',
-    title: 'ZIP Compressor - Compress Files to ZIP Online for Free',
+    title: 'ZIP Compressor - Compress Files to ZIP Online Free',
     description: 'Compress multiple files into ZIP format. Reduce file size for storage and sharing. Perfect for file organization and transfer.',
     keywords: [
       'zip compressor',
@@ -6762,7 +6762,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'zip-extractor': {
     slug: 'zip-extractor',
-    title: 'ZIP Extractor - Extract ZIP Files Online for Free',
+    title: 'ZIP Extractor - Extract ZIP Files Online Free',
     description: 'Extract and unzip ZIP archives online. View contents before extraction. Perfect for opening compressed files without software.',
     keywords: [
       'zip extractor',
@@ -6841,7 +6841,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'zip-merger': {
     slug: 'zip-merger',
-    title: 'ZIP Merger - Combine Multiple ZIP Files Online',
+    title: 'ZIP Merger - Combine Multiple ZIP Files Online Free',
     description: 'Merge multiple ZIP archives into one. Combine compressed files efficiently. Perfect for organizing and consolidating archives.',
     keywords: [
       'zip merger',
@@ -6919,7 +6919,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'create-zip': {
     slug: 'create-zip',
-    title: 'Create ZIP - Make ZIP Archives Online',
+    title: 'Create ZIP - Make ZIP Archives Online Free',
     description: 'Create ZIP archives from files and folders. Organize and compress data efficiently. Perfect for file backup and sharing.',
     keywords: [
       'create zip',
@@ -7234,7 +7234,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-url-reputation-checker': {
     slug: 'ai-url-reputation-checker',
-    title: 'AI URL Phishing & Safety Checker - Check Link Reputation',
+    title: 'AI URL Phishing & Safety Checker - Check Link Reputation Online Free',
     description: 'Analyze website URL safety, phishing risk, domain reputation, and SSL score using AI reputational intelligence.',
     keywords: [
       'ai url reputation checker',
@@ -7300,7 +7300,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-text-redaction': {
     slug: 'ai-text-redaction',
-    title: 'AI Text Redactor & PII Masker - Redact Sensitive Details',
+    title: 'AI Text Redactor & PII Masker - Redact Sensitive Details Online Free',
     description: 'Scan, mask, and redact sensitive PII details (emails, phone numbers, cards) from documents using AI-driven heuristics.',
     keywords: [
       'ai text redactor',
@@ -7367,7 +7367,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-meme-generator': {
     slug: 'ai-meme-generator',
-    title: 'AI Meme Generator - Generate Funny Memes & Text Overlays',
+    title: 'AI Meme Generator - Generate Funny Memes & Text Overlays Online Free',
     description: 'Generate viral memes and hilarious text suggestions using AI. Pick popular templates or upload your own image.',
     keywords: [
       'ai meme generator',
@@ -7515,7 +7515,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'world-time': {
     slug: 'world-time',
-    title: 'World Time Clock - Check Current Time Worldwide',
+    title: 'World Time Clock - Check Current Time Worldwide Online Free',
     description: 'Check current time in cities worldwide. Compare time zones, plan international meetings, and convert time between different locations instantly.',
     keywords: [
       'world time clock',
@@ -7679,7 +7679,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'http-header-checker': {
     slug: 'http-header-checker',
-    title: 'HTTP Header Checker - Analyze Response Headers Online',
+    title: 'HTTP Header Checker - Analyze Response Headers Online Free',
     description: 'Analyze HTTP response headers from any URL. View status codes, content type, caching headers, and security headers. Essential for debugging and SEO.',
     keywords: [
       'http header checker',
@@ -7760,7 +7760,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'jwt-token-expiry-calculator': {
     slug: 'jwt-token-expiry-calculator',
-    title: 'JWT Token Expiry Calculator - Check Token Expiration Online',
+    title: 'JWT Token Expiry Calculator - Check Token Expiration Online Free',
     description: 'Calculate JWT token expiry time and decode expiration claims. Check if tokens are expired or valid. Perfect for debugging authentication systems.',
     keywords: [
       'jwt token expiry calculator',
@@ -7842,7 +7842,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'environment-variable-generator': {
     slug: 'environment-variable-generator',
-    title: 'Environment Variable Generator - Create .env Files Online',
+    title: 'Environment Variable Generator - Create .env Files Online Free',
     description: 'Generate environment variable files (.env) for your applications. Create secure configuration files for development and production. Perfect for developers.',
     keywords: [
       'environment variable generator',
@@ -7924,7 +7924,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-postman-collection-generator': {
     slug: 'ai-postman-collection-generator',
-    title: 'AI Postman Collection Generator - Create API Collections Online',
+    title: 'AI Postman Collection Generator - Create API Collections Online Free',
     description: 'Generate Postman collections from API definitions or curl commands. Create structured API requests for testing and documentation. Perfect for API developers.',
     keywords: [
       'ai postman collection generator',
@@ -7995,7 +7995,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'curl-to-axios-converter': {
     slug: 'curl-to-axios-converter',
-    title: 'Curl to Axios Converter - Convert Curl Commands Online',
+    title: 'Curl to Axios Converter - Convert Curl Commands Online Free',
     description: 'Convert curl commands to Axios JavaScript code instantly. Generate ready-to-use Axios requests for your projects. Perfect for JavaScript developers.',
     keywords: [
       'curl to axios converter',
@@ -8077,7 +8077,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'http-status-code-explainer': {
     slug: 'http-status-code-explainer',
-    title: 'HTTP Status Code Explainer - Understand Status Codes',
+    title: 'HTTP Status Code Explainer - Understand Status Codes Online Free',
     description: 'Understand HTTP status codes with detailed explanations. Lookup 1xx, 2xx, 3xx, 4xx, and 5xx codes. Perfect for debugging web applications and APIs.',
     keywords: [
       'http status code explainer',
@@ -8409,7 +8409,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-study-timetable-generator': {
     slug: 'ai-study-timetable-generator',
-    title: 'AI Study Timetable Generator - Create Personalized Schedules',
+    title: 'AI Study Timetable Generator - Create Personalized Schedules Online Free',
     description: 'Generate optimized study schedules and daily timetables using AI. Input your subjects, hours, and goals for a balanced routine.',
     keywords: [
       'ai study timetable generator',
@@ -8483,7 +8483,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'lumpsum-calculator': {
     slug: 'lumpsum-calculator',
-    title: 'Lump Sum Calculator - Calculate Investment Returns Online',
+    title: 'Lump Sum Calculator - Calculate Investment Returns Online Free',
     description: 'Calculate returns on lump sum investments. Input amount, rate, and tenure to get projected maturity value. Perfect for planning one-time investments.',
     keywords: [
       'lump sum calculator',
@@ -8646,7 +8646,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'image-dpi-checker': {
     slug: 'image-dpi-checker',
-    title: 'Image DPI Checker - Check Image Resolution Online',
+    title: 'Image DPI Checker - Check Image Resolution Online Free',
     description: 'Check image DPI (dots per inch) and resolution. Verify print quality and image dimensions. Perfect for designers and print professionals.',
     keywords: [
       'image dpi checker',
@@ -8811,7 +8811,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'user-agent-parser': {
     slug: 'user-agent-parser',
-    title: 'User Agent Parser - Analyze Browser & Device Info',
+    title: 'User Agent Parser - Analyze Browser & Device Info Online Free',
     description: 'Parse and analyze user agent strings to identify browser, OS, and device. Perfect for analytics and debugging user access.',
     keywords: [
       'user agent parser',
@@ -8893,7 +8893,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'dns-lookup': {
     slug: 'dns-lookup',
-    title: 'DNS Lookup - Query DNS Records Online',
+    title: 'DNS Lookup - Query DNS Records Online Free',
     description: 'Query DNS records including A, AAAA, MX, NS, TXT, and more. Debug DNS issues and verify domain configuration. Perfect for network administrators.',
     keywords: [
       'dns lookup',
@@ -8975,7 +8975,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ssl-checker': {
     slug: 'ssl-checker',
-    title: 'SSL Checker - Verify SSL Certificate Online',
+    title: 'SSL Checker - Verify SSL Certificate Online Free',
     description: 'Check SSL certificate validity, expiration, and details. Verify HTTPS security for any domain. Perfect for website security audits.',
     keywords: [
       'ssl checker',
@@ -9057,7 +9057,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'website-ping': {
     slug: 'website-ping',
-    title: 'Website Ping - Check Website Response Time Online',
+    title: 'Website Ping - Check Website Response Time Online Free',
     description: 'Ping websites to check uptime and response time. Monitor website performance from multiple locations. Perfect for uptime monitoring.',
     keywords: [
       'website ping',
@@ -9139,7 +9139,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-to-image': {
     slug: 'pdf-to-image',
-    title: 'PDF to Image Converter - Convert PDF to JPG/PNG Online',
+    title: 'PDF to Image Converter - Convert PDF to JPG/PNG Online Free',
     description: 'Convert PDF pages to images (JPG, PNG) instantly. Extract pages as high-quality images. Perfect for presentations and design work.',
     keywords: [
       'pdf to image converter',
@@ -9223,7 +9223,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-password': {
     slug: 'pdf-password',
-    title: 'PDF Password Protection - Add Password to PDF Online',
+    title: 'PDF Password Protection - Add Password to PDF Online Free',
     description: 'Add password protection to PDF files. Secure your documents with encryption. Perfect for protecting sensitive documents.',
     keywords: [
       'pdf password protection',
@@ -9304,7 +9304,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-unlock': {
     slug: 'pdf-unlock',
-    title: 'PDF Unlock - Remove Password from PDF Online',
+    title: 'PDF Unlock - Remove Password from PDF Online Free',
     description: 'Remove password protection from PDF files. Unlock secured PDFs with the correct password. Perfect for accessing protected documents.',
     keywords: [
       'pdf unlock',
@@ -9386,7 +9386,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-page-remover': {
     slug: 'pdf-page-remover',
-    title: 'FREE PDF Page Remover - Delete Pages from PDF Instantly',
+    title: 'FREE PDF Page Remover - Delete Pages from PDF Instantly Online Free',
     description: 'Remove unwanted PDF pages in seconds! No software needed. Delete, extract & reorganize PDFs instantly. Try our FREE PDF page remover now!',
     keywords: [
       'pdf page remover',
@@ -9468,7 +9468,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-rotate': {
     slug: 'pdf-rotate',
-    title: 'PDF Rotate - Rotate PDF Pages Online',
+    title: 'PDF Rotate - Rotate PDF Pages Online Free',
     description: 'Rotate PDF pages to correct orientation. Fix sideways or upside-down pages. Perfect for scanned documents and PDFs.',
     keywords: [
       'pdf rotate',
@@ -9632,7 +9632,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-to-excel': {
     slug: 'pdf-to-excel',
-    title: 'PDF to Excel Converter - Convert PDF to XLS Online',
+    title: 'PDF to Excel Converter - Convert PDF to XLS Online Free',
     description: 'Convert PDF tables to Excel spreadsheets. Extract data from PDFs to editable XLS files. Perfect for data analysis and accounting.',
     keywords: [
       'pdf to excel converter',
@@ -9714,7 +9714,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'powerpoint-to-pdf': {
     slug: 'powerpoint-to-pdf',
-    title: 'PowerPoint to PDF Converter - Convert PPT to PDF Online',
+    title: 'PowerPoint to PDF Converter - Convert PPT to PDF Online Free',
     description: 'Convert PowerPoint presentations to PDF instantly. Preserve slides and formatting. Perfect for sharing and printing presentations.',
     keywords: [
       'powerpoint to pdf converter',
@@ -9796,7 +9796,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'html-to-pdf': {
     slug: 'html-to-pdf',
-    title: 'HTML to PDF Converter - Convert Webpages to PDF Online',
+    title: 'HTML to PDF Converter - Convert Webpages to PDF Online Free',
     description: 'Convert HTML code or webpages to PDF instantly. Perfect for saving web content and generating PDFs from HTML.',
     keywords: [
       'html to pdf converter',
@@ -9878,7 +9878,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'password-strength': {
     slug: 'password-strength',
-    title: 'Password Strength Checker - Test Password Security Online',
+    title: 'Password Strength Checker - Test Password Security Online Free',
     description: 'Test password strength and security. Analyze password complexity and get improvement suggestions. Perfect for creating secure passwords.',
     keywords: [
       'password strength checker',
@@ -9960,7 +9960,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'base64-encoder': {
     slug: 'base64-encoder',
-    title: 'Base64 Encoder/Decoder - Encode & Decode Base64 Online',
+    title: 'Base64 Encoder/Decoder - Encode & Decode Base64 Online Free',
     description: 'Encode and decode Base64 strings instantly. Convert text to Base64 and back. Perfect for developers working with encoded data.',
     keywords: [
       'base64 encoder/decoder',
@@ -10042,7 +10042,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'ai-password-strength-explainer': {
     slug: 'ai-password-strength-explainer',
-    title: 'AI Password Strength Explainer - Smart Security Analysis',
+    title: 'AI Password Strength Explainer - Smart Security Analysis Online Free',
     description: 'Learn about password security best practices. Understand what makes passwords strong and weak. Educational resource for security.',
     keywords: [
       'ai password strength explainer',
@@ -10112,7 +10112,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'data-breach-email-checker': {
     slug: 'data-breach-email-checker',
-    title: 'Data Breach Email Checker - Check if Email Was Compromised',
+    title: 'Data Breach Email Checker - Check if Email Was Compromised Online Free',
     description: 'Check if your email address has been involved in data breaches. Verify account security and take action. Perfect for security awareness.',
     keywords: [
       'data breach email checker',
@@ -10194,7 +10194,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'file-hash-comparison': {
     slug: 'file-hash-comparison',
-    title: 'File Hash Comparison - Compare File Hashes Online',
+    title: 'File Hash Comparison - Compare File Hashes Online Free',
     description: 'Compare file hashes to verify integrity and detect changes. Generate and compare MD5, SHA-1, SHA-256 hashes. Perfect for file verification.',
     keywords: [
       'file hash comparison',
@@ -10276,7 +10276,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'passport-photo-resizer': {
     slug: 'passport-photo-resizer',
-    title: 'Passport/Aadhaar Photo Resizer - Resize Photos Under 50KB Online',
+    title: 'Passport/Aadhaar Photo Resizer - Resize Photos Under 50KB Online Free',
     description: 'Resize photos for passport, Aadhaar, visa and other government documents. Compress to under 50KB with white background. Perfect for online applications.',
     keywords: [
       'passport photo resizer',
@@ -10440,7 +10440,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'document-template': {
     slug: 'document-template',
-    title: 'Document Template Generator - Create Legal Agreements Online',
+    title: 'Document Template Generator - Create Legal Agreements Online Free',
     description: 'Generate legal document templates including rental agreements, loan agreements, NDAs, and employment contracts. Free, customizable templates.',
     keywords: [
       'document template generator',
@@ -10522,7 +10522,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'watermark-adder': {
     slug: 'watermark-adder',
-    title: 'Watermark Adder - Add Watermarks to Protect Product Images',
+    title: 'Watermark Adder - Add Watermarks to Protect Product Images Online Free',
     description: 'Add custom text or image watermarks to product photos. Protect your images from theft while maintaining professional appearance.',
     keywords: [
       'watermark adder',
@@ -10559,7 +10559,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-image-color-enhancer': {
     slug: 'ai-image-color-enhancer',
-    title: 'AI Image Color Enhancer - Enhance Product Photo Colors',
+    title: 'AI Image Color Enhancer - Enhance Product Photo Colors Online Free',
     description: 'Enhance and adjust colors in product photos. Improve brightness, contrast, saturation, and make products look more appealing.',
     keywords: [
       'ai image color enhancer',
@@ -10595,7 +10595,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'white-background-adder': {
     slug: 'white-background-adder',
-    title: 'White Background Adder - Add White Background to Product Images',
+    title: 'White Background Adder - Add White Background to Product Images Online Free',
     description: 'Add clean white backgrounds to product images for e-commerce listings. Perfect for Amazon, eBay, and marketplace compliance.',
     keywords: [
       'white background adder',
@@ -10649,7 +10649,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'bulk-image-resizer': {
     slug: 'bulk-image-resizer',
-    title: 'Bulk Image Resizer - Resize Multiple Images at Once',
+    title: 'Bulk Image Resizer - Resize Multiple Images at Once Online Free',
     description: 'Resize multiple images simultaneously for e-commerce catalogs. Batch processing with aspect ratio control and quality preservation.',
     keywords: [
       'bulk image resizer',
@@ -10795,7 +10795,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-email-subject-line-generator': {
     slug: 'ai-email-subject-line-generator',
-    title: 'AI Email Subject Line Generator - High-Converting Subject Lines',
+    title: 'AI Email Subject Line Generator - High-Converting Subject Lines Online Free',
     description: 'Generate high-converting email subject lines using AI. Score open-rate probability, tone, and character limits in real-time.',
     keywords: [
       'ai email subject line generator',
@@ -10817,7 +10817,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-email-signature-generator': {
     slug: 'ai-email-signature-generator',
-    title: 'AI Email Signature Generator - Create Professional HTML Signatures',
+    title: 'AI Email Signature Generator - Create Professional HTML Signatures Online Free',
     description: 'Design beautiful, responsive HTML email signatures using AI layouts. Compatible with Gmail, Outlook, and Apple Mail.',
     keywords: [
       'ai email signature generator',
@@ -10839,7 +10839,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'html-email-previewer': {
     slug: 'html-email-previewer',
-    title: 'HTML Email Previewer - Responsive Email Templates Tester Free',
+    title: 'HTML Email Previewer - Responsive Email Templates Tester Online Free',
     description: 'Preview marketing emails on desktop and mobile viewports. Validate code size limits, check compatibility issues, and test unsubscribe links.',
     keywords: [
       'html email previewer',
@@ -10864,7 +10864,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-spam-score-checker': {
     slug: 'ai-spam-score-checker',
-    title: 'AI Email Spam Checker - Analyze Deliverability & Risks',
+    title: 'AI Email Spam Checker - Analyze Deliverability & Risks Online Free',
     description: 'Scan your email subject and body copy for spam trigger words and deliverability risks using AI heuristics before sending.',
     keywords: [
       'ai email spam checker',
@@ -10886,7 +10886,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-email-template-builder': {
     slug: 'ai-email-template-builder',
-    title: 'AI Email Template Generator - Design Responsive HTML Newsletters',
+    title: 'AI Email Template Generator - Design Responsive HTML Newsletters Online Free',
     description: 'Build responsive, inline-styled HTML email newsletter templates using AI drag-and-drop code generators.',
     keywords: [
       'ai email template generator',
@@ -10908,7 +10908,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-email-header-analyzer': {
     slug: 'ai-email-header-analyzer',
-    title: 'AI Email Header Analyzer - Trace Mail Server Routing',
+    title: 'AI Email Header Analyzer - Trace Mail Server Routing Online Free',
     description: 'Trace mail server routing, check transmission delays, and analyze email header hops using AI diagnostics.',
     keywords: [
       'ai email header analyzer',
@@ -10930,7 +10930,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'spf-record-generator': {
     slug: 'spf-record-generator',
-    title: 'SPF Record Generator - Create Sender Policy Framework Records',
+    title: 'SPF Record Generator - Create Sender Policy Framework Records Online Free',
     description: 'Generate customized SPF records for domain name TXT files. Instantly query active DNS records to check for existing SPF rules.',
     keywords: [
       'spf record generator',
@@ -10956,7 +10956,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'dkim-generator': {
     slug: 'dkim-generator',
-    title: 'DKIM Generator - Create RSA Public/Private Key Pairs Online',
+    title: 'DKIM Generator - Create RSA Public/Private Key Pairs Online Free',
     description: 'Generate cryptographically secure 1024-bit or 2048-bit RSA key pairs. Automatically format the public key into DKIM TXT record syntax.',
     keywords: [
       'dkim generator',
@@ -10980,7 +10980,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'dmarc-generator': {
     slug: 'dmarc-generator',
-    title: 'DMARC Generator - Create and Verify Domain DMARC Records',
+    title: 'DMARC Generator - Create and Verify Domain DMARC Records Online Free',
     description: 'Build robust DMARC DNS policies for quarantine or reject rules. Check active DNS servers to confirm DMARC status.',
     keywords: [
       'dmarc generator',
@@ -11030,7 +11030,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-page-seo-analyzer': {
     slug: 'ai-page-seo-analyzer',
-    title: 'AI SEO Checker & Analyzer - Audit Web Page SEO',
+    title: 'AI SEO Checker & Analyzer - Audit Web Page SEO Online Free',
     description: 'Conduct a comprehensive, AI-driven SEO audit and analysis of any web page. Check titles, tags, links, and speed.',
     keywords: [
       'ai seo checker',
@@ -11052,7 +11052,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-hashtag-generator': {
     slug: 'ai-hashtag-generator',
-    title: 'AI Hashtag Generator - Viral Social Media Tags Maker',
+    title: 'AI Hashtag Generator - Viral Social Media Tags Maker Online Free',
     description: 'Generate trending and viral hashtags for Instagram, TikTok, YouTube, and LinkedIn using AI. Maximize your post reach and engagement instantly.',
     keywords: [
       'ai hashtag generator',
@@ -11074,7 +11074,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'ai-bio-generator': {
     slug: 'ai-bio-generator',
-    title: 'AI Bio Generator - Free Custom Social Profile Bios',
+    title: 'AI Bio Generator - Free Custom Social Profile Bios Online Free',
     description: 'Create professional and engaging social media bios for Twitter, LinkedIn, and Instagram using AI. Customize tone and length easily.',
     keywords: [
       'ai bio generator',
@@ -11096,7 +11096,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
   },
   'caption-formatter': {
     slug: 'caption-formatter',
-    title: 'AI Social Caption Generator & Formatter - Free Post Writer',
+    title: 'AI Social Caption Generator & Formatter - Free Post Writer Online Free',
     description: 'Generate and style engaging social media captions for Instagram, Facebook, and LinkedIn using AI. Add spaces, emojis, and styling.',
     keywords: [
       'ai caption generator',
@@ -11119,7 +11119,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'crop-pdf': {
     slug: 'crop-pdf',
-    title: 'Crop PDF Online - Crop PDF Pages & Margins Free',
+    title: 'Crop PDF Online - Crop PDF Pages & Margins Online Free',
     description: 'Crop PDF pages online for free. Adjust margins, trim borders, and crop specific page areas. Perfect for resizing PDF documents, trimming white borders, and custom formatting.',
     keywords: [
       'crop pdf',
@@ -11171,7 +11171,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'pdf-reorder': {
     slug: 'pdf-reorder',
-    title: 'Reorder PDF Pages Online - Rearrange PDF Pages Free',
+    title: 'Reorder PDF Pages Online - Rearrange PDF Pages Online Free',
     description: 'Rearrange and reorder PDF pages online. Drag and drop pages to change sequence, delete pages, and customize page order. Free, fast, and secure tool.',
     keywords: [
       'reorder pdf',
@@ -11222,7 +11222,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'broken-image-finder': {
     slug: 'broken-image-finder',
-    title: 'Broken Image Finder - Check Website for Broken Images',
+    title: 'Broken Image Finder - Check Website for Broken Images Online Free',
     description: 'Scan your website or HTML code for broken images online. Identify 404 image links, missing alt tags, and slow-loading images instantly. Perfect for SEO audits.',
     keywords: [
       'broken image finder',
@@ -11273,7 +11273,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'domain-age-checker': {
     slug: 'domain-age-checker',
-    title: 'Domain Age Checker - Find Website Creation Date & Age',
+    title: 'Domain Age Checker - Find Website Creation Date & Age Online Free',
     description: 'Check the age of any domain name instantly. Find domain registration date, expiry date, update history, and domain authority details. Free online WHOIS tool.',
     keywords: [
       'domain age checker',
@@ -11323,7 +11323,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'page-speed-checklist': {
     slug: 'page-speed-checklist',
-    title: 'Page Speed Checklist - Optimize Website Performance & Load Time',
+    title: 'Page Speed Checklist - Optimize Website Performance & Load Time Online Free',
     description: 'Get a complete, step-by-step checklist to optimize web page speed. Improve Core Web Vitals, optimize images, enable caching, and minify CSS/JS. Boost search rankings.',
     keywords: [
       'page speed checklist',
@@ -11373,7 +11373,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'utm-link-builder': {
     slug: 'utm-link-builder',
-    title: 'UTM Link Builder - Generate Google Analytics Campaign URLs',
+    title: 'UTM Link Builder - Generate Google Analytics Campaign URLs Online Free',
     description: 'Build trackable campaign URLs with UTM parameters online. Add source, medium, campaign, term, and content to track links in Google Analytics. Free UTM generator.',
     keywords: [
       'utm link builder',
@@ -11424,7 +11424,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'line-break-generator': {
     slug: 'line-break-generator',
-    title: 'Line Break Generator - Instagram Caption Spaces Maker',
+    title: 'Line Break Generator - Instagram Caption Spaces Maker Online Free',
     description: 'Clean line breaks and spaces for Instagram captions. Avoid caption formatting issues, add blank lines, and format posts with spaces. No special dots needed.',
     keywords: [
       'line break generator',
@@ -11472,7 +11472,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
   'link-in-bio': {
     slug: 'link-in-bio',
-    title: 'Link in Bio Generator - Custom Mobile Landing Pages',
+    title: 'Link in Bio Generator - Custom Mobile Landing Pages Online Free',
     description: 'Create a free, custom link in bio landing page. Share multiple links, social media profiles, and promotions from a single mobile-optimized URL. Perfect for Instagram.',
     keywords: [
       'link in bio',
