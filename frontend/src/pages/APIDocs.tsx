@@ -152,15 +152,15 @@ const APIDocs = () => {
   const getMethodColor = (method: string) => {
     switch (method) {
       case "GET":
-        return "bg-green-500/10 text-green-500 border-green-500/20";
+        return "bg-green-500/10 text-green-500 border-green-500/25";
       case "POST":
-        return "bg-blue-500/10 text-blue-500 border-blue-500/20";
+        return "bg-blue-500/10 text-blue-500 border-blue-500/25";
       case "PUT":
-        return "bg-yellow-500/10 text-yellow-500 border-yellow-500/20";
+        return "bg-yellow-500/10 text-yellow-500 border-yellow-500/25";
       case "DELETE":
-        return "bg-red-500/10 text-red-500 border-red-500/20";
+        return "bg-red-500/10 text-red-500 border-red-500/25";
       default:
-        return "bg-gray-500/10 text-gray-500 border-gray-500/20";
+        return "bg-zinc-500/10 text-zinc-500 border-zinc-500/25";
     }
   };
 
@@ -172,126 +172,139 @@ const APIDocs = () => {
         category="Developer Tools"
         toolSlug="api-docs"
       />
-      <div className="flex min-h-screen flex-col bg-background">
+      <div className="flex min-h-screen flex-col bg-background text-foreground overflow-x-hidden">
         <Header />
-        <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8">
-          <div className="text-center mb-8 sm:mb-12 px-2 relative">
-            <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.02]">
-              API Documentation
+        
+        {/* Premium Banner Hero Section */}
+        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-primary/15 via-background to-primary/5 py-16 sm:py-20 md:py-24">
+          {/* Background pattern */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <svg className="absolute inset-0 h-full w-full stroke-primary/[0.04] [mask-image:radial-gradient(100%_100%_at_top,white,transparent)]" aria-hidden="true">
+              <defs>
+                <pattern id="grid-pattern-apidocs" width="24" height="24" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                  <path d="M.5 24V.5H24" fill="none" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid-pattern-apidocs)" />
+            </svg>
+            <div className="absolute -left-1/4 -top-1/4 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl opacity-60" />
+            <div className="absolute -right-1/4 -bottom-1/4 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl opacity-50" />
+          </div>
+
+          <div className="container relative px-4 text-center">
+            <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-xs sm:text-sm font-semibold text-primary backdrop-blur-sm shadow-sm">
+              <Sparkles className="h-4 w-4" />
+              API Platform for Developers
             </div>
-            <div className="relative z-10">
-              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-                Dailytools247 API for Developers
-              </h1>
-              <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-2 leading-relaxed">
-                Integrate powerful image processing, text manipulation, and utility tools directly into your applications.
-                <span className="text-primary font-semibold"> Free tier with 100 requests/day.</span>
-              </p>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight max-w-4xl mx-auto">
+              Integrate <span className="gradient-text">Dailytools247</span> directly into your apps
+            </h1>
+            
+            <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
+              Access powerful utility APIs for PDF editing, image conversions, text processing, and document management. 
+              <span className="text-primary font-semibold"> 100 free requests daily.</span>
+            </p>
 
-              {/* Feature cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto">
-                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                    <Zap className="h-5 w-5 text-yellow-600" />
-                  </div>
-                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Lightning Fast</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">Optimized endpoints with sub-second response times</p>
-                </div>
-
-                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                    <Shield className="h-5 w-5 text-green-600" />
-                  </div>
-                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Enterprise Security</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">Bank-level encryption and secure API key management</p>
-                </div>
-
-                <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-md transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.02]">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                    <Rocket className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <h3 className="text-foreground font-semibold mb-2 text-sm sm:text-base">Easy Integration</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">RESTful API with comprehensive documentation</p>
-                </div>
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-10 border-t border-border/40 pt-8">
+              <div className="bg-card/40 backdrop-blur-sm border border-border p-4 rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl font-extrabold text-primary mb-1">15+</div>
+                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">API Endpoints</div>
               </div>
-
-              {/* Quick stats */}
-              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-xs sm:text-sm">
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">15+</div>
-                  <div className="text-muted-foreground">API Endpoints</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">99.9%</div>
-                  <div className="text-muted-foreground">Uptime</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">&lt;100ms</div>
-                  <div className="text-muted-foreground">Avg Response</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">100</div>
-                  <div className="text-muted-foreground">Free Requests/Day</div>
-                </div>
+              <div className="bg-card/40 backdrop-blur-sm border border-border p-4 rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl font-extrabold text-primary mb-1">99.9%</div>
+                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Uptime SLA</div>
+              </div>
+              <div className="bg-card/40 backdrop-blur-sm border border-border p-4 rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl font-extrabold text-primary mb-1">&lt;100ms</div>
+                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Avg Latency</div>
+              </div>
+              <div className="bg-card/40 backdrop-blur-sm border border-border p-4 rounded-2xl shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                <div className="text-2xl sm:text-3xl font-extrabold text-primary mb-1">100</div>
+                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Free Req / Day</div>
               </div>
             </div>
           </div>
+        </section>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-8">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted border border-border h-auto p-1 rounded-xl">
-              <TabsTrigger value="getstarted" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Get Started</TabsTrigger>
-              <TabsTrigger value="endpoints" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">Endpoints</TabsTrigger>
-              <TabsTrigger value="playground" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 flex items-center justify-center gap-1 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">
-                <Terminal className="h-3.5 w-3.5 text-current" />
+        {/* Content Section */}
+        <main className="flex-1 container mx-auto px-4 py-12">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8 max-w-7xl mx-auto">
+            {/* Elegant Tabs Trigger Row */}
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted/65 p-1 rounded-2xl border border-border/80 backdrop-blur-sm h-auto">
+              <TabsTrigger 
+                value="getstarted" 
+                className="text-xs sm:text-sm py-2.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md border border-transparent data-[state=active]:border-border/60"
+              >
+                Get Started
+              </TabsTrigger>
+              <TabsTrigger 
+                value="endpoints" 
+                className="text-xs sm:text-sm py-2.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md border border-transparent data-[state=active]:border-border/60"
+              >
+                Endpoints
+              </TabsTrigger>
+              <TabsTrigger 
+                value="playground" 
+                className="text-xs sm:text-sm py-2.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md border border-transparent data-[state=active]:border-border/60 flex items-center justify-center gap-1.5"
+              >
+                <Terminal className="h-4 w-4" />
                 Playground
               </TabsTrigger>
-              <TabsTrigger value="mykeys" className="text-xs sm:text-sm py-2 sm:py-2.5 px-1 sm:px-3 text-muted-foreground data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-lg transition-colors duration-200">My Keys</TabsTrigger>
+              <TabsTrigger 
+                value="mykeys" 
+                className="text-xs sm:text-sm py-2.5 px-2 rounded-xl transition-all duration-300 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md border border-transparent data-[state=active]:border-border/60"
+              >
+                My Keys
+              </TabsTrigger>
             </TabsList>
 
             {/* Get Started Tab */}
-            <TabsContent value="getstarted" className="space-y-4 sm:space-y-8">
+            <TabsContent value="getstarted" className="space-y-8 outline-none">
               {activeTab === "getstarted" && (
                 <>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-                    {/* Generate API Key */}
-                    <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
-                      <CardHeader className="p-4 sm:p-6 relative z-10">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-xl flex items-center justify-center mb-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Generate API Key Card */}
+                    <Card className="bg-card border border-border/80 rounded-3xl shadow-lg relative overflow-hidden group hover:shadow-xl hover:border-primary/20 transition-all duration-400">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+                      <CardHeader className="p-6 pb-4 sm:p-8 sm:pb-4 relative z-10">
+                        <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center mb-5">
                           <Key className="h-6 w-6 text-primary" />
                         </div>
-                        <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
+                        <CardTitle className="flex items-center gap-2 text-foreground text-xl font-bold">
                           Generate API Key
                         </CardTitle>
-                        <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                          Get your free API key to start making requests instantly
+                        <CardDescription className="text-sm text-muted-foreground font-light leading-relaxed">
+                          Enter your email to retrieve or create your free API key, enabling immediate request triggers.
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                      <CardContent className="space-y-4 p-6 sm:p-8 pt-0 sm:pt-0 relative z-10">
                         <Input
                           id="api-email-input"
                           type="email"
                           placeholder="your@email.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
+                          className="bg-background border-border/80 text-foreground placeholder:text-muted-foreground text-sm h-12 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors"
                         />
                         <Input
                           id="api-key-name-input"
-                          placeholder="Key name (optional)"
+                          placeholder="Key identifier (e.g. Production, Test)"
                           value={keyName}
                           onChange={(e) => setKeyName(e.target.value)}
-                          className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-primary/50 transition-colors"
+                          className="bg-background border-border/80 text-foreground placeholder:text-muted-foreground text-sm h-12 rounded-xl focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors"
                         />
                         <Button
                           id="generate-api-key-btn"
                           onClick={generateApiKey}
                           disabled={generatingKey}
-                          className="w-full h-10 sm:h-11 text-sm bg-primary hover:bg-primary/95 text-primary-foreground transition-colors duration-300"
+                          className="w-full h-12 text-sm font-semibold rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground transition-all duration-300 shadow-md shadow-primary/15"
                         >
                           {generatingKey ? (
                             <>
                               <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2"></div>
-                              Generating...
+                              Generating your credentials...
                             </>
                           ) : (
                             <>
@@ -302,31 +315,31 @@ const APIDocs = () => {
                         </Button>
 
                         {newApiKey && (
-                          <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 border border-emerald-100 rounded-lg relative overflow-hidden">
+                          <div className="mt-4 p-4 bg-green-500/5 border border-green-500/20 rounded-2xl relative overflow-hidden">
                             <div className="relative z-10">
-                              <p className="text-xs sm:text-sm text-emerald-800 mb-2 font-medium flex items-center gap-2">
-                                <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                                Your API Key (save it securely!)
+                              <p className="text-xs text-green-600 dark:text-green-400 mb-2.5 font-bold flex items-center gap-2">
+                                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                Credentials Generated Successfully (Save this safely!)
                               </p>
-                              <div className="flex items-center gap-1 sm:gap-2">
-                                <code className="flex-1 text-[10px] sm:text-xs bg-background p-2 rounded text-emerald-700 font-mono break-all leading-relaxed border border-emerald-200/60">
-                                  {showKey ? newApiKey : "•".repeat(20)}
+                              <div className="flex items-center gap-2">
+                                <code className="flex-1 text-xs bg-muted/40 p-3 rounded-xl text-green-600 dark:text-green-400 font-semibold font-mono break-all leading-relaxed border border-green-500/25">
+                                  {showKey ? newApiKey : "•".repeat(32)}
                                 </code>
                                 <Button
                                   size="sm"
                                   variant="ghost"
                                   onClick={() => setShowKey(!showKey)}
-                                  className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
+                                  className="h-10 w-10 p-0 rounded-xl hover:bg-green-500/10 text-green-600 hover:text-green-500"
                                 >
-                                  {showKey ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+                                  {showKey ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
                                 </Button>
                                 <Button
                                   size="sm"
                                   variant="ghost"
                                   onClick={() => copyToClipboard(newApiKey)}
-                                  className="h-8 w-8 p-0 shrink-0 hover:bg-emerald-100 text-emerald-700"
+                                  className="h-10 w-10 p-0 rounded-xl hover:bg-green-500/10 text-green-600 hover:text-green-500"
                                 >
-                                  <Copy className="h-3.5 w-3.5" />
+                                  <Copy className="h-4.5 w-4.5" />
                                 </Button>
                               </div>
                             </div>
@@ -335,169 +348,191 @@ const APIDocs = () => {
                       </CardContent>
                     </Card>
 
-                    {/* Quick Start */}
-                    <Card className="bg-card border border-border hover:shadow-lg hover:border-primary/20 transition-transform transition-shadow transition-colors duration-300 hover:scale-[1.01] overflow-hidden relative group">
-                      <CardHeader className="p-4 sm:p-6 relative z-10">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
-                          <Code2 className="h-6 w-6 text-blue-600" />
+                    {/* Quick Start Card with Mock Light Console */}
+                    <Card className="bg-card border border-border/80 rounded-3xl shadow-lg relative overflow-hidden group hover:shadow-xl hover:border-primary/20 transition-all duration-400">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+                      <CardHeader className="p-6 pb-4 sm:p-8 sm:pb-4 relative z-10">
+                        <div className="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center mb-5">
+                          <Code2 className="h-6 w-6 text-blue-500" />
                         </div>
-                        <CardTitle className="flex items-center gap-2 text-foreground text-base sm:text-lg">
-                          Quick Start
+                        <CardTitle className="flex items-center gap-2 text-foreground text-xl font-bold">
+                          Quick Start Guide
                         </CardTitle>
-                        <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                          Start using the API in seconds with our simple integration
+                        <CardDescription className="text-sm text-muted-foreground font-light leading-relaxed">
+                          Initialize endpoints in seconds by supplying your key inside standard headers.
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                      <CardContent className="space-y-4 p-6 sm:p-8 pt-0 sm:pt-0 relative z-10">
                         <div>
-                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                            <ArrowRight className="h-3 w-3 text-primary" />
-                            BASE URL
+                          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                            API Base URL
                           </p>
-                          <div className="flex items-center gap-1.5 sm:gap-2">
-                            <code className="flex-1 text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary break-all border border-border font-mono">
-                              {API_BASE_URL}/api/v1
+                          <div className="flex items-center gap-2">
+                            <code className="flex-1 text-xs bg-muted/30 p-3 rounded-xl text-primary font-mono border border-border">
+                              {API_BASE_URL || "https://www.dailytools247.app"}/api/v1
                             </code>
                             <Button
                               size="sm"
                               variant="ghost"
-                              onClick={() => copyToClipboard(`${API_BASE_URL}/api/v1`)}
-                              className="h-8 w-8 p-0 shrink-0 hover:bg-primary/10 text-primary"
+                              onClick={() => copyToClipboard(`${API_BASE_URL || "https://www.dailytools247.app"}/api/v1`)}
+                              className="h-10 w-10 p-0 rounded-xl hover:bg-primary/10 text-primary"
                             >
-                              <Copy className="h-3.5 w-3.5" />
+                              <Copy className="h-4.5 w-4.5" />
                             </Button>
                           </div>
                         </div>
 
                         <div>
-                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                            <ArrowRight className="h-3 w-3 text-primary" />
-                            Authentication
+                          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                            Required Headers
                           </p>
-                          <code className="block text-xs sm:text-sm bg-muted p-2 rounded-lg text-foreground break-all border border-border font-mono">
-                            Header: X-API-Key: YOUR_API_KEY
+                          <code className="block text-xs bg-muted/30 p-3 rounded-xl text-foreground font-mono border border-border">
+                            X-API-Key: YOUR_API_KEY
                           </code>
                         </div>
 
                         <div>
-                          <p className="text-xs sm:text-sm text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-2">
-                            <ArrowRight className="h-3 w-3 text-primary" />
-                            Example Request
+                          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+                            <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                            cURL Example
                           </p>
-                          <pre className="block w-full text-xs sm:text-sm bg-muted p-2 rounded-lg text-primary whitespace-pre-wrap break-words sm:whitespace-pre sm:break-normal border border-border font-mono leading-relaxed">
-                            {`curl -X POST "${API_BASE_URL}/api/v1/text/word-count" \\
+                          <div className="rounded-2xl border border-border bg-muted/20 overflow-hidden shadow-sm">
+                            <div className="flex items-center justify-between px-4 py-2 bg-muted/40 border-b border-border">
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></span>
+                                <span className="w-2.5 h-2.5 rounded-full bg-green-400/80"></span>
+                              </div>
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => copyToClipboard(`curl -X POST "${API_BASE_URL || "https://www.dailytools247.app"}/api/v1/text/word-count" \\\n  -H "X-API-Key: YOUR_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"text": "Hello world!"}'`)}
+                                className="h-6 px-2 text-[10px] hover:bg-muted/80 text-muted-foreground hover:text-foreground"
+                              >
+                                <Copy className="h-3 w-3 mr-1" />
+                                Copy
+                              </Button>
+                            </div>
+                            <pre className="p-3.5 text-[11px] sm:text-xs text-foreground font-mono overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal leading-relaxed">
+                              {`curl -X POST "${API_BASE_URL || "https://www.dailytools247.app"}/api/v1/text/word-count" \\
   -H "X-API-Key: YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"text": "Hello world!"}'`}
-                          </pre>
+                            </pre>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
                   </div>
 
-                  {/* Enhanced Rate Limits */}
-                  <Card className="bg-card border border-border hover:shadow-lg transition-shadow duration-300 overflow-hidden relative group">
-                    <CardHeader className="p-4 sm:p-6 relative z-10">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
-                          <Clock className="h-6 w-6 text-purple-600" />
+                  {/* Rate Limits & Features Grid */}
+                  <Card className="bg-card border border-border/80 rounded-3xl shadow-lg overflow-hidden">
+                    <CardHeader className="p-6 sm:p-8 border-b border-border/40 bg-muted/20">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center">
+                          <Clock className="h-6 w-6 text-purple-500" />
                         </div>
                         <div>
-                          <CardTitle className="text-foreground text-base sm:text-lg">Rate Limits & Features</CardTitle>
-                          <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                            Understand your usage limits and API capabilities
+                          <CardTitle className="text-foreground text-xl font-bold">API Specifications & Policy</CardTitle>
+                          <CardDescription className="text-sm text-muted-foreground font-light leading-relaxed">
+                            A clear outline of rate limits, response structures, and formatting details.
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                            Free Tier
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="bg-muted/15 p-5 rounded-2xl border border-border">
+                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
+                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            Rate Limits
                           </h4>
-                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                          <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
                               100 requests per day
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
                               Resets at midnight UTC
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              All endpoints available
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Unlimited access endpoints
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Up to 3 API keys per email
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              3 credentials per account
                             </li>
                           </ul>
                         </div>
-                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+                        
+                        <div className="bg-muted/15 p-5 rounded-2xl border border-border">
+                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                             Response Headers
                           </h4>
-                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm font-mono">
-                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
+                          <ul className="space-y-2 text-muted-foreground text-[11px] sm:text-xs font-mono">
+                            <li className="bg-muted p-2 rounded-xl text-foreground border border-border">
                               X-RateLimit-Limit: 100
                             </li>
-                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
+                            <li className="bg-muted p-2 rounded-xl text-foreground border border-border">
                               X-RateLimit-Remaining: 95
                             </li>
-                            <li className="break-all bg-muted/60 p-2 rounded-lg text-foreground border border-border">
-                              X-RateLimit-Reset: 1234567890
+                            <li className="bg-muted p-2 rounded-xl text-foreground border border-border">
+                              X-RateLimit-Reset: 172900
                             </li>
                           </ul>
                         </div>
-                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+
+                        <div className="bg-muted/15 p-5 rounded-2xl border border-border">
+                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                            Supported Formats
+                            Payload Formats
                           </h4>
-                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              JSON requests/responses
+                          <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              JSON Requests/Responses
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Form data uploads
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Multi-part File Uploads
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Base64 encoding
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Base64 String support
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              CORS enabled
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              CORS Enabled headers
                             </li>
                           </ul>
                         </div>
-                        <div className="bg-muted/30 p-4 rounded-lg border border-border">
-                          <h4 className="font-semibold text-foreground mb-3 text-sm sm:text-base flex items-center gap-2">
+
+                        <div className="bg-muted/15 p-5 rounded-2xl border border-border">
+                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                             Error Handling
                           </h4>
-                          <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm">
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Detailed error messages
+                          <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Detailed JSON exceptions
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Standard HTTP codes
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Standard HTTP statuses
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Rate limit warnings
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Rate Limit warnings
                             </li>
-                            <li className="flex items-center gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                              Validation feedback
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                              Strict property validation
                             </li>
                           </ul>
                         </div>
@@ -509,169 +544,171 @@ const APIDocs = () => {
             </TabsContent>
 
             {/* API Endpoints Tab */}
-            <TabsContent value="endpoints" className="space-y-4 sm:space-y-6">
+            <TabsContent value="endpoints" className="space-y-6 outline-none">
               {activeTab === "endpoints" && (
                 loading ? (
-                  <div className="text-center py-8 sm:py-12">
-                    <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-primary mx-auto"></div>
-                    <p className="text-slate-400 mt-3 sm:mt-4 text-sm">Loading API documentation...</p>
-                  </div>) : (
+                  <div className="text-center py-16 sm:py-20">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-slate-400 mt-2 text-sm font-light">Compiling endpoints data...</p>
+                  </div>
+                ) : (
                   apiDocs?.endpoints?.map((category, catIndex) => (
-                    <Card key={catIndex} className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
-                      <CardHeader className="p-4 sm:p-6 relative z-10">
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-xl flex items-center justify-center">
+                    <Card key={catIndex} className="bg-card border border-border/80 rounded-3xl shadow-md overflow-hidden">
+                      <CardHeader className="p-5 sm:p-6 border-b border-border/40 bg-muted/10">
+                        <div className="flex items-center gap-3.5">
+                          <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center">
                             <Terminal className="h-6 w-6 text-primary" />
                           </div>
                           <div>
-                            <CardTitle className="text-foreground text-base sm:text-lg">{category.category}</CardTitle>
-                            <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                              {category.endpoints.length} endpoint{category.endpoints.length !== 1 ? 's' : ''} available
+                            <CardTitle className="text-foreground text-lg sm:text-xl font-bold">{category.category}</CardTitle>
+                            <CardDescription className="text-xs sm:text-sm text-muted-foreground font-light">
+                              Contains {category.endpoints.length} active service endpoint{category.endpoints.length !== 1 ? 's' : ''}.
                             </CardDescription>
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
+                      <CardContent className="p-0 divide-y divide-border/60">
                         {category.endpoints.map((endpoint, endIndex) => {
                           const endpointId = `${catIndex}-${endIndex}`;
                           const isExpanded = expandedEndpoints.has(endpointId);
 
                           return (
-                            <div
-                              key={endIndex}
-                              className="border border-border rounded-lg overflow-hidden bg-muted/20 hover:bg-muted/30 transition-colors duration-300"
-                            >
+                            <div key={endIndex} className="transition-all duration-300">
                               <button
                                 onClick={() => toggleEndpoint(endpointId)}
-                                className="w-full flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 hover:bg-muted/40 transition-colors text-left group"
+                                className="w-full flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 p-4 sm:p-5 hover:bg-muted/15 transition-colors text-left group"
                               >
-                                <div className="flex items-center gap-2 sm:gap-3">
+                                <div className="flex items-center gap-3.5 min-w-0 flex-1">
                                   {isExpanded ? (
-                                    <ChevronDown className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
+                                    <ChevronDown className="h-4.5 w-4.5 text-muted-foreground shrink-0 transition-transform duration-300 rotate-180" />
                                   ) : (
-                                    <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0 transition-transform duration-200" />
+                                    <ChevronRight className="h-4.5 w-4.5 text-muted-foreground shrink-0 transition-transform duration-300" />
                                   )}
-                                  <Badge className={`${getMethodColor(endpoint.method)} font-mono text-[10px] sm:text-xs shrink-0`}>
+                                  <Badge className={`${getMethodColor(endpoint.method)} border font-mono text-[10px] sm:text-xs shrink-0 rounded-lg px-2.5 py-1 font-bold`}>
                                     {endpoint.method}
                                   </Badge>
+                                  <code className="text-xs sm:text-sm text-foreground break-all group-hover:text-primary transition-colors font-mono font-medium truncate">
+                                    {endpoint.path}
+                                  </code>
                                 </div>
-                                <code className="text-xs sm:text-sm text-foreground break-all flex-1 group-hover:text-primary transition-colors duration-200 font-mono">{endpoint.path}</code>
-                                <span className="text-xs sm:text-sm text-muted-foreground hidden lg:block shrink-0 group-hover:text-foreground transition-colors duration-200">
+                                <span className="text-xs sm:text-sm text-muted-foreground shrink-0 group-hover:text-foreground transition-colors font-light">
                                   {endpoint.name}
                                 </span>
                               </button>
 
                               {isExpanded && (
-                                <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-2 border-t border-border bg-card">
-                                  {/* Mobile endpoint name */}
-                                  <p className="text-xs text-primary font-medium mb-2 lg:hidden">{endpoint.name}</p>
-                                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                                    {endpoint.description}
-                                  </p>
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 sm:p-6 md:p-8 border-t border-border bg-card/45">
+                                  {/* Left Details Column */}
+                                  <div className="lg:col-span-7 space-y-5">
+                                    <div>
+                                      <p className="text-xs text-primary font-bold uppercase tracking-wider mb-2 lg:hidden">{endpoint.name}</p>
+                                      <p className="text-muted-foreground text-sm sm:text-base font-light leading-relaxed">
+                                        {endpoint.description}
+                                      </p>
+                                    </div>
 
-                                  {endpoint.parameters.length > 0 && (
-                                    <div className="mb-3 sm:mb-4">
-                                      <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                                        Parameters
-                                      </h5>
-                                      {/* Mobile: Card layout */}
-                                      <div className="space-y-2 sm:hidden">
-                                        {endpoint.parameters.map((param, pIndex) => (
-                                          <div key={pIndex} className="bg-muted/40 p-2.5 rounded-lg border border-border">
-                                            <div className="flex items-center justify-between mb-1">
-                                              <code className="text-xs font-mono text-primary">{param.name}</code>
-                                              {param.required ? (
-                                                <Badge variant="destructive" className="text-[10px] h-5">Required</Badge>
-                                              ) : (
-                                                <Badge variant="secondary" className="text-[10px] h-5">Optional</Badge>
+                                    {endpoint.parameters.length > 0 && (
+                                      <div className="space-y-3">
+                                        <h5 className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-2 border-b border-border/40 pb-2">
+                                          <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                          Request Parameters
+                                        </h5>
+                                        
+                                        {/* Mobile view parameters */}
+                                        <div className="space-y-3 sm:hidden">
+                                          {endpoint.parameters.map((param, pIndex) => (
+                                            <div key={pIndex} className="bg-muted/40 p-3 rounded-2xl border border-border text-xs space-y-1.5">
+                                              <div className="flex items-center justify-between">
+                                                <code className="font-mono text-primary font-bold">{param.name}</code>
+                                                {param.required ? (
+                                                  <Badge variant="destructive" className="text-[10px] rounded px-1.5 py-0.5">Required</Badge>
+                                                ) : (
+                                                  <Badge variant="secondary" className="text-[10px] rounded px-1.5 py-0.5">Optional</Badge>
+                                                )}
+                                              </div>
+                                              <p className="text-[11px] text-muted-foreground font-medium">Type: {param.type}</p>
+                                              <p className="text-muted-foreground font-light leading-normal">{param.description}</p>
+                                              {param.default !== undefined && (
+                                                <p className="text-[10px] text-muted-foreground/60">Default: {String(param.default)}</p>
                                               )}
                                             </div>
-                                            <p className="text-[10px] text-muted-foreground mb-1">Type: {param.type}</p>
-                                            <p className="text-[11px] text-muted-foreground">
-                                              {param.description}
-                                              {param.default !== undefined && (
-                                                <span className="text-muted-foreground/60"> (default: {String(param.default)})</span>
-                                              )}
-                                            </p>
-                                          </div>
-                                        ))}
-                                      </div>
-                                      {/* Desktop: Table layout */}
-                                      <div className="overflow-x-auto hidden sm:block">
-                                        <table className="w-full text-sm border-collapse">
-                                          <thead>
-                                            <tr className="text-left text-xs border-b border-border">
-                                              <th className="pb-2 pr-4 text-foreground font-semibold">Name</th>
-                                              <th className="pb-2 pr-4 text-foreground font-semibold">Type</th>
-                                              <th className="pb-2 pr-4 text-foreground font-semibold">Required</th>
-                                              <th className="pb-2 text-foreground font-semibold">Description</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody className="text-foreground">
-                                            {endpoint.parameters.map((param, pIndex) => (
-                                              <tr key={pIndex} className="border-b border-border/50">
-                                                <td className="py-2 pr-4 font-mono text-primary text-xs">
-                                                  {param.name}
-                                                </td>
-                                                <td className="py-2 pr-4 text-muted-foreground text-xs">
-                                                  <Badge variant="outline" className="text-[10px] border-border bg-muted/30">
-                                                    {param.type}
-                                                  </Badge>
-                                                </td>
-                                                <td className="py-2 pr-4">
-                                                  {param.required ? (
-                                                    <Badge variant="destructive" className="text-[10px]">Required</Badge>
-                                                  ) : (
-                                                    <Badge variant="secondary" className="text-[10px]">Optional</Badge>
-                                                  )}
-                                                </td>
-                                                <td className="py-2 text-muted-foreground text-xs">
-                                                  {param.description}
-                                                  {param.default !== undefined && (
-                                                    <span className="text-muted-foreground/60 ml-1">(default: {String(param.default)})</span>
-                                                  )}
-                                                </td>
-                                              </tr>
-                                            ))}
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  )}
+                                          ))}
+                                        </div>
 
-                                  <div className="space-y-3">
-                                    <div>
-                                      <div className="flex items-center justify-between mb-2">
-                                        <h5 className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
-                                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                                          Example Request
-                                        </h5>
+                                        {/* Desktop table parameters */}
+                                        <div className="overflow-x-auto hidden sm:block border border-border/80 rounded-2xl bg-background/50">
+                                          <table className="w-full text-xs sm:text-sm border-collapse text-left">
+                                            <thead>
+                                              <tr className="border-b border-border bg-muted/40 text-foreground font-semibold text-xs tracking-wider uppercase">
+                                                <th className="py-2.5 px-4">Parameter</th>
+                                                <th className="py-2.5 px-4">Type</th>
+                                                <th className="py-2.5 px-4">Required</th>
+                                                <th className="py-2.5 px-4">Description</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody className="text-muted-foreground font-light">
+                                              {endpoint.parameters.map((param, pIndex) => (
+                                                <tr key={pIndex} className="border-b border-border/40 last:border-0 odd:bg-card/45 hover:bg-muted/10 transition-colors">
+                                                  <td className="py-3 px-4 font-mono text-primary font-bold">{param.name}</td>
+                                                  <td className="py-3 px-4">
+                                                    <span className="bg-muted px-2 py-1 rounded text-[10px] sm:text-xs font-semibold border border-border/60">{param.type}</span>
+                                                  </td>
+                                                  <td className="py-3 px-4">
+                                                    {param.required ? (
+                                                      <span className="inline-flex px-2 py-0.5 rounded text-[10px] sm:text-xs font-semibold bg-red-500/10 text-red-500">Required</span>
+                                                    ) : (
+                                                      <span className="inline-flex px-2 py-0.5 rounded text-[10px] sm:text-xs font-semibold bg-slate-500/10 text-slate-500">Optional</span>
+                                                    )}
+                                                  </td>
+                                                  <td className="py-3 px-4 text-xs">
+                                                    {param.description}
+                                                    {param.default !== undefined && (
+                                                      <span className="text-[10px] text-muted-foreground/60 block mt-0.5">(default: {String(param.default)})</span>
+                                                    )}
+                                                  </td>
+                                                </tr>
+                                              ))}
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  {/* Right Terminal Console Column - Fully Light Styled */}
+                                  <div className="lg:col-span-5 space-y-4">
+                                    {/* Request Box */}
+                                    <div className="rounded-2xl border border-border bg-muted/20 overflow-hidden shadow-sm">
+                                      <div className="flex items-center justify-between px-4 py-2.5 bg-muted/40 border-b border-border">
+                                        <div className="flex items-center gap-1.5">
+                                          <span className="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
+                                          <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></span>
+                                          <span className="w-2.5 h-2.5 rounded-full bg-green-400/80"></span>
+                                          <span className="text-xs text-muted-foreground font-mono ml-2">Request</span>
+                                        </div>
                                         <Button
                                           size="sm"
                                           variant="ghost"
-                                          onClick={() =>
-                                            copyToClipboard(
-                                              endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)
-                                            )
-                                          }
-                                          className="h-7 px-2 text-xs hover:bg-green-50 text-green-600"
+                                          onClick={() => copyToClipboard(endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL))}
+                                          className="h-7 px-2 text-[10px] hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-lg"
                                         >
                                           <Copy className="h-3 w-3 mr-1" />
                                           Copy
                                         </Button>
                                       </div>
-                                      <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal border border-border font-mono">
+                                      <pre className="p-4 text-[11px] sm:text-xs text-foreground font-mono overflow-x-auto whitespace-pre-wrap break-all sm:whitespace-pre sm:break-normal leading-relaxed">
                                         {endpoint.example.curl.replace("{{baseUrl}}", API_BASE_URL)}
                                       </pre>
                                     </div>
 
-                                    <div>
-                                      <h5 className="text-xs sm:text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        Example Response
-                                      </h5>
-                                      <pre className="text-[10px] sm:text-xs bg-muted/60 p-2 sm:p-3 rounded-lg text-foreground overflow-x-auto border border-border font-mono">
+                                    {/* Response Box */}
+                                    <div className="rounded-2xl border border-border bg-muted/20 overflow-hidden shadow-sm">
+                                      <div className="flex items-center justify-between px-4 py-2.5 bg-muted/40 border-b border-border">
+                                        <div className="flex items-center gap-1.5">
+                                          <span className="text-xs text-muted-foreground font-mono">Response (200 OK)</span>
+                                        </div>
+                                      </div>
+                                      <pre className="p-4 text-[11px] sm:text-xs text-teal-600 dark:text-teal-400 font-mono overflow-x-auto leading-relaxed max-h-60 overflow-y-auto">
                                         {JSON.stringify(endpoint.example.response, null, 2)}
                                       </pre>
                                     </div>
@@ -684,141 +721,123 @@ const APIDocs = () => {
                       </CardContent>
                     </Card>
                   ))
-                ))}
+                )
+              )}
             </TabsContent>
 
             {/* API Playground Tab */}
-            <TabsContent value="playground" className="space-y-4 sm:space-y-6">
+            <TabsContent value="playground" className="space-y-6 outline-none">
               {activeTab === "playground" && (
-                <APIPlayground
-                  apiDocs={apiDocs}
-                  onApiKeyChange={noopApiKeyChange}
-                />
+                <div className="rounded-3xl border border-border shadow-lg p-1 bg-muted/10">
+                  <APIPlayground
+                    apiDocs={apiDocs}
+                    onApiKeyChange={noopApiKeyChange}
+                  />
+                </div>
               )}
             </TabsContent>
 
             {/* My API Keys Tab */}
-            <TabsContent value="mykeys" className="space-y-4 sm:space-y-6">
+            <TabsContent value="mykeys" className="space-y-6 outline-none">
               {activeTab === "mykeys" && (
-                <Card className="bg-card border border-border hover:shadow-md transition-shadow duration-300 overflow-hidden relative group">
-                  <CardHeader className="p-4 sm:p-6 relative z-10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl flex items-center justify-center">
-                        <Key className="h-6 w-6 text-purple-600" />
+                <Card className="bg-card border border-border/80 rounded-3xl shadow-lg relative overflow-hidden group hover:shadow-xl hover:border-primary/20 transition-all duration-400">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+                  <CardHeader className="p-6 sm:p-8 relative z-10">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center">
+                        <Shield className="h-6 w-6 text-purple-500" />
                       </div>
                       <div>
-                        <CardTitle className="text-foreground text-base sm:text-lg">Manage Your API Keys</CardTitle>
-                        <CardDescription className="text-xs sm:text-sm text-muted-foreground">
-                          Enter your email to view and manage your existing API keys
+                        <CardTitle className="text-foreground text-xl font-bold">Credential Center</CardTitle>
+                        <CardDescription className="text-sm text-muted-foreground font-light leading-relaxed">
+                          Query and display your keys by checking your registered account email.
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0 sm:pt-0 relative z-10">
-                    <div className="flex flex-col sm:flex-row gap-2">
+                  <CardContent className="space-y-6 p-6 sm:p-8 pt-0 sm:pt-0 relative z-10">
+                    <div className="flex flex-col sm:flex-row gap-3 max-w-2xl">
                       <Input
                         id="lookup-email-input"
                         type="email"
                         placeholder="your@email.com"
                         value={lookupEmail}
                         onChange={(e) => setLookupEmail(e.target.value)}
-                        className="bg-background border-border text-foreground placeholder:text-muted-foreground text-sm h-10 sm:h-11 focus:border-purple-500/50 transition-colors"
+                        className="bg-background border-border/85 text-foreground placeholder:text-muted-foreground text-sm h-12 rounded-xl focus:border-purple-500/50 transition-colors"
                       />
                       <Button
                         id="lookup-keys-btn"
                         onClick={lookupKeys}
-                        className="h-10 sm:h-11 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
+                        className="h-12 sm:px-6 bg-purple-600 hover:bg-purple-700 text-white transition-all duration-300 rounded-xl font-semibold shadow-md shadow-purple-500/15"
                       >
-                        <Shield className="h-4 w-4 mr-2" />
+                        <Shield className="h-4.5 w-4.5 mr-2" />
                         Lookup Keys
                       </Button>
                     </div>
 
                     {userKeys.length > 0 && (
-                      <div className="space-y-3 mt-3 sm:mt-4">
-                        <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
-                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                          Found {userKeys.length} API key{userKeys.length !== 1 ? 's' : ''}
+                      <div className="space-y-4 border-t border-border/40 pt-6">
+                        <div className="flex items-center gap-2 text-sm font-bold text-muted-foreground">
+                          <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shrink-0"></span>
+                          Found {userKeys.length} active API key{userKeys.length !== 1 ? 's' : ''}
                         </div>
-                        {userKeys.map((key, index) => (
-                          <div
-                            key={index}
-                            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 bg-muted/20 rounded-lg border border-border hover:bg-muted/30 transition-colors duration-300 group"
-                          >
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-2 mb-2">
-                                <p className="text-foreground font-medium text-sm sm:text-base">{key.name}</p>
-                                <div className="flex gap-1">
-                                  {key.status === "active" && (
-                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                  )}
-                                </div>
-                              </div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <code className="text-xs sm:text-sm text-muted-foreground break-all bg-background px-2 py-1 rounded border border-border font-mono">
-                                  {key.key.slice(0, 8)}••••••••••••{key.key.slice(-4)}
-                                </code>
-                                <span className="text-[10px] text-muted-foreground italic bg-muted px-1.5 py-0.5 rounded border border-border/40 select-none">
-                                  Masked
-                                </span>
-                              </div>
-                              {/* API key usage info */}
-                              {typeof key.usage === "number" && (
-                                <div className="flex flex-wrap gap-2 mb-2">
-                                  <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-blue-50 text-blue-800 border border-blue-100">
-                                    Used: {key.usage}
+                        <div className="grid gap-4">
+                          {userKeys.map((key, index) => (
+                            <div
+                              key={index}
+                              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-5 bg-muted/15 rounded-2xl border border-border hover:bg-muted/20 transition-all duration-300"
+                            >
+                              <div className="min-w-0 flex-1 space-y-2.5">
+                                <div className="flex items-center gap-2.5">
+                                  <p className="text-foreground font-bold text-base">{key.name || "Default Key"}</p>
+                                  <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ${
+                                    key.status === "active" ? "bg-green-500/15 text-green-600 dark:text-green-400 border border-green-500/20" : "bg-red-500/15 text-red-500 border border-red-500/20"
+                                  }`}>
+                                    {key.status}
                                   </span>
-                                  <span className="text-[11px] sm:text-xs font-medium px-2 py-1 rounded bg-emerald-50 text-emerald-800 border border-emerald-100">
-                                    Remaining: {Math.max(0, (key.dailyLimit || 0) - key.usage)}
+                                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                    {key.tier} Tier
                                   </span>
                                 </div>
-                              )}
-                              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                                {/* Status badge: active (green text, light green bg), others (default/destructive) */}
-                                <span
-                                  className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${key.status === "active"
-                                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                                      : "bg-red-50 text-red-700 border-red-200"
-                                    } flex items-center gap-1`}
-                                >
-                                  {key.status === "active" && (
-                                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1 animate-pulse"></span>
-                                  )}
-                                  {key.status}
-                                </span>
-                                {/* Tier badge: free (white text, green bg), others (default) */}
-                                <span
-                                  className={`text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border ${key.tier === "free"
-                                      ? "bg-green-500 text-white border-green-500"
-                                      : "bg-slate-100 text-slate-700 border-slate-200"
-                                    }`}
-                                >
-                                  {key.tier}
-                                </span>
-                                {/* Daily limit badge */}
-                                <span
-                                  className="text-[10px] sm:text-xs font-semibold px-2 py-1 rounded border bg-slate-50 text-slate-700 border-border"
-                                >
-                                  {key.dailyLimit} req/day
-                                </span>
+                                
+                                <div className="flex items-center gap-2">
+                                  <code className="text-xs bg-muted/40 px-3 py-2 rounded-xl text-foreground font-mono border border-border break-all select-all">
+                                    {key.key.slice(0, 8)}••••••••••••{key.key.slice(-4)}
+                                  </code>
+                                  <span className="text-[9px] uppercase tracking-wider text-muted-foreground/60 font-semibold px-2 py-1 bg-muted border border-border/40 select-none rounded-lg">
+                                    Masked
+                                  </span>
+                                </div>
+
+                                {typeof key.usage === "number" && (
+                                  <div className="flex flex-wrap gap-2 pt-1">
+                                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                                      Usage: {key.usage} / {key.dailyLimit} daily
+                                    </span>
+                                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20">
+                                      Remaining: {Math.max(0, (key.dailyLimit || 0) - key.usage)}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                              
+                              <div className="text-xs text-muted-foreground shrink-0 flex items-center gap-1.5 font-light">
+                                <Clock className="h-4.5 w-4.5 text-primary shrink-0" />
+                                Created: {new Date(key.createdAt).toLocaleDateString()}
                               </div>
                             </div>
-                            <div className="text-xs sm:text-sm text-muted-foreground shrink-0 flex items-center gap-1">
-                              <Clock className="h-3 w-3" />
-                              {new Date(key.createdAt).toLocaleDateString()}
-                            </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                     )}
 
                     {userKeys.length === 0 && lookupEmail && (
-                      <div className="text-center py-8">
-                        <div className="w-16 h-16 bg-muted/40 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="text-center py-10 border-t border-border/40">
+                        <div className="w-16 h-16 bg-muted/40 rounded-full flex items-center justify-center mx-auto mb-4 border border-border">
                           <Key className="h-8 w-8 text-muted-foreground" />
                         </div>
-                        <p className="text-muted-foreground text-sm">No API keys found for this email</p>
-                        <p className="text-muted-foreground/60 text-xs mt-2">Generate a new API key from the Get Started tab</p>
+                        <p className="text-muted-foreground font-light text-sm">No API keys found for this email.</p>
+                        <p className="text-muted-foreground/60 text-xs mt-1.5 font-light">You can generate a new credentials token from the Get Started tab.</p>
                       </div>
                     )}
                   </CardContent>
@@ -827,6 +846,7 @@ const APIDocs = () => {
             </TabsContent>
           </Tabs>
         </main>
+        
         <Footer />
       </div>
     </>

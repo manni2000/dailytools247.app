@@ -108,123 +108,127 @@ const CategoryPage = () => {
       <Header />
       <main className="flex-1">
         {/* Breadcrumb */}
-        <div className="border-b border-border bg-muted/30">
-          <div className="container py-4">
+        <div className="border-b border-border/60 bg-muted/20">
+          <div className="container py-4 flex items-center justify-center">
             <nav className="flex items-center gap-2 text-sm">
-              <Link to="/" className="flex items-center gap-1 text-muted-foreground hover:text-foreground">
+              <Link to="/" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
                 <Home className="h-4 w-4" />
                 <span>Home</span>
               </Link>
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
-              <span className="text-foreground">{category.name}</span>
+              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+              <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
+                Categories
+              </Link>
+              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="text-foreground font-semibold">{category.name}</span>
             </nav>
           </div>
         </div>
 
         {/* Category Header - Enhanced */}
-        <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 py-12 sm:py-16">
+        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-primary/10 via-background to-primary/5 py-16 sm:py-20">
+          {/* Grid backdrop */}
+          <div className="absolute inset-0 pointer-events-none opacity-40">
+            <svg className="absolute inset-0 h-full w-full stroke-primary/[0.04] [mask-image:radial-gradient(100%_100%_at_top,white,transparent)]">
+              <defs>
+                <pattern id="grid-pattern-category" width="24" height="24" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                  <path d="M.5 24V.5H24" fill="none" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid-pattern-category)" />
+            </svg>
+          </div>
+
           {/* Animated background elements */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
+              scale: [1, 1.15, 1],
+              opacity: [0.25, 0.45, 0.25],
             }}
             transition={{
               duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${category.color} / 0.2)` }}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full blur-3xl pointer-events-none"
+            style={{ backgroundColor: `hsl(${category.color} / 0.15)` }}
           />
           
-          <div className="container relative">
+          <div className="container relative px-4 text-center">
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="text-center max-w-4xl mx-auto mb-12"
+              className="flex flex-col items-center max-w-4xl mx-auto"
             >
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {getCategoryDescription()}
-              </p>
-              <div className="flex flex-wrap justify-center gap-2 mt-4">
-                {getCategoryKeywords().slice(0, 6).map((keyword, index) => (
-                  <span 
-                    key={index} 
-                    className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-sans font-medium bg-gray-100 text-gray-800 border border-gray-300 shadow-sm"
-                    style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="flex items-center gap-4 sm:gap-6"
-            >
-              {/* Enhanced icon with glow effect */}
+              {/* Enhanced Icon with Glow Aura */}
               <motion.div
-                whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                whileHover={{ scale: 1.08, rotate: [0, -4, 4, 0] }}
                 transition={{ duration: 0.5 }}
-                className="relative flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-2xl sm:rounded-3xl"
+                className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl sm:rounded-3xl mb-6 shadow-lg shadow-black/5"
                 style={{
-                  backgroundColor: `hsl(${category.color} / 0.15)`,
-                  boxShadow: `0 8px 30px hsl(${category.color} / 0.3)`,
+                  backgroundColor: `hsl(${category.color} / 0.12)`,
+                  border: `1px solid hsl(${category.color} / 0.25)`,
                 }}
               >
                 <Icon
-                  className="h-8 w-8 sm:h-10 sm:w-10"
+                  className="h-8 w-8 sm:h-10 sm:w-10 relative z-10"
                   style={{ color: `hsl(${category.color})` }}
                 />
                 {/* Glow ring */}
                 <div
-                  className="absolute inset-0 rounded-2xl sm:rounded-3xl"
+                  className="absolute inset-0 rounded-2xl sm:rounded-3xl animate-pulse pointer-events-none"
                   style={{
-                    boxShadow: `inset 0 0 20px hsl(${category.color} / 0.2)`,
+                    boxShadow: `0 0 25px 5px hsl(${category.color} / 0.35)`,
                   }}
                 />
               </motion.div>
-              
-              <div className="text-left">
-                <motion.h1
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-                >
-                  {category.name}
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="mt-2 text-base text-muted-foreground sm:text-lg"
-                >
-                  {category.description}
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="mt-2 flex items-center gap-2 sm:mt-3"
-                >
-                  <span
-                    className="rounded-full px-3 py-1 text-xs font-semibold text-white sm:text-sm"
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight">
+                {category.name}
+                <span className="relative ml-1">
+                  <span className="gradient-text">Tools</span>
+                  <span 
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
                     style={{ backgroundColor: `hsl(${category.color})` }}
+                  />
+                </span>
+              </h1>
+
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span 
+                  className="rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm"
+                  style={{ backgroundColor: `hsl(${category.color})` }}
+                >
+                  {category.tools.length} Tools
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 border border-green-500/20 px-3 py-1 text-xs font-semibold text-green-600 dark:text-green-400">
+                  100% Free
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-500/20 px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  No Registration
+                </span>
+              </div>
+
+              <p className="mt-6 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed font-light max-w-2xl">
+                {getCategoryDescription()}
+              </p>
+
+              {/* HSL Styled Keyword badging */}
+              <div className="flex flex-wrap justify-center gap-2 mt-8 max-w-3xl">
+                {getCategoryKeywords().slice(0, 8).map((keyword, index) => (
+                  <span 
+                    key={index} 
+                    style={{ 
+                      backgroundColor: `hsl(${category.color} / 0.05)`,
+                      borderColor: `hsl(${category.color} / 0.2)`,
+                      color: `hsl(${category.color})`
+                    }}
+                    className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold border shadow-sm backdrop-blur-sm"
                   >
-                    {category.tools.length} tools
+                    {keyword}
                   </span>
-                  <div className="flex items-center gap-1">
-                    <Star className="h-3 w-3 fill-current text-yellow-500 sm:h-4 sm:w-4" />
-                    <Star className="h-3 w-3 fill-current text-yellow-500 sm:h-4 sm:w-4" />
-                    <Star className="h-3 w-3 fill-current text-yellow-500 sm:h-4 sm:w-4" />
-                  </div>
-                </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>

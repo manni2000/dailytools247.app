@@ -33,6 +33,8 @@ const CategoriesPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("default");
   const [showFilters, setShowFilters] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [hoveredTool, setHoveredTool] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const totalTools = getAllTools().length;
 
@@ -77,20 +79,27 @@ const CategoriesPage = () => {
       <Header />
       <main className="flex-1 overflow-x-hidden">
         {/* Enhanced Header Section */}
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-primary/15 via-background to-primary/5 py-16 sm:py-20 md:py-24">
           {/* Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-1/4 -top-1/4 h-[400px] w-[400px] rounded-full bg-primary/5 blur-3xl" />
-            <div className="absolute -right-1/4 -bottom-1/4 h-[400px] w-[400px] rounded-full bg-primary/3 blur-3xl" />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <svg className="absolute inset-0 h-full w-full stroke-primary/[0.04] [mask-image:radial-gradient(100%_100%_at_top,white,transparent)]" aria-hidden="true">
+              <defs>
+                <pattern id="grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                  <path d="M.5 24V.5H24" fill="none" strokeDasharray="0" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+            </svg>
+            <div className="absolute -left-1/4 -top-1/4 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl opacity-60" />
+            <div className="absolute -right-1/4 -bottom-1/4 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl opacity-50" />
           </div>
 
-          <div className="container relative px-4 py-12 sm:py-16 md:py-20">
+          <div className="container relative px-4">
             {/* Breadcrumb */}
             <motion.nav
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 text-sm mb-6 sm:mb-8"
+              className="flex items-center gap-2 text-sm mb-6 sm:mb-8 justify-center"
             >
               <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
                 Home
@@ -102,7 +111,7 @@ const CategoriesPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mx-auto max-w-4xl rounded-2xl border border-border/70 bg-background/70 p-4 text-center shadow-sm backdrop-blur-sm sm:p-6 md:p-8"
+              className="mx-auto max-w-4xl rounded-3xl border border-border/70 bg-background/60 p-6 text-center shadow-xl backdrop-blur-md sm:p-8 md:p-10"
             >
               {/* Badge */}
               <motion.div
@@ -116,7 +125,7 @@ const CategoriesPage = () => {
                 <span className="sm:hidden">All Tools</span>
               </motion.div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
                 All
                 <span className="relative ml-1 sm:ml-2">
                   <span className="gradient-text">Categories</span>
@@ -124,7 +133,7 @@ const CategoriesPage = () => {
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
-                    className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 origin-left rounded-full bg-gradient-to-r from-primary to-primary/50"
+                    className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-1 origin-left rounded-full bg-gradient-to-r from-primary to-primary/50"
                   />
                 </span>
               </h1>
@@ -133,19 +142,19 @@ const CategoriesPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
+                className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed font-light"
               >
                 Browse {totalTools}+ professional tools across {toolCategories.length} categories
               </motion.p>
 
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm">
+                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm bg-muted/60 backdrop-blur-sm border border-border">
                   {toolCategories.length} Categories
                 </Badge>
-                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm">
+                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm bg-muted/60 backdrop-blur-sm border border-border">
                   {totalTools}+ Tools
                 </Badge>
-                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm">
+                <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs sm:text-sm bg-muted/60 backdrop-blur-sm border border-border">
                   No Signup Required
                 </Badge>
               </div>
@@ -155,7 +164,7 @@ const CategoriesPage = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-6 sm:mt-8 mx-auto max-w-2xl"
+                className="mt-8 sm:mt-10 mx-auto max-w-2xl"
               >
                 <div className="relative">
                   <Search className="pointer-events-none absolute left-3.5 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-muted-foreground sm:h-5 sm:w-5" />
@@ -164,7 +173,7 @@ const CategoriesPage = () => {
                     placeholder="Search categories or tools..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="h-11 border-2 bg-background/90 pl-11 pr-20 text-sm shadow-sm backdrop-blur-sm transition-all focus:border-primary sm:h-12 sm:text-base"
+                    className="h-12 border-2 bg-background/90 pl-11 pr-20 text-sm shadow-md backdrop-blur-sm transition-all focus:border-primary sm:h-14 sm:text-base rounded-2xl"
                   />
                   {searchQuery && (
                     <button
@@ -180,11 +189,11 @@ const CategoriesPage = () => {
                     type="button"
                     title="Toggle filters"
                     onClick={() => setShowFilters(!showFilters)}
-                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-md transition-colors ${
-                      showFilters ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-xl transition-all duration-300 ${
+                      showFilters ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     }`}
                   >
-                    <SlidersHorizontal className="h-4 w-4" />
+                    <SlidersHorizontal className="h-4.5 w-4.5" />
                   </button>
                 </div>
 
@@ -195,37 +204,37 @@ const CategoriesPage = () => {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="mt-4 p-4 rounded-lg bg-muted/50 backdrop-blur-sm border border-border"
+                      className="mt-4 p-4 rounded-2xl bg-muted/40 backdrop-blur-md border border-border/80 text-left"
                     >
                       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                         <span className="text-sm font-medium text-foreground">Sort by:</span>
                         <div className="flex flex-wrap gap-2">
                           <button
                             onClick={() => setSortBy("default")}
-                            className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                               sortBy === "default"
-                                ? "bg-primary text-primary-foreground shadow-sm"
-                                : "bg-background text-muted-foreground hover:bg-background/80"
+                                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/15"
+                                : "bg-background border border-border text-muted-foreground hover:bg-background/80"
                             }`}
                           >
                             Default
                           </button>
                           <button
                             onClick={() => setSortBy("alphabetical")}
-                            className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                               sortBy === "alphabetical"
-                                ? "bg-primary text-primary-foreground shadow-sm"
-                                : "bg-background text-muted-foreground hover:bg-background/80"
+                                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/15"
+                                : "bg-background border border-border text-muted-foreground hover:bg-background/80"
                             }`}
                           >
                             A-Z
                           </button>
                           <button
                             onClick={() => setSortBy("most-tools")}
-                            className={`px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                               sortBy === "most-tools"
-                                ? "bg-primary text-primary-foreground shadow-sm"
-                                : "bg-background text-muted-foreground hover:bg-background/80"
+                                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/15"
+                                : "bg-background border border-border text-muted-foreground hover:bg-background/80"
                             }`}
                           >
                             Most Tools
@@ -242,37 +251,39 @@ const CategoriesPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+                className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/40 pt-6"
               >
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <CheckCircle2 className="h-4.5 w-4.5 text-primary" />
                   <span>
                     Showing {filteredCategories.length} {filteredCategories.length === 1 ? 'category' : 'categories'}
                   </span>
                 </div>
                 
-                <div className="hidden gap-1.5 sm:gap-2 md:flex">
+                <div className="hidden gap-2 md:flex bg-muted/60 p-1 rounded-xl border border-border/55 backdrop-blur-sm">
                   <button
+                    type="button"
                     onClick={() => setViewMode("grid")}
-                    className={`flex items-center gap-1.5 sm:gap-2 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all active:scale-[0.95] ${
+                    className={`flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-300 ${
                       viewMode === "grid"
-                        ? "bg-primary text-primary-foreground shadow-sm"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        ? "bg-background text-foreground shadow-md border border-border/50"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    <Grid3x3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                    <span className="hidden sm:inline">Grid</span>
+                    <Grid3x3 className="h-4 w-4" />
+                    <span>Grid View</span>
                   </button>
                   <button
+                    type="button"
                     onClick={() => setViewMode("list")}
-                    className={`flex items-center gap-1.5 sm:gap-2 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all active:scale-[0.95] ${
+                    className={`flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-300 ${
                       viewMode === "list"
-                        ? "bg-primary text-primary-foreground shadow-sm"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        ? "bg-background text-foreground shadow-md border border-border/50"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    <List className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                    <span className="hidden sm:inline">List</span>
+                    <List className="h-4 w-4" />
+                    <span>Detailed List</span>
                   </button>
                 </div>
               </motion.div>
@@ -281,20 +292,20 @@ const CategoriesPage = () => {
         </section>
 
         {/* Categories Section */}
-        <section className="py-8 sm:py-12 md:py-16">
+        <section className="py-12 sm:py-16 md:py-20 bg-background/50">
           <div className="container px-4">
             {/* No Results State */}
             {filteredCategories.length === 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center py-12 sm:py-16"
+                className="text-center py-16 sm:py-20"
               >
-                <div className="mx-auto mb-4 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-muted">
-                  <Search className="h-8 w-8 sm:h-10 sm:w-10 text-muted-foreground" />
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-muted border border-border/60">
+                  <Search className="h-10 w-10 text-muted-foreground" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">No categories found</h3>
-                <p className="text-muted-foreground max-w-md mx-auto mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">No categories found</h3>
+                <p className="text-muted-foreground max-w-md mx-auto mb-8 font-light">
                   Try adjusting your search or filters to find what you're looking for.
                 </p>
                 <button
@@ -302,7 +313,7 @@ const CategoriesPage = () => {
                     setSearchQuery("");
                     setSortBy("default");
                   }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/95 transition-all duration-300 shadow-lg shadow-primary/10 font-medium"
                 >
                   <X className="h-4 w-4" />
                   Clear filters
@@ -311,7 +322,7 @@ const CategoriesPage = () => {
             )}
 
             {/* Categories List */}
-            <div className={viewMode === "grid" ? "grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" : "space-y-4 sm:space-y-6"}>
+            <div className={viewMode === "grid" ? "grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3" : "space-y-6 sm:space-y-8"}>
               <AnimatePresence mode="popLayout">
                 {filteredCategories.map((category, categoryIndex) => {
                   const Icon = category.icon;
@@ -323,91 +334,86 @@ const CategoriesPage = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ 
-                        delay: Math.min(categoryIndex * 0.05, 0.3),
+                        delay: Math.min(categoryIndex * 0.04, 0.25),
                         layout: { duration: 0.3 }
                       }}
-                      className="group rounded-xl sm:rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+                      onMouseEnter={() => setHoveredCategory(category.id)}
+                      onMouseLeave={() => setHoveredCategory(null)}
+                      style={{ 
+                        borderColor: hoveredCategory === category.id ? `hsl(${category.color} / 0.35)` : `hsl(${category.color} / 0.12)`,
+                        boxShadow: hoveredCategory === category.id 
+                          ? `0 20px 40px -15px hsl(${category.color} / 0.12), 0 0 0 1px hsl(${category.color} / 0.15)` 
+                          : `0 4px 20px -2px hsl(${category.color} / 0.02)`,
+                        background: hoveredCategory === category.id
+                          ? `linear-gradient(145deg, hsl(${category.color} / 0.03) 0%, hsl(var(--card)) 100%)`
+                          : `linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.1) 100%)`,
+                        transform: hoveredCategory === category.id ? 'translateY(-4px)' : 'none',
+                        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                      }}
+                      className="group relative rounded-2xl border p-5 sm:p-6"
                     >
+                      {/* Glow ring background */}
+                      <div 
+                        className="absolute -right-10 -top-10 h-32 w-32 rounded-full blur-3xl opacity-20 transition-opacity duration-500 pointer-events-none"
+                        style={{ 
+                          backgroundColor: `hsl(${category.color})`,
+                          opacity: hoveredCategory === category.id ? 0.35 : 0.1 
+                        }}
+                      />
+
                       {/* Category Header */}
-                      <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6">
-                        <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="flex flex-col gap-4 mb-6 relative z-10">
+                        <div className="flex items-start gap-4">
                           <div
-                            className="flex h-12 w-12 sm:h-14 sm:w-14 flex-shrink-0 items-center justify-center rounded-lg sm:rounded-xl transition-transform group-hover:scale-110"
+                            className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 shadow-sm"
                             style={{ backgroundColor: `hsl(${category.color} / 0.15)` }}
                           >
                             <Icon
-                              className="h-6 w-6 sm:h-7 sm:w-7"
+                              className="h-7 w-7"
                               style={{ color: `hsl(${category.color})` }}
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h2 className="text-xl sm:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors">
+                            <div className="flex items-center gap-2.5 mb-1.5">
+                              <h2 className="text-xl sm:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors leading-tight">
                                 {category.name}
                               </h2>
                               <Badge 
                                 variant="secondary" 
-                                className="hidden sm:inline-flex text-xs"
+                                className="hidden sm:inline-flex text-xs bg-muted/85 border border-border"
                               >
-                                {category.tools.length}
+                                {category.tools.length} tools
                               </Badge>
                             </div>
-                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-light">
                               {category.description}
                             </p>
                           </div>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pl-0 sm:pl-16">
-                          <div className="flex items-center gap-2">
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-                              <Zap className="h-3 w-3" />
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pl-0 sm:pl-18 border-t border-border/40 pt-4 mt-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                              <Zap className="h-3.5 w-3.5" />
                               {category.tools.length} {category.tools.length === 1 ? 'tool' : 'tools'}
                             </span>
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-medium text-green-600 dark:text-green-400">
-                              <CheckCircle2 className="h-3 w-3" />
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-600 dark:text-green-400">
+                              <CheckCircle2 className="h-3.5 w-3.5" />
                               100% Free
                             </span>
                           </div>
                           <Link
                             to={`/category/${category.id}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-all hover:gap-2 active:scale-[0.95]"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-all hover:gap-2"
                           >
                             Explore category
-                            <ArrowRight className="h-3.5 w-3.5" />
+                            <ArrowRight className="h-4 w-4" />
                           </Link>
                         </div>
                       </div>
 
                       {/* Tools Grid/List */}
                       {viewMode === "grid" ? (
-                        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                          {category.tools.map((tool, toolIndex) => (
-                            <motion.div
-                              key={tool.id}
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: toolIndex * 0.02 }}
-                              className="tool-card group/tool"
-                            >
-                              <Link
-                                to={tool.path}
-                                className="flex flex-col p-3 sm:p-4 min-h-[100px] justify-between h-full"
-                              >
-                                <div className="flex-1">
-                                  <span className="block font-medium text-xs sm:text-sm text-card-foreground group-hover/tool:text-primary line-clamp-2 transition-colors">
-                                    {tool.name}
-                                  </span>
-                                  <span className="block text-xs text-muted-foreground mt-1 line-clamp-3">
-                                    {tool.description}
-                                  </span>
-                                </div>
-                                <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 text-muted-foreground group-hover/tool:text-primary group-hover/tool:translate-x-1 transition-all mt-2" />
-                              </Link>
-                            </motion.div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="space-y-2 sm:space-y-2.5">
+                        <div className="space-y-2.5 sm:space-y-3 relative z-10">
                           {category.tools.map((tool, toolIndex) => (
                             <motion.div
                               key={tool.id}
@@ -417,17 +423,59 @@ const CategoriesPage = () => {
                             >
                               <Link
                                 to={tool.path}
-                                className="group/tool flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-lg border border-border bg-background p-3 sm:p-4 transition-all hover:border-primary/50 hover:bg-muted/50 hover:shadow-sm active:scale-[0.98] min-h-[70px]"
+                                onMouseEnter={() => setHoveredTool(tool.id)}
+                                onMouseLeave={() => setHoveredTool(null)}
+                                style={{
+                                  borderColor: hoveredTool === tool.id ? `hsl(${category.color} / 0.35)` : 'hsl(var(--border) / 0.5)',
+                                  backgroundColor: hoveredTool === tool.id ? `hsl(${category.color} / 0.05)` : 'hsl(var(--card))',
+                                  boxShadow: hoveredTool === tool.id ? `0 8px 20px -8px hsl(${category.color} / 0.12)` : 'none',
+                                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                                }}
+                                className="group/tool flex items-center justify-between rounded-xl border p-3.5 transition-all min-h-[70px]"
                               >
-                                <div className="flex-1 min-w-0 pr-2 mb-2 sm:mb-0">
-                                  <span className="block font-medium text-xs sm:text-sm text-foreground group-hover/tool:text-primary truncate transition-colors">
+                                <div className="flex-1 min-w-0 pr-3">
+                                  <span className="block font-semibold text-sm text-foreground group-hover/tool:text-primary truncate transition-colors">
                                     {tool.name}
                                   </span>
-                                  <span className="block text-xs text-muted-foreground truncate mt-0.5 line-clamp-2">
+                                  <span className="block text-xs text-muted-foreground truncate mt-0.5 font-light">
                                     {tool.description}
                                   </span>
                                 </div>
-                                <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 text-muted-foreground group-hover/tool:text-primary group-hover/tool:translate-x-1 transition-all mt-auto sm:mt-0" />
+                                <ArrowRight className="h-4 w-4 flex-shrink-0 text-muted-foreground/60 group-hover/tool:text-primary group-hover/tool:translate-x-1 transition-all" />
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 relative z-10">
+                          {category.tools.map((tool, toolIndex) => (
+                            <motion.div
+                              key={tool.id}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: toolIndex * 0.02 }}
+                            >
+                              <Link
+                                to={tool.path}
+                                onMouseEnter={() => setHoveredTool(tool.id)}
+                                onMouseLeave={() => setHoveredTool(null)}
+                                style={{
+                                  borderColor: hoveredTool === tool.id ? `hsl(${category.color} / 0.35)` : 'hsl(var(--border) / 0.5)',
+                                  backgroundColor: hoveredTool === tool.id ? `hsl(${category.color} / 0.05)` : 'hsl(var(--card))',
+                                  boxShadow: hoveredTool === tool.id ? `0 8px 24px -10px hsl(${category.color} / 0.15)` : 'none',
+                                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                                }}
+                                className="flex flex-col p-4 rounded-xl border min-h-[110px] justify-between h-full group/tool"
+                              >
+                                <div className="flex-1">
+                                  <span className="block font-semibold text-sm text-card-foreground group-hover/tool:text-primary transition-colors leading-tight line-clamp-1">
+                                    {tool.name}
+                                  </span>
+                                  <span className="block text-xs text-muted-foreground mt-1.5 font-light leading-relaxed line-clamp-2">
+                                    {tool.description}
+                                  </span>
+                                </div>
+                                <ArrowRight className="h-4 w-4 flex-shrink-0 text-muted-foreground/60 group-hover/tool:text-primary group-hover/tool:translate-x-1.5 transition-all mt-3 ml-auto" />
                               </Link>
                             </motion.div>
                           ))}
