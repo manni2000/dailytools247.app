@@ -1,18 +1,28 @@
-import { motion } from "framer-motion";
-import { ArrowRight, BadgeCheck, CheckCircle2, Coins, FileText, Link2, Mail, PenTool, ShieldCheck, Sparkles, TimerReset, Zap } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Coins,
+  Link2,
+  Mail,
+  PenTool,
+  ShieldCheck,
+  Sparkles,
+  TimerReset,
+  Zap,
+  Lock,
+  Unlock,
+  ChevronDown,
+  Check,
+  HelpCircle,
+  TrendingUp,
+  BookmarkCheck
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHelmet from "@/components/SEOHelmet";
-
-const guidelines = [
-  "Writing and submitting articles for any category or tool is completely free.",
-  "Articles should be 800 words or more and stay focused on a useful topic, guide, or tool.",
-  "You can list, advertise, and promote your own startup, business, or service.",
-  "Include backlinks to your startup or business within the body of the article.",
-  "Use short paragraphs, descriptive headings, and a practical, easy-to-scan structure.",
-  "All submissions must be original and unpublished elsewhere.",
-];
 
 const regulations = [
   {
@@ -103,9 +113,34 @@ const howTo = {
   ],
 };
 
+const checklistRequirements = [
+  { id: 1, text: "Original & unpublished article (at least 800 words)" },
+  { id: 2, text: "Topic focused on tech, tools, SEO, productivity, or business guides" },
+  { id: 3, text: "Includes a mention, bio, or links to your startup/business" },
+  { id: 4, text: "Easy-to-scan structure with clear descriptive headings and short paragraphs" },
+  { id: 5, text: "Acknowledged the flat, one-time $10 publication fee upon acceptance" }
+];
+
 const WriteForUs = () => {
+  const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleCheck = (id: number) => {
+    setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(prev => (prev === index ? null : index));
+  };
+
+  const checkedCount = checklistRequirements.filter(item => checkedItems[item.id]).length;
+  const progressPercentage = (checkedCount / checklistRequirements.length) * 100;
+  const isAllChecked = checkedCount === checklistRequirements.length;
+
+  const mailtoUrl = "mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247&body=Hi%20Manish,%0D%0A%0D%0AI%20have%20reviewed%20the%20guidelines%20and%20completed%20the%20checklist.%20Here%20is%20my%20guest%20post%20pitch/draft...%0D%0A%0D%0AStartup/Business%20Website:%20%0D%0AProposed%20Headline:%20";
+
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground selection:bg-primary/20">
       <SEOHelmet
         title="Write for Us | Guest Post Submission at Dailytools247"
         description="Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee."
@@ -159,188 +194,305 @@ const WriteForUs = () => {
         faqs={faqs}
       />
       <Header />
+
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.18),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.02),rgba(45,212,191,0.08),rgba(59,130,246,0.04))] py-16 sm:py-20 md:py-28">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden border-b border-border bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.15),transparent_40%),linear-gradient(135deg,rgba(15,23,42,0.01),rgba(45,212,191,0.05),rgba(59,130,246,0.02))] py-20 sm:py-24 md:py-32">
+          {/* Decorative Grid and Blurs */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
           <div className="absolute inset-0">
-            <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-            <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
+            <div className="absolute -left-24 top-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl opacity-75" />
+            <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-sky-500/10 blur-3xl opacity-75" />
           </div>
-          <div className="container relative">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mx-auto max-w-5xl"
-            >
-              <div className="max-w-3xl">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-sm font-medium text-primary shadow-sm backdrop-blur">
-                  <Sparkles className="h-4 w-4" />
-                  Guest Posting Open
-                </div>
-                <h1 className="max-w-3xl text-4xl font-black tracking-tight text-balance md:text-6xl">
-                  Write for Us and Become a Guest Author at Dailytools247
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                  Share a practical, original article with a highly targeted audience. Dailytools247 welcomes contributors who
-                  can teach something useful, keep the writing sharp, and deliver value without unnecessary noise.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90"
-                  >
-                    <Mail className="h-4 w-4" />
-                    Send Submission
-                  </a>
-                  <Link
-                    to="/blogs"
-                    className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-medium shadow-sm transition-all hover:-translate-y-0.5 hover:bg-muted"
-                  >
-                    Read Our Blog
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
 
-              <div className="mt-12 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-border/70 bg-background/80 p-4 shadow-sm backdrop-blur">
-                  <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <TimerReset className="h-4 w-4" />
+          <div className="container relative z-10">
+            <div className="mx-auto max-w-6xl">
+              <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-6"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm">
+                    <Sparkles className="h-3.5 w-3.5 animate-pulse" />
+                    Guest Posting Open
                   </div>
-                  <p className="text-sm font-semibold">800+ words</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Submissions should stay focused and practical.</p>
-                </div>
-                <div className="rounded-2xl border border-border/70 bg-background/80 p-4 shadow-sm backdrop-blur">
-                  <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Link2 className="h-4 w-4" />
-                  </div>
-                  <p className="text-sm font-semibold">Get Backlinks</p>
-                  <p className="mt-1 text-sm text-muted-foreground">List your startup and get a permanent backlink.</p>
-                </div>
-                <div className="rounded-2xl border border-border/70 bg-background/80 p-4 shadow-sm backdrop-blur">
-                  <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Coins className="h-4 w-4" />
-                  </div>
-                  <p className="text-sm font-semibold">One-time $10 Fee</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Free to submit. Paid only upon publication.</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
 
-        <section className="py-16 md:py-20">
-          <div className="container grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8"
-            >
-              <div className="flex items-center gap-3">
-                <PenTool className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">Why Contribute</h2>
-              </div>
-              <div className="mt-5 space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Guest authors get access to a focused tech audience that already cares about tools, productivity,
-                  SEO, and practical digital workflows. That means your article is not floating in a generic content
-                  pool; it is being shown to readers who are actively looking for useful answers.
-                </p>
-                <p>
-                  A strong guest post can also strengthen your personal brand, earn high-quality visibility, and create
-                  a lasting reference point for your work. We prioritize articles that are genuinely helpful, well
-                  structured, and grounded in real experience.
-                </p>
-                <p>
-                  If you can write something clear, specific, and useful, we want to hear from you.
-                </p>
-              </div>
-            </motion.div>
+                  <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl leading-[1.1]">
+                    Write for Us & Promote Your <span className="bg-gradient-to-r from-primary to-sky-500 bg-clip-text text-transparent">Startup</span>
+                  </h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-3xl border border-border bg-gradient-to-br from-primary/5 to-sky-500/5 p-6 shadow-sm md:p-8"
-            >
-              <div className="flex items-center gap-3">
-                <Coins className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">Submission Fee</h2>
+                  <p className="max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                    Share a practical, original article with our targeted tech audience. Showcase your business, earn high-quality permanent backlinks, and drive direct traffic.
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    <a
+                      href="#checklist-section"
+                      className="group inline-flex items-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/95 hover:shadow-lg hover:shadow-primary/10 active:scale-[0.98]"
+                    >
+                      Start Submission Checklist
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                    <Link
+                      to="/blogs"
+                      className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card/55 px-6 py-3.5 text-sm font-semibold shadow-sm backdrop-blur-sm transition-all hover:bg-muted hover:border-muted-foreground/20"
+                    >
+                      Read Our Blog
+                    </Link>
+                  </div>
+                </motion.div>
+
+                {/* Stat Cards Grid */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.15 }}
+                  className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1"
+                >
+                  {[
+                    {
+                      icon: TimerReset,
+                      title: "800+ Words",
+                      desc: "Actionable, well-structured, original posts that teach a specific topic.",
+                      color: "from-teal-500/20 to-emerald-500/20 text-teal-600 dark:text-teal-400"
+                    },
+                    {
+                      icon: Link2,
+                      title: "Permanent Backlinks",
+                      desc: "Naturally promote your startup or project inside the body of the article.",
+                      color: "from-blue-500/20 to-sky-500/20 text-blue-600 dark:text-blue-400"
+                    },
+                    {
+                      icon: Coins,
+                      title: "Flat $10 Publication Fee",
+                      desc: "100% free submission and editing. Only pay if your article is approved & published.",
+                      color: "from-amber-500/20 to-orange-500/20 text-amber-600 dark:text-amber-400"
+                    }
+                  ].map((stat, i) => {
+                    const Icon = stat.icon;
+                    return (
+                      <div
+                        key={i}
+                        className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-md lg:flex lg:items-start lg:gap-4"
+                      >
+                        <div className={`mb-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${stat.color} lg:mb-0`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-foreground">{stat.title}</h3>
+                          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{stat.desc}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </motion.div>
               </div>
-              <p className="mt-5 text-muted-foreground leading-relaxed">
-                Writing and submitting articles is completely free. We only charge a flat, one-time $10 fee for publication processing after your article is accepted.
-              </p>
-              <div className="mt-6 rounded-2xl border border-border bg-background p-4">
-                <p className="text-sm font-semibold uppercase tracking-wide text-primary">Quick summary</p>
-                <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />Completely free submission</li>
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />One-time $10 publication fee</li>
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />Advertise startup & get backlinks</li>
-                  <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />800 words or more</li>
-                </ul>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        <section className="border-y border-border bg-gradient-to-b from-muted/40 to-background py-16 md:py-20">
+        {/* Benefits & Transparency Grid */}
+        <section className="py-20 md:py-24">
           <div className="container">
-            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8 lg:sticky lg:top-6"
-              >
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-                  <ShieldCheck className="h-4 w-4" />
-                  Rules and Regulations
-                </div>
-                <h2 className="mt-5 text-3xl font-bold tracking-tight">Submission standards that keep the editorial bar high.</h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  The rules below are designed to ensure high-quality content while giving you full freedom to promote your own products or business.
-                </p>
-                <div className="mt-6 rounded-2xl border border-primary/10 bg-primary/5 p-4">
-                  <p className="text-sm font-semibold text-foreground">Quick checklist</p>
-                  <div className="mt-3 space-y-2 text-sm text-muted-foreground">
-                    <p>Original content only</p>
-                    <p>Promote your business & startup</p>
-                    <p>Get backlinks to your website</p>
-                    <p>One-time $10 fee after acceptance</p>
+            <div className="mx-auto max-w-5xl">
+              <div className="grid gap-8 md:grid-cols-2">
+                {/* Why Contribute Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-to-b from-card to-background p-8 shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-md"
+                >
+                  <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-colors" />
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-6">
+                    <PenTool className="h-5 w-5" />
                   </div>
+                  <h2 className="text-2xl font-extrabold tracking-tight">Why Write For Dailytools247?</h2>
+                  <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+                    <p>
+                      Our reader base is highly technical, consisting of developers, builders, marketers, and productivity enthusiasts actively searching for web tools and digital guides.
+                    </p>
+                    <p>
+                      By contributing, you put your startup or utility directly in front of power users. Rather than floating in standard search queries, your backlinks will drive targeted traffic and build durable search engine authority.
+                    </p>
+                    <p>
+                      We keep editorial turnarounds fast, index content quickly on search engines, and work collaboratively to polish your draft.
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Submission Fee Transparency Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-to-b from-card to-background p-8 shadow-sm transition-all duration-300 hover:border-sky-500/20 hover:shadow-md"
+                >
+                  <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-sky-500/5 blur-2xl group-hover:bg-sky-500/10 transition-colors" />
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500 mb-6">
+                    <Coins className="h-5 w-5" />
+                  </div>
+                  <h2 className="text-2xl font-extrabold tracking-tight">Fee Transparency</h2>
+                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                    Submitting drafts and undergoing initial review is always free. To cover administrative reviews, SEO editing, structure formatting, and hosting costs, we request a flat publication processing fee only after acceptance.
+                  </p>
+                  <div className="mt-6 rounded-2xl border border-border bg-muted/40 p-5">
+                    <div className="flex items-baseline justify-between border-b border-border/60 pb-3">
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary">Flat Rate</span>
+                      <span className="text-2xl font-black text-foreground">$10 <span className="text-xs font-normal text-muted-foreground">one-time</span></span>
+                    </div>
+                    <ul className="mt-4 space-y-3 text-xs text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                        <span>Fast-tracked editorial review (under 48h)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                        <span>Up to 2 permanent do-follow backlinks</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                        <span>Full SEO markup & structured data integration</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                        <span>No recurring or hidden maintenance charges</span>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rules & Regulations Grid */}
+        <section className="border-y border-border bg-gradient-to-b from-muted/30 to-background/20 py-20 md:py-24">
+          <div className="container">
+            <div className="mx-auto max-w-5xl">
+              <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+                {/* Sticky Header info */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-5 lg:sticky lg:top-24"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+                    <ShieldCheck className="h-4 w-4" />
+                    Editorial Standards
+                  </div>
+                  <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                    Publishing Guidelines & Regulations
+                  </h2>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    We maintain a strict quality bar to make sure articles add genuine value to our readers. Read the terms below before preparing your post.
+                  </p>
+
+                  <div className="rounded-2xl border border-border/80 bg-card p-5 space-y-4">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Topics we cover:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {["Web Tools", "Software Guides", "Developer Utilities", "SEO & Marketing", "Productivity Hacks", "SaaS Showcases"].map((tag, idx) => (
+                        <span key={idx} className="rounded-lg bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground border border-border/40">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Regulations Grid */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {regulations.map((rule, index) => {
+                    const toneStyles = {
+                      neutral: "border-border bg-card hover:border-primary/25",
+                      accent: "border-primary/20 bg-primary/5 hover:border-primary/45",
+                      warning: "border-amber-500/20 bg-amber-500/5 hover:border-amber-500/40",
+                      danger: "border-rose-500/25 bg-rose-500/5 hover:border-rose-500/45",
+                    } as const;
+
+                    const toneClasses = toneStyles[rule.tone as keyof typeof toneStyles] || toneStyles.neutral;
+
+                    return (
+                      <motion.div
+                        key={rule.title}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className={`rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:shadow-md ${toneClasses}`}
+                      >
+                        <div className="mb-4 flex items-center justify-between">
+                          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-background text-xs font-bold text-primary shadow-sm border border-border">
+                            {index + 1}
+                          </span>
+                          <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${rule.tone === 'danger'
+                            ? 'bg-rose-500/10 text-rose-600 border-rose-500/20'
+                            : rule.tone === 'accent'
+                              ? 'bg-primary/10 text-primary border-primary/20'
+                              : 'bg-muted text-muted-foreground border-border/60'
+                            }`}>
+                            {rule.tone}
+                          </span>
+                        </div>
+                        <h3 className="font-bold text-foreground text-sm">{rule.title}</h3>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{rule.summary}</p>
+                      </motion.div>
+                    );
+                  })}
                 </div>
-              </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                {regulations.map((rule, index) => {
-                  const toneStyles = {
-                    neutral: "border-border bg-card text-foreground",
-                    accent: "border-primary/20 bg-primary/5 text-foreground",
-                    warning: "border-amber-500/20 bg-amber-500/5 text-foreground",
-                    danger: "border-rose-500/20 bg-rose-500/5 text-foreground",
-                  } as const;
+        {/* Timeline Stepper Section */}
+        <section className="py-20 md:py-24 bg-background">
+          <div className="container">
+            <div className="mx-auto max-w-4xl">
+              <div className="flex flex-col items-center text-center space-y-4 mb-14">
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 text-xs font-semibold text-sky-500">
+                  <TrendingUp className="h-3.5 w-3.5" />
+                  Submission Flow
+                </div>
+                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                  Step-by-Step Publication Process
+                </h2>
+                <p className="max-w-xl text-sm text-muted-foreground">
+                  Our publication process is transparent, structured, and fast. Here is what happens from drafting to live publication:
+                </p>
+              </div>
 
-                  const tone = toneStyles[rule.tone as keyof typeof toneStyles];
+              {/* Stepper Timeline UI */}
+              <div className="relative grid gap-8 md:grid-cols-3">
+                {/* Horizontal line for desktop stepper layout */}
+                <div className="absolute left-[8%] right-[8%] top-[2.5rem] hidden h-0.5 bg-gradient-to-r from-primary/30 via-sky-500/30 to-muted border-t border-dashed md:block" />
 
+                {submissionSteps.map((step, index) => {
+                  const Icon = step.icon;
                   return (
                     <motion.div
-                      key={rule.title}
-                      initial={{ opacity: 0, y: 16 }}
+                      key={step.title}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
-                      className={`rounded-2xl border p-5 shadow-sm ${tone}`}
+                      transition={{ delay: index * 0.1 }}
+                      className="group relative flex flex-col items-center text-center p-6 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow"
                     >
-                      <div className="mb-4 flex items-center justify-between gap-4">
-                        <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-background/80 text-sm font-semibold text-primary shadow-sm">
+                      {/* Step Indicator Frame */}
+                      <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-sky-500 text-primary-foreground shadow-md transition-transform group-hover:scale-105 duration-300">
+                        <Icon className="h-6 w-6" />
+                        <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-background border border-border text-[10px] font-bold text-foreground shadow-sm">
                           {index + 1}
-                        </div>
-                        <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                          {rule.tone}
                         </span>
                       </div>
-                      <h3 className="text-base font-semibold">{rule.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{rule.summary}</p>
+
+                      <h3 className="mt-5 font-bold text-lg text-foreground">{step.title}</h3>
+                      <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{step.description}</p>
                     </motion.div>
                   );
                 })}
@@ -349,137 +501,194 @@ const WriteForUs = () => {
           </div>
         </section>
 
-        <section className="py-16 md:py-20">
-          <div className="container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8"
-            >
-              <div className="flex items-center gap-3">
-                <FileText className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">What We Prefer</h2>
-              </div>
-              <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
-                <li>How-to guides with clear steps and a practical takeaway</li>
-                <li>SEO, productivity, and tech articles backed by useful examples</li>
-                <li>Articles showcasing, reviewing, or promoting your startup/business</li>
-                <li>Clean formatting with headings, lists, and short paragraphs</li>
-                <li>Original opinions or experiences that add real value</li>
-              </ul>
-              <p className="mt-6 text-sm text-muted-foreground">
-                If your article helps readers solve a real problem, it is a strong fit.
-              </p>
-            </motion.div>
+        {/* Interactive Guideline Checklist Widget */}
+        <section id="checklist-section" className="py-20 md:py-24 border-t border-border bg-gradient-to-b from-background to-muted/20">
+          <div className="container">
+            <div className="mx-auto max-w-3xl">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative overflow-hidden rounded-3xl border border-border/80 bg-card p-6 shadow-md md:p-10"
+              >
+                {/* Gradient background glow inside the card */}
+                <div className="absolute -left-20 -top-20 h-48 w-48 rounded-full bg-primary/5 blur-3xl" />
+                <div className="absolute -right-20 -bottom-20 h-48 w-48 rounded-full bg-sky-500/5 blur-3xl" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-3xl border border-border bg-gradient-to-br from-primary/5 via-card to-sky-500/5 p-6 shadow-sm md:p-8"
-            >
-              <div className="flex items-center gap-3">
-                <Link2 className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold">How to Submit</h2>
-              </div>
-              <div className="mt-5 space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Email your guest post idea or completed draft to manishmandal9734@gmail.com with a clear subject line.
-                  If possible, include your proposed headline, a short author bio, and the startup or business website you want to promote and link.
-                </p>
-                <p>
-                  We review each submission manually. Once the article is approved, we will coordinate the one-time $10 publication fee.
-                </p>
-                <p>
-                  Keep the content engaging, avoid duplicate text, and feel free to showcase your business features, benefits, and use cases.
-                </p>
-              </div>
-            </motion.div>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3">
+                    <BookmarkCheck className="h-6 w-6 text-primary" />
+                    <h2 className="text-2xl font-bold md:text-3xl">Submission Checklist</h2>
+                  </div>
+
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Complete this quick interactive checklist to verify that your draft aligns with our editorial guidelines and unlock the submission trigger.
+                  </p>
+
+                  {/* Progress Indicator */}
+                  <div className="mt-8 space-y-2">
+                    <div className="flex items-center justify-between text-xs font-semibold">
+                      <span className="text-muted-foreground">Checklist Completion</span>
+                      <span className="text-primary">{checkedCount} of {checklistRequirements.length} completed ({Math.round(progressPercentage)}%)</span>
+                    </div>
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-muted border border-border/40">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progressPercentage}%` }}
+                        transition={{ duration: 0.3 }}
+                        className="h-full rounded-full bg-gradient-to-r from-primary to-sky-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Checklist items */}
+                  <div className="mt-8 space-y-3.5">
+                    {checklistRequirements.map((item) => {
+                      const isChecked = !!checkedItems[item.id];
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => toggleCheck(item.id)}
+                          className={`flex w-full items-start gap-4 rounded-xl border p-4 text-left transition-all duration-200 active:scale-[0.99] ${isChecked
+                            ? "border-primary/30 bg-primary/[0.02] shadow-sm text-foreground"
+                            : "border-border bg-card/40 hover:bg-muted/40 text-muted-foreground"
+                            }`}
+                        >
+                          <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-colors ${isChecked
+                            ? "bg-primary border-primary text-primary-foreground"
+                            : "border-muted-foreground/30 bg-background"
+                            }`}>
+                            {isChecked && <Check className="h-3 w-3 stroke-[3]" />}
+                          </div>
+                          <span className="text-sm font-medium leading-tight">{item.text}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Locked / Unlocked Action block */}
+                  <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-border/80 pt-8 sm:flex-row">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        {isAllChecked ? (
+                          <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
+                            <Unlock className="h-3.5 w-3.5" />
+                            Ready to Pitch
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-1">
+                            <Lock className="h-3.5 w-3.5" />
+                            Locked
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {isAllChecked
+                          ? "All parameters validated. Proceed to send your draft email."
+                          : "Complete the guidelines checklist to trigger submission."}
+                      </p>
+                    </div>
+
+                    <AnimatePresence mode="wait">
+                      {isAllChecked ? (
+                        <motion.a
+                          key="active-btn"
+                          initial={{ scale: 0.95, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.95, opacity: 0 }}
+                          href={mailtoUrl}
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/95 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                        >
+                          <Mail className="h-4 w-4" />
+                          Send Pitch via Email
+                        </motion.a>
+                      ) : (
+                        <button
+                          key="locked-btn"
+                          disabled
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-dashed border-border bg-muted/65 px-6 py-4 text-sm font-semibold text-muted-foreground/60 cursor-not-allowed"
+                        >
+                          <Mail className="h-4 w-4 opacity-50" />
+                          Send Pitch (Locked)
+                        </button>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        <section className="border-y border-border bg-muted/30 py-16 md:py-20">
+        {/* FAQs Section */}
+        <section className="py-20 md:py-24 bg-background">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mx-auto max-w-4xl"
-            >
-              <div className="flex flex-col gap-4 text-center">
-                <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-                  <Zap className="h-4 w-4" />
-                  Submission Flow
-                </div>
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">A simple review process with clear expectations.</h2>
-                <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                  We keep the process straightforward so contributors know what happens next and can prepare a strong
-                  draft from the start.
-                </p>
+            <div className="mx-auto max-w-3xl">
+              <div className="flex items-center gap-3 mb-8">
+                <HelpCircle className="h-6 w-6 text-primary" />
+                <h2 className="text-3xl font-extrabold tracking-tight">Frequently Asked Questions</h2>
               </div>
 
-              <div className="mt-10 grid gap-4 md:grid-cols-3">
-                {submissionSteps.map((step, index) => {
-                  const Icon = step.icon;
-
+              {/* Interactive Accordion */}
+              <div className="space-y-4">
+                {faqs.map((faq, index) => {
+                  const isOpen = openFaq === index;
                   return (
-                    <div key={step.title} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-primary">Step {index + 1}</p>
-                          <h3 className="mt-1 text-lg font-semibold">{step.title}</h3>
-                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
-                        </div>
-                      </div>
+                    <div
+                      key={index}
+                      className="border-b border-border pb-4 last:border-b-0"
+                    >
+                      <button
+                        onClick={() => toggleFaq(index)}
+                        className="flex w-full items-center justify-between py-3 text-left transition-colors hover:text-primary"
+                      >
+                        <span className="font-semibold text-foreground text-sm sm:text-base pr-4">
+                          {faq.question}
+                        </span>
+                        <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180 text-primary" : ""}`} />
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <p className="pt-1 pb-3 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                              {faq.answer}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 })}
               </div>
-            </motion.div>
-          </div>
-        </section>
 
-        <section className="border-t border-border bg-muted/30 py-16 md:py-20">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mx-auto max-w-3xl rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8"
-            >
-              <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
-              <div className="mt-6 space-y-5">
-                {faqs.map((faq) => (
-                  <div key={faq.question} className="border-b border-border pb-4 last:border-b-0 last:pb-0">
-                    <h3 className="text-base font-semibold">{faq.question}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
-                  </div>
-                ))}
+              {/* Footer CTAs */}
+              <div className="mt-14 flex flex-col items-center justify-between gap-6 rounded-2xl border border-border/80 bg-muted/40 p-6 sm:flex-row">
+                <div className="space-y-1">
+                  <h4 className="font-bold text-foreground text-sm">Still have questions?</h4>
+                  <p className="text-xs text-muted-foreground">Reach out directly and we will clear things up.</p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Query%20for%20Dailytools247"
+                    className="inline-flex items-center gap-2 rounded-xl bg-card border border-border px-4 py-2.5 text-xs font-semibold hover:bg-muted"
+                  >
+                    <Mail className="h-3.5 w-3.5" />
+                    Contact Manish
+                  </a>
+                </div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  <Mail className="h-4 w-4" />
-                  Contact manishmandal9734@gmail.com
-                </a>
-                <Link
-                  to="/blogs"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-medium transition-colors hover:bg-muted"
-                >
-                  Explore Articles
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
