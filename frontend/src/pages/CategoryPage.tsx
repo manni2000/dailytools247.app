@@ -187,7 +187,6 @@ const CategoryPage = () => {
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight">
                 {category.name}
                 <span className="relative ml-1">
-                  <span className="gradient-text">Tools</span>
                   <span 
                     className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
                     style={{ backgroundColor: `hsl(${category.color})` }}
