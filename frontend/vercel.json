@@ -187,11 +187,6 @@
             "permanent": true
         },
         {
-            "source": "/ai-whatsapp-status-generator",
-            "destination": "/ai-whatsapp-status-generator",
-            "permanent": true
-        },
-        {
             "source": "/email-subject-line-generator",
             "destination": "/ai-email-subject-line-generator",
             "permanent": true
@@ -219,6 +214,51 @@
         {
             "source": "/developers",
             "destination": "/api-docs",
+            "permanent": true
+        },
+        {
+            "source": "/base64-image",
+            "destination": "/image-base64",
+            "permanent": true
+        },
+        {
+            "source": "/base64-tool",
+            "destination": "/base64-encoder",
+            "permanent": true
+        },
+        {
+            "source": "/json-minifier",
+            "destination": "/json-formatter",
+            "permanent": true
+        },
+        {
+            "source": "/image-converter",
+            "destination": "/image-compressor",
+            "permanent": true
+        },
+        {
+            "source": "/zip-compressor",
+            "destination": "/compression-zip",
+            "permanent": true
+        },
+        {
+            "source": "/whatsapp-status-generator",
+            "destination": "/ai-whatsapp-status-generator",
+            "permanent": true
+        },
+        {
+            "source": "/countdown",
+            "destination": "/countdown-timer",
+            "permanent": true
+        },
+        {
+            "source": "/transcript-extractor",
+            "destination": "/ai-speech-to-text",
+            "permanent": true
+        },
+        {
+            "source": "/Dailytools247",
+            "destination": "/",
             "permanent": true
         }
     ]

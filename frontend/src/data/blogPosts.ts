@@ -889,7 +889,7 @@ export const blogPosts: BlogPost[] = [
         ],
         links: [
           { label: "JSON Formatter", path: "/json-formatter" },
-          { label: "JSON Minifier", path: "/json-minifier" },
+          { label: "JSON Minifier", path: "/json-formatter" },
           { label: "API Response Formatter", path: "/api-response-formatter" },
           { label: "JWT Decoder", path: "/jwt-decoder" },
         ],
@@ -1058,8 +1058,8 @@ export const blogPosts: BlogPost[] = [
           "Storing binary data in JSON or XML requires Base64 encoding to maintain valid text format.",
         ],
         links: [
-          { label: "Base64 Encoder/Decoder", path: "/base64-tool" },
-          { label: "Base64 Image Converter", path: "/base64-image" },
+          { label: "Base64 Encoder/Decoder", path: "/base64-encoder" },
+          { label: "Base64 Image Converter", path: "/image-base64" },
           { label: "Hash Generator", path: "/hash-generator" },
           { label: "URL Encoder/Decoder", path: "/url-encoder" },
         ],

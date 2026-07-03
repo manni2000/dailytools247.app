@@ -748,7 +748,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
     ctaLabel: "Format JSON Now",
     ctaPath: "/json-formatter",
     secondaryCtaLabel: "Minify JSON",
-    secondaryCtaPath: "/json-minifier",
+    secondaryCtaPath: "/json-formatter",
     additionalFaqs: [
       {
         question: "Does minifying JSON affect parsing?",

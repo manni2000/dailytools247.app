@@ -114,13 +114,22 @@ const redirects = [
   { from: '/bio-generator', to: '/ai-bio-generator' },
   { from: '/ai-caption-formatter', to: '/caption-formatter' },
   { from: '/meme-generator', to: '/ai-meme-generator' },
-  { from: '/ai-whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
   { from: '/email-subject-line-generator', to: '/ai-email-subject-line-generator' },
   { from: '/email-signature-generator', to: '/ai-email-signature-generator' },
   { from: '/spam-score-checker', to: '/ai-spam-score-checker' },
   { from: '/email-template-builder', to: '/ai-email-template-builder' },
   { from: '/email-header-analyzer', to: '/ai-email-header-analyzer' },
-  { from: '/developers', to: '/api-docs' }
+  { from: '/developers', to: '/api-docs' },
+  // Stale URLs from previous deployments — redirect to the correct current tool to clear 404s and preserve SEO equity
+  { from: '/base64-image', to: '/image-base64' },
+  { from: '/base64-tool', to: '/base64-encoder' },
+  { from: '/json-minifier', to: '/json-formatter' },
+  { from: '/image-converter', to: '/image-compressor' },
+  { from: '/zip-compressor', to: '/compression-zip' },
+  { from: '/whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
+  { from: '/countdown', to: '/countdown-timer' },
+  { from: '/transcript-extractor', to: '/ai-speech-to-text' },
+  { from: '/Dailytools247', to: '/' }
 ];
 
 async function run() {

@@ -228,14 +228,6 @@ export const generateEEATStructuredData = () => {
         '@type': 'WebSite',
         name: 'Dailytools247',
         url: 'https://www.dailytools247.app',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: 'https://www.dailytools247.app/?q={search_term_string}'
-          },
-          'query-input': 'required name=search_term_string'
-        },
         mainEntity: {
           '@type': 'SoftwareApplication',
           name: 'Dailytools247 Tool Suite',
