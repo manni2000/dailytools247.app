@@ -79,7 +79,7 @@ const BlogListPage = () => {
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
       <SEOHelmet
-        title="Blog Free Online Tools, Guides, and Tutorials"
+        title="Blog - Tool Guides, Tips & Tutorials - DailyTools247"
         description="Read practical blog guides on free online tools, converters, developer utilities, and productivity workflows for 2026."
         keywords={["free online tools blog", "best tools 2026", "online converter free", "no signup required tools"]}
         canonical="https://www.dailytools247.app/blogs"
@@ -111,7 +111,7 @@ const BlogListPage = () => {
                 Expert Guides for Faster Workflows
               </div>
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-6xl text-foreground">
-                Dailytools247 <span className="gradient-text">Blog</span>
+                DailyTools247 <span className="gradient-text">Blog</span>
               </h1>
               <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
                 Actionable tutorials, high-intent SEO guides, and curated tool stacks to help you save time every day.
@@ -293,7 +293,7 @@ const BlogListPage = () => {
                     <PenTool className="h-4 w-4" />
                     Write for Us
                   </div>
-                  <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl tracking-tight text-foreground leading-tight">Become a Guest Author at Dailytools247</h2>
+                  <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl tracking-tight text-foreground leading-tight">Become a Guest Author at DailyTools247</h2>
                   <p className="mt-4 max-w-2xl text-muted-foreground font-light text-sm sm:text-base leading-relaxed">
                     Share your practical tutorials, high-intent guides, or developer workflows with a highly targeted technology audience. If your work is valuable and original, we would love to publish it.
                   </p>
@@ -324,7 +324,7 @@ const BlogListPage = () => {
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                     <a
-                      href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247"
+                      href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20DailyTools247"
                       className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-xs sm:text-sm font-semibold text-foreground hover:bg-muted transition-colors"
                     >
                       <Mail className="h-4 w-4" />

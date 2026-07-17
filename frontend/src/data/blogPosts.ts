@@ -29,8 +29,8 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "dailytools247-vs-ilovepdf-vs-smallpdf-2026",
-    title: "DailyTools247 vs iLovePDF vs Smallpdf - Best Free PDF Tool in 2026",
+    slug: "DailyTools247-vs-ilovepdf-vs-smallpdf-2026",
+    title: "DailyTools247 vs iLovePDF vs Smallpdf: Best Free PDF Tool 2026",
     description:
       "Compare DailyTools247, iLovePDF, and Smallpdf - find the best free PDF tools, compressors, and editors in 2026.",
     keywords:
@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "top-free-seo-tools-online-for-bloggers",
-    title: "Top Free SEO Tools Online for Bloggers (Meta Tags, Sitemap, Keyword Tools & More)",
+    title: "Top Free SEO Tools for Bloggers: Meta Tags, Sitemaps & Keywords",
     description:
       "Improve your blog visibility with free SEO tools for meta tags, sitemap checks, keyword research, page analysis, and more.",
     keywords:
@@ -217,7 +217,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "top-free-text-security-tools-online",
-    title: "Top Free Text & Security Tools Online (Password Generator, Word Counter, Hash Tools)",
+    title: "Top Free Text & Security Tools: Passwords, Word Count & Hashing",
     description:
       "Handle text cleanup and basic security checks with free tools like password generator, word counter, and hash generator.",
     keywords:
@@ -336,7 +336,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-free-image-converter-compressor-tools",
-    title: "Best Free Image Converter & Compressor Tools Online (No Signup Required)",
+    title: "Best Free Image Converter & Compressor Tools (No Signup)",
     description:
       "Find the best free image converter and compressor tools online to optimize quality, reduce file size, and convert formats without signup.",
     keywords:
@@ -398,7 +398,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "powerful-online-developer-tools-no-install",
-    title: "10 Powerful Developer Tools You Can Use Online Without Installing Anything",
+    title: "10 Powerful Online Developer Tools - No Install Needed",
     description:
       "Explore 10 powerful online developer tools for debugging, formatting, encoding, and testing workflows with zero setup.",
     keywords:
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "how-to-convert-pdf-to-word-online-free",
-    title: "How to Convert PDF to Word Online for Free (Fast & Secure Methods)",
+    title: "How to Convert PDF to Word Online Free (Fast & Secure)",
     description:
       "Learn fast and secure methods to convert PDF to Word online for free with better formatting retention and safer file handling.",
     keywords:
@@ -584,7 +584,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "compress-pdf-to-100kb-without-losing-quality",
-    title: "Compress PDF to 100KB Without Losing Quality (Free Tool That Actually Works)",
+    title: "Compress PDF to 100KB Without Losing Quality (Free Tool)",
     description: "Reduce PDF size to 100KB or less without quality loss. Step-by-step guide + free online tool for instant compression.",
     keywords: "compress pdf to 100kb, reduce pdf size online, compress pdf without losing quality",
     publishedDate: "2026-04-25",
@@ -641,7 +641,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "passport-photo-size-india-2026",
-    title: "Passport Photo Size India 2026: Exact Pixels, KB & Mistakes to Avoid",
+    title: "Passport Photo Size India 2026: Exact Pixels & KB Guide",
     description: "Check latest passport photo size in India with exact dimensions, KB limits, and how to resize your image instantly online.",
     keywords: "passport photo size india, passport photo size in kb, resize passport photo online",
     publishedDate: "2026-04-25",
@@ -809,7 +809,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "emi-calculator-explained-with-formula",
-    title: "EMI Calculator Explained: Calculate Loan EMI in 1 Minute (With Formula)",
+    title: "EMI Calculator Explained: Loan EMI Formula in 1 Minute",
     description: "Learn how EMI is calculated with formula + use free EMI calculator to plan your loans smartly.",
     keywords: "emi calculator, emi formula explained, loan emi calculation",
     publishedDate: "2026-04-25",
@@ -864,7 +864,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "json-formatter-vs-minifier-developers-guide",
-    title: "JSON Formatter vs Minifier: What Developers Should Know (Free Tool)",
+    title: "JSON Formatter vs Minifier: What Developers Should Know",
     description: "Understand JSON formatting vs minifying with examples. Use free tools to format, validate, and debug JSON instantly.",
     keywords: "json formatter online, json minifier vs formatter, json beautify tool",
     publishedDate: "2026-04-25",

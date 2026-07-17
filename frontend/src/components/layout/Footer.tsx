@@ -127,7 +127,7 @@ const Footer = () => {
     { name: "Image DPI Checker", path: "/image-dpi-checker" },
     { name: "Favicon Generator", path: "/favicon-generator" },
     { name: "EXIF Viewer", path: "/exif-viewer" },
-    { name: "Image ↔ Base64", path: "/image-base64" },
+    { name: "Image to Base64", path: "/image-base64" },
   ];
 
   const financeTools = [
@@ -260,7 +260,7 @@ const Footer = () => {
               <div className="relative flex h-40 w-40 sm:h-48 sm:w-48 overflow-hidden ml-[-30px]">
                 <img
                   src="/dailytools247.webp"
-                  alt="dailytools247 logo"
+                  alt="DailyTools247 logo"
                   className="h-40 w-40 sm:h-48 sm:w-48 object-contain"
                   loading="lazy"
                   onError={(e) => {
@@ -670,7 +670,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 border-t border-border pt-8">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} dailytools247. All rights reserved.
+            © {new Date().getFullYear()} DailyTools247. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center sm:justify-start sm:text-left">
             <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground">
@@ -692,7 +692,7 @@ const Footer = () => {
               Terms
             </Link>
             <a
-              href={`mailto:manishmandal9734@gmail.com?subject=Bug Report - Dailytools247 (${location.pathname})`}
+              href={`mailto:manishmandal9734@gmail.com?subject=Bug Report - DailyTools247 (${location.pathname})`}
               className="text-sm text-muted-foreground hover:text-foreground whitespace-nowrap"
             >
               Report a Bug

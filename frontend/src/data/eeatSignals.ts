@@ -87,10 +87,10 @@ export const eeatProfile: EEATProfile = {
     {
       type: 'website',
       backlinks: [
-        'https://medium.com/@manishmandal9734/how-dailytools247-is-building-the-ultimate-free-toolkit-for-everyone-ea8ff75e3785',
-        'https://dev.to/manni2000/dailytools247-138-free-online-tools-every-developer-creator-needs-5837',
-        'https://www.producthunt.com/products/dailytools247-com',
-        'https://sites.google.com/view/dailytools247-app',
+        'https://medium.com/@manishmandal9734/how-DailyTools247-is-building-the-ultimate-free-toolkit-for-everyone-ea8ff75e3785',
+        'https://dev.to/manni2000/DailyTools247-138-free-online-tools-every-developer-creator-needs-5837',
+        'https://www.producthunt.com/products/DailyTools247-com',
+        'https://sites.google.com/view/DailyTools247-app',
       ],
       mentions: [
         'Product Hunt: "Clean, privacy-first alternative to premium PDF converters"',
@@ -160,8 +160,8 @@ export const eeatProfile: EEATProfile = {
         'No watermarks or file size limits'
       ],
       contactInfo: [
-        'Email: support@dailytools247.app',
-        'GitHub Issues: https://github.com/dailytools247'
+        'Email: support@DailyTools247.app',
+        'GitHub Issues: https://github.com/DailyTools247'
       ]
     },
     {
@@ -198,9 +198,9 @@ export const generateEEATStructuredData = () => {
     '@graph': [
       {
         '@type': 'Organization',
-        name: 'Dailytools247',
+        name: 'DailyTools247',
         url: 'https://www.dailytools247.app',
-        logo: 'https://www.dailytools247.app/dailytools247.png',
+        logo: 'https://www.dailytools247.app/dailytools247.webp',
         description: '130+ Free Online Tools for PDF conversion, image editing, video processing, text formatting, QR codes, password generation, JSON formatting and more.',
         foundingDate: '2019',
         areaServed: 'Worldwide',
@@ -216,21 +216,22 @@ export const generateEEATStructuredData = () => {
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer service',
-          email: 'support@dailytools247.com',
+          email: 'support@DailyTools247.com',
           availableLanguage: ['English']
         },
         sameAs: [
-          'https://github.com/dailytools247',
-          'https://twitter.com/dailytools247'
+          'https://github.com/DailyTools247',
+          'https://twitter.com/DailyTools247'
         ]
       },
       {
         '@type': 'WebSite',
-        name: 'Dailytools247',
+        name: 'DailyTools247',
+        alternateName: ['Daily Tools 247', 'DailyTools247.app'],
         url: 'https://www.dailytools247.app',
         mainEntity: {
           '@type': 'SoftwareApplication',
-          name: 'Dailytools247 Tool Suite',
+          name: 'DailyTools247 Tool Suite',
           applicationCategory: 'UtilitiesApplication',
           operatingSystem: 'Web',
           offers: {
@@ -250,7 +251,7 @@ export const generateEEATStructuredData = () => {
       },
       {
         '@type': 'Person',
-        name: 'Dailytools247 Development Team',
+        name: 'DailyTools247 Development Team',
         jobTitle: 'Software Developers and UX Designers',
         knowsAbout: eeatProfile.expertise.flatMap(e => e.credentials),
         alumniOf: [

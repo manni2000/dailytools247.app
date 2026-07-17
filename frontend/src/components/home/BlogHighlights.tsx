@@ -44,7 +44,7 @@ const BlogHighlights = () => {
                   loading="lazy"
                   onError={(event) => {
                     const target = event.currentTarget;
-                    target.src = "/dailytools247.png";
+                    target.src = "/dailytools247.webp";
                   }}
                 />
                 <div className="flex flex-1 flex-col p-5">

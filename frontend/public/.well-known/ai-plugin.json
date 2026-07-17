@@ -1,8 +1,8 @@
 {
   "schema_version": "v1",
-  "name_for_model": "dailytools247",
+  "name_for_model": "DailyTools247",
   "name_for_human": "DailyTools247 Utilities",
-  "description_for_model": "Access 100+ free online utility AI tools for PDF conversion, image editing, video/audio processing, security hashing, AI Background Removertext formatting, and developer helpers. Features include JSON formatting, JWT decoding, password generation, EMI calculation, and regex testing. All tools process fast and respect user privacy.",
+  "description_for_model": "Access 200+ free online utility AI tools for PDF conversion, image editing, video/audio processing, security hashing, AI Background Removertext formatting, and developer helpers. Features include JSON formatting, JWT decoding, password generation, EMI calculation, and regex testing. All tools process fast and respect user privacy.",
   "description_for_human": "Free online tools for PDF, image, video, security, developer, and text processing. No signup required.",
   "auth": {
     "type": "none"

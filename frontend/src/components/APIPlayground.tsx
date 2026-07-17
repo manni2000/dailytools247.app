@@ -140,12 +140,12 @@ interface SavedExample {
 
 // Backend selection constants - use relative URLs so Vite proxy routes correctly
 const LOCAL_BACKEND = typeof window !== 'undefined' ? window.location.origin : "";
-const PROD_BACKEND = "https://api.dailytools247.app";
+const PROD_BACKEND = "https://api.DailyTools247.app";
 const DEFAULT_BACKEND = import.meta.env.VITE_API_URL || LOCAL_BACKEND;
 
 const BACKEND_OPTIONS = [
   { label: "Local (proxied via dev server)", value: LOCAL_BACKEND },
-  { label: "Production (https://api.dailytools247.app)", value: PROD_BACKEND },
+  { label: "Production (https://api.DailyTools247.app)", value: PROD_BACKEND },
 ];
 
 const APIPlayground = ({ 
@@ -1235,7 +1235,7 @@ if ($err) {
                   </div>
                   <div className="p-4 space-y-2.5 text-foreground">
                     <div>
-                      <span className="text-purple-600 dark:text-purple-400 font-semibold">curl</span> <span className="text-cyan-600 dark:text-cyan-400 font-semibold">-X</span> <span className="text-amber-600 dark:text-amber-400 font-semibold">POST</span> <span className="text-emerald-600 dark:text-emerald-400">"https://api.dailytools247.app/api/v1/text/word-counter"</span> \
+                      <span className="text-purple-600 dark:text-purple-400 font-semibold">curl</span> <span className="text-cyan-600 dark:text-cyan-400 font-semibold">-X</span> <span className="text-amber-600 dark:text-amber-400 font-semibold">POST</span> <span className="text-emerald-600 dark:text-emerald-400">"https://api.DailyTools247.app/api/v1/text/word-counter"</span> \
                     </div>
                     <div className="pl-4">
                       <span className="text-cyan-600 dark:text-cyan-400 font-semibold">-H</span> <span className="text-emerald-600 dark:text-emerald-400">"X-API-Key: dt_demo_key"</span> \

@@ -104,11 +104,11 @@ const BlogPostPage = () => {
     mainEntityOfPage: `https://www.dailytools247.app/blogs/${post.slug}`,
     author: {
       "@type": "Organization",
-      name: "Dailytools247",
+      name: "DailyTools247",
     },
     publisher: {
       "@type": "Organization",
-      name: "Dailytools247",
+      name: "DailyTools247",
       logo: {
         "@type": "ImageObject",
         url: "https://www.dailytools247.app/dailytools247.webp",

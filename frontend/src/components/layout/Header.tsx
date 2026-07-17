@@ -28,7 +28,7 @@ const Header = () => {
               <div className="relative flex h-32 w-32 items-center justify-center overflow-hidden">
                 <img
                   src="/dailytools247.webp"
-                  alt="dailytools247 logo"
+                  alt="DailyTools247 logo"
                   className="h-28 w-28 object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

@@ -7,7 +7,7 @@ const TermsOfService = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <SEOHelmet
-        title="Terms of Service — DailyTools247"
+        title="Terms of Service - DailyTools247"
         description="Read the terms of service of DailyTools247 online utilities."
       />
       <Header />
@@ -43,7 +43,7 @@ const TermsOfService = () => {
                 <div className="rounded-xl border border-border bg-card p-6">
                   <h2 className="text-xl font-semibold mb-4">1. Acceptance of Terms</h2>
                   <p className="text-muted-foreground">
-                    By accessing and using dailytools247 ("the Service"), you agree to be bound by these Terms of Service. 
+                    By accessing and using DailyTools247 ("the Service"), you agree to be bound by these Terms of Service. 
                     If you do not agree to these terms, please do not use our services. We reserve the right to 
                     modify these terms at any time, and your continued use constitutes acceptance of any changes.
                   </p>
@@ -52,7 +52,7 @@ const TermsOfService = () => {
                 <div className="rounded-xl border border-border bg-card p-6">
                   <h2 className="text-xl font-semibold mb-4">2. Description of Service</h2>
                   <p className="text-muted-foreground mb-4">
-                    dailytools247 provides free online utility tools including but not limited to:
+                    DailyTools247 provides free online utility tools including but not limited to:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     <li>Image processing and conversion tools</li>
@@ -81,7 +81,7 @@ const TermsOfService = () => {
                 <div className="rounded-xl border border-border bg-card p-6">
                   <h2 className="text-xl font-semibold mb-4">4. Intellectual Property</h2>
                   <p className="text-muted-foreground">
-                    The dailytools247 website, its original content, features, and functionality are owned by dailytools247 
+                    The DailyTools247 website, its original content, features, and functionality are owned by DailyTools247 
                     and are protected by international copyright, trademark, and other intellectual property laws. 
                     You retain all rights to the content you process using our tools.
                   </p>
@@ -100,7 +100,7 @@ const TermsOfService = () => {
                 <div className="rounded-xl border border-border bg-card p-6">
                   <h2 className="text-xl font-semibold mb-4">6. Limitation of Liability</h2>
                   <p className="text-muted-foreground">
-                    In no event shall dailytools247, its directors, employees, or agents be liable for any indirect, 
+                    In no event shall DailyTools247, its directors, employees, or agents be liable for any indirect, 
                     incidental, special, consequential, or punitive damages arising from your use of the Service. 
                     This includes any loss of data, profits, or business opportunities.
                   </p>

@@ -93,7 +93,7 @@ const WebsitePingTool = () => {
         "website-ping"
       )}
       <ToolLayout
-      breadcrumbTitle="Website Ping"
+      breadcrumbTitle="Website Ping Test"
       category="Internet Tools"
       categoryPath="/category/internet"
     >

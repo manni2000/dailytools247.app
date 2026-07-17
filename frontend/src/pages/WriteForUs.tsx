@@ -95,7 +95,7 @@ const faqs = [
 ];
 
 const howTo = {
-  name: "Submit a guest post to Dailytools247",
+  name: "Submit a guest post to DailyTools247",
   description: "A simple editorial process for sending an original guest article. Submitting is free, with a flat one-time $10 fee upon publication.",
   steps: [
     {
@@ -137,13 +137,13 @@ const WriteForUs = () => {
   const progressPercentage = (checkedCount / checklistRequirements.length) * 100;
   const isAllChecked = checkedCount === checklistRequirements.length;
 
-  const mailtoUrl = "mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20Dailytools247&body=Hi%20Manish,%0D%0A%0D%0AI%20have%20reviewed%20the%20guidelines%20and%20completed%20the%20checklist.%20Here%20is%20my%20guest%20post%20pitch/draft...%0D%0A%0D%0AStartup/Business%20Website:%20%0D%0AProposed%20Headline:%20";
+  const mailtoUrl = "mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Submission%20for%20DailyTools247&body=Hi%20Manish,%0D%0A%0D%0AI%20have%20reviewed%20the%20guidelines%20and%20completed%20the%20checklist.%20Here%20is%20my%20guest%20post%20pitch/draft...%0D%0A%0D%0AStartup/Business%20Website:%20%0D%0AProposed%20Headline:%20";
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground selection:bg-primary/20">
       <SEOHelmet
-        title="Write for Us | Guest Post Submission at Dailytools247"
-        description="Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee."
+        title="Write for Us - Guest Post Submission | DailyTools247"
+        description="Write for us at DailyTools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee."
         keywords={[
           "write for us",
           "guest post guidelines",
@@ -151,7 +151,7 @@ const WriteForUs = () => {
           "guest author submission",
           "write for us guest post",
           "guest post article",
-          "Dailytools247 blog write for us",
+          "DailyTools247 blog write for us",
           "submit guest post",
           "guest blogging opportunity",
         ]}
@@ -163,13 +163,13 @@ const WriteForUs = () => {
         schema={{
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'Write for Us | Guest Post Submission at Dailytools247',
-          description: 'Guest post guidelines, startup promotion, and publication fee for Dailytools247 blog contributors.',
+          name: 'Write for Us | Guest Post Submission at DailyTools247',
+          description: 'Guest post guidelines, startup promotion, and publication fee for DailyTools247 blog contributors.',
           url: 'https://www.dailytools247.app/write-for-us',
           inLanguage: 'en',
           isPartOf: {
             '@type': 'WebSite',
-            name: 'Dailytools247',
+            name: 'DailyTools247',
             url: 'https://www.dailytools247.app',
           },
           breadcrumb: {
@@ -310,7 +310,7 @@ const WriteForUs = () => {
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-6">
                     <PenTool className="h-5 w-5" />
                   </div>
-                  <h2 className="text-2xl font-extrabold tracking-tight">Why Write For Dailytools247?</h2>
+                  <h2 className="text-2xl font-extrabold tracking-tight">Why Write For DailyTools247?</h2>
                   <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
                     <p>
                       Our reader base is highly technical, consisting of developers, builders, marketers, and productivity enthusiasts actively searching for web tools and digital guides.
@@ -676,7 +676,7 @@ const WriteForUs = () => {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Query%20for%20Dailytools247"
+                    href="mailto:manishmandal9734@gmail.com?subject=Guest%20Post%20Query%20for%20DailyTools247"
                     className="inline-flex items-center gap-2 rounded-xl bg-card border border-border px-4 py-2.5 text-xs font-semibold hover:bg-muted"
                   >
                     <Mail className="h-3.5 w-3.5" />

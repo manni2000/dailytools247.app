@@ -57,7 +57,7 @@ export const programmaticTemplates: Record<string, ProgrammaticTemplate> = {
       },
       {
         type: 'cta',
-        template: 'Try both {tool1} and {tool2} for free on Dailytools247. No signup required.',
+        template: 'Try both {tool1} and {tool2} for free on DailyTools247. No signup required.',
         variables: ['tool1', 'tool2']
       }
     ],

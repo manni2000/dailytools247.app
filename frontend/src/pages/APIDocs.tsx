@@ -198,7 +198,7 @@ const APIDocs = () => {
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight max-w-4xl mx-auto">
-              Integrate <span className="gradient-text">Dailytools247</span> directly into your apps
+              Integrate <span className="gradient-text">DailyTools247</span> directly into your apps
             </h1>
             
             <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">

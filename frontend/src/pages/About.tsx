@@ -45,7 +45,7 @@ const About = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <SEOHelmet
-        title="About Us — DailyTools247"
+        title="About DailyTools247 - Free, Privacy-First Online Tools"
         description="Learn about the mission, values, and creators of DailyTools247, a free online toolbox for daily utilities."
       />
       <Header />
@@ -66,7 +66,7 @@ const About = () => {
                 <Wrench className="h-10 w-10 text-primary-foreground" />
               </div>
               <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-                About <span className="gradient-text">dailytools247</span>
+                About <span className="gradient-text">DailyTools247</span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground md:text-xl">
                 We're on a mission to provide free, powerful, and privacy-focused online tools 
@@ -111,7 +111,7 @@ const About = () => {
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
                   In a world where simple online tools often come with hidden costs, intrusive ads, 
-                  or questionable data practices, dailytools247 stands different. We believe that essential 
+                  or questionable data practices, DailyTools247 stands different. We believe that essential 
                   utilities should be accessible to everyone – students, professionals, creators, 
                   and everyday users alike.
                 </p>
@@ -175,7 +175,7 @@ const About = () => {
                 </div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    dailytools247 started from a simple frustration: why are basic online tools so complicated? 
+                    DailyTools247 started from a simple frustration: why are basic online tools so complicated? 
                     Why do you need to sign up just to convert an image or generate a password?
                   </p>
                   <p>
@@ -184,7 +184,7 @@ const About = () => {
                     a comprehensive platform serving thousands of users daily.
                   </p>
                   <p>
-                    Today, dailytools247 offers over 50 free tools across categories like image processing, 
+                    Today, DailyTools247 offers over 50 free tools across categories like image processing, 
                     text manipulation, security, development, and more. And we're just getting started.
                   </p>
                 </div>
@@ -203,7 +203,7 @@ const About = () => {
             >
               <h2 className="text-3xl font-bold">Our Founders</h2>
               <p className="mt-4 text-muted-foreground">
-                The visionaries behind dailytools247
+                The visionaries behind DailyTools247
               </p>
             </motion.div>
             <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
@@ -253,9 +253,9 @@ const About = () => {
               className="mx-auto max-w-2xl text-center"
             >
               <Heart className="mx-auto h-12 w-12 text-primary mb-6" />
-              <h2 className="text-2xl font-bold md:text-3xl">Start Using dailytools247 Today</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">Start Using DailyTools247 Today</h2>
               <p className="mt-4 text-muted-foreground">
-                Join thousands of users who trust dailytools247 for their daily utility needs. 
+                Join thousands of users who trust DailyTools247 for their daily utility needs. 
                 No signup required – just pick a tool and get started.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

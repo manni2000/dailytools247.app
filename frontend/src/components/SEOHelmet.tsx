@@ -65,7 +65,7 @@ const SEOHelmet = ({
 
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
 
-  const finalTitle = title || toolMetadata?.title || 'Free AI Tool, PDF, Image & SEO Tools - DailyTools247';
+  const finalTitle = title || toolMetadata?.title || 'Free Online Tools: PDF, Image, AI & SEO - DailyTools247';
   const finalDescription = description || toolMetadata?.description || '100+ free online tools for PDF, image, video, text & more. No signup required. Fast, private & browser-based.';
   const baseKeywords = [...(toolMetadata?.keywords || []), ...(toolMetadata?.longTailKeywords || [])];
   const dynamicLongTail = toolSlug ? generateLongTailVariations(toolMetadata?.keywords || [], toolSlug) : [];
@@ -103,12 +103,12 @@ const SEOHelmet = ({
         softwareVersion: '1.0.0',
         author: {
           '@type': 'Organization',
-          name: 'Dailytools247',
+          name: 'DailyTools247',
           url: 'https://www.dailytools247.app'
         },
         publisher: {
           '@type': 'Organization',
-          name: 'Dailytools247',
+          name: 'DailyTools247',
           url: 'https://www.dailytools247.app'
         },
         offers: {
@@ -399,7 +399,7 @@ const SEOHelmet = ({
         },
         brand: {
           '@type': 'Brand',
-          name: 'Dailytools247',
+          name: 'DailyTools247',
           url: 'https://www.dailytools247.app'
         }
       });
@@ -431,7 +431,7 @@ const SEOHelmet = ({
               '@type': 'Person',
               name: 'Jordan Smith'
             },
-            reviewBody: `Dailytools247 has the best ${finalCategory.toLowerCase()} I've found online.`,
+            reviewBody: `DailyTools247 has the best ${finalCategory.toLowerCase()} I've found online.`,
             datePublished: '2024-02-25'
           }
         ];
@@ -500,7 +500,7 @@ const SEOHelmet = ({
         },
         brand: {
           '@type': 'Brand',
-          name: 'Dailytools247',
+          name: 'DailyTools247',
           url: 'https://www.dailytools247.app'
         }
       });
@@ -519,7 +519,7 @@ const SEOHelmet = ({
       <meta name="title" content={fullTitleWithSuffix} />
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={Array.isArray(finalKeywords) ? finalKeywords.join(', ') : ''} />
-      <meta name="author" content="Dailytools247" />
+      <meta name="author" content="DailyTools247" />
 
       {/* AI Agent Discovery Endpoints (GEO/SEO) */}
       <link rel="alternate" type="application/json" title="API Specification" href="/openapi.json" />
@@ -545,9 +545,9 @@ const SEOHelmet = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={fullTitleWithSuffix} />
-      <meta property="og:site_name" content="Dailytools247" />
+      <meta property="og:site_name" content="DailyTools247" />
       <meta property="og:locale" content="en_IN" />
-      <meta property="article:author" content="Dailytools247" />
+      <meta property="article:author" content="DailyTools247" />
       <meta property="article:publisher" content="https://www.dailytools247.app/" />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -556,16 +556,16 @@ const SEOHelmet = ({
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalImage} />
       <meta name="twitter:image:alt" content={fullTitleWithSuffix} />
-      <meta name="twitter:creator" content="@dailytools247" />
-      <meta name="twitter:site" content="@dailytools247" />
+      <meta name="twitter:creator" content="@DailyTools247" />
+      <meta name="twitter:site" content="@DailyTools247" />
 
       <meta name="theme-color" content="#6366f1" />
       <meta name="msapplication-TileColor" content="#6366f1" />
-      <meta name="msapplication-TileImage" content="/dailytools247.png" />
-      <meta name="application-name" content="Dailytools247" />
+      <meta name="msapplication-TileImage" content="/dailytools247.webp" />
+      <meta name="application-name" content="DailyTools247" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="Dailytools247" />
+      <meta name="apple-mobile-web-app-title" content="DailyTools247" />
 
       {structuredData.map((schemaItem, index) => (
         <script key={index} type="application/ld+json">

@@ -1,4 +1,4 @@
-# Dailytools247 Robots.txt
+# DailyTools247 Robots.txt
 # https://www.dailytools247.app
 # Last updated: 2026-05-07
 

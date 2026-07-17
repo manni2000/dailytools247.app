@@ -41,7 +41,7 @@ const ToolLayout = ({ title, description, breadcrumbTitle, category, categoryPat
           </div>
         </div>
 
-        {title && (
+        {title ? (
           <section className="border-b border-border bg-gradient-to-b from-muted/50 to-background">
             <div className="container py-6 sm:py-8">
               <motion.div
@@ -54,6 +54,8 @@ const ToolLayout = ({ title, description, breadcrumbTitle, category, categoryPat
               </motion.div>
             </div>
           </section>
+        ) : (
+          breadcrumbTitle && <h1 className="sr-only">{breadcrumbTitle}</h1>
         )}
 
         <section className="py-6 sm:py-8">

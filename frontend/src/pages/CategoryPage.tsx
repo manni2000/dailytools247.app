@@ -99,7 +99,7 @@ const CategoryPage = () => {
   return (
     <>
       <SEOHelmet
-        title={`${category.name} Free Online Tools Without Watermark`}
+        title={`Free ${category.name.endsWith('Tools') ? category.name : `${category.name} Tools`} Online - No Signup, No Watermark`}
         description={getCategoryDescription()}
         keywords={getCategoryKeywords()}
         category={category.name}

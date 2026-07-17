@@ -348,8 +348,8 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
       },
     ],
   },
-  "dailytools247-vs-ilovepdf-vs-smallpdf-2026": {
-    mainKeyword: "dailytools247 vs ilovepdf vs smallpdf",
+  "DailyTools247-vs-ilovepdf-vs-smallpdf-2026": {
+    mainKeyword: "DailyTools247 vs ilovepdf vs smallpdf",
     longTailKeywords: [
       "free PDF tools comparison",
       "Smallpdf alternative",
@@ -386,7 +386,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
     ctaLabel: "Try PDF Tools",
     ctaPath: "/category/pdf",
     secondaryCtaLabel: "Compare PDF Tools",
-    secondaryCtaPath: "/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026",
+    secondaryCtaPath: "/blogs/DailyTools247-vs-ilovepdf-vs-smallpdf-2026",
     additionalFaqs: [
       {
         question: "Which tool is best for no-signup usage?",
@@ -1185,7 +1185,7 @@ export const blogEnhancements: Record<string, BlogEnhancement> = {
     longTailKeywords: [
       "all in one tools online",
       "productivity tools free",
-      "dailytools247 tools",
+      "DailyTools247 tools",
     ],
     deepDiveHeading: "The DailyTools247 Advantage",
     deepDiveParagraphs: [

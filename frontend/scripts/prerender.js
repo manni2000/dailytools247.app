@@ -41,44 +41,44 @@ function parseLocsFromSitemap(filePath) {
 // Custom page metadata mapping for static pages
 const staticPageMeta = {
   '/': {
-    title: 'Free AI Tool, PDF, Image & SEO Tools',
+    title: 'Free Online Tools: PDF, Image, AI & SEO - DailyTools247',
     description: '100+ free online tools for PDF, image, video, text & more. No signup required. Fast, private & browser-based.',
-    keywords: ['free online tools', 'pdf converter', 'image compressor', 'qr code generator', 'video tools', 'dailytools247']
+    keywords: ['free online tools', 'pdf converter', 'image compressor', 'qr code generator', 'video tools', 'DailyTools247']
   },
   '/categories': {
-    title: 'All Categories',
+    title: 'All Categories - Browse 200+ Free Online Tools',
     description: 'Browse all categories of free online tools on DailyTools247. PDF, Image, Video, Developer, Finance, Security, and more.',
     keywords: ['tool categories', 'free online tools', 'pdf tools', 'image tools', 'developer tools', 'finance tools']
   },
   '/about': {
-    title: 'About Us',
+    title: 'About DailyTools247 - Free, Privacy-First Online Tools',
     description: 'Learn about the mission, values, and creators of DailyTools247, a free online toolbox for daily utilities.',
-    keywords: ['about dailytools247', 'free online toolbox', 'privacy focused tools', 'about us']
+    keywords: ['about DailyTools247', 'free online toolbox', 'privacy focused tools', 'about us']
   },
   '/write-for-us': {
-    title: 'Write for Us | Guest Post Submission',
-    description: 'Write for us at Dailytools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee.',
+    title: 'Write for Us - Guest Post Submission | DailyTools247',
+    description: 'Write for us at DailyTools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee.',
     keywords: ['write for us', 'guest post guidelines', 'guest post submission', 'guest author', 'submit guest post']
   },
   '/privacy': {
-    title: 'Privacy Policy',
+    title: 'Privacy Policy - DailyTools247',
     description: 'Read the privacy policy of DailyTools247. Your data security and privacy are our top priorities.',
     keywords: ['privacy policy', 'data security', 'local file processing', 'privacy guarantee']
   },
   '/terms': {
-    title: 'Terms of Service',
+    title: 'Terms of Service - DailyTools247',
     description: 'Read the terms of service of DailyTools247 online utilities.',
     keywords: ['terms of service', 'terms and conditions', 'user agreement', 'usage policy']
   },
   '/api-docs': {
-    title: 'API Reference & Documentation',
+    title: 'API Reference & Documentation - DailyTools247',
     description: 'Developers reference and API documentation for DailyTools247. Integrate and trigger local utility services directly.',
     keywords: ['api reference', 'developer api', 'api documentation', 'integrate tools']
   },
   '/blogs': {
-    title: 'Blog — Tips, Guides & Tech Insights',
+    title: 'Blog - Tool Guides, Tips & Tutorials - DailyTools247',
     description: 'Explore the DailyTools247 blog for practical guides, product comparisons, technology tips, and detailed tutorials.',
-    keywords: ['dailytools247 blog', 'tech guides', 'pdf compression tips', 'image resizing tutorial']
+    keywords: ['DailyTools247 blog', 'tech guides', 'pdf compression tips', 'image resizing tutorial']
   }
 };
 
@@ -129,17 +129,21 @@ const redirects = [
   { from: '/whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
   { from: '/countdown', to: '/countdown-timer' },
   { from: '/transcript-extractor', to: '/ai-speech-to-text' },
-  { from: '/Dailytools247', to: '/' }
+  { from: '/DailyTools247', to: '/' }
 ];
 
 async function run() {
   console.log('🚀 Starting programmatic pre-rendering script...');
 
-  // Start Vite in middleware/custom mode to import TS modules on the fly
+  // Start Vite in middleware/custom mode to import TS modules on the fly.
+  // This server is only used for ssrLoadModule, so disable HMR and the client
+  // dependency scanner — otherwise the in-flight esbuild dep-scan races
+  // vite.close() and dumps "The server is being restarted or closed" errors.
   const vite = await createServer({
     root: projectRoot,
-    server: { middlewareMode: true },
-    appType: 'custom'
+    server: { middlewareMode: true, hmr: false },
+    appType: 'custom',
+    optimizeDeps: { noDiscovery: true, include: [] }
   });
 
   try {
@@ -270,7 +274,12 @@ async function run() {
       // 1. TOOL PAGES
       if (route.startsWith('/') && route.length > 1 && !route.startsWith('/category/') && !route.startsWith('/blogs') && !Object.keys(staticPageMeta).includes(route)) {
         const slug = route.substring(1);
-        const toolMetadata = toolSeoEnhancements[slug];
+        // Some sitemap routes use a different slug than the metadata key (kept in sync with getToolSeoMetadata aliases)
+        const slugAliases = {
+          'page-speed-checklist-generator': 'page-speed-checklist',
+          'og-image-preview-tool': 'og-image-preview'
+        };
+        const toolMetadata = toolSeoEnhancements[slug] || toolSeoEnhancements[slugAliases[slug]];
 
         if (toolMetadata) {
           title = toolMetadata.title;
@@ -296,8 +305,8 @@ async function run() {
             operatingSystem: 'Web',
             browserRequirements: 'Any modern web browser',
             softwareVersion: '1.0.0',
-            author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
-            publisher: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
+            author: { '@type': 'Organization', name: 'DailyTools247', url: 'https://www.dailytools247.app' },
+            publisher: { '@type': 'Organization', name: 'DailyTools247', url: 'https://www.dailytools247.app' },
             offers: {
               '@type': 'Offer',
               price: '0',
@@ -433,7 +442,7 @@ async function run() {
               },
               validFrom: '2024-01-01'
             },
-            brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://www.dailytools247.app' }
+            brand: { '@type': 'Brand', name: 'DailyTools247', url: 'https://www.dailytools247.app' }
           });
 
           // Internal linking
@@ -524,7 +533,7 @@ async function run() {
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
                 <div class="flex items-center gap-2">
-                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
                 </div>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                   <a href="/categories" class="hover:text-indigo-600 transition">All Categories</a>
@@ -544,7 +553,7 @@ async function run() {
 
                 <div class="mb-10">
                   <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 mb-3">${escapeHtml(category)}</span>
-                  <h1 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">${escapeHtml(title)}</h1>
+                  <h1 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">${escapeHtml(title.split(' - ')[0])}</h1>
                   <p class="text-lg text-gray-600 leading-relaxed">${escapeHtml(description)}</p>
                 </div>
 
@@ -577,6 +586,13 @@ async function run() {
               </main>
             </div>
           `;
+        } else {
+          // Never emit an empty <title> — derive sensible metadata from the slug
+          const prettyName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          title = `${prettyName} - Free Online Tool`;
+          description = `Use ${prettyName} online for free. No signup, no watermark - fast, private, browser-based processing on DailyTools247.`;
+          keywords = [prettyName.toLowerCase(), 'free online tool', 'no signup'];
+          console.warn(`⚠️ No SEO metadata found for tool slug "${slug}" — using fallback title.`);
         }
       }
 
@@ -587,7 +603,8 @@ async function run() {
 
         if (categoryData) {
           category = categoryData.name;
-          title = `${categoryData.name} Free Online Tools Without Watermark`;
+          const catTitleName = categoryData.name.endsWith('Tools') ? categoryData.name : `${categoryData.name} Tools`;
+          title = `Free ${catTitleName} Online - No Signup, No Watermark`;
           description = categoryDescriptions[catId] || categoryData.description;
           keywords = categoryKeywords[catId] || [categoryData.name.toLowerCase(), 'free online tools'];
 
@@ -650,7 +667,7 @@ async function run() {
                 },
                 validFrom: '2024-01-01'
               },
-              brand: { '@type': 'Brand', name: 'Dailytools247', url: 'https://www.dailytools247.app' }
+              brand: { '@type': 'Brand', name: 'DailyTools247', url: 'https://www.dailytools247.app' }
             }
           ];
 
@@ -682,7 +699,7 @@ async function run() {
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
                 <div class="flex items-center gap-2">
-                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
                 </div>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                   <a href="/categories" class="hover:text-indigo-600 transition">All Categories</a>
@@ -746,11 +763,11 @@ async function run() {
               url: currentUrl,
               image: post.image ? `https://www.dailytools247.app${post.image}` : 'https://www.dailytools247.app/og-image.webp',
               datePublished: post.publishedDate,
-              author: { '@type': 'Organization', name: 'Dailytools247', url: 'https://www.dailytools247.app' },
+              author: { '@type': 'Organization', name: 'DailyTools247', url: 'https://www.dailytools247.app' },
               publisher: {
                 '@type': 'Organization',
-                name: 'Dailytools247',
-                logo: { '@type': 'ImageObject', url: 'https://www.dailytools247.app/dailytools247.png' }
+                name: 'DailyTools247',
+                logo: { '@type': 'ImageObject', url: 'https://www.dailytools247.app/dailytools247.webp' }
               }
             },
             {
@@ -797,7 +814,7 @@ async function run() {
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
                 <div class="flex items-center gap-2">
-                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                  <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
                 </div>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                   <a href="/categories" class="hover:text-indigo-600 transition">All Categories</a>
@@ -891,7 +908,7 @@ async function run() {
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
                 <div class="flex items-center gap-2">
-                  <span class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</span>
+                  <span class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</span>
                 </div>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                   <a href="/categories" class="hover:text-indigo-600 transition">All Categories</a>
@@ -932,7 +949,7 @@ async function run() {
           htmlContent = `
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
-                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
                   <a href="/categories" class="hover:text-indigo-600 transition">All Categories</a>
                   <a href="/blogs" class="hover:text-indigo-600 transition">Blog</a>
@@ -951,10 +968,10 @@ async function run() {
           htmlContent = `
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
-                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
               </header>
               <main class="container mx-auto px-4 py-12 max-w-3xl bg-white shadow-sm border border-gray-200 rounded-2xl my-8 p-8 sm:p-12">
-                <h1 class="text-4xl font-black text-gray-900 mb-6">About dailytools247</h1>
+                <h1 class="text-4xl font-black text-gray-900 mb-6">About DailyTools247</h1>
                 <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">We are on a mission to build the ultimate, completely free online toolkit that respects your privacy. No signups, no subscriptions, no paywalls – just robust tools that run directly in your browser.</p>
                 <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Our Core Principles</h2>
                 <div class="space-y-6 text-gray-600 leading-relaxed text-sm">
@@ -995,7 +1012,7 @@ async function run() {
           htmlContent = `
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
-                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
               </header>
               <main class="container mx-auto px-4 py-12 max-w-6xl">
                 <h1 class="text-4xl font-black mb-4 text-gray-900 text-center">DailyTools247 Blog</h1>
@@ -1008,7 +1025,7 @@ async function run() {
           htmlContent = `
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
-                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
               </header>
               <main class="container mx-auto px-4 py-12 max-w-3xl bg-white shadow-sm border border-gray-200 rounded-2xl my-8 p-8 sm:p-12">
                 <h1 class="text-4xl font-black text-gray-900 mb-6">Write for Us</h1>
@@ -1031,7 +1048,7 @@ async function run() {
           htmlContent = `
             <div class="min-h-screen bg-gray-50/50 text-gray-800 font-sans">
               <header class="border-b border-gray-200 bg-white py-4 px-6 flex items-center justify-between shadow-sm">
-                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">dailytools247</a>
+                <a href="/" class="text-2xl font-black text-indigo-600 tracking-tight">DailyTools247</a>
               </header>
               <main class="container mx-auto px-4 py-12 max-w-3xl bg-white shadow-sm border border-gray-200 rounded-2xl my-8 p-8 sm:p-12">
                 <h1 class="text-4xl font-black text-gray-900 mb-6">${escapeHtml(title)}</h1>
@@ -1056,7 +1073,7 @@ async function run() {
         <meta name="title" content="${escapeHtml(title)}" data-rh="true" />
         <meta name="description" content="${escapeHtml(description)}" data-rh="true" />
         <meta name="keywords" content="${escapeHtml(keywords.join(', '))}" data-rh="true" />
-        <meta name="author" content="Dailytools247" data-rh="true" />
+        <meta name="author" content="DailyTools247" data-rh="true" />
         <link rel="canonical" href="${currentUrl}" data-rh="true" />
         <meta name="robots" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" data-rh="true" />
         <meta name="googlebot" content="${isNoIndex ? 'noindex,nofollow' : 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1'}" data-rh="true" />
@@ -1072,7 +1089,7 @@ async function run() {
         <meta property="og:image:width" content="1200" data-rh="true" />
         <meta property="og:image:height" content="630" data-rh="true" />
         <meta property="og:image:alt" content="${escapeHtml(title)}" data-rh="true" />
-        <meta property="og:site_name" content="Dailytools247" data-rh="true" />
+        <meta property="og:site_name" content="DailyTools247" data-rh="true" />
         <meta property="og:locale" content="en_IN" data-rh="true" />
         
         <meta name="twitter:card" content="summary_large_image" data-rh="true" />
