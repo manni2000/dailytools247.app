@@ -1,6 +1,6 @@
 # DailyTools247 Robots.txt
 # https://www.dailytools247.app
-# Last updated: 2026-05-07
+# Last updated: 2026-07-17
 
 # Default: allow all well-behaved crawlers
 User-agent: *
@@ -22,10 +22,9 @@ Disallow: /api/
 # Public API docs (more specific rule overrides the /api/ disallow above)
 Allow: /api/v1/docs
 
-# Block tracking parameters to prevent duplicate indexing
-Disallow: /*ref=
-Disallow: /*q=
-Disallow: /*utm_
+# Tracking/search parameters (?ref=, ?utm_, ?q=) are intentionally NOT blocked:
+# canonical tags and meta noindex handle them, and Google must be able to
+# crawl those URLs to see these signals.
 
 # AI / LLM crawlers — explicitly permitted
 # Refer to https://www.dailytools247.app/llms.txt
