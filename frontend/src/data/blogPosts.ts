@@ -29,7 +29,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "DailyTools247-vs-ilovepdf-vs-smallpdf-2026",
+    slug: "dailytools247-vs-ilovepdf-vs-smallpdf-2026",
     title: "DailyTools247 vs iLovePDF vs Smallpdf: Best Free PDF Tool 2026",
     description:
       "Compare DailyTools247, iLovePDF, and Smallpdf - find the best free PDF tools, compressors, and editors in 2026.",
@@ -1446,4 +1446,4 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const getBlogPostBySlug = (slug: string) =>
-  blogPosts.find((post) => post.slug === slug);
+  blogPosts.find((post) => post.slug.toLowerCase() === slug.toLowerCase());
