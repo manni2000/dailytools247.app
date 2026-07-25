@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Copy, Check, Calculator, Sparkles, TrendingUp, IndianRupee, Calendar, Percent, Home, Car, User } from "lucide-react";
+import { Calculator, Sparkles, TrendingUp, IndianRupee, Percent, Home, Car, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp, scaleIn } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-group";
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateEMIData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
-import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -30,7 +28,6 @@ const EMICalculatorTool = () => {
   const [rate, setRate] = useState(8.5);
   const [tenure, setTenure] = useState(10);
   const [tenureType, setTenureType] = useState<"months" | "years">("years");
-  const [copied, setCopied] = useState(false);
 
   // Preset loan scenarios
   const presets: PresetOption[] = [
@@ -76,39 +73,6 @@ const EMICalculatorTool = () => {
     { label: "Principal", value: principal },
     { label: "Interest", value: result.totalInterest },
   ]) : [];
-
-  const handleCopy = async () => {
-    if (!result) return;
-    const text = `EMI: ${formatIndianCurrency(result.emi)}\nTotal Interest: ${formatIndianCurrency(result.totalInterest)}\nTotal Payment: ${formatIndianCurrency(result.totalPayment)}`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    if (!result) return;
-    const text = `EMI Calculator Results\n\nLoan Details:\nPrincipal: ₹${principal.toLocaleString()}\nInterest Rate: ${rate}% per annum\nTenure: ${tenure} ${tenureType}\n\nCalculated EMI:\nMonthly Payment: ₹${result.emi.toLocaleString()}\nTotal Interest: ₹${result.totalInterest.toLocaleString()}\nTotal Payment: ₹${result.totalPayment.toLocaleString()}\n\nCalculated on ${new Date().toLocaleDateString()}`;
-    downloadText(text, `emi-calculation-${Date.now()}.txt`, 'text/plain');
-  };
-
-  const handleDownloadJSON = () => {
-    if (!result) return;
-    const data = {
-      calculationType: 'EMI Calculator',
-      inputs: {
-        principal,
-        interestRate: rate + '% p.a.',
-        tenure: tenure + ' ' + tenureType,
-      },
-      results: {
-        monthlyEMI: result.emi,
-        totalInterest: result.totalInterest,
-        totalPayment: result.totalPayment,
-      },
-      calculatedAt: new Date().toISOString(),
-    };
-    downloadJSON(data, `emi-calculation-${Date.now()}.json`);
-  };
 
   return (
     <>
@@ -288,6 +252,12 @@ const EMICalculatorTool = () => {
             transition={{ delay: 0.2 }}
             className="space-y-6"
           >
+            {/* Section Label */}
+            <div className="flex items-center gap-2 px-1">
+              <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: `hsl(${categoryColor})` }} />
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Results</h3>
+            </div>
+
             {/* Main EMI Display */}
             <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/30 p-8 text-center shadow-lg">
               <motion.div
@@ -302,12 +272,18 @@ const EMICalculatorTool = () => {
                 }}
                 className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10"
               />
-              <div className="relative">
-                <p className="text-sm font-medium text-muted-foreground mb-2">Monthly EMI</p>
-                <p className="text-5xl font-bold" style={{ color: `hsl(${categoryColor})` }}>
+              <div className="relative flex flex-col items-center">
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl mb-3"
+                  style={{ backgroundColor: `hsl(${categoryColor} / 0.15)` }}
+                >
+                  <IndianRupee className="h-6 w-6" style={{ color: `hsl(${categoryColor})` }} />
+                </div>
+                <p className="text-sm font-medium text-muted-foreground mb-1">Monthly EMI</p>
+                <p className="text-5xl sm:text-6xl font-bold tracking-tight" style={{ color: `hsl(${categoryColor})` }}>
                   {formatIndianCurrency(result.emi)}
                 </p>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-3 text-xs font-medium text-muted-foreground bg-muted/60 px-3 py-1 rounded-full">
                   For {tenure} {tenureType}
                 </p>
               </div>
@@ -315,71 +291,41 @@ const EMICalculatorTool = () => {
 
             {/* Detailed Breakdown */}
             <div className="grid gap-4 sm:grid-cols-2">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-orange-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-orange-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="h-5 w-5 text-orange-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Total Interest</p>
-                    <p className="text-2xl font-bold text-orange-600">
+                    <p className="text-2xl font-bold text-orange-600 truncate">
                       {formatIndianCurrency(result.totalInterest)}
                     </p>
                   </div>
                 </div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-green-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
                     <IndianRupee className="h-5 w-5 text-green-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Total Payment</p>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-2xl font-bold text-green-600 truncate">
                       {formatIndianCurrency(result.totalPayment)}
                     </p>
                   </div>
                 </div>
               </motion.div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex justify-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCopy}
-                className="flex items-center gap-2 rounded-lg bg-muted px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/80"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4 text-primary" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-4 w-4" />
-                    Copy results
-                  </>
-                )}
-              </motion.button>
-
-              <EnhancedDownload
-                options={[
-                  { label: 'Download Report', format: 'txt', action: handleDownload },
-                  { label: 'Export Data', format: 'json', action: handleDownloadJSON },
-                ]}
-                primaryLabel="Download"
-                showCopy={false}
-                variant="default"
-              />
             </div>
 
             {/* Payment Breakdown Charts */}

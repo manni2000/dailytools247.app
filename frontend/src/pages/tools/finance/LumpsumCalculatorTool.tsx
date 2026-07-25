@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Calculator, TrendingUp, Target, Calendar, Percent, IndianRupee, Sparkles, PiggyBank, BadgeIndianRupee, Landmark } from "lucide-react";
+import { Calculator, TrendingUp, Target, Percent, IndianRupee, Sparkles, PiggyBank, BadgeIndianRupee, Landmark } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp, scaleIn } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-group";
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData } from "@/components/ui/finance-chart";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
-import { downloadJSON, downloadText } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -29,7 +27,6 @@ const LumpsumCalculatorTool = () => {
   const [principalAmount, setPrincipalAmount] = useState(100000);
   const [expectedReturn, setExpectedReturn] = useState(12);
   const [timePeriod, setTimePeriod] = useState(10);
-  const [copied, setCopied] = useState(false);
 
   const presets: PresetOption[] = [
     { label: "Starter", value: { amount: 100000, rate: 10, years: 5 }, icon: PiggyBank, description: "5 years" },
@@ -65,39 +62,6 @@ const LumpsumCalculatorTool = () => {
 
   const result = calculate();
   const chartData = result ? generateGrowthData(principalAmount, expectedReturn, timePeriod) : [];
-
-  const handleCopy = async () => {
-    if (!result) return;
-    const text = `Principal Amount: ${formatIndianCurrency(result.principal)}\nTotal Returns: ${formatIndianCurrency(result.totalReturns)}\nFuture Value: ${formatIndianCurrency(result.futureValue)}\nWealth Gain: ${result.wealthGain.toFixed(2)}%`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownloadPDF = () => {
-    if (!result) return;
-    const text = `Lumpsum Calculator Results\n\nInvestment Details:\nPrincipal: ₹${principalAmount.toLocaleString()}\nExpected Return: ${expectedReturn}% per annum\nTime Period: ${timePeriod} years\n\nResults:\nFuture Value: ₹${Math.round(result.futureValue).toLocaleString()}\nTotal Returns: ₹${Math.round(result.totalReturns).toLocaleString()}\nWealth Gain: ${result.wealthGain.toFixed(2)}%\n\nCalculated on ${new Date().toLocaleDateString()}`;
-    downloadText(text, `lumpsum-calculation-${Date.now()}.txt`, "text/plain");
-  };
-
-  const handleDownloadJSON = () => {
-    if (!result) return;
-    const data = {
-      calculationType: "Lumpsum Calculator",
-      inputs: {
-        principalAmount,
-        expectedReturn: `${expectedReturn}% p.a.`,
-        timePeriod: `${timePeriod} years`,
-      },
-      results: {
-        futureValue: result.futureValue,
-        totalReturns: result.totalReturns,
-        wealthGain: result.wealthGain,
-      },
-      calculatedAt: new Date().toISOString(),
-    };
-    downloadJSON(data, `lumpsum-calculation-${Date.now()}.json`);
-  };
 
   return (
     <>
@@ -253,104 +217,84 @@ const LumpsumCalculatorTool = () => {
                 }}
                 className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10"
               />
-              <div className="relative">
-                <div className="flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground mb-4">
-                  <TrendingUp className="h-4 w-4" />
-                  Future Value
+              <div className="relative flex flex-col items-center">
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl mb-3"
+                  style={{ backgroundColor: `hsl(${categoryColor} / 0.15)` }}
+                >
+                  <TrendingUp className="h-6 w-6" style={{ color: `hsl(${categoryColor})` }} />
                 </div>
-                <p className="text-5xl font-bold text-primary">
+                <p className="text-sm font-medium text-muted-foreground mb-1">Future Value</p>
+                <p className="text-5xl sm:text-6xl font-bold tracking-tight text-primary">
                   {formatIndianCurrency(result.futureValue)}
                 </p>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-3 text-xs font-medium text-muted-foreground bg-muted/60 px-3 py-1 rounded-full">
                   After {timePeriod} years with {expectedReturn}% annual return
                 </p>
               </div>
             </div>
 
+            {/* Section Label */}
+            <div className="flex items-center gap-2 px-1">
+              <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: `hsl(${categoryColor})` }} />
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Breakdown</h3>
+            </div>
+
             {/* Detailed Breakdown */}
             <div className="grid gap-4 sm:grid-cols-3">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-blue-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
                     <IndianRupee className="h-5 w-5 text-blue-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Principal Amount</p>
-                    <p className="text-2xl font-bold text-blue-600">
+                    <p className="text-2xl font-bold text-blue-600 truncate">
                       {formatIndianCurrency(result.principal)}
                     </p>
                   </div>
                 </div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-green-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="h-5 w-5 text-green-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Total Returns</p>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-2xl font-bold text-green-600 truncate">
                       {formatIndianCurrency(result.totalReturns)}
                     </p>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-purple-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
                     <Percent className="h-5 w-5 text-purple-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Wealth Gain</p>
-                    <p className="text-2xl font-bold text-purple-600">
+                    <p className="text-2xl font-bold text-purple-600 truncate">
                       {result.wealthGain.toFixed(2)}%
                     </p>
                   </div>
                 </div>
               </motion.div>
-            </div>
-
-            {/* Copy Button */}
-            <div className="flex justify-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCopy}
-                className="flex items-center gap-2 rounded-lg bg-muted px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/80"
-              >
-                {copied ? (
-                  <>
-                    <Target className="h-4 w-4 text-primary" />
-                    Copied to clipboard!
-                  </>
-                ) : (
-                  <>
-                    <Calculator className="h-4 w-4" />
-                    Copy results
-                  </>
-                )}
-              </motion.button>
-
-              <EnhancedDownload
-                options={[
-                  { label: 'Download Report', format: 'txt', action: handleDownloadPDF },
-                  { label: 'Export Data', format: 'json', action: handleDownloadJSON },
-                ]}
-                primaryLabel="Download"
-                showCopy={false}
-                variant="default"
-              />
             </div>
 
             {/* Growth Visualization Chart */}

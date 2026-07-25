@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Copy, Check, Calculator, Sparkles, TrendingUp, IndianRupee, Calendar, Percent, Target, PiggyBank } from "lucide-react";
+import { Calculator, Sparkles, TrendingUp, IndianRupee, Percent, Target, PiggyBank } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp, scaleIn } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-group";
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
-import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -29,7 +27,6 @@ const SIPCalculatorTool = () => {
   const [monthlyInvestment, setMonthlyInvestment] = useState(5000);
   const [annualRate, setAnnualRate] = useState(12);
   const [years, setYears] = useState(10);
-  const [copied, setCopied] = useState(false);
 
   // Preset investment scenarios
   const presets: PresetOption[] = [
@@ -72,40 +69,6 @@ const SIPCalculatorTool = () => {
     { label: "Total Invested", value: result.totalInvested },
     { label: "Wealth Gain", value: result.wealthGain },
   ]) : [];
-
-  const handleCopy = async () => {
-    if (!result) return;
-    const text = `Total Invested: ${formatIndianCurrency(result.totalInvested)}\nWealth Gain: ${formatIndianCurrency(result.wealthGain)}\nFinal Amount: ${formatIndianCurrency(result.amount)}`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    if (!result) return;
-    const text = `SIP Calculator Results\n\nInvestment Details:\nMonthly Investment: ₹${monthlyInvestment.toLocaleString()}\nAnnual Return Rate: ${annualRate}%\nInvestment Period: ${years} years\n\nResults:\nTotal Amount Invested: ₹${result.totalInvested.toLocaleString()}\nWealth Gain: ₹${result.wealthGain.toLocaleString()}\nFinal Amount: ₹${result.amount.toLocaleString()}\nTotal Returns: ${((result.wealthGain / result.totalInvested) * 100).toFixed(2)}%\n\nCalculated on ${new Date().toLocaleDateString()}`;
-    downloadText(text, `sip-calculation-${Date.now()}.txt`, 'text/plain');
-  };
-
-  const handleDownloadJSON = () => {
-    if (!result) return;
-    const data = {
-      calculationType: 'SIP Calculator',
-      inputs: {
-        monthlyInvestment,
-        annualReturnRate: annualRate + '%',
-        investmentPeriod: years + ' years',
-      },
-      results: {
-        totalInvested: result.totalInvested,
-        wealthGain: result.wealthGain,
-        finalAmount: result.amount,
-        totalReturns: ((result.wealthGain / result.totalInvested) * 100).toFixed(2) + '%',
-      },
-      calculatedAt: new Date().toISOString(),
-    };
-    downloadJSON(data, `sip-calculation-${Date.now()}.json`);
-  };
 
   return (
     <>
@@ -241,6 +204,12 @@ const SIPCalculatorTool = () => {
             transition={{ delay: 0.2 }}
             className="space-y-6"
           >
+            {/* Section Label */}
+            <div className="flex items-center gap-2 px-1">
+              <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: `hsl(${categoryColor})` }} />
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Results</h3>
+            </div>
+
             {/* Main Final Amount Display */}
             <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/30 p-8 text-center shadow-lg">
               <motion.div
@@ -255,12 +224,18 @@ const SIPCalculatorTool = () => {
                 }}
                 className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10"
               />
-              <div className="relative">
-                <p className="text-sm font-medium text-muted-foreground mb-2">Final Amount</p>
-                <p className="text-5xl font-bold" style={{ color: `hsl(${categoryColor})` }}>
+              <div className="relative flex flex-col items-center">
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl mb-3"
+                  style={{ backgroundColor: `hsl(${categoryColor} / 0.15)` }}
+                >
+                  <IndianRupee className="h-6 w-6" style={{ color: `hsl(${categoryColor})` }} />
+                </div>
+                <p className="text-sm font-medium text-muted-foreground mb-1">Final Amount</p>
+                <p className="text-5xl sm:text-6xl font-bold tracking-tight" style={{ color: `hsl(${categoryColor})` }}>
                   {formatIndianCurrency(result.amount)}
                 </p>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-3 text-xs font-medium text-muted-foreground bg-muted/60 px-3 py-1 rounded-full">
                   After {years} years of investment
                 </p>
               </div>
@@ -268,88 +243,59 @@ const SIPCalculatorTool = () => {
 
             {/* Detailed Breakdown */}
             <div className="grid gap-4 sm:grid-cols-3">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-blue-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
                     <IndianRupee className="h-5 w-5 text-blue-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Total Invested</p>
-                    <p className="text-2xl font-bold text-blue-600">
+                    <p className="text-2xl font-bold text-blue-600 truncate">
                       {formatIndianCurrency(result.totalInvested)}
                     </p>
                   </div>
                 </div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-green-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="h-5 w-5 text-green-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Wealth Gain</p>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-2xl font-bold text-green-600 truncate">
                       {formatIndianCurrency(result.wealthGain)}
                     </p>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-purple-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
                     <Percent className="h-5 w-5 text-purple-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Total Returns</p>
-                    <p className="text-2xl font-bold text-purple-600">
+                    <p className="text-2xl font-bold text-purple-600 truncate">
                       {((result.wealthGain / result.totalInvested) * 100).toFixed(1)}%
                     </p>
                   </div>
                 </div>
               </motion.div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex justify-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCopy}
-                className="flex items-center gap-2 rounded-lg bg-muted px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/80"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4 text-primary" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-4 w-4" />
-                    Copy results
-                  </>
-                )}
-              </motion.button>
-
-              <EnhancedDownload
-                options={[
-                  { label: 'Download Report', format: 'txt', action: handleDownload },
-                  { label: 'Export Data', format: 'json', action: handleDownloadJSON },
-                ]}
-                primaryLabel="Download"
-                showCopy={false}
-                variant="default"
-              />
             </div>
 
             {/* Investment Growth Charts */}

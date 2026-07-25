@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Copy, Check, Calculator, Sparkles, TrendingUp, TrendingDown, IndianRupee, Calendar, Percent, Target, DollarSign } from "lucide-react";
+import { Calculator, Sparkles, TrendingUp, TrendingDown, IndianRupee, Percent, Target, DollarSign } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp, scaleIn } from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PresetOption, PresetButtonGroup } from "@/components/ui/preset-button-group";
 import { InteractiveSlider } from "@/components/ui/interactive-slider";
 import { FormulaCard } from "@/components/ui/formula-card";
 import { FinanceChart, generateGrowthData, generatePieData } from "@/components/ui/finance-chart";
-import { EnhancedDownload } from "@/components/ui/enhanced-download";
-import { downloadText, downloadJSON } from "@/components/ui/download-utils";
 import ToolFAQ from "@/components/ToolFAQ";
 import { CategorySEO } from "@/components/ToolSEO";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -30,7 +28,6 @@ const ROICalculatorTool = () => {
   const [finalValue, setFinalValue] = useState(150000);
   const [years, setYears] = useState(3);
   const [months, setMonths] = useState(0);
-  const [copied, setCopied] = useState(false);
 
   // Preset investment scenarios
   const presets: PresetOption[] = [
@@ -77,41 +74,6 @@ const ROICalculatorTool = () => {
     { label: "Initial Investment", value: initialInvestment },
     { label: "Absolute Gain", value: result.absoluteGain },
   ]) : [];
-
-  const handleCopy = async () => {
-    if (!result) return;
-    const text = `Initial Investment: ${formatIndianCurrency(initialInvestment)}\nFinal Value: ${formatIndianCurrency(finalValue)}\nAbsolute Gain: ${formatIndianCurrency(result.absoluteGain)}\nROI: ${result.roiPercentage}%\nAnnualized ROI: ${result.annualizedRoi}%`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleDownload = () => {
-    if (!result) return;
-    const text = `ROI Calculator Results\n\nInvestment Details:\nInitial Investment: ₹${initialInvestment.toLocaleString()}\nFinal Value: ₹${finalValue.toLocaleString()}\nInvestment Period: ${years} years ${months} months\n\nResults:\nAbsolute Gain: ₹${result.absoluteGain.toLocaleString()}\nTotal ROI: ${result.roiPercentage}%\nAnnualized ROI (CAGR): ${result.annualizedRoi}%\nTotal Period: ${result.totalYears} years\n\nCalculated on ${new Date().toLocaleDateString()}`;
-    downloadText(text, `roi-calculation-${Date.now()}.txt`, 'text/plain');
-  };
-
-  const handleDownloadJSON = () => {
-    if (!result) return;
-    const data = {
-      calculationType: 'ROI Calculator',
-      inputs: {
-        initialInvestment,
-        finalValue,
-        investmentPeriod: `${years} years ${months} months`,
-      },
-      results: {
-        absoluteGain: result.absoluteGain,
-        totalROI: result.roiPercentage + '%',
-        annualizedROI: result.annualizedRoi + '%',
-        cagr: result.cagr,
-        totalYears: result.totalYears,
-      },
-      calculatedAt: new Date().toISOString(),
-    };
-    downloadJSON(data, `roi-calculation-${Date.now()}.json`);
-  };
 
   const isPositiveReturn = finalValue > initialInvestment;
 
@@ -262,6 +224,12 @@ const ROICalculatorTool = () => {
             transition={{ delay: 0.2 }}
             className="space-y-6"
           >
+            {/* Section Label */}
+            <div className="flex items-center gap-2 px-1">
+              <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: `hsl(${categoryColor})` }} />
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Results</h3>
+            </div>
+
             {/* Main ROI Display */}
             <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/30 p-8 text-center shadow-lg">
               <motion.div
@@ -276,19 +244,23 @@ const ROICalculatorTool = () => {
                 }}
                 className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10"
               />
-              <div className="relative">
-                <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="relative flex flex-col items-center">
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl mb-3 ${
+                    isPositiveReturn ? 'bg-green-100' : 'bg-red-100'
+                  }`}
+                >
                   {isPositiveReturn ? (
-                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <TrendingUp className="h-6 w-6 text-green-600" />
                   ) : (
-                    <TrendingDown className="h-5 w-5 text-red-600" />
+                    <TrendingDown className="h-6 w-6 text-red-600" />
                   )}
-                  <p className="text-sm font-medium text-muted-foreground">Total ROI</p>
                 </div>
-                <p className={`text-5xl font-bold ${isPositiveReturn ? 'text-green-600' : 'text-red-600'}`}>
+                <p className="text-sm font-medium text-muted-foreground mb-1">Total ROI</p>
+                <p className={`text-5xl sm:text-6xl font-bold tracking-tight ${isPositiveReturn ? 'text-green-600' : 'text-red-600'}`}>
                   {result.roiPercentage}%
                 </p>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-3 text-xs font-medium text-muted-foreground bg-muted/60 px-3 py-1 rounded-full">
                   Over {result.totalYears} years
                 </p>
               </div>
@@ -296,71 +268,41 @@ const ROICalculatorTool = () => {
 
             {/* Detailed Breakdown */}
             <div className="grid gap-4 sm:grid-cols-2">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-blue-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
                     <IndianRupee className="h-5 w-5 text-blue-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Absolute Gain</p>
-                    <p className={`text-2xl font-bold ${isPositiveReturn ? 'text-green-600' : 'text-red-600'}`}>
+                    <p className={`text-2xl font-bold truncate ${isPositiveReturn ? 'text-green-600' : 'text-red-600'}`}>
                       {formatIndianCurrency(result.absoluteGain)}
                     </p>
                   </div>
                 </div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                <div className="absolute inset-x-0 top-0 h-1 bg-purple-500/70" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
                     <Percent className="h-5 w-5 text-purple-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-muted-foreground">Annualized ROI (CAGR)</p>
-                    <p className={`text-2xl font-bold ${result.annualizedRoi >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                    <p className={`text-2xl font-bold truncate ${result.annualizedRoi >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {result.annualizedRoi}%
                     </p>
                   </div>
                 </div>
               </motion.div>
-            </div>
-
-            {/* Actions */}
-            <div className="flex justify-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleCopy}
-                className="flex items-center gap-2 rounded-lg bg-muted px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/80"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4 text-primary" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-4 w-4" />
-                    Copy results
-                  </>
-                )}
-              </motion.button>
-
-              <EnhancedDownload
-                options={[
-                  { label: 'Download Report', format: 'txt', action: handleDownload },
-                  { label: 'Export Data', format: 'json', action: handleDownloadJSON },
-                ]}
-                primaryLabel="Download"
-                showCopy={false}
-                variant="default"
-              />
             </div>
 
             {/* Investment Growth Charts */}

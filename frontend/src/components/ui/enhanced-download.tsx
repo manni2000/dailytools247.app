@@ -321,10 +321,10 @@ export const EnhancedDownload = ({
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { toast } = useToast();
-  const [showNotice, setShowNotice] = useState(true);
   const resolvedFileType = fileType ?? 'image';
   const resolvedFileName = fileName ?? 'file';
   const resolvedData = data ?? '';
+  const hasFileOutput = Boolean(data) || Boolean(multipleFiles && multipleFiles.length > 0);
 
   const getFileIcon = () => {
     switch (resolvedFileType) {
@@ -444,17 +444,6 @@ export const EnhancedDownload = ({
 
   return (
     <div className="space-y-4">
-      {showNotice && (
-        <div className="mb-2 rounded-md border border-yellow-200 bg-yellow-50 p-3 text-sm text-yellow-900 flex items-start justify-between">
-          <div>
-            Your files are not stored anywhere; this is a browser-based platform. If stored, they will be auto-deleted after 1 hour from everywhere.
-          </div>
-          <button onClick={() => setShowNotice(false)} className="ml-4 text-sm font-medium text-yellow-800 hover:underline">
-            Close
-          </button>
-        </div>
-      )}
-
       {options.length > 0 && (
         <div className="space-y-3">
           <div className="text-center">
@@ -480,12 +469,7 @@ export const EnhancedDownload = ({
         </div>
       )}
 
-      <div className="text-center">
-        <h3 className="text-lg font-semibold mb-2">{title || 'Processing Complete'}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
-      </div>
-
-      {multipleFiles && multipleFiles.length > 0 ? (
+      {hasFileOutput && (multipleFiles && multipleFiles.length > 0 ? (
         <div className="space-y-6">
           {/* Header with controls */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -911,8 +895,7 @@ export const EnhancedDownload = ({
             </div>
           )}
         </div>
-      )}
-
+      ))}
 
       {/* Image Preview Modal */}
       {/* Image modal removed */}
