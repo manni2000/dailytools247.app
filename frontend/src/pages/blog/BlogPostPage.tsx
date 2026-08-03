@@ -14,9 +14,16 @@ import { toast } from "sonner";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const initialLocalPost = slug ? getBlogPostBySlug(slug) ?? null : null;
+  const [post, setPost] = useState<BlogPost | null>(initialLocalPost);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>(() => {
+    if (!initialLocalPost || !slug) return [];
+    const allOtherPosts = blogPosts.filter((item) => item.slug !== slug);
+    const sameCategoryPosts = allOtherPosts.filter((item) => item.category === initialLocalPost.category);
+    const otherCategoryPosts = allOtherPosts.filter((item) => item.category !== initialLocalPost.category);
+    return [...sameCategoryPosts, ...otherCategoryPosts];
+  });
+  const [loading, setLoading] = useState(!initialLocalPost);
   const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {

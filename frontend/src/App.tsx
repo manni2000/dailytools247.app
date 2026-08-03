@@ -218,7 +218,7 @@ const AnimatedRoutes = () => {
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/blogs" element={<BlogListPage />} />
-      <Route path="/blogs/DailyTools247-vs-ilovepdf-vs-smallpdf-2026" element={<Navigate to="/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026" replace />} />
+      <Route caseSensitive path="/blogs/DailyTools247-vs-ilovepdf-vs-smallpdf-2026" element={<Navigate to="/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026" replace />} />
       <Route path="/blogs/:slug" element={<BlogPostPage />} />
       <Route path="/api-docs" element={<APIDocs />} />
       <Route path="/developers" element={<Navigate to="/api-docs" replace />} />

@@ -1445,5 +1445,5 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export const getBlogPostBySlug = (slug: string) =>
-  blogPosts.find((post) => post.slug.toLowerCase() === slug.toLowerCase());
+export const getBlogPostBySlug = (slug: string): BlogPost | null =>
+  blogPosts.find((post) => post.slug.toLowerCase() === slug.toLowerCase()) ?? null;

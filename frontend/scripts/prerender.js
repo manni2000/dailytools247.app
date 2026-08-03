@@ -1125,6 +1125,10 @@ async function run() {
     // 5. REDIRECT PAGES (Deprecated Routes)
     console.log('🔗 Generating static redirect HTML pages for deprecated routes...');
     for (const r of redirects) {
+      if (r.from.toLowerCase() === r.to.toLowerCase()) {
+        console.log(`⚠️ Skipping static file creation for case-variant redirect: ${r.from} -> ${r.to}`);
+        continue;
+      }
       const redirectHtml = `<!DOCTYPE html>
 <html>
 <head>
