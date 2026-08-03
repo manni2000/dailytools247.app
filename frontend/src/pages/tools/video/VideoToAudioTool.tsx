@@ -17,7 +17,7 @@ const categoryColor = "350 80% 55%";
 
 const VideoToAudioTool = () => {
   const [isProcessing, setIsProcessing] = useState(false);
-  const toolSeoData = getToolSeoMetadata('ai-video-to-audio');
+  const toolSeoData = getToolSeoMetadata('video-to-audio');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [audioData, setAudioData] = useState<string | null>(null);
@@ -168,7 +168,7 @@ const VideoToAudioTool = () => {
       {CategorySEO.Video(
         toolSeoData?.title || "Video to Audio Converter",
         toolSeoData?.description || "Extract audio from video files (MP4, AVI, MOV → MP3, WAV)",
-        "ai-video-to-audio"
+        "video-to-audio"
       )}
       <ToolLayout
       breadcrumbTitle="Video to Audio"

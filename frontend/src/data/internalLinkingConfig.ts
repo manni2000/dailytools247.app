@@ -292,7 +292,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '3',
-        toolSlug: 'ai-video-to-audio',
+        toolSlug: 'video-to-audio',
         toolName: 'Video to Audio',
         description: 'Extract audio from video'
       }
@@ -312,7 +312,7 @@ export const categoryHubs: HubConfig[] = [
       },
       {
         step: '2',
-        toolSlug: 'ai-keyword-density-checker',
+        toolSlug: 'keyword-density-checker',
         toolName: 'Keyword Density',
         description: 'Check keyword density'
       },

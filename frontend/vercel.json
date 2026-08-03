@@ -260,6 +260,16 @@
             "source": "/DailyTools247",
             "destination": "/",
             "permanent": true
+        },
+        {
+            "source": "/qr-scanner",
+            "destination": "/qr-code-scanner",
+            "permanent": true
+        },
+        {
+            "source": "/blogs/DailyTools247-vs-ilovepdf-vs-smallpdf-2026",
+            "destination": "/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026",
+            "permanent": true
         }
     ]
 }

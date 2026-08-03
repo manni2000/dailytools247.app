@@ -1856,48 +1856,6 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
     },
   },
 
-  'qr-scanner': {
-    slug: 'qr-scanner',
-    title: 'QR Code Scanner - Scan QR Codes Online Free',
-    description: 'Scan QR codes instantly using your camera. Extract URLs, text, and contact information. Perfect for quick QR code reading.',
-    keywords: [
-      'qr code scanner',
-      'qr code',
-      'scan qr code',
-      'qr code scanner online',
-      'qr code scanner free',
-      'free qr code scanner',
-      'qr scanner',
-      'qr code scanner tool',
-      'qr code scanner app',
-      'qr code scanner for social media',
-      'qr code scanner for product photos',
-      'qr code scanner for website graphics',
-    ],
-    longTailKeywords: [
-      'best free qr code scanner tool for images',
-      'how to use qr code scanner for social media',
-      'qr code scanner for product photos and websites',
-      'free online qr code scanner without signup',
-      'qr code scanner for fast image editing',
-      'qr code scanner in browser',
-      'how to scan qr code online free',
-      'best free qr code scanner tool',
-      'qr code scanner without software',
-      'qr code scanner no signup',
-      'fast and secure qr code scanner',
-      'free online qr code scanner for social media',
-    ],
-    category: 'Image Tools',
-    relatedTools: ['qr-generator', 'barcode-generator', 'image-converter'],
-    schema: {
-      type: 'SoftwareApplication',
-      appCategory: 'Code Scanner',
-      operatingSystem: 'Web',
-      offers: { price: '0', priceCurrency: 'INR' },
-    },
-  },
-
   'barcode-generator': {
     slug: 'barcode-generator',
     title: 'Barcode Generator - Create Barcodes Online Free',
@@ -2821,7 +2779,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure text to speech',
     ],
     category: 'Audio Tools',
-    relatedTools: ['audio-converter', 'audio-compressor', 'ai-video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-compressor', 'video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Tool',
@@ -2863,7 +2821,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure audio converter',
     ],
     category: 'Audio Tools',
-    relatedTools: ['text-to-speech', 'audio-compressor', 'ai-video-to-audio'],
+    relatedTools: ['text-to-speech', 'audio-compressor', 'video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Converter',
@@ -2905,7 +2863,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
       'fast and secure audio compressor',
     ],
     category: 'Audio Tools',
-    relatedTools: ['audio-converter', 'text-to-speech', 'ai-video-to-audio'],
+    relatedTools: ['audio-converter', 'text-to-speech', 'video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -3738,7 +3696,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['audio-converter', 'audio-trimmer', 'ai-video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-trimmer', 'video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -3816,7 +3774,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['audio-converter', 'audio-merger', 'ai-video-to-audio'],
+    relatedTools: ['audio-converter', 'audio-merger', 'video-to-audio'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Audio Editor',
@@ -8316,7 +8274,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['compound-interest-calculator', 'percentage-calculator', 'ai-unit-converter'],
+    relatedTools: ['compound-interest-calculator', 'percentage-calculator', 'unit-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Educational Calculator',
@@ -8398,7 +8356,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
         },
       ],
     },
-    relatedTools: ['percentage-calculator', 'scientific-calculator', 'ai-unit-converter'],
+    relatedTools: ['percentage-calculator', 'scientific-calculator', 'unit-converter'],
     schema: {
       type: 'SoftwareApplication',
       appCategory: 'Educational Calculator',
@@ -11524,6 +11482,7 @@ export const toolSeoEnhancements: Record<string, ToolSeoMetadata> = {
 
 export const getToolSeoMetadata = (toolSlug: string): ToolSeoMetadata | null => {
   let slug = toolSlug;
+  if (slug === 'qr-scanner') slug = 'qr-code-scanner';
   if (slug === 'page-speed-checklist-generator') slug = 'page-speed-checklist';
   if (slug === 'og-image-preview-tool') slug = 'og-image-preview';
   if (slug === 'jpg-to-png') slug = 'jpg-to-png-converter';

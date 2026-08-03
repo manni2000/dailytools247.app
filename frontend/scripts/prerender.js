@@ -129,7 +129,9 @@ const redirects = [
   { from: '/whatsapp-status-generator', to: '/ai-whatsapp-status-generator' },
   { from: '/countdown', to: '/countdown-timer' },
   { from: '/transcript-extractor', to: '/ai-speech-to-text' },
-  { from: '/DailyTools247', to: '/' }
+  { from: '/DailyTools247', to: '/' },
+  { from: '/qr-scanner', to: '/qr-code-scanner' },
+  { from: '/blogs/DailyTools247-vs-ilovepdf-vs-smallpdf-2026', to: '/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026' }
 ];
 
 async function run() {
@@ -744,7 +746,7 @@ async function run() {
       // 3. BLOG POST PAGES
       else if (route.startsWith('/blogs/')) {
         const blogSlug = route.substring(7);
-        const post = blogPosts.find(p => p.slug === blogSlug);
+        const post = blogPosts.find(p => p.slug.toLowerCase() === blogSlug.toLowerCase());
         ogType = 'article';
 
         if (post) {

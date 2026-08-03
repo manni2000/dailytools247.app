@@ -49,7 +49,7 @@ const Footer = () => {
 
   const seoTools = [
     { name: "AI SEO Meta Description Generator", path: "/ai-meta-tag-generator" },
-    { name: "Keyword Density Checker", path: "/ai-keyword-density-checker" },
+    { name: "Keyword Density Checker", path: "/keyword-density-checker" },
     { name: "Robots.txt Generator", path: "/robots-txt-generator" },
     { name: "Sitemap Validator", path: "/sitemap-validator" },
     { name: "Page Speed Checklist Generator", path: "/page-speed-checklist-generator" },
@@ -69,7 +69,7 @@ const Footer = () => {
   ];
 
   const videoTools = [
-    { name: "Video to Audio", path: "/ai-video-to-audio" },
+    { name: "Video to Audio", path: "/video-to-audio" },
     { name: "Video Trim", path: "/video-trim" },
     { name: "Video Speed Controller", path: "/video-speed" },
     { name: "Video Thumbnail Generator", path: "/video-thumbnail" },
@@ -179,7 +179,7 @@ const Footer = () => {
     { name: "CGPA to Percentage", path: "/cgpa-to-percentage" },
     { name: "LCM HCF Calculator", path: "/lcm-hcf-calculator" },
     { name: "Percentage Calculator", path: "/percentage-calculator" },
-    { name: "Unit Converter", path: "/ai-unit-converter" },
+    { name: "Unit Converter", path: "/unit-converter" },
     { name: "Compound Interest", path: "/compound-interest-calculator" },
     { name: "Simple Interest", path: "/simple-interest-calculator" },
     { name: "Study Timetable Generator", path: "/ai-study-timetable-generator" },
@@ -198,7 +198,7 @@ const Footer = () => {
     { name: "Remove Spaces", path: "/remove-spaces" },
     { name: "Line Sorter", path: "/line-sorter" },
     { name: "Duplicate Remover", path: "/duplicate-remover" },
-    { name: "Markdown to HTML", path: "/ai-markdown-to-html" },
+    { name: "Markdown to HTML", path: "/markdown-to-html" },
     { name: "Text Summarizer", path: "/ai-text-summarizer" },
     { name: "Text Diff Checker", path: "/text-diff" },
   ];
@@ -206,7 +206,7 @@ const Footer = () => {
   const socialMediaTools = [
     { name: "Hashtag Generator", path: "/ai-hashtag-generator" },
     { name: "Bio Generator", path: "/ai-bio-generator" },
-    { name: "Caption Formatter", path: "/ai-caption-formatter" },
+    { name: "Caption Formatter", path: "/caption-formatter" },
     { name: "Line Break Generator", path: "/line-break-generator" },
     { name: "Link-in-Bio", path: "/link-in-bio" },
     { name: "WhatsApp Status Generator", path: "/ai-whatsapp-status-generator" },

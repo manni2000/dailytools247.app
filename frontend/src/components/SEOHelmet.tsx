@@ -51,14 +51,14 @@ const SEOHelmet = ({
 }: SEOHelmetProps) => {
   const location = useLocation();
 
-  // For pages with query parameters, use clean canonical URL without parameters
-  const hasTrackingParams = location.search && (location.search.includes('ref=') || location.search.includes('q=') || location.search.includes('utm_'));
-  const isSearchPage = location.search.includes('q=');
-  const canonicalUrl = hasTrackingParams
-    ? `https://www.dailytools247.app${location.pathname}`
-    : `https://www.dailytools247.app${location.pathname}${location.search}`;
+  // Always use clean canonical URL without query parameters
+  const cleanPath = (location.pathname !== '/' && location.pathname.endsWith('/'))
+    ? location.pathname.slice(0, -1)
+    : location.pathname;
+  const canonicalUrl = `https://www.dailytools247.app${cleanPath}`;
 
-  const currentUrl = url || canonical || canonicalUrl;
+  const currentUrl = canonical || url || canonicalUrl;
+  const isSearchPage = location.search.includes('q=');
 
   // Add noindex for search result pages
   const shouldNoindex = noindex || isSearchPage;
