@@ -302,28 +302,18 @@ const CategoriesPage = () => {
                     placeholder="Search specific tool (e.g. 'pdf to image', 'compress', 'calculator')..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="h-14 sm:h-16 border-2 border-border/80 bg-background/90 pl-12 pr-24 text-base shadow-xl backdrop-blur-md transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl"
+                    className="h-14 sm:h-16 border-2 border-border/80 bg-background/90 pl-12 pr-12 text-base shadow-xl backdrop-blur-md transition-all duration-300 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl"
                   />
                   {searchQuery && (
                     <button
                       type="button"
                       title="Clear search"
                       onClick={() => setSearchQuery("")}
-                      className="absolute right-14 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                     >
                       <X className="h-4 w-4" />
                     </button>
                   )}
-                  <button
-                    type="button"
-                    title="Toggle filters"
-                    onClick={() => setShowFilters(!showFilters)}
-                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-xl transition-all duration-300 ${
-                      showFilters ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <SlidersHorizontal className="h-4.5 w-4.5" />
-                  </button>
                 </div>
 
                 {/* Quick Filter Pills */}

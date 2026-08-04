@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  /* Suppress native browser search triangles and autofill indicators */
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration,
+  input::-webkit-calendar-picker-indicator {
+    display: none !important;
+    -webkit-appearance: none !important;
+  }
+
+  input[type="search"] {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
   :root {
     --background: 220 20% 97%;
     --foreground: 220 20% 10%;

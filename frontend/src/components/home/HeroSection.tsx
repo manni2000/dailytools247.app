@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, Shield, Activity, Sparkle, Terminal, FileText, Image as ImageIcon, X } from "lucide-react";
+import { Search, Shield, Activity, Sparkles, Terminal, ArrowRight, Zap, CheckCircle2, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toolCategories, getAllTools } from "@/data/toolCategories";
@@ -8,23 +8,28 @@ const POPULAR_SEARCHES = [
   { name: "AI Background Remover", path: "/ai-background-remover" },
   { name: "AI Text Summarizer", path: "/ai-text-summarizer" },
   { name: "AI Speech to Text", path: "/ai-speech-to-text" },
+  { name: "PDF to Image", path: "/pdf-to-image" },
+  { name: "Image Compressor", path: "/image-compressor" },
 ];
 
 const STATS = [
   {
     icon: Shield,
-    title: "Private & Local AI",
-    desc: "Secure in-browser and local memory processing. Your data never leaves your device.",
+    title: "100% Private & Secure",
+    desc: "Your data stays in your browser with client-side & local memory processing.",
+    color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20"
   },
   {
-    icon: Sparkle,
+    icon: Sparkles,
     title: "Unlimited Free Access",
-    desc: "Instant access to all AI tools. No credits, subscriptions, or login required.",
+    desc: "Instant access to 200+ tools. No credits, no subscriptions, no signup required.",
+    color: "text-primary bg-primary/10 border-primary/20"
   },
   {
     icon: Activity,
-    title: "Instant Processing",
-    desc: "High-speed heuristics and local intelligence provide lightning-fast results.",
+    title: "Lightning Fast Engine",
+    desc: "Optimized WebAssembly & local algorithms deliver instant, high-precision results.",
+    color: "text-amber-500 bg-amber-500/10 border-amber-500/20"
   },
 ];
 
@@ -45,7 +50,6 @@ const HeroSection = () => {
         (t) => t.name.toLowerCase().includes(q.toLowerCase()) ||
           t.description.toLowerCase().includes(q.toLowerCase()),
       );
-      // Deduplicate by id (tools can appear in multiple categories)
       const unique = Array.from(new Map(matches.map(m => [m.id, m])).values());
       setSearchResults(unique);
       setShowResults(true);
@@ -78,7 +82,6 @@ const HeroSection = () => {
     }
   };
 
-  // Click outside listener
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
@@ -89,7 +92,6 @@ const HeroSection = () => {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  // Global key listener for '/' key focus
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
@@ -101,62 +103,101 @@ const HeroSection = () => {
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
   }, []);
 
-  // Find category name for a given tool ID
   const getToolCategoryName = (toolId: string) => {
     const category = toolCategories.find((cat) => cat.tools.some((t) => t.id === toolId));
     return category ? category.name : "Tool";
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/45 via-background to-background border-b border-border py-16 sm:py-24">
-      {/* Decorative glowing gradient blobs */}
-      <div className="absolute top-[-10%] left-[-5%] h-[400px] w-[400px] rounded-full bg-primary/5 blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-5%] h-[400px] w-[400px] rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-primary/5 border-b border-border/60 py-16 sm:py-24 lg:py-28">
+      {/* Decorative ambient lighting elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg className="absolute inset-0 h-full w-full stroke-primary/[0.04] [mask-image:radial-gradient(100%_100%_at_top,white,transparent)]" aria-hidden="true">
+          <defs>
+            <pattern id="hero-grid-pattern" width="32" height="32" patternUnits="userSpaceOnUse" x="-1" y="-1">
+              <path d="M.5 32V.5H32" fill="none" strokeDasharray="0" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-grid-pattern)" />
+        </svg>
+        <div className="absolute -left-1/4 -top-1/4 h-[500px] w-[500px] rounded-full bg-primary/15 blur-3xl opacity-70" />
+        <div className="absolute -right-1/4 -bottom-1/4 h-[500px] w-[500px] rounded-full bg-indigo-500/10 blur-3xl opacity-60" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="mx-auto max-w-4xl text-center">
 
-          {/* Subtitle / Badge */}
-          <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm">
-            Trusted by professionals · Fast & Private
-          </div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-primary backdrop-blur-md shadow-sm"
+          >
+            <Sparkles className="h-4 w-4 animate-pulse" />
+            <span>200+ Professional Tools · 100% Free & Private</span>
+          </motion.div>
 
-          {/* Heading */}
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-primary to-indigo-600 dark:from-white dark:via-primary dark:to-indigo-400">
-            Free AI Tools, PDF Tools, Image Tools & More        </h1>
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]"
+          >
+            Free AI Tools, PDF Tools,
+            <span className="block mt-1 gradient-text">
+              Image Converters & Developer Utilities
+            </span>
+          </motion.h1>
 
-          {/* Description & CTAs */}
-          <div className="mx-auto mt-4 max-w-3xl">
-            <p className="mx-auto text-lg text-muted-foreground/90 leading-relaxed">
-              Boost productivity with AI tools and 100+ free utilities.            </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <button
-                onClick={() => navigate('/categories')}
-                className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md hover:shadow-lg transition"
-              >
-                Explore Tools
-              </button>
-              <button
-                onClick={() => navigate('/api-docs')}
-                className="rounded-full border border-border bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-blue-50 hover:border-blue-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-100 transition"
-              >
-                Get API Access
-              </button>
-            </div>
-          </div>
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mx-auto mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground font-light leading-relaxed"
+          >
+            Boost your daily productivity with local browser AI, document conversion, and online smart tools.
+          </motion.p>
 
-          {/* Search container */}
-          <div
+          {/* Action CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-6 flex flex-wrap items-center justify-center gap-3"
+          >
+            <button
+              onClick={() => navigate('/categories')}
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all"
+            >
+              <Zap className="h-4 w-4" />
+              Explore All 200+ Tools
+            </button>
+            <button
+              onClick={() => navigate('/api-docs')}
+              className="inline-flex items-center gap-2 rounded-xl border border-border/80 bg-background/80 px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted hover:border-primary/40 backdrop-blur-md transition-all"
+            >
+              <Terminal className="h-4 w-4 text-primary" />
+              API Access for Developers
+            </button>
+          </motion.div>
+
+          {/* Glass Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
             ref={searchRef}
             className="relative mx-auto mt-8 max-w-3xl"
           >
-            <div className="flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg transition-all duration-200">
-              <Search className="ml-1 mr-4 h-6 w-6 text-muted-foreground" />
+            <div className="relative group">
+              <Search className="pointer-events-none absolute left-4 top-1/2 z-10 h-5 w-5 sm:h-6 sm:w-6 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search tools... (e.g. PDF split, image resize)"
-                className="w-full bg-transparent px-2 py-2 text-base text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-0 ring-0 focus:border-transparent sm:text-base"
+                placeholder="Search specific tool (e.g. 'pdf to image', 'compress', 'calculator')..."
+                className="h-14 sm:h-16 w-full rounded-2xl border-2 border-border/80 bg-background/90 pl-12 sm:pl-14 pr-12 text-sm sm:text-base text-foreground placeholder:text-muted-foreground/70 shadow-2xl backdrop-blur-xl transition-all duration-300 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 appearance-none"
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
                 onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
@@ -167,44 +208,43 @@ const HeroSection = () => {
               {searchQuery && (
                 <button
                   onClick={() => { setSearchQuery(""); setShowResults(false); }}
-                  className="mr-2 rounded-full p-1 text-muted-foreground/80 hover:bg-muted hover:text-foreground transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                   aria-label="Clear search"
                 >
                   <X className="h-4 w-4" />
                 </button>
               )}
-              <div className="ml-2 hidden items-center sm:flex select-none">
-              </div>
             </div>
 
-            {/* Autocomplete Dropdown - Clean & Standardized */}
+            {/* Autocomplete Dropdown */}
             {showResults && searchResults.length > 0 && (
-              <div className="absolute left-0 right-0 z-50 mt-1.5 max-h-[300px] overflow-y-auto rounded-xl border border-slate-200 bg-popover text-popover-foreground shadow-xl">
-                <div className="space-y-0.5 p-1.5">
+              <div className="absolute left-0 right-0 z-50 mt-2 max-h-[320px] overflow-y-auto rounded-2xl border border-primary/20 bg-background/95 p-2 shadow-2xl backdrop-blur-2xl text-left">
+                <div className="space-y-1">
                   {searchResults.slice(0, 6).map((tool, i) => {
                     const catName = getToolCategoryName(tool.id);
                     return (
                       <button
                         key={tool.id}
-                        className={`w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${selectedIndex === i
-                          ? "bg-primary text-primary-foreground"
+                        className={`w-full flex items-center justify-between rounded-xl p-3 text-left transition-all ${selectedIndex === i
+                          ? "bg-primary text-primary-foreground shadow-md"
                           : "hover:bg-muted text-foreground"
                           }`}
                         onClick={() => handleSelectTool(tool.path)}
                         onMouseEnter={() => setSelectedIndex(i)}
-                        aria-label={`Open ${tool.name}`}
                       >
                         <div className="min-w-0 flex-1">
-                          <div className="font-semibold truncate">{tool.name}</div>
-                          <div className={`text-xs truncate mt-0.5 ${selectedIndex === i ? "text-primary-foreground/80" : "text-muted-foreground"
-                            }`}>
+                          <div className="font-bold text-sm truncate">{tool.name}</div>
+                          <div className={`text-xs truncate mt-0.5 ${selectedIndex === i ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                             {tool.description}
                           </div>
                         </div>
-                        <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded ml-2 flex-shrink-0 ${selectedIndex === i ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"
-                          }`}>
-                          {catName.split(" ")[0]}
-                        </span>
+                        <div className="flex items-center gap-2 ml-3 flex-shrink-0">
+                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${selectedIndex === i ? "bg-primary-foreground/20 text-primary-foreground" : "bg-muted text-muted-foreground"
+                            }`}>
+                            {catName}
+                          </span>
+                          <ArrowRight className={`h-4 w-4 ${selectedIndex === i ? "text-primary-foreground" : "text-primary"}`} />
+                        </div>
                       </button>
                     );
                   })}
@@ -212,42 +252,47 @@ const HeroSection = () => {
               </div>
             )}
 
-            {/* Popular Searches Quick Links */}
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm">
-              <span className="text-muted-foreground font-medium">Popular AI:</span>
+            {/* Popular Searches Quick Pills */}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
+              <span className="text-muted-foreground font-semibold uppercase tracking-wider mr-1">Popular:</span>
               {POPULAR_SEARCHES.map((ps) => (
                 <button
                   key={ps.name}
                   onClick={() => navigate(ps.path)}
-                  className="rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 hover:shadow-sm px-3.5 py-1.5 transition-colors border border-blue-100 text-xs font-semibold cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-100 flex items-center gap-1 shadow-sm"
+                  className="rounded-full bg-background/80 hover:bg-primary/10 hover:text-primary text-foreground border border-border/80 px-3 py-1.5 transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm"
                 >
-                  <Sparkle className="h-3 w-3 text-blue-500" />
+                  <Sparkles className="h-3 w-3 text-primary" />
                   {ps.name}
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Simple Features panel */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-3 text-left">
+          {/* Trust & Performance Feature Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-14 sm:mt-18 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-3 text-left"
+          >
             {STATS.map((stat) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.title}
-                  className="rounded-xl border border-border bg-card/60 backdrop-blur-md p-5 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300"
+                  className="rounded-2xl border border-border/80 bg-background/70 backdrop-blur-xl p-5 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary shadow-sm">
-                      <Icon className="h-5 w-5" />
+                    <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${stat.color} shadow-sm group-hover:scale-110 transition-transform`}>
+                      <Icon className="h-5.5 w-5.5" />
                     </div>
-                    <h3 className="font-bold text-foreground">{stat.title}</h3>
+                    <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">{stat.title}</h3>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{stat.desc}</p>
+                  <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">{stat.desc}</p>
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
         </div>
       </div>
