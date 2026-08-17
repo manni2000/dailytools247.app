@@ -33,6 +33,11 @@ interface SEOHelmetProps {
   noindex?: boolean;
 }
 
+export const shouldNoindexMeta = (pathname: string, search: string, explicitNoindex: boolean) => {
+  const isSearchResultsPage = /\/search(?:\/)?$/i.test(pathname) && /(?:^|[?&])q=/.test(search);
+  return explicitNoindex || isSearchResultsPage;
+};
+
 const SEOHelmet = ({
   title,
   description,
@@ -58,10 +63,7 @@ const SEOHelmet = ({
   const canonicalUrl = `https://www.dailytools247.app${cleanPath}`;
 
   const currentUrl = canonical || url || canonicalUrl;
-  const isSearchPage = location.search.includes('q=');
-
-  // Add noindex for search result pages
-  const shouldNoindex = noindex || isSearchPage;
+  const shouldNoindex = shouldNoindexMeta(location.pathname, location.search, noindex);
 
   const toolMetadata = toolSlug ? getToolSeoMetadata(toolSlug) : null;
 
