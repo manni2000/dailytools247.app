@@ -41,9 +41,15 @@ interface DirectMatchItem {
   relevance: number;
 }
 
+// Minimum characters typed before search results/scroll activate
+const MIN_SEARCH_LENGTH = 3;
+// Delay after the user stops typing before the search actually runs
+const SEARCH_DEBOUNCE_MS = 400;
+
 const CategoriesPage = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>("all");
   const [sortBy, setSortBy] = useState<SortOption>("default");
   const [showFilters, setShowFilters] = useState(false);
@@ -55,15 +61,30 @@ const CategoriesPage = () => {
   const isMobile = useIsMobile();
   const totalTools = getAllTools().length;
 
-  // Auto-scroll to Categories Matching results when searching
+  // Debounce the raw input so filtering/scrolling doesn't fire on every keystroke
   useEffect(() => {
-    if (searchQuery.trim().length > 0) {
+    const trimmed = searchQuery.trim();
+    if (trimmed.length === 0) {
+      setDebouncedQuery("");
+      return;
+    }
+    if (trimmed.length < MIN_SEARCH_LENGTH) {
+      // Not enough characters yet to treat this as an intentional search
+      return;
+    }
+    const timer = setTimeout(() => setDebouncedQuery(trimmed), SEARCH_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  // Auto-scroll to Categories Matching results only once a real (debounced) search is active
+  useEffect(() => {
+    if (debouncedQuery.length >= MIN_SEARCH_LENGTH) {
       const timer = setTimeout(() => {
         categoriesResultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 250);
+      }, 100);
       return () => clearTimeout(timer);
     }
-  }, [searchQuery]);
+  }, [debouncedQuery]);
 
   useEffect(() => {
     if (isMobile && viewMode !== "list") {
@@ -88,7 +109,7 @@ const CategoriesPage = () => {
 
   // Direct Matching Tools across the platform
   const directMatchingTools = useMemo<DirectMatchItem[]>(() => {
-    const query = searchQuery.trim().toLowerCase();
+    const query = debouncedQuery.toLowerCase();
     if (!query) return [];
 
     const matches: DirectMatchItem[] = [];
@@ -123,11 +144,11 @@ const CategoriesPage = () => {
     });
 
     return matches.sort((a, b) => b.relevance - a.relevance);
-  }, [searchQuery, selectedCategoryFilter]);
+  }, [debouncedQuery, selectedCategoryFilter]);
 
   // Similar and Related Tools (shown below direct matches)
   const similarTools = useMemo<Array<{ tool: Tool; category: ToolCategory }>>(() => {
-    const query = searchQuery.trim().toLowerCase();
+    const query = debouncedQuery.toLowerCase();
     if (!query) return [];
 
     const matchedToolIds = new Set(directMatchingTools.map((m) => m.tool.id));
@@ -158,11 +179,11 @@ const CategoriesPage = () => {
     }
 
     return similarList.slice(0, 8);
-  }, [searchQuery, directMatchingTools]);
+  }, [debouncedQuery, directMatchingTools]);
 
   // Filter and sort categories
   const filteredCategories = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
+    const query = debouncedQuery.toLowerCase();
 
     let filtered = toolCategories.filter(category => {
       if (selectedCategoryFilter !== "all" && category.id !== selectedCategoryFilter) {
@@ -190,9 +211,11 @@ const CategoriesPage = () => {
       default:
         return filtered;
     }
-  }, [searchQuery, selectedCategoryFilter, sortBy]);
+  }, [debouncedQuery, selectedCategoryFilter, sortBy]);
 
-  const hasActiveSearch = searchQuery.trim().length > 0;
+  const hasActiveSearch = debouncedQuery.length > 0;
+  // User has typed something, but it hasn't cleared the debounce/length gate yet
+  const isSearchPending = searchQuery.trim().length > 0 && debouncedQuery !== searchQuery.trim();
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
@@ -327,6 +350,7 @@ const CategoriesPage = () => {
                         type="button"
                         onClick={() => {
                           setSearchQuery(pill.query);
+                          setDebouncedQuery(pill.query);
                           setSelectedCategoryFilter("all");
                         }}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${
@@ -398,15 +422,27 @@ const CategoriesPage = () => {
                 className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/40 pt-6"
               >
                 <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
-                  <CheckCircle2 className="h-4.5 w-4.5 text-primary" />
-                  {hasActiveSearch ? (
-                    <span>
-                      Found <strong className="text-foreground">{directMatchingTools.length}</strong> direct matching tool(s) across <strong className="text-foreground">{filteredCategories.length}</strong> categories
-                    </span>
+                  {isSearchPending ? (
+                    <>
+                      <span className="h-4.5 w-4.5 flex items-center justify-center">
+                        <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                      </span>
+                      <span>Searching…</span>
+                    </>
+                  ) : hasActiveSearch ? (
+                    <>
+                      <CheckCircle2 className="h-4.5 w-4.5 text-primary" />
+                      <span>
+                        Found <strong className="text-foreground">{directMatchingTools.length}</strong> direct matching tool(s) across <strong className="text-foreground">{filteredCategories.length}</strong> categories
+                      </span>
+                    </>
                   ) : (
-                    <span>
-                      Showing <strong className="text-foreground">{filteredCategories.length}</strong> categories
-                    </span>
+                    <>
+                      <CheckCircle2 className="h-4.5 w-4.5 text-primary" />
+                      <span>
+                        Showing <strong className="text-foreground">{filteredCategories.length}</strong> categories
+                      </span>
+                    </>
                   )}
                 </div>
                 
@@ -492,7 +528,7 @@ const CategoriesPage = () => {
                 <AnimatePresence mode="popLayout">
                   {filteredCategories.map((category, categoryIndex) => {
                     const Icon = category.icon;
-                    const query = searchQuery.trim().toLowerCase();
+                    const query = debouncedQuery.toLowerCase();
 
                     // Split tools into matching tools & other tools when searching
                     const matchingTools = query
@@ -726,8 +762,13 @@ const CategoriesPage = () => {
                     </div>
 
                     <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
-                      {directMatchingTools.map(({ tool, category }, idx) => {
+                      {directMatchingTools.map(({ tool, category, relevance }, idx) => {
                         const CatIcon = category.icon;
+                        const matchLabel =
+                          relevance >= 100 ? "Exact Match" :
+                          relevance >= 85 ? "Close Match" :
+                          relevance >= 70 ? "Match" :
+                          "Related";
                         return (
                           <motion.div
                             key={`direct-${tool.id}`}
@@ -751,7 +792,7 @@ const CategoriesPage = () => {
                                     <span>{category.name}</span>
                                   </div>
                                   <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                                    Exact Match
+                                    {matchLabel}
                                   </span>
                                 </div>
 
