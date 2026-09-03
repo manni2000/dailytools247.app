@@ -202,7 +202,7 @@ const DockerfileGeneratorTool = () => {
 
   const generateDockerfile = () => {
     setIsProcessing(true);
-    setDockerfile("");
+    setGeneratedDockerfile("");
   };
 
   const handleProcessingComplete = () => {

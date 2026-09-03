@@ -32,6 +32,7 @@ export default function QRPhishingScannerTool() {
     if (!qrData.trim()) return;
 
     setLoading(true);
+    setIsProcessing(true);
     try {
       const response = await fetch(`${API_URLS.BASE_URL}/api/security/ai-qr-phishing-scanner/`, {
         method: 'POST',
@@ -50,6 +51,10 @@ export default function QRPhishingScannerTool() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
   };
 
   const handleCopy = async () => {

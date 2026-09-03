@@ -766,11 +766,11 @@ export const DownloadCard = ({
                 </div>
 
                 {/* Actions Panel */}
-                <div className="flex flex-col gap-3.5 pt-2">
+                <div className="flex flex-col gap-3 pt-2">
                   <Button
                     onClick={handleDownload}
                     disabled={isDownloading || disabled || isLoading}
-                    className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/95 flex items-center justify-center gap-2 rounded-xl font-medium shadow-md transition-all active:scale-[0.99] focus:ring-primary focus:ring-offset-2"
+                    className="w-full h-12 bg-gradient-to-r from-teal-600 via-teal-500 to-emerald-500 text-white hover:from-teal-700 hover:to-emerald-600 flex items-center justify-center gap-2 rounded-xl font-bold shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                     size="lg"
                   >
                     <Download className="h-4 w-4" />
@@ -782,7 +782,7 @@ export const DownloadCard = ({
                     <Button
                       onClick={onDownloadZip}
                       variant="outline"
-                      className="w-full h-12 border border-primary text-primary hover:bg-primary/5 flex items-center justify-center gap-2 rounded-xl font-medium transition-all active:scale-[0.99]"
+                      className="w-full h-12 border-2 border-primary/40 text-primary bg-primary/5 hover:bg-primary/10 flex items-center justify-center gap-2 rounded-xl font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                       size="lg"
                       disabled={disabled || isLoading}
                     >
@@ -792,21 +792,22 @@ export const DownloadCard = ({
                   )}
 
                   {/* Convert Another button if reset callback exists */}
-                  {/* Convert Another button if reset callback exists */}
                   {(onConvertAnother || onReset) && (
                     <Button
                       onClick={onConvertAnother || onReset}
                       variant="outline"
-                      className="w-full h-12 border border-primary text-primary hover:bg-primary/5 flex items-center justify-center gap-2 rounded-xl font-medium transition-all active:scale-[0.99]"
+                      className="w-full h-12 border border-slate-200 bg-slate-50 hover:bg-slate-100 text-foreground flex items-center justify-center gap-2 rounded-xl font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-2xs"
                       size="lg"
+                      disabled={disabled || isLoading}
                     >
                       <RefreshCw className="h-4 w-4" />
-                      {onConvertAnotherLabel || `Convert Another ${fileType === 'pdf' ? 'PDF' : fileType === 'image' ? 'Image' : fileType === 'audio' ? 'Audio' : fileType === 'video' ? 'Video' : 'File'}`}
+                      {onConvertAnotherLabel || 'Process Another File'}
                     </Button>
                   )}
+                </div>
 
-                  {/* Share action */}
-                  {onShare && (
+                {/* Share action */}
+                {onShare && (
                     <div className="flex gap-2.5 mt-1">
                       <Button
                         onClick={handleShare}
@@ -838,11 +839,10 @@ export const DownloadCard = ({
                       ))}
                     </div>
                   )}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
 
         {/* Selected preview zoom modal */}
         {selectedPreview && (

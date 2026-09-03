@@ -34,6 +34,7 @@ export default function URLReputationCheckerTool() {
     if (!url.trim()) return;
 
     setLoading(true);
+    setIsProcessing(true);
     setError(null);
     setResult(null);
     
@@ -59,6 +60,10 @@ export default function URLReputationCheckerTool() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleProcessingComplete = () => {
+    setIsProcessing(false);
   };
 
   const getReputationIcon = (reputation: string) => {

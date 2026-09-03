@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
-import { Check, X, ShieldAlert, Zap, HelpCircle, FileCheck, Trophy, Sparkles } from "lucide-react";
-import { staggerContainer } from "@/lib/animations";
+import { Check, X, ShieldAlert, Zap, FileCheck, Trophy } from "lucide-react";
 
 export const CompetitiveComparison = () => {
   const stats = [
@@ -28,7 +26,7 @@ export const CompetitiveComparison = () => {
     },
     {
       icon: Trophy,
-      title: "No Signups, No Ads",
+      title: "No Signups, No Paywalls",
       desc: "Skip account registration, premium logins, and credit card requests. DailyTools247 delivers a clean, modern user experience without annoying pop-ups or distractions.",
     },
   ];
@@ -67,41 +65,41 @@ export const CompetitiveComparison = () => {
   ];
 
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden bg-background">
-      {/* Decorative blobs */}
-      <div className="absolute top-[40%] right-[-10%] h-[350px] w-[350px] rounded-full bg-primary/3 blur-[110px] pointer-events-none" />
-
+    <section className="relative py-20 lg:py-28 overflow-hidden bg-background border-b border-border/50">
       <div className="container relative z-10 mx-auto px-4">
         {/* Pitching block */}
-        <div className="grid gap-12 lg:grid-cols-12 items-center mb-24 max-w-6xl mx-auto">
+        <div className="grid gap-12 lg:grid-cols-12 items-center mb-20 max-w-6xl mx-auto">
           {/* Pitch Left */}
           <div className="lg:col-span-5 text-left">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-indigo-600 dark:from-white dark:to-indigo-400">
-              Why choose DailyTools247?
+            <div className="mb-2.5 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary border border-primary/20">
+              <span>Next-Gen Architecture</span>
+            </div>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
+              Why Choose DailyTools247?
             </h2>
-            <p className="mt-4 text-base text-muted-foreground leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
               We rebuilt the traditional web utility catalog. Rather than processing file streams in slow, queue-locked server clusters, we compile optimized compute code directly inside your local web browser interface.
             </p>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
               Enjoy server-grade performance, absolute security protocols, and unlimited free conversions on any device, anywhere.
             </p>
           </div>
 
           {/* Benefits Grid Right */}
           <div className="lg:col-span-7">
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {benefits.map((b, idx) => {
                 const Icon = b.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-5 border border-border bg-card/45 backdrop-blur-sm hover:border-primary/30 hover:shadow-md transition-all duration-300 rounded-xl text-left"
+                    className="p-5 border border-border/70 bg-card/70 backdrop-blur-sm hover:border-primary/40 hover:shadow-lg transition-all duration-300 rounded-2xl text-left dark:border-white/10 dark:bg-[#0D1017]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20 mb-3.5">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-foreground text-base">{b.title}</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
+                    <h4 className="font-bold text-foreground text-sm sm:text-base">{b.title}</h4>
+                    <p className="text-xs text-muted-foreground font-light mt-1.5 leading-relaxed">
                       {b.desc}
                     </p>
                   </div>
@@ -112,65 +110,40 @@ export const CompetitiveComparison = () => {
         </div>
 
         {/* Competitor comparison table */}
-        <div className="max-w-4xl mx-auto mb-24 text-center">
-          <div className="mb-10">
+        <div className="max-w-4xl mx-auto mb-20 text-center">
+          <div className="mb-10 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Compare Against the Competition
+              Compare Against Typical Cloud Converters
             </h3>
-            <p className="text-muted-foreground mt-2 text-sm">
-              We value transparency. See how we weigh against typical cloud-based converters.
+            <p className="text-muted-foreground mt-2 text-xs sm:text-sm font-light">
+              We value engineering integrity. See how client-side execution compares against legacy cloud utilities.
             </p>
           </div>
 
-          {/* Card list layout for Mobile devices */}
-          <div className="block md:hidden space-y-4">
-            {comparisonRows.map((row, idx) => (
-              <div key={idx} className="border border-border bg-card/65 backdrop-blur-md rounded-xl p-4 text-left shadow-sm">
-                <h4 className="font-bold text-foreground text-sm border-b border-border/50 pb-2 mb-3">
-                  {row.feature}
-                </h4>
-                <div className="space-y-2.5">
-                  <div className="bg-primary/5 rounded-lg p-2.5 flex items-start gap-2 border border-primary/10">
-                    <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-[10px] uppercase font-bold text-primary tracking-wider">DailyTools247</p>
-                      <p className="text-xs font-semibold text-foreground mt-0.5">{row.dailyTools}</p>
-                    </div>
-                  </div>
-                  <div className="bg-muted/30 rounded-lg p-2.5 flex items-start gap-2 border border-border/40">
-                    <X className="h-4 w-4 text-destructive flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Standard Competitors</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{row.competitors}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* Table layout for Tablets & Desktops */}
-          <div className="hidden md:block border border-border bg-card/65 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg">
+          <div className="border border-border/70 bg-card/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-sm dark:border-white/10 dark:bg-[#0D1017]">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-border/80 bg-muted/40 font-semibold text-xs sm:text-sm text-foreground">
+                  <tr className="border-b border-border/70 bg-muted/30 font-semibold text-xs sm:text-sm text-foreground">
                     <th className="p-4 sm:p-5">Feature Check</th>
                     <th className="p-4 sm:p-5 text-primary font-bold bg-primary/5">DailyTools247</th>
-                    <th className="p-4 sm:p-5 text-muted-foreground">Standard Competitors</th>
+                    <th className="p-4 sm:p-5 text-muted-foreground font-medium">Standard Cloud Converters</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border/60 text-xs sm:text-sm">
+                <tbody className="divide-y divide-border/50 text-xs sm:text-sm">
                   {comparisonRows.map((row, idx) => (
                     <tr key={idx} className="hover:bg-muted/10 transition-colors">
                       <td className="p-4 sm:p-5 font-semibold text-foreground">{row.feature}</td>
-                      <td className="p-4 sm:p-5 bg-primary/5 text-primary font-semibold flex items-center gap-1.5">
-                        <Check className="h-4.5 w-4.5 text-primary flex-shrink-0" />
-                        {row.dailyTools}
+                      <td className="p-4 sm:p-5 bg-primary/5 text-primary font-semibold">
+                        <span className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                          {row.dailyTools}
+                        </span>
                       </td>
-                      <td className="p-4 sm:p-5 text-muted-foreground">
-                        <span className="flex items-center gap-1.5">
-                          <X className="h-4.5 w-4.5 text-destructive flex-shrink-0" />
+                      <td className="p-4 sm:p-5 text-muted-foreground font-light">
+                        <span className="flex items-center gap-2">
+                          <X className="h-4 w-4 text-destructive flex-shrink-0" />
                           {row.competitors}
                         </span>
                       </td>
@@ -188,12 +161,12 @@ export const CompetitiveComparison = () => {
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="p-6 text-center border border-border bg-card/60 backdrop-blur-md rounded-2xl hover:shadow-lg transition-shadow duration-300"
+                className="p-6 text-center border border-border/70 bg-card/70 backdrop-blur-md rounded-2xl hover:border-primary/40 transition-all duration-300 dark:border-white/10 dark:bg-[#0D1017]"
               >
                 <p className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
                   {stat.value}
                 </p>
-                <p className="text-xs sm:text-sm text-muted-foreground font-medium mt-1">
+                <p className="text-xs sm:text-sm text-muted-foreground font-light mt-1">
                   {stat.label}
                 </p>
               </div>

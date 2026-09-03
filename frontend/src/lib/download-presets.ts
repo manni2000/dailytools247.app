@@ -9,7 +9,7 @@ import {
   QualityPreset,
   FormatPreset,
   FileType,
-} from './download-styles-config';
+} from '@/components/ui/download-styles-config';
 
 /**
  * Download Preset for a specific tool/conversion

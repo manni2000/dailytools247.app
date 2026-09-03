@@ -27,6 +27,7 @@ export interface Tool {
   description: string;
   path: string;
   isAvailable: boolean;
+  category?: string;
 }
 
 export interface ToolCategory {
@@ -411,7 +412,12 @@ export const toolCategories: ToolCategory[] = [
 ];
 
 export const getAllTools = (): Tool[] => {
-  return toolCategories.flatMap(category => category.tools);
+  return toolCategories.flatMap(category =>
+    category.tools.map(tool => ({
+      ...tool,
+      category: tool.category || category.name,
+    }))
+  );
 };
 
 export const getToolById = (id: string): Tool | undefined => {

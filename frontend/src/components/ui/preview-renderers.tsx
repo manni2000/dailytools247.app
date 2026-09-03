@@ -75,9 +75,10 @@ export const PreviewPDFEnhanced = ({
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        await page.render({
+        await (page.render as any)({
           canvasContext: context,
           viewport: viewport,
+          canvas: canvas,
         }).promise;
 
         setPdfPage(canvas.toDataURL('image/png'));

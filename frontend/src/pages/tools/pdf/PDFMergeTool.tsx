@@ -3,6 +3,7 @@ import { Upload, Merge, X, FileText, GripVertical, Sparkles, Layers, Download } 
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
+import ToolHero from "@/components/ToolHero";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { PDFDocument } from "pdf-lib";
 import { DownloadCard } from "@/components/ui/download-card";
@@ -14,7 +15,7 @@ import ToolFAQ from "@/components/ToolFAQ";
 const categoryColor = "0 70% 50%";
 
 const PDFMergeTool = () => {
-  const toolSeoData = getToolSeoMetadata('pdf-merge');
+  const toolSeoData = getToolSeoMetadata("pdf-merge");
   const [files, setFiles] = useState<{ file: File; name: string }[]>([]);
   const [mergedUrl, setMergedUrl] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -67,7 +68,7 @@ const PDFMergeTool = () => {
       const blob = new Blob([new Uint8Array(mergedBytes)], { type: "application/pdf" });
       setMergedUrl(URL.createObjectURL(blob));
     } catch (error) {
-      // console.error("Error merging PDFs:", error);
+      console.error("Error merging PDFs:", error);
     } finally {
       setIsProcessing(false);
     }
@@ -81,236 +82,179 @@ const PDFMergeTool = () => {
         "pdf-merge"
       )}
       <ToolLayout
-      breadcrumbTitle="PDF Merge"
-      category="PDF Tools"
-      categoryPath="/category/pdf"
+        breadcrumbTitle="PDF Merge"
+        category="PDF Tools"
+        categoryPath="/category/pdf"
       >
-      <div className="space-y-6">
-        {/* Enhanced Hero Section */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
-        >
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+        <div className="space-y-6">
+          <ToolHero
+            title="PDF Merge"
+            subtitle="Combine multiple PDF files into a single, organized document. 100% Online Free."
+            Icon={Layers}
+            categoryColor={categoryColor}
           />
-          <div className="relative flex items-start gap-4">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `hsl(${categoryColor} / 0.15)`, boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)` }}
-            >
-              <Layers className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
-            </motion.div>
-            <div>
-              <h2 className="text-2xl font-bold">Merge PDFs Seamlessly</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Combine multiple PDF files into a single document. Drag to reorder pages.
-              </p>
-              {/* Keyword Tags */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">merge pdf</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">combine pdf</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">join pdf</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">pdf merger</span>
+
+          {/* Upload Area */}
+          <PDFUploadZone
+            isDragging={isDragging}
+            onDragEnter={(e) => {
+              e.preventDefault();
+              setIsDragging(true);
+            }}
+            onDragLeave={() => setIsDragging(false)}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setIsDragging(true);
+            }}
+            onDrop={handleDrop}
+            onClick={() => inputRef.current?.click()}
+            onFileSelect={(file) => {
+              const dataTransfer = new DataTransfer();
+              dataTransfer.items.add(file);
+              handleFiles(dataTransfer.files);
+            }}
+            multiple={true}
+            title="Drop PDF files here or click to browse"
+            subtitle="Select multiple PDF files to merge (up to 50MB each)"
+          />
+
+          {/* File List */}
+          {files.length > 0 && (
+            <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-sm dark:border-white/10 dark:bg-[#0D1017]">
+              <h3 className="mb-4 font-bold text-foreground">
+                Files to Merge ({files.length})
+              </h3>
+              <div className="space-y-2">
+                {files.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 rounded-xl bg-muted/40 p-3 border border-border/50"
+                  >
+                    <GripVertical className="h-4 w-4 cursor-move text-muted-foreground" />
+                    <FileText className="h-4.5 w-4.5 text-primary flex-shrink-0" />
+                    <span className="flex-1 truncate text-xs sm:text-sm font-medium">
+                      {item.name}
+                    </span>
+                    <div className="flex items-center gap-1">
+                      {index > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => moveFile(index, index - 1)}
+                          className="rounded-lg p-1 text-xs hover:bg-muted font-mono"
+                          title="Move file up"
+                          aria-label="Move file up"
+                        >
+                          ↑
+                        </button>
+                      )}
+                      {index < files.length - 1 && (
+                        <button
+                          type="button"
+                          onClick={() => moveFile(index, index + 1)}
+                          className="rounded-lg p-1 text-xs hover:bg-muted font-mono"
+                          title="Move file down"
+                          aria-label="Move file down"
+                        >
+                          ↓
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => removeFile(index)}
+                        className="rounded-lg p-1 text-destructive hover:bg-destructive/10"
+                        title="Remove file"
+                        aria-label="Remove file"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          )}
+
+          {/* Actions */}
+          <div className="flex gap-4">
+            <button
+              type="button"
+              onClick={merge}
+              disabled={files.length < 2 || isProcessing}
+              className="btn-primary flex-1 py-3 text-sm font-bold flex items-center justify-center gap-2"
+            >
+              <Merge className="h-4 w-4" />
+              <span>{isProcessing ? "Merging..." : "Merge PDFs"}</span>
+            </button>
           </div>
-        </motion.div>
 
-        {/* Upload Area */}
-        <PDFUploadZone
-          isDragging={isDragging}
-          onDragEnter={(e) => { e.preventDefault(); setIsDragging(true); }}
-          onDragLeave={() => setIsDragging(false)}
-          onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-          onDrop={handleDrop}
-          onClick={() => inputRef.current?.click()}
-          onFileSelect={(file) => {
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
-            handleFiles(dataTransfer.files);
-          }}
-          multiple={true}
-          title="Drop PDF files here or click to browse"
-          subtitle="Select multiple PDF files to merge (up to 50MB each)"
-        />
+          {files.length === 1 && (
+            <p className="text-center text-xs text-muted-foreground font-light">
+              Add at least 2 PDF files to merge into a single document
+            </p>
+          )}
 
-        {/* File List */}
-        {files.length > 0 && (
-          <div className="rounded-xl border border-border bg-card p-6">
-            <h3 className="mb-4 font-semibold">Files to Merge ({files.length})</h3>
-            <div className="space-y-2">
-              {files.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 rounded-lg bg-muted/50 p-3"
-                >
-                  <GripVertical className="h-5 w-5 cursor-move text-muted-foreground" />
-                  <FileText className="h-5 w-5 text-primary" />
-                  <span className="flex-1 truncate text-sm">{item.name}</span>
-                  <div className="flex gap-1">
-                    {index > 0 && (
-                      <button
-                        onClick={() => moveFile(index, index - 1)}
-                        className="rounded p-1 hover:bg-muted"
-                        title="Move file up"
-                        aria-label="Move file up"
-                      >
-                        ↑
-                      </button>
-                    )}
-                    {index < files.length - 1 && (
-                      <button
-                        onClick={() => moveFile(index, index + 1)}
-                        className="rounded p-1 hover:bg-muted"
-                        title="Move file down"
-                        aria-label="Move file down"
-                      >
-                        ↓
-                      </button>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => removeFile(index)}
-                    className="rounded-lg p-1 text-destructive hover:bg-destructive/10"
-                    title="Remove file"
-                    aria-label="Remove file"
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-              ))}
+          {mergedUrl && (
+            <div className="flex justify-center mt-6 w-full">
+              <DownloadCard
+                fileUrl={mergedUrl}
+                fileName={
+                  files.length > 0
+                    ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf`
+                    : "merged.pdf"
+                }
+                fileType="pdf"
+                fileSize={files.reduce((acc, f) => acc + f.file.size, 0)}
+                title="PDFs Merged Successfully!"
+                description={`${files.length} PDF files have been merged into one document`}
+                onDownload={() => {
+                  const link = document.createElement("a");
+                  link.href = mergedUrl;
+                  link.download =
+                    files.length > 0
+                      ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf`
+                      : "merged.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                onConvertAnother={() => {
+                  setFiles([]);
+                  setMergedUrl(null);
+                }}
+                metadata={{
+                  Files: `${files.length} combined`,
+                  Format: "PDF",
+                }}
+                showPreview={true}
+                variant="default"
+                onConvertAnotherLabel="Merge More PDFs"
+              />
             </div>
-          </div>
-        )}
-
-        {/* Actions */}
-        <div className="flex gap-4">
-          <button
-            onClick={merge}
-            disabled={files.length < 2 || isProcessing}
-            className="btn-primary flex-1"
-          >
-            <Merge className="h-5 w-5" />
-            {isProcessing ? "Merging..." : "Merge PDFs"}
-          </button>
+          )}
         </div>
 
-        {files.length === 1 && (
-          <p className="text-center text-sm text-muted-foreground">
-            Add at least 2 PDF files to merge
-          </p>
-        )}
-
-        {mergedUrl && (
-          <div className="flex justify-center mt-6 w-full">
-            <DownloadCard
-              fileUrl={mergedUrl}
-              fileName={files.length > 0 ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf` : "merged.pdf"}
-              fileType="pdf"
-              fileSize={files.reduce((acc, f) => acc + f.file.size, 0)}
-              title="PDFs Merged Successfully!"
-              description={`${files.length} PDF files have been merged into one document`}
-              onDownload={() => {
-                const link = document.createElement('a');
-                link.href = mergedUrl;
-                link.download = files.length > 0 ? `${files[0].name.replace(/\.[^/.]+$/, "")}-merged.pdf` : "merged.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              onConvertAnother={() => { setFiles([]); setMergedUrl(null); }}
-              metadata={{
-                'Files': `${files.length} combined`,
-                'Format': 'PDF',
-              }}
-              showPreview={true}
-              variant="default"
-                  onConvertAnotherLabel="Merge More PDFs"
-                />
-          </div>
-        )}
-
-        {/* Tool Definition Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="rounded-xl border border-border bg-card p-6"
-        >
-          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-            <Layers className="h-5 w-5 text-blue-500" />
-            What is PDF Merging?
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            PDF merging combines multiple PDF files into a single document. This is useful for organizing related documents, creating comprehensive reports, or consolidating files for easier sharing and archiving.
-          </p>
-          
-          <h4 className="font-semibold mb-2">How It Works</h4>
-          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
-            <li>Upload multiple PDF files</li>
-            <li>Arrange the order by dragging</li>
-            <li>The tool merges them into one PDF</li>
-            <li>Download the combined document</li>
-          </ol>
-          
-          <div className="grid sm:grid-cols-2 gap-4 mt-4">
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <h4 className="font-semibold text-blue-900 mb-1">Merge Features</h4>
-              <ul className="text-sm text-blue-800 space-y-1">
-                <li>• Drag to reorder pages</li>
-                <li>• Multiple file support</li>
-                <li>• Original quality preserved</li>
-                <li>• Fast processing</li>
-              </ul>
-            </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
-              <ul className="text-sm text-green-800 space-y-1">
-                <li>• Report compilation</li>
-                <li>• Document organization</li>
-                <li>• Contract assembly</li>
-                <li>• Archive creation</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="mt-8">
-        {/* FAQ Section */}
-        <ToolFAQ faqs={[
-          {
-            question: "Is there a limit to how many PDFs I can merge?",
-            answer: "You can merge multiple PDFs together. The exact limit depends on file sizes and system resources. For very large merges, consider doing them in batches."
-          },
-          {
-            question: "Will the quality of my PDFs be affected?",
-            answer: "No, the merging process preserves the original quality of all PDFs. Text, images, and formatting remain unchanged in the merged document."
-          },
-          {
-            question: "Can I change the order of pages after uploading?",
-            answer: "Yes, you can drag and drop the uploaded PDFs to rearrange their order before merging. The final merged PDF will follow the order you specify."
-          },
-          {
-            question: "What happens to bookmarks and metadata?",
-            answer: "Bookmarks and metadata from individual PDFs may be preserved or combined depending on the merging method. Complex bookmarks may need manual adjustment."
-          },
-          {
-            question: "Can I merge password-protected PDFs?",
-            answer: "You'll need to unlock password-protected PDFs first before merging. Use the PDF Unlock tool to remove passwords, then merge the unlocked files."
-          }
-        ]} />
-      </div>
-    </ToolLayout>
+        <div className="mt-8">
+          <ToolFAQ
+            faqs={[
+              {
+                question: "Is there a limit to how many PDFs I can merge?",
+                answer:
+                  "You can merge multiple PDFs together. The process executes directly in client memory without arbitrary platform limits.",
+              },
+              {
+                question: "Will the quality of my PDFs be affected?",
+                answer:
+                  "No, the merging process preserves the original vector quality of all PDFs. Text, images, and formatting remain 100% untouched.",
+              },
+              {
+                question: "Can I change the order of pages after uploading?",
+                answer:
+                  "Yes, you can use the move buttons to rearrange their order before merging. The final merged PDF will follow your chosen sequence.",
+              },
+            ]}
+          />
+        </div>
+      </ToolLayout>
     </>
   );
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Copy, Check, AlignLeft, Type, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import AIProcessingIndicator from "@/components/AIProcessingIndicator";
+import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import ToolFAQ from "@/components/ToolFAQ";
@@ -11,7 +10,6 @@ import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
 const categoryColor = "330 80% 55%";
 
 const CaptionFormatterTool = () => {
-  const [isProcessing, setIsProcessing] = useState(false);
   const toolSeoData = getToolSeoMetadata('caption-formatter');
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -84,17 +82,6 @@ const CaptionFormatterTool = () => {
   const applyFormat = (style: string) => {
     const formatted = transform(input, style);
     setOutput(formatted);
-  };
-
-  const formatCaption = () => {
-    if (!inputCaption) return;
-    setIsProcessing(true);
-    setFormattedCaption("");
-  };
-
-  const handleProcessingComplete = () => {
-    setIsProcessing(false);
-    runGenerationLogic();
   };
 
   const handleCopy = async () => {

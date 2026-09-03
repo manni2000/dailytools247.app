@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Upload, Image } from "lucide-react";
+import { Upload, Image as ImageIcon } from "lucide-react";
 import { validateUploadedFile, getFileFormats } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
@@ -34,7 +34,7 @@ export const ImageUploadZone = ({
   title = "Drop image here or click to browse",
   subtitle = `Supports JPG, PNG, WebP, GIF up to ${maxSize}`,
   showImageIcon = true,
-  buttonLabel = "Choose Image"
+  buttonLabel = "Choose Image",
 }: ImageUploadZoneProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -54,11 +54,14 @@ export const ImageUploadZone = ({
       }
 
       if (validFiles.length < files.length) {
-        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        const { uploadFormat, outputFormat } = getFileFormats(
+          window.location.pathname,
+          accept
+        );
         toast({
-          title: "Unsupported File",
-          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
-          variant: "warning",
+          title: "Unsupported File Format",
+          description: `Please upload a valid ${uploadFormat} image file to proceed.`,
+          variant: "destructive",
         });
         e.target.value = "";
         return;
@@ -84,11 +87,14 @@ export const ImageUploadZone = ({
       }
 
       if (validFiles.length < files.length) {
-        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        const { uploadFormat } = getFileFormats(
+          window.location.pathname,
+          accept
+        );
         toast({
-          title: "Unsupported File",
-          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
-          variant: "warning",
+          title: "Unsupported File Format",
+          description: `Please drop a valid ${uploadFormat} image file.`,
+          variant: "destructive",
         });
         onDragLeave(e);
         return;
@@ -104,39 +110,62 @@ export const ImageUploadZone = ({
       onDragOver={onDragOver}
       onDrop={handleDrop}
       onClick={handleClick}
-      className={`relative border-2 border-dashed rounded-xl p-8 md:p-12 text-center transition-all duration-300 cursor-pointer ${
+      className={`group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-8 md:p-14 text-center transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-xl ${
         isDragging
-          ? 'border-primary bg-primary/5 scale-[1.02]'
-          : 'border-border hover:border-primary/50 hover:bg-muted/50'
+          ? "border-primary bg-primary/10 shadow-2xl shadow-primary/20 scale-[1.01]"
+          : "border-slate-300/90 bg-white/85 shadow-md shadow-slate-900/5 hover:border-primary/60 hover:shadow-xl hover:bg-white"
       }`}
     >
-      <div className="space-y-4">
-        <div className={`mx-auto w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center ${
-          isDragging ? 'bg-primary/20' : 'bg-muted'
-        }`}>
+      {/* Background radial accent */}
+      <div className="pointer-events-none absolute inset-0 bg-radial from-primary/8 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="relative z-10 flex flex-col items-center space-y-4 max-w-md">
+        <div
+          className={`flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl border transition-all duration-300 ${
+            isDragging
+              ? "border-primary bg-primary/20 scale-110 shadow-lg shadow-primary/25"
+              : "border-slate-200 bg-slate-50 group-hover:border-primary/40 group-hover:scale-105 shadow-sm"
+          }`}
+        >
           {showImageIcon ? (
-            <Image className={`w-8 h-8 md:w-10 md:h-10 ${
-              isDragging ? 'text-primary' : 'text-muted-foreground'
-            }`} />
+            <ImageIcon
+              className={`h-8 w-8 md:h-10 md:w-10 transition-colors ${
+                isDragging ? "text-primary" : "text-muted-foreground group-hover:text-primary"
+              }`}
+            />
           ) : (
-            <Upload className={`w-8 h-8 md:w-10 md:h-10 ${
-              isDragging ? 'text-primary' : 'text-muted-foreground'
-            }`} />
+            <Upload
+              className={`h-8 w-8 md:h-10 md:w-10 transition-colors ${
+                isDragging ? "text-primary" : "text-muted-foreground group-hover:text-primary"
+              }`}
+            />
           )}
         </div>
 
         <div>
-          <p className="text-lg font-medium mb-1">
+          <p className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
             {title}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="mt-1 text-xs sm:text-sm text-muted-foreground font-light">
             {subtitle}
           </p>
         </div>
 
-        <button className="mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-          {buttonLabel}{multiple ? 's' : ''}
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 via-teal-500 to-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-teal-500/25 transition-all duration-200 hover:shadow-lg hover:shadow-teal-500/35 hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <Upload className="h-4 w-4" />
+          <span>{buttonLabel}{multiple ? "s" : ""}</span>
         </button>
+
+        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1 text-[11px] text-muted-foreground font-mono">
+          <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5">JPG</span>
+          <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5">PNG</span>
+          <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5">WEBP</span>
+          <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5">GIF</span>
+          <span className="text-slate-400">· 100% In-Memory</span>
+        </div>
       </div>
 
       <input
@@ -146,8 +175,6 @@ export const ImageUploadZone = ({
         multiple={multiple}
         onChange={handleFileChange}
         className="hidden"
-        title={`Select ${multiple ? 'image files' : 'an image file'}`}
-        aria-label="Image file input"
       />
     </div>
   );

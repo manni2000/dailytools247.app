@@ -41,6 +41,7 @@ export default function TextRedactionTool() {
     if (!text.trim()) return;
 
     setLoading(true);
+    setIsProcessing(true);
     try {
       const response = await fetch(`${API_URLS.BASE_URL}/api/security/ai-text-redaction/`, {
         method: 'POST',
@@ -61,15 +62,8 @@ export default function TextRedactionTool() {
     }
   };
 
-  const handleRedact = () => {
-    if (!inputText) return;
-    setIsProcessing(true);
-    setResult(null);
-  };
-
   const handleProcessingComplete = () => {
     setIsProcessing(false);
-    runGenerationLogic();
   };
 
   const handleCopy = async () => {

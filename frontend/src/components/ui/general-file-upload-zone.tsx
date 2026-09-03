@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Upload, FileText } from "lucide-react";
+import { Upload, File } from "lucide-react";
 import { validateUploadedFile, getFileFormats } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
@@ -16,7 +16,7 @@ interface GeneralFileUploadZoneProps {
   multiple?: boolean;
   title?: string;
   subtitle?: string;
-  icon?: React.ReactNode;
+  buttonLabel?: string;
 }
 
 export const GeneralFileUploadZone = ({
@@ -31,8 +31,8 @@ export const GeneralFileUploadZone = ({
   maxSize = "50MB",
   multiple = false,
   title = "Drop file here or click to browse",
-  subtitle = `Supports various file types up to ${maxSize}`,
-  icon
+  subtitle = `Supports files up to ${maxSize}`,
+  buttonLabel = "Choose File",
 }: GeneralFileUploadZoneProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -52,11 +52,14 @@ export const GeneralFileUploadZone = ({
       }
 
       if (validFiles.length < files.length) {
-        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        const { uploadFormat } = getFileFormats(
+          window.location.pathname,
+          accept
+        );
         toast({
-          title: "Unsupported File",
-          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
-          variant: "warning",
+          title: "Unsupported File Format",
+          description: `Please upload a valid ${uploadFormat || "supported"} file to proceed.`,
+          variant: "destructive",
         });
         e.target.value = "";
         return;
@@ -82,11 +85,14 @@ export const GeneralFileUploadZone = ({
       }
 
       if (validFiles.length < files.length) {
-        const { uploadFormat, outputFormat } = getFileFormats(window.location.pathname, accept);
+        const { uploadFormat } = getFileFormats(
+          window.location.pathname,
+          accept
+        );
         toast({
-          title: "Unsupported File",
-          description: `this file/document or anything is not supported, Try upload ${uploadFormat} to convert into ${outputFormat}.`,
-          variant: "warning",
+          title: "Unsupported File Format",
+          description: `Please drop a valid ${uploadFormat || "supported"} file.`,
+          variant: "destructive",
         });
         onDragLeave(e);
         return;
@@ -95,10 +101,6 @@ export const GeneralFileUploadZone = ({
     onDrop(e);
   };
 
-  const defaultIcon = <FileText className={`w-8 h-8 md:w-10 md:h-10 ${
-    isDragging ? 'text-primary' : 'text-muted-foreground'
-  }`} />;
-
   return (
     <div
       onDragEnter={onDragEnter}
@@ -106,31 +108,47 @@ export const GeneralFileUploadZone = ({
       onDragOver={onDragOver}
       onDrop={handleDrop}
       onClick={handleClick}
-      className={`relative border-2 border-dashed rounded-xl p-8 md:p-12 text-center transition-all duration-300 cursor-pointer ${
+      className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 md:p-12 text-center transition-all duration-300 cursor-pointer overflow-hidden ${
         isDragging
-          ? 'border-primary bg-primary/5 scale-[1.02]'
-          : 'border-border hover:border-primary/50 hover:bg-muted/50'
+          ? "border-primary bg-primary/10 shadow-xl shadow-primary/10 scale-[1.01]"
+          : "border-border/80 bg-card/60 hover:border-primary/50 hover:bg-card/90 dark:border-white/10 dark:bg-[#0D1017]/80 dark:hover:border-primary/50"
       }`}
     >
-      <div className="space-y-4">
-        <div className={`mx-auto w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center ${
-          isDragging ? 'bg-primary/20' : 'bg-muted'
-        }`}>
-          {icon || defaultIcon}
+      <div className="relative z-10 flex flex-col items-center space-y-4 max-w-md">
+        <div
+          className={`flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl border transition-all duration-300 ${
+            isDragging
+              ? "border-primary bg-primary/20 scale-110 shadow-lg shadow-primary/25"
+              : "border-border/80 bg-background/80 group-hover:border-primary/40 group-hover:scale-105 shadow-sm"
+          }`}
+        >
+          <File
+            className={`h-8 w-8 md:h-10 md:w-10 transition-colors ${
+              isDragging ? "text-primary" : "text-muted-foreground group-hover:text-primary"
+            }`}
+          />
         </div>
 
         <div>
-          <p className="text-lg font-medium mb-1">
+          <p className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
             {title}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="mt-1 text-xs sm:text-sm text-muted-foreground font-light">
             {subtitle}
           </p>
         </div>
 
-        <button className="mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-          Choose File{multiple ? 's' : ''}
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/95 active:scale-95"
+        >
+          <Upload className="h-4 w-4" />
+          <span>{buttonLabel}{multiple ? "s" : ""}</span>
         </button>
+
+        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1 text-[11px] text-muted-foreground/70 font-mono">
+          <span>Local browser sandbox execution</span>
+        </div>
       </div>
 
       <input
@@ -140,8 +158,6 @@ export const GeneralFileUploadZone = ({
         multiple={multiple}
         onChange={handleFileChange}
         className="hidden"
-        title={`Select ${multiple ? 'files' : 'a file'}`}
-        aria-label="File input"
       />
     </div>
   );

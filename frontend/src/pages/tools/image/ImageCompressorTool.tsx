@@ -8,6 +8,7 @@ import ToolLayout from "@/components/layout/ToolLayout";
 import { API_URLS } from "@/lib/api-complete";
 import { DownloadCard } from "@/components/ui/download-card";
 import { useToast } from "@/hooks/use-toast";
+import ToolHero from "@/components/ToolHero";
 import { CategorySEO } from "@/components/ToolSEO";
 import ToolFAQ from "@/components/ToolFAQ";
 import { getToolSeoMetadata } from "@/data/toolSeoEnhancements";
@@ -304,62 +305,13 @@ const ImageCompressorTool = () => {
       categoryPath="/category/image"
       >
       <div className="space-y-8">
-        {/* Enhanced Hero Section */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
-        >
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
-          />
-          <div className="relative flex items-start gap-4">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
-            >
-              <Zap className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
-            </motion.div>
-            <div>
-              <h2 className="text-2xl font-bold">Image Compressor - No Watermark</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Reduce image file sizes by up to 90% while maintaining visual quality. Perfect for web optimization without any watermarks.
-              </p>
-              {/* Keyword Tags */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
-                  image compressor no watermark
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-                  compress images free
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-                  reduce image size
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">
-                  web optimization
-                </span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        {/* Tool Hero */}
+        <ToolHero
+          title="Image Compressor"
+          subtitle="Reduce JPG, PNG, and WebP file sizes by up to 90% while preserving visual clarity. 100% Online Free with zero watermarks."
+          Icon={Zap}
+          categoryColor={categoryColor}
+        />
 
         {/* Upload Area */}
         {!image && (
