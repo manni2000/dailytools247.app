@@ -1377,6 +1377,7 @@ async function run() {
 
     let vercelConfig = {
       cleanUrls: true,
+      outputDirectory: "dist",
       redirects: [],
       rewrites: [],
       headers: []
@@ -1389,6 +1390,8 @@ async function run() {
         console.warn('⚠️ Could not parse existing vercel.json, using defaults.', e);
       }
     }
+
+    vercelConfig.outputDirectory = "dist";
 
     vercelConfig.redirects = redirects.map(r => ({
       source: r.from,
