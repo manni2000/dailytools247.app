@@ -1,4 +1,4 @@
-# DailyTools247 - 168+ Free Online & AI Tools Platform
+# DailyTools247 - 200+ Free Online & AI Tools Platform
 
 A comprehensive, production-ready web platform providing **168+ free online utilities** across 18 categories for AI workflows, PDF management, image processing, video & audio conversion, developer utilities, SEO optimization, financial calculations, security tools, and more. Built with a Node.js/Express backend and a modern, accessible React + TypeScript frontend.
 

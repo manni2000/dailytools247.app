@@ -138,7 +138,7 @@ async function run() {
 
   const vite = await createServer({
     root: projectRoot,
-    server: { middlewareMode: true, hmr: false },
+    server: { middlewareMode: true, hmr: false, watch: null },
     appType: 'custom',
     optimizeDeps: { noDiscovery: true, include: [] }
   });
@@ -1421,12 +1421,14 @@ async function run() {
     console.log('✅ Successfully updated vercel.json with native redirects and optimized SPA rewrites!');
 
     console.log('✨ Programmatic pre-rendering completed successfully!');
-
+    await vite.close();
+    process.exit(0);
   } catch (err) {
     console.error('❌ Error during pre-rendering execution:', err);
+    if (vite) {
+      await vite.close();
+    }
     process.exit(1);
-  } finally {
-    await vite.close();
   }
 }
 

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,206 +6,231 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import CategoryPage from "./pages/CategoryPage";
-import CategoriesPage from "./pages/CategoriesPage";
-import About from "./pages/About";
-import WriteForUs from "./pages/WriteForUs";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import BlogListPage from "./pages/blog/BlogListPage";
-import BlogPostPage from "./pages/blog/BlogPostPage";
-import APIDocs from "./pages/APIDocs";
+// Core Pages
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const CategoriesPage = lazy(() => import("./pages/CategoriesPage"));
+const About = lazy(() => import("./pages/About"));
+const WriteForUs = lazy(() => import("./pages/WriteForUs"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const BlogListPage = lazy(() => import("./pages/blog/BlogListPage"));
+const BlogPostPage = lazy(() => import("./pages/blog/BlogPostPage"));
+const APIDocs = lazy(() => import("./pages/APIDocs"));
 
-import QRGeneratorTool from "./pages/tools/image/QRGeneratorTool";
-import QRScannerTool from "./pages/tools/image/QRScannerTool";
-import PNGToJPGConverter from "./pages/tools/image/PNGToJPGConverter";
-import JPGToPNGConverter from "./pages/tools/image/JPGToPNGConverter";
-import WebPToPNGConverter from "./pages/tools/image/WebPToPNGConverter";
-import PNGToWebPConverter from "./pages/tools/image/PNGToWebPConverter";
-import WebPToJPGConverter from "./pages/tools/image/WebPToJPGConverter";
-import JPGToWebPConverter from "./pages/tools/image/JPGToWebPConverter";
-import ImageCompressorTool from "./pages/tools/image/ImageCompressorTool";
-import ImageResizeTool from "./pages/tools/image/ImageResizeTool";
-import ImageCropTool from "./pages/tools/image/ImageCropTool";
-import BackgroundRemoverTool from "./pages/tools/image/BackgroundRemoverTool";
-import ImageBase64Tool from "./pages/tools/image/ImageBase64Tool";
-import ImageDPITool from "./pages/tools/image/ImageDPITool";
-import EXIFViewerTool from "./pages/tools/image/EXIFViewerTool";
-import FaviconGeneratorTool from "./pages/tools/image/FaviconGeneratorTool";
-import ImageToPDFTool from "./pages/tools/image/ImageToPDFTool";
+// Image Tools
+const QRGeneratorTool = lazy(() => import("./pages/tools/image/QRGeneratorTool"));
+const QRScannerTool = lazy(() => import("./pages/tools/image/QRScannerTool"));
+const PNGToJPGConverter = lazy(() => import("./pages/tools/image/PNGToJPGConverter"));
+const JPGToPNGConverter = lazy(() => import("./pages/tools/image/JPGToPNGConverter"));
+const WebPToPNGConverter = lazy(() => import("./pages/tools/image/WebPToPNGConverter"));
+const PNGToWebPConverter = lazy(() => import("./pages/tools/image/PNGToWebPConverter"));
+const WebPToJPGConverter = lazy(() => import("./pages/tools/image/WebPToJPGConverter"));
+const JPGToWebPConverter = lazy(() => import("./pages/tools/image/JPGToWebPConverter"));
+const ImageCompressorTool = lazy(() => import("./pages/tools/image/ImageCompressorTool"));
+const ImageResizeTool = lazy(() => import("./pages/tools/image/ImageResizeTool"));
+const ImageCropTool = lazy(() => import("./pages/tools/image/ImageCropTool"));
+const BackgroundRemoverTool = lazy(() => import("./pages/tools/image/BackgroundRemoverTool"));
+const ImageBase64Tool = lazy(() => import("./pages/tools/image/ImageBase64Tool"));
+const ImageDPITool = lazy(() => import("./pages/tools/image/ImageDPITool"));
+const EXIFViewerTool = lazy(() => import("./pages/tools/image/EXIFViewerTool"));
+const FaviconGeneratorTool = lazy(() => import("./pages/tools/image/FaviconGeneratorTool"));
+const ImageToPDFTool = lazy(() => import("./pages/tools/image/ImageToPDFTool"));
 
-import PDFMergeTool from "./pages/tools/pdf/PDFMergeTool";
-import PDFSplitTool from "./pages/tools/pdf/PDFSplitTool";
-import PDFToImageTool from "./pages/tools/pdf/PDFToImageTool";
-import PDFPasswordTool from "./pages/tools/pdf/PDFPasswordTool";
-import PDFUnlockTool from "./pages/tools/pdf/PDFUnlockTool";
-import PDFPageRemoverTool from "./pages/tools/pdf/PDFPageRemoverTool";
-import PDFRotateTool from "./pages/tools/pdf/PDFRotateTool";
-import PDFToWordTool from "./pages/tools/pdf/PDFToWordTool";
-import PDFToPowerPointTool from "./pages/tools/pdf/PDFToPowerPointTool";
-import PDFToExcelTool from "./pages/tools/pdf/PDFToExcelTool";
-import WordToPDFTool from "./pages/tools/pdf/WordToPDFTool";
-import PowerPointToPDFTool from "./pages/tools/pdf/PowerPointToPDFTool";
-import HTMLToPDFTool from "./pages/tools/pdf/HTMLToPDFTool";
-import PDFReorderTool from "./pages/tools/pdf/PDFReorderTool";
-import PDFAddSignatureTool from "./pages/tools/pdf/PDFAddSignatureTool";
-import CropPDFTool from "./pages/tools/pdf/CropPDFTool";
+// PDF Tools
+const PDFMergeTool = lazy(() => import("./pages/tools/pdf/PDFMergeTool"));
+const PDFSplitTool = lazy(() => import("./pages/tools/pdf/PDFSplitTool"));
+const PDFToImageTool = lazy(() => import("./pages/tools/pdf/PDFToImageTool"));
+const PDFPasswordTool = lazy(() => import("./pages/tools/pdf/PDFPasswordTool"));
+const PDFUnlockTool = lazy(() => import("./pages/tools/pdf/PDFUnlockTool"));
+const PDFPageRemoverTool = lazy(() => import("./pages/tools/pdf/PDFPageRemoverTool"));
+const PDFRotateTool = lazy(() => import("./pages/tools/pdf/PDFRotateTool"));
+const PDFToWordTool = lazy(() => import("./pages/tools/pdf/PDFToWordTool"));
+const PDFToPowerPointTool = lazy(() => import("./pages/tools/pdf/PDFToPowerPointTool"));
+const PDFToExcelTool = lazy(() => import("./pages/tools/pdf/PDFToExcelTool"));
+const WordToPDFTool = lazy(() => import("./pages/tools/pdf/WordToPDFTool"));
+const PowerPointToPDFTool = lazy(() => import("./pages/tools/pdf/PowerPointToPDFTool"));
+const HTMLToPDFTool = lazy(() => import("./pages/tools/pdf/HTMLToPDFTool"));
+const PDFReorderTool = lazy(() => import("./pages/tools/pdf/PDFReorderTool"));
+const PDFAddSignatureTool = lazy(() => import("./pages/tools/pdf/PDFAddSignatureTool"));
+const CropPDFTool = lazy(() => import("./pages/tools/pdf/CropPDFTool"));
 
-import PassportPhotoResizerTool from "./pages/tools/govt-legal/PassportPhotoResizerTool";
-import PDFCompressorTool from "./pages/tools/govt-legal/PDFCompressorTool";
-import SignatureMakerTool from "./pages/tools/govt-legal/SignatureMakerTool";
-import DocumentTemplateTool from "./pages/tools/govt-legal/DocumentTemplateTool";
+// Govt Legal Tools
+const PassportPhotoResizerTool = lazy(() => import("./pages/tools/govt-legal/PassportPhotoResizerTool"));
+const PDFCompressorTool = lazy(() => import("./pages/tools/govt-legal/PDFCompressorTool"));
+const SignatureMakerTool = lazy(() => import("./pages/tools/govt-legal/SignatureMakerTool"));
+const DocumentTemplateTool = lazy(() => import("./pages/tools/govt-legal/DocumentTemplateTool"));
 
-import ShadowAdderTool from "./pages/tools/ecommerce/ShadowAdderTool";
-import BarcodeGeneratorTool from "./pages/tools/ecommerce/BarcodeGeneratorTool";
-import GSTInvoiceGeneratorTool from "./pages/tools/ecommerce/GSTInvoiceGeneratorTool";
-import EcommerceCalculatorTool from "./pages/tools/ecommerce/EcommerceCalculatorTool";
-import WatermarkAdderTool from "./pages/tools/ecommerce/WatermarkAdderTool";
-import WhiteBackgroundAdderTool from "./pages/tools/ecommerce/WhiteBackgroundAdderTool";
-import BulkImageResizerTool from "./pages/tools/ecommerce/BulkImageResizerTool";
-import ImageColorEnhancerTool from "./pages/tools/ecommerce/ImageColorEnhancerTool";
+// E-commerce Seller Tools
+const ShadowAdderTool = lazy(() => import("./pages/tools/ecommerce/ShadowAdderTool"));
+const BarcodeGeneratorTool = lazy(() => import("./pages/tools/ecommerce/BarcodeGeneratorTool"));
+const GSTInvoiceGeneratorTool = lazy(() => import("./pages/tools/ecommerce/GSTInvoiceGeneratorTool"));
+const EcommerceCalculatorTool = lazy(() => import("./pages/tools/ecommerce/EcommerceCalculatorTool"));
+const WatermarkAdderTool = lazy(() => import("./pages/tools/ecommerce/WatermarkAdderTool"));
+const WhiteBackgroundAdderTool = lazy(() => import("./pages/tools/ecommerce/WhiteBackgroundAdderTool"));
+const BulkImageResizerTool = lazy(() => import("./pages/tools/ecommerce/BulkImageResizerTool"));
+const ImageColorEnhancerTool = lazy(() => import("./pages/tools/ecommerce/ImageColorEnhancerTool"));
 
-import VideoToAudioTool from "./pages/tools/video/VideoToAudioTool";
-import VideoTrimTool from "./pages/tools/video/VideoTrimTool";
-import VideoSpeedTool from "./pages/tools/video/VideoSpeedTool";
-import VideoThumbnailTool from "./pages/tools/video/VideoThumbnailTool";
-import VideoResolutionTool from "./pages/tools/video/VideoResolutionTool";
+// Video Tools
+const VideoToAudioTool = lazy(() => import("./pages/tools/video/VideoToAudioTool"));
+const VideoTrimTool = lazy(() => import("./pages/tools/video/VideoTrimTool"));
+const VideoSpeedTool = lazy(() => import("./pages/tools/video/VideoSpeedTool"));
+const VideoThumbnailTool = lazy(() => import("./pages/tools/video/VideoThumbnailTool"));
+const VideoResolutionTool = lazy(() => import("./pages/tools/video/VideoResolutionTool"));
 
-import AudioConverterTool from "./pages/tools/audio/AudioConverterTool";
-import SpeechToTextTool from "./pages/tools/audio/SpeechToTextTool";
-import AudioTrimmerTool from "./pages/tools/audio/AudioTrimmerTool";
-import AudioMergerTool from "./pages/tools/audio/AudioMergerTool";
-import AudioSpeedTool from "./pages/tools/audio/AudioSpeedTool";
+// Audio Tools
+const AudioConverterTool = lazy(() => import("./pages/tools/audio/AudioConverterTool"));
+const SpeechToTextTool = lazy(() => import("./pages/tools/audio/SpeechToTextTool"));
+const AudioTrimmerTool = lazy(() => import("./pages/tools/audio/AudioTrimmerTool"));
+const AudioMergerTool = lazy(() => import("./pages/tools/audio/AudioMergerTool"));
+const AudioSpeedTool = lazy(() => import("./pages/tools/audio/AudioSpeedTool"));
 
-import WordCounterTool from "./pages/tools/text/WordCounterTool";
-import CaseConverterTool from "./pages/tools/text/CaseConverterTool";
-import MarkdownHTMLTool from "./pages/tools/text/MarkdownHTMLTool";
-import RemoveSpacesTool from "./pages/tools/text/RemoveSpacesTool";
-import LineSorterTool from "./pages/tools/text/LineSorterTool";
-import DuplicateRemoverTool from "./pages/tools/text/DuplicateRemoverTool";
-import TextSummarizerTool from "./pages/tools/text/TextSummarizerTool";
-import TextDiffTool from "./pages/tools/text/TextDiffTool";
+// Text Tools
+const WordCounterTool = lazy(() => import("./pages/tools/text/WordCounterTool"));
+const CaseConverterTool = lazy(() => import("./pages/tools/text/CaseConverterTool"));
+const MarkdownHTMLTool = lazy(() => import("./pages/tools/text/MarkdownHTMLTool"));
+const RemoveSpacesTool = lazy(() => import("./pages/tools/text/RemoveSpacesTool"));
+const LineSorterTool = lazy(() => import("./pages/tools/text/LineSorterTool"));
+const DuplicateRemoverTool = lazy(() => import("./pages/tools/text/DuplicateRemoverTool"));
+const TextSummarizerTool = lazy(() => import("./pages/tools/text/TextSummarizerTool"));
+const TextDiffTool = lazy(() => import("./pages/tools/text/TextDiffTool"));
 
-import PasswordGeneratorTool from "./pages/tools/security/PasswordGeneratorTool";
-import PasswordStrengthTool from "./pages/tools/security/PasswordStrengthTool";
-import HashGeneratorTool from "./pages/tools/security/HashGeneratorTool";
-import Base64Tool from "./pages/tools/security/Base64Tool";
-import UUIDGeneratorTool from "./pages/tools/security/UUIDGeneratorTool";
-import PasswordStrengthExplainerTool from "./pages/tools/security/PasswordStrengthExplainerTool";
-import DataBreachEmailCheckerTool from "./pages/tools/security/DataBreachEmailCheckerTool";
-import FileHashComparisonTool from "./pages/tools/security/FileHashComparisonTool";
-import EXIFLocationRemoverTool from "./pages/tools/security/EXIFLocationRemoverTool";
-import TextRedactionTool from "./pages/tools/security/TextRedactionTool";
-import QRPhishingScannerTool from "./pages/tools/security/QRPhishingScannerTool";
-import SecureNotesTool from "./pages/tools/security/SecureNotesTool";
-import URLReputationCheckerTool from "./pages/tools/security/URLReputationCheckerTool";
+// Security Tools
+const PasswordGeneratorTool = lazy(() => import("./pages/tools/security/PasswordGeneratorTool"));
+const PasswordStrengthTool = lazy(() => import("./pages/tools/security/PasswordStrengthTool"));
+const HashGeneratorTool = lazy(() => import("./pages/tools/security/HashGeneratorTool"));
+const Base64Tool = lazy(() => import("./pages/tools/security/Base64Tool"));
+const UUIDGeneratorTool = lazy(() => import("./pages/tools/security/UUIDGeneratorTool"));
+const PasswordStrengthExplainerTool = lazy(() => import("./pages/tools/security/PasswordStrengthExplainerTool"));
+const DataBreachEmailCheckerTool = lazy(() => import("./pages/tools/security/DataBreachEmailCheckerTool"));
+const FileHashComparisonTool = lazy(() => import("./pages/tools/security/FileHashComparisonTool"));
+const EXIFLocationRemoverTool = lazy(() => import("./pages/tools/security/EXIFLocationRemoverTool"));
+const TextRedactionTool = lazy(() => import("./pages/tools/security/TextRedactionTool"));
+const QRPhishingScannerTool = lazy(() => import("./pages/tools/security/QRPhishingScannerTool"));
+const SecureNotesTool = lazy(() => import("./pages/tools/security/SecureNotesTool"));
+const URLReputationCheckerTool = lazy(() => import("./pages/tools/security/URLReputationCheckerTool"));
 
-import DateDifferenceTool from "./pages/tools/date-time/DateDifferenceTool";
-import WorkingDaysTool from "./pages/tools/date-time/WorkingDaysTool";
-import CountdownTimerTool from "./pages/tools/date-time/CountdownTimerTool";
-import WorldTimeTool from "./pages/tools/date-time/WorldTimeTool";
-import AgeCalculatorTool from "./pages/tools/date-time/AgeCalculatorTool";
+// Date & Time Tools
+const DateDifferenceTool = lazy(() => import("./pages/tools/date-time/DateDifferenceTool"));
+const WorkingDaysTool = lazy(() => import("./pages/tools/date-time/WorkingDaysTool"));
+const CountdownTimerTool = lazy(() => import("./pages/tools/date-time/CountdownTimerTool"));
+const WorldTimeTool = lazy(() => import("./pages/tools/date-time/WorldTimeTool"));
+const AgeCalculatorTool = lazy(() => import("./pages/tools/date-time/AgeCalculatorTool"));
 
-import JSONFormatterTool from "./pages/tools/dev/JSONFormatterTool";
-import RegexTesterTool from "./pages/tools/dev/RegexTesterTool";
-import URLEncoderTool from "./pages/tools/dev/URLEncoderTool";
-import ColorConverterTool from "./pages/tools/dev/ColorConverterTool";
-import LoremGeneratorTool from "./pages/tools/dev/LoremGeneratorTool";
-import JWTDecoderTool from "./pages/tools/dev/JWTDecoderTool";
-import CronGeneratorTool from "./pages/tools/dev/CronGeneratorTool";
-import HTTPHeaderTool from "./pages/tools/dev/HTTPHeaderTool";
-import WebsiteScreenshotTool from "./pages/tools/internet/WebsiteScreenshotTool";
-import TokenCalculatorTool from "./pages/tools/dev/TokenCalculatorTool";
-import ColorPalettesTool from "./pages/tools/dev/ColorPalettesTool";
+// Developer Tools
+const JSONFormatterTool = lazy(() => import("./pages/tools/dev/JSONFormatterTool"));
+const RegexTesterTool = lazy(() => import("./pages/tools/dev/RegexTesterTool"));
+const URLEncoderTool = lazy(() => import("./pages/tools/dev/URLEncoderTool"));
+const ColorConverterTool = lazy(() => import("./pages/tools/dev/ColorConverterTool"));
+const LoremGeneratorTool = lazy(() => import("./pages/tools/dev/LoremGeneratorTool"));
+const JWTDecoderTool = lazy(() => import("./pages/tools/dev/JWTDecoderTool"));
+const CronGeneratorTool = lazy(() => import("./pages/tools/dev/CronGeneratorTool"));
+const HTTPHeaderTool = lazy(() => import("./pages/tools/dev/HTTPHeaderTool"));
+const WebsiteScreenshotTool = lazy(() => import("./pages/tools/internet/WebsiteScreenshotTool"));
+const TokenCalculatorTool = lazy(() => import("./pages/tools/dev/TokenCalculatorTool"));
+const ColorPalettesTool = lazy(() => import("./pages/tools/dev/ColorPalettesTool"));
+const APIResponseFormatterTool = lazy(() => import("./pages/tools/dev/APIResponseFormatterTool"));
+const JsonToTypeScriptTool = lazy(() => import("./pages/tools/dev/JsonToTypeScriptTool"));
+const SQLQueryBeautifierTool = lazy(() => import("./pages/tools/dev/SQLQueryBeautifierTool"));
+const JWTExpiryTool = lazy(() => import("./pages/tools/dev/JWTExpiryTool"));
+const EnvironmentVariableTool = lazy(() => import("./pages/tools/dev/EnvironmentVariableTool"));
+const PostmanCollectionTool = lazy(() => import("./pages/tools/dev/PostmanCollectionTool"));
+const DockerfileGeneratorTool = lazy(() => import("./pages/tools/dev/DockerfileGeneratorTool"));
+const CurlToAxiosTool = lazy(() => import("./pages/tools/dev/CurlToAxiosTool"));
+const HTTPStatusCodeTool = lazy(() => import("./pages/tools/dev/HTTPStatusCodeTool"));
+const HTMLValidatorTool = lazy(() => import("./pages/tools/dev/HTMLValidatorTool"));
+const CSSValidatorTool = lazy(() => import("./pages/tools/dev/CSSValidatorTool"));
 
-import APIResponseFormatterTool from "./pages/tools/dev/APIResponseFormatterTool";
-import JsonToTypeScriptTool from "./pages/tools/dev/JsonToTypeScriptTool";
-import SQLQueryBeautifierTool from "./pages/tools/dev/SQLQueryBeautifierTool";
-import JWTExpiryTool from "./pages/tools/dev/JWTExpiryTool";
-import EnvironmentVariableTool from "./pages/tools/dev/EnvironmentVariableTool";
-import PostmanCollectionTool from "./pages/tools/dev/PostmanCollectionTool";
-import DockerfileGeneratorTool from "./pages/tools/dev/DockerfileGeneratorTool";
-import CurlToAxiosTool from "./pages/tools/dev/CurlToAxiosTool";
-import HTTPStatusCodeTool from "./pages/tools/dev/HTTPStatusCodeTool";
-import HTMLValidatorTool from "./pages/tools/dev/HTMLValidatorTool";
-import CSSValidatorTool from "./pages/tools/dev/CSSValidatorTool";
+// Internet Tools
+const IPLookupTool = lazy(() => import("./pages/tools/internet/IPLookupTool"));
+const UserAgentTool = lazy(() => import("./pages/tools/internet/UserAgentTool"));
+const DNSLookupTool = lazy(() => import("./pages/tools/internet/DNSLookupTool"));
+const SSLCheckerTool = lazy(() => import("./pages/tools/internet/SSLCheckerTool"));
+const WebsitePingTool = lazy(() => import("./pages/tools/internet/WebsitePingTool"));
+const PingTestTool = lazy(() => import("./pages/tools/internet/PingTestTool"));
 
-import IPLookupTool from "./pages/tools/internet/IPLookupTool";
-import UserAgentTool from "./pages/tools/internet/UserAgentTool";
-import DNSLookupTool from "./pages/tools/internet/DNSLookupTool";
-import SSLCheckerTool from "./pages/tools/internet/SSLCheckerTool";
-import WebsitePingTool from "./pages/tools/internet/WebsitePingTool";
-import PingTestTool from "./pages/tools/internet/PingTestTool";
+// Education Tools
+const ScientificCalculatorTool = lazy(() => import("./pages/tools/education/ScientificCalculatorTool"));
+const PercentageCalculatorTool = lazy(() => import("./pages/tools/education/PercentageCalculatorTool"));
+const UnitConverterTool = lazy(() => import("./pages/tools/education/UnitConverterTool"));
+const CompoundInterestTool = lazy(() => import("./pages/tools/education/CompoundInterestTool"));
+const SimpleInterestTool = lazy(() => import("./pages/tools/education/SimpleInterestTool"));
+const CGPAToPercentageTool = lazy(() => import("./pages/tools/education/CGPAToPercentageTool"));
+const LCMHCFTool = lazy(() => import("./pages/tools/education/LCMHCFTool"));
+const StudyTimetableTool = lazy(() => import("./pages/tools/education/StudyTimetableTool"));
+const MCQGeneratorTool = lazy(() => import("./pages/tools/education/MCQGeneratorTool"));
 
-import ScientificCalculatorTool from "./pages/tools/education/ScientificCalculatorTool";
-import PercentageCalculatorTool from "./pages/tools/education/PercentageCalculatorTool";
-import UnitConverterTool from "./pages/tools/education/UnitConverterTool";
-import CompoundInterestTool from "./pages/tools/education/CompoundInterestTool";
-import SimpleInterestTool from "./pages/tools/education/SimpleInterestTool";
-import CGPAToPercentageTool from "./pages/tools/education/CGPAToPercentageTool";
-import LCMHCFTool from "./pages/tools/education/LCMHCFTool";
-import StudyTimetableTool from "./pages/tools/education/StudyTimetableTool";
-import MCQGeneratorTool from "./pages/tools/education/MCQGeneratorTool";
+// Finance Tools
+const EMICalculatorTool = lazy(() => import("./pages/tools/finance/EMICalculatorTool"));
+const GSTCalculatorTool = lazy(() => import("./pages/tools/finance/GSTCalculatorTool"));
+const SalaryCalculatorTool = lazy(() => import("./pages/tools/finance/SalaryCalculatorTool"));
+const CurrencyConverterTool = lazy(() => import("./pages/tools/finance/CurrencyConverterTool"));
+const StartupBurnRateCalculatorTool = lazy(() => import("./pages/tools/finance/StartupBurnRateCalculatorTool"));
+const SaaSPricingCalculatorTool = lazy(() => import("./pages/tools/finance/SaaSPricingCalculatorTool"));
+const EMIComparisonTool = lazy(() => import("./pages/tools/finance/EMIComparisonTool"));
+const TaxSlabAnalyzerTool = lazy(() => import("./pages/tools/finance/TaxSlabAnalyzerTool"));
+const InvoiceGeneratorTool = lazy(() => import("./pages/tools/finance/InvoiceGeneratorTool"));
+const ProfitMarginCalculatorTool = lazy(() => import("./pages/tools/finance/ProfitMarginCalculatorTool"));
+const FreelancerRateCalculatorTool = lazy(() => import("./pages/tools/finance/FreelancerRateCalculatorTool"));
+const SalaryBreakupGeneratorTool = lazy(() => import("./pages/tools/finance/SalaryBreakupGeneratorTool"));
+const BudgetPlannerTool = lazy(() => import("./pages/tools/finance/BudgetPlannerTool"));
+const StockCAGRCalculatorTool = lazy(() => import("./pages/tools/finance/StockCAGRCalculatorTool"));
+const MutualFundCalculatorTool = lazy(() => import("./pages/tools/finance/MutualFundCalculatorTool"));
+const LumpsumCalculatorTool = lazy(() => import("./pages/tools/finance/LumpsumCalculatorTool"));
+const SIPCalculatorTool = lazy(() => import("./pages/tools/finance/SIPCalculatorTool"));
+const ROICalculatorTool = lazy(() => import("./pages/tools/finance/ROICalculatorTool"));
 
-import EMICalculatorTool from "./pages/tools/finance/EMICalculatorTool";
-import GSTCalculatorTool from "./pages/tools/finance/GSTCalculatorTool";
-import SalaryCalculatorTool from "./pages/tools/finance/SalaryCalculatorTool";
-import CurrencyConverterTool from "./pages/tools/finance/CurrencyConverterTool";
-import StartupBurnRateCalculatorTool from "./pages/tools/finance/StartupBurnRateCalculatorTool";
-import SaaSPricingCalculatorTool from "./pages/tools/finance/SaaSPricingCalculatorTool";
-import EMIComparisonTool from "./pages/tools/finance/EMIComparisonTool";
-import TaxSlabAnalyzerTool from "./pages/tools/finance/TaxSlabAnalyzerTool";
-import InvoiceGeneratorTool from "./pages/tools/finance/InvoiceGeneratorTool";
-import ProfitMarginCalculatorTool from "./pages/tools/finance/ProfitMarginCalculatorTool";
-import FreelancerRateCalculatorTool from "./pages/tools/finance/FreelancerRateCalculatorTool";
-import SalaryBreakupGeneratorTool from "./pages/tools/finance/SalaryBreakupGeneratorTool";
-import BudgetPlannerTool from "./pages/tools/finance/BudgetPlannerTool";
-import StockCAGRCalculatorTool from "./pages/tools/finance/StockCAGRCalculatorTool";
-import MutualFundCalculatorTool from "./pages/tools/finance/MutualFundCalculatorTool";
-import LumpsumCalculatorTool from "./pages/tools/finance/LumpsumCalculatorTool";
-import SIPCalculatorTool from "./pages/tools/finance/SIPCalculatorTool";
-import ROICalculatorTool from "./pages/tools/finance/ROICalculatorTool";
+// SEO Tools
+const MetaTitleDescriptionTool = lazy(() => import("./pages/tools/seo/MetaTitleDescriptionTool"));
+const KeywordDensityTool = lazy(() => import("./pages/tools/seo/KeywordDensityTool"));
+const RobotsTxtTool = lazy(() => import("./pages/tools/seo/RobotsTxtTool"));
+const SitemapValidatorTool = lazy(() => import("./pages/tools/seo/SitemapValidatorTool"));
+const PageSpeedChecklistTool = lazy(() => import("./pages/tools/seo/PageSpeedChecklistTool"));
+const OGImagePreviewTool = lazy(() => import("./pages/tools/seo/OGImagePreviewTool"));
+const BrokenImageFinderTool = lazy(() => import("./pages/tools/seo/BrokenImageFinderTool"));
+const UTMLinkBuilderTool = lazy(() => import("./pages/tools/seo/UTMLinkBuilderTool"));
+const DomainAgeTool = lazy(() => import("./pages/tools/seo/DomainAgeTool"));
+const TechStackDetectorTool = lazy(() => import("./pages/tools/seo/TechStackDetectorTool"));
+const PageSEOTool = lazy(() => import("./pages/tools/seo/PageSEOTool"));
 
-import MetaTitleDescriptionTool from "./pages/tools/seo/MetaTitleDescriptionTool";
-import KeywordDensityTool from "./pages/tools/seo/KeywordDensityTool";
-import RobotsTxtTool from "./pages/tools/seo/RobotsTxtTool";
-import SitemapValidatorTool from "./pages/tools/seo/SitemapValidatorTool";
-import PageSpeedChecklistTool from "./pages/tools/seo/PageSpeedChecklistTool";
-import OGImagePreviewTool from "./pages/tools/seo/OGImagePreviewTool";
-import BrokenImageFinderTool from "./pages/tools/seo/BrokenImageFinderTool";
-import UTMLinkBuilderTool from "./pages/tools/seo/UTMLinkBuilderTool";
-import DomainAgeTool from "./pages/tools/seo/DomainAgeTool";
-import TechStackDetectorTool from "./pages/tools/seo/TechStackDetectorTool";
-import PageSEOTool from "./pages/tools/seo/PageSEOTool";
+// ZIP Tools
+const CreateZipTool = lazy(() => import("./pages/tools/zip/CreateZipTool"));
+const ExtractZipTool = lazy(() => import("./pages/tools/zip/ExtractZipTool"));
+const PasswordZipTool = lazy(() => import("./pages/tools/zip/PasswordZipTool"));
+const CompressionZipTool = lazy(() => import("./pages/tools/zip/CompressionZipTool"));
 
-import CreateZipTool from "./pages/tools/zip/CreateZipTool";
-import ExtractZipTool from "./pages/tools/zip/ExtractZipTool";
-import PasswordZipTool from "./pages/tools/zip/PasswordZipTool";
-import CompressionZipTool from "./pages/tools/zip/CompressionZipTool";
-
-import HashtagGeneratorTool from "./pages/tools/social/HashtagGeneratorTool";
-import BioGeneratorTool from "./pages/tools/social/BioGeneratorTool";
-import CaptionFormatterTool from "./pages/tools/social/CaptionFormatterTool";
-import LineBreakGeneratorTool from "./pages/tools/social/LineBreakGeneratorTool";
-import LinkInBioTool from "./pages/tools/social/LinkInBioTool";
-import MemeGeneratorTool from "./pages/tools/social/MemeGeneratorTool";
-import WhatsAppStatusTool from "./pages/tools/social/WhatsAppStatusTool";
+// Social Tools
+const HashtagGeneratorTool = lazy(() => import("./pages/tools/social/HashtagGeneratorTool"));
+const BioGeneratorTool = lazy(() => import("./pages/tools/social/BioGeneratorTool"));
+const CaptionFormatterTool = lazy(() => import("./pages/tools/social/CaptionFormatterTool"));
+const LineBreakGeneratorTool = lazy(() => import("./pages/tools/social/LineBreakGeneratorTool"));
+const LinkInBioTool = lazy(() => import("./pages/tools/social/LinkInBioTool"));
+const MemeGeneratorTool = lazy(() => import("./pages/tools/social/MemeGeneratorTool"));
+const WhatsAppStatusTool = lazy(() => import("./pages/tools/social/WhatsAppStatusTool"));
 
 // Email Marketing Tools
-import EmailSubjectLineGeneratorTool from "./pages/tools/email/EmailSubjectLineGeneratorTool";
-import EmailSignatureGeneratorTool from "./pages/tools/email/EmailSignatureGeneratorTool";
-import HTMLEmailPreviewerTool from "./pages/tools/email/HTMLEmailPreviewerTool";
-import SpamScoreCheckerTool from "./pages/tools/email/SpamScoreCheckerTool";
-import EmailTemplateBuilderTool from "./pages/tools/email/EmailTemplateBuilderTool";
-import EmailHeaderAnalyzerTool from "./pages/tools/email/EmailHeaderAnalyzerTool";
-import SPFRecordGeneratorTool from "./pages/tools/email/SPFRecordGeneratorTool";
-import DKIMGeneratorTool from "./pages/tools/email/DKIMGeneratorTool";
-import DMARCGeneratorTool from "./pages/tools/email/DMARCGeneratorTool";
-import MailtoLinkGeneratorTool from "./pages/tools/email/MailtoLinkGeneratorTool";
+const EmailSubjectLineGeneratorTool = lazy(() => import("./pages/tools/email/EmailSubjectLineGeneratorTool"));
+const EmailSignatureGeneratorTool = lazy(() => import("./pages/tools/email/EmailSignatureGeneratorTool"));
+const HTMLEmailPreviewerTool = lazy(() => import("./pages/tools/email/HTMLEmailPreviewerTool"));
+const SpamScoreCheckerTool = lazy(() => import("./pages/tools/email/SpamScoreCheckerTool"));
+const EmailTemplateBuilderTool = lazy(() => import("./pages/tools/email/EmailTemplateBuilderTool"));
+const EmailHeaderAnalyzerTool = lazy(() => import("./pages/tools/email/EmailHeaderAnalyzerTool"));
+const SPFRecordGeneratorTool = lazy(() => import("./pages/tools/email/SPFRecordGeneratorTool"));
+const DKIMGeneratorTool = lazy(() => import("./pages/tools/email/DKIMGeneratorTool"));
+const DMARCGeneratorTool = lazy(() => import("./pages/tools/email/DMARCGeneratorTool"));
+const MailtoLinkGeneratorTool = lazy(() => import("./pages/tools/email/MailtoLinkGeneratorTool"));
 
 const queryClient = new QueryClient();
+
+const PageLoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+      <span className="text-xs text-muted-foreground font-medium">Loading...</span>
+    </div>
+  </div>
+);
 
 const AnimatedRoutes = () => {
   return (
@@ -473,7 +499,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <ScrollToTop />
-        <AnimatedRoutes />
+        <Suspense fallback={<PageLoadingFallback />}>
+          <AnimatedRoutes />
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
