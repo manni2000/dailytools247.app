@@ -104,203 +104,236 @@ const PNGToJPGConverter = () => {
         "png-to-jpg"
       )}
       <ToolLayout
-      breadcrumbTitle="PNG to JPG Converter"
-      category="Image Tools"
-      categoryPath="/category/image"
-    >
-      <div className="space-y-8">
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
-        >
+        breadcrumbTitle="PNG to JPG Converter"
+        category="Image Tools"
+        categoryPath="/category/image"
+      >
+        <div className="space-y-8">
           <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
-            style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
-          />
-          <div className="relative flex items-start gap-4">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.15)`,
-                boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
-              }}
-            >
-              <FileImage className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
-            </motion.div>
-            <div>
-              <h2 className="text-2xl font-bold">Quick PNG to JPG Conversion</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Convert PNG images to JPG format with customizable quality settings for optimal file size reduction.
-              </p>
-              {/* Keyword Tags */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">png to jpg</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">convert png to jpg</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">png to jpeg</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">image format converter</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Upload Area */}
-        {!image && (
-          <ImageUploadZone
-            isDragging={isDragging}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onClick={() => {}}
-            onFileSelect={handleFile}
-            multiple={false}
-            title="Drop PNG image here or click to browse"
-            subtitle="Supports PNG, WebP, GIF, BMP and other image formats up to 10MB"
-            buttonLabel="Choose PNG"
-          />
-        )}
-
-        {/* Preview and Convert */}
-        {image && (
-          <motion.div
-            variants={scaleIn}
+            variants={fadeInUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.1 }}
-            className="space-y-6"
+            className="relative mb-8 overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-muted/50 via-background to-muted/30 p-6 sm:p-8"
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <ImageIcon className="h-5 w-5 text-muted-foreground" />
-                <div>
-                  <span className="font-medium">{image.name}</span>
-                  <span className="ml-2 rounded bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">
-                    {(image.size / 1024).toFixed(1)} KB
-                  </span>
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-3xl"
+              style={{ backgroundColor: `hsl(${categoryColor} / 0.2)` }}
+            />
+            <div className="relative flex items-start gap-4">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl"
+                style={{
+                  backgroundColor: `hsl(${categoryColor} / 0.15)`,
+                  boxShadow: `0 8px 30px hsl(${categoryColor} / 0.3)`,
+                }}
+              >
+                <FileImage className="h-7 w-7" style={{ color: `hsl(${categoryColor})` }} />
+              </motion.div>
+              <div>
+                <h2 className="text-2xl font-bold">Quick PNG to JPG Conversion</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Convert PNG images to JPG format with customizable quality settings for optimal file size reduction.
+                </p>
+                {/* Keyword Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">png to jpg</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">convert png to jpg</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">png to jpeg</span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 border border-orange-200">image format converter</span>
                 </div>
               </div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <button
-                  onClick={reset}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
-                  title="Clear image and reset converter"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </motion.div>
             </div>
+          </motion.div>
 
-            {/* Preview removed */}
-            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
-              Image preview removed.
-            </div>
+          {/* Upload Area */}
+          {!image && (
+            <ImageUploadZone
+              isDragging={isDragging}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              onClick={() => {}}
+              onFileSelect={handleFile}
+              multiple={false}
+              title="Drop PNG image here or click to browse"
+              subtitle="Supports PNG files with transparency up to 10MB"
+              accept="image/png"
+              buttonLabel="Choose PNG"
+            />
+          )}
 
-            {/* Conversion Flow */}
-            <div className="flex items-center justify-center gap-4 text-sm">
-              <span className="rounded-lg bg-blue-500/10 px-4 py-2 font-medium text-blue-700 border border-blue-200">
-                PNG
-              </span>
-              <ArrowRight className="h-5 w-5 text-muted-foreground" />
-              <span className="rounded-lg bg-green-500/10 px-4 py-2 font-medium text-green-700 border border-green-200">
-                JPG
-              </span>
-            </div>
-
-            {/* Quality Slider */}
-            <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
-              <div className="mb-3 flex items-center gap-2">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Zap className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
+          {/* Preview and Convert */}
+          {image && (
+            <motion.div
+              variants={scaleIn}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.1 }}
+              className="space-y-6"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <ImageIcon className="h-5 w-5 text-muted-foreground" />
+                  <div>
+                    <span className="font-medium">{image.name}</span>
+                    <span className="ml-2 rounded bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">
+                      {(image.size / 1024).toFixed(1)} KB
+                    </span>
+                  </div>
+                </div>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <button
+                    onClick={reset}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
+                    title="Clear image and reset converter"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
                 </motion.div>
-                <label className="text-sm font-semibold text-foreground">
-                  JPG Quality: {quality}%
-                </label>
               </div>
-              <input
-                type="range"
-                min="10"
-                max="100"
-                value={quality}
-                onChange={(e) => {
-                  setQuality(Number(e.target.value));
-                  setConvertedUrl(null);
-                }}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                title="Adjust JPG compression quality (10-100%)"
-              />
-              <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                <span>Low (10%)</span>
-                <span>Medium (50%)</span>
-                <span>High (100%)</span>
-              </div>
-              <div className="mt-3 p-3 rounded-lg bg-muted/50">
-                <p className="text-sm text-muted-foreground">
-                  {quality <= 30 && "Low quality - Very small file size"}
-                  {quality > 30 && quality <= 70 && "Medium quality - Balanced size and quality"}
-                  {quality > 70 && "High quality - Best image quality"}
-                </p>
-              </div>
-            </div>
 
-            {isConverting && (
-              <div className="flex justify-center py-8">
-                <ModernLoadingSpinner 
-                  size="md" 
-                  text="Converting to JPG..." 
-                  color={`hsl(${categoryColor})`}
+              {/* Conversion Flow */}
+              <div className="flex items-center justify-center gap-4 text-sm">
+                <span className="rounded-lg bg-blue-500/10 px-4 py-2 font-medium text-blue-700 border border-blue-200">
+                  PNG
+                </span>
+                <ArrowRight className="h-5 w-5 text-muted-foreground" />
+                <span className="rounded-lg bg-green-500/10 px-4 py-2 font-medium text-green-700 border border-green-200">
+                  JPG
+                </span>
+              </div>
+
+              {/* Quality Slider */}
+              <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <motion.div
+                      animate={{ rotate: [0, 360] }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    >
+                      <Sparkles className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
+                    </motion.div>
+                    <label className="text-sm font-semibold text-foreground">
+                      JPG Quality: {quality}%
+                    </label>
+                  </div>
+                  <span className="rounded-lg bg-primary/10 px-3 py-1 font-medium text-primary text-xs">{quality}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="10"
+                  max="100"
+                  value={quality}
+                  onChange={(e) => {
+                    setQuality(Number(e.target.value));
+                    setConvertedUrl(null);
+                  }}
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  title="Adjust JPG compression quality (10-100%)"
                 />
+                <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                  <span>Smaller file (10%)</span>
+                  <span>Balanced (50%)</span>
+                  <span>Highest quality (100%)</span>
+                </div>
+                <div className="mt-3 p-3 rounded-lg bg-muted/50">
+                  <p className="text-sm text-muted-foreground">
+                    {quality <= 50 && "High compression - Smallest file size, some quality loss"}
+                    {quality > 50 && quality <= 85 && "Standard quality - Great balance between size and quality"}
+                    {quality > 85 && "Maximum quality - Minimal compression, best visual fidelity"}
+                  </p>
+                </div>
               </div>
-            )}
 
-            {/* Convert Button */}
-            {!isConverting && (
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              {/* JPG Benefits */}
+              <div className="rounded-xl border border-border bg-card p-6 shadow-lg hover:shadow-xl transition-shadow duration-500">
+                <div className="mb-3 flex items-center gap-2">
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Zap className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
+                  </motion.div>
+                  <h3 className="font-semibold text-foreground">Why Convert PNG to JPG?</h3>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-green-500" />
+                    <span className="text-sm text-muted-foreground">Significantly smaller file size (up to 70-80% reduction)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-blue-500" />
+                    <span className="text-sm text-muted-foreground">Universal compatibility across all web browsers and devices</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-purple-500" />
+                    <span className="text-sm text-muted-foreground">Ideal for photography, web images, and email sharing</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-orange-500" />
+                    <span className="text-sm text-muted-foreground">Customizable compression for balanced quality & speed</span>
+                  </div>
+                </div>
+              </div>
+
+              {isConverting && (
+                <div className="flex justify-center py-8">
+                  <ModernLoadingSpinner 
+                    size="md" 
+                    text="Converting to JPG..." 
+                    color={`hsl(${categoryColor})`}
+                  />
+                </div>
+              )}
+
+              {/* Convert Button */}
+              {!isConverting && (
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <button
                     onClick={convert} 
                     disabled={isConverting}
                     className="btn-primary w-full"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${categoryColor}) 0%, hsl(${categoryColor} / 0.8) 100%)`,
+                    }}
                     title="Convert PNG image to JPG format"
                   >
-                  <RefreshCw className="h-5 w-5" />
-                  Convert to JPG
-                </button>
-              </motion.div>
-            )}
-          </motion.div>
-        )}
+                    <RefreshCw className="h-5 w-5" />
+                    Convert PNG to JPG
+                  </button>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
 
-        {/* Download Section */}
-        {convertedUrl && (
-          <div id="download-section" className="flex justify-center">
-            <EnhancedDownload
-              data={convertedUrl}
-              fileName={getFileName()}
-              fileType="image"
-              title="PNG Converted to JPG Successfully"
-              description={`Your image has been converted to JPG format at ${quality}% quality`}
-              fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Convert Another PNG"
-                />
-          </div>
-        )}
+          {/* Download Section */}
+          {convertedUrl && (
+            <div id="download-section" className="flex justify-center">
+              <EnhancedDownload
+                data={convertedUrl}
+                fileName={getFileName()}
+                fileType="image"
+                title="PNG Converted to JPG Successfully"
+                description={`Your image has been converted to JPG format at ${quality}% quality`}
+                fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
+                onConvertAnother={reset}
+                onConvertAnotherLabel="Convert Another PNG"
+              />
+            </div>
+          )}
 
         {/* Tool Definition Section */}
         <motion.div
@@ -316,7 +349,7 @@ const PNGToJPGConverter = () => {
           <p className="text-muted-foreground mb-4">
             PNG to JPG conversion transforms PNG images into JPEG format. JPG uses lossy compression, resulting in smaller file sizes suitable for web use, sharing, and storage where transparency isn't required.
           </p>
-          
+
           <h4 className="font-semibold mb-2">How It Works</h4>
           <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
             <li>Upload your PNG image</li>
@@ -324,7 +357,7 @@ const PNGToJPGConverter = () => {
             <li>The tool converts it to JPG format</li>
             <li>Download the compressed JPG file</li>
           </ol>
-          
+
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
               <h4 className="font-semibold text-blue-900 mb-1">Conversion Features</h4>
@@ -348,32 +381,32 @@ const PNGToJPGConverter = () => {
         </motion.div>
 
         <div className="mt-8">
-        {/* FAQ Section */}
-        <ToolFAQ faqs={[
-          {
-            question: "Why convert PNG to JPG?",
-            answer: "Convert to JPG for smaller file sizes and better compatibility. JPG is ideal for web use, email, and sharing where transparency isn't needed and file size matters."
-          },
-          {
-            question: "Will I lose transparency?",
-            answer: "Yes, JPG doesn't support transparency. Transparent areas will be replaced with a background color (usually white or black). Consider this when converting images with transparency."
-          },
-          {
-            question: "What quality setting should I use?",
-            answer: "Quality 80-90% is recommended for most uses. This provides good visual quality while significantly reducing file size. Use 95%+ for important images needing maximum quality."
-          },
-          {
-            question: "How much will file size reduce?",
-            answer: "JPG compression typically reduces file size by 50-80% compared to PNG. The exact reduction depends on image content and quality setting."
-          },
-          {
-            question: "Can I convert back to PNG later?",
-            answer: "Yes, but you won't recover the original PNG quality or transparency. JPG compression is lossy - some data is permanently lost. Always keep your original PNG files."
-          }
-        ]} />
+          {/* FAQ Section */}
+          <ToolFAQ faqs={[
+            {
+              question: "Why convert PNG to JPG?",
+              answer: "Convert to JPG for smaller file sizes and better compatibility. JPG is ideal for web use, email, and sharing where transparency isn't needed and file size matters."
+            },
+            {
+              question: "Will I lose transparency?",
+              answer: "Yes, JPG doesn't support transparency. Transparent areas will be replaced with a background color (usually white or black). Consider this when converting images with transparency."
+            },
+            {
+              question: "What quality setting should I use?",
+              answer: "Quality 80-90% is recommended for most uses. This provides good visual quality while significantly reducing file size. Use 95%+ for important images needing maximum quality."
+            },
+            {
+              question: "How much will file size reduce?",
+              answer: "JPG compression typically reduces file size by 50-80% compared to PNG. The exact reduction depends on image content and quality setting."
+            },
+            {
+              question: "Can I convert back to PNG later?",
+              answer: "Yes, but you won't recover the original PNG quality or transparency. JPG compression is lossy - some data is permanently lost. Always keep your original PNG files."
+            }
+          ]} />
+        </div>
       </div>
-    </div>
-    </ToolLayout>
+    </ToolLayout >
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import { Upload, Crop, X, RotateCcw, Sparkles } from "lucide-react";
+import { Crop, X, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeInUp} from "@/lib/animations";
+import { fadeInUp } from "@/lib/animations";
 import ToolLayout from "@/components/layout/ToolLayout";
 import { EnhancedDownload } from "@/components/ui/enhanced-download";
 import { ImageUploadZone } from "@/components/ui/image-upload-zone";
@@ -221,134 +221,128 @@ const ImageCropTool = () => {
               </button>
             </div>
 
-              {/* Crop Controls */}
-              <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-4">
-                <div>
-                  <label className="mb-1 block text-xs sm:text-sm font-medium">X Position</label>
-                  <input
-                    type="number"
-                    value={cropArea.x}
-                    onChange={(e) => setCropArea({ ...cropArea, x: parseInt(e.target.value) || 0 })}
-                    className="input-field w-full text-sm"
-                    min={0}
-                    max={originalSize.width - cropArea.width}
-                    title="Set horizontal starting position in pixels"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs sm:text-sm font-medium">Y Position</label>
-                  <input
-                    type="number"
-                    value={cropArea.y}
-                    onChange={(e) => setCropArea({ ...cropArea, y: parseInt(e.target.value) || 0 })}
-                    className="input-field w-full text-sm"
-                    min={0}
-                    max={originalSize.height - cropArea.height}
-                    title="Set vertical starting position in pixels"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs sm:text-sm font-medium">Width</label>
-                  <input
-                    type="number"
-                    value={cropArea.width}
-                    onChange={(e) => setCropArea({ ...cropArea, width: parseInt(e.target.value) || 100 })}
-                    className="input-field w-full text-sm"
-                    min={1}
-                    max={originalSize.width - cropArea.x}
-                    title="Set crop width in pixels"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs sm:text-sm font-medium">Height</label>
-                  <input
-                    type="number"
-                    value={cropArea.height}
-                    onChange={(e) => setCropArea({ ...cropArea, height: parseInt(e.target.value) || 100 })}
-                    className="input-field w-full text-sm"
-                    min={1}
-                    max={originalSize.height - cropArea.y}
-                    title="Set crop height in pixels"
-                  />
-                </div>
+            {/* Crop Controls */}
+            <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-4">
+              <div>
+                <label className="mb-1 block text-xs sm:text-sm font-medium">X Position</label>
+                <input
+                  type="number"
+                  value={cropArea.x}
+                  onChange={(e) => setCropArea({ ...cropArea, x: parseInt(e.target.value) || 0 })}
+                  className="input-field w-full text-sm"
+                  min={0}
+                  max={originalSize.width - cropArea.width}
+                  title="Set horizontal starting position in pixels"
+                />
               </div>
-
-              {/* Preview removed */}
-              <div className="flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-                <div className="text-sm text-muted-foreground">Image preview removed.</div>
+              <div>
+                <label className="mb-1 block text-xs sm:text-sm font-medium">Y Position</label>
+                <input
+                  type="number"
+                  value={cropArea.y}
+                  onChange={(e) => setCropArea({ ...cropArea, y: parseInt(e.target.value) || 0 })}
+                  className="input-field w-full text-sm"
+                  min={0}
+                  max={originalSize.height - cropArea.height}
+                  title="Set vertical starting position in pixels"
+                />
               </div>
-
-              {/* Actions */}
-              <div className="flex gap-3 sm:gap-4">
-                <button onClick={crop} className="btn-primary flex-1 text-sm sm:text-base py-3 sm:py-4" title="Crop image with specified dimensions">
-                  <Crop className="h-4 w-4 sm:h-5 sm:w-5" />
-                  Crop Image
-                </button>
+              <div>
+                <label className="mb-1 block text-xs sm:text-sm font-medium">Width</label>
+                <input
+                  type="number"
+                  value={cropArea.width}
+                  onChange={(e) => setCropArea({ ...cropArea, width: parseInt(e.target.value) || 100 })}
+                  className="input-field w-full text-sm"
+                  min={1}
+                  max={originalSize.width - cropArea.x}
+                  title="Set crop width in pixels"
+                />
               </div>
+              <div>
+                <label className="mb-1 block text-xs sm:text-sm font-medium">Height</label>
+                <input
+                  type="number"
+                  value={cropArea.height}
+                  onChange={(e) => setCropArea({ ...cropArea, height: parseInt(e.target.value) || 100 })}
+                  className="input-field w-full text-sm"
+                  min={1}
+                  max={originalSize.height - cropArea.y}
+                  title="Set crop height in pixels"
+                />
+              </div>
+            </div>
 
-              {croppedUrl && (
-                <div className="flex justify-center mt-6">
-                  <EnhancedDownload
-                    data={croppedUrl}
-                    fileName={`cropped-${cropArea.width}x${cropArea.height}.png`}
-                    fileType="image"
-                    title="Image Cropped Successfully"
-                    description={`Cropped to ${cropArea.width}×${cropArea.height}px from original ${originalSize.width}×${originalSize.height}px`}
-                    fileSize="Unknown size"
-                    dimensions={{ width: cropArea.width, height: cropArea.height }}
+            {/* Actions */}
+            <div className="flex gap-3 sm:gap-4">
+              <button onClick={crop} className="btn-primary flex-1 text-sm sm:text-base py-3 sm:py-4" title="Crop image with specified dimensions">
+                <Crop className="h-4 w-4 sm:h-5 sm:w-5" />
+                Crop Image
+              </button>
+            </div>
+
+            {croppedUrl && (
+              <div className="flex justify-center mt-6">
+                <EnhancedDownload
+                  data={croppedUrl}
+                  fileName={`cropped-${cropArea.width}x${cropArea.height}.png`}
+                  fileType="image"
+                  title="Image Cropped Successfully"
+                  description={`Cropped to ${cropArea.width}×${cropArea.height}px from original ${originalSize.width}×${originalSize.height}px`}
+                  fileSize="Unknown size"
+                  dimensions={{ width: cropArea.width, height: cropArea.height }}
                   onConvertAnother={reset}
                   onConvertAnotherLabel="Crop Another Image"
                 />
-                </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
+        )}
 
-          {/* Tool Definition Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="rounded-xl border border-border bg-card p-6"
-          >
-            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <Crop className="h-5 w-5 text-blue-500" />
-              What is Image Cropping?
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              Image cropping removes unwanted outer portions of an image to focus on the main subject or improve composition. It's essential for creating profile pictures, product images, and removing distracting elements from photos.
-            </p>
-            
-            <h4 className="font-semibold mb-2">How It Works</h4>
-            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
-              <li>Upload your image</li>
-              <li>Drag to define the crop area</li>
-              <li>Adjust the selection as needed</li>
-              <li>Download the cropped image</li>
-            </ol>
-            
-            <div className="grid sm:grid-cols-2 gap-4 mt-4">
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-1">Cropping Features</h4>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Drag selection area</li>
-                  <li>• Visual preview</li>
-                  <li>• Aspect ratio options</li>
-                  <li>• Multiple formats</li>
-                </ul>
-              </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
-                <ul className="text-sm text-green-800 space-y-1">
-                  <li>• Profile pictures</li>
-                  <li>• Product photos</li>
-                  <li>• Social media</li>
-                  <li>• Removing backgrounds</li>
-                </ul>
-              </div>
+        {/* Tool Definition Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="rounded-xl border border-border bg-card p-6"
+        >
+          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+            <Crop className="h-5 w-5 text-blue-500" />
+            What is Image Cropping?
+          </h3>
+          <p className="text-muted-foreground mb-4">
+            Image cropping removes unwanted outer portions of an image to focus on the main subject or improve composition. It's essential for creating profile pictures, product images, and removing distracting elements from photos.
+          </p>
+          
+          <h4 className="font-semibold mb-2">How It Works</h4>
+          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li>Upload your image</li>
+            <li>Drag to define the crop area</li>
+            <li>Adjust the selection as needed</li>
+            <li>Download the cropped image</li>
+          </ol>
+          
+          <div className="grid sm:grid-cols-2 gap-4 mt-4">
+            <div className="p-3 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-900 mb-1">Cropping Features</h4>
+              <ul className="text-sm text-blue-800 space-y-1">
+                <li>• Drag selection area</li>
+                <li>• Visual preview</li>
+                <li>• Aspect ratio options</li>
+                <li>• Multiple formats</li>
+              </ul>
             </div>
-          </motion.div>
-        </div>
+            <div className="p-3 bg-green-50 rounded-lg">
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
+              <ul className="text-sm text-green-800 space-y-1">
+                <li>• Profile pictures</li>
+                <li>• Product photos</li>
+                <li>• Social media</li>
+                <li>• Removing backgrounds</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="mt-8">
           {/* FAQ Section */}
@@ -376,7 +370,8 @@ const ImageCropTool = () => {
           ]}
           />
         </div>
-      </ToolLayout>
+      </div>
+    </ToolLayout>
     </>
   );
 };

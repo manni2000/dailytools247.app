@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Zap, Sparkles } from "lucide-react";
+import { Image as ImageIcon, X, RefreshCw, ArrowRight, Zap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
@@ -213,11 +213,6 @@ const PNGToWebPConverter = () => {
               </motion.div>
             </div>
 
-            {/* Preview removed */}
-            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
-              Image preview removed.
-            </div>
-
             {/* Conversion Flow */}
             <div className="flex items-center justify-center gap-4 text-sm">
               <span className="rounded-lg bg-blue-500/10 px-4 py-2 font-medium text-blue-700 border border-blue-200">
@@ -336,9 +331,9 @@ const PNGToWebPConverter = () => {
               title="PNG Converted to WebP Successfully"
               description={`Your PNG image has been converted to WebP format at ${quality}% quality`}
               fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Convert Another PNG"
-                />
+              onConvertAnother={reset}
+              onConvertAnotherLabel="Convert Another PNG"
+            />
           </div>
         )}
 

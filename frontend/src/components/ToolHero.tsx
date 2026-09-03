@@ -52,19 +52,6 @@ const ToolHero: React.FC<Props> = ({
         )}
 
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-[11px] font-bold uppercase tracking-wider border shadow-xs"
-              style={{
-                backgroundColor: `hsl(${categoryColor} / 0.08)`,
-                color: `hsl(${categoryColor})`,
-                borderColor: `hsl(${categoryColor} / 0.25)`,
-              }}
-            >
-              <Sparkles className="h-3 w-3" />
-              Verified Local Browser Tool
-            </span>
-          </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
             {title}
