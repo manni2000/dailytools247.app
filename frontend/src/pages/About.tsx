@@ -46,7 +46,7 @@ const About = () => {
     <div className="flex min-h-screen flex-col">
       <SEOHelmet
         title="About DailyTools247 - Free, Privacy-First Online Tools"
-        description="Learn about the mission, values, and creators of DailyTools247, a free online toolbox for daily utilities."
+        description="Learn about the mission, values, and privacy-first architecture of DailyTools247. 168+ free online utilities built for developers and creators."
       />
       <Header />
       <main className="flex-1">

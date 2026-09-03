@@ -1,12 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home, ChevronRight, TrendingUp, Star } from "lucide-react";
+import { Home, ChevronRight, TrendingUp, Star, ShieldCheck, Zap, Layers, Sparkles } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getCategoryById } from "@/data/toolCategories";
 import ToolCard from "@/components/ToolCard";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { universalToolFaqs } from "@/data/toolSeoEnhancements";
+import { getCategoryFaqs } from "@/data/categorySpecificFaqs";
 import CategoryFAQSection from "@/components/CategoryFAQSection";
 import SEOHelmet from "@/components/SEOHelmet";
 
@@ -26,29 +27,32 @@ const CategoryPage = () => {
 
   const getCategoryDescription = () => {
     const descriptions: Record<string, string> = {
-      "pdf": "Professional PDF tools for editing, converting, merging, and optimizing documents. Free online PDF editor, converter, and organizer tools without watermark.",
-      "image": "Professional image tools for compressing, converting, resizing, and editing images. Free online image editor, converter, and optimizer tools without watermark.",
-      "video": "Professional video tools for converting, trimming, and processing videos. Free online video editor, converter, and processor tools without watermark.",
-      "audio": "Professional audio tools for converting, trimming, and processing audio files. Free online audio editor, converter, and processor tools without watermark.",
-      "text": "Professional text tools for counting, converting, and processing text. Free online text editor, converter, and processor tools without watermark.",
-      "security": "Professional security tools for generating passwords, hashing data, and encryption. Free online security tools, password generator, and encryption tools without watermark.",
-      "finance": "Professional finance tools for calculating GST, EMI, and managing finances. Free online finance calculator, invoice generator, and financial tools without watermark.",
-      "dev": "Professional development tools for formatting JSON, testing regex, and encoding data. Free online developer tools, code formatter, and programming utilities without watermark.",
-      "education": "Professional educational tools for calculations, conversions, and learning. Free online education calculator, converter, and learning tools without watermark.",
-      "internet": "Professional internet tools for IP lookup, DNS checking, and network analysis. Free online network tools, IP checker, and web utilities without watermark.",
-      "seo": "Professional SEO tools for meta tags, keyword analysis, and search optimization. Free online SEO tools, meta generator, and optimization utilities without watermark.",
-      "social": "Professional social media tools for generating hashtags, creating bios, and formatting content. Free online social media tools, hashtag generator, and content utilities without watermark.",
-      "zip": "Professional compression tools for creating ZIP files, extracting archives, and compressing data. Free online compression tools, archive manager, and file utilities without watermark.",
-      "date-time": "Professional date and time tools for calculating dates, managing time, and scheduling. Free online date calculator, time manager, and scheduling tools without watermark.",
-      "govt-legal": "Professional government and legal tools for passport photos, document templates, and signatures. Free online legal tools, document creator, and government utilities without watermark.",
-      "ecommerce": "Professional e-commerce tools for generating barcodes, creating invoices, and managing products. Free online business tools, barcode generator, and seller utilities without watermark."
+      "ai": "Free AI tools for background removal, text summarization, speech to text, code generation, and marketing. Fast, browser-based AI utilities.",
+      "pdf": "Free PDF tools to merge, split, compress, sign, and convert PDF documents to Word, Excel, and PPT. Fast, secure, and watermark-free online tools.",
+      "image": "Free online image tools to compress, resize, crop, and convert JPG, PNG, and WebP photos. Fast browser processing with zero quality loss.",
+      "video": "Free video tools to trim clips, convert video to audio, adjust playback speed, and change resolution online. Fast and easy video utilities.",
+      "audio": "Free audio tools to convert formats, transcribe speech to text, trim tracks, and merge audio files online. Fast, high-quality audio utilities.",
+      "text": "Free online text tools to count words, convert text cases, clean spaces, sort lines, and compare text diffs. Fast and simple text utilities.",
+      "security": "Free security tools to generate strong passwords, compute hashes, encode Base64, and scan QR safety. Client-side privacy and encryption tools.",
+      "finance": "Free finance tools to calculate loan EMIs, GST amounts, investment returns, salary breakups, and invoices. Accurate financial calculators.",
+      "dev": "Free developer tools to format JSON, test regular expressions, decode JWT tokens, and generate Dockerfiles. Fast online coding utilities.",
+      "education": "Free education tools with scientific calculators, unit converters, study timetables, and MCQ generators. Smart learning utilities for students.",
+      "internet": "Free internet tools for IP address lookup, DNS record checks, SSL certificate verification, and website screenshots. Fast network tools.",
+      "seo": "Free SEO tools to generate meta tags, check keyword density, validate XML sitemaps, and audit on-page SEO. Boost your search rankings.",
+      "social": "Free social media tools to generate viral hashtags, profile bios, caption line breaks, and memes. Boost your social reach and engagement.",
+      "zip": "Free ZIP tools to compress files, extract archives, and create password-protected ZIP folders online. Fast browser-based archive utilities.",
+      "date-time": "Free date and time tools to calculate age, count days between dates, compute business days, and view world clocks. Fast time calculators.",
+      "govt-legal": "Free legal tools to resize passport and Aadhaar photos under 50KB, create signatures, and generate legal document templates online.",
+      "ecommerce": "Free e-commerce tools to remove backgrounds, add shadows, generate barcodes, and create GST invoices. Boost your online store sales.",
+      "email": "Free email marketing tools to generate subject lines, check spam scores, preview HTML emails, and generate SPF and DKIM records."
     };
 
-    return descriptions[categoryId || ""] || `Free online ${category.name.toLowerCase()} for all your needs. Professional tools without registration or watermark.`;
+    return descriptions[categoryId || ""] || `Free online ${category.name.toLowerCase()} for all your needs. Fast, browser-based utilities with zero registration required.`;
   };
 
   const getCategoryKeywords = () => {
     const keywords: Record<string, string[]> = {
+      "ai": ["ai tools", "ai background remover", "ai text summarizer", "speech to text", "ai code generator", "free ai utilities", "machine learning tools"],
       "pdf": ["free pdf editor", "pdf converter", "pdf merger", "pdf compressor", "pdf tools online", "edit pdf free", "convert pdf", "pdf organizer"],
       "image": ["image compressor", "image converter", "resize image", "crop image", "image editor free", "compress images", "convert images", "image tools"],
       "video": ["video editor", "video converter", "trim video", "video to audio", "video processing", "edit video free", "video tools", "video editor online"],
@@ -64,7 +68,8 @@ const CategoryPage = () => {
       "zip": ["create zip", "extract zip", "compression zip", "file compression", "zip creator", "archive extractor", "file manager", "compression tools"],
       "date-time": ["date calculator", "age calculator", "countdown timer", "working days", "time tools", "scheduler", "planning tools", "date utilities"],
       "govt-legal": ["passport photo", "document creator", "signature maker", "legal tools", "legal utilities", "government forms", "document tools", "legal aid"],
-      "ecommerce": ["barcode generator", "invoice creator", "gst invoice", "business tools", "seller tools", "online store", "e-commerce utilities", "online business tools"]
+      "ecommerce": ["barcode generator", "invoice creator", "gst invoice", "business tools", "seller tools", "online store", "e-commerce utilities", "online business tools"],
+      "email": ["email subject generator", "email spam checker", "html email previewer", "spf generator", "dkim generator", "email marketing tools"]
     };
 
     return keywords[categoryId || ""] || ["free online tools", "web utilities", "browser tools", "online applications"];
@@ -72,8 +77,9 @@ const CategoryPage = () => {
 
   const getTrendingTools = () => {
     const trendingMap: Record<string, string[]> = {
+      "ai": ["ai-background-remover", "ai-speech-to-text", "ai-text-summarizer", "ai-dockerfile-generator"],
       "pdf": ["pdf-to-word", "pdf-to-image", "pdf-merge", "pdf-compressor"],
-      "image": ["png-to-jpg-converter", "qr-code-generator", "image-compressor", "ai-background-remover"],
+      "image": ["png-to-jpg-converter", "qr-code-scanner", "image-compressor", "image-resize"],
       "video": ["video-to-audio", "video-trim", "video-speed", "video-thumbnail"],
       "audio": ["audio-converter", "ai-speech-to-text", "audio-trimmer", "audio-merger"],
       "text": ["word-counter", "case-converter", "color-converter", "text-diff"],
@@ -82,12 +88,13 @@ const CategoryPage = () => {
       "dev": ["json-formatter", "regex-tester", "jwt-decoder", "url-encoder"],
       "education": ["scientific-calculator", "percentage-calc", "unit-converter", "compound-interest"],
       "internet": ["ip-lookup", "dns-lookup", "ssl-checker", "ping-test"],
-      "seo": ["ai-meta-tag-generator", "keyword-density-checker", "robots-txt-generator", "ai-page-seo-analyzer"],
+      "seo": ["meta-title-description", "keyword-density", "robots-txt", "page-seo"],
       "social": ["ai-hashtag-generator", "ai-bio-generator", "caption-formatter", "ai-meme-generator"],
       "zip": ["create-zip", "extract-zip", "password-zip", "compression-zip"],
-      "date-time": ["date-difference", "age-calculator", "working-days", "countdown-timer"],
+      "date-time": ["date-difference", "age-calculator", "working-days", "countdown"],
       "govt-legal": ["passport-photo-resizer", "pdf-compressor", "signature-maker", "document-template"],
-      "ecommerce": ["ai-shadow-adder", "barcode-generator", "gst-invoice-generator", "ecommerce-calculator"]
+      "ecommerce": ["ai-shadow-adder", "barcode-generator", "gst-invoice-generator", "ecommerce-calculator"],
+      "email": ["ai-email-subject-line-generator", "ai-spam-score-checker", "html-email-previewer", "spf-record-generator"]
     };
 
     return trendingMap[categoryId || ""] || [];
@@ -96,10 +103,14 @@ const CategoryPage = () => {
   const trendingTools = getTrendingTools();
   const isTrending = (toolId: string) => trendingTools.includes(toolId);
 
+  // Combined specific and universal FAQs
+  const categoryFaqs = getCategoryFaqs(category.name);
+  const combinedFaqs = [...categoryFaqs, ...universalToolFaqs].slice(0, 8);
+
   return (
     <>
       <SEOHelmet
-        title={`Free ${category.name.endsWith('Tools') ? category.name : `${category.name} Tools`} Online - No Signup, No Watermark`}
+        title={`Free ${category.name.endsWith('Tools') ? category.name : `${category.name} Tools`} Online - No Signup Required`}
         description={getCategoryDescription()}
         keywords={getCategoryKeywords()}
         category={category.name}
@@ -306,8 +317,52 @@ const CategoryPage = () => {
           </div>
         </section>
 
+        {/* Category Features & Privacy Section */}
+        <section className="py-12 border-t border-border/60 bg-muted/20">
+          <div className="container">
+            <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-card p-8 md:p-10 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <ShieldCheck className="h-6 w-6 text-primary" />
+                <h2 className="text-2xl font-bold text-foreground">Why Use Our {category.name}?</h2>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-6 font-light text-sm sm:text-base">
+                DailyTools247 is engineered to provide professional-grade {category.name.toLowerCase()} that run directly inside your web browser. By leveraging modern client-side technologies, your files and private data are processed locally with maximum speed, zero queuing delays, and complete data confidentiality.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-3 text-sm">
+                <div className="p-4 rounded-xl bg-background/80 border border-border/60">
+                  <h3 className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                    <Zap className="h-4 w-4 text-amber-500" />
+                    Instant Processing
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Zero upload wait times. Work directly on your device with high performance.
+                  </p>
+                </div>
+                <div className="p-4 rounded-xl bg-background/80 border border-border/60">
+                  <h3 className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-green-500" />
+                    100% Private
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Your files never touch our servers. No data retention or tracking.
+                  </p>
+                </div>
+                <div className="p-4 rounded-xl bg-background/80 border border-border/60">
+                  <h3 className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                    <Layers className="h-4 w-4 text-primary" />
+                    No Limits
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Use any tool as many times as you need without paywalls or watermarks.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
-        <CategoryFAQSection faqs={universalToolFaqs} categoryName={category.name.toLowerCase()} />
+        <CategoryFAQSection faqs={combinedFaqs} categoryName={category.name.toLowerCase()} />
       </main>
       <Footer />
     </div>

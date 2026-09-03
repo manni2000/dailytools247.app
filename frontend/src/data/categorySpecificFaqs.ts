@@ -5,376 +5,445 @@ export interface CategoryFAQs {
 export const categorySpecificFaqs: CategoryFAQs = {
   'PDF Tools': [
     {
-      question: 'Are PDF conversions secure and private?',
-      answer: 'Yes, all PDF processing happens locally in your browser. Your files never leave your device and are not stored on any server.',
+      question: 'Are PDF conversions, merges, and edits secure and private?',
+      answer: 'Yes, all PDF processing happens locally inside your browser using WebAssembly and client-side JavaScript. Your files, documents, and sensitive contracts never leave your device and are never transmitted to or stored on any remote server.',
     },
     {
-      question: 'What PDF formats are supported?',
-      answer: 'We support all standard PDF formats including PDF 1.4 through 2.0, with support for text, images, and embedded content.',
+      question: 'What PDF formats and conversion operations are supported?',
+      answer: 'We support all standard PDF specifications (PDF 1.4 through 2.0). You can convert PDF documents to editable Microsoft Word (DOCX), Excel spreadsheets (XLSX), PowerPoint presentations (PPTX), and high-resolution images (JPG/PNG), as well as merge, split, crop, rotate, and password-protect PDFs.',
     },
     {
-      question: 'Can I convert password-protected PDFs?',
-      answer: 'For password-protected PDFs, you need to enter the password first. Our tools can then process them normally.',
+      question: 'Can I convert or edit password-protected PDF files?',
+      answer: 'Yes. For encrypted or password-protected PDF files, simply enter the owner or user password in our PDF Unlocker tool. Once authenticated, you can remove restrictions, convert to Word or Excel, or merge with other documents without watermarks.',
     },
     {
-      question: 'Is there a file size limit for PDF tools?',
-      answer: 'Most PDF tools support files up to 50MB. Large files may take longer but will still process successfully.',
+      question: 'Is there a file size limit for PDF tools on DailyTools247?',
+      answer: 'Our tools comfortably process PDF files up to 50MB directly in your browser. Because processing is powered by your local device hardware, there are no queuing delays, upload bottlenecks, or daily usage limits.',
     },
     {
-      question: 'Will formatting be preserved in conversions?',
-      answer: 'Our tools preserve most formatting including fonts, layouts, and images. Complex layouts may need minor adjustments.',
+      question: 'Will formatting, fonts, and tables be preserved during PDF conversion?',
+      answer: 'Yes. Our conversion algorithms accurately extract font styles, headings, tables, embedded vector graphics, and layout hierarchies, making your converted Word (.docx) or Excel (.xlsx) files fully editable and ready for professional use.',
     },
   ],
 
   'Image Tools': [
     {
-      question: 'What image formats are supported?',
-      answer: 'We support all major formats: JPG, PNG, WebP, GIF, BMP, TIFF, SVG, and more. Conversion between formats is seamless.',
+      question: 'What image formats can I convert, resize, and compress?',
+      answer: 'We support all major image formats including JPG, PNG, WebP, GIF, BMP, TIFF, SVG, and ICO. You can seamlessly convert between modern formats like WebP to PNG or JPG to WebP with custom compression levels.',
     },
     {
-      question: 'Are my images processed locally?',
-      answer: 'Yes, all image processing happens in your browser. Your images are never uploaded to any server, ensuring complete privacy.',
+      question: 'Are my images processed locally and kept confidential?',
+      answer: 'Yes. Every image editing, compression, background removal, and resizing operation runs locally in your browser using HTML5 Canvas and WebAssembly. Your photos and graphic assets are 100% private and never uploaded to our servers.',
     },
     {
-      question: 'Can I edit RAW image files?',
-      answer: 'Currently, we support standard web formats. For RAW files, convert them to TIFF or PNG first for best results.',
+      question: 'Will image compression cause visible loss in quality?',
+      answer: 'Our intelligent image compressor uses advanced lossy and lossless algorithms to reduce file sizes by up to 80% with virtually zero perceptible loss in visual clarity. You can also adjust quality sliders to meet strict portal requirements (e.g., under 50KB or 20KB).',
     },
     {
-      question: 'Is there quality loss in conversions?',
-      answer: 'Our tools use lossless algorithms where possible. For JPG conversions, you can control the quality to balance file size and image quality.',
+      question: 'Can I check and convert image DPI for official printing?',
+      answer: 'Yes. Our Image DPI Checker and converter allows you to inspect and modify horizontal and vertical DPI resolutions (such as 300 DPI for high-quality print or 72 DPI for web use) without altering pixel dimensions.',
     },
     {
-      question: 'What\'s the maximum image size I can process?',
-      answer: 'Images up to 40MP and 50MB are supported. Larger images may take longer but will still process successfully.',
+      question: 'How do I generate multi-resolution favicons for my website?',
+      answer: 'Our Favicon Generator automatically generates 16x16, 32x32, 48x48, 180x180 (Apple Touch Icon), and 192x192 (Android Chrome) favicon packages along with the required HTML link tags from any uploaded image.',
+    },
+  ],
+
+  'AI Utilities': [
+    {
+      question: 'How do AI Utilities work on DailyTools247 without signups?',
+      answer: 'Our AI utilities leverage lightweight client-side machine learning models and optimized API endpoints. You can summarize articles, generate code, write meta tags, transcribe audio, and remove backgrounds with zero signups or credit cards required.',
+    },
+    {
+      question: 'Is my text, code, or audio kept private when using AI tools?',
+      answer: 'Yes, your privacy is our core priority. Text redactor and PII masker tools run completely on your client machine. Text summarization, code generators, and AI checkers follow zero-retention policies where data is immediately discarded after processing.',
+    },
+    {
+      question: 'Can I use AI-generated outputs for commercial projects?',
+      answer: 'Yes. All outputs generated by our AI tools—including Dockerfiles, SQL queries, TypeScript interfaces, social media bios, email templates, and marketing hashtags—are 100% royalty-free and ready for commercial use.',
+    },
+    {
+      question: 'How accurate is the AI Text Summarizer and PII Masker?',
+      answer: 'Our AI text summarizer preserves core argumentative thesis points while reducing length by 50% to 80%. The PII masker detects credit cards, emails, phone numbers, and names using deterministic regex heuristics and NLP entity recognition.',
+    },
+    {
+      question: 'Can AI tools help optimize my SaaS pricing and tax planning?',
+      answer: 'Yes. Our AI SaaS Pricing Optimizer helps model customer acquisition cost (CAC), lifetime value (LTV), and tiered pricing strategies, while the AI Tax Analyzer helps evaluate deductions and tax brackets for smart financial planning.',
     },
   ],
 
   'Developer Tools': [
     {
-      question: 'Are these developer tools suitable for production use?',
-      answer: 'These tools are designed for development, testing, and debugging. For production, always validate and test thoroughly.',
+      question: 'Are DailyTools247 developer tools suitable for production debugging?',
+      answer: 'Yes. Developers, DevOps engineers, and QA specialists use our JSON formatters, JWT decoders, regex testers, and cURL converters daily for rapid API diagnostics, payload validation, and syntax formatting.',
     },
     {
-      question: 'Do developer tools store my code or data?',
-      answer: 'No, all processing happens locally in your browser. Your code, tokens, and sensitive data never leave your device.',
+      question: 'Do developer utilities store my tokens, secrets, or .env files?',
+      answer: 'No. All JSON formatting, regex pattern evaluation, JWT decoding, and environment variable generation occurs entirely in client-side memory. Sensitive authorization tokens and API secrets never touch any external server.',
     },
     {
-      question: 'Can I use these tools for commercial projects?',
-      answer: 'Yes, all tools are free for commercial use. However, always verify results and follow best practices for production code.',
+      question: 'How does the cURL to Axios Converter work?',
+      answer: 'It parses raw cURL command strings, extracts HTTP methods, target URLs, request headers, query parameters, and JSON payloads, and converts them into clean, type-safe JavaScript Axios or Fetch code snippets.',
     },
     {
-      question: 'Are the generated code snippets production-ready?',
-      answer: 'Generated code provides a solid starting point. Always review, test, and adapt it to your specific requirements.',
+      question: 'Can I convert complex JSON schemas into TypeScript interfaces?',
+      answer: 'Yes. The AI JSON to TypeScript Converter recursively traverses nested JSON objects and arrays to generate clean, strongly typed TypeScript interfaces with optional fields, proper types, and exported definitions.',
     },
     {
-      question: 'Do these tools work with modern frameworks?',
-      answer: 'Yes, our tools support modern frameworks like React, Vue, Angular, and Node.js, along with standard web technologies.',
+      question: 'What is the benefit of using the HTTP Header Checker and JWT Expiry tool?',
+      answer: 'The HTTP Header Checker audits security headers (HSTS, CSP, X-Frame-Options) on live servers, while the JWT Expiry tool inspects iat, exp, and nbf timestamps to identify expired or invalid authentication tokens quickly.',
     },
   ],
 
   'Security Tools': [
     {
-      question: 'Are security tools completely safe to use?',
-      answer: 'Yes, all security processing happens locally in your browser. No data is sent to external servers, ensuring maximum security.',
+      question: 'How secure is the Password Generator and Hash Calculator?',
+      answer: 'Our password generator utilizes cryptographically secure pseudorandom number generators (window.crypto.getRandomValues), ensuring high entropy passwords that resist brute-force attacks. Hash algorithms (MD5, SHA-1, SHA-256, SHA-512) adhere to NIST cryptographic standards.',
     },
     {
-      question: 'Can I trust password generators and hash tools?',
-      answer: 'Our tools use cryptographically secure algorithms. For critical applications, consider using dedicated security libraries.',
+      question: 'Are passwords, hashes, or encrypted notes stored anywhere?',
+      answer: 'No. Generated passwords, checksums, and encrypted notes exist solely in your temporary browser session. When you reload or close the tab, all session memory is purged immediately.',
     },
     {
-      question: 'Are generated passwords stored anywhere?',
-      answer: 'No, generated passwords and hashes are never stored. They exist only in your browser session and disappear when you close the tab.',
+      question: 'How does the Data Breach Email Checker protect my privacy?',
+      answer: 'The Data Breach Email Checker queries k-Anonymity breach verification protocols or local hashes, ensuring your raw email address is never exposed or logged in plaintext.',
     },
     {
-      question: 'How secure are the encryption methods used?',
-      answer: 'We use industry-standard encryption algorithms like AES-256, SHA-256, and bcrypt for maximum security.',
+      question: 'What is the purpose of the EXIF Location Remover?',
+      answer: 'Photos taken with smartphones and digital cameras frequently contain embedded GPS coordinates, timestamps, and device serial numbers. Our EXIF Location Remover strips all geolocation metadata before you share photos online.',
     },
     {
-      question: 'Can I use these tools for sensitive data?',
-      answer: 'While tools are secure, for highly sensitive data, consider using offline, dedicated security applications.',
-    },
-  ],
-
-  'Text Tools': [
-    {
-      question: 'Can I process large text documents?',
-      answer: 'Yes, our text tools can handle documents up to 1MB. For larger files, consider splitting them into smaller chunks.',
-    },
-    {
-      question: 'Are special characters and Unicode supported?',
-      answer: 'Yes, all text tools support Unicode characters, emojis, and special characters from all languages.',
-    },
-    {
-      question: 'Is my text data private?',
-      answer: 'Absolutely. All text processing happens locally in your browser. Your content is never uploaded or stored anywhere.',
-    },
-    {
-      question: 'Can I work with code and programming text?',
-      answer: 'Yes, our tools work perfectly with code, JSON, XML, and other programming text formats without breaking syntax.',
-    },
-    {
-      question: 'Are formatting and preserved?',
-      answer: 'Plain text tools preserve content exactly. For formatted text, consider using our document conversion tools.',
-    },
-  ],
-
-  'SEO Tools': [
-    {
-      question: 'Are SEO analysis results accurate?',
-      answer: 'Our tools provide reliable analysis based on current SEO best practices. For comprehensive audits, combine multiple tools.',
-    },
-    {
-      question: 'Do SEO tools access my website data?',
-      answer: 'Analysis happens in your browser. For website analysis tools, only public information is accessed, no private data.',
-    },
-    {
-      question: 'Can I use these tools for competitor analysis?',
-      answer: 'Yes, SEO tools can analyze public website information. Always respect robots.txt and terms of service.',
-    },
-    {
-      question: 'Are SEO suggestions up-to-date with current algorithms?',
-      answer: 'We regularly update our tools to reflect current search engine algorithms and SEO best practices.',
-    },
-    {
-      question: 'Do these tools guarantee better rankings?',
-      answer: 'Our tools provide insights and suggestions. Actual rankings depend on many factors including content quality and competition.',
+      question: 'How does the Secure Notes Tool encrypt my messages?',
+      answer: 'The Secure Notes Tool uses client-side AES-256-GCM encryption with your custom passphrase. The ciphertext can only be decrypted by someone holding the exact secret passphrase.',
     },
   ],
 
   'Finance Tools': [
     {
-      question: 'Are financial calculations accurate?',
-      answer: 'Our calculators use standard financial formulas. For important decisions, always verify with professional financial advisors.',
+      question: 'How accurate are the EMI, GST, and Salary Breakup calculators?',
+      answer: 'Our financial calculators use standardized standard banking and accounting formulas (reducing balance method for EMIs, CGST/SGST/IGST tax slabs for GST, and current CTC provident fund/tax deduction structures) for precise calculations.',
     },
     {
-      question: 'Is my financial data secure?',
-      answer: 'All calculations happen locally in your browser. No financial data is ever stored or transmitted to any server.',
+      question: 'Can I calculate both SIP and Lumpsum mutual fund returns?',
+      answer: 'Yes. Our Mutual Fund, SIP, and Lumpsum calculators allow you to forecast estimated maturity amounts, total invested capital, and wealth gained based on expected annual rate of return and investment duration.',
     },
     {
-      question: 'Can I use these tools for business planning?',
-      answer: 'Yes, these tools are great for planning and estimates. For official financial reports, consult with accounting professionals.',
+      question: 'How does the Startup Burn Rate & Runway Calculator work?',
+      answer: 'By inputting your current cash reserves, monthly recurring revenues, and operating expenses (payroll, servers, marketing), the tool calculates your net monthly burn rate and forecasts your exact cash runway in months.',
     },
     {
-      question: 'Are currency exchange rates real-time?',
-      answer: 'Currency tools use reference rates. For actual transactions, check with your bank for current rates.',
+      question: 'Can I download PDF invoices created with the Invoice Generator?',
+      answer: 'Yes. You can customize invoice numbers, currency symbols, line items, discounts, tax rates, and client details, and instantly download a professional, print-ready PDF invoice with zero watermarks.',
     },
     {
-      question: 'Do these tools consider taxes and regulations?',
-      answer: 'Calculators provide estimates. Tax laws vary by location and change frequently. Consult professionals for tax advice.',
-    },
-  ],
-
-  'Video Tools': [
-    {
-      question: 'What video formats are supported?',
-      answer: 'We support MP4, WebM, AVI, MOV, and other common formats. Conversion maintains quality while optimizing for web use.',
-    },
-    {
-      question: 'Are my videos processed locally?',
-      answer: 'Yes, all video processing happens in your browser using WebAssembly. Your videos never leave your device.',
-    },
-    {
-      question: 'Is there a limit on video file size?',
-      answer: 'Videos up to 100MB are supported. Larger videos may take longer but will still process successfully.',
-    },
-    {
-      question: 'Will video quality be preserved?',
-      answer: 'Our tools maintain original quality where possible. For compression, you can control the quality-to-size ratio.',
-    },
-    {
-      question: 'Can I edit 4K videos?',
-      answer: 'Basic editing is supported for all resolutions. For complex 4K editing, dedicated video software is recommended.',
+      question: 'How is Compound Annual Growth Rate (CAGR) computed for stocks?',
+      answer: 'The Stock CAGR Calculator computes the geometric progression ratio over multi-year holding periods: CAGR = (Ending Value / Beginning Value)^(1/Years) - 1, giving you the true annualized return on investment.',
     },
   ],
 
-  'Audio Tools': [
+  'SEO Tools': [
     {
-      question: 'What audio formats are supported?',
-      answer: 'We support MP3, WAV, OGG, M4A, FLAC, and other popular audio formats for conversion and editing.',
+      question: 'How do SEO Tools on DailyTools247 help improve search rankings?',
+      answer: 'Our SEO suite helps you optimize meta title and description lengths (< 60 chars for titles, 70-160 for descriptions), audit keyword density to avoid keyword stuffing, generate valid robots.txt files, and test XML sitemaps.',
     },
     {
-      question: 'Is audio processing done locally?',
-      answer: 'Yes, all audio processing happens in your browser. Your audio files are never uploaded to any server.',
+      question: 'What is the purpose of the Sitemap Validator and Broken Image Finder?',
+      answer: 'The Sitemap Validator checks your XML sitemaps for syntax errors, URL reachability, and canonical tags. The Broken Image Finder scans web pages to locate missing image files that hurt Core Web Vitals and user experience.',
     },
     {
-      question: 'Can I process large audio files?',
-      answer: 'Audio files up to 50MB are supported. Larger files may take longer but will still process successfully.',
+      question: 'How does the UTM Link Builder improve campaign tracking?',
+      answer: 'It constructs standardized query parameters (utm_source, utm_medium, utm_campaign, utm_content, utm_term) that integrate directly into Google Analytics 4 (GA4) for precise marketing attribution.',
     },
     {
-      question: 'Will audio quality be preserved?',
-      answer: 'Our tools maintain original quality where possible. For compressed formats, you can control the bitrate.',
+      question: 'Why should I check domain age and technology stacks?',
+      answer: 'Domain age is a key authority signal in competitive SEO audits. The AI Website Tech Stack Detector profiles frontend frameworks, server technologies, CDN providers, and analytics scripts powering competitor sites.',
     },
     {
-      question: 'Can I edit multi-track audio?',
-      answer: 'Current tools focus on single-track editing. For multi-track projects, consider dedicated audio software.',
-    },
-  ],
-
-  'Education Tools': [
-    {
-      question: 'Are educational tools suitable for all ages?',
-      answer: 'Yes, our tools are designed to be accessible and useful for students, teachers, and lifelong learners of all ages.',
-    },
-    {
-      question: 'Can I use these tools for homework and assignments?',
-      answer: 'Absolutely! These tools are perfect for homework, projects, and learning activities. Always cite your sources properly.',
-    },
-    {
-      question: 'Are calculation results accurate?',
-      answer: 'Yes, our educational tools use standard mathematical formulas and are regularly verified for accuracy.',
-    },
-    {
-      question: 'Can teachers use these tools in classroom?',
-      answer: 'Yes, teachers can use these tools for demonstrations, assignments, and interactive learning activities.',
-    },
-    {
-      question: 'Are these tools available in multiple languages?',
-      answer: 'Currently available in English. We\'re working on adding support for more languages in the future.',
+      question: 'How does Open Graph (OG) Image Preview help social marketing?',
+      answer: 'The OG Image Preview Tool lets you test how your web page title, description, and preview image render on social platforms like Twitter/X, Facebook, LinkedIn, and WhatsApp before publishing.',
     },
   ],
 
-  'Date & Time Tools': [
+  'Govt Legal Tools': [
     {
-      question: 'Are date calculations accurate?',
-      answer: 'Yes, our tools use standard calendar algorithms and account for leap years and time zones correctly.',
+      question: 'How do I resize passport and Aadhaar photos under 50KB or 20KB?',
+      answer: 'Our Passport & Aadhaar Photo Resizer lets you select exact dimension presets (e.g. 3.5cm x 4.5cm or 200x230 px) and compress the image file size to strictly under 20KB or 50KB as required by SSC, UPSC, and government portals.',
     },
     {
-      question: 'Do these tools handle time zones?',
-      answer: 'Yes, time zone tools use the IANA time zone database for accurate conversions and calculations.',
+      question: 'Can I create a legally valid transparent digital signature?',
+      answer: 'Yes. The Signature Maker lets you draw your signature on screen or type your name with professional typography, adjust pen thickness and ink color, and download a transparent PNG signature ready to place on contracts and PDF documents.',
     },
     {
-      question: 'Can I use these for business date calculations?',
-      answer: 'Yes, these tools are suitable for business planning, project management, and professional date calculations.',
+      question: 'What legal document templates can I generate for free?',
+      answer: 'You can generate standard customizable legal contracts and agreement templates including Non-Disclosure Agreements (NDA), Freelance Service Contracts, Rental Agreements, and Promissory Notes in clean text and PDF formats.',
     },
     {
-      question: 'Are working day calculations accurate?',
-      answer: 'Working day calculations account for weekends and common holidays. You can customize holidays for your region.',
+      question: 'Is it safe to process confidential government IDs and certificates here?',
+      answer: 'Yes. All photo cropping, signature generation, and PDF compression executes locally inside your web browser. Your Aadhaar, PAN, passport scans, and certificates are never uploaded to any remote server.',
     },
     {
-      question: 'Do timers work when tab is not active?',
-      answer: 'Timers continue running even when the tab is in the background, though some browsers may limit inactive tabs.',
-    },
-  ],
-
-  'Internet Tools': [
-    {
-      question: 'Are internet tools safe to use?',
-      answer: 'Yes, all processing happens locally. For website analysis tools, only publicly available information is accessed.',
-    },
-    {
-      question: 'Do these tools store website data?',
-      answer: 'No, website data is processed temporarily in your browser and never stored on any server.',
-    },
-    {
-      question: 'Can I use these for website testing?',
-      answer: 'Yes, these tools are great for basic website testing, debugging, and performance analysis.',
-    },
-    {
-      question: 'Are SSL checks comprehensive?',
-      answer: 'SSL tools check certificate validity, expiration, and common security issues. For security audits, use dedicated tools.',
-    },
-    {
-      question: 'Do screenshot tools capture dynamic content?',
-      answer: 'Screenshots capture the current state. For dynamic content, wait for it to load before capturing.',
+      question: 'How do I combine multiple certificates into a single application PDF?',
+      answer: 'Use our PDF Merge tool to upload multiple educational certificates, identity proofs, and application forms, arrange them in the required order, and download a unified, compressed PDF document.',
     },
   ],
 
-  'Social Media Tools': [
+  'E-commerce Tools': [
     {
-      question: 'Are social media tools platform-compliant?',
-      answer: 'Yes, our tools follow platform guidelines. Always check individual platform terms before posting content.',
+      question: 'How do E-commerce Tools help online sellers and merchants?',
+      answer: 'Our e-commerce utilities simplify catalog management by allowing sellers to batch-resize product images, remove distracting backgrounds, add clean white backdrops, generate barcodes, and calculate profit margins and GST.',
     },
     {
-      question: 'Is my social media content private?',
-      answer: 'All content creation happens locally. We don\'t access your social media accounts or store your content.',
+      question: 'What types of product barcodes can I generate?',
+      answer: 'You can generate standard retail barcodes including EAN-13, UPC-A, Code 128, and QR codes for product packaging, inventory tracking, and point-of-sale scanning with downloadable SVG and PNG formats.',
     },
     {
-      question: 'Can I use generated content commercially?',
-      answer: 'Generated content is yours to use. Always ensure compliance with platform policies and copyright laws.',
+      question: 'Can I add watermarks and drop shadows to protect product photos?',
+      answer: 'Yes. Our Watermark Adder lets you stamp custom copyright text or transparent logos across product images, while the AI Shadow Adder adds realistic studio drop shadows to make catalog products stand out on Amazon, Shopify, or Flipkart.',
     },
     {
-      question: 'Are hashtag suggestions effective?',
-      answer: 'Hashtag suggestions are based on trending topics and best practices. Results may vary by platform and audience.',
+      question: 'How does the Bulk Image Resizer handle entire product collections?',
+      answer: 'The Bulk Image Resizer allows you to upload dozens of product images simultaneously, set uniform width and height dimensions or scale ratios, and download all optimized images in a single batch.',
     },
     {
-      question: 'Do meme generators respect copyright?',
-      answer: 'Use responsibly. Ensure you have rights to images used and comply with platform content policies.',
-    },
-  ],
-
-  'Zip Tools': [
-    {
-      question: 'What archive formats are supported?',
-      answer: 'We support ZIP, RAR, 7Z, TAR, GZIP, and other common archive formats for creation and extraction.',
-    },
-    {
-      question: 'Is archive processing secure and private?',
-      answer: 'Yes, all archive operations happen locally in your browser. Your files are never uploaded to any server.',
-    },
-    {
-      question: 'Can I handle large archive files?',
-      answer: 'Archives up to 100MB are supported. Larger files may take longer but will still process successfully.',
-    },
-    {
-      question: 'Are passwords and encryption supported?',
-      answer: 'Yes, you can create password-protected archives and extract encrypted files using the correct password.',
-    },
-    {
-      question: 'Will file permissions be preserved?',
-      answer: 'Basic file information is preserved. For complex permission systems, some metadata may not transfer.',
-    },
-  ],
-
-  'General Tools': [
-    {
-      question: 'Are general tools free to use?',
-      answer: 'Yes, all general tools are completely free with no hidden charges or limitations.',
-    },
-    {
-      question: 'Is my data safe with general tools?',
-      answer: 'Absolutely. All processing happens locally in your browser. Your data is never uploaded or stored anywhere.',
-    },
-    {
-      question: 'Can I use these tools for work?',
-      answer: 'Yes, these tools are suitable for both personal and professional use.',
-    },
-    {
-      question: 'Do these tools work on mobile devices?',
-      answer: 'Yes, all tools are fully responsive and work perfectly on smartphones, tablets, and desktop computers.',
-    },
-    {
-      question: 'Are there any usage limits?',
-      answer: 'No, you can use these tools as many times as you need without any restrictions.',
+      question: 'Can I generate GST-compliant sales invoices with tax breakdowns?',
+      answer: 'Yes. The GST Invoice Generator computes CGST, SGST, or IGST tax amounts, buyer/seller GSTIN details, HSN codes, and itemized totals, producing a clean, professional invoice for your store.',
     },
   ],
 
   'Email Marketing Tools': [
     {
-      question: 'Are my email templates and lists secure?',
-      answer: 'Yes, all template design and processing happens locally in your browser. We never store or transmit your email copy, templates, or contact lists to any external servers.',
+      question: 'How do I test and prevent my emails from landing in the spam folder?',
+      answer: 'Our AI Email Spam Checker scans your email subject lines and body copy against hundreds of known spam trigger words, evaluates text-to-image ratios, and analyzes formatting patterns to give you a deliverability score.',
     },
     {
-      question: 'Will my generated HTML signatures work across all email clients?',
-      answer: 'Our signatures are built using standard nested HTML tables and inline CSS styles, which are compatible with major clients like Gmail, Outlook, Apple Mail, and Yahoo.',
+      question: 'Will my generated HTML email signatures render correctly across all clients?',
+      answer: 'Yes. Signatures generated by our tool use rock-solid inline CSS and nested table layouts compatible with Gmail, Apple Mail, Microsoft Outlook, Thunderbird, and mobile mail applications.',
     },
     {
-      question: 'How does the Spam Score Checker evaluate emails?',
-      answer: 'It analyzes the email content for spam trigger words, subject line length, excessive punctuation, uppercase text, and formatting patterns that trigger spam filters.',
+      question: 'How do SPF, DKIM, and DMARC Record Generators protect my domain?',
+      answer: 'SPF, DKIM, and DMARC prevent spammers from spoofing your domain name. Our generators construct valid DNS TXT records that you can add to your domain registrar (GoDaddy, Cloudflare, Namecheap) to pass Gmail and Yahoo authentication requirements.',
     },
     {
-      question: 'Do DKIM, SPF, and DMARC generators make actual DNS changes?',
-      answer: 'No, they generate the TXT records you need to copy and paste into your domain registrar\'s DNS settings (e.g., GoDaddy, Cloudflare, Namecheap) to verify your domain.',
+      question: 'Can I preview responsive HTML email templates before sending campaigns?',
+      answer: 'Yes. The HTML Email Previewer lets you render your raw HTML email code in simulated mobile and desktop viewports, ensuring that layouts, buttons, and typography look pixel-perfect before deployment.',
     },
     {
-      question: 'Can I import and edit existing HTML emails?',
-      answer: 'Yes, both the HTML Email Previewer and Email Template Builder allow you to paste or import custom HTML code, render it in real-time, and tweak inline CSS styling.',
+      question: 'How does the Mailto Link Generator simplify customer contact links?',
+      answer: 'The Mailto Link Generator constructs encoded mailto: URLs pre-filled with recipient addresses, CC/BCC targets, subject lines, and body text that open directly in the user’s default email client.',
+    },
+  ],
+
+  'Date & Time': [
+    {
+      question: 'How does the Date Difference Calculator compute days and weeks?',
+      answer: 'The Date Difference Calculator calculates the exact number of calendar days, weeks, months, and years between any two chosen dates, accurately factoring in leap years, daylight saving time adjustments, and calendar shifts.',
+    },
+    {
+      question: 'How accurate is the Age Calculator for exact birth milestones?',
+      answer: 'The Age Calculator computes your exact age in years, months, weeks, days, hours, and minutes based on your date of birth, and highlights upcoming milestone birthdays and day-of-the-week statistics.',
+    },
+    {
+      question: 'Can I calculate working business days excluding weekends and holidays?',
+      answer: 'Yes. The Working Days Calculator computes the exact number of business days between two dates, automatically excluding Saturdays and Sundays, and allows you to specify custom company or regional holidays.',
+    },
+    {
+      question: 'How does the World Time Clock track international time zones?',
+      answer: 'Our World Time Clock uses the official IANA time zone database to display real-time clocks across major global financial centers (UTC, New York, London, Tokyo, Mumbai, Singapore, Sydney) with automatic daylight saving time sync.',
+    },
+    {
+      question: 'Do Countdown Timers continue running when browser tabs are inactive?',
+      answer: 'Yes. The Countdown Timer uses high-resolution system timestamps rather than basic interval counters, ensuring that timer accuracy is preserved even when switching between browser tabs or background windows.',
+    },
+  ],
+
+  'ZIP Tools': [
+    {
+      question: 'What archive formats can I create and extract with ZIP Tools?',
+      answer: 'You can create standard ZIP archives from multiple files and extract files from ZIP, RAR, 7Z, TAR, and GZIP archives online without installing third-party desktop utilities like WinRAR or 7-Zip.',
+    },
+    {
+      question: 'Are my files safe and private when compressing or extracting archives?',
+      answer: 'Yes. All ZIP creation and decompression operations execute entirely within your web browser using client-side JavaScript memory. Your files are never uploaded to any remote server.',
+    },
+    {
+      question: 'Can I create password-protected and encrypted ZIP archives?',
+      answer: 'Yes. Our Password-Protected ZIP tool lets you encrypt your files with custom passphrases so that only authorized recipients holding the password can extract the contents.',
+    },
+    {
+      question: 'How does compression level selection affect ZIP file size?',
+      answer: 'Our Compression Level ZIP tool allows you to choose between Store (fastest, no compression), Normal, and Maximum (highest compression ratio) to balance archive creation speed with file size reduction.',
+    },
+    {
+      question: 'Can I extract individual files from a ZIP archive on a mobile phone?',
+      answer: 'Yes. Because our ZIP tools run in the browser, you can upload, inspect, preview, and extract specific files from ZIP archives on iPhones, iPads, Android phones, and Chromebooks without special apps.',
+    },
+  ],
+
+  'Social Media': [
+    {
+      question: 'How does the AI Hashtag Generator find trending social media tags?',
+      answer: 'The AI Hashtag Generator analyzes your topic or niche and suggests categorized hashtags (high-volume, niche-specific, and low-competition tags) to maximize organic reach and engagement on Instagram, LinkedIn, and X.',
+    },
+    {
+      question: 'How does the Social Caption Formatter and Line Break Generator work?',
+      answer: 'Social platforms often collapse regular paragraph breaks. Our Line Break Generator inserts clean, invisible Unicode spacing characters so your Instagram captions and LinkedIn posts maintain clean formatting.',
+    },
+    {
+      question: 'Can I create custom Link-in-Bio mobile landing pages for free?',
+      answer: 'Yes. The Link-in-Bio Generator lets you assemble clean mobile landing pages with profile photos, bio descriptions, social icons, and custom action buttons that you can link directly from your social profiles.',
+    },
+    {
+      question: 'How does the AI Meme Generator create viral memes?',
+      answer: 'The AI Meme Generator provides popular meme image templates and automatically suggests humorous, relatable top and bottom text overlays that you can customize and export in high resolution.',
+    },
+    {
+      question: 'Is my social media copy and account information safe?',
+      answer: 'Yes. All bio generation, caption formatting, hashtag curation, and meme rendering happens locally in your browser. We never connect to or access your social media accounts.',
+    },
+  ],
+
+  'Text Tools': [
+    {
+      question: 'What metrics does the Word & Character Counter analyze?',
+      answer: 'The Word Counter provides real-time counts for total words, characters (with and without spaces), sentences, paragraphs, estimated reading time, speaking time, and average word length for writers and editors.',
+    },
+    {
+      question: 'What text casing conversions are supported?',
+      answer: 'You can convert text into UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, and alternating cAsE in one click.',
+    },
+    {
+      question: 'How does the Text Diff Checker compare two documents?',
+      answer: 'The Text Diff Checker performs line-by-line and word-by-word diff analysis, visually highlighting insertions (green), deletions (red), and modified characters so you can compare revisions easily.',
+    },
+    {
+      question: 'Can I convert Markdown formatting into styled HTML code?',
+      answer: 'Yes. The Markdown to HTML Converter parses headings, bold text, blockquotes, code blocks, lists, and tables, producing clean, standard HTML code ready to copy or preview in real-time.',
+    },
+    {
+      question: 'How does the Duplicate Line Remover clean messy text lists?',
+      answer: 'It instantly scans large text files or email lists, removes duplicate lines, strips extra whitespace, and sorts entries alphabetically or numerically for clean data processing.',
+    },
+  ],
+
+  'Education Tools': [
+    {
+      question: 'What math and scientific calculations can I solve online?',
+      answer: 'Our Scientific Calculator supports trigonometric functions (sin, cos, tan), inverse trig, logarithms (log, ln), exponents, square roots, factorials, and constants (pi, e) with parentheses evaluation.',
+    },
+    {
+      question: 'How does the AI Study Timetable Generator build revision schedules?',
+      answer: 'By entering your subjects, exam dates, available daily study hours, and difficulty levels, the tool generates an optimized study timetable with balanced revision cycles and rest intervals.',
+    },
+    {
+      question: 'How do I convert CGPA to percentage across different university scales?',
+      answer: 'Our CGPA to Percentage Calculator supports standard 10.0 grading scales (e.g. CBSE 9.5 multiplier, Mumbai University, VTU, and US 4.0 GPA scales) for university applications and job resumes.',
+    },
+    {
+      question: 'Can I generate custom multiple-choice quizzes with the AI MCQ Generator?',
+      answer: 'Yes. Paste any study notes, textbook chapter, or article, and the AI MCQ Generator automatically creates multiple-choice questions with answer keys and explanations for self-assessment.',
+    },
+    {
+      question: 'What unit conversions are supported by the Unit Converter & Solver?',
+      answer: 'The Unit Converter supports length, area, volume, mass, temperature, speed, time, pressure, energy, power, and digital data storage units with high mathematical precision.',
+    },
+  ],
+
+  'Internet Tools': [
+    {
+      question: 'What information is provided by the IP Address Lookup tool?',
+      answer: 'The IP Lookup tool queries public geolocation databases to display city, region, country, latitude/longitude, ISP organization, and Autonomous System Number (ASN) for any IPv4 or IPv6 address.',
+    },
+    {
+      question: 'How does the SSL Certificate Checker verify website security?',
+      answer: 'It inspects target domain SSL/TLS certificates, verifying the issuing Certificate Authority (CA), cryptographic cipher strength, validity dates, days remaining until expiry, and SAN hostnames.',
+    },
+    {
+      question: 'What DNS records can I query with the DNS Lookup tool?',
+      answer: 'You can query A (IPv4), AAAA (IPv6), MX (Mail Exchange), TXT (SPF/verification), CNAME (Aliases), NS (Nameservers), and SOA (Start of Authority) records across global DNS servers.',
+    },
+    {
+      question: 'How do the Website Ping and Ping Test tools measure latency?',
+      answer: 'They measure round-trip HTTP response times, time-to-first-byte (TTFB), and server availability from multiple server locations to diagnose downtime and network lag.',
+    },
+    {
+      question: 'Can I capture full-page rendered screenshots of web pages?',
+      answer: 'Yes. The Website Screenshot tool captures high-resolution desktop and mobile viewport screenshots of live web pages without requiring browser extensions.',
+    },
+  ],
+
+  'Video Tools': [
+    {
+      question: 'How do I extract MP3 audio from video files online?',
+      answer: 'Upload any MP4, MOV, AVI, or WebM video into our Video to Audio Converter, and the tool extracts and exports high-bitrate MP3 or WAV audio directly in your browser without quality loss.',
+    },
+    {
+      question: 'Can I trim video clips and change playback speed without watermarks?',
+      answer: 'Yes. The Video Trim tool lets you set exact start and end timestamps, while the Video Speed Controller allows you to accelerate (up to 4x) or slow down (0.25x) video playback with zero watermark overlays.',
+    },
+    {
+      question: 'How does the Video Resolution Converter resize video dimensions?',
+      answer: 'It scales video dimensions to standard presets (1080p Full HD, 720p HD, 480p SD, or custom aspect ratios like 16:9 widescreen or 9:16 vertical video) for YouTube, TikTok, and Instagram.',
+    },
+    {
+      question: 'Can I extract high-resolution thumbnail stills from video files?',
+      answer: 'Yes. The Video Thumbnail Generator allows you to scrub through video frames, choose the exact frame you want, and save high-resolution JPG or PNG thumbnail graphics.',
+    },
+    {
+      question: 'Are video files uploaded to remote servers during editing?',
+      answer: 'No. Where supported by browser WebAssembly ffmpeg implementations, video processing is handled locally on your machine, ensuring complete privacy for personal and corporate recordings.',
+    },
+  ],
+
+  'Audio Tools': [
+    {
+      question: 'What audio conversion formats are supported?',
+      answer: 'You can convert between MP3, WAV, AAC, OGG, M4A, and FLAC audio formats with custom sample rates and bitrate controls for optimal sound fidelity.',
+    },
+    {
+      question: 'How accurate is the AI Speech to Text Converter for voice recordings?',
+      answer: 'Our AI Speech to Text tool uses high-accuracy speech recognition models to transcribe interviews, podcasts, lectures, and voice memos into structured text transcripts.',
+    },
+    {
+      question: 'Can I trim and merge multiple audio tracks into a continuous file?',
+      answer: 'Yes. Use the Audio Trimmer to cut out unwanted sections or silence, and use the Audio Merger to sequence and join multiple audio tracks into a single seamless audio file.',
+    },
+    {
+      question: 'How does the Audio Speed Changer preserve musical pitch?',
+      answer: 'The Audio Speed Changer utilizes pitch-preservation algorithms (time-stretching) so that accelerating or slowing down speech and music does not cause the chipmunk effect or pitch distortion.',
+    },
+    {
+      question: 'Is there a limit on audio file length or size?',
+      answer: 'You can process audio files up to 50MB directly in your browser with no daily limits or subscription paywalls.',
     },
   ],
 };
 
+// Aliases for short IDs and common category name variations
+categorySpecificFaqs['ai'] = categorySpecificFaqs['AI Utilities'];
+categorySpecificFaqs['pdf'] = categorySpecificFaqs['PDF Tools'];
+categorySpecificFaqs['image'] = categorySpecificFaqs['Image Tools'];
+categorySpecificFaqs['dev'] = categorySpecificFaqs['Developer Tools'];
+categorySpecificFaqs['security'] = categorySpecificFaqs['Security Tools'];
+categorySpecificFaqs['finance'] = categorySpecificFaqs['Finance Tools'];
+categorySpecificFaqs['seo'] = categorySpecificFaqs['SEO Tools'];
+categorySpecificFaqs['govt-legal'] = categorySpecificFaqs['Govt Legal Tools'];
+categorySpecificFaqs['ecommerce'] = categorySpecificFaqs['E-commerce Tools'];
+categorySpecificFaqs['email'] = categorySpecificFaqs['Email Marketing Tools'];
+categorySpecificFaqs['date-time'] = categorySpecificFaqs['Date & Time'];
+categorySpecificFaqs['Date & Time Tools'] = categorySpecificFaqs['Date & Time'];
+categorySpecificFaqs['zip'] = categorySpecificFaqs['ZIP Tools'];
+categorySpecificFaqs['Zip Tools'] = categorySpecificFaqs['ZIP Tools'];
+categorySpecificFaqs['social'] = categorySpecificFaqs['Social Media'];
+categorySpecificFaqs['Social Media Tools'] = categorySpecificFaqs['Social Media'];
+categorySpecificFaqs['text'] = categorySpecificFaqs['Text Tools'];
+categorySpecificFaqs['education'] = categorySpecificFaqs['Education Tools'];
+categorySpecificFaqs['internet'] = categorySpecificFaqs['Internet Tools'];
+categorySpecificFaqs['video'] = categorySpecificFaqs['Video Tools'];
+categorySpecificFaqs['audio'] = categorySpecificFaqs['Audio Tools'];
+
 // Helper function to get FAQs for a specific category
 export const getCategoryFaqs = (category: string): Array<{ question: string; answer: string }> => {
-  return categorySpecificFaqs[category] || [];
+  return categorySpecificFaqs[category] || categorySpecificFaqs['PDF Tools'] || [];
 };
 
 // Helper function to get universal FAQs that apply to all tools

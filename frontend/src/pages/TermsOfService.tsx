@@ -8,7 +8,7 @@ const TermsOfService = () => {
     <div className="flex min-h-screen flex-col">
       <SEOHelmet
         title="Terms of Service - DailyTools247"
-        description="Read the terms of service of DailyTools247 online utilities."
+        description="Read the terms of service and acceptable usage policies for DailyTools247. Learn about user rights, privacy commitments, and online tool guidelines."
       />
       <Header />
       <main className="flex-1">

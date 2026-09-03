@@ -143,7 +143,7 @@ const WriteForUs = () => {
     <div className="flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground selection:bg-primary/20">
       <SEOHelmet
         title="Write for Us - Guest Post Submission | DailyTools247"
-        description="Write for us at DailyTools247. Submit original guest posts for a highly targeted tech audience. Promote your startup or business, get backlinks, and publish for a one-time $10 fee."
+        description="Write for DailyTools247. Submit practical tech guest posts, showcase your startup to our audience, and earn permanent backlinks."
         keywords={[
           "write for us",
           "guest post guidelines",

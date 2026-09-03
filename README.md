@@ -1,526 +1,435 @@
-# dailytools247 - 160+ Free Online & AI Tools Platform
+# DailyTools247 - 168+ Free Online & AI Tools Platform
 
-A comprehensive web application providing **160+ free online tools** for AI processing, image editing, PDF tools, video conversion, text utilities, finance calculators, SEO optimization, developer utilities, and more. Built with a Node.js/Express backend and a modern React frontend with TypeScript.
+A comprehensive, production-ready web platform providing **168+ free online utilities** across 18 categories for AI workflows, PDF management, image processing, video & audio conversion, developer utilities, SEO optimization, financial calculations, security tools, and more. Built with a Node.js/Express backend and a modern, accessible React + TypeScript frontend.
+
+---
 
 ## 🎯 Overview
 
-Dailytools247 is a feature-rich, high-performance platform offering utility tools organized across 18 categories. Whether you need to run AI models locally, compress images, merge PDFs, convert videos, generate passwords, calculate EMIs, or optimize SEO - Dailytools247 delivers professional-grade tools that work seamlessly in your browser.
+**DailyTools247** delivers fast, secure, browser-first tools designed with privacy-forward defaults (100% client-side local processing where possible and zero file retention for server tasks). Whether you are compressing documents, converting media formats, generating AI copy, formatting code, or calculating taxes and EMIs, DailyTools247 provides seamless utilities with zero signup required.
 
-### ✨ Key Features
-- **160+ Tools** across 18 categories
-- **30+ AI Utilities** powered by client-side and backend AI models
-- **Modern UI** built with React, TypeScript, Tailwind CSS, and shadcn/ui
-- **SEO-Optimized Architecture** with automated sitemap generation and static pre-rendering
-- **Fast Performance** powered by Vite (SWC) and Redis caching
-- **Responsive Design** optimized for mobile, tablet, and desktop
-- **Type Safety** with end-to-end TypeScript integration
-- **AI Agent Discoverability** with `llms.txt`, `openapi.json`, and `ai-plugin.json` specs
+### ✨ Key Platform Highlights
+- **168+ Active Tools** organized across 18 specialized categories
+- **31 AI Utilities** powered by client-side and server-assisted AI models
+- **Developer API Platform** with API key generation, interactive playground, and rate-limiting
+- **100% Local Processing & Privacy** for sensitive files, passwords, and documents
+- **SEO & Accessibility Compliant** with strict heading hierarchy ($H1 \to H2 \to H3 \to H4$), optimized title tags (< 60 chars), OpenGraph, and JSON-LD schema
+- **25 In-Depth Blog Guides** covering tool comparisons, workflows, and tutorials
+- **Static Pre-rendering & Automated Sitemaps** with `prerender.js` and automated `lastmod` sync
+- **AI Agent Discoverability** via `llms.txt`, `openapi.json`, and `ai-plugin.json` specifications
+- **Responsive Modern UI** built with Tailwind CSS, Radix UI primitives, Lucide icons, and dark/light mode
+
+---
 
 ## 📊 Tool Statistics
 
-- **Total Tools**: 168
-- **Categories**: 18
-- **AI Utilities**: 31
-- **Image Tools**: 15
-- **PDF Tools**: 16
-- **Video Tools**: 5
-- **SEO Tools**: 11
-- **Audio Tools**: 5
-- **Text Tools**: 9
-- **Security Tools**: 13
-- **Date & Time Tools**: 5
-- **Developer Tools**: 20
-- **Internet Tools**: 7
-- **Education Tools**: 9
-- **Finance Tools**: 18
-- **Govt Legal Tools**: 12
-- **ZIP Tools**: 4
-- **Social Media Tools**: 7
-- **E-commerce Tools**: 10
-- **Email Marketing Tools**: 10
-
-## 🚀 Features & Tool Categories
-
-### 🤖 AI Utilities (31 Tools)
-- **AI Background Remover** - Remove backgrounds from product images instantly using AI
-- **AI Speech to Text** - Convert speech and audio files into text transcripts
-- **AI Text Summarizer** - Summarize articles, papers, and long text using AI
-- **AI Password Strength Explainer** - Analyze password strength with AI-assisted security feedback
-- **AI Text Redactor & PII Masker** - Detect and redact sensitive PII data from text
-- **AI QR Phishing Scanner** - Scan and audit QR codes for phishing and redirect risks
-- **AI URL Phishing & Safety Checker** - Analyze domain safety, phishing reputation, and SSL score
-- **AI Cron Expression Generator** - Generate and explain cron schedule expressions in natural language
-- **AI JSON to TypeScript Converter** - Convert JSON schemas to type-safe TypeScript interfaces
-- **AI SQL Query Builder & Beautifier** - Format, beautify, and build SQL queries with AI assistance
-- **AI Postman Collection Generator** - Generate Postman collections for API endpoints using AI
-- **AI Dockerfile Generator** - Generate optimized and secure Dockerfiles for applications
-- **AI Study Timetable Generator** - Create personalized study schedules and timetables
-- **AI MCQ Generator** - Generate multiple-choice question tests from any text input
-- **AI SaaS Pricing Optimizer** - Model unit economics and optimize SaaS pricing strategy
-- **AI Tax Analyzer & Planner** - Analyze tax slabs, deductions, and plan tax liability
-- **AI Budget Planner & Optimizer** - Forecast and manage monthly personal or business budgets
-- **AI Image Color Enhancer** - Enhance colors and adjust lighting in photos automatically
-- **AI Image Shadow Adder** - Add realistic drop shadows to product images
-- **AI Hashtag Generator** - Generate trending and high-conversion social media hashtags
-- **AI Bio Generator** - Create character-limited social and professional bio profiles
-- **AI WhatsApp Status Generator** - Generate engaging WhatsApp status messages and image cards
-- **AI Meme Generator** - Generate viral memes with AI text overlay suggestions
-- **AI Email Subject Line Generator** - Generate high-converting email subject lines with dynamic scoring
-- **AI Email Signature Generator** - Design professional HTML email signatures
-- **AI Email Spam Checker** - Analyze email content and subjects for deliverability and spam risk
-- **AI Email Template Generator** - Design responsive inline-styled HTML newsletter templates
-- **AI Email Header Analyzer** - Parse raw mail headers and trace server routing hops
-- **AI SEO Meta Description Generator** - Generate SEO-optimized title tags and meta descriptions
-- **AI Website Tech Stack Detector** - Detect and profile technology stacks of websites
-- **AI SEO Checker & Analyzer** - Comprehensive AI-driven page SEO audit tool
-
-### 🖼️ Image Tools (15 Tools)
-- **QR Code Scanner** - Scan and decode QR codes from images
-- **PNG to JPG Converter** - Convert PNG images to JPG format with quality control
-- **JPG to PNG Converter** - Convert JPG images to PNG with transparency support
-- **WebP to PNG Converter** - Convert WebP images to PNG for compatibility
-- **PNG to WebP Converter** - Convert PNG images to WebP for web optimization
-- **WebP to JPG Converter** - Convert WebP images to JPG with adjustable compression
-- **JPG to WebP Converter** - Convert JPG images to WebP format
-- **Image Compressor** - Compress image sizes while retaining quality
-- **Image Resize Tool** - Resize images to custom dimensions
-- **Image Crop Tool** - Crop images interactively
-- **Image to PDF** - Convert multiple images into a single PDF
-- **Image ↔ Base64** - Convert images to and from Base64 strings
-- **Image DPI Checker** - Check image DPI resolution and print dimensions
-- **EXIF Metadata Viewer** - Inspect photo metadata, EXIF tags, and camera details
-- **Favicon Generator** - Generate cross-platform favicons from images
-
-### 📄 PDF Tools (16 Tools)
-- **PDF Merge** - Combine multiple PDF documents into one
-- **PDF Split** - Extract pages or ranges from PDF files
-- **PDF to Image** - Convert PDF pages into high-resolution JPG or PNG images
-- **PDF to Word** - Convert PDF files into editable DOCX documents
-- **PDF to PowerPoint** - Convert PDF pages into PPTX slide presentations
-- **PDF to Excel** - Extract tables from PDF files into XLSX spreadsheets
-- **Word to PDF** - Convert Word documents (DOCX) to PDF
-- **PowerPoint to PDF** - Convert PPTX presentations to PDF
-- **HTML to PDF** - Convert web pages and raw HTML into PDF
-- **PDF Password Protector** - Encrypt and protect PDF files with passwords
-- **PDF Unlocker** - Remove password protection from unlocked PDFs
-- **PDF Page Remover** - Delete specified pages from PDF documents
-- **PDF Rotate Pages** - Rotate PDF pages by 90, 180, or 270 degrees
-- **PDF Reorder Pages** - Reorder and rearrange pages in PDF files
-- **PDF Add Signature** - Draw or attach digital signatures to PDF pages
-- **Crop PDF** - Trim margins and crop PDF page boundaries
-
-### 🔍 SEO Tools (11 Tools)
-- **Meta Title & Description Generator** - Generate SEO-optimized titles and descriptions
-- **Keyword Density Checker** - Analyze keyword density and frequency in text
-- **Robots.txt Generator** - Generate custom robots.txt directives for search crawlers
-- **Sitemap Validator** - Validate XML sitemaps and audit broken endpoints
-- **Page Speed Checklist Generator** - Interactive checklist for site speed optimization
-- **OG Image Preview Tool** - Generate and test Open Graph social media tags
-- **Broken Image Finder** - Scan web pages to find broken images and broken links
-- **UTM Link Builder** - Construct campaign URLs with custom UTM parameters
-- **Domain Age Checker** - Query domain age, WHOIS creation, and expiration dates
-- **Website Tech Stack Detector** - Detect frontend, backend, and analytics stacks
-- **Page SEO Analyzer** - Full audit of technical and on-page SEO factors
-
-### 🎥 Video Tools (5 Tools)
-- **Video to Audio** - Extract MP3 or WAV audio from video files
-- **Video Trim** - Cut and trim video clips to exact timestamps
-- **Video Speed Controller** - Modify video playback speed from 0.25x to 4x
-- **Video Thumbnail Generator** - Capture thumbnail frames from video files
-- **Video Resolution Converter** - Change video dimensions and resolution ratios
-
-### 🎵 Audio Tools (5 Tools)
-- **Audio Format Converter** - Convert between MP3, WAV, AAC, and OGG formats
-- **AI Speech to Text** - Transcribe audio into written text transcripts
-- **Audio Trimmer** - Cut and trim audio tracks with precision
-- **Audio Merger** - Join multiple audio files into a continuous track
-- **Audio Speed Changer** - Adjust audio tempo and playback speed with pitch preservation
-
-### 📝 Text Tools (9 Tools)
-- **Word & Character Counter** - Count words, characters, sentences, and paragraphs
-- **Case Converter** - Convert text to UPPERCASE, lowercase, Title Case, camelCase, etc.
-- **Color Converter** - Convert between HEX, RGB, HSL, and HSV color representations
-- **Remove Extra Spaces** - Clean whitespace, leading spaces, and double line breaks
-- **Line Sorter** - Sort text lines alphabetically or numerically
-- **Duplicate Line Remover** - Filter out duplicate lines from text documents
-- **Markdown → HTML** - Render Markdown syntax into styled HTML markup
-- **Text Summarizer** - Extract key bullet points and core summaries from text
-- **Text Diff Checker** - Compare side-by-side text differences with line highlighting
-
-### 🔒 Security Tools (13 Tools)
-- **Password Generator** - Create strong, customizable cryptographic passwords
-- **Password Strength Checker** - Test password entropy and vulnerability
-- **Hash Generator** - Generate MD5, SHA-1, SHA-256, and SHA-512 hashes
-- **Base64 Encode/Decode** - Encode text/data into Base64 format or decode Base64
-- **UUID Generator** - Generate v4 UUIDs in single or bulk batches
-- **Password Strength Explainer** - Detailed security analysis of password composition
-- **Data Breach Email Checker** - Audit email addresses against breach repositories
-- **File Hash Comparison Tool** - Compare cryptographic hashes of two local files
-- **EXIF Location Remover** - Strip GPS location tags from image metadata
-- **Text Redaction Tool** - Redact sensitive PII data before sharing documents
-- **QR Code Phishing Scanner** - Inspect QR URLs for malicious redirects
-- **Secure Notes Tool** - Client-side AES-256 encrypted note vault
-- **URL Reputation Checker** - Query domain reputation, SSL status, and threat scores
-
-### 📅 Date & Time Tools (5 Tools)
-- **Date Difference Calculator** - Calculate total days, months, and years between dates
-- **Age Calculator** - Calculate exact age down to minutes from birthdate
-- **Working Days Calculator** - Calculate business days excluding weekends and custom holidays
-- **Countdown Timer** - Create animated countdown timers for events
-- **World Time** - Real-time global clock for timezones worldwide
-
-### 💻 Developer Tools (20 Tools)
-- **JSON Formatter** - Format, validate, and minify JSON data
-- **Regex Tester** - Build and test regular expression pattern matches
-- **JWT Decoder** - Decode header, payload, and signature of JSON Web Tokens
-- **URL Encoder/Decoder** - Encode or decode URL parameters and queries
-- **Lorem Ipsum Generator** - Generate placeholder text, sentences, and paragraphs
-- **Cron Expression Generator** - Construct cron timing strings visually
-- **HTTP Header Checker** - Inspect response headers and security headers
-- **Token Calculator** - Estimate token counts for OpenAI, Claude, and Gemini models
-- **Color Palettes Generator** - Generate color palettes and hex schemes
-- **API Response Formatter** - Format and clean API payload JSON responses
-- **JSON to TypeScript Interface** - Generate TypeScript interfaces from JSON payloads
-- **SQL Query Beautifier** - Format, indent, and clean complex SQL queries
-- **JWT Token Expiry Calculator** - Analyze JWT expiration and issued-at timestamps
-- **Environment Variable Generator** - Format `.env` configuration files securely
-- **Postman Collection Generator** - Generate Postman collections from API schemas
-- **Dockerfile Generator** - Create containerization Dockerfiles for Node, Python, etc.
-- **cURL to Axios Converter** - Convert cURL shell commands to JavaScript Axios/Fetch calls
-- **HTTP Status Code Explainer** - Guide to HTTP 1xx, 2xx, 3xx, 4xx, 5xx status codes
-- **HTML Validator** - Check HTML syntax errors and validation issues
-- **CSS Validator** - Validate CSS stylesheet syntax and compliance
-
-### 🌐 Internet Tools (7 Tools)
-- **IP Address Lookup** - Query geolocation, ISP, and ASN for any IP address
-- **User-Agent Parser** - Parse browser, OS, device, and engine info from User-Agent
-- **DNS Lookup** - Query A, AAAA, MX, TXT, CNAME, and NS records for domains
-- **SSL Certificate Checker** - Verify SSL/TLS certificate validity, issuer, and expiry
-- **Website Ping Test** - Measure server HTTP response times
-- **Ping Test** - Test latency and packet responsiveness
-- **Website Screenshot** - Capture full-page rendered screenshots of websites
-
-### 🎓 Education Tools (9 Tools)
-- **Scientific Calculator** - Advanced calculator with trigonometric and logarithmic functions
-- **Percentage Calculator** - Solve percentage changes, increases, and fraction conversions
-- **Unit Converter** - Convert length, weight, speed, volume, and temperature units
-- **Compound Interest Calculator** - Calculate interest growth with custom compounding periods
-- **Simple Interest Calculator** - Compute principal interest yields
-- **CGPA to Percentage Calculator** - Convert CGPA to percentage across grading scales
-- **LCM & HCF Calculator** - Calculate Least Common Multiple and Highest Common Factor
-- **Study Timetable Generator** - Build study schedules with automated rest intervals
-- **MCQ Generator from Text** - Build custom multiple-choice question tests
-
-### 💰 Finance Tools (18 Tools)
-- **EMI Calculator** - Calculate monthly loan repayments and interest schedules
-- **GST Calculator** - Compute net price, gross price, and GST rates
-- **Salary Calculator** - Convert hourly rate to weekly, monthly, and annual earnings
-- **Currency Converter** - Live exchange rates across world currencies
-- **Startup Burn Rate Calculator** - Forecast cash runway and monthly burn rate
-- **SaaS Pricing Calculator** - Model ARPU, LTV, CAC, and tier pricing models
-- **EMI Comparison Tool** - Compare loan options side-by-side
-- **Tax Slab Analyzer** - Calculate tax liability based on current income tax slabs
-- **Invoice Generator** - Generate professional invoices with PDF export
-- **Profit Margin Calculator** - Calculate gross margin, net margin, and markup percentages
-- **Freelancer Rate Calculator** - Calculate hourly and project rates based on target income
-- **Salary Breakup Generator** - Calculate CTC breakups, allowances, and net take-home pay
-- **Budget Planner** - Track monthly income, expenses, and savings targets
-- **Stock CAGR Calculator** - Compute Compound Annual Growth Rate for investments
-- **Mutual Fund Calculator** - Forecast mutual fund returns for SIP and lump sum investments
-- **Lumpsum Calculator** - Calculate returns on one-time investments
-- **SIP Calculator** - Calculate total wealth created via Systematic Investment Plans
-- **ROI Calculator** - Calculate Return on Investment percentage and annualized yield
-
-### ⚖️ Govt Legal Tools (12 Tools)
-- **Passport/Aadhaar Photo Resizer** - Crop and compress photos for government portals under 50KB
-- **PDF Compressor** - Compress PDF file sizes for official submission portals
-- **PDF Merge** - Combine official PDF documents
-- **PDF Split** - Separate page documents
-- **PDF Password Protector** - Encrypt confidential legal documents
-- **PDF Rotate Pages** - Orient scanned legal documents
-- **PDF to Image** - Extract document pages to JPG/PNG
-- **Image to PDF** - Convert document scans into standardized PDF files
-- **PNG to JPG Converter** - Convert image scans to JPG format
-- **JPG to PNG Converter** - Convert JPG scans to PNG format
-- **Signature Maker** - Draw, style, and save digital signatures with transparent background
-- **Document Template Generator** - Generate standard legal contract templates
-
-### 📦 ZIP Tools (4 Tools)
-- **Create ZIP** - Compress multiple files into a `.zip` archive
-- **Extract ZIP** - Decompress and extract files from `.zip` archives online
-- **Password-Protected ZIP** - Create encrypted `.zip` archives
-- **Compression Level ZIP** - Adjust compression level for custom archive sizing
-
-### 📲 Social Media Tools (7 Tools)
-- **Hashtag Generator** - Generate targeted hashtags for Instagram, LinkedIn, and X
-- **Bio Generator** - Create custom profile bios within social character limits
-- **Caption Formatter** - Format social captions with line breaks and Unicode fonts
-- **Line Break Generator** - Insert clean, invisible line breaks for social posts
-- **Link-in-Bio Generator** - Build custom landing pages for social profile links
-- **WhatsApp Status Generator** - Create text and status card images for WhatsApp
-- **Meme Generator** - Create meme graphics with top and bottom text overlays
-
-### 🛒 E-commerce Tools (10 Tools)
-- **AI Background Remover** - Remove product backgrounds automatically
-- **QR Code Generator** - Generate product QR codes for packaging
-- **White Background Adder** - Convert product photo backgrounds to clean white
-- **Bulk Image Resizer** - Resize batch product photos for online stores
-- **Watermark Adder** - Protect product images with custom watermarks
-- **Image Color Enhancer** - Enhance colors and lighting in product catalog photos
-- **Shadow Adder** - Add realistic drop shadows to product photography
-- **Barcode Generator** - Generate EAN-13, UPC, and Code128 barcodes for products
-- **GST Invoice Generator** - Create GST-compliant invoices with PDF download
-- **GST/Margin/EMI Calculator** - Calculate e-commerce margins, GST, and buyer EMI breakdown
-
-### ✉️ Email Marketing Tools (10 Tools)
-- **Email Subject Line Generator** - Create subject lines with performance scoring
-- **Email Signature Generator** - Generate inline HTML signatures for email clients
-- **HTML Email Previewer** - Preview HTML emails on desktop/mobile viewports
-- **Spam Score Checker** - Analyze body and subject for spam keyword triggers
-- **Email Template Builder** - Design responsive HTML newsletter templates
-- **Email Header Analyzer** - Trace mail server hops, SPF, DKIM, and DMARC status
-- **SPF Record Generator** - Construct valid SPF TXT records for DNS deployment
-- **DKIM Generator** - Create DKIM keypairs and DNS TXT records
-- **DMARC Generator** - Generate DMARC policies for domain email security
-- **Mailto Link Generator** - Build pre-filled `mailto:` links with subject and body params
+| Category | Icon | Tool Count | Primary Highlights |
+| :--- | :---: | :---: | :--- |
+| **AI Utilities** | 🤖 | **31** | Background remover, text summarizer, speech-to-text, PII masker |
+| **PDF Tools** | 📄 | **16** | Merge, split, compress, convert (Word/PPT/Excel), sign, protect |
+| **Image Tools** | 🖼️ | **15** | Compress, resize, crop, convert (JPG/PNG/WebP), DPI checker, EXIF |
+| **Developer Tools** | 💻 | **20** | JSON formatter, regex tester, JWT decoder, Dockerfile, SQL beautifier |
+| **Finance Tools** | 💰 | **18** | EMI calculator, GST, salary breakup, SIP, lumpsum, SaaS pricing |
+| **Security Tools** | 🔒 | **13** | Password generator, hash generator, breach checker, secure notes |
+| **Govt Legal Tools** | ⚖️ | **12** | Passport/Aadhaar photo resizer (<50KB), document templates, signature |
+| **SEO Tools** | 🔍 | **11** | Meta tag generator, sitemap validator, keyword density, broken image finder |
+| **E-commerce Tools** | 🛒 | **10** | Bulk image resizer, shadow adder, watermark, barcode generator |
+| **Email Marketing** | ✉️ | **10** | Subject line generator, spam checker, HTML previewer, SPF/DKIM/DMARC |
+| **Education Tools** | 🎓 | **9** | MCQ generator, study timetable, unit converter, CGPA to percentage |
+| **Text Tools** | 📝 | **9** | Word counter, case converter, remove spaces, diff checker, markdown |
+| **Social Media** | 📲 | **7** | Hashtag generator, bio generator, caption formatter, meme maker |
+| **Internet Tools** | 🌐 | **7** | IP lookup, DNS lookup, SSL checker, website screenshot, ping test |
+| **Video Tools** | 🎥 | **5** | Video to audio, video trimmer, speed controller, thumbnail generator |
+| **Audio Tools** | 🎵 | **5** | Audio converter, speech-to-text, audio trimmer, audio merger |
+| **Date & Time** | 📅 | **5** | World time clock, age calculator, working days, countdown timer |
+| **ZIP Tools** | 📦 | **4** | Create ZIP, extract ZIP, password-protected ZIP, custom compression |
+| **Total Platform** | 🚀 | **168+** | **18 Categories • 207 Catalog Entries • 25 Blog Articles** |
 
 ---
 
-## 🔧 Tools API & Backend Architecture
+## 🚀 Complete Directory of Present Tools
 
-The backend architecture is built with Express 4 and modular route handlers:
+### 🤖 1. AI Utilities (31 Tools)
+- **AI Background Remover** (`/ai-background-remover`) - Remove backgrounds from product photos and portraits instantly
+- **AI Speech to Text Converter** (`/ai-speech-to-text`) - Transcribe speech and audio recordings to text transcripts
+- **AI Text Summarizer** (`/ai-text-summarizer`) - Summarize long articles, documents, and research papers
+- **AI Password Strength Explainer** (`/ai-password-strength-explainer`) - In-depth security analysis with AI heuristics
+- **AI Text Redactor & PII Masker** (`/ai-text-redaction`) - Detect and mask sensitive personal data from text
+- **AI QR Phishing Scanner** (`/ai-qr-phishing-scanner`) - Audit QR codes for malicious redirects and security risks
+- **AI URL Phishing & Safety Checker** (`/ai-url-reputation-checker`) - Analyze domain reputation and phishing scores
+- **AI Cron Expression Generator** (`/ai-cron-generator`) - Generate and translate cron schedules in plain English
+- **AI JSON to TypeScript Converter** (`/ai-json-to-typescript-interface`) - Generate type-safe TypeScript interfaces from JSON
+- **AI SQL Query Builder & Beautifier** (`/ai-sql-query-beautifier`) - Build, format, and optimize SQL queries
+- **AI Postman Collection Generator** (`/ai-postman-collection-generator`) - Auto-generate API test collections from JSON schemas
+- **AI Dockerfile Generator** (`/ai-dockerfile-generator`) - Build production-ready, secure Dockerfiles for any runtime
+- **AI Study Timetable Generator** (`/ai-study-timetable-generator`) - Create personalized study schedules and revision plans
+- **AI MCQ Generator** (`/ai-mcq-generator`) - Generate multiple choice questions with answers from any text input
+- **AI SaaS Pricing Optimizer** (`/ai-saas-pricing-calculator`) - Model unit economics, ARPU, CAC, and pricing tiers
+- **AI Tax Analyzer & Planner** (`/ai-tax-slab-analyzer`) - Calculate tax liability, evaluate deductions, and plan savings
+- **AI Budget Planner & Optimizer** (`/ai-budget-planner`) - Forecast income, expenses, and savings goals
+- **AI Image Color Enhancer** (`/ai-image-color-enhancer`) - Enhance colors, contrast, and lighting for product catalogs
+- **AI Image Shadow Adder** (`/ai-shadow-adder`) - Add realistic drop shadows to transparent product images
+- **AI Hashtag Generator** (`/ai-hashtag-generator`) - Generate high-reach, viral hashtags for Instagram, X, and LinkedIn
+- **AI Bio Generator** (`/ai-bio-generator`) - Create character-optimized bios for social and professional profiles
+- **AI WhatsApp Status Generator** (`/ai-whatsapp-status-generator`) - Generate quotes and status cards for WhatsApp
+- **AI Meme Generator** (`/ai-meme-generator`) - Create viral memes with smart text suggestions and templates
+- **AI Email Subject Line Generator** (`/ai-email-subject-line-generator`) - Generate high-open-rate subject lines with scores
+- **AI Email Signature Generator** (`/ai-email-signature-generator`) - Create responsive HTML signatures with social links
+- **AI Email Spam Checker** (`/ai-spam-score-checker`) - Audit email copy and subject lines for spam triggers
+- **AI Email Template Generator** (`/ai-email-template-builder`) - Build responsive HTML newsletters with inline CSS
+- **AI Email Header Analyzer** (`/ai-email-header-analyzer`) - Parse mail headers, routing hops, SPF, DKIM, and DMARC
+- **AI SEO Meta Description Generator** (`/ai-meta-tag-generator`) - Create high-CTR SEO title tags and descriptions
+- **AI Website Tech Stack Detector** (`/ai-tech-stack-detector`) - Detect frontend frameworks, servers, and analytics
+- **AI SEO Checker & Analyzer** (`/ai-page-seo-analyzer`) - Audit technical on-page SEO signals and performance
 
-### API Route Modules (`backend/routes/`)
-- **`apiv1.js`** - Public API v1 endpoints with key management and rate limiting
-- **`audio.js`** - Audio processing APIs (conversions, trimming, speed adjustment)
-- **`blog.js`** - Blog post querying, category filtering, and search endpoints
-- **`datetime.js`** - Date calculation APIs (age, date difference, working days)
-- **`dev.js`** - Developer utility APIs (JSON formatting, regex testing, JWT decoding)
-- **`education.js`** - Educational calculation endpoints
-- **`email.js`** - Email marketing APIs (spam score, headers, signature generation)
-- **`finance.js`** - Financial calculation APIs (EMI, GST, salary, currency conversion)
-- **`image.js`** - Image processing APIs (QR codes, compression, format conversion)
-- **`internet.js`** - Network & DNS lookup APIs (IP lookup, DNS records, SSL checker)
-- **`pdf.js`** - PDF operation endpoints (merge, split, password protection, convert)
-- **`security.js`** - Security APIs (password generation, hashing, base64, breach checks)
-- **`seo.js`** - SEO optimization endpoints (meta generation, robots.txt, sitemaps)
-- **`social.js`** - Social media utility endpoints
-- **`text.js`** - Text transformation APIs (word count, case conversion, line sorting)
-- **`video.js`** - Video processing APIs (audio extraction, trimming, speed control)
-- **`zip.js`** - Archive manipulation endpoints
+### 📄 2. PDF Tools (16 Tools)
+- **PDF Merge** (`/pdf-merge`) - Combine multiple PDF documents into a single file
+- **PDF Split** (`/pdf-split`) - Extract specific pages or custom page ranges
+- **PDF to Image** (`/pdf-to-image`) - Convert PDF pages into high-resolution JPG or PNG images
+- **PDF to Word** (`/pdf-to-word`) - Convert PDF documents into editable DOCX format
+- **PDF to PowerPoint** (`/pdf-to-powerpoint`) - Convert PDF pages into PPTX slide decks
+- **PDF to Excel** (`/pdf-to-excel`) - Extract tabular data from PDFs into XLSX spreadsheets
+- **Word to PDF** (`/word-to-pdf`) - Convert Word files (DOCX) to clean, standard PDF
+- **PowerPoint to PDF** (`/powerpoint-to-pdf`) - Convert PPTX presentations to PDF
+- **HTML to PDF** (`/html-to-pdf`) - Render HTML code or URLs into downloadable PDF documents
+- **PDF Password Protector** (`/pdf-password`) - Encrypt PDFs with secure user passwords
+- **PDF Unlocker** (`/pdf-unlock`) - Remove password restrictions from unlocked PDFs
+- **PDF Page Remover** (`/pdf-page-remover`) - Delete unwanted pages from PDF documents
+- **PDF Rotate Pages** (`/pdf-rotate`) - Rotate pages by 90°, 180°, or 270°
+- **Reorder PDF Pages** (`/pdf-reorder`) - Drag and drop to rearrange page sequences
+- **Add Signature to PDF** (`/pdf-add-signature`) - Draw, style, or upload digital signatures to PDF pages
+- **Crop PDF** (`/crop-pdf`) - Trim margins and crop page dimensions
 
-### Middleware & Caching Layer (`backend/middleware/`)
-- **`cache.js`**: In-memory and Upstash Redis caching layer for API responses
-- **`security.js`**: Security policies with Helmet, CORS configuration, request sanitization (`xss`), and rate limiting (`express-rate-limit`)
+### 🖼️ 3. Image Tools (15 Tools)
+- **QR Code Scanner** (`/qr-code-scanner`) - Scan and decode QR codes directly from images
+- **PNG to JPG Converter** (`/png-to-jpg-converter`) - Convert PNG images to JPG with quality compression
+- **JPG to PNG Converter** (`/jpg-to-png-converter`) - Convert JPG images to transparent PNGs
+- **WebP to PNG Converter** (`/webp-to-png-converter`) - Convert modern WebP images to PNG format
+- **PNG to WebP Converter** (`/png-to-webp-converter`) - Convert PNGs to WebP for faster web loading
+- **WebP to JPG Converter** (`/webp-to-jpg-converter`) - Convert WebP files to JPG
+- **JPG to WebP Converter** (`/jpg-to-webp-converter`) - Convert JPG photos to lightweight WebP
+- **Image Compressor** (`/image-compressor`) - Lossy and lossless image compression with live preview
+- **Image Resizer** (`/image-resize`) - Resize images by exact pixels, percentage, or aspect ratio
+- **Image Cropper** (`/image-crop`) - Crop images with custom aspect ratio presets
+- **Image to PDF** (`/image-to-pdf`) - Convert multiple image files into a single PDF
+- **Image to Base64** (`/image-base64`) - Convert images to Data URI Base64 strings and vice versa
+- **Image DPI Checker** (`/image-dpi-checker`) - Check and convert image DPI for print standards
+- **EXIF Viewer** (`/exif-viewer`) - Inspect camera settings, metadata, and GPS location tags
+- **Favicon Generator** (`/favicon-generator`) - Generate multi-size favicon packages from any image
+
+### 💻 4. Developer Tools (20 Tools)
+- **JSON Formatter** (`/json-formatter`) - Format, validate, and minify JSON data
+- **Regex Tester** (`/regex-tester`) - Test and debug regular expressions in real-time
+- **JWT Decoder** (`/jwt-decoder`) - Decode header, payload, and verify signatures of JWT tokens
+- **URL Encoder/Decoder** (`/url-encoder`) - Percent-encode or decode URL query strings
+- **Lorem Ipsum Generator** (`/lorem-ipsum-generator`) - Generate customized placeholder text
+- **AI Cron Expression Generator** (`/ai-cron-generator`) - Build and explain cron expressions
+- **HTTP Header Checker** (`/http-header-checker`) - Inspect server response and security headers
+- **Token Calculator** (`/token-calculator`) - Estimate token counts for GPT-4, Claude, and Gemini
+- **Color Palette Generator** (`/color-palettes`) - Generate harmonious color schemes and HEX palettes
+- **API Response Formatter** (`/api-response-formatter`) - Clean, format, and validate API responses
+- **AI JSON to TypeScript Converter** (`/ai-json-to-typescript-interface`) - Generate TypeScript interfaces
+- **AI SQL Query Builder & Beautifier** (`/ai-sql-query-beautifier`) - Format and construct SQL queries
+- **JWT Token Expiry Calculator** (`/jwt-token-expiry-calculator`) - Inspect token expiry timestamps
+- **Environment Variable Generator** (`/environment-variable-generator`) - Format and validate `.env` files
+- **AI Postman Collection Generator** (`/ai-postman-collection-generator`) - Create Postman collections
+- **AI Dockerfile Generator** (`/ai-dockerfile-generator`) - Generate optimized Dockerfiles
+- **cURL to Axios Converter** (`/curl-to-axios-converter`) - Convert cURL commands to Axios/Fetch
+- **HTTP Status Code Explainer** (`/http-status-code-explainer`) - Comprehensive guide to 1xx-5xx HTTP codes
+- **HTML Validator** (`/html-validator`) - Validate HTML markup syntax and nesting
+- **CSS Validator** (`/css-validator`) - Validate CSS stylesheets for compliance and syntax errors
+
+### 💰 5. Finance Tools (18 Tools)
+- **EMI Calculator** (`/emi-calculator`) - Calculate monthly loan installments with amortization schedules
+- **GST Calculator** (`/gst-calculator`) - Calculate GST amounts (inclusive and exclusive)
+- **Salary Calculator** (`/salary-calculator`) - Convert hourly, weekly, monthly, and annual wages
+- **Currency Converter** (`/currency-converter`) - Real-time foreign exchange conversions
+- **Startup Burn Rate Calculator** (`/startup-burn-rate-calculator`) - Track monthly expenses and cash runway
+- **AI SaaS Pricing Optimizer** (`/ai-saas-pricing-calculator`) - Model unit economics and pricing tiers
+- **EMI Comparison Tool** (`/emi-comparison`) - Compare multiple loan options side-by-side
+- **AI Tax Analyzer & Planner** (`/ai-tax-slab-analyzer`) - Calculate tax liability and evaluate deductions
+- **Invoice Generator** (`/invoice-generator`) - Generate PDF invoices with customizable items and tax
+- **Profit Margin Calculator** (`/profit-margin-calculator`) - Compute gross margin, net margin, and markup
+- **Freelancer Rate Calculator** (`/freelancer-rate-calculator`) - Calculate target hourly and project rates
+- **Stock CAGR Calculator** (`/stock-cagr-calculator`) - Calculate Compound Annual Growth Rate for investments
+- **Mutual Fund Calculator** (`/mutual-fund-calculator`) - Forecast mutual fund returns for SIP and lump sum
+- **Lumpsum Calculator** (`/lumpsum-calculator`) - Calculate returns on one-time capital investments
+- **AI Budget Planner & Optimizer** (`/ai-budget-planner`) - Forecast personal and household budgets
+- **Salary Breakup Calculator** (`/salary-breakup-generator`) - Calculate CTC components, allowances, and in-hand pay
+- **SIP Calculator** (`/sip-calculator`) - Forecast returns on Systematic Investment Plans
+- **ROI Calculator** (`/roi-calculator`) - Compute Return on Investment percentage and annualized yields
+
+### 🔒 6. Security Tools (13 Tools)
+- **Password Generator** (`/password-generator`) - Generate strong, cryptographically secure passwords
+- **Password Strength Checker** (`/password-strength`) - Measure password entropy and vulnerability
+- **Hash Generator** (`/hash-generator`) - Generate MD5, SHA-1, SHA-256, and SHA-512 checksums
+- **Base64 Encoder/Decoder** (`/base64-encoder`) - Encode or decode Base64 strings
+- **UUID Generator** (`/uuid-generator`) - Generate single or batch UUID v4 identifiers
+- **AI Password Strength Explainer** (`/ai-password-strength-explainer`) - AI-assisted security feedback
+- **Data Breach Email Checker** (`/data-breach-email-checker`) - Audit email addresses for known data breaches
+- **File Hash Comparison Tool** (`/file-hash-comparison`) - Compare cryptographic hashes of two local files
+- **EXIF Location Remover** (`/exif-location-remover`) - Strip GPS coordinates and location metadata from photos
+- **AI Text Redactor & PII Masker** (`/ai-text-redaction`) - Scan and redact sensitive PII from text
+- **AI QR Phishing Scanner** (`/ai-qr-phishing-scanner`) - Scan QR codes for security risks and phishing
+- **Secure Notes Tool** (`/secure-notes`) - Client-side AES-256 encrypted note vault
+- **AI URL Phishing & Safety Checker** (`/ai-url-reputation-checker`) - Query domain reputation and SSL status
+
+### ⚖️ 7. Govt Legal Tools (12 Tools)
+- **Passport/Aadhaar Photo Resizer** (`/passport-photo-resizer`) - Crop and resize photos under 50KB for government forms
+- **PDF Compressor** (`/pdf-compressor`) - Compress PDF documents for portal uploads
+- **PDF Merge** (`/pdf-merge`) - Combine legal certificates and application PDFs
+- **PDF Split** (`/pdf-split`) - Extract specific pages from official documents
+- **PDF Password Protector** (`/pdf-password`) - Protect confidential agreements with passwords
+- **PDF Rotate Pages** (`/pdf-rotate`) - Fix orientation of scanned legal documents
+- **PDF to Image** (`/pdf-to-image`) - Convert PDF documents to JPG/PNG for portal attachments
+- **Image to PDF** (`/image-to-pdf`) - Convert image scans into standardized PDF files
+- **PNG to JPG Converter** (`/png-to-jpg-converter`) - Convert document scans to JPG format
+- **JPG to PNG Converter** (`/jpg-to-png-converter`) - Convert document photos to PNG format
+- **Signature Maker** (`/signature-maker`) - Draw and save transparent digital signatures
+- **Document Template Generator** (`/document-template`) - Generate legal contracts and agreements
+
+### 🔍 8. SEO Tools (11 Tools)
+- **AI SEO Meta Description Generator** (`/ai-meta-tag-generator`) - Generate SEO-optimized titles and descriptions
+- **Keyword Density Checker** (`/keyword-density-checker`) - Analyze keyword frequency and density in copy
+- **Robots.txt Generator** (`/robots-txt-generator`) - Generate robots.txt crawler directives
+- **Sitemap Validator** (`/sitemap-validator`) - Validate XML sitemaps and audit endpoints
+- **Page Speed Checklist Generator** (`/page-speed-checklist-generator`) - Comprehensive performance optimization guide
+- **OG Image Preview Tool** (`/og-image-preview-tool`) - Preview Open Graph and Twitter Card social previews
+- **Broken Image Finder** (`/broken-image-finder`) - Scan web pages to find broken images and links
+- **UTM Link Builder** (`/utm-link-builder`) - Build Google Analytics campaign tracking URLs
+- **Domain Age Checker** (`/domain-age-checker`) - Check domain creation date and registration age
+- **AI Website Tech Stack Detector** (`/ai-tech-stack-detector`) - Profile technologies powering any website
+- **AI SEO Checker & Analyzer** (`/ai-page-seo-analyzer`) - Audit technical on-page SEO signals
+
+### 🛒 9. E-commerce Tools (10 Tools)
+- **AI Background Remover** (`/ai-background-remover`) - Remove backgrounds from product photos automatically
+- **QR Code Generator** (`/qr-code-generator`) - Create product and packaging QR codes
+- **White Background Adder** (`/white-background-adder`) - Add clean white studio backgrounds to product images
+- **Bulk Image Resizer** (`/bulk-image-resizer`) - Batch resize product photos for e-commerce stores
+- **Watermark Adder** (`/watermark-adder`) - Protect product photos with custom watermarks
+- **AI Image Color Enhancer** (`/ai-image-color-enhancer`) - Optimize lighting and vibrancy in catalog photos
+- **AI Image Shadow Adder** (`/ai-shadow-adder`) - Add realistic drop shadows to product images
+- **Barcode Generator** (`/barcode-generator`) - Generate EAN-13, UPC, and Code128 barcodes
+- **GST Invoice Generator** (`/gst-invoice-generator`) - Create GST-compliant invoices with PDF download
+- **GST/Margin/EMI Calculator** (`/ecommerce-calculator`) - Calculate e-commerce margins, GST, and buyer EMI breakdown
+
+### ✉️ 10. Email Marketing Tools (10 Tools)
+- **AI Email Subject Line Generator** (`/ai-email-subject-line-generator`) - Create subject lines with performance scoring
+- **AI Email Signature Generator** (`/ai-email-signature-generator`) - Build responsive HTML email signatures
+- **HTML Email Previewer** (`/html-email-previewer`) - Preview HTML emails on desktop and mobile viewports
+- **AI Email Spam Checker** (`/ai-spam-score-checker`) - Analyze email content for deliverability and spam flags
+- **AI Email Template Generator** (`/ai-email-template-builder`) - Build responsive HTML newsletter templates
+- **AI Email Header Analyzer** (`/ai-email-header-analyzer`) - Trace email server routing hops and SPF/DKIM validation
+- **SPF Record Generator** (`/spf-record-generator`) - Construct Sender Policy Framework DNS records
+- **DKIM Generator** (`/dkim-generator`) - Generate RSA public/private keypairs and DNS TXT records
+- **DMARC Generator** (`/dmarc-generator`) - Configure DMARC security policies and validation rules
+- **Mailto Link Generator** (`/mailto-link-generator`) - Compose pre-filled `mailto:` links with subject and body
+
+### 🎓 11. Education Tools (9 Tools)
+- **Scientific Calculator** (`/scientific-calculator`) - Advanced calculator with trigonometric and logarithmic functions
+- **Percentage Calculator** (`/percentage-calculator`) - Calculate percentage increases, decreases, and fractions
+- **Unit Converter & Solver** (`/unit-converter`) - Convert units and solve physics dimensional equations
+- **Compound Interest Calculator** (`/compound-interest-calculator`) - Calculate compounding investment growth
+- **Simple Interest Calculator** (`/simple-interest-calculator`) - Compute basic principal interest yields
+- **CGPA to Percentage Calculator** (`/cgpa-to-percentage`) - Convert CGPA to percentage across grading scales
+- **LCM & HCF Calculator** (`/lcm-hcf-calculator`) - Compute Least Common Multiple and Highest Common Factor
+- **AI Study Timetable Generator** (`/ai-study-timetable-generator`) - Build custom study schedules with rest intervals
+- **AI MCQ Generator** (`/ai-mcq-generator`) - Generate multiple choice question quizzes from any text
+
+### 📝 12. Text Tools (9 Tools)
+- **Word & Character Counter** (`/word-counter`) - Count words, characters, sentences, and paragraphs
+- **Case Converter** (`/case-converter`) - Convert text to UPPERCASE, lowercase, Title Case, camelCase, etc.
+- **Color Converter** (`/color-converter`) - Convert between HEX, RGB, HSL, and HSV color representations
+- **Remove Extra Spaces** (`/remove-spaces`) - Clean extra whitespace, leading spaces, and blank lines
+- **Line Sorter** (`/line-sorter`) - Sort text lines alphabetically or numerically
+- **Duplicate Line Remover** (`/duplicate-remover`) - Remove duplicate lines from text documents
+- **Markdown to HTML Converter** (`/markdown-to-html`) - Convert Markdown syntax into styled HTML code
+- **AI Text Summarizer** (`/ai-text-summarizer`) - Extract key summaries and bullet points from long text
+- **Text Diff Checker** (`/text-diff`) - Compare two text documents side-by-side with line diff highlighting
+
+### 📲 13. Social Media Tools (7 Tools)
+- **AI Hashtag Generator** (`/ai-hashtag-generator`) - Generate trending hashtags for Instagram, X, and LinkedIn
+- **AI Bio Generator** (`/ai-bio-generator`) - Create character-limited social and professional profile bios
+- **Social Caption Formatter** (`/caption-formatter`) - Format social captions with Unicode fonts and line breaks
+- **Line Break Generator** (`/line-break-generator`) - Insert clean, invisible line breaks for social posts
+- **Link-in-Bio Generator** (`/link-in-bio`) - Build custom landing pages for social bio links
+- **AI WhatsApp Status Generator** (`/ai-whatsapp-status-generator`) - Create engaging WhatsApp statuses and status images
+- **AI Meme Generator** (`/ai-meme-generator`) - Create viral memes with custom text overlays and templates
+
+### 🌐 14. Internet Tools (7 Tools)
+- **IP Address Lookup** (`/ip-lookup`) - Query geolocation, ISP, and ASN information for any IP
+- **User-Agent Parser** (`/user-agent-parser`) - Parse browser, OS, device, and engine information
+- **DNS Lookup** (`/dns-lookup`) - Query A, AAAA, MX, TXT, CNAME, NS, and SOA records for domains
+- **SSL Certificate Checker** (`/ssl-checker`) - Verify SSL/TLS certificate validity, issuer, and expiry
+- **Website Ping Test** (`/website-ping`) - Measure server HTTP response times and availability
+- **Ping Test** (`/ping-test`) - Test latency and network packet responsiveness
+- **Website Screenshot** (`/website-screenshot`) - Capture full-page or viewport screenshots of websites
+
+### 🎥 15. Video Tools (5 Tools)
+- **Video to Audio Converter** (`/video-to-audio`) - Extract MP3 or WAV audio from video files online
+- **Video Trim** (`/video-trim`) - Cut and trim video clips to exact timestamps
+- **Video Speed Controller** (`/video-speed`) - Change video playback speed from 0.25x to 4x
+- **Video Thumbnail Generator** (`/video-thumbnail`) - Capture and download thumbnail frames from videos
+- **Video Resolution Converter** (`/video-resolution`) - Convert video dimensions and aspect ratios
+
+### 🎵 16. Audio Tools (5 Tools)
+- **Audio Converter** (`/audio-converter`) - Convert between MP3, WAV, AAC, and OGG formats
+- **AI Speech to Text Converter** (`/ai-speech-to-text`) - Transcribe speech into text transcripts
+- **Audio Trimmer** (`/audio-trimmer`) - Cut and trim audio tracks with precision
+- **Audio Merger** (`/audio-merger`) - Merge multiple audio tracks into a continuous file
+- **Audio Speed Changer** (`/audio-speed`) - Change audio tempo from 0.5x to 2x with pitch preservation
+
+### 📅 17. Date & Time Tools (5 Tools)
+- **Date Difference Calculator** (`/date-difference`) - Calculate days, weeks, months, and years between dates
+- **Age Calculator** (`/age-calculator`) - Calculate exact age down to minutes from birthdate
+- **Working Days Calculator** (`/working-days-calculator`) - Calculate business days excluding weekends and holidays
+- **Countdown Timer** (`/countdown-timer`) - Create animated countdown timers for upcoming events
+- **World Time** (`/world-time`) - Real-time global clock for time zones worldwide
+
+### 📦 18. ZIP Tools (4 Tools)
+- **Create ZIP** (`/create-zip`) - Compress multiple files into a `.zip` archive
+- **Extract ZIP** (`/extract-zip`) - Decompress and extract files from `.zip` archives online
+- **Password-Protected ZIP** (`/password-zip`) - Create encrypted, password-protected ZIP archives
+- **Compression Level ZIP** (`/compression-zip`) - Adjust compression level for custom archive sizing
 
 ---
 
-## 🎨 Frontend Architecture
+## 🔧 Developer API Platform
 
-The frontend is engineered with React 18, Vite, and TypeScript:
+DailyTools247 provides a REST API platform (`/api/v1`) with instant API key creation and rate limiting:
 
-### Key Design & Development Features
-- **Component System**: Built on Radix UI primitives with shadcn/ui and Lucide React icons.
-- **Routing & SEO**: Dynamic routing with React Router DOM, paired with `react-helmet-async` for meta tag injection.
-- **State & Data Fetching**: Local state management via React hooks and server state caching with TanStack React Query.
-- **Form Handling**: Validation via React Hook Form and Zod schemas.
-- **Static Pre-rendering**: Build pipeline includes `scripts/prerender.js` for prerendering tool routes into static HTML pages for SEO.
+- **Authentication**: `X-API-Key: YOUR_API_KEY`
+- **Rate Limit**: 100 free requests / day
+- **Key Features**:
+  - Word counter & text analysis endpoints
+  - Base64 encoding/decoding
+  - Hash generation (MD5, SHA-256)
+  - QR Code generation
+  - Unit conversions & calculations
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Architecture
 
 ### Backend
-- **Core Runtime**: Node.js 18+ with Express 4.18.2
-- **Caching**: Upstash Redis (`@upstash/redis`)
-- **PDF & Document Processing**: `@adobe/pdfservices-node-sdk`, `pdf-lib`, `pdf-parse`, `pdf2json`, `docx`, `exceljs`, `pptxgenjs`, `html-pdf-node`
-- **Media Processing**: `sharp`, `fluent-ffmpeg`, `ffmpeg-static`, `exifr`, `exif-js`
-- **Archive Processing**: `archiver`, `jszip`, `node-7zip`
-- **Browser Automation**: `playwright`
-- **AI & ML**: `@xenova/transformers`, `openai`
-- **Security & Middleware**: `helmet`, `cors`, `express-rate-limit`, `express-validator`, `xss`
+- **Runtime & Framework**: Node.js 18+ with Express 4.18.2
+- **Caching Layer**: Upstash Redis (`@upstash/redis`) + In-memory cache
+- **Media & Document Processing**: `sharp`, `fluent-ffmpeg`, `ffmpeg-static`, `pdf-lib`, `pdf-parse`, `docx`, `exceljs`, `pptxgenjs`
+- **Security & Validation**: `helmet`, `cors`, `express-rate-limit`, `express-validator`, `xss`
 
 ### Frontend
-- **Framework**: React 18 + Vite (SWC plugin)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS, PostCSS, Autoprefixer, `tailwind-merge`
-- **UI Components**: Radix UI primitives, shadcn/ui, Lucide React icons, Framer Motion
-- **Form & Validation**: React Hook Form, Zod
-- **Data Fetching**: TanStack React Query v5
-- **Charts & Visualization**: Recharts
-- **PDF & File Tools**: `pdfjs-dist`, `jspdf`, `pdf-lib`, `file-saver`
-- **Theme**: `next-themes` (Dark/Light mode support)
-
----
-
-## 📋 Prerequisites
-
-- **Node.js 18+**
-- **npm** or **bun** package manager
-- **Git**
+- **Framework & Language**: React 18 + Vite (SWC plugin) with TypeScript
+- **Styling & Components**: Tailwind CSS, Radix UI primitives, shadcn/ui, Lucide React icons, Framer Motion
+- **Data & State**: TanStack React Query v5, React Hook Form, Zod
+- **SEO & Meta Engine**: `react-helmet-async`, static pre-rendering via `scripts/prerender.js`
 
 ---
 
 ## 🚀 Installation & Local Setup
 
-### 1. Backend Setup
+### 1. Prerequisites
+- **Node.js 18+**
+- **npm** or **bun**
+- **Git**
 
+### 2. Backend Setup
 ```bash
-# Navigate to backend directory
 cd backend
-
-# Install dependencies
 npm install
 
-# Create environment file (.env)
-# Set default port to 8000
+# Create .env
 echo "PORT=8000" > .env
 echo "NODE_ENV=development" >> .env
 echo "BASE_URL=http://localhost:8000" >> .env
 
-# Start the development server (runs node --watch server.js)
+# Start dev server
 npm run dev
 ```
+Backend runs on `http://localhost:8000`.
 
-The backend server will start on `http://localhost:8000`.
-
-### 2. Frontend Setup
-
+### 3. Frontend Setup
 ```bash
-# Navigate to frontend directory
 cd frontend
-
-# Install dependencies
 npm install
 
-# Create local environment file (.env.local or .env)
+# Create environment file
 echo "VITE_API_URL=http://localhost:8000" > .env.local
 
-# Start the development server
+# Start frontend dev server
 npm run dev
 ```
-
-The frontend application will start on `http://localhost:5173`.
+Frontend runs on `http://localhost:5173`.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-toolbox/
-├── backend/                        # Node.js/Express backend
-│   ├── middleware/                 # Security and cache middleware
-│   │   ├── cache.js               # Upstash Redis & memory cache handler
-│   │   └── security.js            # Helmet, CORS & rate limit middleware
-│   ├── routes/                     # API route handlers
-│   │   ├── apiv1.js               # Developer API v1
-│   │   ├── audio.js               # Audio tools API
-│   │   ├── blog.js                # Blog API
-│   │   ├── datetime.js            # Date & Time tools API
-│   │   ├── dev.js                 # Developer tools API
-│   │   ├── education.js           # Education tools API
-│   │   ├── email.js               # Email marketing tools API
-│   │   ├── finance.js             # Finance tools API
-│   │   ├── image.js               # Image tools API
-│   │   ├── internet.js            # Internet tools API
-│   │   ├── pdf.js                 # PDF tools API
-│   │   ├── security.js            # Security tools API
-│   │   ├── seo.js                 # SEO tools API
-│   │   ├── social.js              # Social media tools API
-│   │   ├── text.js                # Text tools API
-│   │   ├── video.js               # Video tools API
-│   │   └── zip.js                 # ZIP tools API
-│   ├── redis.js                   # Redis connection client
-│   ├── server.js                  # Express server entry point
-│   ├── package.json               # Backend dependencies
-│   ├── .env                       # Backend environment variables
-│   └── vercel.json                # Vercel backend config
-├── frontend/                       # React/TypeScript frontend
-│   ├── scripts/                   # Build and pre-rendering scripts
+dailytools247/
+├── backend/                        # Node.js/Express backend service
+│   ├── middleware/                 # Security, rate-limit, and cache handlers
+│   │   ├── cache.js               # Redis / in-memory cache
+│   │   └── security.js            # Helmet, CORS, and XSS sanitization
+│   ├── routes/                     # Category-based API route controllers
+│   │   ├── apiv1.js               # Public Developer API v1
+│   │   ├── audio.js               # Audio endpoints
+│   │   ├── blog.js                # Blog query endpoints
+│   │   ├── datetime.js            # Date/Time endpoints
+│   │   ├── dev.js                 # Developer utility endpoints
+│   │   ├── education.js           # Education endpoints
+│   │   ├── email.js               # Email marketing endpoints
+│   │   ├── finance.js             # Finance endpoints
+│   │   ├── image.js               # Image processing endpoints
+│   │   ├── internet.js            # Internet & DNS endpoints
+│   │   ├── pdf.js                 # PDF endpoints
+│   │   ├── security.js            # Security endpoints
+│   │   ├── seo.js                 # SEO endpoints
+│   │   ├── social.js              # Social media endpoints
+│   │   ├── text.js                # Text transformation endpoints
+│   │   ├── video.js               # Video endpoints
+│   │   └── zip.js                 # ZIP archive endpoints
+│   ├── server.js                  # Main server entry point
+│   ├── package.json
+│   └── vercel.json
+├── frontend/                       # React 18 + TypeScript client
+│   ├── scripts/                   # Prerendering & build scripts
 │   │   ├── prerender.js           # Static HTML generator for SEO
-│   │   └── update-sitemap-dates.js # Automated sitemap date generator
-│   ├── src/                       # React source code
-│   │   ├── components/            # Reusable UI & tool components
-│   │   ├── data/                  # Tool definitions & SEO data
-│   │   │   ├── toolCategories.ts  # Category & tool schemas
-│   │   │   ├── existingTools.ts   # Active tool route mapping
-│   │   │   └── blogPosts.ts       # Blog articles
-│   │   ├── hooks/                 # Custom React hooks
-│   │   ├── pages/                 # Route pages
-│   │   │   └── tools/             # Tool page components by category
-│   │   ├── App.tsx                # Main app router
-│   │   └── main.tsx               # Entry point
-│   ├── public/                    # Static public assets & AI specs
-│   ├── package.json               # Frontend dependencies
-│   ├── vite.config.ts             # Vite build configuration
-│   ├── tailwind.config.ts         # Tailwind CSS configuration
-│   └── vercel.json                # Vercel frontend config
-├── README.md
-└── implementation_plan.md
+│   │   └── update-sitemap-dates.js # Sitemap lastmod synchronizer
+│   ├── src/
+│   │   ├── components/            # UI components, layout, and SEO wrappers
+│   │   ├── data/                  # Tool definitions, categories, and blog data
+│   │   │   ├── toolCategories.ts  # Master tool registry (18 categories)
+│   │   │   ├── toolSeoEnhancements.ts # In-depth SEO metadata per tool
+│   │   │   └── blogPosts.ts       # 25 full-length blog articles
+│   │   ├── pages/                 # Page and tool route components
+│   │   │   ├── tools/             # 168+ individual tool implementations
+│   │   │   └── blog/              # Blog list and post detail pages
+│   │   ├── App.tsx                # Client-side router
+│   │   └── main.tsx               # Client entry point
+│   ├── public/                    # Static assets, XML sitemaps, and AI agent specs
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tailwind.config.ts
+└── README.md                       # Comprehensive documentation
 ```
 
 ---
 
-## ⚙️ Environment Configuration
-
-### Backend Environment Variables (`backend/.env`)
-
-```env
-PORT=8000
-NODE_ENV=development
-BASE_URL=http://localhost:8000
-
-# Upstash Redis Configuration (Optional for caching)
-UPSTASH_REDIS_REST_URL=https://your-redis.upstash.io
-UPSTASH_REDIS_REST_TOKEN=your-upstash-token
-
-# Adobe PDF Services SDK (Optional for advanced PDF processing)
-PDF_SERVICES_CLIENT_ID=your-adobe-client-id
-PDF_SERVICES_CLIENT_SECRET=your-adobe-client-secret
-```
-
-### Frontend Environment Variables (`frontend/.env.local`)
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
----
-
-## 🌐 Deployment
-
-### Deploying Backend (Vercel / Render / Railway)
-
-1. Connect your Git repository.
-2. Set root directory to `backend`.
-3. Build Command: `npm install`
-4. Start Command: `node server.js`
-5. Configure Environment Variables (`PORT`, `NODE_ENV`, `UPSTASH_REDIS_REST_URL`, etc.).
-
-### Deploying Frontend (Vercel / Netlify)
-
-1. Connect your Git repository.
-2. Set root directory to `frontend`.
-3. Build Command: `npm run build`
-4. Output Directory: `dist`
-5. Add Environment Variable: `VITE_API_URL=https://your-backend-api-url.com`
-
----
-
-## 🌐 Live Demo & AI Agent Optimization
+## 🌐 Live Platform & AI Specifications
 
 - **Live Site**: [https://www.dailytools247.app](https://www.dailytools247.app)
-- **AI Agent Specs**:
-  - `llms.txt`: Structured Markdown index for LLM agents (ChatGPT, Gemini, Claude)
-  - `openapi.json`: OpenAPI 3.0 REST schema definition
-  - `ai.txt` / `ai-plugin.json`: Capability manifest for web crawlers and AI plugins
+- **Developer Documentation**: [https://www.dailytools247.app/api-docs](https://www.dailytools247.app/api-docs)
+- **AI Agent Integration**:
+  - `llms.txt`: Structured Markdown index for ChatGPT, Gemini, and Claude
+  - `openapi.json`: OpenAPI 3.0 REST schema
+  - `ai-plugin.json` & `ai.txt`: Capability manifest for automated web agents
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**Built with ❤️ for developers, creators, and power users.**
+**Built with ❤️ for developers, creators, students, and power users.**

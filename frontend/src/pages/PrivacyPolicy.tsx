@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
     <div className="flex min-h-screen flex-col">
       <SEOHelmet
         title="Privacy Policy - DailyTools247"
-        description="Read the privacy policy of DailyTools247. Your data security and privacy are our top priorities."
+        description="Read the DailyTools247 privacy policy. Learn how we protect your data with 100% local browser processing and zero server file retention."
       />
       <Header />
       <main className="flex-1">
