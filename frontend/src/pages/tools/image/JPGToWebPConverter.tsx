@@ -377,7 +377,7 @@ const JPGToWebPConverter = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">WebP Advantages</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">WebP Advantages</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• 25-35% smaller files</li>
                 <li>• Faster loading</li>
@@ -386,7 +386,7 @@ const JPGToWebPConverter = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Best Use Cases</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Best Use Cases</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Web optimization</li>
                 <li>• Modern websites</li>

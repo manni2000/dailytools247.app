@@ -230,6 +230,7 @@ const APIDocs = () => {
 
         {/* Content Section */}
         <main className="flex-1 container mx-auto px-4 py-12">
+          <h2 className="sr-only">API Documentation, Endpoints and Configuration</h2>
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8 max-w-7xl mx-auto">
             {/* Elegant Tabs Trigger Row */}
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 bg-muted/65 p-1 rounded-2xl border border-border/80 backdrop-blur-sm h-auto">
@@ -445,10 +446,10 @@ const APIDocs = () => {
                     <CardContent className="p-6 sm:p-8">
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div className="bg-muted/15 p-5 rounded-2xl border border-border">
-                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
+                          <h3 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                             Rate Limits
-                          </h4>
+                          </h3>
                           <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
@@ -470,10 +471,10 @@ const APIDocs = () => {
                         </div>
                         
                         <div className="bg-muted/15 p-5 rounded-2xl border border-border">
-                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
+                          <h3 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                             Response Headers
-                          </h4>
+                          </h3>
                           <ul className="space-y-2 text-muted-foreground text-[11px] sm:text-xs font-mono">
                             <li className="bg-muted p-2 rounded-xl text-foreground border border-border">
                               X-RateLimit-Limit: 100
@@ -488,10 +489,10 @@ const APIDocs = () => {
                         </div>
 
                         <div className="bg-muted/15 p-5 rounded-2xl border border-border">
-                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
+                          <h3 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
                             Payload Formats
-                          </h4>
+                          </h3>
                           <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
@@ -513,10 +514,10 @@ const APIDocs = () => {
                         </div>
 
                         <div className="bg-muted/15 p-5 rounded-2xl border border-border">
-                          <h4 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
+                          <h3 className="font-bold text-foreground mb-4 text-sm sm:text-base flex items-center gap-2">
                             <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                             Error Handling
-                          </h4>
+                          </h3>
                           <ul className="space-y-3 text-muted-foreground text-xs sm:text-sm font-light leading-relaxed">
                             <li className="flex items-start gap-2">
                               <CheckCircle className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
@@ -609,10 +610,10 @@ const APIDocs = () => {
 
                                     {endpoint.parameters.length > 0 && (
                                       <div className="space-y-3">
-                                        <h5 className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-2 border-b border-border/40 pb-2">
+                                        <p className="text-xs sm:text-sm font-bold text-foreground flex items-center gap-2 border-b border-border/40 pb-2">
                                           <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
                                           Request Parameters
-                                        </h5>
+                                        </p>
                                         
                                         {/* Mobile view parameters */}
                                         <div className="space-y-3 sm:hidden">

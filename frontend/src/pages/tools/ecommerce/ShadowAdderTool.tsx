@@ -411,19 +411,19 @@ const ShadowAdderTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Customizable Blur</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Customizable Blur</h4>
               <p className="text-sm text-blue-800">Adjust shadow blur for soft or sharp edges</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Offset Control</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Offset Control</h4>
               <p className="text-sm text-green-800">Fine-tune horizontal and vertical shadow position</p>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">Opacity Settings</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">Opacity Settings</h4>
               <p className="text-sm text-purple-800">Control shadow transparency for subtle effects</p>
             </div>
             <div className="p-3 bg-orange-50 rounded-lg">
-              <h5 className="font-semibold text-orange-900 mb-1">Color Customization</h5>
+              <h4 className="font-semibold text-orange-900 mb-1">Color Customization</h4>
               <p className="text-sm text-orange-800">Choose any shadow color to match your brand</p>
             </div>
           </div>

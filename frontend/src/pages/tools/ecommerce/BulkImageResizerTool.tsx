@@ -391,7 +391,7 @@ const BulkImageResizerTool = () => {
 
             <div className="grid sm:grid-cols-2 gap-4 mt-4">
               <div className="p-3 bg-blue-50 rounded-lg">
-                <h5 className="font-semibold text-blue-900 mb-1">Resize Features</h5>
+                <h4 className="font-semibold text-blue-900 mb-1">Resize Features</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Batch processing</li>
                   <li>• Aspect ratio lock</li>
@@ -400,7 +400,7 @@ const BulkImageResizerTool = () => {
                 </ul>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
-                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
                 <ul className="text-sm text-green-800 space-y-1">
                   <li>• E-commerce catalogs</li>
                   <li>• Image galleries</li>

@@ -336,7 +336,7 @@ export default function QRPhishingScannerTool() {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Threat Detection</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Threat Detection</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Malicious URL detection</li>
                 <li>• Phishing identification</li>
@@ -345,7 +345,7 @@ export default function QRPhishingScannerTool() {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Protection Tips</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Protection Tips</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Verify before scanning</li>
                 <li>• Check official sources</li>

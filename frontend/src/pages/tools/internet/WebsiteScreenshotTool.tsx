@@ -395,10 +395,10 @@ const WebsiteScreenshotTool = () => {
           transition={{ delay: 0.35 }}
           className="rounded-xl border border-border bg-muted/30 p-4 sm:p-6 shadow-lg transition-shadow duration-500 hover:shadow-xl"
         >
-          <h4 className="mb-3 flex items-center gap-2 font-semibold">
+          <h3 className="mb-3 flex items-center gap-2 font-semibold">
             <Lightbulb className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
             Screenshot Tips
-          </h4>
+          </h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>• Full-page mode captures the entire page down to the footer.</li>
             <li>• Use width presets for desktop, tablet, or mobile rendering.</li>
@@ -431,7 +431,7 @@ const WebsiteScreenshotTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Capture Options</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Capture Options</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Multiple viewport sizes</li>
                 <li>• Full-page or viewport</li>
@@ -440,7 +440,7 @@ const WebsiteScreenshotTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Website archiving</li>
                 <li>• Design documentation</li>

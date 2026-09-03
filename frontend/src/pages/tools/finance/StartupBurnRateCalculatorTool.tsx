@@ -422,7 +422,7 @@ export default function StartupBurnRateCalculatorTool() {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Burn Metrics</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Burn Metrics</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Gross burn (total expenses)</li>
                 <li>• Net burn (expenses - revenue)</li>
@@ -431,7 +431,7 @@ export default function StartupBurnRateCalculatorTool() {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Startup Health</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Startup Health</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Healthy: 12+ months runway</li>
                 <li>• Warning: 6-12 months</li>

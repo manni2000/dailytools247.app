@@ -82,7 +82,7 @@ export const authorityPillars: Record<string, AuthorityPillar> = {
       },
       {
         url: '/pdf-compression-guide',
-        title: 'Complete Guide to PDF Compression - Reduce File Size Without Quality Loss',
+        title: 'PDF Compression Guide: Reduce File Size Without Quality Loss',
         focusKeyword: 'pdf compression guide',
         secondaryKeywords: [
           'compress pdf file size',
@@ -154,7 +154,7 @@ export const authorityPillars: Record<string, AuthorityPillar> = {
     clusterContent: [
       {
         url: '/image-compressor',
-        title: 'FREE Image Compressor - Reduce Image Size Without Watermark Online',
+        title: 'FREE Image Compressor - Reduce Image Size Without Watermark',
         focusKeyword: 'image compressor',
         secondaryKeywords: [
           'compress image',

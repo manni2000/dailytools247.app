@@ -286,7 +286,7 @@ const HeroSection = () => {
                     <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${stat.color} shadow-sm group-hover:scale-110 transition-transform`}>
                       <Icon className="h-5.5 w-5.5" />
                     </div>
-                    <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">{stat.title}</h3>
+                    <p className="font-bold text-foreground text-base group-hover:text-primary transition-colors">{stat.title}</p>
                   </div>
                   <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">{stat.desc}</p>
                 </div>

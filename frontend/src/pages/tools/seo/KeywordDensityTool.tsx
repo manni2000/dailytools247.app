@@ -400,7 +400,7 @@ const KeywordDensityTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">✅ Best Practices</h5>
+              <h4 className="font-medium text-foreground mb-2">✅ Best Practices</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Target 1-3% keyword density</li>
                 <li>• Use variations and synonyms</li>
@@ -409,7 +409,7 @@ const KeywordDensityTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">⚠️ Avoid</h5>
+              <h4 className="font-medium text-foreground mb-2">⚠️ Avoid</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Keyword stuffing (&gt;5%)</li>
                 <li>• Irrelevant keywords</li>
@@ -445,7 +445,7 @@ const KeywordDensityTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Analysis Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Analysis Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Word frequency count</li>
                 <li>• Density percentage</li>
@@ -454,7 +454,7 @@ const KeywordDensityTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">SEO Best Practices</h5>
+              <h4 className="font-semibold text-green-900 mb-1">SEO Best Practices</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Natural keyword usage</li>
                 <li>• Avoid stuffing</li>

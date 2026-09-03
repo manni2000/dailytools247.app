@@ -552,7 +552,7 @@ const EnvironmentVariableTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔒 Security</h5>
+              <h4 className="font-medium text-foreground mb-2">🔒 Security</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Never commit secrets to version control</li>
                 <li>• Use .env files for local development</li>
@@ -561,7 +561,7 @@ const EnvironmentVariableTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Naming</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Naming</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use UPPER_CASE with underscores</li>
                 <li>• Be descriptive and consistent</li>
@@ -597,7 +597,7 @@ const EnvironmentVariableTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Variable Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Variable Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Type validation</li>
                 <li>• Required field marking</li>
@@ -606,7 +606,7 @@ const EnvironmentVariableTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Application configuration</li>
                 <li>• API key management</li>

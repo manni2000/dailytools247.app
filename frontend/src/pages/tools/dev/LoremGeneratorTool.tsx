@@ -265,7 +265,7 @@ const LoremGeneratorTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Output Types</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Output Types</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>Paragraphs:</strong> Full blocks of text</li>
                 <li>• <strong>Sentences:</strong> Individual sentences</li>
@@ -274,7 +274,7 @@ const LoremGeneratorTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">✨ Best Uses</h5>
+              <h4 className="font-medium text-foreground mb-2">✨ Best Uses</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• UI/UX mockups and wireframes</li>
                 <li>• Testing text overflow</li>
@@ -310,7 +310,7 @@ const LoremGeneratorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Generation Options</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Generation Options</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Paragraphs, sentences, words</li>
                 <li>• Customizable quantity</li>
@@ -319,7 +319,7 @@ const LoremGeneratorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Website mockups</li>
                 <li>• Print design testing</li>

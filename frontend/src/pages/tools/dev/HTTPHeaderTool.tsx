@@ -327,7 +327,7 @@ const HTTPHeaderTool = () => {
               </h4>
               <div className="grid gap-4 sm:grid-cols-2 text-sm">
                 <div>
-                  <h5 className="font-medium text-foreground mb-2">✅ Recommended Headers</h5>
+                  <h4 className="font-medium text-foreground mb-2">✅ Recommended Headers</h4>
                   <ul className="text-muted-foreground space-y-1">
                     <li>• <code>Strict-Transport-Security</code></li>
                     <li>• <code>X-Frame-Options</code></li>
@@ -336,7 +336,7 @@ const HTTPHeaderTool = () => {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="font-medium text-foreground mb-2">⚠️ Watch For</h5>
+                  <h4 className="font-medium text-foreground mb-2">⚠️ Watch For</h4>
                   <ul className="text-muted-foreground space-y-1">
                     <li>• Missing security headers</li>
                     <li>• Exposed server versions</li>

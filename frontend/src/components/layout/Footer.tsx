@@ -297,7 +297,7 @@ const Footer = () => {
 
           {/* Popular Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Popular Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Popular Tools</p>
             <ul className="space-y-2">
               {popularTools.map(tool => (
                 <li key={tool.path}>
@@ -315,7 +315,7 @@ const Footer = () => {
 
           {/* PDF Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">PDF Tools</h4>
+            <p className="text-sm font-semibold text-foreground">PDF Tools</p>
             <ul className="space-y-2">
               {pdfTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -336,7 +336,7 @@ const Footer = () => {
 
           {/* Image Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Image Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Image Tools</p>
             <ul className="space-y-2">
               {imageTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -357,7 +357,7 @@ const Footer = () => {
 
           {/* Security Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Security Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Security Tools</p>
             <ul className="space-y-2">
               {securityTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -378,7 +378,7 @@ const Footer = () => {
 
           {/* Finance Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Finance Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Finance Tools</p>
             <ul className="space-y-2">
               {financeTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -399,7 +399,7 @@ const Footer = () => {
 
           {/* Govt Legal Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Govt Legal Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Govt Legal Tools</p>
             <ul className="space-y-2">
               {govtLegalTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -420,7 +420,7 @@ const Footer = () => {
 
           {/* Developer Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Developer Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Developer Tools</p>
             <ul className="space-y-2">
               {devTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -441,7 +441,7 @@ const Footer = () => {
 
           {/* Education Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Education Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Education Tools</p>
             <ul className="space-y-2">
               {educationTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -462,7 +462,7 @@ const Footer = () => {
 
           {/* Text Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Text Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Text Tools</p>
             <ul className="space-y-2">
               {textTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -483,7 +483,7 @@ const Footer = () => {
 
           {/* Video Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Video Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Video Tools</p>
             <ul className="space-y-2">
               {videoTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -504,7 +504,7 @@ const Footer = () => {
 
           {/* Audio Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Audio Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Audio Tools</p>
             <ul className="space-y-2">
               {audioTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -525,7 +525,7 @@ const Footer = () => {
 
           {/* Internet Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Internet Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Internet Tools</p>
             <ul className="space-y-2">
               {internetTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -546,7 +546,7 @@ const Footer = () => {
 
           {/* SEO Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">SEO Tools</h4>
+            <p className="text-sm font-semibold text-foreground">SEO Tools</p>
             <ul className="space-y-2">
               {seoTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -567,7 +567,7 @@ const Footer = () => {
 
           {/* ZIP Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">ZIP Tools</h4>
+            <p className="text-sm font-semibold text-foreground">ZIP Tools</p>
             <ul className="space-y-2">
               {zipTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -588,7 +588,7 @@ const Footer = () => {
 
           {/* Social Media Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Social Media Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Social Media Tools</p>
             <ul className="space-y-2">
               {socialMediaTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -609,7 +609,7 @@ const Footer = () => {
 
           {/* E-commerce Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">E-commerce Tools</h4>
+            <p className="text-sm font-semibold text-foreground">E-commerce Tools</p>
             <ul className="space-y-2">
               {ecommerceTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -630,7 +630,7 @@ const Footer = () => {
 
           {/* Email Marketing Tools */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Email Marketing Tools</h4>
+            <p className="text-sm font-semibold text-foreground">Email Marketing Tools</p>
             <ul className="space-y-2">
               {emailTools.slice(0, 5).map(tool => (
                 <li key={tool.path}>
@@ -653,7 +653,7 @@ const Footer = () => {
 
         {/* Categories Row - Hub Links for Topical Authority */}
         <div className="mt-10 border-t border-border pt-8">
-          <h4 className="mb-4 text-sm font-semibold">Browse by Category</h4>
+          <p className="mb-4 text-sm font-semibold text-foreground">Browse by Category</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {categoryHubs.map(hub => (
               <Link

@@ -451,7 +451,7 @@ const OGImagePreviewTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📐 Image Guidelines</h5>
+              <h4 className="font-medium text-foreground mb-2">📐 Image Guidelines</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use 1200x630px for Facebook</li>
                 <li>• Use 1200x600px for Twitter</li>
@@ -460,7 +460,7 @@ const OGImagePreviewTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">✍️ Content Guidelines</h5>
+              <h4 className="font-medium text-foreground mb-2">✍️ Content Guidelines</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Title: 60 characters max</li>
                 <li>• Description: 160 characters max</li>
@@ -496,7 +496,7 @@ const OGImagePreviewTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Preview Platforms</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Preview Platforms</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Facebook</li>
                 <li>• Twitter/X</li>
@@ -505,7 +505,7 @@ const OGImagePreviewTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Optimization Tips</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Optimization Tips</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Use high-quality images</li>
                 <li>• Recommended dimensions</li>

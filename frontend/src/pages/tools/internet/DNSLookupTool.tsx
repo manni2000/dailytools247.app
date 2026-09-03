@@ -119,10 +119,10 @@ const DNSLookupTool = () => {
                 <Server className="h-8 w-8" style={{ color: `hsl(${categoryColor})` }} />
               </motion.div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold">
+                <h2 className="text-2xl font-bold">
                   DNS Lookup Tool
-                </h3>
-                <p className="text-muted-foreground">
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
                   Query DNS records such as A, MX, TXT, NS, and more for any domain.
                 </p>
                 {/* Keyword Tags */}
@@ -344,7 +344,7 @@ const DNSLookupTool = () => {
             
             <div className="grid sm:grid-cols-2 gap-4 mt-4">
               <div className="p-3 bg-blue-50 rounded-lg">
-                <h5 className="font-semibold text-blue-900 mb-1">Record Types</h5>
+                <h4 className="font-semibold text-blue-900 mb-1">Record Types</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• A: IPv4 addresses</li>
                   <li>• AAAA: IPv6 addresses</li>
@@ -353,7 +353,7 @@ const DNSLookupTool = () => {
                 </ul>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
-                <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+                <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
                 <ul className="text-sm text-green-800 space-y-1">
                   <li>• Troubleshooting DNS</li>
                   <li>• Verifying DNS records</li>

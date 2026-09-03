@@ -466,7 +466,7 @@ const DockerfileGeneratorTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🐳 Optimization Tips</h5>
+              <h4 className="font-medium text-foreground mb-2">🐳 Optimization Tips</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use multi-stage builds for smaller images</li>
                 <li>• Use .dockerignore to exclude files</li>
@@ -476,7 +476,7 @@ const DockerfileGeneratorTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Common Instructions</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Common Instructions</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>FROM:</strong> Base image</li>
                 <li>• <strong>WORKDIR:</strong> Working directory</li>
@@ -514,7 +514,7 @@ const DockerfileGeneratorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Dockerfile Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Dockerfile Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• All standard instructions</li>
                 <li>• Template presets</li>
@@ -523,7 +523,7 @@ const DockerfileGeneratorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Application containerization</li>
                 <li>• Microservices deployment</li>

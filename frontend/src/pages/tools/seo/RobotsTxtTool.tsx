@@ -504,7 +504,7 @@ const RobotsTxtTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">✅ Do's</h5>
+              <h4 className="font-medium text-foreground mb-2">✅ Do's</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Place robots.txt in root directory</li>
                 <li>• Use specific paths over wildcards</li>
@@ -513,7 +513,7 @@ const RobotsTxtTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">❌ Don'ts</h5>
+              <h4 className="font-medium text-foreground mb-2">❌ Don'ts</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Don't block CSS/JS files</li>
                 <li>• Don't use comments in robots.txt</li>
@@ -549,7 +549,7 @@ const RobotsTxtTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Control Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Control Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Allow/disallow rules</li>
                 <li>• Crawl delay settings</li>
@@ -558,7 +558,7 @@ const RobotsTxtTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">SEO Benefits</h5>
+              <h4 className="font-semibold text-green-900 mb-1">SEO Benefits</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Efficient crawling</li>
                 <li>• Crawl budget optimization</li>

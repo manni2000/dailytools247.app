@@ -27,6 +27,16 @@ interface EXIFData {
   colorSpace?: string;
 }
 
+const InfoCard = ({ icon: Icon, title, children }: { icon: React.ComponentType<{ className?: string }>; title: string; children: React.ReactNode }) => (
+  <div className="rounded-xl border border-border bg-card p-5">
+    <div className="mb-3 flex items-center gap-2 text-primary">
+      <Icon className="h-5 w-5" />
+      <h3 className="font-semibold">{title}</h3>
+    </div>
+    {children}
+  </div>
+);
+
 const EXIFViewerTool = () => {
   const toolSeoData = getToolSeoMetadata('exif-viewer');
   const [image, setImage] = useState<string | null>(null);
@@ -133,16 +143,6 @@ const EXIFViewerTool = () => {
     setNoExif(false);
     setFileName("");
   };
-
-  const InfoCard = ({ icon: Icon, title, children }: { icon: React.ComponentType<{ className?: string }>; title: string; children: React.ReactNode }) => (
-    <div className="rounded-xl border border-border bg-card p-5">
-      <div className="mb-3 flex items-center gap-2 text-primary">
-        <Icon className="h-5 w-5" />
-        <h3 className="font-semibold">{title}</h3>
-      </div>
-      {children}
-    </div>
-  );
 
   return (
     <>
@@ -338,7 +338,7 @@ const EXIFViewerTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">EXIF Data Types</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">EXIF Data Types</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Camera make/model</li>
                 <li>• Exposure settings</li>
@@ -347,7 +347,7 @@ const EXIFViewerTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Photography Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Photography Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Learning from photos</li>
                 <li>• Technical analysis</li>

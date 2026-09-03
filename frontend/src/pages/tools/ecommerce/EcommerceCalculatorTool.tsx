@@ -377,15 +377,15 @@ const EcommerceCalculatorTool = () => {
           
           <div className="grid sm:grid-cols-3 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">GST Calculator</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">GST Calculator</h4>
               <p className="text-sm text-blue-800">Calculate GST exclusive or inclusive amounts for tax compliance</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Margin Calculator</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Margin Calculator</h4>
               <p className="text-sm text-green-800">Calculate profit margin and markup for pricing strategies</p>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">EMI Calculator</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">EMI Calculator</h4>
               <p className="text-sm text-purple-800">Plan loan repayments with monthly installment calculations</p>
             </div>
           </div>

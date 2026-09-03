@@ -461,7 +461,7 @@ const AudioMergerTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">Common Applications</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">Common Applications</h4>
               <ul className="text-sm text-purple-800 space-y-1">
                 <li>• Create continuous playlists</li>
                 <li>• Combine podcast segments</li>
@@ -470,7 +470,7 @@ const AudioMergerTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Key Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Drag-and-drop reordering</li>
                 <li>• Preserves audio quality</li>

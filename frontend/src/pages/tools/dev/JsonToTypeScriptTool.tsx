@@ -374,7 +374,7 @@ const JsonToTypeScriptTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔍 Type Inference</h5>
+              <h4 className="font-medium text-foreground mb-2">🔍 Type Inference</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Automatically detects primitive types</li>
                 <li>• Handles nested objects and arrays</li>
@@ -383,7 +383,7 @@ const JsonToTypeScriptTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">✨ Best Practices</h5>
+              <h4 className="font-medium text-foreground mb-2">✨ Best Practices</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use descriptive property names</li>
                 <li>• Mark optional properties with ?</li>
@@ -419,7 +419,7 @@ const JsonToTypeScriptTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Generation Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Generation Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Automatic type inference</li>
                 <li>• Nested object support</li>
@@ -428,7 +428,7 @@ const JsonToTypeScriptTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• API response typing</li>
                 <li>• Configuration interfaces</li>

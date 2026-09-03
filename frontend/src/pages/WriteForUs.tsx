@@ -281,7 +281,7 @@ const WriteForUs = () => {
                           <Icon className="h-5 w-5" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-foreground">{stat.title}</h3>
+                          <p className="font-bold text-foreground">{stat.title}</p>
                           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{stat.desc}</p>
                         </div>
                       </div>
@@ -394,7 +394,7 @@ const WriteForUs = () => {
                   </p>
 
                   <div className="rounded-2xl border border-border/80 bg-card p-5 space-y-4">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Topics we cover:</h4>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Topics we cover:</h3>
                     <div className="flex flex-wrap gap-2">
                       {["Web Tools", "Software Guides", "Developer Utilities", "SEO & Marketing", "Productivity Hacks", "SaaS Showcases"].map((tag, idx) => (
                         <span key={idx} className="rounded-lg bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground border border-border/40">
@@ -671,7 +671,7 @@ const WriteForUs = () => {
               {/* Footer CTAs */}
               <div className="mt-14 flex flex-col items-center justify-between gap-6 rounded-2xl border border-border/80 bg-muted/40 p-6 sm:flex-row">
                 <div className="space-y-1">
-                  <h4 className="font-bold text-foreground text-sm">Still have questions?</h4>
+                  <h3 className="font-bold text-foreground text-sm">Still have questions?</h3>
                   <p className="text-xs text-muted-foreground">Reach out directly and we will clear things up.</p>
                 </div>
                 <div className="flex flex-wrap gap-3">

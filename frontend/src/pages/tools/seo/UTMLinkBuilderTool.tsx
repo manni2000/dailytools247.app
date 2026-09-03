@@ -445,7 +445,7 @@ const UTMLinkBuilderTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Required Parameters</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Required Parameters</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>utm_source:</strong> Traffic source (google, facebook)</li>
                 <li>• <strong>utm_medium:</strong> Marketing medium (cpc, social)</li>
@@ -453,7 +453,7 @@ const UTMLinkBuilderTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔍 Optional Parameters</h5>
+              <h4 className="font-medium text-foreground mb-2">🔍 Optional Parameters</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>utm_term:</strong> Search terms (running_shoes)</li>
                 <li>• <strong>utm_content:</strong> Ad content (header_link)</li>
@@ -488,7 +488,7 @@ const UTMLinkBuilderTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">UTM Parameters</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">UTM Parameters</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• utm_source (referral source)</li>
                 <li>• utm_medium (marketing channel)</li>
@@ -497,7 +497,7 @@ const UTMLinkBuilderTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Tracking Benefits</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Tracking Benefits</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Campaign performance</li>
                 <li>• Traffic attribution</li>

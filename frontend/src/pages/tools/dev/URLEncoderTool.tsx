@@ -219,10 +219,10 @@ const URLEncoderTool = () => {
           transition={{ delay: 0.25 }}
           className="rounded-xl border border-border bg-muted/30 p-6 shadow-lg hover:shadow-xl transition-shadow duration-500"
         >
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
+          <h3 className="font-semibold mb-3 flex items-center gap-2">
             <Lightbulb className="h-5 w-5" style={{ color: `hsl(${categoryColor})` }} />
             URL Encoding Tips
-          </h4>
+          </h3>
           <ul className="text-sm text-muted-foreground space-y-2">
             <li>• Special characters like spaces become %20</li>
             <li>• Use encoding for query parameters with special characters</li>

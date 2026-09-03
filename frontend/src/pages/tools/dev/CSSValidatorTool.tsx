@@ -520,7 +520,7 @@ const CSSValidatorTool = () => {
             
             <div className="grid sm:grid-cols-2 gap-4 mt-4">
               <div className="p-3 bg-purple-50 rounded-lg">
-                <h5 className="font-semibold text-purple-900 mb-1">Validation Features</h5>
+                <h4 className="font-semibold text-purple-900 mb-1">Validation Features</h4>
                 <ul className="text-sm text-purple-800 space-y-1">
                   <li>• Syntax and property validation</li>
                   <li>• Performance optimization</li>
@@ -529,7 +529,7 @@ const CSSValidatorTool = () => {
                 </ul>
               </div>
               <div className="p-3 bg-pink-50 rounded-lg">
-                <h5 className="font-semibold text-pink-900 mb-1">Optimization Benefits</h5>
+                <h4 className="font-semibold text-pink-900 mb-1">Optimization Benefits</h4>
                 <ul className="text-sm text-pink-800 space-y-1">
                   <li>• Faster page load times</li>
                   <li>• Better cross-browser support</li>

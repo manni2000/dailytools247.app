@@ -341,7 +341,7 @@ const HashtagGeneratorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Hashtag Types</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Hashtag Types</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Trending tags</li>
                 <li>• Niche-specific tags</li>
@@ -350,7 +350,7 @@ const HashtagGeneratorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Visibility Benefits</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Visibility Benefits</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Increased discoverability</li>
                 <li>• Better categorization</li>

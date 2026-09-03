@@ -333,7 +333,7 @@ export default function EXIFLocationRemoverTool() {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Metadata Removed</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Metadata Removed</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• GPS coordinates</li>
                 <li>• Location names</li>
@@ -342,7 +342,7 @@ export default function EXIFLocationRemoverTool() {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Privacy Benefits</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Privacy Benefits</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Location privacy</li>
                 <li>• Safe sharing</li>

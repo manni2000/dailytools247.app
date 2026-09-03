@@ -156,7 +156,7 @@ const BlogListPage = () => {
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-muted border border-border/60">
                   <BookOpen className="h-7 w-7 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">No guides found</h3>
+                <h2 className="text-lg sm:text-xl font-bold text-foreground mb-2">No guides found</h2>
                 <p className="text-muted-foreground max-w-sm mx-auto font-light text-sm mb-6">
                   We are writing tutorials for {selectedCategory} right now. Stay tuned!
                 </p>

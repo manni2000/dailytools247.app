@@ -574,19 +574,19 @@ const GSTInvoiceGeneratorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Business Details</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Business Details</h4>
               <p className="text-sm text-blue-800">Add your business name, address, and GSTIN for professional invoices</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Auto GST Calculation</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Auto GST Calculation</h4>
               <p className="text-sm text-green-800">Automatic GST calculation based on configurable tax rates</p>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">Multiple Items</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">Multiple Items</h4>
               <p className="text-sm text-purple-800">Add unlimited line items with descriptions and quantities</p>
             </div>
             <div className="p-3 bg-orange-50 rounded-lg">
-              <h5 className="font-semibold text-orange-900 mb-1">PDF Export</h5>
+              <h4 className="font-semibold text-orange-900 mb-1">PDF Export</h4>
               <p className="text-sm text-orange-800">Download professional PDF invoices instantly</p>
             </div>
           </div>

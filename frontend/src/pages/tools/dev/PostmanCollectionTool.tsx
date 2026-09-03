@@ -599,7 +599,7 @@ const PostmanCollectionTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Collection Features</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Collection Features</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Multiple HTTP methods support</li>
                 <li>• Custom headers and body</li>
@@ -608,7 +608,7 @@ const PostmanCollectionTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔧 Best Practices</h5>
+              <h4 className="font-medium text-foreground mb-2">🔧 Best Practices</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use descriptive request names</li>
                 <li>• Add proper documentation</li>

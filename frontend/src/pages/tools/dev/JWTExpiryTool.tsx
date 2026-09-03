@@ -437,7 +437,7 @@ const JWTExpiryTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔑 JWT Structure</h5>
+              <h4 className="font-medium text-foreground mb-2">🔑 JWT Structure</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>Header:</strong> Algorithm and token type</li>
                 <li>• <strong>Payload:</strong> Claims and user data</li>
@@ -446,7 +446,7 @@ const JWTExpiryTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">⏰ Time Claims</h5>
+              <h4 className="font-medium text-foreground mb-2">⏰ Time Claims</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>exp:</strong> Expiration time (Unix timestamp)</li>
                 <li>• <strong>iat:</strong> Issued at time</li>
@@ -482,7 +482,7 @@ const JWTExpiryTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Expiry Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Expiry Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Real-time expiry check</li>
                 <li>• Time remaining display</li>
@@ -491,7 +491,7 @@ const JWTExpiryTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Use Cases</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Use Cases</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Debugging auth issues</li>
                 <li>• Token lifecycle management</li>

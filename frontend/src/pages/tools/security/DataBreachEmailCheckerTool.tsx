@@ -342,7 +342,7 @@ export default function DataBreachEmailCheckerTool() {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Check Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Check Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Multiple breach sources</li>
                 <li>• Breach date information</li>
@@ -351,7 +351,7 @@ export default function DataBreachEmailCheckerTool() {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Security Actions</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Security Actions</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Change passwords</li>
                 <li>• Enable 2FA</li>

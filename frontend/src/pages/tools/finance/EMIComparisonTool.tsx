@@ -517,7 +517,7 @@ export default function EMIComparisonTool() {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Comparison Factors</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Comparison Factors</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Interest rate percentage</li>
                 <li>• Loan tenure period</li>
@@ -526,7 +526,7 @@ export default function EMIComparisonTool() {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Decision Factors</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Decision Factors</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Total interest payable</li>
                 <li>• Monthly EMI affordability</li>

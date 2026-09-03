@@ -483,7 +483,7 @@ const HTTPStatusCodeTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📊 Status Code Categories</h5>
+              <h4 className="font-medium text-foreground mb-2">📊 Status Code Categories</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>1xx:</strong> Informational responses</li>
                 <li>• <strong>2xx:</strong> Successful responses</li>
@@ -493,7 +493,7 @@ const HTTPStatusCodeTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔧 Best Practices</h5>
+              <h4 className="font-medium text-foreground mb-2">🔧 Best Practices</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Always handle 4xx and 5xx errors gracefully</li>
                 <li>• Use appropriate status codes for different scenarios</li>

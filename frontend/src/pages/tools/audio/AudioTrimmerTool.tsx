@@ -460,7 +460,7 @@ const AudioTrimmerTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-orange-50 rounded-lg">
-              <h5 className="font-semibold text-orange-900 mb-1">Common Use Cases</h5>
+              <h4 className="font-semibold text-orange-900 mb-1">Common Use Cases</h4>
               <ul className="text-sm text-orange-800 space-y-1">
                 <li>• Remove silence from recordings</li>
                 <li>• Extract audio clips</li>
@@ -469,7 +469,7 @@ const AudioTrimmerTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">Trimming Features</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">Trimming Features</h4>
               <ul className="text-sm text-purple-800 space-y-1">
                 <li>• Precise time selection</li>
                 <li>• Visual waveform preview</li>

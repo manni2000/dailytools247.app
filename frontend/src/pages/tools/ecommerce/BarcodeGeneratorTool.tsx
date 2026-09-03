@@ -336,19 +336,19 @@ const BarcodeGeneratorTool = () => {
           <h4 className="font-semibold mb-2">Supported Barcode Formats</h4>
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">CODE128</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">CODE128</h4>
               <p className="text-sm text-blue-800">Most common, supports all ASCII characters</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">EAN-13</h5>
+              <h4 className="font-semibold text-green-900 mb-1">EAN-13</h4>
               <p className="text-sm text-green-800">13-digit product barcode for retail</p>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">UPC</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">UPC</h4>
               <p className="text-sm text-purple-800">12-digit barcode for North America</p>
             </div>
             <div className="p-3 bg-orange-50 rounded-lg">
-              <h5 className="font-semibold text-orange-900 mb-1">CODE39</h5>
+              <h4 className="font-semibold text-orange-900 mb-1">CODE39</h4>
               <p className="text-sm text-orange-800">Alphanumeric, used in logistics</p>
             </div>
           </div>

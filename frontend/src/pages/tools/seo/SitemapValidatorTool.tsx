@@ -446,7 +446,7 @@ const SitemapValidatorTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">✅ Guidelines</h5>
+              <h4 className="font-medium text-foreground mb-2">✅ Guidelines</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Keep sitemap under 50MB</li>
                 <li>• Maximum 50,000 URLs per sitemap</li>
@@ -456,7 +456,7 @@ const SitemapValidatorTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔍 Common Issues</h5>
+              <h4 className="font-medium text-foreground mb-2">🔍 Common Issues</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Invalid URL formats</li>
                 <li>• Missing XML declaration</li>
@@ -493,7 +493,7 @@ const SitemapValidatorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Validation Checks</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Validation Checks</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• XML syntax validation</li>
                 <li>• URL format checking</li>
@@ -502,7 +502,7 @@ const SitemapValidatorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">SEO Benefits</h5>
+              <h4 className="font-semibold text-green-900 mb-1">SEO Benefits</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Better crawling</li>
                 <li>• Faster indexing</li>

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Wrench, Menu, X, ChevronDown, Search, Sparkles, ArrowRight, Layers, Code, Command } from "lucide-react";
+import { Wrench, Menu, X, ChevronDown, Search, Sparkles, ArrowRight, Layers, Code } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toolCategories, getAllTools } from "@/data/toolCategories";
@@ -14,7 +14,6 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Global Keyboard listener (Cmd+K / Ctrl+K or /)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -150,20 +149,8 @@ const Header = () => {
               </NavLink>
             </nav>
 
-            {/* Quick Header Tools Search & CTA */}
+            {/* Header CTA & Mobile Menu Toggle */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Quick Search trigger button */}
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-border/80 bg-muted/40 hover:bg-muted hover:border-primary/40 text-xs text-muted-foreground transition-all duration-200"
-              >
-                <Search className="h-3.5 w-3.5 text-primary" />
-                <span className="hidden sm:inline font-medium">Search tools...</span>
-                <span className="hidden md:inline-flex items-center gap-0.5 rounded bg-background px-1.5 py-0.5 text-[10px] font-semibold border border-border">
-                  <Command className="h-2.5 w-2.5" /> K
-                </span>
-              </button>
-
               <Link
                 to="/categories"
                 className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs sm:text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/95 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 active:scale-95"

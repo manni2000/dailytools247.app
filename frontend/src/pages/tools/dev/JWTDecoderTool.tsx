@@ -266,7 +266,7 @@ const JWTDecoderTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔑 JWT Structure</h5>
+              <h4 className="font-medium text-foreground mb-2">🔑 JWT Structure</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>Header:</strong> Algorithm and token type</li>
                 <li>• <strong>Payload:</strong> Claims and user data</li>
@@ -275,7 +275,7 @@ const JWTDecoderTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">⚠️ Security Notes</h5>
+              <h4 className="font-medium text-foreground mb-2">⚠️ Security Notes</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Never expose secret keys</li>
                 <li>• Validate tokens server-side</li>
@@ -311,7 +311,7 @@ const JWTDecoderTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">JWT Structure</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">JWT Structure</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Header (algorithm & type)</li>
                 <li>• Payload (claims & data)</li>
@@ -320,7 +320,7 @@ const JWTDecoderTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Debugging auth issues</li>
                 <li>• Inspecting token claims</li>

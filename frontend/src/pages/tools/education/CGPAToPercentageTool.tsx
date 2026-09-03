@@ -286,7 +286,7 @@ const CGPAToPercentageTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Conversion Formulas</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Conversion Formulas</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• 10.0 Scale: CGPA × 9.5</li>
                 <li>• 5.0 Scale: CGPA × 19</li>
@@ -295,7 +295,7 @@ const CGPAToPercentageTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Job applications</li>
                 <li>• Higher education admissions</li>

@@ -339,7 +339,7 @@ const SalaryCalculatorTool = () => {
 
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-orange-50 rounded-lg">
-              <h5 className="font-semibold text-orange-900 mb-1">Conversion Features</h5>
+              <h4 className="font-semibold text-orange-900 mb-1">Conversion Features</h4>
               <ul className="text-sm text-orange-800 space-y-1">
                 <li>• Hourly to yearly</li>
                 <li>• Monthly to hourly</li>
@@ -348,7 +348,7 @@ const SalaryCalculatorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Job offer comparisons</li>
                 <li>• Rate negotiations</li>

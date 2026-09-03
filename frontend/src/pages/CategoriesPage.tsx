@@ -485,10 +485,10 @@ const CategoriesPage = () => {
             <div ref={categoriesResultsRef} className="space-y-6 scroll-mt-28">
               {hasActiveSearch && (
                 <div className="flex items-center justify-between border-b border-border pb-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
                     <Compass className="h-5 w-5 text-primary" />
                     Categories Matching "{searchQuery}"
-                  </h3>
+                  </h2>
                   <span className="text-xs text-muted-foreground font-medium">
                     Showing categories containing relevant tools
                   </span>
@@ -505,7 +505,7 @@ const CategoriesPage = () => {
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-muted border border-border/60">
                     <Search className="h-10 w-10 text-muted-foreground" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">No categories found</h3>
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">No categories found</h2>
                   <p className="text-muted-foreground max-w-md mx-auto mb-8 font-light">
                     Try adjusting your search query or clear filters to see all tool categories.
                   </p>
@@ -887,9 +887,9 @@ const CategoriesPage = () => {
                                   Similar
                                 </Badge>
                               </div>
-                              <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                              <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-1">
                                 {tool.name}
-                              </h4>
+                              </h3>
                               <p className="text-xs text-muted-foreground mt-1 line-clamp-2 font-light">
                                 {tool.description}
                               </p>

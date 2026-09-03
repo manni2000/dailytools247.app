@@ -566,25 +566,25 @@ const WorldTimeTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <h5 className="font-medium text-foreground mb-2">⭐ Favorites</h5>
+              <h4 className="font-medium text-foreground mb-2">⭐ Favorites</h4>
               <p className="text-sm text-muted-foreground">
                 Star your most-used time zones for quick access
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔍 Advanced Search</h5>
+              <h4 className="font-medium text-foreground mb-2">🔍 Advanced Search</h4>
               <p className="text-sm text-muted-foreground">
                 Search by timezone name, city, or country
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">🌍 Regional Filter</h5>
+              <h4 className="font-medium text-foreground mb-2">🌍 Regional Filter</h4>
               <p className="text-sm text-muted-foreground">
                 Filter time zones by continent or region
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">⏰ Live Updates</h5>
+              <h4 className="font-medium text-foreground mb-2">⏰ Live Updates</h4>
               <p className="text-sm text-muted-foreground">
                 Real-time updates every second automatically
               </p>
@@ -618,7 +618,7 @@ const WorldTimeTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Key Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Key Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Real-time clock updates</li>
                 <li>• Search by city/country</li>
@@ -627,7 +627,7 @@ const WorldTimeTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• International meetings</li>
                 <li>• Travel planning</li>

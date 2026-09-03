@@ -449,7 +449,7 @@ const TechStackDetectorTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔍 What We Detect</h5>
+              <h4 className="font-medium text-foreground mb-2">🔍 What We Detect</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Frontend frameworks & libraries (React, Vue, Angular)</li>
                 <li>• Backend programming languages (Node.js, PHP, Python)</li>
@@ -460,7 +460,7 @@ const TechStackDetectorTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📊 Enhanced Analysis</h5>
+              <h4 className="font-medium text-foreground mb-2">📊 Enhanced Analysis</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Confidence scoring for each technology</li>
                 <li>• Multiple detection methods (scripts, headers, patterns)</li>
@@ -474,7 +474,7 @@ const TechStackDetectorTool = () => {
           
           {techStack?.detectionMethods && techStack.detectionMethods.length > 0 && (
             <div className="mt-4 p-3 bg-muted/50 rounded-lg">
-              <h5 className="font-medium text-foreground mb-2 text-sm">Detection Methods Used:</h5>
+              <h4 className="font-medium text-foreground mb-2 text-sm">Detection Methods Used:</h4>
               <div className="flex flex-wrap gap-2">
                 {techStack.detectionMethods.map((method, index) => (
                   <span
@@ -514,7 +514,7 @@ const TechStackDetectorTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Detection Categories</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Detection Categories</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Frontend frameworks</li>
                 <li>• Backend technologies</li>
@@ -523,7 +523,7 @@ const TechStackDetectorTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Competitor analysis</li>
                 <li>• Technology research</li>

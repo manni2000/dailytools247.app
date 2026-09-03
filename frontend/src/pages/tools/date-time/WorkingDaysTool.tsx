@@ -248,7 +248,7 @@ const WorkingDaysTool = () => {
 
             <div className="grid sm:grid-cols-2 gap-4 mt-4">
               <div className="p-3 bg-blue-50 rounded-lg">
-                <h5 className="font-semibold text-blue-900 mb-1">Calculation Metrics</h5>
+                <h4 className="font-semibold text-blue-900 mb-1">Calculation Metrics</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Total calendar days</li>
                   <li>• Working days (Mon-Fri)</li>
@@ -257,7 +257,7 @@ const WorkingDaysTool = () => {
                 </ul>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
-                <h5 className="font-semibold text-green-900 mb-1">Business Uses</h5>
+                <h4 className="font-semibold text-green-900 mb-1">Business Uses</h4>
                 <ul className="text-sm text-green-800 space-y-1">
                   <li>• Project scheduling</li>
                   <li>• Payroll periods</li>

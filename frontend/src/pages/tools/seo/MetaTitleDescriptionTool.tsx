@@ -376,7 +376,7 @@ const MetaTitleDescriptionTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Title Guidelines</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Title Guidelines</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Keep under 60 characters</li>
                 <li>• Include primary keyword</li>
@@ -385,7 +385,7 @@ const MetaTitleDescriptionTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📄 Description Guidelines</h5>
+              <h4 className="font-medium text-foreground mb-2">📄 Description Guidelines</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Keep under 160 characters</li>
                 <li>• Include target keywords naturally</li>
@@ -421,7 +421,7 @@ const MetaTitleDescriptionTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Optimization Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Optimization Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Length checking</li>
                 <li>• SERP preview</li>
@@ -430,7 +430,7 @@ const MetaTitleDescriptionTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Best Practices</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Best Practices</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Compelling titles</li>
                 <li>• Accurate descriptions</li>

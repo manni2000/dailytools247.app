@@ -424,7 +424,7 @@ const CurrencyConverterTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Conversion Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Conversion Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Live exchange rates</li>
                 <li>• 150+ currencies supported</li>
@@ -433,7 +433,7 @@ const CurrencyConverterTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• International travel</li>
                 <li>• Business transactions</li>

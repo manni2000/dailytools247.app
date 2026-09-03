@@ -566,7 +566,7 @@ Generated: ${new Date().toLocaleDateString()}
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🚀 Quick Wins</h5>
+              <h4 className="font-medium text-foreground mb-2">🚀 Quick Wins</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Compress images first</li>
                 <li>• Enable browser caching</li>
@@ -575,7 +575,7 @@ Generated: ${new Date().toLocaleDateString()}
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📊 Measure Impact</h5>
+              <h4 className="font-medium text-foreground mb-2">📊 Measure Impact</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Use Google PageSpeed Insights</li>
                 <li>• Monitor Core Web Vitals</li>
@@ -611,7 +611,7 @@ Generated: ${new Date().toLocaleDateString()}
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Performance Metrics</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Performance Metrics</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Load time analysis</li>
                 <li>• Resource optimization</li>
@@ -620,7 +620,7 @@ Generated: ${new Date().toLocaleDateString()}
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Optimization Tips</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Optimization Tips</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Image compression</li>
                 <li>• Minification</li>

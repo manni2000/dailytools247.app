@@ -288,7 +288,7 @@ const CountdownTimerTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Timer Features</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Timer Features</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• Real-time updates</li>
                 <li>• Event naming</li>
@@ -297,7 +297,7 @@ const CountdownTimerTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-purple-50 rounded-lg">
-              <h5 className="font-semibold text-purple-900 mb-1">Common Uses</h5>
+              <h4 className="font-semibold text-purple-900 mb-1">Common Uses</h4>
               <ul className="text-sm text-purple-800 space-y-1">
                 <li>• Event countdowns</li>
                 <li>• Deadline tracking</li>

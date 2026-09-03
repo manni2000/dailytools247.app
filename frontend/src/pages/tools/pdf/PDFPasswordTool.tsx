@@ -287,7 +287,7 @@ const PDFPasswordTool = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 mt-4">
             <div className="p-3 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-blue-900 mb-1">Protection Types</h5>
+              <h4 className="font-semibold text-blue-900 mb-1">Protection Types</h4>
               <ul className="text-sm text-blue-800 space-y-1">
                 <li>• User password (open)</li>
                 <li>• Owner password (edit)</li>
@@ -296,7 +296,7 @@ const PDFPasswordTool = () => {
               </ul>
             </div>
             <div className="p-3 bg-green-50 rounded-lg">
-              <h5 className="font-semibold text-green-900 mb-1">Security Uses</h5>
+              <h4 className="font-semibold text-green-900 mb-1">Security Uses</h4>
               <ul className="text-sm text-green-800 space-y-1">
                 <li>• Confidential documents</li>
                 <li>• Legal contracts</li>

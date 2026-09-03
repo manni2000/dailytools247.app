@@ -540,7 +540,7 @@ const CurlToAxiosTool = () => {
           </h4>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h5 className="font-medium text-foreground mb-2">🔧 Supported Features</h5>
+              <h4 className="font-medium text-foreground mb-2">🔧 Supported Features</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• HTTP methods (GET, POST, PUT, DELETE)</li>
                 <li>• Custom headers and authentication</li>
@@ -549,7 +549,7 @@ const CurlToAxiosTool = () => {
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-foreground mb-2">📝 Output Formats</h5>
+              <h4 className="font-medium text-foreground mb-2">📝 Output Formats</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• <strong>Axios:</strong> Popular HTTP client library</li>
                 <li>• <strong>Fetch:</strong> Native browser API</li>
