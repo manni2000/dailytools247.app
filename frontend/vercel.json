@@ -271,5 +271,6 @@
             "destination": "/blogs/dailytools247-vs-ilovepdf-vs-smallpdf-2026",
             "permanent": true
         }
-    ]
+    ],
+    "outputDirectory": "dist"
 }
