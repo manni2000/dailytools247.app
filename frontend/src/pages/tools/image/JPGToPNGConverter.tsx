@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Sparkles, Zap } from "lucide-react";
+import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 
@@ -20,7 +20,6 @@ const JPGToPNGConverter = () => {
   const [convertedUrl, setConvertedUrl] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
-  const [preserveTransparency, setPreserveTransparency] = useState(true);
 
   const handleFile = (file: File) => {
     if (!file.type.startsWith("image/")) {
@@ -207,11 +206,6 @@ const JPGToPNGConverter = () => {
               </motion.div>
             </div>
 
-            {/* Preview removed */}
-            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
-              Image preview removed.
-            </div>
-
             {/* Conversion Flow */}
             <div className="flex items-center justify-center gap-4 text-sm">
               <span className="rounded-lg bg-green-500/10 px-4 py-2 font-medium text-green-700 border border-green-200">
@@ -294,9 +288,9 @@ const JPGToPNGConverter = () => {
               title="JPG Converted to PNG Successfully"
               description="Your image has been converted to PNG format with lossless quality"
               fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
-                  onConvertAnother={reset}
-                  onConvertAnotherLabel="Convert Another JPG"
-                />
+              onConvertAnother={reset}
+              onConvertAnotherLabel="Convert Another JPG"
+            />
           </div>
         )}
 

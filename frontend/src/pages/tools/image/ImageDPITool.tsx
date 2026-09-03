@@ -169,11 +169,6 @@ const ImageDPITool = () => {
               </button>
             </div>
 
-            {/* Preview removed */}
-            <div className="flex justify-center rounded-xl border border-border bg-muted/30 p-4">
-              <div className="text-sm text-muted-foreground">Image preview removed.</div>
-            </div>
-
             {/* Image Info */}
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="mb-4 flex items-center gap-2 font-semibold">

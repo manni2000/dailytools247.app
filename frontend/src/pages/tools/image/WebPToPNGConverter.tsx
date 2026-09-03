@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image as ImageIcon, X, RefreshCw, ArrowRight, FileImage, Zap, Sparkles } from "lucide-react";
+import { Image as ImageIcon, X, RefreshCw, ArrowRight, Zap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn } from "@/lib/animations";
 import ModernLoadingSpinner from "@/components/ModernLoadingSpinner";
@@ -54,35 +54,56 @@ const WebPToPNGConverter = () => {
     setIsDragging(true);
   };
 
-  const convert = async () => {
-    if (!image) return;
+  const convert = () => {
+    if (!image || !preview) return;
     setIsConverting(true);
 
-    try {
-      const formData = new FormData();
-      formData.append('image', image);
-      formData.append('format', 'png');
+    const img = new window.Image();
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          alert("Failed to initialize canvas");
+          setIsConverting(false);
+          return;
+        }
 
-      const response = await fetch('/api/image/convert', {
-        method: 'POST',
-        body: formData,
-      });
+        ctx.drawImage(img, 0, 0);
 
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        setConvertedUrl(url);
-      } else {
-        alert('Failed to convert image');
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              setConvertedUrl(url);
+            } else {
+              const dataUrl = canvas.toDataURL("image/png");
+              setConvertedUrl(dataUrl);
+            }
+            setIsConverting(false);
+          },
+          "image/png"
+        );
+      } catch {
+        alert("Failed to convert image");
+        setIsConverting(false);
       }
-    } catch (error) {
-      alert('Failed to convert image');
-    } finally {
+    };
+
+    img.onerror = () => {
+      alert("Failed to load image for conversion");
       setIsConverting(false);
-    }
+    };
+
+    img.src = preview;
   };
 
   const reset = () => {
+    if (convertedUrl && convertedUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(convertedUrl);
+    }
     setImage(null);
     setPreview(null);
     setConvertedUrl(null);
@@ -195,15 +216,11 @@ const WebPToPNGConverter = () => {
                   onClick={reset}
                   title="Remove selected image"
                   aria-label="Remove selected image"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"                >
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
+                >
                   <X className="h-5 w-5" />
                 </button>
               </motion.div>
-            </div>
-
-              {/* Preview removed */}
-            <div className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground text-center">
-              Image preview removed.
             </div>
 
             {/* Conversion Flow */}
@@ -280,7 +297,8 @@ const WebPToPNGConverter = () => {
             <EnhancedDownload
               data={convertedUrl}
               fileName={getFileName()}
-              fileType="image"              fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
+              fileType="image"
+              fileSize={image ? `${(image.size / 1024).toFixed(1)} KB` : 'Unknown size'}
             />
           </div>
         )}
