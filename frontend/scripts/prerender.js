@@ -255,7 +255,9 @@ async function run() {
     };
 
     // Process all crawlable locations
+    const failedRoutes = [];
     for (const route of allLocs) {
+     try {
       let title = '';
       let description = '';
       let keywords = [];
@@ -275,6 +277,14 @@ async function run() {
           'og-image-preview-tool': 'og-image-preview'
         };
         const toolMetadata = toolSeoEnhancements[slug] || toolSeoEnhancements[slugAliases[slug]];
+
+        if (!toolMetadata) {
+          throw new Error(
+            `No SEO metadata found for tool route "${route}" (slug "${slug}") in toolSeoEnhancements.ts. ` +
+            `Add an entry for this slug before it can be prerendered — a route with no metadata would ` +
+            `otherwise ship as a blank page with an empty title/description.`
+          );
+        }
 
         if (toolMetadata) {
           title = toolMetadata.title;
@@ -522,6 +532,13 @@ async function run() {
         const categorySlug = route.substring(10);
         const categoryData = toolCategories.find(c => c.id === categorySlug);
 
+        if (!categoryData) {
+          throw new Error(
+            `No category data found for "${categorySlug}" (route "${route}") in toolCategories.ts. ` +
+            `Add it or remove the URL from the sitemap before it can be prerendered.`
+          );
+        }
+
         if (categoryData) {
           category = categoryData.name;
           title = `Free ${category.endsWith('Tools') ? category : `${category} Tools`} Online - No Signup Required`;
@@ -686,6 +703,13 @@ async function run() {
         const blogSlug = route.substring(7);
         const post = blogPosts.find(p => p.slug.toLowerCase() === blogSlug.toLowerCase());
         ogType = 'article';
+
+        if (!post) {
+          throw new Error(
+            `No blog post found for slug "${blogSlug}" (route "${route}") in blogPosts.ts. ` +
+            `Add it or remove the URL from the sitemap before it can be prerendered.`
+          );
+        }
 
         if (post) {
           title = post.title;
@@ -1339,6 +1363,15 @@ async function run() {
 
       fs.writeFileSync(targetPath, cleanHtml, 'utf8');
       console.log(`✅ Pre-rendered route: ${route} -> ${path.relative(projectRoot, targetPath)}`);
+     } catch (routeErr) {
+      console.error(`❌ Failed to pre-render route "${route}": ${routeErr.message}`);
+      failedRoutes.push({ route, error: routeErr.message });
+     }
+    }
+
+    if (failedRoutes.length > 0) {
+      console.error(`\n❌ ${failedRoutes.length} route(s) failed to pre-render:`);
+      for (const f of failedRoutes) console.error(`   - ${f.route}: ${f.error}`);
     }
 
     // 5. REDIRECT PAGES
@@ -1423,8 +1456,14 @@ async function run() {
     fs.writeFileSync(vercelConfigPath, JSON.stringify(vercelConfig, null, 4), 'utf8');
     console.log('✅ Successfully updated vercel.json with native redirects and optimized SPA rewrites!');
 
-    console.log('✨ Programmatic pre-rendering completed successfully!');
     await vite.close();
+
+    if (failedRoutes.length > 0) {
+      console.error(`\n❌ Pre-rendering finished with ${failedRoutes.length} failed route(s) — failing the build so this doesn't ship silently.`);
+      process.exit(1);
+    }
+
+    console.log('✨ Programmatic pre-rendering completed successfully!');
     process.exit(0);
   } catch (err) {
     console.error('❌ Error during pre-rendering execution:', err);
